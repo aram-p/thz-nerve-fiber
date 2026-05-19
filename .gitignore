@@ -22,8 +22,8 @@ data/raw/
 *.h5
 *.npz
 
-# Figures (regeneratable from data)
-figures/
+# Figure outputs (regeneratable); scripts under figures/ are source-controlled
+figures/out/
 
 # OS / editor
 .DS_Store
