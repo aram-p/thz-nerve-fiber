@@ -1,0 +1,193 @@
+ՀԱՅԱՍՏԱՆԻ ԳԻՏՈՒ ԹՅՈՒ ՆՆԵՐԻ ԱԶԳԱ ՅԻՆ ԱԿԱԴԵՄԻԱ
+Н А Ц И О Н А Л Ь Н А Я А К А Д Е М И Я Н А У К А Р М Е Н И И
+N A T I O N A L A C A D E M Y O F S C I E N C E S O F A R M E N I A
+         Д О К Л А Д Ы       ԶԵԿՈԻՅՑՆԵՐ          REPORTS
+Հատոր
+ Том     124                             2024                             № 3–4
+Volume
+
+
+                                                             RADIOPHYSICS
+
+UDK 616.8։537.86
+DOI: 10.54503/0321-1339-2024.124.3-4-7
+
+                             T.N. Hovhannisyan
+
+           Nonlinear Properties of Biological Nerve Fiber
+                  System in THz Spectrum Range
+           (Submitted by Academician R. M. Martirosyan 08/X 2024)
+
+     Keywords: THz, nerve fiber, neural network, nonlinear properties,
+nonlinear transformation.
+
+      Introduction. In the central nervous system of living organisms, information
+is transmitted through nerve fibers by electrical impulses [2]. According to
+various studies [1, 5–7], based on the geometric dimensions and electrical
+properties of nerve fibers, it is hypothesized that information exchange through
+nerve fibers may occur via electromagnetic waves in the terahertz or infrared
+range. Despite these hypotheses and corresponding theoretical models, no
+experimental studies are known to us that confirm or refute the exchange of
+information through nerve fibers via waves in these ranges. Recently, in our
+works [3, 4], the behavior of the animal's nerve fiber system in the terahertz wave
+range was studied under the influence of an external constant electric field. The
+transmission/absorption of THz radiation through a sample of the animal’s spinal
+cord was experimentally investigated. The refractive index of the sample was
+measured. Resonant absorption frequencies were observed. The nature of the
+transmitted THz pulse changes depending on the applied voltage, and nonlinear
+phenomena are observed; further studies are required to understand the nonlinear
+behavior of the nerve fiber system in the THz range.
+      In this work, the nonlinear properties of the animal's nerve fiber system in
+the THz wave range were studied, and mathematical modeling was performed.
+The results of the modeling were compared with the experimentally obtained
+data.
+      Methods and results. A sample of the white matter from a sheep’s spinal
+cord was taken as the nerve fiber system, and placed inside a
+polytetrafluoroethylene (PTFE) cuvette with a thickness of 100 μm and
+
+                                         7
+dimensions of 20 mm x 20 mm, as schematically shown in Fig. 1, similar with
+experimental setup implemented in [3] and [4]. The nerve fibers were aligned
+parallel to each other and to the walls of the cuvette. Two electrodes were
+positioned along the edges of the sample, parallel to the nerve fibers, ensuring
+proper electrical contact with the sample.
+     The experimental investigations were performed using a Menlo Systems
+LAC 1.550 time-domain terahertz (THz) spectrometer. The cuvette containing the
+sample was positioned in the path of the THz beam, and the THz pulses
+transmitted through the sample were recorded by the spectrometer’s THz
+detector. The acquired data were processed using custom-developed software,
+resulting in the spectrum of the THz pulses transmitted through the sample and
+determining its parameters in the THz frequency range.
+
+
+
+
+    Fig. 1. Sketch of the spinal cord sample, with electrodes positioned inside a PTFE cuvette
+
+     Measurements were conducted under two conditions: with no voltage
+applied to the electrodes, and with a voltage of 100 V. The results of
+measurements show that parameters of different samples (absorption spectrum,
+refractive index), before voltage is applied to electrodes, show similar behaviour.
+It was also shown that, in the presence of the constant external voltage, the
+parameters of the samples change over time, and these changes are of a similar
+nature across different samples. The characteristic patterns of the time domain
+and power spectrum of the THz wave passing through the sample are presented in
+Fig. 2.
+     It can be clearly seen from Fig. 2 that in the presence of voltage, a nonlinear
+transformation of the transmitted signal occurred. Computer modeling was
+performed to provide a qualitative assessment of the nonlinearities.
+     The modeling was performed according to polynomial (1), through which
+the input signal is subjected to nonlinear transformation,
+                                                8
+                 ( )=           ( )+           ( )+            ( )+            ( ) (1),
+where,      is the electric field of the THz pulse passed through the sample in the
+absence of external voltage,          is the transformed signal, and the values are
+the coefficients of the corresponding polynomial terms. The spectrum of the
+obtained as a result of the modeling was compared to the spectrum of the THz
+pulse transmitted through the sample under the influence of external constant
+voltage, recorded experimentally at different moments of time. The values of the
+   parameters were determined, for which the spectra obtained from the modeling
+were most similar to the experimentally obtained spectra of the THz pulses (Fig. 3).
+
+
+
+
+  Fig. 2. Time domain (1) and power spectrum (3) waveforms of THz pulses passed through the
+ sample before the application of voltage. Time domain (2) and power spectrum (4) waveforms of
+          THz pulses passed through the sample 2 minutes after the application of voltage.
+
+     Discussion and conclusion. In Figure 3, curves 1 correspond to the
+spectrum of the THz wave passed through the sample before the external voltage
+was applied, it is provided as a reference waveform. Curves 2 and 3 represent the
+spectra of the THz wave in 0,5 and 2 minutes, respectively, after the voltage is
+applied to the sample. Curves 4 and 5 represent the results of the nonlinear
+transformation of THz pulse (curve 1), with the values shown on the respective
+graphs. It can be noticed that along with the duration of voltage application, the
+coefficients of nonlinear terms ( , , ) increase, while the coefficient of the
+linear term ( ) decreases.
+     These results suggest that when external voltage is applied via electrodes, the
+nerve fiber system becomes a nonlinear system in the THz range with the
+nonlinearity increase depending on the duration of the applied voltage. Based on
+the structural characteristics of the Ranvier nodes, it can be assumed that upon
+voltage application, the ion channels in these nodes are excited and apparently
+become local nonlinear inhomogeneities in the nerve fiber system, which leads to
+the overall nonlinear behavior of the sample. The modeling results indicate that
+the spectrum of the nonlinearly transformated signal qualitatively resembles the
+spectrum of experimentally measured THz pulses.
+     The results of this research can help to understand the working principle of
+information propagation and exchange in neural systems in living organisms, as
+                                              9
+well as, complex processes taking place in central nervous system of living
+organisms.
+
+
+
+
+ Fig. 3. Curve 1 – spectrum of the THz wave passed through the sample before the external voltage
+     application. Curves 2 and 3 represent the spectra of the THz wave after 0,5 and 2 minutes,
+   respectively, of applying the voltage to the sample. Curves 4 and 5 represent the results of the
+ nonlinear transformation of THz pulse (curve 1), corresponding a values shown on the respective
+                                             graphs.
+
+    Funding
+    This work was supported by the Science Committee of RA (Research project
+№ 23AA-1C027).
+
+     Yerevan State University, Institute of Physics
+     е-mail: tigran.hovhannisyan@ysu.am
+
+
+                                    T.N. Hovhannisyan
+                Nonlinear Properties of Biological Nerve Fiber
+                      System in THz Spectrum Range
+
+     In this work, the nonlinear properties of the animal's nerve fiber system in the
+THz wave range were studied and mathematical modeling was performed. The
+results of the modeling were compared with the experimentally obtained data.
+
+
+                                                10
+     The modeling results indicate that the spectrum of the nonlinearly
+transformated signal qualitatively resembles the spectrum of experimentally
+measured THz pulses.
+                             Տ.Ն. Հովհաննիսյան
+     Կենսաբանական նյարդաթելային համակարգի ոչ գծային
+     հատկությունները տերահերցային սպեկտրալ տիրույթում
+
+    Այս աշխատանքում ուսումնասիրվել են կենդանու նյարդաթելային
+համակարգի ոչ գծային հատկությունները ՏՀց ալիքների տիրույթում,
+կատարվել է մաթեմատիկական մոդելավորում: Մոդելավորման ար-
+դյունքները համեմատվել են փորձնականորեն ստացված արդյունքների
+հետ։
+    Մոդելավորման արդյունքները ցույց են տալիս, որ ոչ գծային ձևա-
+փոխություններից հետո ստացված ազդանշանի սպեկտրը որակապես
+համապատասխանում է փորձնականորեն գրանցված ՏՀց իմպուլսների
+սպեկտրի հետ։
+
+                                 Т.Н. Оганесян
+Нелинейные свойства биологической системы нервных волокон
+             в терагерцовом диапазоне спектра
+    В данной работе были изучены нелинейные свойства системы нервных
+волокон животного в диапазоне терагерцовых волн, а также проведено ма-
+тематическое моделирование. Результаты моделирования были сопоставле-
+ны с экспериментально полученными данными.
+    Результаты моделирования показывают, что спектр нелинейно преоб-
+разованного сигнала качественно подобен спектру экспериментально изме-
+ренных терагерцовых импульсов.
+
+                                   References
+    1. Fraser A., Frey A. Biophysical Journal 8, 1968, 731–734.
+    2. Hodgkin A.L., Huxley A.F. Nature 144, 1939, 710–711.
+    3. Hovhannisyan T., Makaryan A., Armenian Journal of Physics, 17(1), 2024, 17–
+       20.
+    4. Hovhannisyan T., Makaryan A., Martirosyan R. Reports NAS RA, 124(2), 2024,
+       16–23.
+    5. Traill R.R. Toward a theoretical explanation of electro-chemical interaction in
+       memory use: The postulated role of infra-red components and molecular
+       evolution (Brunel University, Institute of Cybernetics, UK, 1977).
+    6. Traill R.R. Speculations in Science and Technology 11(3) (1988) 173–181.
+    7. Xiang Z. et al. Nano Research 14, 2020, 590–600.
+
+
+                                         11
+

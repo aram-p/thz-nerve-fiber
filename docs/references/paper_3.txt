@@ -1,0 +1,246 @@
+                                                                                                      Hybrid Conference, Yerevan, Armenia
+                   International Conference on Microwave & THz Technologies, Wireless                              20–21 September 2024
+                             Communications and Optoelectronics (IRPhE 2024)
+
+
+
+          INVESTIGATION OF NONLINEAR PROPERTIES OF
+               ANIMAL SPINAL CORD IN THZ RANGE
+                        Tigran Hovhannisyan1*, Armen Makaryan1, Radik Martirosyan1
+                                1
+                                 Yerevan State University, Institute of physics, Yerevan, Armenia
+                                                *tigran.hovhannisyan@ysu.am
+
+
+      Keywords: THZ,           TIME-DOMAIN         SPECTROMETER,               NEURAL       NETWORK,          NERVE       FIBER,
+      NONLINEARITY
+
+Abstract
+In the present work the electrodynamic properties of a system consisting of animal spinal cord nerve fibres in the terahertz range
+(0.1 - 3 THz) are experimentally investigated using time domain spectrometer. It is shown that when an external constant voltage
+is applied to the sample, significant changes in the parameters of the spinal cord sample (refractive index, absorption) occur
+when the electric field vector of the terahertz radiation is oriented parallel to the nerve fibres.
+A model was proposed, according to which under the influence of a voltage greater than threshold, the opening of the channels
+of nodes of Ranvier of the nerve fibres occurs, due to which the nerve fibres are transformed into specific wires with nonlinear
+conductivity, and the entire sample into a diffraction grating consisting of these wires. Computer modelling of the nonlinear
+interaction of THz radiation with the spinal cord sample was performed, the results of which are in good agreement with the
+experimentally obtained results.
+
+Introduction                                                            our experimental research [16, 17]. In particular, it was shown
+                                                                        that after some time of applying a voltage greater than a certain
+According to many studies (for example [1-3]), the exchange             threshold value, the time domain shape of the THz pulse
+of information in living organisms is carried out by an                 passed through the sample of the nerve fibre network, and
+electrochemical method, by the propagation of electrical                therefore also the Fourier spectrum, changes significantly.
+pulses through nerve fibres. The structure of nerve fibres was
+revealed, models of the nervous system were built, and                  After applying the voltage, resonant absorption appears in the
+theories were created that successfully explain a number of             spectrum of the pulse passing through the sample, the
+processes, occurring in the nervous system. The speed of                resonance frequency of which begins to shift to the low-
+propagation of electrical pulses passing through nerve fibres           frequency range over time. In parallel, the high-frequency
+was measured [4], and does not exceed ‫׽‬120 m/s.                         components of the spectrum grow significantly over time.
+                                                                        After some time (around 5 minutes) this process stops, and
+However, many processes occurring in the nervous system,                after eliminating the voltage the THz pulse passing through the
+such as information perception and analysis, memory, logical            sample returns to its original form within about 1 hour.
+reasoning, learning, consciousness, emotions, etc., imply
+significantly higher rates of information exchange, and                 In this work, the nonlinear properties of the nervous network
+therefore cannot be explained within the framework of existing          of the animal's spinal cord in the terahertz range of
+theories [5]. Indeed, during the last decades, various studies          electromagnetic waves were experimentally investigated
+have been carried out on the recording of high-frequency                under the influence of external voltage.
+processes occurring in the nervous system [6-8]. Signals in the
+GHz range (1.5 to 4.5 GHz) [9] and in the radio range (up to            Experimental results and discussions
+30 MHz) [10] have been experimentally recorded.
+                                                                        The measurement methodology is similar to that presented in
+Based on the structural features of nerve fibres and their size,        [16, 17]. Flat-parallel samples (with dimensions 20x20x0.1
+it is assumed in a number of works that nerve fibres can serve          mm3) from the white matter of the animal spinal cord (pig and
+as waveguides for exchanging information through THz or                 sheep)      were    placed     in    cuvettes     made      of
+infrared electromagnetic waves. Various models have been                polytetrafluoroethylene (PTFE) plates which are transparent in
+proposed and various mechanisms of information exchange                 terahertz range.
+have been considered [11-15], but many processes occurring
+in the nervous system have not been clarified to date.                  To study the behaviour of spinal cord nerve tissues in the THz
+Therefore, multivariate studies of neural networks can be very          range under conditions of applied external voltage, tungsten
+useful in revealing the mechanism of fast processes occurring           electrodes were mounted in a cuvette at a distance of 
+in nervous systems.                                                     15 mm from each other parallel to nerve fibres. Studies were
+                                                                        conducted on experimental setup assembled on the basis of
+Recently, some peculiarities of animal spinal cord in the THz           Menlo Systems TERA K15 THz time-domain spectrometer.
+range of electromagnetic waves have been revealed through
+
+                                                                   ϭ
+      
+https://doi.org/10.1049/icp.2025.0984                                                    © The Institution of Engineering & Technology 2024
+A specially developed computer program was used to process             sample 5 minutes after a 100 V voltage was applied, with the
+and analyse the measurement results.                                   electric field of THz pulse aligned along the nerve fibres. Fig.
+                                                                       1b shows the corresponding power spectra of the THz pulses
+                                                                       from Fig. 1a.
+
+                                                                       It can be seen from Fig. 1, that in the THz range, the spinal
+                                                                       cord sample has quite strong absorption in the absence of
+                                                                       voltage. The absorption of a layer with a thickness of 0.1 mm
+                                                                       is around 5 dB at a frequency of 0.25 THz, it increases with
+                                                                       increasing frequency, and approaches 30 dB at 2 THz. In the
+                                                                       low-frequency region of the THz range, the refractive index is
+                                                                       close to 4 in the absence of voltage and decreases with
+                                                                       increasing frequency, approaching approximately 3.6 (as
+                                                                       shown by waveform 1 in Fig. 2). Notably, spinal cord samples
+                                                                       from different animals showed no significant differences and
+                                                                       exhibited similar parameters, regardless of their orientation to
+                                                                       the plane of polarization of the THz radiation. It can also be
+                                                                       seen from Fig. 1 that the parameters of the spinal cord sample
+                                                                       undergo significant changes over time when applying voltage.
+                                                                       The shape of the pulse is greatly changed while there is no
+                                                                       significant change in the average power. The power spectrum
+                                                                       also undergoes a sharp change (see waveform 3, Fig. 1(b)).
+                                                                       After 5 minutes of applying voltage to the sample, a strong
+                               a                                       resonance absorption is observed near 0.6 THz, and the high-
+                                                                       frequency components of the spectrum increase significantly
+                                                                       starting from approximately 0.9 THz.
+
+
+
+
+                               b
+
+Fig. 1 (a) The time-domain profiles of THz pulses: waveform            Fig. 2 Waveform 1 - blue (dotted) - Dependence of refractive
+1 - black (solid). the pulse transmitted through empty cuvette,        index on frequency in the absence of voltage, waveform 2 -
+waveform 2 - blue (dotted). through the cuvette containing             red (dashed) after 5 minutes of applying voltage to the
+spinal cord sample without external voltage, waveform 3 -              sample.
+red (dashed). through the same sample 5 minutes after
+applying 100 V voltage. (b) The corresponding power spectra            Additionally, the THz pulse begins to outpace the pulse
+of the pulses shown in Fig. 1(a)                                       obtained without external voltage, see Fig. 1(a), which is
+                                                                       equivalent to the decrease in the refractive index of the sample.
+Fig. 1a shows the time-domain profiles of THz pulses:                  However, the distortion of the pulse shape suggests a strong
+waveform 1 - black (solid) shows the pulse passing through an          dependence of the refractive index on frequency. Based on a
+empty cuvette, waveform 2 - blue (dotted) through a cuvette            detailed analysis of the phase spectrum of the THz pulse
+containing a 0.1 mm thick spinal cord sample without external          passing through the sample, the dependence of refractive index
+voltage, and waveform 3 - red (dashed) through the same                on frequency was obtained (waveform 2 in Fig. 2).
+
+
+                                                                  Ϯ
+
+Note that for this spinal cord sample, near the resonant
+frequency, the refractive index value becomes less than one.
+This fact, as well as the fact that the amplitudes of the high-
+frequency components of the THz pulse spectrum increase
+when passing through the sample taken from the spinal cord
+after applying voltage, allows us to conclude that in the
+presence of voltage, the examined sample turns into a network
+of wires parallel to the electric field of the THz pulse, which
+are also endowed with non-linear conductivity.
+
+In this case, resonances and generation of combination
+frequencies of the spectral components of the THz pulse may
+occur in the system. Particularly, some spectral components
+may be generated inside the sample and reradiated earlier than
+ones with the same frequencies which are merely transmitted
+through the sample. Therefore, there may be an impression that
+some spectral components of the THz pulse propagate faster
+through the filled cuvette than through the empty cuvette,
+meaning, they seem to propagate at a speed greater than the
+speed of light.
+
+To further ensure that the animal's spinal cord behaves as a             Fig. 3 Comparison of power spectra of THz pulse passing
+                                                                         through the sample and its nonlinear transformation:
+non-linear system, low-pass filter was put together with the
+                                                                         waveform 1 - blue (dotted) - power spectrum of THz pulse
+spinal cord sample, so that the THz pulse propagates through
+                                                                         passed through the sample without external voltage,
+both of them. Firstly, the filter was placed before the sample,
+and in the second case - after the sample. In the first case, the        waveform 2 - red (dashed) - with 100V applied to the sample
+high-frequency components of the recorded pulse were larger              for 5 min, waveform 3 - green (dash dotted) - result of
+than in the second case, which proves that high-frequency                modelling.
+components are really generated in the sample.
+                                                                         Thus, the analysis of the obtained results allows us to conclude
+In addition, a computer simulation for the generation of                 that under the influence of a sufficiently high voltage,
+                                                                         apparently, the opening of the channels in the nodes of Ranvier
+combination frequencies was also performed, accepting the
+                                                                         of the nerve fibres occurs, due to which the nerve fibres are
+investigated sample as a system of wires, in which the
+                                                                         transformed into specific wires with nonlinear conductivity,
+dependence of the current on the electric field of the pulse is
+non-linear. That dependence was approximated by a power                  and the entire sample into a diffraction grating consisting of
+polynomial:                                                              these wires.
+
+          ࡶ ൌ ࢇ૚ ࡱ ൅ ࢇ૛ ࡱ૛ ൅ ࢇ૜ ࡱ૜ ൅ ࢇ૝ ࡱ૝ ൅ ࢇ૞ ࡱ૞                       References
+
+The THz pulse spectrum obtained as a result of modelling, in             [1] Hodgkin, A., Huxley, A.: ‘Action Potentials Recorded
+the case of the following polynomial coefficients values                 from Inside a Nerve Fibre’, Nature, 1939, 144, pp. 710-711
+a1=0.075, a2=0.56, a3=0.224, a4=-0.14, a5=-0.09, is shown in
+Fig. 3 (waveform 3). For comparison, the experimentally                  [2] Barnett, M., Larkman, P.: ‘The action potential’, Pract
+obtained results in the absence of voltage (waveform 1) and 2            Neurol, 2007, 7, pp. 192-197
+minutes after applying the voltage of 100 V (waveform 2) are
+                                                                         [3] Ashcroft, F.: ‘From molecule to malady’, Nature, 2006,
+also shown in the same figure. It can be seen from the figure
+                                                                         440, pp. 440-447
+that waveforms 2 and 3 are similar in nature.
+                                                                         [4] Feher, J.: ‘3.3 Propagation of the Action Potential’, in
+Note that despite the fact that the parameters of different
+                                                                         ‘Quantitative Human Physiology: An Introduction’
+samples taken from the spinal cord differ from each other
+                                                                         (Academic Press, 2nd edn, 2017), pp. 280-288
+when voltage is applied, all samples demonstrate similar
+patterns. After the voltage is removed, the parameters of the            [5] Cohen, L., Keynes, R., Hille, B.: ‘Light Scattering and
+samples are restored after about 1 hour.                                 Birefringence Changes during Nerve Activity’, Nature, 1968,
+                                                                         218, pp. 438-441
+It should also be noted that when the nerve fibres are
+positioned in a direction perpendicular to the electric field of         [6] Devyatkov, N: ‘Influence of Millimeter-Band
+the THz pulse, even when applying sufficiently high voltages,            Electromagnetic Radiation on Biological Objects’, Uspekhi
+no noticeable changes in the absorption and refractive index of          Fizicheskih Nauk, 1973, 110, pp. 453-454
+the sample occur.
+
+
+
+                                                                    ϯ
+
+[7] Fraser, A., Frey, A.: ‘Electromagnetic emission at micron
+wavelengths from active nerves’, Biophysical Journal, 1968,
+8, pp. 731-734
+
+[8] Sherebrin, M.: ‘Changes in Infrared Spectrum of Nerve
+during Excitation’, Nature New Biology, 1972, 235, pp. 122-
+124
+
+[9] Brusilovsky, L., Bryukhovetskiy, A., Kozhin, S. et al:
+‘Experimental researches of microwave electromagnetic
+activity of the human brain’, Journal of Radio Electronics,
+2020, 2, pp. 1684-1719
+
+[10] Ayvazyan, H., Antonyan, S., Makaryan, A., et al.:
+‘Registration of Brain Radio Signals and their Bispectral
+Analysis’ J. Contemp. Phys., 2022, 57, pp. 87-90
+
+[11] Cope, F.: ‘Electron-phonon (trapped photon) coupling
+and infrared coaxial transmission line theory of energy
+transport in mitochondria and nerve’, Bull. Math. Biol., 1973,
+35, pp. 627-644
+
+[12] Traill, R.: ‘Toward a theoretical explanation of electro-
+chemical interaction in memory use: The postulated role of
+infra-red components and molecular evolution’ (Brunel
+University, Institute of Cybernetics, UK, 1977)
+
+[13] Traill, R.: ‘The case that mammalian intelligence is based
+on sub-molecular memory coding and fibre-optic capabilities
+of myelinated nerve axons’, Specul. Sci. Technol., 1988, 11,
+(3), pp. 173-181
+
+[14] Zangari, A., Micheli, D., Galeazzi, R.: ‘Node of Ranvier
+as an Array of Bio-Nanoantennas for Infrared Communication
+in Nerve Tissue’, Sci. Rep., 2018, 8, pp. 539-557
+
+[15] Kumar, S., Boone, K., Tuszyński, J. et al.: ‘Possible
+existence of optical communication channels in the brain’, Sci.
+Rep., 2016, 6, 36508
+
+[16] Hovhannisyan, T., Makaryan, A.: ‘Investigation of Nerve
+Fiber Network in THz Spectrum Range’, Arm. J. Phys., 2024,
+17, (1), pp. 17-20
+
+[17] Hovhannisyan, T., Makaryan, A., Martirosyan, R.: ‘Study
+of the parameters of the spinal cord neural system in the
+terahertz frequency range’, Reports NAS RA, 2024, 124, (2),
+pp. 16-23
+
+
+
+
+                                                                  ϰ
+
+

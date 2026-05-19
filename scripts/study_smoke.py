@@ -31,7 +31,7 @@ GEOM = GeometryParams(
     myelin_radius_um=7,
     node_length_um=40,
     internode_length_um=100,
-    external_radius_um=20,
+    external_half_width_um=20,
 )
 MAT = MaterialParams(node_sigma_S_per_m=0.0)
 MESH = MeshParams(max_element_size_um=30.0, node_element_size_um=5.0)

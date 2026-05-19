@@ -57,7 +57,8 @@ def add_endcap_selections(model: Any, geom_params: GeometryParams) -> tuple[str,
     geom = java.component(comp_tag).geom(geom_tag)
 
     L = total_length_um(geom_params)
-    r_max = geom_params.external_radius_um * 1.1
+    hw = geom_params.external_half_width_um
+    pad = hw * 0.5  # generous outer padding so the box selection captures the full face
     eps = 0.5  # µm tolerance for "on the face"
 
     # Remove any previous endcap selections (idempotency)
@@ -69,19 +70,81 @@ def add_endcap_selections(model: Any, geom_params: GeometryParams) -> tuple[str,
     _add_box_selection(
         geom, "sel_inlet", "Inlet face (z=0)",
         entity_dim=2,
-        xmin=-r_max, xmax=r_max,
-        ymin=-r_max, ymax=r_max,
+        xmin=-hw - pad, xmax=hw + pad,
+        ymin=-hw - pad, ymax=hw + pad,
         zmin=-eps,  zmax=eps,
     )
     _add_box_selection(
         geom, "sel_outlet", "Outlet face (z=L)",
         entity_dim=2,
-        xmin=-r_max, xmax=r_max,
-        ymin=-r_max, ymax=r_max,
+        xmin=-hw - pad, xmax=hw + pad,
+        ymin=-hw - pad, ymax=hw + pad,
         zmin=L - eps, zmax=L + eps,
     )
     geom.run()
     return f"{geom_tag}_sel_inlet", f"{geom_tag}_sel_outlet"
+
+
+def add_lateral_periodic_selections(model: Any, geom_params: GeometryParams) -> tuple[str, str]:
+    """Add geometry-level selections that pick the ±x and ±y lateral face PAIRS.
+
+    Returns (x_pair_tag, y_pair_tag) as model-level selection tags.
+
+    Each pair contains both opposing faces in one selection; COMSOL's
+    PeriodicCondition pairs them automatically.
+    """
+
+    java = model.java
+    comp_tag = str(java.component().tags()[0])
+    geom_tag = str(java.component(comp_tag).geom().tags()[0])
+    geom = java.component(comp_tag).geom(geom_tag)
+
+    L = total_length_um(geom_params)
+    hw = geom_params.external_half_width_um
+    eps = 0.5
+
+    # Drop any previous pair selections.
+    for t in (
+        "sel_x_minus", "sel_x_plus", "sel_y_minus", "sel_y_plus",
+        "sel_x_pair", "sel_y_pair",
+    ):
+        if t in [str(x) for x in geom.feature().tags()]:
+            geom.feature().remove(t)
+
+    # One BoxSelection per individual face.
+    _add_box_selection(geom, "sel_x_minus", "x = -hw face",
+                       entity_dim=2,
+                       xmin=-hw - eps, xmax=-hw + eps,
+                       ymin=-hw - eps, ymax=hw + eps,
+                       zmin=-eps, zmax=L + eps)
+    _add_box_selection(geom, "sel_x_plus", "x = +hw face",
+                       entity_dim=2,
+                       xmin=hw - eps, xmax=hw + eps,
+                       ymin=-hw - eps, ymax=hw + eps,
+                       zmin=-eps, zmax=L + eps)
+    _add_box_selection(geom, "sel_y_minus", "y = -hw face",
+                       entity_dim=2,
+                       xmin=-hw - eps, xmax=hw + eps,
+                       ymin=-hw - eps, ymax=-hw + eps,
+                       zmin=-eps, zmax=L + eps)
+    _add_box_selection(geom, "sel_y_plus", "y = +hw face",
+                       entity_dim=2,
+                       xmin=-hw - eps, xmax=hw + eps,
+                       ymin=hw - eps, ymax=hw + eps,
+                       zmin=-eps, zmax=L + eps)
+
+    # UnionSelection per pair so PeriodicCondition has a single named input.
+    for tag, inputs, label in (
+        ("sel_x_pair", ["sel_x_minus", "sel_x_plus"], "x-periodic pair"),
+        ("sel_y_pair", ["sel_y_minus", "sel_y_plus"], "y-periodic pair"),
+    ):
+        u = geom.feature().create(tag, "UnionSelection")
+        u.set("entitydim", "2")
+        u.set("input", inputs)
+        u.label(label)
+
+    geom.run()
+    return f"{geom_tag}_sel_x_pair", f"{geom_tag}_sel_y_pair"
 
 
 def setup_physics(model: Any, geom_params: GeometryParams) -> None:
@@ -111,6 +174,20 @@ def setup_physics(model: Any, geom_params: GeometryParams) -> None:
         sbc.selection().named(sel_tag)
         sbc.label(f"Matched BC ({['inlet', 'outlet'][i - 1]})")
 
+    # Floquet-periodic BCs on the ±x and ±y lateral pairs (diffraction-grating
+    # unit cell, per Hovhannisyan & Makaryan 2024 paper 3). For normal
+    # incidence the in-plane Floquet wave vector is zero, so the simpler
+    # "Continuity" periodicity type is sufficient.
+    x_pair_tag, y_pair_tag = add_lateral_periodic_selections(model, geom_params)
+    for i, (tag_suffix, sel_tag, label) in enumerate(
+        (("x", x_pair_tag, "x-periodic"), ("y", y_pair_tag, "y-periodic")),
+        start=1,
+    ):
+        pc = phys.feature().create(f"pc{i}", "PeriodicCondition", 2)
+        pc.selection().named(sel_tag)
+        pc.set("PeriodicType", "Continuity")
+        pc.label(f"Periodic ({label})")
+
 
 # --- Study & solver --------------------------------------------------------
 
@@ -138,35 +215,40 @@ def solve_study(model: Any) -> None:
 # --- Result extraction -----------------------------------------------------
 
 
-def _evaluate_at_points(model: Any, expr: str, points_um: np.ndarray) -> np.ndarray:
+def _evaluate_at_points(
+    model: Any, expr: str, points_um: np.ndarray, *, complex_result: bool = False
+) -> np.ndarray:
     """Evaluate `expr` at the given (N, 3) points in µm. Returns (N,) array.
 
-    Uses Cut Point 3D + a numerical evaluation export.
+    `computeResult()` returns ``double[2][nExpr][nPoints]`` where the
+    leading axis is [real, imag]. We use one expression so nExpr=1.
+    For magnitude expressions like ``ewfd.normE`` the imag part is zero
+    and the result is real-valued; pass ``complex_result=True`` for
+    expressions that genuinely have an imaginary part (eg ``ewfd.Ex``).
     """
 
     java = model.java
-    # Cut Point 3D dataset
     datasets = java.result().dataset()
-    for t in ("cpt_eval",):
-        if t in [str(x) for x in datasets.tags()]:
-            datasets.remove(t)
+    if "cpt_eval" in [str(x) for x in datasets.tags()]:
+        datasets.remove("cpt_eval")
     cpt = datasets.create("cpt_eval", "CutPoint3D")
     cpt.set("pointx", [str(p) for p in points_um[:, 0]])
     cpt.set("pointy", [str(p) for p in points_um[:, 1]])
     cpt.set("pointz", [str(p) for p in points_um[:, 2]])
 
-    # Numerical evaluation
     numerical = java.result().numerical()
-    for t in ("ev_eval",):
-        if t in [str(x) for x in numerical.tags()]:
-            numerical.remove(t)
+    if "ev_eval" in [str(x) for x in numerical.tags()]:
+        numerical.remove("ev_eval")
     ev = numerical.create("ev_eval", "EvalPoint")
     ev.set("data", "cpt_eval")
     ev.set("expr", [expr])
-    table_values = ev.computeResult()  # returns Java double[][]
-    # Last column is the value; first columns are coords
-    arr = np.array([[float(v) for v in row] for row in table_values])
-    return arr[:, -1]
+
+    result = ev.computeResult()  # double[2][1][N]
+    real = np.array(list(result[0][0]), dtype=float)
+    if complex_result:
+        imag = np.array(list(result[1][0]), dtype=float)
+        return real + 1j * imag
+    return real
 
 
 def extract_axial_profile(
@@ -196,8 +278,8 @@ def extract_axial_slice(
     """|E|(x, z) at y=0. Returns (x_um, z_um, value[nx, nz])."""
 
     L = total_length_um(geom_params)
-    x = np.linspace(-geom_params.external_radius_um + 0.5,
-                     geom_params.external_radius_um - 0.5, nx)
+    x = np.linspace(-geom_params.external_half_width_um + 0.5,
+                     geom_params.external_half_width_um - 0.5, nx)
     z = np.linspace(0.5, L - 0.5, nz)
     X, Z = np.meshgrid(x, z, indexing="ij")
     points = np.column_stack([X.ravel(), np.zeros(X.size), Z.ravel()])

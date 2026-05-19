@@ -1,21 +1,24 @@
-"""3D cylindrical nerve-fiber geometry builder.
+"""3D nerve-fiber geometry builder — rectangular unit cell (one fiber per cell).
 
 Produces exactly five domains after Form Union:
 
-    label             approx. region
+    label             approx. region (hw = external_half_width_um)
     ---------------   ----------------------------------------------------
     axon              r ∈ [0, axon_r],          z ∈ [0, total_L]
     myelin_proximal   r ∈ [axon_r, myelin_r],   z ∈ [0, internode_L]
     node              r ∈ [axon_r, myelin_r],   z ∈ [internode_L, internode_L+node_L]
     myelin_distal     r ∈ [axon_r, myelin_r],   z ∈ [internode_L+node_L, total_L]
-    external          r ∈ [myelin_r, ext_r],    z ∈ [0, total_L]
+    external          (box[-hw,hw]² × [0,L]) ∖ (myelin_r cylinder)
 
 with ``total_L = 2*internode_L + node_L``.
 
-Construction strategy: the four annular regions (3 sheath segments + external)
-are built as ``Difference(outer_cyl, inner_cyl)`` so their top/bottom faces
-only exist within their own radial band — that keeps the inner axon cylinder
-from being chopped into z-segments by sheath face cuts.
+Why a box (not a cylinder) for the outer region: this is the unit cell of a
+Floquet-periodic diffraction-grating model (per Hovhannisyan & Makaryan
+2024 paper 3 — the spinal-cord sample behaves as a periodic array of fibers).
+Periodic boundary conditions in EWFD require opposing flat faces, so the
+external domain is a rectangular box. The inner axon + sheath segments stay
+as cylinders. Annular sheath segments are built as ``Difference(outer_cyl,
+inner_cyl)`` so their face cuts don't chop the axon along z.
 """
 
 from __future__ import annotations
@@ -40,7 +43,7 @@ class GeometryParams(BaseModel):
     myelin_radius_um: float = Field(gt=0)
     node_length_um: float = Field(gt=0)
     internode_length_um: float = Field(gt=0)
-    external_radius_um: float = Field(gt=0)
+    external_half_width_um: float = Field(gt=0)
 
 
 def total_length_um(params: GeometryParams) -> float:
@@ -55,20 +58,22 @@ def domain_centers(params: GeometryParams) -> dict[str, tuple[float, float, floa
 
     r_axon = params.axon_radius_um
     r_myelin = params.myelin_radius_um
-    r_ext = params.external_radius_um
+    hw = params.external_half_width_um
     L_inter = params.internode_length_um
     L_node = params.node_length_um
     L_total = total_length_um(params)
 
     r_sheath_mid = (r_axon + r_myelin) / 2
-    r_ext_mid = (r_myelin + r_ext) / 2
+    # External center: somewhere clearly inside the box but outside the
+    # myelin cylinder. Halfway between r_myelin and hw along x works.
+    x_ext_mid = (r_myelin + hw) / 2
 
     return {
         "axon": (0.0, 0.0, L_total / 2),
         "myelin_proximal": (r_sheath_mid, 0.0, L_inter / 2),
         "node": (r_sheath_mid, 0.0, L_inter + L_node / 2),
         "myelin_distal": (r_sheath_mid, 0.0, L_inter + L_node + L_inter / 2),
-        "external": (r_ext_mid, 0.0, L_total / 2),
+        "external": (x_ext_mid, 0.0, L_total / 2),
     }
 
 
@@ -106,6 +111,20 @@ def _add_cyl(geom_java: Any, tag: str, *, radius: float, height: float, z_pos: f
     cyl.setIndex("pos", "0", 0)
     cyl.setIndex("pos", "0", 1)
     cyl.setIndex("pos", str(z_pos), 2)
+
+
+def _add_block(
+    geom_java: Any,
+    tag: str,
+    *,
+    size_xyz: tuple[float, float, float],
+    pos_xyz: tuple[float, float, float],
+) -> None:
+    blk = geom_java.feature().create(tag, "Block")
+    for i, s in enumerate(size_xyz):
+        blk.setIndex("size", str(s), i)
+    for i, p in enumerate(pos_xyz):
+        blk.setIndex("pos", str(p), i)
 
 
 def _add_difference(
@@ -169,7 +188,7 @@ def build_geometry(model: Any, params: GeometryParams) -> int:
     L_total = total_length_um(params)
     r_axon = params.axon_radius_um
     r_myelin = params.myelin_radius_um
-    r_ext = params.external_radius_um
+    hw = params.external_half_width_um
 
     # ---- Inner solid cylinder (axon, full length, single domain) ----
     _add_cyl(geom, "cyl_axon", radius=r_axon, height=L_total, z_pos=0.0)
@@ -195,11 +214,16 @@ def build_geometry(model: Any, params: GeometryParams) -> int:
     _add_difference(geom, "myd", "Myelin distal",
                     inputs=["cyl_myd_out"], subtract=["cyl_myd_in"])
 
-    # External annulus (full length, r=myelin_r .. ext_r)
-    _add_cyl(geom, "cyl_ext_out", radius=r_ext, height=L_total, z_pos=0.0)
+    # External: rectangular box minus the full-length myelin_r cylinder.
+    # The box lateral faces (x=±hw, y=±hw) become the Floquet-periodic pairs.
+    _add_block(
+        geom, "box_ext",
+        size_xyz=(2 * hw, 2 * hw, L_total),
+        pos_xyz=(-hw, -hw, 0.0),
+    )
     _add_cyl(geom, "cyl_ext_in", radius=r_myelin, height=L_total, z_pos=0.0)
     _add_difference(geom, "ext", "External medium",
-                    inputs=["cyl_ext_out"], subtract=["cyl_ext_in"])
+                    inputs=["box_ext"], subtract=["cyl_ext_in"])
 
     # Named ball selections — one per labeled domain — for downstream
     # material and boundary-condition assignment.

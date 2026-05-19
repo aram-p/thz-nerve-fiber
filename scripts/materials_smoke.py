@@ -29,7 +29,7 @@ def main() -> None:
         myelin_radius_um=7,
         node_length_um=40,
         internode_length_um=100,
-        external_radius_um=20,
+        external_half_width_um=20,
     )
     n_domains = build_geometry(model, geom_params)
     print(f"geometry: {n_domains} domains")

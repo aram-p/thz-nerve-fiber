@@ -1,0 +1,186 @@
+                                                        Armenian Journal of Physics, 2024, vol. 17, issue 1, pp. 17-20
+
+
+                Investigation of Nerve Fiber Network in THz Spectrum Range
+                                     T. Hovhannisyan*, A. Makaryan**
+
+              Institute of Physics, Yerevan State University, 1 Alex Manoogian, 0025, Yerevan, Armenia
+
+
+
+                                       *E-mail: tigran.hovhannisyan@ysu.am
+                                           **E-mail: armenm@ysu.am
+
+                     (Received: April 5, 2024; Revised: April 27, 2024; Accepted: May 4, 2024)
+
+         Abstract. The behavior of the nerve fiber system of the spinal cord of animals in the THz
+         wavelength range (0.1-3 THz) was experimentally studied using a time domain spectrometer.
+         Terahertz wave transmittance of nerve tissue is investigated, when DC voltage is applied to the
+         sample. It has been shown that when a constant voltage is applied along the nerve fibers (also in
+         the absence of voltage), no noticeable changes occur in the transmitted THz wave, regardless of the
+         orientation of the sample relative to the THz E-field vector. Significant changes in the
+         electrodynamic properties of the sample were observed when the nerve fibers were parallel to the
+         THz E-field vector and the applied voltage was perpendicular to the nerve fibers, particularly,
+         resonant absorption was observed at frequencies of 0.6 THz and 2 THz.
+
+Keywords: THz, resonance, neuroscience, nerve fiber, axon, excitation, neural network
+
+DOI:10.54503/18291171-2024.17.1-17
+
+1. Introduction
+
+      The principle of neural signal generation and propagation are the most fundamental but still
+not fully revealed problems in neuroscience. In the early 20th century, it was discovered that
+electrical impulses (action potentials) propagate along nerve fibers [1], which formed the basis for
+the assumption that information spreads in the nervous system of living organisms through these
+electrical impulses. A number of models have been created by different researchers to explain the
+mechanism of information transmission in living organisms, and based on the most common
+models, equivalent electrical circuits have been proposed for the propagation of electrical signals
+through nerve fibers [2].
+      According to studies the duration of electrical impulses propagating through nerve fibers are
+of order of miliseconds, and the maximum speed of their propagation does not exceed ~120 m/s.
+However, numerous processes happening in central nervous system, such as memory, logical
+reasoning, information processing, learning and so on, require significantly larger speeds of
+information exchange.
+      Researches about recording high frequency processes in central nervous system have been
+carried out during last decades [3-6]. According to [7], microwave radiation (from 1.5 to 4.5 GHz)
+has been detected from human brain. Radio frequency (MHz range) signals have also been recorded
+experimentally [8], where some of the signal components were correlated with each other. Based on
+the structural features, dimensions and electrodynamic parameters of myelinated nerve fibers, a
+number of works have suggested that nerve fibers can serve as waveguides for electromagnetic
+waves in the infrared, THz and microwave ranges, some models for information exchange
+mechanisms are proposed [9-13].
+      Nevertheless we have not yet met any published paper on experimental studies of the
+properties of nerve fibers in the THz range, which could help clarify the mechanisms of generation,
+                                            Hovhannisyan et.al. || Armenian Journal of Physics, 2024, vol. 17, issue 1
+
+
+storage, exchange and transformation of the information signals, as well as test the truthfulness of
+the above-mentioned models.
+      In present research the behaviour of nerve fibers system of animal spinal cord is
+experimentally studied in THz waves range.
+
+2. Expermients and results
+
+     Research samples are selected from the thoracic vertebrae section of the spinal cords of the
+animals (pigs and sheep) taken from the slaughterhouse. 70 micrometer thick samples are cut from
+white matter, which consists of vertically arranged axons (see Fig.1a).
+     Samples are placed inside a cuvette made from polytetrafluoroethylene (PTFE) plates with a
+thickness of 1.2 mm. Two pairs of tungsten electrodes 18 mm far from each other are attached to the
+edges of the sample maintaining electrical contact with it (see Fig.1b). 1-2 electrodes pair is parallel
+and 3-4 pair is perpendicular to nerve fibers.
+
+
+
+
+       Fig. 1. a) Spinal cord piece, b) sample on 1.2mm thick PTFE substrate, 1, 2, 3, 4 – tungsten electrodes.
+
+      Researches are done with Menlo Systems LAC 1550 time domain terahertz spectrometer,
+which generates and detects linearly polarized THz pulse with duration of around 2 ps and spectral
+range of roughly 0.2-4 THz.
+      Terahertz wave transmittance of nerve tissue is investigated, when DC voltage is applied to
+the sample. PTFE cuvette is placed between the THz transmitter and receiver of the spectrometer,
+where the THz beam diameter is around 5 mm. During experiments the sample is always in a plane
+perpendicular to the THz pulse propagation direction. The block diagram of experimental system is
+presented in Fig.2.
+      Fig.3a presents time domain waveforms of THz pulse transmitted through empty cuvette (1)
+and cuvette which contains the sample (2), when no voltage is applied to the sample. Corresponding
+frequency domain waveforms are shown in Fig.3b. It is notable, that when no DC voltage is applied
+to the sample, the results do not depend on the angle between nerve fibers and E field vector of THz
+pulse - same results when nerve fibers are parallel and when they are perpendicular to the THz E
+field vector. When DC voltage is applied to the 3-4 electrodes, there are no noticeable changes in
+transmitted THz wave, regardless of the sample's orientation with the respect to THz E field vector.
+      There are noticable results, when nerve fibers are parallel to the THz wave E field vector and
+at the same time a DC voltage is applied to 1-2 electrodes – DC field is perpendicular to nerve
+fibers. Fig.4a and Fig.4b correspondingly represent the time domain and frequency domain
+waveforms of transmitted THz waves, when 100V DC voltage is applied to 1-2 electrodes for
+
+
+
+                                                         18
+                          Investigation of Nerve Fibre Network || Armenian Journal of Physics, 2024, vol. 17, issue 1
+
+
+30 seconds - waveform (2) and for 4 minutes – waveform (3). For comparison, waveform (1) – no
+voltage, is also provided in graphs.
+
+
+
+
+          Fig. 2. Block diagram of experimental system consisting of THz spectrometer and test sample.
+
+
+
+
+      Fig. 3. a) Time domain waveforms, b) spectra of THz pulse transmitted through empty cuvette (1) and
+                                    cuvette which contains the sample (2).
+
+
+
+
+    Fig. 4. a) Time domain waveforms, b) spectra of THz pulse transmitted through the sample without external
+     DC voltage (1), with external DC voltage for 30 seconds (2), with external DC voltage for 4 minutes (3).
+
+
+                                                       19
+                                            Hovhannisyan et.al. || Armenian Journal of Physics, 2024, vol. 17, issue 1
+
+
+
+
+       After one hour of turning off the DC voltage the THz transmittance of the sample returns its
+initial values.
+
+3. Discussion and conclusions
+
+      Performed measurements show, that the electrodynamical properties of the sample taken from
+animal spinal cord can thoroughly be changed by applying DC voltage perpendicular to nerve
+fibers. Moreover, when nerve fibers are parallel to THz E field vector and when DC voltage is
+applied, we can see resonances on different frequencies. Resonances change during time – 2 THz
+resonance disappears during time, and the resonance on 0.7 THz smoothly moves to 0.5 THz. After
+some time (in this case 6 minutes) applied DC voltage makes no noticeable changes and after
+turning off the DC voltage, in around 1 hour the electrodynamical properties of the sample
+smoothly return to their initial values.
+      It is remarkable, that the occurrence of resonances is accompanied by an increase in the
+amplitudes of the spectral components away from the resonances – especially high frequencies.
+      The analysis of the results allows us to assume that when the voltage is applied to the nerve
+fibers, the ion channels of Ranvier nodes are opened, making nerve fibers unique conducting wires,
+which turns the entire sample into a specific diffraction grating. According to our estimations, the
+nuber of nerve fibers in the sample can be around 102 -104. Therefore, assuming that the nerve
+fibers are uniformly distributed across the sample, when 100 V is applied to the sample, the voltage
+applied to one neuron can reach up to 1 V, which is sufficient to open the ion channels.
+
+Acknowledgments
+
+    The authors are greatful to R. Martirosyan, Yu. Avetisyan, Kh. Nerkararyan and V.
+Mekhitaryan for helpful discussions.
+
+Funding
+
+    This work was supported by the Science Committee of RA (Research projects № 23AA-
+1C027 and № 22YR-1C013).
+References
+
+ [1] A.L. Hodgkin, A.F. Huxley, Nature 144 (1939) 710.
+ [2] C. Koch, Biophysics of Computation: Information Processing in Single Neurons (New York, Oxford University
+     Press, 1999).
+ [3] N.D. Devyatkov, Uspekhi Fiz. Nauk 110 (1973) 453.
+ [4] A. Fraser, A. Frey, Biophysical J. 8 (1968) 731.
+ [5] L.B. Cohen, R.D. Keynes, B. Hille, Nature 218 (1968) 438.
+ [6] M.H. Sherebrin, Nature New Biology 235 (1972) 122.
+ [7] L.I. Brusilovsky, A.S. Bryukhovetskiy, S.P. Kozhin, A.V. Nikonorov, P.G. Serafimovich, J. Radio Electronics 2
+     (2020) 1684.
+ [8] H.L. Ayvazyan, S.V. Antonyan, A.H. Makaryan, B.A. Hovhannisyan, E.R. Sivolenko, G.A. Tsaturyan, J. Contemp.
+     Phys. (Arm. Acad. Sci.) 57 (2022) 87.
+ [9] F.W. Cope, Bulletin of Mathematical Biology 35 (1973) 627.
+[10] R.R. Traill, Toward a Theoretical Explanation of Electro-Chemical Interaction In Memory Use: The Postulated
+     Role of Infra-Red Components and Molecular Evolution (Brunel University, Institute of Cybernetics, UK, 1977).
+[11] Z. Xiang,C. Tang, C.Chang, G. Liu, Nano Research 14 (2021) 590.
+[12] A. Zangari, Scientific Reports 8 (2018) 539.
+[13] S. Kumar, Scientific Reports 6 (2016) 36508.
+
+
+
+
+                                                        20
+

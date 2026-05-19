@@ -9,7 +9,7 @@ Wire format (per ADR-0003):
       myelin_radius_um: 7
       node_length_um: 40
       internode_length_um: 100
-      external_radius_um: 20
+      external_half_width_um: 20
       node_sigma_S_per_m: 0
     sweep:
       frequency_THz:
@@ -80,7 +80,7 @@ class ModelParams(BaseModel):
     myelin_radius_um: float
     node_length_um: float
     internode_length_um: float
-    external_radius_um: float
+    external_half_width_um: float
     node_sigma_S_per_m: float
 
 

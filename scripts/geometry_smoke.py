@@ -22,21 +22,21 @@ PARAM_SETS: list[GeometryParams] = [
         myelin_radius_um=7,
         node_length_um=40,
         internode_length_um=100,
-        external_radius_um=20,
+        external_half_width_um=20,
     ),
     GeometryParams(
         axon_radius_um=3,
         myelin_radius_um=5,
         node_length_um=30,
         internode_length_um=80,
-        external_radius_um=15,
+        external_half_width_um=15,
     ),
     GeometryParams(
         axon_radius_um=8,
         myelin_radius_um=10,
         node_length_um=60,
         internode_length_um=120,
-        external_radius_um=30,
+        external_half_width_um=30,
     ),
 ]
 
@@ -54,7 +54,7 @@ def main() -> None:
         print(
             f"[set {i}] axon_r={params.axon_radius_um} myelin_r={params.myelin_radius_um} "
             f"node_L={params.node_length_um} internode_L={params.internode_length_um} "
-            f"ext_r={params.external_radius_um}  -->  {n} domains"
+            f"ext_hw={params.external_half_width_um}  -->  {n} domains"
         )
         assert n == expected_domains, (
             f"set {i}: expected {expected_domains} domains, got {n}"
