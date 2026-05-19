@@ -1,0 +1,33 @@
+# COMSOL build artifacts
+*.mph
+*.mph.recovery
+*.mph.lock
+*.status
+*.log
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+.python-version
+*.egg-info/
+
+# Data outputs (regeneratable from simulations)
+results/
+data/raw/
+*.csv
+*.h5
+*.npz
+
+# Figures (regeneratable from data)
+figures/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
