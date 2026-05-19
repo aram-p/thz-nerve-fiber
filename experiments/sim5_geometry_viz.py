@@ -113,17 +113,20 @@ def main() -> None:
         r"$E_0\,\hat{x}$", fontsize=9, color=OKABE_ITO[6],
     )
 
-    ax.set_xlabel("x (µm)")
-    ax.set_ylabel("y (µm)")
-    ax.set_zlabel("z (µm)")
-    ax.set_title(
+    ax.set_xlabel("x (µm)", labelpad=-2)
+    ax.set_ylabel("y (µm)", labelpad=-2)
+    ax.set_zlabel("z (µm)", labelpad=-2)
+    fig.suptitle(
         "Sim 5 — Single-fibre periodic unit cell\n"
         f"axon r = {p.axon_radius_um:g} µm, myelin r = {p.myelin_radius_um:g} µm, "
-        f"node L = {p.node_length_um:g} µm, total L = {L:g} µm, box ± {p.external_half_width_um:g} µm"
+        f"node L = {p.node_length_um:g} µm, total L = {L:g} µm, "
+        f"box ± {p.external_half_width_um:g} µm",
+        y=0.98, fontsize=9,
     )
-    ax.set_box_aspect((1, 1, 3))
-    ax.view_init(elev=22, azim=-55)
-    ax.legend(loc="upper left", framealpha=0.9, fontsize=7)
+    ax.set_box_aspect((1, 1, 1.8))
+    ax.view_init(elev=18, azim=-58)
+    ax.legend(loc="upper left", framealpha=0.92, fontsize=7,
+              bbox_to_anchor=(-0.05, 0.95))
 
     fig.tight_layout()
     pdf, png = save_figure(fig, "sim5_geometry_viz")

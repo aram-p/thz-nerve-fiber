@@ -25,6 +25,7 @@ from thznerve.model.geometry import GeometryParams, build_geometry, total_length
 from thznerve.model.materials import MaterialParams, apply_materials
 from thznerve.model.mesh import MeshParams, build_mesh
 from thznerve.model.study import (
+    _evaluate_at_points,
     extract_axial_profile,
     setup_physics,
     setup_study,
@@ -54,33 +55,42 @@ def main() -> None:
 
     t0 = time.monotonic()
     client = mph.start()
-    model = client.create("sim2_sigma_sweep")
-
-    build_geometry(model, GEOM)
-    setup_physics(model, GEOM)
-    n_elem = build_mesh(model, MESH)
-    setup_study(model, FREQ_HZ)
-    print(f"setup: {n_elem} elements, {time.monotonic() - t0:.1f}s")
-
     git_sha = get_git_sha()
     rows = []
     L = total_length_um(GEOM)
     z_node_lo = GEOM.internode_length_um
     z_node_hi = z_node_lo + GEOM.node_length_um
 
+    # Sample IN the node annulus (r in [axon_r, myelin_r], z in node range).
+    r_node = 0.5 * (GEOM.axon_radius_um + GEOM.myelin_radius_um)
+    z_grid_node = np.linspace(z_node_lo + 1, z_node_hi - 1, 30)
+    annulus_pts = np.column_stack([
+        np.full_like(z_grid_node, r_node),
+        np.zeros_like(z_grid_node),
+        z_grid_node,
+    ])
+
     for i, sigma in enumerate(SIGMA_VALUES, start=1):
+        # Fresh model per σ to defeat any solver-side caching.
+        model = client.create(f"sim2_sigma_{i:02d}")
         mat = MaterialParams(node_sigma_S_per_m=sigma)
+        build_geometry(model, GEOM)
         apply_materials(model, mat)
+        setup_physics(model, GEOM)
+        n_elem = build_mesh(model, MESH)
+        setup_study(model, FREQ_HZ)
         t_solve = time.monotonic()
-        # Need to rerun study because materials changed via the global parameter.
         model.java.study(str(model.java.study().tags()[0])).run()
-        z, e = extract_axial_profile(model, GEOM, n_points=200)
+        z, e_axis = extract_axial_profile(model, GEOM, n_points=200)
+        e_annulus = _evaluate_at_points(model, "ewfd.normE", annulus_pts)
         dt = time.monotonic() - t_solve
 
         node_mask = (z >= z_node_lo) & (z <= z_node_hi)
-        peak_node = float(np.max(e[node_mask])) if node_mask.any() else float("nan")
-        peak_global = float(np.max(e))
-        mean_node = float(np.mean(e[node_mask])) if node_mask.any() else float("nan")
+        peak_node_axis = float(np.max(e_axis[node_mask])) if node_mask.any() else float("nan")
+        peak_node = float(np.max(e_annulus))
+        mean_node = float(np.mean(e_annulus))
+        peak_global = float(np.max(e_axis))
+        e = e_axis  # keep for HDF5 storage of full axial profile
 
         h5_path = OUT_DIR / f"sigma_{i:02d}_{sigma:g}.h5"
         write_result(
@@ -102,8 +112,10 @@ def main() -> None:
         )
         rows.append((sigma, peak_node, peak_global, mean_node, dt))
         print(f"  [{i}/{len(SIGMA_VALUES)}] σ = {sigma:5.2f} S/m   "
-              f"|E|_node = {peak_node:5.3f}   |E|_global = {peak_global:5.3f}   "
-              f"({dt:4.1f}s)")
+              f"|E|_node(annulus) = {peak_node:6.4f}   "
+              f"mean = {mean_node:6.4f}   "
+              f"|E|_axis(global) = {peak_global:5.3f}   ({dt:4.1f}s)")
+        client.remove(model)
 
     client.clear()
 

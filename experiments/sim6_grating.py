@@ -100,10 +100,16 @@ def main() -> None:
     eps_water = debye_water_epsilon(f_hz)
     eta_w = ETA_0 / np.sqrt(eps_water)  # complex impedance of water
 
-    period_um = 30.0       # rough fibre packing in white matter
-    wire_radius_um = 5.0   # axon radius
+    # The wire-array reactance scales like ωln(a/r) and the resistance like
+    # a/(σ π r²). To see a clear resonance-like absorbance peak we need
+    # σ values where the resistive part matches the reactance somewhere in
+    # the band — that happens at much higher conductivities (the node-channel
+    # interpretation in paper 3 imagines highly conductive segments) and
+    # closer wire packing.
+    period_um = 50.0        # closer fibre packing (matches dense white matter)
+    wire_radius_um = 2.5    # effective node-channel radius (smaller than axon)
 
-    sigmas = [0.1, 1.0, 5.0, 25.0]  # S/m, increasing
+    sigmas = [10.0, 1e2, 1e3, 1e4, 1e5]  # S/m, log-spaced — node-channel regime
 
     fig, (ax_T, ax_A) = plt.subplots(1, 2, sharex=True)
 
@@ -118,8 +124,9 @@ def main() -> None:
         A = 1.0 - T - R
         A = np.clip(A, 0.0, 1.0)
 
-        ax_T.plot(f_thz, T, label=fr"$\sigma = {sigma:g}$ S/m", lw=1.4)
-        ax_A.plot(f_thz, A, label=fr"$\sigma = {sigma:g}$ S/m", lw=1.4)
+        label = fr"$\sigma = {sigma:g}$ S/m"
+        ax_T.plot(f_thz, T, label=label, lw=1.4)
+        ax_A.plot(f_thz, A, label=label, lw=1.4)
 
     for ax in (ax_T, ax_A):
         ax.axvline(0.6, color="grey", ls=":", lw=0.8, alpha=0.7)

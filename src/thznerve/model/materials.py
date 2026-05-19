@@ -93,22 +93,44 @@ WATER_EPS_EXPR: str = (
 # Myelin — constant complex.
 MYELIN_EPS_EXPR: str = "4.5 - 0.5*i"
 
-# Node — water plus σ/(ωε₀) term. `node_sigma_S_per_m` is a global parameter
-# created by apply_materials(); `epsilon0_const` is a COMSOL built-in.
-NODE_EPS_EXPR: str = (
+# Node — water plus σ/(ωε₀) term. ``epsilon0_const`` is a COMSOL built-in.
+# ``node_sigma_S_per_m`` was originally a global parameter; we now inject the
+# numeric value directly via ``node_eps_expr(sigma)`` so the material
+# expression text changes between σ iterations — defeating COMSOL's
+# stationary-solver caching that previously returned identical solutions for
+# every σ.
+NODE_EPS_EXPR_TEMPLATE: str = (
     f"({WATER_EPS_EXPR})"
-    " + i*node_sigma_S_per_m/(2*pi*freq*epsilon0_const)"
+    " + i*{sigma}/(2*pi*freq*epsilon0_const)"
 )
+# Legacy symbol kept for any external references (uses 0 for σ).
+NODE_EPS_EXPR: str = NODE_EPS_EXPR_TEMPLATE.format(sigma="0")
+
+
+def node_eps_expr(sigma_S_per_m: float) -> str:
+    """COMSOL analytic expression for the node ε with σ baked in."""
+
+    return NODE_EPS_EXPR_TEMPLATE.format(sigma=f"{sigma_S_per_m:g}")
 
 
 # --- COMSOL binding ---------------------------------------------------------
 
 
-def _create_material(comp_java: Any, tag: str, label: str, eps_expr: str) -> Any:
-    """Create a Common material with isotropic relative permittivity = `eps_expr`.
+def _create_material(
+    comp_java: Any,
+    tag: str,
+    label: str,
+    eps_expr: str,
+    *,
+    sigma_expr: str = "0",
+) -> Any:
+    """Create a Common material with isotropic ``relpermittivity = eps_expr`` and
+    optional electrical conductivity ``sigma_expr`` (S/m).
 
-    Sets electrical conductivity and relative permeability to inert values
-    (σ_electric = 0, μr = 1) so they don't contradict the ε expression.
+    EWFD treats ``electricconductivity`` and ``relpermittivity`` as
+    independent constitutive parameters — encoding σ as the imaginary part
+    of ε is ignored unless ``electricconductivity`` is also set. So we keep
+    them separate.
     """
 
     materials = comp_java.material()
@@ -119,9 +141,6 @@ def _create_material(comp_java: Any, tag: str, label: str, eps_expr: str) -> Any
     mat.label(label)
 
     basic = mat.propertyGroup("def")
-    # `relpermittivity` is an isotropic 3x3 tensor — set each diagonal element
-    # to the expression and zero the off-diagonals. COMSOL accepts a 9-element
-    # row-major list.
     basic.set(
         "relpermittivity",
         [
@@ -130,7 +149,14 @@ def _create_material(comp_java: Any, tag: str, label: str, eps_expr: str) -> Any
             "0", "0", eps_expr,
         ],
     )
-    basic.set("electricconductivity", ["0", "0", "0", "0", "0", "0", "0", "0", "0"])
+    basic.set(
+        "electricconductivity",
+        [
+            sigma_expr, "0", "0",
+            "0", sigma_expr, "0",
+            "0", "0", sigma_expr,
+        ],
+    )
     basic.set("relpermeability", ["1", "0", "0", "0", "1", "0", "0", "0", "1"])
     return mat
 
@@ -145,9 +171,6 @@ def apply_materials(model: Any, params: MaterialParams) -> dict[str, str]:
     from thznerve.model.geometry import selection_tag
 
     java = model.java
-    # Global parameter: node conductivity in S/m.
-    java.param().set("node_sigma_S_per_m", str(params.node_sigma_S_per_m))
-
     comp_tag = str(java.component().tags()[0])
     comp = java.component(comp_tag)
 
@@ -163,8 +186,13 @@ def apply_materials(model: Any, params: MaterialParams) -> dict[str, str]:
     mat_myd = _create_material(comp, "mat_myelin_distal", "Myelin (distal)", MYELIN_EPS_EXPR)
     mat_myd.selection().named(selection_tag("myelin_distal"))
 
-    # Node — water + σ.
-    mat_node = _create_material(comp, "mat_node", "Node of Ranvier", NODE_EPS_EXPR)
+    # Node — water permittivity, with σ on the electricconductivity property
+    # (NOT folded into Im(ε), because EWFD reads the two properties separately).
+    mat_node = _create_material(
+        comp, "mat_node", "Node of Ranvier",
+        WATER_EPS_EXPR,
+        sigma_expr=f"{params.node_sigma_S_per_m:g}",
+    )
     mat_node.selection().named(selection_tag("node"))
 
     return {
