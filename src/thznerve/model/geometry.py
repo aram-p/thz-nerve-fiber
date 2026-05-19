@@ -124,6 +124,39 @@ def _add_difference(
     diff.label(label)
 
 
+def _add_ball_selection(
+    geom_java: Any,
+    tag: str,
+    label: str,
+    *,
+    x: float,
+    y: float,
+    z: float,
+    radius: float = 0.5,
+) -> None:
+    """Add a BallSelection picking the single domain that contains (x, y, z).
+
+    A small ball at a known interior point intersects exactly one domain.
+    The selection's tag at the model level becomes ``<geom>_<tag>`` (e.g.
+    ``geom1_sel_axon``) — materials & boundary conditions reference it by that.
+    """
+
+    sel = geom_java.feature().create(tag, "BallSelection")
+    sel.set("entitydim", "3")
+    sel.set("posx", str(x))
+    sel.set("posy", str(y))
+    sel.set("posz", str(z))
+    sel.set("r", str(radius))
+    sel.set("condition", "intersects")
+    sel.label(label)
+
+
+def selection_tag(label: str, geom_tag: str = "geom1") -> str:
+    """Model-level tag of the geometry BallSelection for the given domain label."""
+
+    return f"{geom_tag}_sel_{label}"
+
+
 def build_geometry(model: Any, params: GeometryParams) -> int:
     """Build the five-domain nerve geometry. Returns the resulting domain count."""
 
@@ -167,6 +200,15 @@ def build_geometry(model: Any, params: GeometryParams) -> int:
     _add_cyl(geom, "cyl_ext_in", radius=r_myelin, height=L_total, z_pos=0.0)
     _add_difference(geom, "ext", "External medium",
                     inputs=["cyl_ext_out"], subtract=["cyl_ext_in"])
+
+    # Named ball selections — one per labeled domain — for downstream
+    # material and boundary-condition assignment.
+    centers = domain_centers(params)
+    for label, (x, y, z) in centers.items():
+        _add_ball_selection(
+            geom, f"sel_{label}", f"Selection: {label}",
+            x=x, y=y, z=z, radius=0.5,
+        )
 
     geom.run()
     return int(geom.getNDomains())
