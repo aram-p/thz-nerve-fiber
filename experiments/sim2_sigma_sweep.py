@@ -112,9 +112,9 @@ def main() -> None:
         )
         rows.append((sigma, peak_node, peak_global, mean_node, dt))
         print(f"  [{i}/{len(SIGMA_VALUES)}] σ = {sigma:5.2f} S/m   "
-              f"|E|_node(annulus) = {peak_node:6.4f}   "
-              f"mean = {mean_node:6.4f}   "
-              f"|E|_axis(global) = {peak_global:5.3f}   ({dt:4.1f}s)")
+              f"|E|_node(annulus) = {peak_node:9.7f}   "
+              f"mean = {mean_node:9.7f}   "
+              f"|E|_axis(global) = {peak_global:7.5f}   ({dt:4.1f}s)")
         client.remove(model)
 
     client.clear()

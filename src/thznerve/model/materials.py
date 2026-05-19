@@ -186,12 +186,13 @@ def apply_materials(model: Any, params: MaterialParams) -> dict[str, str]:
     mat_myd = _create_material(comp, "mat_myelin_distal", "Myelin (distal)", MYELIN_EPS_EXPR)
     mat_myd.selection().named(selection_tag("myelin_distal"))
 
-    # Node — water permittivity, with σ on the electricconductivity property
-    # (NOT folded into Im(ε), because EWFD reads the two properties separately).
+    # Node — σ folded into Im(ε) of the analytic expression. EWFD's
+    # WaveEquationElectric reads only `relpermittivity` by default
+    # (electricconductivity is ignored unless DisplacementFieldModel is
+    # changed); putting σ into Im(ε) is the simplest reliable encoding.
     mat_node = _create_material(
         comp, "mat_node", "Node of Ranvier",
-        WATER_EPS_EXPR,
-        sigma_expr=f"{params.node_sigma_S_per_m:g}",
+        node_eps_expr(params.node_sigma_S_per_m),
     )
     mat_node.selection().named(selection_tag("node"))
 

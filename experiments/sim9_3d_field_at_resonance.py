@@ -97,55 +97,72 @@ def main() -> None:
     ax_3d = fig.add_subplot(1, 2, 1, projection="3d")
     ax_2d = fig.add_subplot(1, 2, 2)
 
-    # ---- 3D scatter
+    # ---- 3D scatter — only the highest-|E| points so the figure reads cleanly
     e_flat = e_3d.ravel()
     norm = e_flat / e_flat.max()
-    # Show only the brighter half so the figure isn't dominated by background
-    mask = norm > 0.35
+    mask = norm > 0.65
     sc = ax_3d.scatter(
         X.ravel()[mask], Y.ravel()[mask], Z.ravel()[mask],
-        c=e_flat[mask], cmap=cmap_hot, alpha=0.55,
-        s=15 * (norm[mask] ** 2.5) + 1, linewidths=0, vmin=0, vmax=e_max,
+        c=e_flat[mask], cmap=cmap_hot, alpha=0.7,
+        s=22 * (norm[mask] ** 2.5) + 2, linewidths=0, vmin=0, vmax=e_max,
     )
     # Box wireframe
     xs = [-hw, hw, hw, -hw, -hw]
     ys = [-hw, -hw, hw, hw, -hw]
     for zc in (0, L):
-        ax_3d.plot(xs, ys, [zc] * 5, color="0.6", lw=0.6)
+        ax_3d.plot(xs, ys, [zc] * 5, color="0.55", lw=0.6)
     for xx, yy in zip(xs[:-1], ys[:-1]):
-        ax_3d.plot([xx, xx], [yy, yy], [0, L], color="0.6", lw=0.6)
+        ax_3d.plot([xx, xx], [yy, yy], [0, L], color="0.55", lw=0.5)
 
-    # Sketch the fibre (axon + myelin) for orientation
-    theta = np.linspace(0, 2 * np.pi, 36)
-    for r, col, lw in [(GEOM.axon_radius_um, OKABE_ITO[2], 0.9),
-                       (GEOM.myelin_radius_um, OKABE_ITO[1], 0.8)]:
-        for z_ring in np.linspace(0, L, 9):
+    # Sketch the fibre outline (axon + myelin) as thin guide rings
+    theta = np.linspace(0, 2 * np.pi, 40)
+    for r, col, lw in [(GEOM.axon_radius_um, OKABE_ITO[2], 0.7),
+                       (GEOM.myelin_radius_um, OKABE_ITO[1], 0.6)]:
+        for z_ring in np.linspace(0, L, 6):
             ax_3d.plot(r * np.cos(theta), r * np.sin(theta),
-                       np.full_like(theta, z_ring), color=col, lw=lw, alpha=0.55)
+                       np.full_like(theta, z_ring), color=col, lw=lw, alpha=0.7)
+    # Highlight the node region with full ring outlines
+    z_n0 = GEOM.internode_length_um
+    z_n1 = z_n0 + GEOM.node_length_um
+    for r in (GEOM.axon_radius_um, GEOM.myelin_radius_um):
+        for z_ring in (z_n0, z_n1):
+            ax_3d.plot(r * np.cos(theta), r * np.sin(theta),
+                       np.full_like(theta, z_ring), color=OKABE_ITO[6],
+                       lw=1.4, alpha=0.95)
 
     ax_3d.set_xlabel("x (µm)")
     ax_3d.set_ylabel("y (µm)")
     ax_3d.set_zlabel("z (µm)")
     ax_3d.set_box_aspect((1, 1, 2.2))
     ax_3d.view_init(elev=18, azim=-58)
-    ax_3d.set_title(f"3D |E| (showing |E|/max > 0.35), f = {F_HZ/1e12:g} THz")
+    ax_3d.set_title(f"3D |E| (top 35%, |E|/max > 0.65), f = {F_HZ/1e12:g} THz")
 
     cbar = fig.colorbar(sc, ax=ax_3d, shrink=0.6, pad=0.08)
     cbar.set_label("|E|")
 
-    # ---- 2D slice
-    im = ax_2d.pcolormesh(z_slice, x_slice, e_slice, cmap=cmap_hot,
+    # ---- 2D slice — Gaussian smoothing to suppress sub-mesh-element FEM
+    # interpolation artefacts so the resonance pattern reads clearly.
+    from scipy.ndimage import gaussian_filter
+    e_slice_smooth = gaussian_filter(e_slice, sigma=(1.2, 2.0))
+    im = ax_2d.pcolormesh(z_slice, x_slice, e_slice_smooth, cmap=cmap_hot,
                           vmin=0, vmax=e_max, shading="auto")
-    ax_2d.axhspan(-GEOM.axon_radius_um, GEOM.axon_radius_um,
-                  facecolor="none", edgecolor=OKABE_ITO[2], lw=0.5, alpha=0.45)
-    # Highlight node region on z-axis
+    # Fibre outline (axon and myelin radii)
+    for r, col, lw in [(GEOM.axon_radius_um, "white", 0.7),
+                       (GEOM.myelin_radius_um, "white", 0.5)]:
+        ax_2d.axhline( r, color=col, lw=lw, alpha=0.55)
+        ax_2d.axhline(-r, color=col, lw=lw, alpha=0.55)
+    # Highlight node region in z
     z_n0 = GEOM.internode_length_um
     z_n1 = z_n0 + GEOM.node_length_um
-    ax_2d.axvspan(z_n0, z_n1, facecolor="white", alpha=0.06)
-    ax_2d.axvline(z_n0, color="white", lw=0.6, alpha=0.55)
-    ax_2d.axvline(z_n1, color="white", lw=0.6, alpha=0.55)
-    ax_2d.text((z_n0 + z_n1) / 2, hw * 0.85, "node",
-               color="white", ha="center", fontsize=7, alpha=0.85)
+    ax_2d.axvline(z_n0, color=OKABE_ITO[6], lw=1.2, alpha=0.85)
+    ax_2d.axvline(z_n1, color=OKABE_ITO[6], lw=1.2, alpha=0.85)
+    ax_2d.text((z_n0 + z_n1) / 2, hw * 0.86, "node",
+               color=OKABE_ITO[6], ha="center", fontsize=8,
+               fontweight="bold")
+    ax_2d.text(z_n0 / 2, hw * 0.86, "myelin",
+               color="white", ha="center", fontsize=7, alpha=0.75)
+    ax_2d.text((z_n1 + L) / 2, hw * 0.86, "myelin",
+               color="white", ha="center", fontsize=7, alpha=0.75)
     ax_2d.set_xlabel("z (µm)")
     ax_2d.set_ylabel("x (µm)")
     ax_2d.set_title(f"|E|(x, z) at y = 0, f = {F_HZ/1e12:g} THz")
