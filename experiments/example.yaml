@@ -1,0 +1,18 @@
+name: freq_sweep_example
+description: Frequency sweep at baseline geometry (Phase 1.4 demo).
+
+model:
+  axon_radius_um: 5
+  myelin_radius_um: 7
+  node_length_um: 40
+  internode_length_um: 100
+  external_radius_um: 20
+  node_sigma_S_per_m: 0
+
+sweep:
+  frequency_THz:
+    linspace: {start: 0.1, stop: 2.0, n: 26}
+
+output:
+  dir: results/freq_sweep_example/
+  save_3d_field: false
