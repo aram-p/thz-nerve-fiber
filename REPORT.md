@@ -108,6 +108,14 @@ A 4 × 6 grid of solves (24 total simulations) at four node lengths × six frequ
 
 ---
 
+### Sim 16 — mesh convergence at the resonance (3-D)
+
+![sim16](figures/out/sim16_mesh_convergence_3d.png)
+
+Three mesh refinements (coarse ≈ 24 k elements, baseline ≈ 26 k, fine ≈ 41 k) at f = 0.632 THz. Peak |E| on the axis comes out to 2.50, 2.75, 2.48 respectively — the baseline value reported in Sim 1 (~2.60) sits between coarse and fine and is **not** fully converged at the 10 % level. The fine-mesh value (2.48) is the better number to quote. The *qualitative* spatial pattern (cross-section heatmaps + 3-D scatter, bottom row) is stable across all three meshes — the resonance feature is real, only the absolute amplitude is mesh-dependent at the ±10 % level.
+
+---
+
 ## 5 — Analytical context
 
 ### Sim 6 — wire-array equivalent-sheet model
@@ -125,7 +133,8 @@ Textbook 1-D diffraction-grating model (Tretyakov *Analytical Modelling in Appli
 3. **Resonance is local (Sim 13).** On vs off resonance look qualitatively similar in cross-section; the difference shows up at specific sampling points.
 4. **Node geometry matters (Sims 3, 12).** |E|-at-node scales with node length; the baseline 40 µm node is far larger than biology (~1 µm), so absolute field-enhancement numbers are upper bounds.
 5. **σ doesn't matter — at least not the way I encoded it (Sim 2).** Either real physics or a one-line COMSOL `DisplacementFieldModel` fix. The probe shows the rest of the material pipeline works.
-6. **Open physics questions** to discuss with the tutor:
+6. **Mesh-convergence caveat (Sim 16).** The baseline mesh isn't quite converged at the 10 % level. The fine-mesh peak at 0.632 THz is ≈ 2.48 (vs the 2.60 reported in Sim 1). Qualitative features are robust; absolute amplitudes should be reported with a ±10 % mesh-uncertainty band.
+7. **Open physics questions** to discuss with the tutor:
    - *Fibre orientation*: the model has fibres along *z* (parallel to k); paper 1's resonance condition is E ∥ fibres (perpendicular to k). Reorienting fibres along *x* is a 1-day refactor and may move the resonance into the annular field.
    - *Why σ doesn't show* — physics or wee1 property fix.
    - *Why no 2 THz peak* — sampling density, mesh resolution, or geometric.
@@ -155,7 +164,8 @@ uv run python experiments/sim3_node_length.py            # ~2 min
 uv run python experiments/sim9_3d_field_at_resonance.py  # ~1 min
 uv run python experiments/sim10_field_isosurfaces.py     # ~1 min
 uv run python experiments/sim13_resonance_contrast_3d.py # ~2 min
-uv run python experiments/sim15_freq_nodelen_surface.py  # ~6-8 min
+uv run python experiments/sim15_freq_nodelen_surface.py  # ~6 min
+uv run python experiments/sim16_mesh_convergence_3d.py   # ~2 min
 
 # Re-plotting from CSV (no COMSOL):
 uv run python experiments/sim1_replot.py

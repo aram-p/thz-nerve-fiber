@@ -249,6 +249,19 @@ in (Re ε, −Im ε, freq) space. Same data as Sim 4 but a single
 3-D view rather than two 2-D panels. Markers at f = 0.6 THz highlight
 each material's complex permittivity at the resonance frequency.
 
+### Sim 16 — Mesh convergence (`sim16_mesh_convergence_3d.py`, ~1.5 min)
+
+Three fresh models at f = 0.632 THz with progressively finer meshes
+(`MeshParams` with `refinement_factor` ∈ {0.6, 1.0, 1.5}, also varying
+`max_element_size_um` and `node_element_size_um` so the element-count
+ratio is clear). Renders a 3-column figure: 2-D cross-section heatmap
++ 3-D scatter for each refinement. The peak-|E|-on-axis values
+(2.50 / 2.75 / 2.48) reveal that the baseline mesh used by Sim 1 is
+not converged at the ±10 % level — the fine value 2.48 is closer to
+the truth. The *qualitative* spatial pattern stays stable across
+all three meshes, so the resonance feature is real, only its
+amplitude carries a mesh-uncertainty band.
+
 ### Sim 15 — Frequency × node-length 3-D surface (`sim15_freq_nodelen_surface.py`, ~5.5 min)
 
 4 node lengths × 6 frequencies = 24 solves. Renders peak |E|-at-node
