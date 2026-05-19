@@ -249,11 +249,21 @@ in (Re ε, −Im ε, freq) space. Same data as Sim 4 but a single
 3-D view rather than two 2-D panels. Markers at f = 0.6 THz highlight
 each material's complex permittivity at the resonance frequency.
 
-### Sim 15 — Frequency × node-length 3-D surface (`sim15_freq_nodelen_surface.py`, ~6–8 min)
+### Sim 15 — Frequency × node-length 3-D surface (`sim15_freq_nodelen_surface.py`, ~5.5 min)
 
 4 node lengths × 6 frequencies = 24 solves. Renders peak |E|-at-node
 as a 3-D `plot_surface` over (frequency, node_length) plus a 2-D
-heatmap. The headline scientific 3-D figure of the session.
+heatmap. **Crucially samples in the node annulus** (r = 6 µm) rather
+than on the axis — which surfaces the most important nuance of the
+session: the 0.6 THz peak in Sim 1 (axial sampling) **does not appear
+in annular sampling**. The Sim 15 surface is much flatter, with no
+clean 0.6 THz feature. This implies the Sim 1 "resonance" is the
+field on the axon's central axis at z ≈ node-centre, not the field
+at the conductive node-annulus location that would matter for σ-
+mediated absorption. If anything this strengthens the case that
+*the experimental 0.6 THz absorption comes from collective fibre-array
+effects* (Paper 3's diffraction-grating picture) rather than
+single-fibre node-localised dissipation.
 
 ## 6. Code organisation
 

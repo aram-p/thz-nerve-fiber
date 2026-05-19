@@ -102,7 +102,9 @@ Swept the node conductivity across **11 orders of magnitude** (σ ∈ [0, 10⁸]
 
 ![sim15](figures/out/sim15_freq_nodelen_surface.png)
 
-The headline 3-D scientific figure. A 4 × 6 grid of solves (24 total simulations) at four node lengths × six frequencies. The peak |E|-at-node is rendered both as a 3-D surface (left) and as a 2-D heatmap (right). This tells us whether the 0.6 THz feature seen in Sim 1 is robust to node-length variation, or specific to the 40 µm node we chose for the baseline.
+A 4 × 6 grid of solves (24 total simulations) at four node lengths × six frequencies, with the field sampled **inside the node annulus** (r = 6 µm, in the z-range of the node) rather than on the central axis. Peak |E|-at-node is rendered as a 3-D surface (left) and a 2-D heatmap (right).
+
+**Important nuance this figure surfaces.** The surface is much *flatter* than Sim 1 suggests — node-annulus peak |E| stays in the 1.3–2.0 range across the whole (f, L_node) plane, with no clean 0.6 THz ridge. Combined with Sim 13's finding, this clarifies what the Sim 1 "0.6 THz peak" actually means: **it's the field on the central axis (inside the axon, water medium) at z ≈ node-centre, not the field at the conductive node annulus**. If the experimental THz absorption comes from energy dissipation in the conductive node, this single-fibre model would predict a much weaker frequency-dependence than what's experimentally observed — pointing toward the periodic-array / collective effects in Paper 3 (or the σ-encoding fix from Sim 2) as the missing physics.
 
 ---
 
@@ -118,14 +120,16 @@ Textbook 1-D diffraction-grating model (Tretyakov *Analytical Modelling in Appli
 
 ## 6 — Take-aways for the meeting
 
-1. **The simulation reproduces the 0.6 THz peak.** Sim 1's |E|-at-node spectrum has its strongest sub-THz local maximum at f = 0.632 THz, on top of the experimental 0.6 THz feature. The 2 THz peak is less clean and may need denser frequency sampling or finer meshing.
-2. **The resonance is *local* (Sim 13).** It's a field enhancement at the specific location of the node rather than a global cross-section enhancement.
-3. **Node geometry matters (Sims 3, 12, 15).** |E|-at-node scales with node length; the baseline 40 µm node is much larger than biology (~1 µm), so absolute field-enhancement numbers are upper bounds.
-4. **σ doesn't matter — at least not the way I encoded it (Sim 2).** Either real physics (the εr-contrast dominates) or a one-line COMSOL config fix. The probe shows the rest of the material pipeline works.
-5. **Three open physics questions** to discuss with the tutor:
-   - *Fibre orientation*: the model has fibres along *z* (parallel to k); paper 1's resonance condition is E ∥ fibres (perpendicular to k). Reorienting fibres along *x* is a 1-day refactor.
-   - *Why σ doesn't show* — physics or wee1 property.
+1. **Sim 1 shows a peak at 0.632 THz**, sitting on the experimental 0.6 THz feature — *for axial sampling* (field on the central axis of the fibre, inside the axon). The 2 THz peak is less clean.
+2. **The "0.6 THz peak" disappears under annular sampling (Sim 15).** When the field is measured at the conductive-node location (r = 6 µm, inside the node annulus) rather than on the axis, peak |E| stays roughly flat at 1.3–2.0 across the whole (f, L_node) plane. This is the most important caveat: **the 0.6 THz resonance in Sim 1 is about the axon-water field at z ≈ node-centre, not the node-annulus field that would actually dissipate energy if σ were active**.
+3. **Resonance is local (Sim 13).** On vs off resonance look qualitatively similar in cross-section; the difference shows up at specific sampling points.
+4. **Node geometry matters (Sims 3, 12).** |E|-at-node scales with node length; the baseline 40 µm node is far larger than biology (~1 µm), so absolute field-enhancement numbers are upper bounds.
+5. **σ doesn't matter — at least not the way I encoded it (Sim 2).** Either real physics or a one-line COMSOL `DisplacementFieldModel` fix. The probe shows the rest of the material pipeline works.
+6. **Open physics questions** to discuss with the tutor:
+   - *Fibre orientation*: the model has fibres along *z* (parallel to k); paper 1's resonance condition is E ∥ fibres (perpendicular to k). Reorienting fibres along *x* is a 1-day refactor and may move the resonance into the annular field.
+   - *Why σ doesn't show* — physics or wee1 property fix.
    - *Why no 2 THz peak* — sampling density, mesh resolution, or geometric.
+   - *Right observable*: maybe we should be plotting **power dissipated in the node domain** (= ∫ σ |E|² dV) rather than peak |E| at a sampling point. Once σ encoding is fixed, that becomes the natural quantity.
 
 ---
 
