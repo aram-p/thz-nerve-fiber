@@ -149,13 +149,17 @@ def build_geometry_x(model):
         "external": L_FIBRE / 2,
     }
     r_mid_sheath = (AXON_R + MYELIN_R) / 2  # = 6
-    r_mid_ext = (MYELIN_R + max(PERP_HW, WAVE_HW)) / 2
+    # External centre must be *inside the box* (|y| < perp_hw, |z| < wave_hw)
+    # AND *outside the inner myelin cylinder* (sqrt(y²+z²) > myelin_r).
+    # The y-direction is tightest (perp_hw = 20 µm) so pick the midpoint between
+    # myelin_r (7) and perp_hw (20) along y.
+    r_mid_ext_y = (MYELIN_R + PERP_HW) / 2  # = 13.5
     centres = {
         "axon": (x_centres["axon"], 0.0, 0.0),
         "myelin_proximal": (x_centres["myelin_proximal"], r_mid_sheath, 0.0),
         "node": (x_centres["node"], r_mid_sheath, 0.0),
         "myelin_distal": (x_centres["myelin_distal"], r_mid_sheath, 0.0),
-        "external": (x_centres["external"], r_mid_ext, 0.0),
+        "external": (x_centres["external"], r_mid_ext_y, 0.0),
     }
     for label, xyz in centres.items():
         _add_ball(geom, f"sel_{label}", f"Sel {label}", xyz=xyz)
