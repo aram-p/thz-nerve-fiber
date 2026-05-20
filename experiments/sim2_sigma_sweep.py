@@ -75,7 +75,8 @@ def main() -> None:
         model = client.create(f"sim2_sigma_{i:02d}")
         mat = MaterialParams(node_sigma_S_per_m=sigma)
         build_geometry(model, GEOM)
-        apply_materials(model, mat)
+        # Pass freq_hz so σ is baked into the node εr as a literal Im.
+        apply_materials(model, mat, freq_hz=FREQ_HZ)
         setup_physics(model, GEOM)
         n_elem = build_mesh(model, MESH)
         setup_study(model, FREQ_HZ)

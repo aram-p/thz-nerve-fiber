@@ -93,24 +93,35 @@ WATER_EPS_EXPR: str = (
 # Myelin — constant complex.
 MYELIN_EPS_EXPR: str = "4.5 - 0.5*i"
 
-# Node — water plus σ/(ωε₀) term. ``epsilon0_const`` is a COMSOL built-in.
-# ``node_sigma_S_per_m`` was originally a global parameter; we now inject the
-# numeric value directly via ``node_eps_expr(sigma)`` so the material
-# expression text changes between σ iterations — defeating COMSOL's
-# stationary-solver caching that previously returned identical solutions for
-# every σ.
-NODE_EPS_EXPR_TEMPLATE: str = (
-    f"({WATER_EPS_EXPR})"
-    " + i*{sigma}/(2*pi*freq*epsilon0_const)"
-)
-# Legacy symbol kept for any external references (uses 0 for σ).
-NODE_EPS_EXPR: str = NODE_EPS_EXPR_TEMPLATE.format(sigma="0")
+# Node — water plus σ/(ωε₀) term.
+#
+# EWFD's WaveEquationElectric reads the material's `relpermittivity` but
+# IGNORES `electricconductivity`. A probe further showed that *analytic*
+# σ expressions referencing `freq` (e.g. ``i*sigma/(2*pi*freq*epsilon0_const)``)
+# evaluate to zero — only LITERAL complex values in `relpermittivity` change
+# the field. So we encode σ as a literal at a specific frequency by precomputing
+# the Im contribution σ/(ω·ε₀) and pasting it into the expression.
+#
+# Sign convention: water's Debye expression here gives negative Im (e^{-iωt}-style
+# response), so adding loss from σ means *subtracting* further from Im. The
+# literal we add is ``-(σ/(ω·ε₀)) * i``.
+NODE_EPS_EXPR: str = WATER_EPS_EXPR  # legacy symbol — equivalent to σ=0 at any f
 
 
-def node_eps_expr(sigma_S_per_m: float) -> str:
-    """COMSOL analytic expression for the node ε with σ baked in."""
+def node_eps_expr(sigma_S_per_m: float, freq_hz: float | None = None) -> str:
+    """COMSOL analytic expression for the node ε.
 
-    return NODE_EPS_EXPR_TEMPLATE.format(sigma=f"{sigma_S_per_m:g}")
+    If ``freq_hz`` is provided, the σ contribution is baked in as a literal
+    Im part (the encoding that actually reaches EWFD). If ``freq_hz`` is None
+    and σ != 0, we fall back to the analytic form (won't actually apply σ —
+    use this only for σ = 0 cases).
+    """
+
+    if sigma_S_per_m == 0 or freq_hz is None:
+        return WATER_EPS_EXPR
+    omega = 2 * np.pi * freq_hz
+    im_contrib = -sigma_S_per_m / (omega * EPS_0)  # negative for loss in -iωt convention
+    return f"({WATER_EPS_EXPR}) + ({im_contrib:.6g})*i"
 
 
 # --- COMSOL binding ---------------------------------------------------------
@@ -161,11 +172,18 @@ def _create_material(
     return mat
 
 
-def apply_materials(model: Any, params: MaterialParams) -> dict[str, str]:
+def apply_materials(
+    model: Any,
+    params: MaterialParams,
+    *,
+    freq_hz: float | None = None,
+) -> dict[str, str]:
     """Apply water / myelin / node materials to the geometry's labeled selections.
 
-    Returns a dict mapping material tag → list of domain-label assignments
-    (for logging / debugging by the caller).
+    If ``freq_hz`` is supplied (and σ != 0), the σ contribution is baked into
+    the node εr as a literal complex term at that frequency — the only
+    encoding that actually changes the EWFD field (see materials.py docstring
+    and the σ-encoding section of SESSION.md).
     """
 
     from thznerve.model.geometry import selection_tag
@@ -186,13 +204,10 @@ def apply_materials(model: Any, params: MaterialParams) -> dict[str, str]:
     mat_myd = _create_material(comp, "mat_myelin_distal", "Myelin (distal)", MYELIN_EPS_EXPR)
     mat_myd.selection().named(selection_tag("myelin_distal"))
 
-    # Node — σ folded into Im(ε) of the analytic expression. EWFD's
-    # WaveEquationElectric reads only `relpermittivity` by default
-    # (electricconductivity is ignored unless DisplacementFieldModel is
-    # changed); putting σ into Im(ε) is the simplest reliable encoding.
+    # Node — σ baked into εr as a literal complex term at `freq_hz`.
     mat_node = _create_material(
         comp, "mat_node", "Node of Ranvier",
-        node_eps_expr(params.node_sigma_S_per_m),
+        node_eps_expr(params.node_sigma_S_per_m, freq_hz=freq_hz),
     )
     mat_node.selection().named(selection_tag("node"))
 
