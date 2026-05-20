@@ -104,19 +104,26 @@ the simulation frequency and bakes it into the εr expression as a
 literal complex term. `apply_materials(model, params, freq_hz=...)`
 takes the new `freq_hz` argument and propagates it through.
 
-After the fix, **Sim 2 shows monotonic linear σ-dependence**:
-σ = 0 → |E|_node = 1.7878702
-σ = 0.1 → 1.7879019  (+1.8 × 10⁻⁵)
-σ = 0.5 → 1.7879798  (+6.2 × 10⁻⁵)
-σ = 1   → 1.7880892  (+1.2 × 10⁻⁴)
-σ = 5   → 1.7889557  (+6.1 × 10⁻⁴)
-σ = 10  → 1.7900160  (+1.2 × 10⁻³)
-Slope d|E|/dσ ≈ 2.1 × 10⁻⁴ per S/m — a real, characterised
-σ-coupling, even if small at biological σ values.
+After the fix, a wide-σ sweep across 7 decades shows the classic
+**three-regime non-monotonic σ-dependence**:
 
-The σ effect grows linearly because the σ-encoded Im(εr) loss is
-small compared to water's natural Debye loss; saturation behaviour
-would only appear at much larger σ (~ 10⁴ S/m and up).
+| σ (S/m) | |E|_node(annulus) |
+|---|---|
+| 0     | 1.7878702 |
+| 0.1   | 1.7879019  (+1.8 × 10⁻⁵, linear) |
+| 1     | 1.7880892  (+1.2 × 10⁻⁴, linear) |
+| 10    | 1.7900160  (+1.2 × 10⁻³, still linear) |
+| **100**   | **1.8035242  (+1.6 × 10⁻², peak — resonant absorption)** |
+| 1 000 | 1.7920574  (turnover) |
+| 10⁴   | 1.7809316  (below baseline — metallic) |
+| 10⁵   | 1.7797336 |
+| 10⁶   | 1.7796136  (saturated) |
+
+The peak at σ ≈ 100 S/m is the textbook signature of a resistive
+segment embedded in a dielectric: maximum power-coupling occurs when
+the segment impedance matches the local wave impedance. Paper 3's
+voltage-opened-ion-channel σ values are plausibly in the 10 – 10³ S/m
+range, exactly where the FEM predicts the strongest effect.
 
 ## 4. Other small fixes along the way
 

@@ -102,7 +102,16 @@ Same data as Sim 3 but in 3-D: each node-length gets its own ribbon showing how 
 
 The night version of this sim returned identical |E| across 11 orders of magnitude of σ — a real bug, now diagnosed and fixed. The fix: a probe (`scripts/_eps_probe.py`, deleted) tested seven εr encodings and found COMSOL EWFD reads only **literal** complex values in `relpermittivity` — analytic σ/(ωε₀) expressions referencing the `freq` variable evaluate to zero, and `electricconductivity` is entirely ignored. The fix in `materials.py` now precomputes the σ contribution `−σ/(ωε₀)` numerically at the simulation frequency and bakes it into the node εr as a literal complex term.
 
-After the fix: peak |E| in the node annulus grows monotonically and approximately linearly with σ — **|E|(σ=0) = 1.7879 → |E|(σ=10) = 1.7900** (a 0.12 % increase). The effect is small in absolute terms at biological σ values, but it is now **real** and the slope d|E|/dσ ≈ 2.1 × 10⁻⁴ per S/m is extracted in the right panel.
+After the fix and a wide-σ sweep across 7 orders of magnitude, the σ dependence shows the **expected three regimes**:
+
+| σ (S/m) | |E|_node | regime |
+|---|---|---|
+| 0 → 10 | 1.7879 → 1.7900 | low-σ: linear field enhancement, slope d|E|/dσ ≈ 2.1 × 10⁻⁴ |
+| **100** | **1.8035 (peak, +0.9 %)** | **resonant absorption** |
+| 1 000 | 1.7921 | turnover |
+| 10 000 → 10⁶ | 1.7809 → 1.7796 (below baseline) | **metallic limit** — wave expelled from node interior |
+
+The non-monotonic σ-dependence with a peak around σ ≈ 100 S/m is the textbook resonance behaviour for a conductive segment embedded in a dielectric: small σ adds modest loss, intermediate σ matches the local impedance for peak coupling, and large σ makes the segment behave like a metal that reflects the wave. **Paper 3's voltage-opened-ion-channel σ values are plausibly in the 10 – 10³ S/m range** — exactly where the FEM predicts the strongest effect.
 
 ### Sim 15 — peak |E| over the (frequency, node-length) plane (3-D)
 
@@ -174,7 +183,7 @@ Textbook 1-D diffraction-grating model (Tretyakov *Analytical Modelling in Appli
 
 1. **The 0.6 THz peak is reproduced quantitatively** (Sims 1 + 19): Lorentzian fit gives f₀ = 0.605 ± 0.019 THz with Q = 2.16 — within paper 1's experimental uncertainty on the 0.6 THz feature.
 2. **The polarisation dependence is reproduced** (Sims 18 + 20): rotating E from ⊥ to ∥ fibre boosts the node-annulus field by ~20 % — matching paper 1's qualitative observation that absorption only appears in the parallel configuration.
-3. **σ at the node is now correctly handled** (Sim 2 v10): COMSOL EWFD only accepts σ as a literal Im(εr); the fix bakes the σ contribution into the node permittivity expression at the simulation frequency. After fix, σ-coupling is monotonic and linear; ~0.12 % field enhancement at σ = 10 S/m.
+3. **σ at the node is now correctly handled** (Sim 2 v11): COMSOL EWFD only accepts σ as a literal Im(εr); the fix bakes the σ contribution into the node permittivity expression at the simulation frequency. After fix, the wide-σ sweep reveals the textbook three-regime behaviour: linear enhancement at low σ → peak at **σ ≈ 100 S/m** (+0.9 % |E|_node) → metallic limit (|E| drops below baseline) at σ ≥ 10⁴ S/m.
 4. **Power dissipation by domain** (Sim 17): myelin dominates total absorption; node contributes ~1–5 % (fraction peaks at low frequencies). The right observable for absorption studies, now wired up.
 5. **A hint of the second peak** (Sim 19): the mean-annulus signal shows a Q ≈ 5 Lorentzian centred at 1.67 THz — within the paper's 2 THz feature, though noisy. Denser sampling there should clean it up.
 6. **Node geometry matters** (Sims 3, 12). |E|-at-node scales with node length; the baseline 40 µm node is far larger than biology (~1 µm), so absolute field-enhancement numbers are upper bounds.

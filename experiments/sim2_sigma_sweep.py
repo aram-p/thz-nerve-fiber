@@ -46,7 +46,7 @@ GEOM = GeometryParams(
 MESH = MeshParams(max_element_size_um=30.0, node_element_size_um=5.0)
 
 FREQ_HZ: float = 0.6e12
-SIGMA_VALUES: list[float] = [0.0, 0.1, 0.5, 1.0, 2.0, 5.0, 10.0]
+SIGMA_VALUES: list[float] = [0.0, 0.1, 1.0, 10.0, 100.0, 1000.0, 10000.0, 1e5, 1e6]
 
 
 def main() -> None:
