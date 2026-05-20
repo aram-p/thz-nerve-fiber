@@ -76,61 +76,89 @@ def _format_fit(popt, perr):
             f"  peak amplitude A = {A:.3f} ± {sA:.3f}")
 
 
-def main() -> None:
-    apply_thesis_style(width_mm=DOUBLE_COL_MM, aspect=0.5)
-    fig, axes = plt.subplots(1, 2)
-
-    # Sim 1 — peak |E| on axis vs frequency
-    sim1_csv = REPO_ROOT / "results" / "sim1" / "spectrum.csv"
-    f1, e1 = _load_spectrum(sim1_csv, "frequency_THz", "peak_E_node")
-    print("Sim 1 (E _perp_ fibre, axial sampling) — Lorentzian fit around 0.6 THz")
-    popt, perr, win1 = _fit_lorentzian(f1, e1, f0_guess=0.63, window=0.35)
+def _plot_one(ax, f, y, *, title, f0_guess, label_data="data", window=0.35,
+              colour=OKABE_ITO[0]):
+    popt, perr, win = _fit_lorentzian(f, y, f0_guess=f0_guess, window=window)
+    ax.plot(f, y, "o", color=colour, ms=4, label=label_data)
     if popt is not None:
-        print(_format_fit(popt, perr))
-        f_grid = np.linspace(f1.min(), f1.max(), 400)
-        axes[0].plot(f1, e1, "o", color=OKABE_ITO[0], ms=4, label="Sim 1 data")
-        axes[0].plot(f_grid, lorentzian(f_grid, *popt), "-", color=OKABE_ITO[5],
-                     lw=1.4, label=f"Lorentzian fit: f₀={popt[1]:.3f} THz, Q={popt[1]/abs(popt[2]):.1f}")
-        if win1 is not None:
-            axes[0].axvspan(win1[0].min(), win1[0].max(), color="grey", alpha=0.08)
-    axes[0].axvline(0.6, color="red", ls=":", lw=0.7, alpha=0.65)
-    axes[0].set_xlabel("Frequency (THz)")
-    axes[0].set_ylabel("peak |E| in node region")
-    axes[0].set_title("Sim 1 — E _perp_ fibre, axial sampling")
-    axes[0].legend(loc="best", fontsize=7, framealpha=0.92)
-    axes[0].grid(True, alpha=0.3)
+        f_grid = np.linspace(f.min(), f.max(), 400)
+        ax.plot(f_grid, lorentzian(f_grid, *popt), "-", color=OKABE_ITO[5], lw=1.4,
+                label=fr"$f_0$={popt[1]:.3f} THz, Q={popt[1]/abs(popt[2]):.1f}")
+        if win is not None:
+            ax.axvspan(win[0].min(), win[0].max(), color="grey", alpha=0.08)
+    ax.axvline(0.6, color="red", ls=":", lw=0.7, alpha=0.65)
+    ax.axvline(2.0, color="red", ls=":", lw=0.7, alpha=0.65)
+    ax.set_xlabel("Frequency (THz)")
+    ax.set_ylabel("peak |E|")
+    ax.set_title(title, fontsize=8)
+    ax.legend(loc="best", fontsize=6.5, framealpha=0.92)
+    ax.grid(True, alpha=0.3)
+    return popt, perr
 
-    # Sim 18 if available
+
+def main() -> None:
+    apply_thesis_style(width_mm=DOUBLE_COL_MM, aspect=0.55)
+    fig, axes = plt.subplots(2, 2)
+
+    sim1_csv = REPO_ROOT / "results" / "sim1" / "spectrum.csv"
     sim18_csv = REPO_ROOT / "results" / "sim18" / "spectrum.csv"
-    if sim18_csv.exists():
-        f18, e18 = _load_spectrum(sim18_csv, "frequency_THz", "peak_E_node_annulus")
-        print("\nSim 18 (E ∥ fibre, annulus sampling) — Lorentzian fit search")
-        # Pick peak location from the data
-        peak_idx = int(np.argmax(e18))
-        f0_guess = float(f18[peak_idx])
-        print(f"  data peak at f = {f0_guess:.3f} THz, |E| = {e18[peak_idx]:.3f}")
-        popt18, perr18, win18 = _fit_lorentzian(f18, e18, f0_guess=f0_guess, window=0.35)
-        if popt18 is not None:
-            print(_format_fit(popt18, perr18))
-            f_grid = np.linspace(f18.min(), f18.max(), 400)
-            axes[1].plot(f18, e18, "o", color=OKABE_ITO[0], ms=4, label="Sim 18 data")
-            axes[1].plot(f_grid, lorentzian(f_grid, *popt18), "-",
-                         color=OKABE_ITO[5], lw=1.4,
-                         label=f"f₀={popt18[1]:.3f} THz, Q={popt18[1]/abs(popt18[2]):.1f}")
-        axes[1].set_xlabel("Frequency (THz)")
-        axes[1].set_ylabel("peak |E| in node annulus")
-        axes[1].set_title("Sim 18 — E ∥ fibre, annular sampling")
-        axes[1].axvline(0.6, color="red", ls=":", lw=0.7, alpha=0.65)
-        axes[1].axvline(2.0, color="red", ls=":", lw=0.7, alpha=0.65)
-        axes[1].legend(loc="best", fontsize=7, framealpha=0.92)
-        axes[1].grid(True, alpha=0.3)
-    else:
-        axes[1].text(0.5, 0.5, "Sim 18 data not yet available",
-                     transform=axes[1].transAxes, ha="center", va="center",
-                     fontsize=10, color="0.45")
-        axes[1].set_axis_off()
 
-    fig.suptitle("Sim 19 — Lorentzian fits to the resonance peaks")
+    # Sim 1 — E perp fibre, axial sampling
+    f1, e1_axial = _load_spectrum(sim1_csv, "frequency_THz", "peak_E_node")
+    print("Sim 1 (E perp fibre, axial sampling) — fit around 0.6 THz")
+    p, e = _plot_one(
+        axes[0, 0], f1, e1_axial,
+        title="Sim 1 — E ⊥ fibre, axial (z) sampling",
+        f0_guess=0.63, window=0.35, colour=OKABE_ITO[2],
+    )
+    if p is not None:
+        print(_format_fit(p, e))
+
+    # Sim 18 — E parallel fibre, axial sampling
+    if sim18_csv.exists():
+        f18, e18_axial = _load_spectrum(sim18_csv, "frequency_THz", "peak_E_node_axis")
+        print("\nSim 18 (E parallel fibre, axial sampling) — fit around 0.6 THz")
+        p, e = _plot_one(
+            axes[0, 1], f18, e18_axial,
+            title="Sim 18 — E ∥ fibre, axial (z) sampling",
+            f0_guess=0.6, window=0.35, colour=OKABE_ITO[1],
+        )
+        if p is not None:
+            print(_format_fit(p, e))
+
+        # Sim 18 — annular
+        _, e18_ann = _load_spectrum(sim18_csv, "frequency_THz", "peak_E_node_annulus")
+        peak_idx = int(np.argmax(e18_ann))
+        print(f"\nSim 18 (E parallel fibre, annulus sampling) — empirical peak at "
+              f"f = {f18[peak_idx]:.3f}, |E| = {e18_ann[peak_idx]:.3f}")
+        p, e = _plot_one(
+            axes[1, 0], f18, e18_ann,
+            title="Sim 18 — E ∥ fibre, node-annulus sampling",
+            f0_guess=float(f18[peak_idx]), window=0.4, colour=OKABE_ITO[6],
+        )
+        if p is not None:
+            print(_format_fit(p, e))
+
+        # Sim 18 — mean annular
+        _, e18_mean = _load_spectrum(sim18_csv, "frequency_THz", "mean_E_node_annulus")
+        peak_idx2 = int(np.argmax(e18_mean))
+        print(f"\nSim 18 mean-annulus — empirical peak at "
+              f"f = {f18[peak_idx2]:.3f}, |E| = {e18_mean[peak_idx2]:.3f}")
+        p, e = _plot_one(
+            axes[1, 1], f18, e18_mean,
+            title="Sim 18 — E ∥ fibre, mean |E| in node annulus",
+            f0_guess=float(f18[peak_idx2]), window=0.4, colour=OKABE_ITO[3],
+        )
+        if p is not None:
+            print(_format_fit(p, e))
+    else:
+        for ax in (axes[0, 1], axes[1, 0], axes[1, 1]):
+            ax.text(0.5, 0.5, "Sim 18 data not yet available",
+                    transform=ax.transAxes, ha="center", va="center",
+                    fontsize=9, color="0.45")
+            ax.set_axis_off()
+
+    fig.suptitle("Sim 19 — Lorentzian fits: ⊥ vs ∥ fibre × axial vs annular sampling")
     fig.tight_layout()
     pdf, png = save_figure(fig, "sim19_lorentzian_fit")
     print(f"\nwrote {pdf}\nwrote {png}")
