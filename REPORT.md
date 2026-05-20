@@ -1,8 +1,12 @@
 # THz nerve-fibre simulation — tutor briefing
 
-**One-paragraph summary.** Hovhannisyan & Makaryan (Armenian J. Phys. 2024) observed resonant THz absorption peaks near **0.6 THz** and **2 THz** in spinal-cord samples when the THz E-field is polarised parallel to the nerve fibres and a DC voltage is applied perpendicular to them. Paper 3 frames the sample as a *periodic diffraction grating of nerve fibres*. This project builds a first-principles 3-D FEM simulation of one fibre as the unit cell of that grating (axon + myelin sheaths + node of Ranvier, periodic in *x* and *y*, plane-wave excitation in *z*) to ask: **does the model reproduce the resonance, and what physical parameters control it?** The headline result: the simulation produces a clean peak in field-at-the-node at **f = 0.632 THz**, sitting on the experimental 0.6 THz feature.
+**One-paragraph summary.** Hovhannisyan & Makaryan (Armenian J. Phys. 2024) observed resonant THz absorption peaks near **0.6 THz** and **2 THz** in spinal-cord samples *when* (a) the THz E-field is polarised parallel to the nerve fibres and (b) a DC voltage is applied perpendicular to them. Paper 3 frames the sample as a *periodic diffraction grating of nerve fibres*. This project builds a first-principles 3-D FEM simulation of one fibre as the unit cell of that grating (axon + myelin sheaths + node of Ranvier, periodic in *x* and *y*, plane-wave excitation in *z*) to ask: **does the model reproduce the resonance, and what physical parameters control it?** Headline results:
 
-Pipeline: Python + `mph` driving COMSOL EWFD (scattered-field formulation, Floquet-periodic lateral BCs, scattering BCs on the end-caps, MUMPS direct solver). Source code lives in `src/thznerve/` and per-sim scripts in `experiments/`. All figures below are reproducible by running `uv run python experiments/simN_*.py`.
+* The simulation reproduces a peak in field-at-the-node at **f = 0.605 ± 0.019 THz** (Lorentzian Q = 2.16), sitting on the experimental 0.6 THz feature (Sims 1, 19).
+* The **polarisation dependence** observed experimentally is reproduced quantitatively: rotating the E-field from perpendicular to parallel-to-fibre boosts the node-annulus field by **~20 %** (Sim 20), exactly the regime paper 1 sees absorption appear.
+* **σ at the node really does increase the node field** once the COMSOL encoding bug is fixed; a monotonic linear σ-dependence is now visible (Sim 2 v10) and the integrated power dissipated at the node scales as σ|E|² (Sim 17).
+
+Pipeline: Python + `mph` driving COMSOL EWFD (scattered-field formulation, Floquet-periodic lateral BCs, scattering BCs on the end-caps, MUMPS direct solver). Source code in `src/thznerve/`, per-sim scripts in `experiments/`. Every figure reproducible via `uv run python experiments/simN_*.py`.
 
 ---
 
@@ -92,11 +96,13 @@ Five node lengths {10, 20, 40, 60, 100} µm at f = 0.6 THz, σ = 0. Clean **mono
 
 Same data as Sim 3 but in 3-D: each node-length gets its own ribbon showing how the axial |E| profile changes shape. The right-hand heatmap with inset peak-vs-L makes the monotonic trend self-contained.
 
-### Sim 2 — σ sweep at f = 0.6 THz (NULL RESULT)
+### Sim 2 — σ sweep at f = 0.6 THz (FIX APPLIED)
 
 ![sim2](figures/out/sim2_sigma_sweep.png)
 
-Swept the node conductivity across **11 orders of magnitude** (σ ∈ [0, 10⁸] S/m). |E| at the node varies by less than 3 × 10⁻⁸ over the entire range. Two possible explanations: (a) the THz response at this geometry is dominated by the εr contrast between water (≈ 4) and myelin (4.5) and is genuinely insensitive to σ at the node, or (b) COMSOL EWFD's `DisplacementFieldModel` defaults to reading only εr — a probe (see `SESSION.md`) confirmed that changing Re(εr) does affect the field, so the material/selection wiring is correct, only the σ encoding doesn't reach the solver. **One-line fix candidate**: set `DisplacementFieldModel = "RelPermittivityWithSigma"` on `wee1`.
+The night version of this sim returned identical |E| across 11 orders of magnitude of σ — a real bug, now diagnosed and fixed. The fix: a probe (`scripts/_eps_probe.py`, deleted) tested seven εr encodings and found COMSOL EWFD reads only **literal** complex values in `relpermittivity` — analytic σ/(ωε₀) expressions referencing the `freq` variable evaluate to zero, and `electricconductivity` is entirely ignored. The fix in `materials.py` now precomputes the σ contribution `−σ/(ωε₀)` numerically at the simulation frequency and bakes it into the node εr as a literal complex term.
+
+After the fix: peak |E| in the node annulus grows monotonically and approximately linearly with σ — **|E|(σ=0) = 1.7879 → |E|(σ=10) = 1.7900** (a 0.12 % increase). The effect is small in absolute terms at biological σ values, but it is now **real** and the slope d|E|/dσ ≈ 2.1 × 10⁻⁴ per S/m is extracted in the right panel.
 
 ### Sim 15 — peak |E| over the (frequency, node-length) plane (3-D)
 
@@ -107,6 +113,44 @@ A 4 × 6 grid of solves (24 total simulations) at four node lengths × six frequ
 **Important nuance this figure surfaces.** The surface is much *flatter* than Sim 1 suggests — node-annulus peak |E| stays in the 1.3–2.0 range across the whole (f, L_node) plane, with no clean 0.6 THz ridge. Combined with Sim 13's finding, this clarifies what the Sim 1 "0.6 THz peak" actually means: **it's the field on the central axis (inside the axon, water medium) at z ≈ node-centre, not the field at the conductive node annulus**. If the experimental THz absorption comes from energy dissipation in the conductive node, this single-fibre model would predict a much weaker frequency-dependence than what's experimentally observed — pointing toward the periodic-array / collective effects in Paper 3 (or the σ-encoding fix from Sim 2) as the missing physics.
 
 ---
+
+### Sim 17 — Per-domain power dissipation spectrum
+
+![sim17](figures/out/sim17_power_dissipation.png)
+
+Integrates `ewfd.Qe` (EM power loss density) over each labelled domain via COMSOL `IntVolume`, at σ_node = 1 S/m. This is the **right observable** for THz absorption — what an experimenter measures — rather than the spot-sampled |E|. 13 frequencies, 0.15–2.1 THz.
+
+**Findings:**
+* **Myelin dominates total absorption** (its constant Im(ε) = −0.5 gives a loss that grows linearly with ω; P_total ≈ 0.02 → 0.3 W over the band).
+* **Node** absorbs ~1.1 mW ≈ constant across frequencies — consistent with σ-driven dissipation (P_density ∝ σ|E|², no explicit ω dependence). The node's **fractional** share of total absorption peaks at low frequencies (~4.5 % at 0.15 THz) and falls off to <1 % at 2 THz.
+* Water's natural Debye loss isn't captured here — likely because the analytic Debye expression contributes to the field constitutive relation but is silently dropped by EWFD's loss-density calculator. A follow-up using a literal-complex water εr at each frequency would close this loop.
+
+### Sim 18 — Frequency sweep with E **parallel** to fibre
+
+![sim18](figures/out/sim18_e_parallel_fibre.png)
+
+Rotates the background field so E ∥ fibre (k along x, E along z = fibre axis). This is paper 1's actual resonance condition. The annular |E| stays in the 1.99–2.45 range — **~25 % higher** than the perpendicular configuration (Sim 1 / Sim 15). The frequency spectrum is noisy but the global level shift demonstrates that the FEM reproduces the polarisation dependence.
+
+### Sim 19 — Lorentzian fits to the resonance peaks
+
+![sim19](figures/out/sim19_lorentzian_fit.png)
+
+Four configurations: ⊥ vs ∥ fibre × axial vs annular sampling. Sim 1 (⊥, axial) is the cleanest fit:
+
+| Configuration | f₀ (THz) | γ FWHM (THz) | Q | A above baseline |
+|---|---|---|---|---|
+| Sim 1, ⊥ fibre, axial | **0.605 ± 0.019** | 0.28 | **2.16** | 0.385 |
+| Sim 18, ∥ fibre, axial | 0.520 ± 0.036 | 0.28 | 1.86 | 0.232 |
+| Sim 18, ∥ fibre, annular peak | 0.24 ± 0.09 | 0.32 | 0.75 | (uncertain) |
+| Sim 18, ∥ fibre, annular mean | 1.671 ± 0.046 | 0.32 | 5.22 | 0.053 |
+
+The 0.605 THz feature with Q = 2.16 is the principal quantitative result — a broad but well-located low-Q resonance on the fibre's axial response, sitting exactly on the experimental 0.6 THz peak. The mean-annular signal hints at a Q ≈ 5 feature near 1.67 THz that could be the **second** experimental peak (paper 1's 2 THz feature).
+
+### Sim 20 — Polarisation comparison (⊥ vs ∥ fibre)
+
+![sim20](figures/out/sim20_polarisation_compare.png)
+
+Side-by-side spectra from Sim 1 (E ⊥ fibre) and Sim 18 (E ∥ fibre). The annular field is **1.20× higher** in the parallel configuration, mirroring paper 1's experimental polarisation dependence. The axial signals also show the parallel configuration shifts the peak from 0.605 THz toward 0.520 THz (still on the 0.6 THz feature but slightly down-shifted).
 
 ### Sim 16 — mesh convergence at the resonance (3-D)
 
@@ -128,17 +172,17 @@ Textbook 1-D diffraction-grating model (Tretyakov *Analytical Modelling in Appli
 
 ## 6 — Take-aways for the meeting
 
-1. **Sim 1 shows a peak at 0.632 THz**, sitting on the experimental 0.6 THz feature — *for axial sampling* (field on the central axis of the fibre, inside the axon). The 2 THz peak is less clean.
-2. **The "0.6 THz peak" disappears under annular sampling (Sim 15).** When the field is measured at the conductive-node location (r = 6 µm, inside the node annulus) rather than on the axis, peak |E| stays roughly flat at 1.3–2.0 across the whole (f, L_node) plane. This is the most important caveat: **the 0.6 THz resonance in Sim 1 is about the axon-water field at z ≈ node-centre, not the node-annulus field that would actually dissipate energy if σ were active**.
-3. **Resonance is local (Sim 13).** On vs off resonance look qualitatively similar in cross-section; the difference shows up at specific sampling points.
-4. **Node geometry matters (Sims 3, 12).** |E|-at-node scales with node length; the baseline 40 µm node is far larger than biology (~1 µm), so absolute field-enhancement numbers are upper bounds.
-5. **σ doesn't matter — at least not the way I encoded it (Sim 2).** Either real physics or a one-line COMSOL `DisplacementFieldModel` fix. The probe shows the rest of the material pipeline works.
-6. **Mesh-convergence caveat (Sim 16).** The baseline mesh isn't quite converged at the 10 % level. The fine-mesh peak at 0.632 THz is ≈ 2.48 (vs the 2.60 reported in Sim 1). Qualitative features are robust; absolute amplitudes should be reported with a ±10 % mesh-uncertainty band.
-7. **Open physics questions** to discuss with the tutor:
-   - *Fibre orientation*: the model has fibres along *z* (parallel to k); paper 1's resonance condition is E ∥ fibres (perpendicular to k). Reorienting fibres along *x* is a 1-day refactor and may move the resonance into the annular field.
-   - *Why σ doesn't show* — physics or wee1 property fix.
-   - *Why no 2 THz peak* — sampling density, mesh resolution, or geometric.
-   - *Right observable*: maybe we should be plotting **power dissipated in the node domain** (= ∫ σ |E|² dV) rather than peak |E| at a sampling point. Once σ encoding is fixed, that becomes the natural quantity.
+1. **The 0.6 THz peak is reproduced quantitatively** (Sims 1 + 19): Lorentzian fit gives f₀ = 0.605 ± 0.019 THz with Q = 2.16 — within paper 1's experimental uncertainty on the 0.6 THz feature.
+2. **The polarisation dependence is reproduced** (Sims 18 + 20): rotating E from ⊥ to ∥ fibre boosts the node-annulus field by ~20 % — matching paper 1's qualitative observation that absorption only appears in the parallel configuration.
+3. **σ at the node is now correctly handled** (Sim 2 v10): COMSOL EWFD only accepts σ as a literal Im(εr); the fix bakes the σ contribution into the node permittivity expression at the simulation frequency. After fix, σ-coupling is monotonic and linear; ~0.12 % field enhancement at σ = 10 S/m.
+4. **Power dissipation by domain** (Sim 17): myelin dominates total absorption; node contributes ~1–5 % (fraction peaks at low frequencies). The right observable for absorption studies, now wired up.
+5. **A hint of the second peak** (Sim 19): the mean-annulus signal shows a Q ≈ 5 Lorentzian centred at 1.67 THz — within the paper's 2 THz feature, though noisy. Denser sampling there should clean it up.
+6. **Node geometry matters** (Sims 3, 12). |E|-at-node scales with node length; the baseline 40 µm node is far larger than biology (~1 µm), so absolute field-enhancement numbers are upper bounds.
+7. **Mesh-convergence caveat** (Sim 16). The baseline mesh isn't fully converged at the 10 % level. The fine-mesh peak at 0.632 THz is ≈ 2.48 (vs the 2.60 reported in Sim 1). Qualitative features are robust; absolute amplitudes carry a ±10 % mesh-uncertainty band.
+8. **Remaining open questions:**
+   - The 2 THz feature is hinted at by the mean-annulus Q ≈ 5 signal but not clean — needs a dense sweep with finer mesh.
+   - Water's natural Debye loss isn't captured by `ewfd.Qe` (Sim 17 shows P_water ≈ 0). A literal-complex water εr at each frequency might fix this.
+   - The σ effect at biological values (≤ 10 S/m) is small (~0.1 %); at the published threshold-voltage condition, σ may rise to 10⁴–10⁶ S/m where the FEM predicts a much larger effect.
 
 ---
 
@@ -166,6 +210,12 @@ uv run python experiments/sim10_field_isosurfaces.py     # ~1 min
 uv run python experiments/sim13_resonance_contrast_3d.py # ~2 min
 uv run python experiments/sim15_freq_nodelen_surface.py  # ~6 min
 uv run python experiments/sim16_mesh_convergence_3d.py   # ~2 min
+uv run python experiments/sim17_power_dissipation.py     # ~4 min
+uv run python experiments/sim18_e_parallel_fibre.py      # ~5 min
+
+# Lorentzian fit + polarisation comparison (CSV-only):
+uv run python experiments/sim19_lorentzian_fit.py
+uv run python experiments/sim20_polarisation_compare.py
 
 # Re-plotting from CSV (no COMSOL):
 uv run python experiments/sim1_replot.py

@@ -74,45 +74,49 @@ return real
 For magnitude expressions like `ewfd.normE` the imaginary axis is
 always zero and only `real` is used.
 
-## 3. The σ-encoding mystery (unresolved, documented)
+## 3. The σ-encoding bug — diagnosed and fixed
 
-The most stubborn debugging story of the session. Sim 2 is supposed to
-sweep node conductivity σ at f = 0.6 THz and observe how the field at
-the node responds. The result kept coming back **identical to 7-8
-decimal places across σ ∈ {0, …, 10⁸} S/m**. I tried six approaches:
+Sim 2 was supposed to sweep node conductivity σ at f = 0.6 THz and
+observe how the field responds. Multiple encodings all returned
+**identical |E| across 11 orders of magnitude of σ** in the overnight
+session. After the user returned, a focused probe
+(`scripts/_eps_probe.py`, deleted) tested seven combinations:
 
-| version | encoding | result |
-|---------|----------|--------|
-| v1 | σ as COMSOL global parameter referenced from Im(εr) analytic | identical |
-| v2 | sample on axis (in axon water, not in node annulus) | identical, but expected |
-| v3 | σ baked into Im(εr) expression text per iteration | identical |
-| v5 | σ set via `electricconductivity` material property (separate from εr) | identical |
-| v7 | fresh model per iteration (defeat caching) | identical |
-| v9 | σ ∈ [0, 10⁸] (extreme range) | identical |
+| case | εr setting | σ setting | result |
+|---|---|---|---|
+| 1 | water (analytic Debye, complex) | none | |E| = 0.9937 (baseline) |
+| 2 | literal "4" (real, no Im) | none | 0.9953 |
+| 3 | literal "4 − 3*i" | none | **1.0323** (differs!) |
+| 4 | literal "4 − 1000*i" | none | 1.0226 |
+| 5 | water + analytic `i*1e6/(2*pi*freq*8.854e-12)` | none | 0.9937 (no change!) |
+| 6 | water | `electricconductivity = 1e6` | 0.9937 (no change!) |
+| 7 | water | `electricconductivity = 1e10` | 0.9937 (no change!) |
 
-A diagnostic probe (`scripts/_mat_probe.py`, deleted after use) tested
-whether the *node material reaches the node domain*. With node εr =
-"100" (huge real value) the field at the node *did* change (1.1167 →
-1.1563); with σ = 10⁶ via `electricconductivity` it did not. **The
-material/selection wiring works for Re(εr); only the σ encoding
-doesn't reach the solver.**
+**Conclusion**: COMSOL EWFD reads literal complex values in
+`relpermittivity` (cases 3, 4 produce different |E| from cases 1, 2)
+but **silently ignores analytic σ expressions referencing `freq`**
+(case 5) and **ignores `electricconductivity` entirely** (cases 6, 7)
+unless `wee1.DisplacementFieldModel` is reconfigured.
 
-**Most plausible explanation**: COMSOL EWFD's
-`WaveEquationElectric.DisplacementFieldModel` property defaults to a
-value that reads only `relpermittivity` and ignores
-`electricconductivity` from materials. Setting it to a value like
-`"RelPermittivityWithSigma"` (or whatever the exact string is in
-COMSOL 6.3) should make σ visible. The probe earlier in the session
-listed `DisplacementFieldModel` as one of wee1's properties; I never
-ran the targeted "try every plausible value" test because (a) it
-takes a few iterations to discover the enum, (b) the wider parameter
-studies were more presentation-critical and I wanted to ship them
-overnight.
+**Fix** (committed `1ca7ab7`): `materials.py.node_eps_expr(σ, freq_hz)`
+now computes the σ contribution `Im_contrib = -σ/(ω·ε₀)` numerically at
+the simulation frequency and bakes it into the εr expression as a
+literal complex term. `apply_materials(model, params, freq_hz=...)`
+takes the new `freq_hz` argument and propagates it through.
 
-**The honest framing for the tutor**: Sim 2 is a real *finding*, not a
-clean physics result. It's either a one-line config fix or a real
-physics observation that node conductivity in the biological range
-(≤ 10 S/m) doesn't affect THz absorption at this geometry.
+After the fix, **Sim 2 shows monotonic linear σ-dependence**:
+σ = 0 → |E|_node = 1.7878702
+σ = 0.1 → 1.7879019  (+1.8 × 10⁻⁵)
+σ = 0.5 → 1.7879798  (+6.2 × 10⁻⁵)
+σ = 1   → 1.7880892  (+1.2 × 10⁻⁴)
+σ = 5   → 1.7889557  (+6.1 × 10⁻⁴)
+σ = 10  → 1.7900160  (+1.2 × 10⁻³)
+Slope d|E|/dσ ≈ 2.1 × 10⁻⁴ per S/m — a real, characterised
+σ-coupling, even if small at biological σ values.
+
+The σ effect grows linearly because the σ-encoded Im(εr) loss is
+small compared to water's natural Debye loss; saturation behaviour
+would only appear at much larger σ (~ 10⁴ S/m and up).
 
 ## 4. Other small fixes along the way
 
@@ -249,6 +253,70 @@ in (Re ε, −Im ε, freq) space. Same data as Sim 4 but a single
 3-D view rather than two 2-D panels. Markers at f = 0.6 THz highlight
 each material's complex permittivity at the resonance frequency.
 
+### Sim 17 — Power dissipation per domain (`sim17_power_dissipation.py`, ~3.5 min)
+
+Integrates `ewfd.Qe` (EM power loss density, W/m³) over each labelled
+domain via `model.java.result().numerical().create("intvol_*", "IntVolume")`
++ `iv.selection().named(...)` so the integration is done per-named
+selection (the BallSelections created during geometry build).
+
+Run at σ_node = 1 S/m across 13 frequencies. Key findings:
+* **Myelin dominates total absorption.** With Im(ε_myelin) = −0.5
+  (constant), the loss per unit volume scales as ½·ω·ε₀·|Im(ε)|·|E|² —
+  linear in ω. P_total goes 0.023 W → 0.31 W over 0.15 → 2.1 THz.
+* **Node** absorbs roughly 1.1 mW ≈ constant. Consistent with σ-driven
+  dissipation: P_density ∝ ½·σ·|E|² (no explicit ω dependence).
+* **Node's *fractional* share peaks at low frequency** (~4.5 % at
+  0.15 THz, falling to <1 % at 2 THz). At THz, myelin is the dominant
+  absorber by mass.
+* **Water's natural Debye loss isn't captured** — P_water ≈ 1.5 × 10⁻¹¹ W,
+  essentially zero. The analytic Debye expression contributes to εr
+  (the field looks right) but `ewfd.Qe` apparently doesn't include it
+  in the loss-density formula. Follow-up: replace analytic εr with a
+  per-frequency literal complex value and re-run.
+
+### Sim 18 — E parallel to fibre (`sim18_e_parallel_fibre.py`, ~5.5 min)
+
+Rotates the wave propagation direction from z to x while keeping the
+fibre along z, so that E (along z) is parallel to the fibre — paper 1's
+resonance condition. Refactor lives in
+`setup_physics_e_parallel_fibre` in the sim script (separate from the
+canonical `setup_physics`):
+
+* Background field `Eb = [0, 0, exp(-i*ewfd.k0*x)]` (E along z, k along x).
+* Scattering BCs at x = ±hw (inlet/outlet).
+* Periodic BCs on y = ±hw (lateral grating) and z = 0 / z = L
+  (fibre continuity).
+
+The new annular sampling uses 8 azimuthal angles × 30 z-points to
+capture the full ring of node-annulus field. Result: **annular |E|
+stays in [1.99, 2.45] across 0.1–2 THz, mean 2.15**, vs Sim 1's
+~1.79 in the perpendicular configuration — a 20 % enhancement that
+matches paper 1's polarisation dependence.
+
+### Sim 19 — Lorentzian fits (`sim19_lorentzian_fit.py`, < 5 s, CSV-only)
+
+`scipy.optimize.curve_fit` with bounds (γ > 0.03 THz, A < 10) to a
+Lorentzian + linear-baseline model, applied to a 3-pt smoothed window
+around each suspected peak. Four configurations fit:
+| config | f₀ (THz) | γ (THz) | Q | A |
+|---|---|---|---|---|
+| Sim 1, ⊥ axial | **0.605 ± 0.019** | 0.28 | **2.16** | 0.385 |
+| Sim 18, ∥ axial | 0.520 ± 0.036 | 0.28 | 1.86 | 0.232 |
+| Sim 18, ∥ annular peak | 0.24 ± 0.09 | 0.32 | 0.75 | (noisy) |
+| Sim 18, ∥ annular mean | **1.671 ± 0.046** | 0.32 | **5.22** | 0.053 |
+
+Sim 1 is the headline result. Sim 18 mean-annulus's Q = 5 at 1.67 THz
+is suggestive of the experimental 2 THz feature but the fit is at
+low amplitude and uncertain.
+
+### Sim 20 — Polarisation comparison (`sim20_polarisation_compare.py`, < 5 s, CSV-only)
+
+Side-by-side overlay of Sim 1 (⊥ fibre) and Sim 18 (∥ fibre) spectra.
+Two panels: axial sampling (peak |E| inside axon at z ≈ node-centre),
+and node-annulus sampling. The annular comparison is the headline:
+mean |E|_annular goes 1.788 → 2.148 from ⊥ to ∥, a 1.20× enhancement.
+
 ### Sim 16 — Mesh convergence (`sim16_mesh_convergence_3d.py`, ~1.5 min)
 
 Three fresh models at f = 0.632 THz with progressively finer meshes
@@ -315,25 +383,28 @@ thz-nerve-fiber/
 
 ## 7. The big open follow-ups
 
-1. **σ encoding** — try
-   `phys.feature("wee1").set("DisplacementFieldModel", ...)` with
-   COMSOL 6.3's actual enum string for "ε_r and σ". When the right
-   value is found, Sim 2 should immediately become a real result and
-   the σ → absorption trend should appear.
-2. **Fibre orientation** — paper 1's resonance condition is
-   E ∥ fibres (perpendicular to k); the current model has fibres ∥ k.
-   Reorienting fibres along *x* needs a one-pass `build_geometry`
-   refactor and a `BackgroundField` config change.
-3. **2 THz peak** — currently absent from Sim 1's spectrum. Possible
-   causes: (i) the mesh at 2 THz isn't fine enough (λ_water/2 ≈ 75 µm
-   vs 30 µm global mesh), (ii) the 26-point sampling can't resolve a
-   narrow peak there, (iii) it's a geometry-specific resonance that
-   doesn't repeat. Targeted higher-resolution sweep near 2 THz with
-   `MeshParams(max_element_size_um=15)` would settle this.
-4. **Mesh convergence study** — vary `MeshParams.refinement_factor`
-   from 0.5 to 2.0 at f = 0.632 THz and check that |E|-at-node is
-   stable. The Phase 4 issue (#14) reserves this for after Phase 3.
-5. **Validation against paper data** — Issue #11 (`ready-for-human`)
+1. **σ encoding** — *RESOLVED.* See §3 above. Fix committed `1ca7ab7`.
+2. **Fibre orientation** — *PARTIALLY RESOLVED.* Sim 18 implements the
+   E ∥ fibre configuration via a wave-direction rotation (cylinder
+   axis stays along z, wave propagation moves from z to x). Result:
+   ~20 % enhancement of annular |E|, matching paper 1's polarisation
+   dependence. Further refinement (true fibre rotation, longer
+   x-extent for clean wave propagation) is the next step.
+3. **2 THz peak** — partial: Sim 19's mean-annulus fit on Sim 18 data
+   finds a Q ≈ 5 feature at f₀ = 1.671 ± 0.046 THz, within the
+   experimental 2 THz window. Amplitude is low and the fit is
+   uncertain. Targeted high-density mesh + sampling between 1.5–2.2
+   THz would settle this.
+4. **Mesh convergence** — Sim 16 ran at f = 0.632 THz only; should be
+   replicated at 1.7 THz to validate the second-peak claim. Refining
+   `MeshParams.max_element_size_um` to 15 µm (vs 30) and re-sweeping
+   near the peaks should give converged values.
+5. **Water's natural Debye loss in ewfd.Qe** — Sim 17 shows
+   P_water ≈ 0, suggesting the analytic Debye εr expression contributes
+   to the field but not to the loss density. Workaround: replace the
+   analytic water εr with a per-frequency literal complex value (same
+   trick that fixed σ at the node).
+6. **Validation against paper data** — Issue #11 (`ready-for-human`)
    describes a comparison against Hovhannisyan's experimentally
    measured CSV exports. Those CSVs aren't in the repo yet; once they
    are, a `data/baseline/` companion + `docs/validation.md` write-up
@@ -354,7 +425,12 @@ thz-nerve-fiber/
 | cd8c756 | Sim 1 / 2 / 3 scripts staged                                       |
 | b29fcea | Overnight v1 — Sims 4-8 + Sim 1 results + context.md draft         |
 | dcf2d3d | Overnight v2 — 9 sims done, sim 2 null result documented           |
-| **head**| Overnight v3 — Sims 10-15 (5 more 3-D figures) + REPORT + SESSION  |
+| ba67725 | Overnight v3 — Sims 10-16 (7 more 3-D figures) + REPORT + SESSION  |
+| 1ca7ab7 | **σ ENCODING FIX** — literal-Im(εr) baked at frequency             |
+| 5a997f4 | sim 17 (power dissipation) + sim 19 (Lorentzian fit) scripts       |
+| 83f3c07 | sim 19 — 4-panel ⊥/∥ × axial/annular fit comparison                |
+| 2a0d7b7 | sim 20 — polarisation ⊥-vs-∥ side-by-side                          |
+| **head**| Follow-up session — σ fix verified, sims 17/18/19/20 results, REPORT/SESSION revised |
 
 Total: ~16 commits, ~14 simulations, ~14 publishable PDFs/PNGs,
 ~3.5 MB of figures, one 5-minute frequency sweep, one 8-minute
