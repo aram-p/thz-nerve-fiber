@@ -82,46 +82,70 @@ def node_epsilon(freq_hz: float | np.ndarray, sigma_S_per_m: float) -> complex |
 
 
 # --- COMSOL analytic expressions --------------------------------------------
+#
+# IMPORTANT: COMSOL EWFD silently drops the imaginary part of analytic
+# expressions like ``73.5/(1 + i*2*pi*freq*9.36e-12)`` when used for
+# `relpermittivity`. A probe verified that *literal* complex values
+# ("3.99 - 2.94*i") produce different fields than purely-real expressions,
+# but the analytic Debye form is treated as if its Im part were zero.
+#
+# So: for any sim that depends on Im(ε), pass ``freq_hz=...`` to
+# ``apply_materials`` and the water εr is baked as a literal complex value
+# computed at that frequency. Same trick as the σ-at-node fix.
 
-# Water — references COMSOL's built-in `freq` (Hz).
-WATER_EPS_EXPR: str = (
+# Analytic water εr — kept for completeness, but DON'T use this directly
+# for εr assignment in EWFD. Use `water_eps_expr(freq_hz)` instead.
+_WATER_EPS_EXPR_ANALYTIC: str = (
     "3.17"
     " + 73.5/(1 + i*2*pi*freq*9.36e-12)"
     " + 1.73/(1 + i*2*pi*freq*0.30e-12)"
 )
 
-# Myelin — constant complex.
+# Backwards-compat alias — points at the analytic form for callers that don't
+# yet know about the literal-at-frequency requirement. New code should use
+# `water_eps_expr(freq_hz)`.
+WATER_EPS_EXPR: str = _WATER_EPS_EXPR_ANALYTIC
+
+# Myelin — constant complex. This one is already literal so works as-is.
 MYELIN_EPS_EXPR: str = "4.5 - 0.5*i"
 
-# Node — water plus σ/(ωε₀) term.
-#
-# EWFD's WaveEquationElectric reads the material's `relpermittivity` but
-# IGNORES `electricconductivity`. A probe further showed that *analytic*
-# σ expressions referencing `freq` (e.g. ``i*sigma/(2*pi*freq*epsilon0_const)``)
-# evaluate to zero — only LITERAL complex values in `relpermittivity` change
-# the field. So we encode σ as a literal at a specific frequency by precomputing
-# the Im contribution σ/(ω·ε₀) and pasting it into the expression.
-#
-# Sign convention: water's Debye expression here gives negative Im (e^{-iωt}-style
-# response), so adding loss from σ means *subtracting* further from Im. The
-# literal we add is ``-(σ/(ω·ε₀)) * i``.
-NODE_EPS_EXPR: str = WATER_EPS_EXPR  # legacy symbol — equivalent to σ=0 at any f
+
+def water_eps_expr(freq_hz: float | None = None) -> str:
+    """COMSOL water εr expression.
+
+    If ``freq_hz`` is given, returns a literal complex value computed from
+    the double-Debye formula at that frequency — this is the only encoding
+    that actually delivers a non-zero Im(ε) into EWFD's solver.
+
+    Without ``freq_hz``, returns the analytic expression. EWFD will treat
+    its Im part as zero (lossless water) — use only when you know loss
+    won't matter (e.g. checking geometry).
+    """
+
+    if freq_hz is None:
+        return _WATER_EPS_EXPR_ANALYTIC
+    eps = complex(debye_water_epsilon(float(freq_hz)))
+    # COMSOL accepts "3.99 + (-2.94)*i" style; the sign goes on the literal.
+    return f"({eps.real:.8g}) + ({eps.imag:.8g})*i"
 
 
 def node_eps_expr(sigma_S_per_m: float, freq_hz: float | None = None) -> str:
-    """COMSOL analytic expression for the node ε.
+    """COMSOL node εr = water + i·σ/(ω·ε₀), baked as a literal at ``freq_hz``.
 
-    If ``freq_hz`` is provided, the σ contribution is baked in as a literal
-    Im part (the encoding that actually reaches EWFD). If ``freq_hz`` is None
-    and σ != 0, we fall back to the analytic form (won't actually apply σ —
-    use this only for σ = 0 cases).
+    Same encoding requirement as ``water_eps_expr``: COMSOL only honours Im(ε)
+    when the value is a literal complex number, so we precompute the whole
+    thing numerically.
     """
 
-    if sigma_S_per_m == 0 or freq_hz is None:
-        return WATER_EPS_EXPR
-    omega = 2 * np.pi * freq_hz
-    im_contrib = -sigma_S_per_m / (omega * EPS_0)  # negative for loss in -iωt convention
-    return f"({WATER_EPS_EXPR}) + ({im_contrib:.6g})*i"
+    if freq_hz is None:
+        # Analytic fallback (Im will be silently dropped). Useful only for
+        # σ = 0 cases or geometry-only checks.
+        return _WATER_EPS_EXPR_ANALYTIC
+    eps_water = complex(debye_water_epsilon(float(freq_hz)))
+    omega = 2 * np.pi * float(freq_hz)
+    # In e^{-iωt} convention, loss has negative Im(ε); add the σ contribution.
+    eps_node = eps_water + (-sigma_S_per_m / (omega * EPS_0)) * 1j
+    return f"({eps_node.real:.8g}) + ({eps_node.imag:.8g})*i"
 
 
 # --- COMSOL binding ---------------------------------------------------------
@@ -192,10 +216,12 @@ def apply_materials(
     comp_tag = str(java.component().tags()[0])
     comp = java.component(comp_tag)
 
-    # Water — covers axon and external.
-    mat_water = _create_material(comp, "mat_water", "Water (double Debye)", WATER_EPS_EXPR)
+    # Water — covers axon and external. Bake the literal complex εr at the
+    # simulation frequency so EWFD sees the imaginary (loss) part.
+    water_expr = water_eps_expr(freq_hz=freq_hz)
+    mat_water = _create_material(comp, "mat_water", "Water (double Debye)", water_expr)
     mat_water.selection().named(selection_tag("axon"))
-    mat_water_ext = _create_material(comp, "mat_water_ext", "Water (external)", WATER_EPS_EXPR)
+    mat_water_ext = _create_material(comp, "mat_water_ext", "Water (external)", water_expr)
     mat_water_ext.selection().named(selection_tag("external"))
 
     # Myelin — covers proximal & distal sheath segments.
