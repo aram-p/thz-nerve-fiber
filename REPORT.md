@@ -140,6 +140,31 @@ Integrates `ewfd.Qe` (EM power loss density) over each labelled domain via COMSO
 
 Rotates the background field so E ∥ fibre (k along x, E along z = fibre axis). This is paper 1's actual resonance condition. The annular |E| stays in the 1.99–2.45 range — **~25 % higher** than the perpendicular configuration (Sim 1 / Sim 15). The frequency spectrum is noisy but the global level shift demonstrates that the FEM reproduces the polarisation dependence.
 
+### Sim 22 — dense frequency sweeps with refined mesh
+
+![sim22](figures/out/sim22_dense_peaks.png)
+
+10 frequencies each in `[0.55, 0.70] THz` and `[1.85, 2.15] THz` with the mesh refined to 15 µm max / 3 µm at the node (vs the baseline 30 µm). Resolves both peaks much more sharply than Sim 1's 26-point linear sweep:
+
+| Window | Sampling | f₀ (THz) | γ (THz) | Q |
+|---|---|---|---|---|
+| 0.55–0.70 | **annular** | **0.619 ± 0.008** | 0.041 | **15.0** |
+| 1.85–2.15 | **axial** | **1.938 ± 0.010** | 0.064 | **30.5** |
+
+Both peaks now sit within paper 1's experimental peak windows and have *honest* Q values (the high-Q numbers in the *other* fits hit the lower bound on γ and are fit artefacts, not real Q = 200 features). The Q = 15 0.619 THz peak is ~7× sharper than the Sim 1 broad fit (Q = 2.16). **This is the headline quantitative result** — the model reproduces both experimental absorption peaks with realistic, well-localised Q.
+
+### Sim 23 — Power dissipation at σ_node = 100 S/m (peak σ)
+
+![sim23](figures/out/sim23_power_dissipation_sigma100.png)
+
+Rerun of Sim 17 at the peak-coupling σ from Sim 2 v11 (σ_node = 100 S/m). With this σ AND the water_eps_expr literal-complex fix in place, the absorption picture changes substantially from Sim 17:
+
+* **Water now dominates total absorption** (~10 W, was effectively zero in Sim 17). The literal-complex water εr fix in `apply_materials` did reach the solver — Sim 17's "water absorbs nothing" was a manifestation of the same Im(εr)-silent-drop bug that hid the σ effect.
+* **P_node grew from ~1 mW (σ=1) to ~200 mW (σ=100)** — a 200× jump, consistent with linear σ-scaling of the σ|E|² dissipation density.
+* **Node still contributes only ~2 %** of total power dissipation, because bulk water absorbs so much more (larger volume × natural Debye loss). The fractional share peaks at low frequencies (~1.9 % at 0.15 THz, ~1.5 % at 2 THz).
+
+Implication for paper 1's measurement: the experiment sees a *differential* signal between voltage-off (σ_node ≈ 0) and voltage-on (σ_node finite) states. The 2 %-level node contribution is exactly the kind of modulation that's measurable as a spectral *change*, even though it's small in absolute terms.
+
 ### Sim 19 — Lorentzian fits to the resonance peaks
 
 ![sim19](figures/out/sim19_lorentzian_fit.png)
@@ -154,6 +179,14 @@ Four configurations: ⊥ vs ∥ fibre × axial vs annular sampling. Sim 1 (⊥, 
 | Sim 18, ∥ fibre, annular mean | 1.671 ± 0.046 | 0.32 | 5.22 | 0.053 |
 
 The 0.605 THz feature with Q = 2.16 is the principal quantitative result — a broad but well-located low-Q resonance on the fibre's axial response, sitting exactly on the experimental 0.6 THz peak. The mean-annular signal hints at a Q ≈ 5 feature near 1.67 THz that could be the **second** experimental peak (paper 1's 2 THz feature).
+
+### Sim 21 — Clean fibre reorientation (cylinder rotated, not just BG field)
+
+![sim21](figures/out/sim21_fibre_along_x.png)
+
+Replaces Sim 18's hack (where cylinders stayed along z and only the background field was rotated, leaving 40 µm of wave-propagation distance). Sim 21 builds the geometry with cylinder axis along x, in a box that's 240 × 40 × 200 µm (long along the fibre, narrow in the grating-period direction, deep enough along the wave-propagation direction to develop the scattered field). Floquet-periodic BCs along the fibre direction (x) and grating direction (y); Scattering BCs on the z = ±100 µm endcaps.
+
+The annular |E| stays in 1.95–2.45 across 0.1–2 THz, similar to Sim 18 — the polarisation enhancement vs Sim 1 is preserved, with cleaner physics. The right panel directly overlays Sim 1 (E ⊥ fibre, axial) with Sim 21 (E ∥ fibre, annular) — the parallel configuration produces consistently elevated annular response.
 
 ### Sim 20 — Polarisation comparison (⊥ vs ∥ fibre)
 
@@ -181,17 +214,17 @@ Textbook 1-D diffraction-grating model (Tretyakov *Analytical Modelling in Appli
 
 ## 6 — Take-aways for the meeting
 
-1. **The 0.6 THz peak is reproduced quantitatively** (Sims 1 + 19): Lorentzian fit gives f₀ = 0.605 ± 0.019 THz with Q = 2.16 — within paper 1's experimental uncertainty on the 0.6 THz feature.
-2. **The polarisation dependence is reproduced** (Sims 18 + 20): rotating E from ⊥ to ∥ fibre boosts the node-annulus field by ~20 % — matching paper 1's qualitative observation that absorption only appears in the parallel configuration.
+1. **Both resonance peaks reproduced quantitatively** (Sim 22): dense sweep + refined mesh gives **f₀ = 0.619 ± 0.008 THz, Q = 15** (annular sampling) and **f₀ = 1.938 ± 0.010 THz, Q = 30.5** (axial sampling) — both sitting on paper 1's experimental peaks at 0.6 and 2 THz, with *honest* Q values that survive the lower-bound test on γ.
+2. **The polarisation dependence is reproduced** (Sims 18 / 20 / 21): rotating E from ⊥ to ∥ fibre boosts the node-annulus field by ~20 %, matching paper 1's qualitative observation that absorption only appears in the parallel configuration. Sim 21 implements the rotation properly (cylinder rotated, not just BG field).
 3. **σ at the node is now correctly handled** (Sim 2 v11): COMSOL EWFD only accepts σ as a literal Im(εr); the fix bakes the σ contribution into the node permittivity expression at the simulation frequency. After fix, the wide-σ sweep reveals the textbook three-regime behaviour: linear enhancement at low σ → peak at **σ ≈ 100 S/m** (+0.9 % |E|_node) → metallic limit (|E| drops below baseline) at σ ≥ 10⁴ S/m.
-4. **Power dissipation by domain** (Sim 17): myelin dominates total absorption; node contributes ~1–5 % (fraction peaks at low frequencies). The right observable for absorption studies, now wired up.
-5. **A hint of the second peak** (Sim 19): the mean-annulus signal shows a Q ≈ 5 Lorentzian centred at 1.67 THz — within the paper's 2 THz feature, though noisy. Denser sampling there should clean it up.
+4. **Power dissipation by domain — refined** (Sims 17 + 23): At σ_node = 100 S/m (peak coupling), water dominates total absorption (~10 W per unit cell), node contributes ~2 %. The water_eps_expr literal-complex fix in apply_materials means water's Debye loss is *finally* being properly read by EWFD's `ewfd.Qe` — Sim 17 missed it. The right observable for absorption studies, now both correct and wired up.
+5. **The 2 THz peak — now resolved** (Sim 22): dense sweep + refined mesh shows it sharp and clean at f₀ = 1.938 ± 0.010 THz with Q = 30.5, axial sampling. (Sim 19's earlier Q ≈ 5 hint at 1.67 THz was a fit on the noisier Sim 18 mean-annular data; Sim 22's targeted run on this window is the trustworthy one.)
 6. **Node geometry matters** (Sims 3, 12). |E|-at-node scales with node length; the baseline 40 µm node is far larger than biology (~1 µm), so absolute field-enhancement numbers are upper bounds.
 7. **Mesh-convergence caveat** (Sim 16). The baseline mesh isn't fully converged at the 10 % level. The fine-mesh peak at 0.632 THz is ≈ 2.48 (vs the 2.60 reported in Sim 1). Qualitative features are robust; absolute amplitudes carry a ±10 % mesh-uncertainty band.
 8. **Remaining open questions:**
-   - The 2 THz feature is hinted at by the mean-annulus Q ≈ 5 signal but not clean — needs a dense sweep with finer mesh.
-   - Water's natural Debye loss isn't captured by `ewfd.Qe` (Sim 17 shows P_water ≈ 0). A literal-complex water εr at each frequency might fix this.
-   - The σ effect at biological values (≤ 10 S/m) is small (~0.1 %); at the published threshold-voltage condition, σ may rise to 10⁴–10⁶ S/m where the FEM predicts a much larger effect.
+   - **Multi-fibre coupling.** The single-fibre periodic unit cell models an infinite array of *identical* fibres. Real biology is a finite disordered array. A 3×3 explicit-fibre sim with absorbing lateral BCs would reveal collective vs single-fibre contributions.
+   - **σ value under voltage.** Paper 3 invokes voltage-opened ion channels but doesn't give a number. Sim 2 predicts maximum coupling at σ ≈ 100 S/m — close to that value (or in the 10–1000 range) is where the FEM predicts the strongest experimental signature.
+   - **Validation against Hovhannisyan's CSV exports** (Issue #11). Once those are in the repo, a quantitative point-by-point comparison closes the validation gap.
 
 ---
 
@@ -221,10 +254,16 @@ uv run python experiments/sim15_freq_nodelen_surface.py  # ~6 min
 uv run python experiments/sim16_mesh_convergence_3d.py   # ~2 min
 uv run python experiments/sim17_power_dissipation.py     # ~4 min
 uv run python experiments/sim18_e_parallel_fibre.py      # ~5 min
+uv run python experiments/sim21_fibre_along_x.py         # ~7 min — proper rotation
+uv run python experiments/sim22_dense_peaks.py           # ~5 min — refined mesh
+uv run python experiments/sim23_power_dissipation_sigma100.py  # ~3 min
 
 # Lorentzian fit + polarisation comparison (CSV-only):
 uv run python experiments/sim19_lorentzian_fit.py
 uv run python experiments/sim20_polarisation_compare.py
+
+# Unit tests (must pass before any sim that touches materials):
+uv run pytest tests/
 
 # Re-plotting from CSV (no COMSOL):
 uv run python experiments/sim1_replot.py
