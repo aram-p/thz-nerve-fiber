@@ -3,9 +3,10 @@
 Physics setup (per issue #10):
 * Electromagnetic Waves, Frequency Domain (EWFD).
 * Scattered-field formulation: solve for the scattered field on top of an
-  x-polarised plane wave traveling in +z: E_bg = exp(-i·k·z) x̂.
-* Scattering (matched) boundary conditions on the inlet (z=0) and outlet
-  (z=L) end-caps of the external cylinder.
+  x-polarised plane wave traveling in +z: E_bg = exp(-i·k·z) x̂, with k
+  either the vacuum k0 (Sims 1-26) or matched to water (Sim 27 onwards).
+* Scattering (matched) boundary conditions on the inlet and outlet
+  end-caps of the external box (z = -pad and z = L + pad).
 * MUMPS direct solver, frequency-domain study.
 
 Result extraction:
@@ -58,6 +59,8 @@ def add_endcap_selections(model: Any, geom_params: GeometryParams) -> tuple[str,
 
     L = total_length_um(geom_params)
     hw = geom_params.external_half_width_um
+    z_in = -geom_params.end_padding_um
+    z_out = L + geom_params.end_padding_um
     pad = hw * 0.5  # generous outer padding so the box selection captures the full face
     eps = 0.5  # µm tolerance for "on the face"
 
@@ -68,18 +71,18 @@ def add_endcap_selections(model: Any, geom_params: GeometryParams) -> tuple[str,
             geom.feature().remove(t)
 
     _add_box_selection(
-        geom, "sel_inlet", "Inlet face (z=0)",
+        geom, "sel_inlet", "Inlet face",
         entity_dim=2,
         xmin=-hw - pad, xmax=hw + pad,
         ymin=-hw - pad, ymax=hw + pad,
-        zmin=-eps,  zmax=eps,
+        zmin=z_in - eps, zmax=z_in + eps,
     )
     _add_box_selection(
-        geom, "sel_outlet", "Outlet face (z=L)",
+        geom, "sel_outlet", "Outlet face",
         entity_dim=2,
         xmin=-hw - pad, xmax=hw + pad,
         ymin=-hw - pad, ymax=hw + pad,
-        zmin=L - eps, zmax=L + eps,
+        zmin=z_out - eps, zmax=z_out + eps,
     )
     geom.run()
     return f"{geom_tag}_sel_inlet", f"{geom_tag}_sel_outlet"
@@ -101,6 +104,8 @@ def add_lateral_periodic_selections(model: Any, geom_params: GeometryParams) -> 
 
     L = total_length_um(geom_params)
     hw = geom_params.external_half_width_um
+    z_lo = -geom_params.end_padding_um
+    z_hi = L + geom_params.end_padding_um
     eps = 0.5
 
     # Drop any previous pair selections.
@@ -116,22 +121,22 @@ def add_lateral_periodic_selections(model: Any, geom_params: GeometryParams) -> 
                        entity_dim=2,
                        xmin=-hw - eps, xmax=-hw + eps,
                        ymin=-hw - eps, ymax=hw + eps,
-                       zmin=-eps, zmax=L + eps)
+                       zmin=z_lo - eps, zmax=z_hi + eps)
     _add_box_selection(geom, "sel_x_plus", "x = +hw face",
                        entity_dim=2,
                        xmin=hw - eps, xmax=hw + eps,
                        ymin=-hw - eps, ymax=hw + eps,
-                       zmin=-eps, zmax=L + eps)
+                       zmin=z_lo - eps, zmax=z_hi + eps)
     _add_box_selection(geom, "sel_y_minus", "y = -hw face",
                        entity_dim=2,
                        xmin=-hw - eps, xmax=hw + eps,
                        ymin=-hw - eps, ymax=-hw + eps,
-                       zmin=-eps, zmax=L + eps)
+                       zmin=z_lo - eps, zmax=z_hi + eps)
     _add_box_selection(geom, "sel_y_plus", "y = +hw face",
                        entity_dim=2,
                        xmin=-hw - eps, xmax=hw + eps,
                        ymin=hw - eps, ymax=hw + eps,
-                       zmin=-eps, zmax=L + eps)
+                       zmin=z_lo - eps, zmax=z_hi + eps)
 
     # UnionSelection per pair so PeriodicCondition has a single named input.
     for tag, inputs, label in (
@@ -147,8 +152,34 @@ def add_lateral_periodic_selections(model: Any, geom_params: GeometryParams) -> 
     return f"{geom_tag}_sel_x_pair", f"{geom_tag}_sel_y_pair"
 
 
-def setup_physics(model: Any, geom_params: GeometryParams) -> None:
-    """Add EWFD with scattered-field formulation + matched-BC end-caps."""
+def background_field_expr(background_eps: complex | None = None) -> str:
+    """x-component of the background plane wave E_bg = exp(-i·k·z).
+
+    With ``background_eps=None`` the wave number is the vacuum k0 (the
+    original Sims 1-26 setup). The domain is filled with water, though, so
+    that wave is not a solution of the background problem and the
+    scattered field carries a volume source everywhere in the water. Pass
+    the water permittivity at the solve frequency to use the matched
+    k = k0·n_water instead (COMSOL e^{+jωt} convention, so Im(n) < 0 decays).
+    """
+
+    if background_eps is None:
+        return "exp(-i*ewfd.k0*z)"
+    n = complex(np.sqrt(complex(background_eps)))
+    return f"exp(-i*ewfd.k0*(({n.real:.8g}) + ({n.imag:.8g})*i)*z)"
+
+
+def setup_physics(
+    model: Any,
+    geom_params: GeometryParams,
+    *,
+    background_eps: complex | None = None,
+) -> None:
+    """Add EWFD with scattered-field formulation + matched-BC end-caps.
+
+    ``background_eps`` sets the medium of the background plane wave; see
+    ``background_field_expr``.
+    """
 
     java = model.java
     comp_tag = str(java.component().tags()[0])
@@ -165,7 +196,7 @@ def setup_physics(model: Any, geom_params: GeometryParams) -> None:
     # Scattered-field formulation: controlled by the physics interface's
     # BackgroundField property group (NOT the wee1 sub-feature).
     phys.prop("BackgroundField").set("SolveFor", "scatteredField")
-    phys.prop("BackgroundField").set("Eb", ["exp(-i*ewfd.k0*z)", "0", "0"])
+    phys.prop("BackgroundField").set("Eb", [background_field_expr(background_eps), "0", "0"])
 
     # Matched/scattering BC on inlet & outlet end-caps.
     inlet_tag, outlet_tag = add_endcap_selections(model, geom_params)

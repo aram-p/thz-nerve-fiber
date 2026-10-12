@@ -8,9 +8,11 @@ Produces exactly five domains after Form Union:
     myelin_proximal   r ∈ [axon_r, myelin_r],   z ∈ [0, internode_L]
     node              r ∈ [axon_r, myelin_r],   z ∈ [internode_L, internode_L+node_L]
     myelin_distal     r ∈ [axon_r, myelin_r],   z ∈ [internode_L+node_L, total_L]
-    external          (box[-hw,hw]² × [0,L]) ∖ (myelin_r cylinder)
+    external          (box[-hw,hw]² × [-pad,L+pad]) ∖ (myelin_r cylinder)
 
-with ``total_L = 2*internode_L + node_L``.
+with ``total_L = 2*internode_L + node_L`` and ``pad = end_padding_um``.
+With ``pad > 0`` the fibre ends inside a water buffer, so the end-cap
+boundary conditions sit in homogeneous water instead of cutting the fibre.
 
 Why a box (not a cylinder) for the outer region: this is the unit cell of a
 Floquet-periodic diffraction-grating model (per Hovhannisyan & Makaryan
@@ -44,6 +46,7 @@ class GeometryParams(BaseModel):
     node_length_um: float = Field(gt=0)
     internode_length_um: float = Field(gt=0)
     external_half_width_um: float = Field(gt=0)
+    end_padding_um: float = Field(default=0.0, ge=0)
 
 
 def total_length_um(params: GeometryParams) -> float:
@@ -216,10 +219,11 @@ def build_geometry(model: Any, params: GeometryParams) -> int:
 
     # External: rectangular box minus the full-length myelin_r cylinder.
     # The box lateral faces (x=±hw, y=±hw) become the Floquet-periodic pairs.
+    pad = params.end_padding_um
     _add_block(
         geom, "box_ext",
-        size_xyz=(2 * hw, 2 * hw, L_total),
-        pos_xyz=(-hw, -hw, 0.0),
+        size_xyz=(2 * hw, 2 * hw, L_total + 2 * pad),
+        pos_xyz=(-hw, -hw, -pad),
     )
     _add_cyl(geom, "cyl_ext_in", radius=r_myelin, height=L_total, z_pos=0.0)
     _add_difference(geom, "ext", "External medium",
