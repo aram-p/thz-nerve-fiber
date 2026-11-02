@@ -8,6 +8,26 @@ It publishes THz biophotonics and computational EM, and a quantitative negative 
 reported THz bio-effect fits its scope. Fallback: *Journal of Biophotonics* (Wiley), which would want
 the tissue-level and experimental-design sections up front.
 
+## Abstract (draft, 250 words max)
+
+Resonant terahertz absorption at the node of Ranvier has been proposed to explain features near
+0.6 and 2 THz reported in spinal-cord white matter under DC bias. We test this with a benchmarked
+full-wave model of a single myelinated fibre in water with
+measured water dispersion. An axisymmetric finite-element model, expanded in azimuthal orders, treats
+a periodic chain of nodes with realistic node (0.5–5 µm), internode (0.2–1.5 mm), axon and myelin
+sizes. It reproduces transfer-matrix and Mie-series solutions to 2 × 10⁻⁴ and converges to
+0.5 %. Between 0.1 and 3 THz the node shows no resonance for either
+polarisation. Its absorption is quasi-static, P = ½ωε0ε″|E0|²V·F, where F (0.2–2) depends only on
+node length over myelin thickness, the g-ratio and the permittivity contrast; a three-constant
+closed form for F matches full wave to about 2 % for fibres up to 10 µm in diameter, and the
+internode length does not enter. Myelin's refractive index lies below water's, so the sheath cannot
+guide terahertz waves into the node. These results hold under ±20 % material changes, node
+constriction, the axolemma and dense packing. No node conductivity from physiological values to
+3 × 10⁶ S/m changes the transmission of a 100 µm slice by more than 0.14 dB, against the reported
+9 dB. Single nodes therefore cannot produce the reported features. The DC bias itself deposits
+about 2.6 MW m⁻³ in the slice; heating and drying, together with water-vapour lines at 0.557 and
+1.9–2.2 THz, are testable alternative explanations.
+
 ## Section outline
 
 1. **Introduction.** Reported resonant THz absorption at 0.6 and 2 THz in spinal-cord white matter
