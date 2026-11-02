@@ -74,11 +74,19 @@ tt = np.arange(-362.8, -357.2, 0.005)
 
 def series(d, c, px_shift=0.0):
     xs, ys, fx, fy = d[c]
-    return np.interp(tt, fx(xs + px_shift), fy(ys))  # gaps (curve hidden under another) interpolated, ends held
+    # gaps (curve hidden under another) interpolated; outside the traced extent NaN, then 0 with the
+    # fit restricted to where every curve was traced (round 9: held ends had entered the fit)
+    return np.interp(tt, fx(xs + px_shift), fy(ys), left=np.nan, right=np.nan)
 
 
-W = {"empty": series(f3, "blue"), "sample3a": series(f3, "black"), "none": series(f4, "black"),
-     "30s": series(f4, "magenta"), "4min": series(f4, "red")}
+def finish(Wn):
+    valid = np.all([np.isfinite(v) for v in Wn.values()], axis=0)
+    return {k: np.nan_to_num(v) for k, v in Wn.items()}, valid
+
+
+W, VALID = finish({"empty": series(f3, "blue"), "sample3a": series(f3, "black"), "none": series(f4, "black"),
+                   "30s": series(f4, "magenta"), "4min": series(f4, "red")})
+say(f"  fit window (every curve traced): {tt[VALID][0]:.2f} to {tt[VALID][-1]:.2f} ps")
 np.savez(OUT / "digitised.npz", t_ps=tt, **W)
 say(f"  same scale check, no-voltage trace in Fig. 3a vs Fig. 4a: minima {W['sample3a'].min():.2f} vs {W['none'].min():.2f} "
     f"at {tt[np.argmin(W['sample3a'])]:.2f} vs {tt[np.argmin(W['none'])]:.2f} ps; rms difference "
@@ -95,11 +103,11 @@ def fits(Wd):
     """Return dict of (params, residual fraction) for the time-domain models."""
     out = {}
     for key in ("30s", "4min"):
-        y = Wd[key]; s = rms(y)
-        r = least_squares(lambda q: q[0] * Wd["none"] + q[1] * shift(Wd["empty"], q[2]) - y, [0.8, 0.1, 0.0])
+        y = Wd[key]; s = rms(y[VALID])
+        r = least_squares(lambda q: (q[0] * Wd["none"] + q[1] * shift(Wd["empty"], q[2]) - y)[VALID], [0.8, 0.1, 0.0])
         out[(key, "bypass")] = (r.x, rms(r.fun) / s)
-        best = min((rms(np.dot(shift(Wd["none"], t), y) / np.dot(shift(Wd["none"], t), shift(Wd["none"], t))
-                        * shift(Wd["none"], t) - y), t) for t in np.arange(-1.0, 1.0, 0.005))
+        best = min((rms((np.dot(shift(Wd["none"], t), y) / np.dot(shift(Wd["none"], t), shift(Wd["none"], t))
+                         * shift(Wd["none"], t) - y)[VALID]), t) for t in np.arange(-1.0, 1.0, 0.005))
         out[(key, "one path")] = ((best[1],), best[0] / s)
     return out
 
@@ -112,7 +120,7 @@ for s_e in (-1, 0, 1):
         for s_v in (-1, 0, 1):
             Wv = dict(W, empty=series(f3, "blue", s_e), none=series(f4, "black", s_n),
                       **{"30s": series(f4, "magenta", s_v), "4min": series(f4, "red", s_v)})
-            var.append(fits(Wv))
+            var.append(fits({k: np.nan_to_num(v) for k, v in Wv.items()}))
 say("\nTime domain: biased = a * no voltage + b * empty cuvette(t - tau); spread over +-1 pixel shifts of each trace")
 for key in ("30s", "4min"):
     (a_, b_, t_), res = base[(key, "bypass")]

@@ -410,7 +410,7 @@ bands and tracing shifts) and call the dip a consistency check whose depth is il
 **Fixed.**
 
 ### 56. MAJOR: "Paper 1's waveforms are untested; the drift and the 2 THz feature come from paper 1."
-**Response.** Done (Sim 42, Fig. 8). `trace_track` was added to `thznerve.digitise` (tested) for
+**Response.** (The 2 THz feature, "not tested" here, was tested in Sims 43–44: items 64, 72, 83.) Done (Sim 42, Fig. 8). `trace_track` was added to `thznerve.digitise` (tested) for
 curves crossed by labels and arrows or hidden under other curves. Paper 1 Figs. 3a (empty cuvette)
 and 4a (no voltage, 30 s, 4 min) share axes and units: the no-voltage trace in both agrees to 0.017
 rms. Spreads below are over ±1-pixel tracing shifts. At 30 s, b = 0.04 (0.034–0.045); the residual
@@ -508,9 +508,10 @@ there is generic. "Predict" and "accounts for" are removed from abstract, introd
 conclusion. **Fixed (claim withdrawn).**
 
 ### 73. MAJOR: "The 2 THz dip is ~10 dB above the noise floor."
-**Response.** Confirmed on H1 Fig. 3b: the dip lies at about −63 dB, the spectra flatten into noise
-at −70 to −85 dB above 3.5 THz. Stated with Jepsen and Fischer 2005 and Withayachumnankul and Naftaly
-2014. **Fixed.**
+**Response.** Confirmed on H1 Fig. 3b and stated with Jepsen and Fischer 2005 and Withayachumnankul
+and Naftaly 2014. **Fixed.** (Superseded by Sim 44 and item 83: traced per column, the dip's bottom
+is −71 dB, 2–5 dB above the noise at −73 to −76 dB; the "−63 dB, ~10 dB above" figures were the
+reviewer's reading of the binned curve.)
 
 ### 74. MAJOR: "With every extreme the paper allows multiplied, the passive-ε bound reaches 9.5 dB at 3 THz."
 **Response.** Confirmed and now stated per frequency in §4.6: ×11 for internode 50 µm, packing 0.8
@@ -555,6 +556,50 @@ its limits with three constants fitted to a Laplace solver. **Fixed.**
 ### 82. MINOR: prior work (Wilmink and Grundt 2011; Romanenko et al. 2017; van Exter et al. 1989; Jepsen and Fischer 2005); title undersells the waveform analysis.
 **Response.** All cited; title ends "re-analysis of published spinal-cord THz waveforms". **Fixed.**
 
+## Ninth round (independent reviewer, 2026-11-03; verdict: major revision, no fatal flaw; the combined bounds, water model, component sizes and 30-s q fit recomputed and confirmed)
+
+### 83. MAJOR: "A dip whose bottom is at the floor has an unreliable depth; that does not make it noise. Dips found in only one curve are all ≤ 7 dB except this 15 dB one; the vapour-depth comparison proves nothing."
+**Response.** Agreed. §5.6 now says the 1.99 THz dip is a real feature of the 30-s scan, twice as deep
+as any other single-curve dip, with its depth a lower bound set by dynamic range (bottom 2–5 dB above
+the noise) and its origin unknown; the vapour-depth argument is dropped. The binned 3–14 dB deficit
+over 1.85–2.10 THz is stated. **Fixed.**
+
+### 84. MAJOR: "'Every passive node state adds loss at 3 THz' is untested: only the ε′ = −2…−1 strip was run there; the quoted 0.008 dB rise is a loss."
+**Response.** The full ε grid (ε′ −30…30, ε″ 0.3/3/30; 33 states) was run at 3 THz, E∥
+(`sim36_review.py round9`, `results/sim30/round9.log`): the largest rise is 0.0028 dB at
+ε = −1 − 0.3j (0.18 dB with all extremes), the largest loss 0.049 dB, below the strip's 0.123 dB.
+§4.6 now quotes these signed values. **Fixed.**
+
+### 85. MAJOR: records contradict the text (items 56, 73; REPORT rows 42–43).
+**Response.** Items 56 and 73 annotated; REPORT rows 42–44 updated. **Fixed.**
+
+### 86. MINOR: "Shared reference scans" is not shown: one scan traced twice differs by 3.4 %, the reports by 1.8–3.7 %.
+**Response.** Now "identical within tracing noise: one sample, possibly the same scans". **Fixed.**
+
+### 87. MINOR: the 2.5× margin holds only for E∥ (E⊥ with all extremes: 2.7/7.4/11.5 dB).
+**Response.** Confirmed from `sim36_sigma.json` (E⊥ dipole 0.043/0.116/0.180 dB × 64). §1 and §4.6
+now state the E∥ premise, the configuration of every published scan, and give the E⊥ numbers.
+**Fixed.**
+
+### 88. MINOR: "The 50 µm internode and packing 0.8 scalings are extrapolated."
+**Response.** Solved at internode 50 µm directly (ε′ −1.45 and water, 0.6–3 THz, both polarisations):
+the slice change matches the scaled 200 µm value within 0.3 %. Packing 0.8 is stated as assumed
+linear (E∥ unchanged at 0.6, §4.5). **Fixed.**
+
+### 89. MINOR: "The 0.6 THz fine-mesh peak is at the scan edge (ε′ −1.8)."
+**Response.** ε′ −2.0 run on the fine mesh: 0.0134 dB against 0.0138 at −1.8, so the peak is bracketed
+and below the coarse 0.0143. **Fixed.**
+
+### 90. MINOR: figures (Fig. 7 trace ends held flat and used in the fit; Fig. 1b cites Jepsen et al. 2007, not in the references).
+**Response.** Sim 42 now fits only where every curve was traced (−362.02 to −357.20 ps): b = 0.039
+(30 s) and 0.173 (4 min), residual 9 % and 27 %; traced 30-s dip −4.5 dB at 0.72 THz, 4-min dip
+−17.2 dB at 0.62 THz; Sim 43 rerun on the corrected traces (band errors 5.5 and 3.6 dB). Jepsen,
+Møller and Merbold 2007 cited in §2.2. **Fixed.**
+
+### 91. MINOR: wording (H4 counted among the reports that measured; "closed-form law" has fitted constants).
+**Response.** "Three reports (H1–H3); a fourth was not available"; "a quasi-static law with exact
+limits" in the title, §4.2 and the conclusion. **Fixed.**
+
 ---
 
 ## What matches and what does not (experiment)
@@ -562,7 +607,7 @@ its limits with three constants fitted to a Laplace solver. **Fixed.**
 | Reported (Hovhannisyan, Makaryan, Martirosyan 2024) | This work |
 |---|---|
 | Dip near 0.6 THz (9–20 dB) | No node or fibre resonance anywhere in 0.1–3 THz. The shared session's biased waveforms contain a component at the empty-cuvette delay (4, 12, 17, 22 % at 0.5, 2, 4, 5 min); no one-path tissue change fits. With the tissue path also 1.09–1.18× thicker, the dip falls at 0.57 THz (5 min, reported 0.56) and 0.63–0.65 THz (4 min, published 0.65): consistent, q fitted (Sims 39, 42, 43) |
-| 2 THz dip (30 s, paper 1) | Not reproduced, and not established as a sample feature: a 15 dB, ~0.08 THz wide depression at 1.99 THz in one scan only, its bottom (−71 dB) at the noise floor (−73 to −76 dB); every curve shows 7–9 water-vapour dips at least as deep. The two terms give a separate transient dip at 2.25 THz (Sims 43, 44) |
+| 2 THz dip (30 s, paper 1) | Not reproduced. A real feature of one scan: 15 dB at 1.99 THz, twice any other single-curve dip, its bottom (−71 dB) 2–5 dB above the noise, so the depth is a lower bound; origin unknown. The two terms give a separate transient dip at 2.25 THz (Sims 43, 44) |
 | Dip drifts 0.7 → 0.5 THz in minutes | Water-vapour lines cannot drift. At 30 s the traced ratio is a broad −3 to −4 dB trough over 0.56–0.78 THz; by 4 min the dip is at 0.62–0.65 THz as b reaches 0.17 and q 1.09 (Sims 42, 43). Matches the direction; fitted, not predicted |
 | High frequencies rise by 17–18 dB (2–2.5 THz, traced) | The bypass skips tissue loss: the waveform fit follows the rise to 1.7 THz within 1.5 dB rms (not testable above with the traced window); drying alone ≤ 3 dB (Sim 34) |
 | ~9 dB change under 100 V DC | Node (E∥, internode ≥ 200 µm, packing ≤ 0.6): ≤ 0.05 dB for any conductivity, ≤ 0.1/0.5/0.9 dB at 0.6/2/3 THz for any passive ε (ε″ ≥ 0.1, ±20 % materials); with internode 50 µm, packing 0.8 and a 200 µm slice together 1.1/5.5/9.5 dB, below the 9–20 dB (0.6 THz) and 14 dB (2 THz) reported; near 3 THz the reported change is a rise, which node states cannot give (≤ 0.5 dB); channels 10⁻⁹ dB. Fibre conduction: needs 290–980 S/m axoplasm (200–700× physiological). Heating/drying: smooth, ≤ 3 dB |

@@ -19,13 +19,13 @@ length over myelin thickness, g-ratio and permittivity contrast, within 2.2 % of
 fibres up to 10 µm and independent of internode length. For internodes ≥ 200 µm and packing ≤ 0.6,
 no node conductivity changes a 100 µm slice by more than 0.05 dB (E∥), and no passive node
 permittivity by more than 0.9 dB. Open channels add 10⁻⁶ of the membrane admittance; 9 dB from fibre
-conduction needs 300–1300 S/m extra axoplasm conductivity (physiological: 1.4). The three
-experimental reports share reference scans; in their four biased scans the pulse gains a component
-at the empty-cuvette delay, 4, 12, 17 and 22 % of the empty-cuvette pulse after 0.5, 2, 4 and 5 min,
-that no tissue-only change fits. With a ~10 % optically thicker tissue path, the two terms are
-consistent with the 0.6 THz dip; a 2.0 THz dip, seen in one scan at the noise floor, is not
-reproduced. Its source and the reported polarisation and bias-direction selectivity, reported
-without data, remain unexplained.
+conduction needs 300–1300 S/m extra axoplasm conductivity (physiological: 1.4). The three reports
+show identical reference waveforms; in their four biased scans the pulse gains a component at the
+empty-cuvette delay, 4, 12, 17 and 22 % of the empty-cuvette pulse after 0.5, 2, 4 and 5 min, that
+no tissue-only change fits. With a ~10 % optically thicker tissue path, the two terms are consistent
+with the 0.6 THz dip; a 2.0 THz dip, seen in one scan near the noise floor, is not reproduced. Its
+source and the reported polarisation and bias-direction selectivity, reported without data, remain
+unexplained.
 
 ## Section outline
 
@@ -65,7 +65,7 @@ without data, remain unexplained.
    negative-ε ring resonance is capped by the surrounding water's loss); slice change from three
    observables (absorbed power, near-field absorption, induced dipole). For E∥, internode ≥ 200 µm,
    packing ≤ 0.6: conductivity ≤ 0.05 dB, passive ε (ε″ ≥ 0.1) ≤ 0.9 dB including ±20 % materials (negative-ε ring resonance
-   only, dense ε′ grid at 0.6/1/2/3 THz); per frequency 0.1/0.2/0.5/0.9 dB at 0.6/1/2/3 THz; every extreme combined (internode 50 µm, packing 0.8, 200 µm slice; ×11) 1.1/2.1/5.5/9.5 dB, against 9–20 dB at 0.6 THz and 14 dB at 2 THz; near 3 THz the measured change is a rise, and node states can raise transmission by ≤ 0.5 dB; E⊥ ≤ 1.1 dB, 3.5 dB only for a metallic
+   only, dense ε′ grid at 0.6/1/2/3 THz); per frequency 0.1/0.2/0.5/0.9 dB at 0.6/1/2/3 THz; every extreme combined (internode 50 µm, packing 0.8, 200 µm slice; ×11) 1.1/2.1/5.5/9.5 dB, against 9–20 dB at 0.6 THz and 14 dB at 2 THz (50 µm internode solved directly, ≤ 0.3 % from the scaling); near 3 THz the measured change is a rise, and node states can raise transmission by ≤ 0.18 dB (full ε grid); E∥ premise: E⊥ conductivity with all extremes 2.7/7.4/11.5 dB; E⊥ ≤ 1.1 dB, 3.5 dB only for a metallic
    node in a 21 µm fibre (Fig. 5).
 5. **The experimenters' model and the experiment.** 5.1 Membrane admittance at THz vs open
    channels. 5.2 Fibres as conductors: full-wave axoplasm conductivity needed for 9 dB (470–565 S/m at fibre packing 0.5 and 290–980 S/m over packing 0.7–0.3 (0.6–2 THz),
@@ -88,8 +88,8 @@ without data, remain unexplained.
    no one-path tissue change fits (63–84 %). With the tissue path also 1.09–1.18× optically thicker
    (band dependent), the 0.6 THz dip falls at 0.57–0.65 THz (measured 0.56–0.65; 0.557 THz is a
    vapour line): a consistency check, q is fitted. The 2 THz dip (30 s) is not reproduced: the model
-   gives a separate dip at 2.25 THz; the measured one appears in one scan only and reaches the noise
-   floor (Sim 44). Causes unknown; the reported selectivity contradicts them. DataPort needs a subscription.
+   gives a separate dip at 2.25 THz; the measured one is a real feature of one scan, 2–5 dB above the
+   noise, origin unknown (Sim 44). Causes unknown; the reported selectivity contradicts them. DataPort needs a subscription.
 6. **Discussion and limits.** Linear passive EM response only: DC-driven structural changes of
    fibres (swelling, electro-osmotic water flow, pH fronts) are tested only through their bulk
    effect (heating, water loss, gas). Single fibre plus effective medium; quasi-static local field

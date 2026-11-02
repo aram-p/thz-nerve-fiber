@@ -390,6 +390,65 @@ def report_epsdense_h(out=None):
                       f"(P_fibre, flux_in, dipole signed: {np.round(sgn[j, i], 4)}); all {np.round(db[:, i], 4)}", flush=True)
 
 
+def round9():
+    """Review round 9: (a) the full passive-eps grid at 3 THz (E-par), signed, to find the largest
+    transmission rise any node state gives; (b) eps' -2.0 on the 2x finer mesh (the 0.6 THz fine
+    peak sat at the scan edge); (c) internode 50 um at the eps peak and in water, to test the
+    packing/internode scaling the combined bound extrapolates to."""
+    f1 = [3.0e12]
+    path = OUT / "sim36_round9.json"
+    out = json.loads(path.read_text()) if path.exists() else {}
+    if "g3_ref" not in out:
+        out["g3_ref"] = sim30.run("s36", tag="s36_r9_g3_ref", freqs=f1, Lint=200.0, pols=("par",), **MESH)
+    for er in (-30, -10, -5, -3, -2, -1, 1, 2, 5, 10, 30):
+        for ei in (0.3, 3.0, 30.0):
+            k = f"g3_{er}_{ei}"
+            if k not in out:
+                out[k] = sim30.run("s36", tag=f"s36_r9_{k}", freqs=f1, Lint=200.0, pols=("par",),
+                                   eps_override=dict(node=ConstantEps(complex(er, -ei))), **MESH)
+                path.write_text(json.dumps(out))
+    dense = json.loads((OUT / "sim36_epsdense.json").read_text())
+    f4 = [0.6e12, 1.0e12, 2.0e12, 3.0e12]
+    if "-2.0_0.1_h" not in dense:
+        dense["-2.0_0.1_h"] = sim30.run("s36", tag="s36_epsd_-2.0_0.1_h", freqs=f4, Lint=200.0,
+                                        eps_override=dict(node=ConstantEps(complex(-2.0, -0.1))),
+                                        **(MESH | dict(h_frac=0.125)))
+        (OUT / "sim36_epsdense.json").write_text(json.dumps(dense))
+    for k, ov in (("L50_ref", None), ("L50_-1.45_0.1", dict(node=ConstantEps(complex(-1.45, -0.1))))):
+        if k not in out:
+            out[k] = sim30.run("s36", tag=f"s36_r9_{k}", freqs=f4, Lint=50.0, eps_override=ov, **MESH)
+            path.write_text(json.dumps(out))
+    path.write_text(json.dumps(out))
+    report_round9(out)
+
+
+def report_round9(out=None):
+    out = out or json.loads((OUT / "sim36_round9.json").read_text())
+    f1 = np.array([3.0e12]); f4 = np.array([0.6, 1.0, 2.0, 3.0]) * 1e12
+    obs = ("P_fibre", "flux_in", "dipole")
+    rows = []
+    for k, r in out.items():
+        if k.startswith("g3_") and k != "g3_ref":
+            t = tissue_db(r, out["g3_ref"], f1, "par")
+            rows.append((k[3:], [t[o][0] for o in obs]))
+    rise = min(rows, key=lambda x: min(x[1])); loss = max(rows, key=lambda x: max(x[1]))
+    print(f"(a) 3 THz E-par, full eps grid ({len(rows)} states), signed dB per 100 um at internode 1000 um, packing 0.5 "
+          f"(positive = more loss): largest rise {min(rise[1]):+.4f} dB at eps {rise[0]} {np.round(rise[1], 4)}; "
+          f"largest loss {max(loss[1]):+.4f} dB at eps {loss[0]}", flush=True)
+    dense = json.loads((OUT / "sim36_epsdense.json").read_text())
+    for pol in ("par",):
+        t = tissue_db(dense["-2.0_0.1_h"], dense["ref_h"], f4, pol)
+        print(f"(b) eps' -2.0 fine mesh {pol}: max |dB| {np.round(np.max(np.abs([t[o] for o in obs]), axis=0), 4)} at 0.6/1/2/3 THz", flush=True)
+    for pol in ("par", "perp"):
+        t50 = tissue_db(out["L50_-1.45_0.1"], out["L50_ref"], f4, pol, Lint_t=50.0, p=0.5)
+        d50 = np.max(np.abs([t50[o] for o in obs]), axis=0)
+        t200 = tissue_db(dense["-1.45_0.1"], dense["ref"], f4, pol, Lint_t=50.0, p=0.5)
+        d200 = np.max(np.abs([t200[o] for o in obs]), axis=0)
+        print(f"(c) {pol}, slice at internode 50 um, packing 0.5: solved at 50 um {np.round(d50, 4)} dB vs scaled from the "
+              f"200 um solve {np.round(d200, 4)} dB (ratio {np.round(d50 / d200, 3)}); eta 50 um "
+              f"{np.round(out['L50_-1.45_0.1'][pol]['eta'], 1)} vs 200 um {np.round(dense['-1.45_0.1'][pol]['eta'], 1)}", flush=True)
+
+
 def epsrobust():
     """Review round 6: the +-20 % material test (Sim 33) covered node power only. Here the passive-eps
     slice bound at its peak (3 THz, E-par) with eps' and eps'' of axon, myelin, water (water includes
@@ -470,4 +529,4 @@ def report_dense(p=0.6, Lint_t=200.0):
 
 if __name__ == "__main__":
     OUT.mkdir(parents=True, exist_ok=True)
-    {"sigma": sigma, "report_sigma": report_sigma, "dense": dense, "aniso": aniso, "epsnode": epsnode, "axon": axon, "axon2": axon2, "axon_threshold": axon_threshold, "report_axon": report_axon, "epsfine": epsfine, "epsdense": epsdense, "epsdense_mesh": epsdense_mesh, "epsrobust": epsrobust, "report_epsrobust": report_epsrobust, "report_epsdense": report_epsdense, "report_dense": report_dense, "epsdense_hscan": epsdense_hscan, "report_epsdense_h": report_epsdense_h}[sys.argv[1]]()
+    {"sigma": sigma, "report_sigma": report_sigma, "dense": dense, "aniso": aniso, "epsnode": epsnode, "axon": axon, "axon2": axon2, "axon_threshold": axon_threshold, "report_axon": report_axon, "epsfine": epsfine, "epsdense": epsdense, "epsdense_mesh": epsdense_mesh, "epsrobust": epsrobust, "report_epsrobust": report_epsrobust, "report_epsdense": report_epsdense, "report_dense": report_dense, "epsdense_hscan": epsdense_hscan, "report_epsdense_h": report_epsdense_h, "round9": round9, "report_round9": report_round9}[sys.argv[1]]()

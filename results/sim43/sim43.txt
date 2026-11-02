@@ -1,16 +1,16 @@
 (a) Are the reports one session? Traced waveforms on paper 1's time grid
   empty cuvette, paper 1 vs paper 3: rms difference 2.2% of signal (best shift -0.005 ps: 1.9%); minima -8.161 at -360.815 ps vs -8.228 at -360.820 ps
   no voltage, paper 1 vs paper 3: rms difference 3.7% of signal (best shift +0.005 ps: 3.5%); minima -1.765 at -360.195 ps vs -1.780 at -360.180 ps
-  biased, paper 1 4 min vs paper 3 5 min (different scans expected): rms difference 31.2% of signal (best shift +0.020 ps: 28.9%); minima -1.214 at -360.860 ps vs -1.608 at -360.830 ps
+  biased, paper 1 4 min vs paper 3 5 min (different scans expected): rms difference 31.0% of signal (best shift +0.020 ps: 28.7%); minima -1.214 at -360.860 ps vs -1.608 at -360.830 ps
 
 (b) Paper 2 Fig. 2 (page 3), axis misfit 0.002 ps / 0.006
   no voltage, paper 2 vs paper 1: rms difference 1.8% of signal (best shift +0.000 ps: 1.8%); minima -1.773 at -360.185 ps vs -1.765 at -360.195 ps
   biased = a * no voltage + b * empty cuvette(t - tau), empty cuvette from paper 1 Fig. 3a
-  30 s (paper 1)  : a = 0.866, b = 0.040 (0.037-0.043), tau = -0.043 ps, residual 10%; one path 21%
+  30 s (paper 1)  : a = 0.864, b = 0.039 (0.036-0.042), tau = -0.042 ps, residual 9%; one path 20%
   2 min (paper 2) : a = 0.743, b = 0.120 (0.118-0.121), tau = -0.039 ps, residual 25%; one path 63%
-  4 min (paper 1) : a = 0.684, b = 0.174 (0.172-0.174), tau = -0.039 ps, residual 27%; one path 84%
+  4 min (paper 1) : a = 0.683, b = 0.173 (0.172-0.174), tau = -0.039 ps, residual 27%; one path 84%
   5 min (paper 3) : a = 0.586, b = 0.217 (0.216-0.217), tau = -0.026 ps, residual 28%; one path 77%
-  check: 2 min lies between 30 s and 4 min if b30 < b2 < b4: 0.040 < 0.120 < 0.174 -> yes; linear-in-time interpolation gives 0.097
+  check: 2 min lies between 30 s and 4 min if b30 < b2 < b4: 0.039 < 0.120 < 0.173 -> yes; linear-in-time interpolation gives 0.097
 
 (c) paper 1 Fig. 3b: axis misfit 0.0015 THz / 0.144 dB
 (c) paper 1 Fig. 4b: axis misfit 0.0010 THz / 0.126 dB
@@ -22,50 +22,50 @@
    0.30      -6.0    -6.4    -8.1    -7.3   -15.4
    0.40      -8.2    -9.0   -10.6   -10.9   -20.8
    0.50     -10.0   -11.7   -12.6   -16.6   -27.4
-   0.60     -12.1   -15.3   -15.1   -26.3   -50.4
-   0.70     -13.8   -17.8   -17.3   -25.1   -29.2
-   0.80     -14.0   -17.8   -17.6   -19.3   -28.5
+   0.60     -12.1   -15.3   -15.1   -26.3   -50.6
+   0.70     -13.8   -17.8   -17.3   -25.1   -29.3
+   0.80     -14.0   -17.8   -17.5   -19.3   -28.5
    0.90     -14.5   -17.1   -18.2   -15.8   -27.0
    1.00     -14.9   -16.3   -18.7   -13.9   -26.0
-   1.10     -17.4   -18.9   -22.3   -14.1   -21.8
-   1.20     -16.6   -18.0   -21.2   -12.2   -22.7
-   1.30     -17.9   -17.1   -23.0   -12.3   -21.3
-   1.40     -19.5   -17.8   -25.8   -12.6   -19.9
-   1.50     -20.1   -19.1   -26.8   -12.6   -19.5
-   1.60     -22.2   -21.2   -31.2   -13.5   -18.4
-   1.70     -23.7   -21.0   -35.5   -13.2   -17.8
-   1.80     -26.3   -27.9   -54.0   -14.5   -17.1
-   1.90     -27.2   -33.9   -52.8   -14.3   -16.8
-   1.95     -28.4   -37.2   -42.8   -14.2   -16.6
-   2.00     -29.2   -43.5   -40.1   -14.1   -16.5
-   2.05     -29.2   -38.0   -40.1   -13.6   -16.5
-   2.10     -29.8   -32.8   -38.3   -13.8   -16.4
-   2.15     -30.2   -31.6   -37.5   -13.6   -16.3
-   2.20     -30.8   -32.2   -36.5   -14.0   -16.3
-   2.30     -28.9   -25.8   -41.0   -13.2   -16.5
-   2.40     -29.8   -26.8   -38.3   -14.3   -16.4
-   2.50     -29.4   -23.5   -39.5   -12.9   -16.5
-   2.60     -31.0   -23.7   -36.2   -13.0   -16.2
-   2.70     -27.6   -25.1   -48.2   -13.6   -16.8
-   2.80     -32.0   -25.8   -34.8   -14.9   -16.1
-   2.90     -32.0   -26.7   -34.8   -13.4   -16.1
-  1.50-1.90 THz: 30 s -24.3 dB vs floor -39.9 dB (deficit -15.7); 4 min -13.7 vs floor -17.9 (field fraction 0.21)
-  1.95-2.10 THz: 30 s -37.9 dB vs floor -40.3 dB (deficit -2.4); 4 min -13.9 vs floor -16.5 (field fraction 0.20)
-  2.30-3.00 THz: 30 s -24.8 dB vs floor -37.4 dB (deficit -12.7); 4 min -13.7 vs floor -16.3 (field fraction 0.21)
+   1.10     -17.4   -18.9   -22.2   -14.1   -21.8
+   1.20     -16.6   -18.0   -21.1   -12.2   -22.8
+   1.30     -17.9   -17.1   -22.9   -12.3   -21.3
+   1.40     -19.5   -17.8   -25.7   -12.6   -19.9
+   1.50     -20.1   -19.1   -26.7   -12.6   -19.5
+   1.60     -22.2   -21.2   -31.0   -13.5   -18.4
+   1.70     -23.7   -21.0   -35.2   -13.2   -17.8
+   1.80     -26.3   -27.9   -51.3   -14.5   -17.1
+   1.90     -27.2   -33.9   -56.1   -14.3   -16.9
+   1.95     -28.4   -37.2   -43.8   -14.2   -16.6
+   2.00     -29.2   -43.5   -40.7   -14.1   -16.5
+   2.05     -29.2   -38.0   -40.7   -13.6   -16.5
+   2.10     -29.8   -32.8   -38.9   -13.8   -16.4
+   2.15     -30.2   -31.6   -38.0   -13.6   -16.4
+   2.20     -30.8   -32.2   -37.0   -14.0   -16.3
+   2.30     -28.9   -25.8   -41.7   -13.2   -16.6
+   2.40     -29.8   -26.8   -38.9   -14.3   -16.4
+   2.50     -29.4   -23.5   -40.2   -12.9   -16.5
+   2.60     -31.0   -23.7   -36.6   -13.0   -16.3
+   2.70     -27.6   -25.1   -50.0   -13.6   -16.8
+   2.80     -32.0   -25.8   -35.2   -14.9   -16.1
+   2.90     -32.0   -26.7   -35.2   -13.4   -16.1
+  1.50-1.90 THz: 30 s -24.3 dB vs floor -39.5 dB (deficit -15.2); 4 min -13.7 vs floor -17.9 (field fraction 0.21)
+  1.95-2.10 THz: 30 s -37.9 dB vs floor -41.0 dB (deficit -3.2); 4 min -13.9 vs floor -16.5 (field fraction 0.20)
+  2.30-3.00 THz: 30 s -24.8 dB vs floor -38.0 dB (deficit -13.2); 4 min -13.7 vs floor -16.3 (field fraction 0.21)
 Reading: a positive deficit means the published spectrum lies below anything a constant undelayed
 component of the fitted size allows, whatever its phase.
 
 (d) Antiphase of the two terms, |T| from the published spectra, phase of T from the traced waveforms
   tissue phase over 0.2-1.4 THz: linear, delay 0.611 ps relative to the empty cuvette, offset -0.22 rad, rms deviation 0.11 rad
-  30 s         : antiphase at 0.71, 2.24 THz; model minima 0.70 THz -17.3 dB, 0.85 THz -17.6 dB, 1.10 THz -18.1 dB, 1.40 THz -17.7 dB, 2.25 THz -40.0 dB, 2.75 THz -26.0 dB; published minima 2.00 THz -43.5 dB, 2.20 THz -32.2 dB, 2.40 THz -26.8 dB, 2.90 THz -26.7 dB
+  30 s         : antiphase at 0.71, 2.24 THz; model minima 0.70 THz -17.3 dB, 0.85 THz -17.6 dB, 1.10 THz -18.1 dB, 1.40 THz -17.8 dB, 2.25 THz -40.7 dB, 2.75 THz -26.2 dB; published minima 2.00 THz -43.5 dB, 2.20 THz -32.2 dB, 2.40 THz -26.8 dB, 2.90 THz -26.7 dB
       0.50-0.80 THz: model  -15.4 dB, published  -15.8 dB
-      1.85-2.15 THz: model  -29.5 dB, published  -35.1 dB
-      2.30-3.00 THz: model  -28.1 dB, published  -24.8 dB
+      1.85-2.15 THz: model  -29.6 dB, published  -35.1 dB
+      2.30-3.00 THz: model  -28.4 dB, published  -24.8 dB
   4 min        : antiphase at 0.72, 2.25 THz; model minima 0.70 THz -28.9 dB, 2.30 THz -16.5 dB; published minima 0.65 THz -28.7 dB
       0.50-0.80 THz: model  -23.2 dB, published  -22.8 dB
       1.85-2.15 THz: model  -15.7 dB, published  -14.0 dB
-      2.30-3.00 THz: model  -15.3 dB, published  -13.7 dB
-  4 min, q 1.09: antiphase at 0.65, 2.07 THz; model minima 0.65 THz -27.7 dB, 2.05 THz -16.1 dB; published minima 0.65 THz -28.7 dB
+      2.30-3.00 THz: model  -15.4 dB, published  -13.7 dB
+  4 min, q 1.09: antiphase at 0.65, 2.07 THz; model minima 0.65 THz -27.7 dB, 2.05 THz -16.2 dB; published minima 0.65 THz -28.7 dB
       0.50-0.80 THz: model  -22.9 dB, published  -22.8 dB
       1.85-2.15 THz: model  -16.0 dB, published  -14.0 dB
       2.30-3.00 THz: model  -14.9 dB, published  -13.7 dB
