@@ -1,4 +1,6 @@
-"""Sim 38 - Can a gas path through the slice (electrolysis bubbles, drying) reproduce the reported
+"""WITHDRAWN (review round 4): hand-read points biased, t > 100 um implausible; see Sim 39.
+
+Sim 38 - Can a gas path through the slice (electrolysis bubbles, drying) reproduce the reported
 voltage-induced spectrum, including the drifting dip, with physical tissue optics?
 
 Sim 29 used the authors' own index (n = 3.6-3.9 at d = 100 um), which no water-based tissue can

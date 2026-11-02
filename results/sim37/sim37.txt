@@ -30,8 +30,10 @@
   Their '1 V per fibre' estimate: the bias drops only ~2 E r = 67 mV across a 10 um fibre.
 
 (6) 100 V DC across the slice (field across the fibres)
-  paper 1: E = 5556 V/m, J = 461 A/m^2, I ~ 0.65 mA, Joule 2.6 MW/m^3 (0.64 K/s), electrolysis gas ~37 mm^3 in 5 min (sample ~28 mm^3)
-  paper 3: E = 6667 V/m, J = 553 A/m^2, I ~ 1.11 mA, Joule 3.7 MW/m^3 (0.92 K/s), electrolysis gas ~63 mm^3 in 5 min (sample ~40 mm^3)
+  paper 1: E = 5556 V/m, J = 461 A/m^2, I ~ 0.65 mA, Joule 2.6 MW/m^3 (0.64 K/s), H2 at the cathode ~25 mm^3 in 5 min (up to 1.5x with O2)
+  paper 3: E = 6667 V/m, J = 553 A/m^2, I ~ 1.11 mA, Joule 3.7 MW/m^3 (0.92 K/s), H2 at the cathode ~42 mm^3 in 5 min (up to 1.5x with O2)
+  The gas forms at the electrodes, ~7.5 mm from the beam; an air path through 20 % of a ~2 mm beam spot in
+  a 0.1 mm slice is ~0.1 mm^3, so the gas volume neither supports nor excludes it.
   Current along the fibres (sigma_par ~ 0.6 S/m) would heat ~7x more; the papers report no effect for that
   direction, so heating alone does not explain the DC-direction selectivity either.
 

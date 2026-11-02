@@ -207,6 +207,44 @@ def axon():
     report_axon(out)
 
 
+def axon2():
+    """Review round 4: bracket the 9 dB threshold (interpolated between 400 and 1000 S/m) with
+    full-wave points at 600 and 800 S/m, then give the threshold against packing."""
+    out = json.loads((OUT / "sim36_axon.json").read_text())
+    for ds in (6e2, 8e2):
+        k = f"{ds:g}"
+        if k not in out:
+            out[k] = sim30.run("s36", tag=f"s36_axon_{k}", freqs=list(F5), Lint=200.0,
+                               eps_override=dict(axon=PlusSigma(axoplasm(), ds)), **(MESH | dict(h_frac=0.25)))
+            save("axon", out)
+    report_axon(out)
+    axon_threshold(out)
+
+
+def axon_threshold(out=None):
+    """Extra axoplasm conductivity for a 9 dB change of a 100 um slab (E || fibres, exact slab on
+    PTFE), interpolated in log(sigma) between full-wave points, for fibre packing 0.3/0.5/0.7."""
+    out = out or json.loads((OUT / "sim36_axon.json").read_text())
+    ref = out["0"]
+    keys = sorted((k for k in out if k != "0" and "_" not in k), key=float)
+    sig = np.array([float(k) for k in keys])
+    for p in (0.3, 0.5, 0.7):
+        V_cell = (200.0 + LN) * np.pi * B ** 2 * 1e-18 / p
+        e_par, _ = tissue_eps(axoplasm()(F5), myelin()(F5), WATER_KS1996(F5), A / B, p)
+        db = np.zeros((len(keys), len(F5)))
+        for j, k in enumerate(keys):
+            dp = (np.array(out[k]["par"]["p_re"]) + 1j * np.array(out[k]["par"]["p_im"])) \
+                - (np.array(ref["par"]["p_re"]) + 1j * np.array(ref["par"]["p_im"]))
+            for i, fi in enumerate(F5):
+                db[j, i] = -10 * np.log10(slab_rta(fi, 1.0, [(complex(e_par[i] + dp[i] / V_cell), D_SLAB)], 1.43)[1]
+                                          / slab_rta(fi, 1.0, [(complex(e_par[i]), D_SLAB)], 1.43)[1])
+        thr = [float(np.exp(np.interp(9.0, db[:, i], np.log(sig)))) if db[:, i].max() > 9 else np.nan
+               for i in range(len(F5))]
+        print(f"packing {p}: dB at sigma {sig.tolist()}:", flush=True)
+        for i, fi in enumerate(F5):
+            print(f"   {fi/1e12:.1f} THz: {np.round(db[:, i], 2).tolist()}  -> 9 dB at {thr[i]:.0f} S/m", flush=True)
+
+
 def report_axon(out=None, p=0.5):
     out = out or json.loads((OUT / "sim36_axon.json").read_text())
     ref = out["0"]
@@ -289,4 +327,4 @@ def report_dense(p=0.6, Lint_t=200.0):
 
 if __name__ == "__main__":
     OUT.mkdir(parents=True, exist_ok=True)
-    {"sigma": sigma, "report_sigma": report_sigma, "dense": dense, "aniso": aniso, "epsnode": epsnode, "axon": axon, "report_axon": report_axon, "epsfine": epsfine, "report_dense": report_dense}[sys.argv[1]]()
+    {"sigma": sigma, "report_sigma": report_sigma, "dense": dense, "aniso": aniso, "epsnode": epsnode, "axon": axon, "axon2": axon2, "axon_threshold": axon_threshold, "report_axon": report_axon, "epsfine": epsfine, "report_dense": report_dense}[sys.argv[1]]()

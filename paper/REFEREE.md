@@ -7,7 +7,9 @@ the permittivities (F is defined by the absorbed power and computed from a Lapla
 state, and no fibre state the experimenters proposed (open channels turning fibres into nonlinear
 conducting wires forming a grating), changes tissue transmission by an amount close to the reported
 ~9 dB, so the 0.6/2 THz features reported under DC bias (Hovhannisyan, Makaryan, Martirosyan 2024)
-do not come from nodes or fibres.
+do not come from the linear electromagnetic response of nodes or fibres. The published waveforms
+instead show about a fifth of the beam reaching the detector without crossing tissue (Sim 39); its
+cause is unknown and it conflicts with the reported polarisation and bias-direction selectivity.
 
 Reviewer stance: a sceptical THz-biophysics and computational-EM referee looking for a fatal flaw.
 Each objection is followed by the response and where the evidence is. "Fixed" means a simulation,
@@ -214,7 +216,7 @@ conductivity required (350–400× physiological) and the missing mechanism (mem
 ### 26. MAJOR: "The 9 dB target has no traceable source."
 **Response.** Read off the published spectra: the 0.6 THz dip is 9–12 dB below the no-voltage
 spectrum after 5 min (paper 3, Fig. 1b, 100 µm) and 15–20 dB after 4 min (paper 1, Fig. 4b, 70 µm);
-power spectra in dB. The digitised points (±2 dB) are in `experiments/exp/sim38_gas_path.py`.
+power spectra in dB. The digitised points (±2 dB) are in `experiments/exp/sim38_gas_path.py` (replaced by pixel tracing, item 37).
 The raw data on IEEE DataPort (doi:10.21227/h17h-tp94) need a subscription we do not have; the
 paper says so and offers the analysis code. **Fixed.**
 
@@ -226,13 +228,13 @@ and the 2 THz loss independently imply an optical thickness of 190–300 µm. A 
 ±2 dB reading error) puts dips at 0.55–0.64 and 2.0–2.2 THz, both reported frequencies, raises
 2–3 THz as reported, and moves the first dip down as the column grows. The bias electrolyses
 ~40–60 mm³ of gas in 5 min, the order of the slice volume. Stated as a fit and a hypothesis; it
-does not explain the E∥ or DC-direction selectivity. **Narrowed / new result.**
+does not explain the E∥ or DC-direction selectivity. **Narrowed / new result.** (Withdrawn in round 4, items 36–41.)
 
 ### 28. MAJOR: "Novelty: the null result follows from k_w·b ≤ 0.6, Re ε > 0 and n_myelin < n_water; prior work omits Zangari 2018, Kumar 2016, Xiang 2021."
 **Response.** Added to the prior-work table. The one-paragraph argument does not give the node's
 absorbed power, its scaling law, the full-wave bound on node states including negative-ε ring
 resonances (which do exist, η ≈ 100, item 17), the quantitative test of the experimenters' model,
-or the gas-path account of the measured dips; those are the contributions. The introduction now
+or the test of the published waveforms (item 41); those are the contributions. The introduction now
 motivates the closed-form law by node-level THz dosimetry. If the editor prefers, the paper fits a
 regular article of moderate length. **Fixed.**
 
@@ -269,18 +271,88 @@ would need ~500 S/m"; at that conductivity fibres are resistive, not wires. **Fi
 the selectivity is stated in the electrode frame (E_THz ⊥ E_DC, parallel to electrodes 1–2); finite
 fibre segments in a 70–100 µm slice only lower the E∥ response, so 500 S/m is a lower bound. **Fixed.**
 
+## Fourth round (independent reviewer, 2026-11-02; node and fibre bounds recomputed and confirmed; gas-path account judged fatal as written)
+
+### 36. FATAL: "The gas column does not reproduce a dip at 2 THz: in paper 3 the 5-min minus no-voltage spectrum has at most a 0.2–2 dB ripple there, and paper 1's 2 THz feature drifts the other way."
+**Response.** Correct. Pixel tracing of paper 3 Fig. 1b (Sim 39) shows red − blue rising from
++9.2 dB at 1.5 THz to +18.3 dB at 2.5 THz with no local drop above 0.4 dB: there is no dip near
+2 THz in that spectrum. The claim "both dip frequencies" is withdrawn everywhere, and Sim 38 is
+withdrawn (REPORT row 38). The paper no longer offers an explanation for the 2 THz features of
+paper 1. **Withdrawn.**
+
+### 37. MAJOR: "The hand-read points are biased; the fit is poor."
+**Response.** Correct: the eye-read points were 2–5 dB low above 1.2 THz. A reproducible tracer
+now renders the PDF page at 300 dpi, calibrates both axes on the gridlines (misfit ≤ 0.03 dB,
+≤ 0.006 ps) and traces each curve by colour (`src/thznerve/digitise.py`, tested;
+`results/sim39/digitised.npz`). Its waveforms reproduce the published tissue insertion loss to
+0.8 dB rms over 0.3–2 THz. On the traced points Sim 38's tissue gas column gives χ² = 32–52 on 8
+degrees of freedom. **Fixed (fit withdrawn).**
+
+### 38. MAJOR: "The reported polarisation and DC-direction controls contradict an air path: a hole in the slice would act on any polarisation and any bias direction."
+**Response.** Agreed. They are stated as contradictions of the bypass reading, not as open points:
+if the controls were measured as described, the bypass does not explain the selectivity, and
+nothing in this paper does. **Narrowed.**
+
+### 39. MAJOR: "The gas-volume argument is empty: the gas forms at the electrodes 7.5 mm away, a tungsten anode corrodes, and the air path needs ~1 mm³ against tens produced."
+**Response.** Agreed. Sim 37 now gives 25–42 mm³ of H₂ at the cathode (up to 1.5× with O₂) and says
+the volume neither supports nor excludes an air path (20 % of a ~2 mm spot in 0.1 mm is ~0.1 mm³).
+The cause is now "an air path of unknown origin" (gas, the slice drying or pulling away from a
+window, or the beam or sample moving). **Fixed.**
+
+### 40. MAJOR: "A 225–240 µm column in a 100 µm cuvette is implausible; with t ≤ 100 µm the fit collapses."
+**Response.** Confirmed (x → 0, rms 11 dB). The model-free test below needs no thickness: it uses the
+measured tissue pulse, whose delay already contains whatever thickness and index the slice has.
+The reported index (3.6–3.9 at 100 µm) and the 2 THz loss remain inconsistent with water-based
+tissue at 100 µm; we report that as the authors' inconsistency, not as an optical thickness. **Fixed.**
+
+### 41. MAJOR: "Fit the published waveforms directly: red = a·blue + b·black(t − τ)."
+**Response.** Done (Sim 39, Fig. 7). a = 0.587, b = 0.215, τ = −0.02 ps, residual 28 % of the
+trace's rms (a + b = 1 forced: x = 0.24, 33 %; blue also shifted: 23 %). One-path changes fit much
+worse: the no-voltage pulse scaled and shifted 77–94 %, the empty-cuvette pulse scaled and
+shifted 65 %. So the 5-min trace contains ~20 % of the empty-cuvette pulse at the empty-cuvette
+delay: part of the beam no longer crosses tissue. In frequency, the fitted sum puts the dip at
+0.61 THz (reported 0.56) with 6.8 of the reported 11.4 dB, and follows the published change within
+1.5 dB rms over 0.3–1.7 THz; above 1.7 THz the traced 7-ps window no longer reproduces the published
+spectra (> 1.5 dB), so the fit is not tested there. a + b ≈ 0.8: the remaining tissue path also loses ~25 % in amplitude. Stated as
+"consistent with an air path through ~20 % of the beam", not as a reproduction. **New result.**
+
+### 42. MINOR: "Fresnel factors and the PTFE etalon were ignored."
+**Response.** They cancel in the waveform test, which compares measured pulses through the same
+cuvette. For the withdrawn tissue model they changed the ratio by ≤ 0.3 dB (reviewer's estimate,
+not used further). **Moot.**
+
+### 43. MAJOR: "One bound everywhere: 0.1 dB in the table, 0.5 dB in the abstract, 1–2 dB for small fibres."
+**Response.** One statement now, in abstract, PLAN §4.6 and the table: for E∥, internode ≥ 200 µm
+and fibre packing ≤ 0.6, node conductivity changes a 100 µm slice by ≤ 0.05 dB and a passive node
+permittivity (ε″ ≥ 0.1) by ≤ 0.5 dB, the latter only near a negative-ε ring resonance; the smallest
+CNS fibres (internodes 50–100 µm) can reach 1–2 dB. All are ≥ 4× below the smallest reported change. **Fixed.**
+
+### 44. MINOR: "Bracket the 9 dB conductivity with full-wave points; give its packing dependence; '350× physiological' needs a second reference."
+**Response.** Full-wave points added at 600 and 800 S/m (`sim36_review.py axon2`). 9 dB (E∥, exact slab) needs 470–565 S/m at fibre packing 0.5 and 290–980 S/m over packing 0.7–0.3 (0.6–2 THz); at 0.1 THz 600–1300 S/m.
+The second reference is water itself: the axoplasm's THz water loss already equals ωε0ε″ = 82–115 S/m,
+so the change needed is 3–8× the conductivity that water's own absorption represents. **Fixed.**
+
+### 45. MINOR: "The table still says the wire model would change E⊥; items 26, 27 and 35 assert without numbers."
+**Response.** Table row fixed (E⊥ changes 2.7 dB vs E∥ 6.6 dB at +400 S/m, 0.6 THz; no
+discrimination). Item 26 now cites the traced points (Sim 39). Item 27's account is withdrawn
+(items 36, 41). Item 35: a finite fibre segment of length L in a slice has a smaller axial dipole
+than the infinite one: its axial depolarisation factor N ≈ (a/L)²(ln(2L/a) − 1) is ≤ 7 × 10⁻³ for
+an axon radius of 3.5 µm and L ≥ 70 µm, which lowers the dipole by ≤ 2 % at the conductivities
+needed (|Δε| ≈ 15 at 0.6 THz). Treating fibres as infinite cannot underestimate the conductivity
+needed. **Fixed.**
+
 ---
 
 ## What matches and what does not (experiment)
 
 | Reported (Hovhannisyan, Makaryan, Martirosyan 2024) | This work |
 |---|---|
-| Dips at 0.6 and 2 THz (9–20 dB) | No node or fibre resonance anywhere in 0.1–3 THz. A gas column of ~230 µm through ~10–20 % of the beam puts dips at 0.55–0.64 and 2.0–2.2 THz (two-parameter fit, Sim 38) |
-| Dip drifts 0.7 → 0.5 THz in minutes | Water-vapour lines cannot drift; a growing gas column moves the dip down (Sim 38) |
-| High frequencies rise by 12–17 dB | Gas path skips tissue loss: +7–24 dB at 2–3 THz in the fit; drying also raises them (≤ 3 dB, Sim 34) |
-| ~9 dB change under 100 V DC | Node: ≤ 0.1 dB (E∥) for any conductivity or passive ε; channels 10⁻⁹ dB. Fibres as wires: needs ~500 S/m axoplasm (350× physiological). Heating/drying: smooth, ≤ 3 dB |
-| Effect only with E ∥ fibres | Not explained; model dichroism −0.35 dB; the wire model would change E⊥ too |
-| Effect only with DC across the fibres | Not explained; heating predicts the opposite (σ∥ ≈ 7σ⊥) |
+| Dip near 0.6 THz (9–20 dB), changes near 2 THz | No node or fibre resonance anywhere in 0.1–3 THz. Paper 3's biased waveform = 0.59 × unbiased + 0.21 × empty cuvette (residual 28 %): ~20 % of the beam bypasses the tissue; dip at 0.61 THz with ~60 % of the depth (Sim 39). Paper 3 shows no dip near 2 THz; paper 1's 2 THz features not explained |
+| Dip drifts 0.7 → 0.5 THz in minutes | Water-vapour lines cannot drift. In the traced pulses a growing bypass moves the cancellation down, 0.76 → 0.50 THz as the fraction grows 0.1 → 0.3, while the dip gets shallower (Sim 39); qualitative, not fitted |
+| High frequencies rise by 17–18 dB (2–2.5 THz, traced) | The bypass skips tissue loss: the waveform fit follows the rise to 1.7 THz within 1.5 dB rms (not testable above with the traced window); drying alone ≤ 3 dB (Sim 34) |
+| ~9 dB change under 100 V DC | Node (E∥, internode ≥ 200 µm, packing ≤ 0.6): ≤ 0.05 dB for any conductivity, ≤ 0.5 dB for any passive ε (ε″ ≥ 0.1); channels 10⁻⁹ dB. Fibre conduction: needs 290–980 S/m axoplasm (200–700× physiological). Heating/drying: smooth, ≤ 3 dB |
+| Effect only with E ∥ fibres | Not explained, and contradicts the bypass; model dichroism −0.35 dB; a conducting axon is itself E∥-selective (6.6 vs 2.7 dB at 0.6 THz), so this does not discriminate the wire model |
+| Effect only with DC across the fibres | Not explained, and contradicts the bypass; heating predicts the opposite (σ∥ ≈ 7σ⊥) |
 | Generated high frequencies (nonlinearity) | No ps nonlinearity at TDS fields (10⁻³ of onset); drying raises high-frequency transmission linearly |
 | Sample acts as a grating of wires | No diffraction orders below 6 THz; fibres are not periodic |
 | Onset ~5 min, recovery ~1 h | Timing compatible with heating/drying (0.64 K/s adiabatic), but see DC direction |
@@ -288,8 +360,8 @@ fibre segments in a 70–100 µm slice only lower the E∥ response, so 500 S/m 
 
 ## Remaining (non-fatal) limitations stated in the paper
 - Single fibre plus effective medium; dense-packing corrections are O(1) (item 4).
-- No raw experimental data; the gas-path and heating explanations are hypotheses with stated
-  tests (record the DC current and slice mass; image the cuvette during bias; N₂ purge; measure
-  the slice thickness).
+- No raw experimental data; the bypass reading rests on traced published waveforms (residual 28 %)
+  and its cause is unknown. Tests: image the cuvette during bias; record DC current and slice
+  mass; measure slice thickness; repeat the E⊥ and DC-direction controls on the same slice.
 - Linear passive EM response only; DC-driven structural changes enter only through bulk effects.
 - Passive linear model only; band limited to 0.1–3 THz.

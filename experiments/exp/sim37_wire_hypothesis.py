@@ -104,9 +104,11 @@ for gap_mm, t_um, name in ((18, 70, "paper 1"), (15, 100, "paper 3")):
     A = t_um * 1e-6 * 20e-3        # slice thickness x 20 mm electrode length (paper 3: 20x20 mm sample)
     I = J * A
     q = sig_perp * E ** 2
-    gas = I / (2 * F_C) * Vm * 1.5 * 300 * 1e9   # H2 + O2 (1.5 x H2), mm^3 in 5 min
+    gas = I / (2 * F_C) * Vm * 300 * 1e9         # H2 at the cathode, mm^3 in 5 min (a tungsten anode corrodes, little O2)
     say(f"  {name}: E = {E:.0f} V/m, J = {J:.0f} A/m^2, I ~ {I*1e3:.2f} mA, Joule {q/1e6:.1f} MW/m^3 "
-        f"({q/4.0e6:.2f} K/s), electrolysis gas ~{gas:.0f} mm^3 in 5 min (sample ~{20*20*t_um/1e3:.0f} mm^3)")
+        f"({q/4.0e6:.2f} K/s), H2 at the cathode ~{gas:.0f} mm^3 in 5 min (up to 1.5x with O2)")
+say("  The gas forms at the electrodes, ~7.5 mm from the beam; an air path through 20 % of a ~2 mm beam spot in")
+say("  a 0.1 mm slice is ~0.1 mm^3, so the gas volume neither supports nor excludes it.")
 say("  Current along the fibres (sigma_par ~ 0.6 S/m) would heat ~7x more; the papers report no effect for that")
 say("  direction, so heating alone does not explain the DC-direction selectivity either.")
 

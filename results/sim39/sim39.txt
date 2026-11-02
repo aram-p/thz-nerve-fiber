@@ -1,0 +1,36 @@
+Digitising paper 3 Fig. 1 (page 2, 300 dpi)
+  Fig. 1a: 4 x gridlines (max misfit 0.006), 4 y gridlines (max misfit 0.006) in data units
+  Fig. 1b: 3 x gridlines (max misfit 0.001), 7 y gridlines (max misfit 0.033) in data units
+
+Time domain, -363.8 to -357.2 ps, signal rms of the 5-min trace 0.394
+  bypass: a*blue + b*black(t - tau)                          rms residual 0.109 (28% of signal)  a = 0.587, b = 0.215, tau = -0.024 ps
+  bypass, a + b = 1: (1 - x)*blue + x*black(t - tau)         rms residual 0.129 (33% of signal)  x = 0.240, tau = -0.019 ps
+  bypass, blue also shifted: a*blue(t - t1) + b*black(t - t2) rms residual 0.090 (23% of signal)  a = 0.596, b = 0.209, t1 = +0.058, t2 = -0.016 ps
+  one path: a*blue(t - tau)                                  rms residual 0.372 (94% of signal)  a = 0.285, tau = +0.204 ps
+  one path, global search over the shift of blue             rms residual 0.303 (77% of signal)  tau = -0.67 ps
+  one path, scaled and shifted empty-cuvette pulse           rms residual 0.257 (65% of signal)  tau = -0.04 ps
+
+Frequency domain (dB). Check of the waveform digitising: tissue insertion loss black - blue from the
+  spectra of the traced 7-ps waveforms vs Fig. 1b: rms difference 0.8 dB over 0.3-2 THz
+  (Fig. 1b was computed from a longer record; outside 0.3-2 THz the traced window's noise floor dominates)
+  f (THz)       0.30   0.45   0.56   0.60   0.75   1.00   1.25   1.50   2.00   2.50   3.00
+  Fig.1b red-blue (pixel)   -1.5   -4.8  -11.4   -9.6   -3.2    2.4    6.0    9.2   16.6   18.1   17.6
+  FFT red-blue (traces)     -1.5   -5.0  -10.0   -9.6   -3.4    2.2    6.5    8.6   14.6   14.3   -1.5
+  bypass fit / blue (FFT)   -1.8   -4.0   -6.4   -6.8   -5.7    1.6    6.4    8.7   14.1   12.5   -8.3
+  the traced 7-ps window reproduces the published red - blue within 1.5 dB up to 1.70 THz; above,
+  the window and tracing noise dominate, so the fit is judged only below that frequency
+  bypass fit vs same-window spectrum (like with like), 0.3-1.70 THz: rms 1.3 dB; vs Fig. 1b: rms 1.5 dB
+  dip: Fig. 1b 0.56 THz (-11.4 dB); bypass fit 0.61 THz (-6.8 dB)
+  1.5-2.6 THz on Fig. 1b: red - blue rises from 9.2 to 18.3 dB; largest local drop 0.4 dB (no dip near 2 THz)
+
+Sim 38 gas column through modelled tissue (E || fibres), refitted to pixel points at 0.3, 0.45, 0.56, 0.75, 1, 1.25, 1.5, 2, 2.5, 3 THz, sigma 2 dB
+  KS1996    t <= 600 um: x = 0.238, t = 244 um, chi2 = 52 on 8 dof, rms 4.6 dB
+  KS1996    t <= 100 um: x = 0.000, t = 100 um, chi2 = 301 on 8 dof, rms 11.0 dB
+  broadband t <= 600 um: x = 0.152, t = 223 um, chi2 = 32 on 8 dof, rms 3.6 dB
+  broadband t <= 100 um: x = 0.000, t = 100 um, chi2 = 301 on 8 dof, rms 11.0 dB
+
+Reading
+  The 5-min trace is the no-voltage trace scaled down plus ~20 % of the empty-cuvette pulse at the
+  empty-cuvette delay: part of the beam no longer crosses tissue. The dip near 0.56 THz is where these
+  two paths cancel. One-path changes of the tissue fit worse. The mechanism that opens the air path
+  (gas, the slice drying or pulling away from the window, beam or sample moving) is not identified.
