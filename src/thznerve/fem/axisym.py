@@ -40,7 +40,9 @@ class AxiSpec:
     outer: str = "pml"           # "pml" or "sbc" (cylindrical-wave scattering BC at r = R)
     eps: dict = field(default_factory=dict)   # COMSOL expressions: axon, myelin, node, water
     h_water_um: float = 5.0
-    h_fibre_frac: float = 0.25   # element size in fibre <= frac * min(t, Ln)
+    h_fibre_frac: float = 0.25   # near the node (|z| < zg): element size <= frac * min(t, Ln)
+    zg_um: float = 10.0          # half-length of the refined zone around the node
+    h_far_frac: float = 0.5      # far from the node: myelin h = frac * t, axon h = frac * a
     order: int = 2               # shape-function order
     freqs_hz: list = field(default_factory=lambda: [1e12])
 
@@ -72,10 +74,14 @@ def build(spec: AxiSpec, name: str = "axi"):
     P = spec.Lint_um + Ln
     h = P / 2
     rmax = R + (spec.pml_um if spec.outer == "pml" else 0.0)
-    _rect(geom, "r_ax", 0, a, -h, h)
-    _rect(geom, "r_my1", a, b, -h, -Ln / 2)
+    zg = min(spec.zg_um, 0.45 * P)
+    for i, (z0, z1) in enumerate(((-h, -zg), (-zg, zg), (zg, h))):
+        _rect(geom, f"r_ax{i}", 0, a, z0, z1)
+    _rect(geom, "r_my1f", a, b, -h, -zg)
+    _rect(geom, "r_my1", a, b, -zg, -Ln / 2)
     _rect(geom, "r_nd", a, b, -Ln / 2, Ln / 2)
-    _rect(geom, "r_my2", a, b, Ln / 2, h)
+    _rect(geom, "r_my2", a, b, Ln / 2, zg)
+    _rect(geom, "r_my2f", a, b, zg, h)
     Rf = R - 2 * spec.h_water_um     # flux contour inside water (Poav on the PML interface reads half)
     _rect(geom, "r_w", b, Rf, -h, h)
     _rect(geom, "r_w2", Rf, R, -h, h)
@@ -97,6 +103,13 @@ def build(spec: AxiSpec, name: str = "axi"):
     _box(geom, "s_rf", 1, Rf - e, Rf + e, -h - e, h + e)     # flux surface r = Rf
     _box(geom, "s_zlo", 1, -e, rmax + e, -h - e, -h + e)
     _box(geom, "s_zhi", 1, -e, rmax + e, h - e, h + e)
+    _box(geom, "s_near", 2, -e, b + e, -zg - e, zg + e)        # axon + sheath near the node
+    _box(geom, "s_axf1", 2, -e, a + e, -h - e, -zg + e)
+    _box(geom, "s_axf2", 2, -e, a + e, zg - e, h + e)
+    _box(geom, "s_myf1", 2, a - e, b + e, -h - e, -zg + e)
+    _box(geom, "s_myf2", 2, a - e, b + e, zg - e, h + e)
+    for t, ins in (("s_axfar", ["s_axf1", "s_axf2"]), ("s_myfar", ["s_myf1", "s_myf2"])):
+        uu = geom.create(t, "UnionSelection"); uu.set("entitydim", "2"); uu.set("input", ins)
     up = geom.create("s_per", "UnionSelection")
     up.set("entitydim", "1"); up.set("input", ["s_zlo", "s_zhi"])
     geom.run()
@@ -134,8 +147,9 @@ def build(spec: AxiSpec, name: str = "axi"):
     sz.set("custom", "on"); sz.set("hmax", str(spec.h_water_um)); sz.set("hmin", str(1e-3))
     sz.set("hgrad", "1.2")
     hf = spec.h_fibre_frac * min(b - a, Ln)
-    for tag, sel, hh in (("sf", "geom1_s_node", hf), ("sm", "geom1_s_myelin", spec.h_fibre_frac * (b - a)),
-                         ("sa", "geom1_s_axon", max(spec.h_fibre_frac * a, hf))):
+    for tag, sel, hh in (("sn", "geom1_s_near", hf),
+                         ("smf", "geom1_s_myfar", spec.h_far_frac * (b - a)),
+                         ("saf", "geom1_s_axfar", spec.h_far_frac * a)):
         fs = ft.create(tag, "Size")
         fs.selection().geom("geom1", 2)
         fs.selection().named(sel)

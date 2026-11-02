@@ -39,22 +39,25 @@ AX = axoplasm(WATER)
 
 
 def run(case: str, a=3.5, b=5.0, Ln=1.0, Lint=1000.0, R=100.0, pml=60.0, h_water=5.0, h_frac=0.25,
-        m_max=3, fmin=0.1, fmax=3.0, nf=30, node="water", tag=None):
-    f = np.linspace(fmin, fmax, int(nf)) * 1e12
+        h_far_frac=0.5, m_max=3, fmin=0.1, fmax=3.0, nf=30, node="water", outer="pml", tag=None,
+        eps_override=None, freqs=None):
+    f = np.asarray(freqs, dtype=float) if freqs is not None else np.linspace(fmin, fmax, int(nf)) * 1e12
     node_m = {"water": WATER, "myelin": MY}[node]
-    eps = dict(axon=AX.comsol(), myelin=MY.comsol(), node=node_m.comsol(), water=WATER.comsol())
-    spec = axisym.AxiSpec(a_um=a, b_um=b, Ln_um=Ln, Lint_um=Lint, R_um=R, pml_um=pml, eps=eps,
-                          h_water_um=h_water, h_fibre_frac=h_frac, freqs_hz=list(f))
+    mats = dict(axon=AX, myelin=MY, node=node_m, water=WATER) | (eps_override or {})
+    node_m = mats["node"]
+    eps = {k: m.comsol() for k, m in mats.items()}
+    spec = axisym.AxiSpec(a_um=a, b_um=b, Ln_um=Ln, Lint_um=Lint, R_um=R, pml_um=pml, eps=eps, outer=outer,
+                          h_water_um=h_water, h_fibre_frac=h_frac, h_far_frac=h_far_frac, freqs_hz=list(f))
     tag = tag or case
     res = {}
     for pol in ("par", "perp"):
-        with RunLog("sim30", f"{tag} {pol} a={a} b={b} Ln={Ln} Lint={Lint} h={h_water}/{h_frac} m<={m_max} nf={nf}") as log:
+        with RunLog("sim30", f"{tag} {pol} a={a} b={b} Ln={Ln} Lint={Lint} R={R} {outer} h={h_water}/{h_frac}/{h_far_frac} m<={m_max} nf={nf}") as log:
             t0 = time.monotonic()
             model = axisym.build(spec, name=f"s30{tag}{pol}")
             o = axisym.solve_pol(model, pol, m_max)
             client().remove(model)
             w = 2 * np.pi * f
-            ew = WATER(f)
+            ew = mats["water"](f)
             nw = refractive_index(ew).real
             I0 = 0.5 * nw / ETA0                                   # W/m^2 for |E0| = 1 V/m
             Vn = np.pi * (b ** 2 - a ** 2) * Ln * 1e-18            # m^3
@@ -72,8 +75,8 @@ def run(case: str, a=3.5, b=5.0, Ln=1.0, Lint=1000.0, R=100.0, pml=60.0, h_water
                        header=",".join(cols))
             res[pol] = {k: v.tolist() for k, v in r.items()}
     (OUT / f"{tag}.json").write_text(json.dumps(dict(params=dict(a=a, b=b, Ln=Ln, Lint=Lint, R=R, pml=pml,
-                                                                 h_water=h_water, h_frac=h_frac, m_max=m_max,
-                                                                 node=node), res=res), indent=0))
+                                                                 h_water=h_water, h_frac=h_frac, h_far_frac=h_far_frac,
+                                                                 m_max=m_max, node=node, outer=outer), res=res), indent=0))
     return res
 
 
@@ -83,7 +86,7 @@ if __name__ == "__main__":
     kw = {}
     for a in sys.argv[2:]:
         k, v = a.split("=")
-        kw[k] = v if k in ("node", "tag") else float(v)
+        kw[k] = v if k in ("node", "tag", "outer") else float(v)
     if "m_max" in kw:
         kw["m_max"] = int(kw["m_max"])
     if case == "nonode":

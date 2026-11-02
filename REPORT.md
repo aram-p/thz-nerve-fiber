@@ -41,6 +41,16 @@ on every solve. See the iteration log below.
 | 27 | legacy peaks are artefacts | fibre ≡ no fibre on axis; peaks move with box length; mesh noise | **confirmed: Sims 1–26 invalid** |
 | 28 | the new pipeline is exact on problems with known answers | B1 water slab vs transfer matrix: R+T+A−1 ≤ 8e-6, T error 9e-5 (30 freqs, 18 s). B2 2D layered cylinder vs Mie series, TM and TE: absorbed power per layer ≤ 8e-6, flux balance ≤ 5e-7. B3 axisymmetric harmonic model (m = 0..3) vs per-order series, both polarisations: ≤ 2e-4, balance ≤ 2e-5; null test (fibre = water) ≤ 1e-7. Bugs found on the way: flux on the PML interface reads half; axisym integrals need 2πr weighting; axisym PML must be Cylindrical (`experiments/bench/sim28_benchmarks.py`) | **passed: tools trusted** |
 | 29 | reported voltage-induced features come from a partial air path, not fibre physics | authors' own n, d give notches at 0.52–0.58 THz (d = 100 µm) and 0.74/2.2 THz (d = 70 µm); the other 2π unwrap branch passes through their n = 7.8/4.2/2.9 points; high-f gain +9/+18/+17 dB vs +8/+11/+18 (`paper/figures/fig_twopath.png`) | consistent, hypothesis only (needs raw data) |
+| 30 | H30: the node shows no resonance in 0.1–3 THz; its absorption follows the quasi-static law P = ½ωε0ε″_w|E0|²V_n·F | Realistic fibre (axon a = 3.5 µm, b = 5 µm, g = 0.7, node 1 µm, internode 1000 µm), cited materials, 30 frequencies, both polarisations, m = 0..3 (last order ≤ 5e-4), energy balance ≤ 2e-5. Node field factor η = ⟨|E|²⟩_node/|E0|²: E∥ 0.32 → 0.73, E⊥ 1.75 → 1.18, both smooth and monotonic. Independent quasi-static solver (no fitting): E∥ within 0.1–6 %, E⊥ within 0.5–0.8 % at every frequency. Node share of fibre absorption per period 0.03–0.12 %; node cross-section 0.1–0.8 µm² (E∥) | **confirmed: no resonance; mechanism quasi-static** (convergence: Sim 31) |
+
+
+### Review after 5 iterations (Sims 27–31)
+- Biggest time sink: Sim 30's first mesh (850k DOF, 5.4 GB, 17 min per polarisation), because the
+  1000 µm myelin was meshed at the node resolution. Fix: refine only |z| < 10 µm around the node,
+  coarser fibre mesh elsewhere (432k DOF, 3.3 GB, 104 s for 4 frequencies); same η to 4 digits.
+- Repeated mistake: COMSOL defaults that silently change answers (`punit`, unrevolved axisym
+  integrals, Poav averaged on interfaces). Each now has a benchmark that fails loudly (Sim 28), and
+  the comsol skill lists them.
 
 ---
 

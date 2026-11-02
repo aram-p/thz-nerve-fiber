@@ -18,6 +18,9 @@ env/
 # Data outputs (regeneratable from simulations)
 results/*
 !results/run_log.csv
+!results/sim27/
+!results/sim28/
+!results/sim30/
 data/raw/
 *.csv
 *.h5
@@ -33,3 +36,6 @@ Thumbs.db
 .vscode/
 *.swp
 !results/run_log.csv
+!results/sim27/
+!results/sim28/
+!results/sim30/

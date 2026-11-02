@@ -55,7 +55,13 @@ def solve_node_qs(a, b, Ln, eps_axon, eps_myelin, eps_node, eps_out,
     """Solve the quasi-static node problem. Lengths in any consistent unit.
 
     field="axial" applies E0 along the fibre axis (E parallel to fibre, m = 0).
+    field="transverse" applies E0 along x (E perpendicular to fibre): potential
+    psi(r, z) cos(phi) with psi = -E0 r far away, and an extra eps m^2/r^2 term (m = 1).
+    F is then averaged over phi: <|E|^2> = (|d_r psi|^2 + |psi/r|^2 + |d_z psi|^2) / 2.
     """
+    if field not in ("axial", "transverse"):
+        raise ValueError(field)
+    m = 0 if field == "axial" else 1
     t = b - a
     R = R or 12 * b
     Z = Z or max(12 * b, 20 * Ln)
@@ -79,7 +85,7 @@ def solve_node_qs(a, b, Ln, eps_axon, eps_myelin, eps_node, eps_out,
     diag = np.zeros(nr * nz, dtype=complex)
 
     def phi_bc(r, z):
-        return -z  # E0 = 1 along +z
+        return -z if m == 0 else -r * np.ones_like(z)  # E0 = 1 along +z or +x
 
     # r-faces between i and i+1
     for i in range(nr - 1):
@@ -98,6 +104,8 @@ def solve_node_qs(a, b, Ln, eps_axon, eps_myelin, eps_node, eps_out,
     rhs[idx[i]] += g * phi_bc(re[-1], zc)
     # z-faces
     ring = np.pi * (re[1:] ** 2 - re[:-1] ** 2)
+    if m:
+        np.add.at(diag, idx, eps * m ** 2 / RC ** 2 * np.outer(ring, dz))
     for j in range(nz - 1):
         d = zc[j + 1] - zc[j]
         ef = 2 * eps[:, j] * eps[:, j + 1] / (eps[:, j] + eps[:, j + 1])
@@ -119,6 +127,8 @@ def solve_node_qs(a, b, Ln, eps_axon, eps_myelin, eps_node, eps_out,
     Er = -np.gradient(phi, rc, axis=0)
     Ez = -np.gradient(phi, zc, axis=1)
     E2 = np.abs(Er) ** 2 + np.abs(Ez) ** 2
+    if m:
+        E2 = 0.5 * (E2 + np.abs(phi / RC) ** 2)
     vol = np.outer(ring, dz)
     node = shell & (np.abs(ZC) < Ln / 2)
     my = shell & (np.abs(ZC) > Ln / 2 + 5 * t) & (np.abs(ZC) < Z / 2)

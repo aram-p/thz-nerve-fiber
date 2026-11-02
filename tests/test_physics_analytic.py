@@ -83,3 +83,19 @@ def test_mixtures_and_literature_values():
     fs = np.linspace(0.1e12, 3e12, 30)
     assert np.all(refractive_index(myelin(phi=0.5)(fs)).real < refractive_index(WATER_KS1996(fs)).real)
     assert np.all(refractive_index(axoplasm()(fs)).real < refractive_index(WATER_KS1996(fs)).real)
+
+
+def test_quasistatic_transverse_vs_2d_coated_cylinder():
+    """E perpendicular, node filled with myelin = infinite coated cylinder (exact 2D solution)."""
+    from thznerve.physics.quasistatic import solve_node_qs
+    e1, e2, e3, a, b = 4 - 2j, 2.5 - 0.3j, 4 - 2j, 3.5, 5.0
+    r = solve_node_qs(a, b, 1.0, e1, e2, e2, e3, field="transverse")
+    M = np.array([[a, -a, -1 / a, 0], [e1, -e2, e2 / a ** 2, 0], [0, b, 1 / b, -1 / b],
+                  [0, e2, -e2 / b ** 2, e3 / b ** 2]], complex)
+    A, B, C, _ = np.linalg.solve(M, np.array([0, 0, -b, -e3]))
+    rr = np.linspace(a, b, 2001)
+    shell = np.trapezoid((abs(B) ** 2 + abs(C) ** 2 / rr ** 4) * rr, rr) / np.trapezoid(rr, rr)
+    assert abs(r.F_axon_at_node / abs(A) ** 2 - 1) < 0.01
+    assert abs(r.F_node / shell - 1) < 0.03
+    u = solve_node_qs(a, b, 1.0, e3, e3, e3, e3, field="transverse")
+    assert abs(u.F_node - 1) < 1e-9
