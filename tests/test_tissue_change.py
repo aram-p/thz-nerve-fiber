@@ -14,3 +14,8 @@ def test_required_change_at_0p6():
     assert abs(delay[0] - 0.227) < 1e-3          # 0.09 * (2 pi 0.6 THz 0.611 ps + 0.22)
     _, d0 = required_change(np.array([0.6e12]), 1.09, offset=False)
     assert d0[0] < delay[0]
+
+
+def test_min_required_delay_4_5_min():
+    from thznerve.physics.tissue_change import min_required_delay
+    assert abs(min_required_delay(0.6e12) - 0.147) < 1e-3

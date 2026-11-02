@@ -6,13 +6,13 @@ at the node of Ranvier. The node absorbs as a quasi-static, sub-wavelength gap: 
 the permittivities (F is defined by the absorbed power and computed from a Laplace problem). No node
 state, and no fibre state the experimenters proposed (open channels turning fibres into nonlinear
 conducting wires forming a grating), changes tissue transmission for E∥ by the reported ~9 dB or by the
-≥ 0.21 rad of extra delay the 0.6 THz feature needs (≤ 0.06 rad with every extreme combined; ≤ 0.175 in any direction), so the 0.6/2 THz features reported under DC bias (Hovhannisyan, Makaryan, Martirosyan 2024)
+≥ 0.15 rad of extra delay the 0.6 THz feature needs (lowest over ±1-pixel tracing; ≤ 0.06 rad with every extreme combined), so the 0.6/2 THz features reported under DC bias (Hovhannisyan, Makaryan, Martirosyan 2024)
 do not come from the linear electromagnetic response of nodes or fibres. The published waveforms
 of the three reports, which share reference scans, instead contain a component at the
 empty-cuvette delay (4, 12, 17, 22 % in four biased scans after 0.5, 2, 4, 5 min), while the
 tissue term arrives 0.04–0.07 ps later (Sims 39, 42, 43), consistent with the 0.6 THz dip; that delay
-is a 7–11 % thicker slice or a stage drift, and node states, ions and conduction cannot give it within
-the loss the fits allow (Sim 46); the 2 THz dip is not
+is a 7–18 % thicker slice, warming or a stage drift; node states cannot give it, nor can ions or
+conduction within the loss the fits allow (Sim 46); the 2 THz dip is not
 reproduced; their cause is unknown and they conflict with the reported polarisation and bias-direction
 selectivity.
 
@@ -822,17 +822,65 @@ direction: 0.175, below 0.21; §4.6 states both. **Fixed.**
 **Response.** §4.6 now gives ×1.43 ± 0.16 at 3 THz; the bounds use ×1.45; at 3 THz the measured change
 is a rise, so no conclusion depends on it. **Fixed.**
 
+## Fifteenth round (independent reviewer, whole paper, 2026-11-04; verdict: major revision, no fatal flaw; law fit, law errors, mesh, ×70 scaling and bounds recomputed and confirmed; no prior full-wave node study below 3 THz found)
+
+### 126. MAJOR: heating with the measured temperature coefficient (9 K, 1.1 dB) is within the allowed loss and is set aside only by a frequency shape that comes from the T^q model itself.
+**Response.** Agreed. Heating is now one of the readings: abstract, §5.4, §5.6, §5.7, §6 and the
+conclusion say "a thicker slice, warming or a stage drift". §5.4 states that the T^q frequency
+shape cannot exclude it, and that at the tracing floor 5 K (scaled) or 17 K (Liebe) suffice with
+0.6–1.0 dB (Sim 46). **Fixed.**
+
+### 127. MAJOR: the 0.21 rad floor is not robust to the ±1-pixel spread (4 min: 0.039–0.066 ps, 0.15–0.25 rad); the any-direction bound (0.175) does not clear it.
+**Response.** Agreed. The floor is now the lowest over ±1 pixel at 4–5 min, 0.039 ps = 0.15 rad
+(`thznerve.physics.tissue_change.min_required_delay`, tested); node states give ≤ 0.06 (2.3×). The
+any-direction claim is withdrawn; §4.6 instead shows the sign behaves physically (metallic node
+delays +0.042 rad, ε′ = 1 advances −0.039 rad) and says the exclusion rests on it. Ions and
+conduction need 5.2 dB for the floor, still above 3.3 dB. **Fixed.**
+
+### 128. MINOR: tracing resolution overstated; source bitmaps are 213–244 ppi, so ±1 rendered pixel is less than one native pixel.
+**Response.** §5.6 now states the native resolution (0.016 ps H1, 0.012 ps H3) and that the
+±1-pixel ranges use rendered pixels. **Fixed.**
+
+### 129. MINOR: "7–11 %" and "9–18 %" for the same quantity.
+**Response.** §5.6 defines both (q, frequency domain, band-dependent: 9–18 %; time-domain shift:
+7–11 %); abstract and conclusion use 7–18 %. **Fixed.**
+
+### 130. MINOR: "0.04–0.07 ps later" holds from 2 min only; "τ negative in every fit" fails at 30 s over ±1 pixel; 30-s b range should be 0.034–0.044.
+**Response.** "from 2 min"; "every central fit … at 30 s the ±1-pixel range reaches +0.001 ps"; table
+corrected. **Fixed.**
+
+### 131. MINOR: the abstract says node states fail on loss; they fail on delay.
+**Response.** "node states cannot, nor can ions or axoplasm conduction beyond the loss the fits
+allow". **Fixed.**
+
+### 132. MINOR: last-order ≤ 5 × 10⁻⁴ and balance ≤ 2.4 × 10⁻⁵ are overstated (9.0 × 10⁻³ thickest fibre E⊥, 1.5 × 10⁻³ thick myelin; balance 4.7–5.2 × 10⁻⁵).
+**Response.** Rechecked over 433 production CSVs: last order ≤ 5 × 10⁻⁴ in 350, ≤ 1.5 × 10⁻³ thick
+myelin, ≤ 9 × 10⁻³ thickest fibre; balance ≤ 5 × 10⁻⁵. §2.3 and Table 1 corrected. **Fixed.**
+
+### 133. MINOR: k_w·Ln < 0.15 holds only for Ln = 1 µm (0.60 at 5 µm, 3 THz).
+**Response.** §4.2 and §4.4 now give k_w·Ln ≤ 0.6 (0.44 at the longest measured node) and rest the
+no-resonance point on the law holding at Ln = 5 µm within 2 %. **Fixed.**
+
+### 134. MINOR: committed `fit_nodelaw.log` is stale (two-constant fit, 9.7 %).
+**Response.** Rerun and committed: par c0, p, q = 1.066, 0.934, 0.742, max 2.1 %; perp 0.999, 0.826,
+−0.784, max 2.0 %. **Fixed.**
+
+### 135. MINOR: Fig. 9 legend says 116 states, hides the time-shift marker, has no node states at 1 THz, stops the ion/conduction curves at 46 S/m, and its grey band fixes the loss.
+**Response.** Redrawn: legend below the axes with the state count read from the file (80), node
+states labelled "0.6 THz only", curves to 70 / 180 S/m and Liebe heating to 80 K, grey region = the
+delay the traces allow up to q = 1.18 and the loss up to amplitude 1. **Fixed.**
+
 ---
 
 ## What matches and what does not (experiment)
 
 | Reported (Hovhannisyan, Makaryan, Martirosyan 2024) | This work |
 |---|---|
-| Dip near 0.6 THz (9–20 dB) | No node or fibre resonance anywhere in 0.1–3 THz. The shared session's biased waveforms contain a component at the empty-cuvette delay (4, 12, 17, 22 % at 0.5, 2, 4, 5 min); no one-path tissue change fits. With the tissue path also 1.09–1.18× thicker, the dip falls at 0.57 THz (5 min, reported 0.56) and 0.63–0.65 THz (4 min, published 0.65): consistent, q fitted (Sims 39, 42, 43). The tissue term is 0.04–0.07 ps later: a 7–11 % thicker slice or a stage drift, not separable on the published traces; ions and axoplasm conduction need 7.5 dB of extra loss to give that delay, more than the fits allow (≤ 3.3 dB), and node states give ≤ 0.06 rad (Sim 46) |
+| Dip near 0.6 THz (9–20 dB) | No node or fibre resonance anywhere in 0.1–3 THz. The shared session's biased waveforms contain a component at the empty-cuvette delay (4, 12, 17, 22 % at 0.5, 2, 4, 5 min); no one-path tissue change fits. With the tissue path also 1.09–1.18× thicker, the dip falls at 0.57 THz (5 min, reported 0.56) and 0.63–0.65 THz (4 min, published 0.65): consistent, q fitted (Sims 39, 42, 43). The tissue term is 0.04–0.07 ps later from 2 min: a 7–18 % thicker slice, warming or a stage drift, not separable on the published traces; ions and axoplasm conduction need ≥ 5.2 dB of extra loss to give even the 0.15 rad floor, more than the fits allow (≤ 3.3 dB), and node states give ≤ 0.06 rad (Sim 46) |
 | 2 THz dip (30 s, paper 1) | Not reproduced. A real feature of one scan: 15 dB at 1.99 THz, twice any other single-curve dip, its bottom (−71 dB) 2–5 dB above the noise, so the depth is a lower bound; origin unknown. Not reproduced, not excluded: with the traced phase extrapolated the two terms put their antiphase at 2.10–2.32 THz, and the data are only 3.2 dB above the two-term floor (Sims 43, 44) |
 | Dip drifts 0.7 → 0.5 THz in minutes | Water-vapour lines cannot drift. At 30 s the traced ratio is a broad −3 to −4 dB trough over 0.56–0.78 THz; by 4 min the dip is at 0.62–0.65 THz as b reaches 0.17 and q 1.09 (Sims 42, 43). Matches the direction; fitted, not predicted |
 | High frequencies rise by 17–18 dB (2–2.5 THz, traced) | The bypass skips tissue loss: the waveform fit follows the rise to 1.7 THz within 1.5 dB rms (not testable above with the traced window); drying alone ≤ 3 dB (Sim 34) |
-| ~9 dB change under 100 V DC | Node (E∥, internode ≥ 200 µm, packing ≤ 0.6): ≤ 0.05 dB for any conductivity, ≤ 0.1/0.6/1.1 dB at 0.6/2/3 THz for any passive ε (ε″ ≥ 0.1, combined ±20 % materials); with internode 50 µm, packing 0.8 and the measured slice's optical thickness (×2.2–3.1) 1.5/10/17 dB. At 0.6 THz the tissue must change by 1.1–2.2 dB and +0.21–0.45 rad of delay (q fit; extra loss ≤ 3.3 dB); no node state gives more than 0.06 rad of delay with every extreme, and none gives loss and delay together. At 2 THz the extreme bound (10 dB) approaches the ≥ 14 dB change (nominal margin 7×). Near 3 THz the reported change is a rise (node states ≤ 0.4 dB); channels 10⁻⁹ dB. Fibre conduction: 130–1300 S/m axoplasm for 9 dB; to give the delay the fits need, 165 S/m and 7.5 dB of extra loss, more than they allow (Sim 46). Heating/drying: smooth, ≤ 3 dB |
+| ~9 dB change under 100 V DC | Node (E∥, internode ≥ 200 µm, packing ≤ 0.6): ≤ 0.05 dB for any conductivity, ≤ 0.1/0.6/1.1 dB at 0.6/2/3 THz for any passive ε (ε″ ≥ 0.1, combined ±20 % materials); with internode 50 µm, packing 0.8 and the measured slice's optical thickness (×2.2–3.1) 1.5/10/17 dB. At 0.6 THz the tissue must change by 1.1–2.2 dB and ≥ 0.15 rad of delay (traces, ±1 pixel; extra loss ≤ 3.3 dB); no node state gives more than 0.06 rad of delay with every extreme, and none gives loss and delay together. At 2 THz the extreme bound (10 dB) approaches the ≥ 14 dB change (nominal margin 7×). Near 3 THz the reported change is a rise (node states ≤ 0.4 dB); channels 10⁻⁹ dB. Fibre conduction: 130–1300 S/m axoplasm for 9 dB; to give the delay the fits need, ≥ 111 S/m and ≥ 5.2 dB of extra loss, more than they allow (Sim 46). Heating/drying: smooth, ≤ 3 dB |
 | Effect only with E ∥ fibres | Described without data (H1 p. 18, H3), so not testable on the published material. Not explained, and contradicts the bypass; model dichroism −0.35 dB; a conducting axon is itself E∥-selective (6.6 vs 2.7 dB at 0.6 THz), so this does not discriminate the wire model |
 | Effect only with DC across the fibres | Described without data. Not explained, and contradicts the bypass; heating predicts the opposite (σ∥ ≈ 7σ⊥) |
 | Generated high frequencies (nonlinearity) | No ps nonlinearity at TDS fields (10⁻³ of onset); drying raises high-frequency transmission linearly |

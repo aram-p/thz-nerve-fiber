@@ -42,3 +42,10 @@ q = 1.18: required extra loss / delay at 0.6, 1.0, 1.4 THz: 2.18 dB, +0.454 rad;
   thicker path (fraction)              = +0.0758: loss at 0.6 THz +0.99 dB (allowed); delay at 1.0/1.4 THz 0.92x/0.87x; loss rise +0.25/+0.41 dB
   time shift of the tissue term (drift) = +0.061 ps: loss 0 dB (allowed); delay at 1.0/1.4 THz 1.04x/1.05x; loss rise 0 dB
 
+Lowest extra delay the traces allow at 4-5 min (+-1 pixel): 0.147, 0.245, 0.343 rad at 0.6/1.0/1.4 THz
+  heating, Liebe (dT, K)               = +16.5 gives that delay at 0.6 THz with +1.02 dB (allowed, <= 3.28)
+  heating, Liebe x2.31 (dT, K)         = +5.07 gives that delay at 0.6 THz with +0.60 dB (allowed, <= 3.28)
+  water content (fractional change)    = +0.0555 gives that delay at 0.6 THz with +0.72 dB (allowed, <= 3.28)
+  ions: all tissue water (S/m)         = +42.4 gives that delay at 0.6 THz with +5.17 dB (NOT allowed, <= 3.28)
+  axoplasm conductivity (S/m)          = +111 gives that delay at 0.6 THz with +5.17 dB (NOT allowed, <= 3.28)
+  thicker path (fraction)              = +0.0484 gives that delay at 0.6 THz with +0.63 dB (allowed, <= 3.28)

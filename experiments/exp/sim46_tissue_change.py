@@ -30,7 +30,7 @@ from scipy.optimize import brentq, least_squares
 from thznerve.physics.effmedium import tissue_eps
 from thznerve.physics.materials import (EPS0, PROTEIN, WATER_KS1996, alpha_per_cm, axoplasm, myelin,
                                         water_liebe)
-from thznerve.physics.tissue_change import LOSS_DB, delay_phase
+from thznerve.physics.tissue_change import LOSS_DB, delay_phase, min_required_delay
 from thznerve.physics.tmm import slab_rta
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -199,32 +199,41 @@ say()
 (OUT / "sim46.txt").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 # Figure 9: extra loss vs extra delay of the slice at 0.6 and 1.0 THz
-fig, ax = plt.subplots(1, 2, figsize=(10, 4))
+D_MIN = min_required_delay(F)
+say(f"Lowest extra delay the traces allow at 4-5 min (+-1 pixel): {', '.join(f'{v:.3f}' for v in D_MIN)} rad at 0.6/1.0/1.4 THz")
+for name, (mk, (lo, hi)) in MECH.items():
+    g = lambda v: change(mk(v))[0, 1] - D_MIN[0]
+    grid = np.linspace(lo, hi, 201); vals = [g(v) for v in grid]
+    roots = [brentq(g, grid[i], grid[i + 1]) for i in range(200) if vals[i] * vals[i + 1] < 0]
+    if roots:
+        c = change(mk(roots[0]))
+        say(f"  {name:36s} = {roots[0]:+.3g} gives that delay at 0.6 THz with {c[0, 0]:+.2f} dB "
+            f"({'allowed' if c[0, 0] <= L_A1 else 'NOT allowed'}, <= {L_A1:.2f})")
+(OUT / "sim46.txt").write_text("\n".join(lines) + "\n", encoding="utf-8")
+fig, ax = plt.subplots(1, 2, figsize=(11, 5.2))
 node = json.loads((ROOT / "results" / "sim30" / "sim36_signed06.json").read_text())["states"]
 hk = [n for n in MECH if n.startswith("heating, Liebe x")][0]
 for k, axi in enumerate(ax):
-    axi.plot([REQ[1.09][k, 0], REQ[1.18][k, 0]], [REQ[1.09][k, 1], REQ[1.18][k, 1]],
-             color="0.6", lw=7, solid_capstyle="butt", label="required: T^q, q = 1.09-1.18")
-    axi.axvline(req[k, 0] + 20 * np.log10(1 / A_H1), color="0.4", ls="--", lw=0.8,
-                label="most extra loss the H1 fit allows (a ≤ 1)")
-    axi.plot([0], [2 * np.pi * F[k] * s_ps * 1e-12], "kx", ms=6, label=f"time shift of the tissue term, {s_ps:.3f} ps")
-    qq = np.linspace(0, 0.2, 21)
-    axi.plot(qq * MEAS_LOSS[k], qq * DELAY_T[k], color="0.5", lw=0.8, ls=":")
-    for name, col, key, vals in (("heating, Liebe (0-40 K)", "C3", "heating, Liebe (dT, K)", np.linspace(0, 40, 17)),
+    ceil = req[k, 0] + 20 * np.log10(1 / A_H1)
+    axi.fill_between([0, ceil], D_MIN[k], REQ[1.18][k, 1], color="0.85", lw=0,
+                     label="what the fits allow: extra delay (traces, 4-5 min), extra loss up to a = 1 (H1)")
+    axi.plot([0], [2 * np.pi * F[k] * s_ps * 1e-12], "kx", ms=7, mew=1.5, label=f"time shift of the tissue term ({s_ps:.3f} ps)")
+    for name, col, key, vals in (("heating, Liebe (0-80 K)", "C3", "heating, Liebe (dT, K)", np.linspace(0, 80, 21)),
                                  (f"heating, Liebe x{K_MILLON:.1f} (0-20 K)", "C4", hk, np.linspace(0, 20, 17)),
-                                 ("water gain (0-16 %)", "C0", "water content (fractional change)", np.linspace(0, 0.16, 17)),
+                                 ("water gain into thickness (0-16 %)", "C0", "water content (fractional change)", np.linspace(0, 0.16, 17)),
                                  ("same tissue thicker (0-16 %)", "C5", "thicker path (fraction)", np.linspace(0, 0.16, 17)),
-                                 ("ions in tissue water (0-18 S/m)", "C2", "ions: all tissue water (S/m)", np.linspace(0, 18, 10)),
-                                 ("axoplasm conduction (0-46 S/m)", "C1", "axoplasm conductivity (S/m)", np.linspace(0, 46, 10))):
+                                 ("ions in tissue water (0-70 S/m)", "C2", "ions: all tissue water (S/m)", np.linspace(0, 70, 15)),
+                                 ("axoplasm conduction (0-180 S/m)", "C1", "axoplasm conductivity (S/m)", np.linspace(0, 180, 15))):
         c = np.array([change(MECH[key][0](v))[k] for v in vals])
         axi.plot(c[:, 0], c[:, 1], "o-", color=col, ms=2.5, lw=1, label=name)
     if k == 0:
         axi.plot([s["loss_db"] for s in node], [s["delay_rad"] for s in node], "k.", ms=3,
-                 label="any node state, every extreme (116)")
+                 label=f"node states, every extreme ({len(node)}; 0.6 THz only)")
     axi.axhline(0, color="k", lw=0.5); axi.axvline(0, color="k", lw=0.5)
     axi.set_xlabel("extra loss of the slice (dB)"); axi.set_title(f"{F[k] / 1e12:.1f} THz", fontsize=10)
 ax[0].set_ylabel("extra delay of the slice (rad)")
-ax[0].legend(fontsize=7, loc="upper left")
-fig.tight_layout()
+h, l = ax[0].get_legend_handles_labels()
+fig.legend(h, l, fontsize=7.5, loc="lower center", ncol=3, frameon=False)
+fig.tight_layout(rect=(0, 0.17, 1, 1))
 for ext in ("png", "pdf"):
     fig.savefig(FIG / f"fig_tissue_change.{ext}", dpi=200)
