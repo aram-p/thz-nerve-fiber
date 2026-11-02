@@ -1,6 +1,6 @@
 (a) Slice optical thickness (effective-medium white matter, packing 0.6, on PTFE)
-  Kindt-Schmuttenmaer  water: from loss 0.6 THz 198 um, 1.0 THz 198 um, 1.5 THz 232 um, 2.0 THz 314 um; from the delay (linear fit with offset, 0.2-1.4 THz) 220 um, model offset -0.56 rad (measured -0.22)
-  broadband            water: from loss 0.6 THz 191 um, 1.0 THz 181 um, 1.5 THz 194 um, 2.0 THz 232 um; from the delay (linear fit with offset, 0.2-1.4 THz) 216 um, model offset -0.52 rad (measured -0.22)
+  Kindt-Schmuttenmaer  water: from loss 0.6 THz 198 um, 1.0 THz 198 um, 1.5 THz 232 um, 2.0 THz 314 um; from the delay (linear fit with offset, 0.2-1.4 THz) 220 um, model offset of the delay phase -0.56 rad (measured +0.22)
+  broadband            water: from loss 0.6 THz 191 um, 1.0 THz 181 um, 1.5 THz 194 um, 2.0 THz 232 um; from the delay (linear fit with offset, 0.2-1.4 THz) 216 um, model offset of the delay phase -0.52 rad (measured +0.22)
 
 (b) Opening through the full thickness on the beam axis, Gaussian beam 5 mm across (H1)
     field fraction b = fraction of beam power through the opening (mode-matched detection)

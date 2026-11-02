@@ -15,14 +15,14 @@ not resonate. Its absorbed power follows a quasi-static law (exact limits, three
 length over myelin thickness, g-ratio and permittivity contrast, within 2.3 % of full wave for
 fibres up to 10 µm, independent of internode length. For the THz field along the fibres (every
 published scan), no node state changes a 100 µm slice by more than 1.1 dB, and with every extreme
-combined none gives the extra delay the measured change needs (≤ 0.06 of ≥ 0.19 rad at 0.6 THz).
+combined none gives the extra delay the measured change needs (≤ 0.06 of ≥ 0.23 rad at 0.6 THz).
 Open channels add 10⁻⁶ of the membrane admittance. The three reports share reference waveforms; in
 their four biased scans the pulse gains a component at the empty-cuvette delay, 4–22 % of the empty-
-cuvette pulse after 0.5–5 min, plus a ~10 % optically thicker tissue path. Together they are
-consistent with the 0.6 THz dip. Only a water gain of 8–16 % gives the thicker path's loss and delay
-together at 0.6–1.4 THz; heating, ions and axoplasm conduction (23–46 S/m) do not. A 2.0 THz dip in
-one scan is not reproduced. The undelayed component's source and the reported polarisation and
-bias-direction selectivity (shown without data) remain open.
+cuvette pulse after 0.5–5 min, plus a 9–18 % longer optical path through the tissue. Together they
+are consistent with the 0.6 THz dip. That needs more tissue in the beam: no change of the tissue's
+permittivity (heating, ions, axoplasm conduction of 23–46 S/m, water content) gives its loss and
+delay together. A 2.0 THz dip in one scan is not reproduced. The undelayed component's source and
+the reported polarisation and bias-direction selectivity (shown without data) remain open.
 
 **Keywords:** terahertz; node of Ranvier; myelinated axon; finite-element method; dosimetry;
 terahertz time-domain spectroscopy; spinal cord.
@@ -277,11 +277,12 @@ polarisations.
 The right comparison at 0.6 THz is not the dip depth: in the two-term reading of Sec. 5.6 the dip is
 an interference null whose depth depends on how exactly two terms cancel. What the tissue itself
 must change is its transfer, T → T^q with q − 1 = 0.09–0.18, which at 0.6 THz (|T|² = −12.1 dB,
-arg T = 2.1 rad) is 1.1–2.2 dB of extra loss together with 0.19–0.37 rad of extra delay. Over all
+delay phase −arg T = 2.5 rad) is 1.1–2.2 dB of extra loss together with 0.23–0.45 rad of extra
+delay (0.21–0.41 rad without the phase offset, Sec. 5.5). Over all
 116 node states with ε″ ≥ 0.1 (conductivity scan, ε grids, dense ε′ scans, and the combined-materials
 scan from ε′ = −10 to −1), the first-order change of the slice at 0.6 THz is mostly a phase advance:
 near the ring resonance, where the loss peaks, the phase falls. The largest extra delay any state
-gives is 0.06 rad with every extreme combined, ≥ 3× short of 0.19 rad, and the state with the
+gives is 0.06 rad with every extreme combined, 3.3× short of 0.21 rad, and the state with the
 largest loss (1.5 dB with every extreme) advances the phase. No state gives both. Under nominal
 parameters (internode 200 µm, packing 0.6, 220 µm path) node states give ≤ 0.3 dB, ≥ 4× short.
 At 2 THz the extreme bound (10 dB) approaches the 14 dB change of the 30-s scan, itself a lower
@@ -325,8 +326,8 @@ alone does not discriminate between mechanisms.
 Measured against what the waveform fits need (Sec. 5.6: T → T^q, extra loss and extra delay
 together) rather than against the dip depth, conduction fails differently. In a 220 µm slab
 (Sec. 5.5) 23–46 S/m of extra axoplasm conductivity gives the required 1.1–2.2 dB at 0.6 THz
-(16–33× physiological, near saturated NaCl), but only 0.15 of the required delay at 0.6 THz and
-0.05–0.08 at 1–1.4 THz (Sim 46, Fig. 9). Conductivity adds loss with almost no phase.
+(16–33× physiological, 1–2× saturated NaCl), but only 0.12 of the required delay at 0.6 THz and
+0.04–0.07 at 1–1.4 THz (Sim 46, Fig. 9). Conductivity adds loss with almost no phase.
 
 ### 5.3 No grating orders, no picosecond nonlinearity
 
@@ -349,12 +350,17 @@ drives ~0.7–1.1 mA through the slice: 2.6–3.7 MW/m³ of Joule heat (σ⊥ = 
 7.5 mm from the beam. Applied uniformly, every bulk mechanism is smooth in frequency and none
 gives a narrow 9 dB feature (partial coverage is a different case, Sec. 5.6). DC along the fibres (σ∥ ≈ 7σ⊥) heats more and reportedly does nothing, so heating alone
 does not explain the DC-direction selectivity. Against the change of T the fits need (Sim 46,
-Fig. 9): heating by 17–30 K gives the 0.6 THz loss and 0.5–0.8 of its delay, but only 0.06–0.34 of
-the loss at 1–1.4 THz (Liebe water, valid below ~1 THz); losing water lowers both loss and delay,
-the wrong sign; ions added to the tissue water behave like axoplasm conduction (loss without delay).
-A water gain of 8–16 %, with the slice thickening by the added volume, gives loss and delay within
-0.84–1.15× of the requirement at 0.6, 1.0 and 1.4 THz, as close as a geometrically thicker slab of
-the model tissue (0.88–1.32×). It is the only candidate tested that does. The tissue is post-mortem, and the bias puts ~70 mV
+Fig. 9; 220 µm slab, Kindt–Schmuttenmaer water as base, its own loss within 1.6 dB of the measured), no change of the tissue's permittivity fits.
+Heating, with Liebe's temperature dependence (fitted below 1 THz and 30 °C) or with it scaled ×2.31
+to the measured 4–21 °C absorption change at 1 THz (46 cm⁻¹; Millon et al. 2022), gives the 0.6 THz
+loss at 9–29 K but only 0.08–0.60 of the loss at 1.4 THz (rms misfit over loss and delay at 0.6, 1.0
+and 1.4 THz 37–56 %). Ions in the tissue water and axoplasm conduction give loss without delay
+(0.04–0.12 of it). More or less water at fixed thickness gives 0.17–0.22 of the loss and 0.07–0.11
+of the delay. Only a longer path fits: the same tissue 8–17 % thicker gives 0.87–1.11× of the
+requirement (7 % rms), and a water gain of 8–17 % whose volume goes entirely into thickness gives
+0.83–1.01× (10 % rms), 0.67–0.86 of it from the added thickness; spread isotropically, the same gain
+gives 0.32–0.47×. Adding 1–4 K of warming to such a gain brings the misfit to 5 %. What the fits need
+is more tissue in the beam, not a different tissue. The tissue is post-mortem, and the bias puts ~70 mV
 across a 10 µm fibre, not the ~1 V the authors estimate.
 
 ### 5.5 One session, and a slice optically thicker than stated
@@ -381,8 +387,8 @@ is 0.61 ps relative to the empty cuvette (linear phase with offset over 0.2–1.
 0.11 rad); the same fit applied to the model slab's transmission phase gives d = 216–220 µm. Loss
 and delay agree: the slice is optically ~200–230 µm thick below 1.5 THz, about twice either stated
 thickness; at 2 THz the model's water needs 314 µm, because it underestimates water loss there.
-The model's phase offset (−0.5 rad) differs from the measured one (−0.22 rad) by 0.3 rad, which we
-do not explain. This conflicts with the cuvette: H2 gives a 100 µm PTFE cuvette and H3 samples 20 × 20 × 0.1 mm.
+The offset of the model's delay phase (−0.5 rad) differs from the measured one (+0.22 rad) by
+0.8 rad, which we do not explain. This conflicts with the cuvette: H2 gives a 100 µm PTFE cuvette and H3 samples 20 × 20 × 0.1 mm.
 Either the gap is about twice the stated one, or the tissue absorbs ~2× as much as water and has
 n ≈ 2.8–3.9 (the authors report 3.6–3.9), which water-based tissue cannot have (Berry et al. 2003;
 Sec. 2.2). We cannot decide which. The per-slice bounds of Sec. 4.6 are therefore scaled by this
@@ -500,9 +506,11 @@ full thickness (0.7–1.2 mm at 30 s): a hole or tear from drying, or a gas bubb
 waist scales with wavelength, one such opening sized at 0.6 THz would pass 0.87–0.94 of the field at
 2 THz; the measured high-band fraction is 0.20–0.27 and flat over 1.5–3 THz. A single on-axis
 opening is therefore disfavoured; openings spread across the beam (cracks, partial dewetting), whose
-area fraction does not depend on frequency, fit the flat level better. The tissue change is a different matter: of the candidates tested,
-only a slice gaining 8–16 % water in the beam reproduces it (Sec. 5.4; Fig. 9), for example by
-electro-osmotic flow or swelling under the bias; heating and evaporation work the other way. The data cannot identify the cause. If the polarisation and DC-direction controls were done
+area fraction does not depend on frequency, fit the flat level better. The tissue change needs more tissue of the same kind in the beam
+(Sec. 5.4; Fig. 9): 18–37 µm more of a ~220 µm optical path. A slice swelling only in thickness
+(water drawn in under the bias, e.g. by electro-osmotic flow) or tissue moving into the beam would do
+it, but the slice is held in a 100 µm cuvette and the Joule heat favours evaporation (Sec. 5.4), so
+we cannot show any such cause to be plausible. The data cannot identify the cause. If the polarisation and DC-direction controls were done
 as described, they argue against any such cause, and they remain unexplained. They are described in
 words only (H1, p. 18; H3), with no waveforms or spectra, so they cannot be tested on the published
 data.
@@ -511,15 +519,15 @@ data.
 
 | Reported | This work |
 |---|---|
-| Dip near 0.6 THz (9–20 dB) | No node or fibre resonance in 0.1–3 THz. The undelayed component plus a 9–18 % thicker tissue path is consistent with it (0.57–0.65 THz against 0.56–0.65 measured); q is fitted. The thicker path's loss and delay are reproduced by an 8–16 % water gain, not by heating, ions, conduction or node states |
+| Dip near 0.6 THz (9–20 dB) | No node or fibre resonance in 0.1–3 THz. The undelayed component plus a 9–18 % thicker tissue path is consistent with it (0.57–0.65 THz against 0.56–0.65 measured); q is fitted. The longer path needs more tissue in the beam; no change of the tissue's permittivity (heating, ions, conduction, water content) or node state gives it |
 | Drift 0.7 → 0.5 THz | The dip deepens and moves from ~0.7 to 0.62–0.65 THz as b and q grow; water-vapour lines cannot drift. No traced spectrum has a dip below 0.56 THz, so the 0.5 THz endpoint is not in the published figures |
 | 2 THz dip (30 s) | Not reproduced, not excluded. A real feature of one scan (15 dB, twice any other single-curve dip), its depth limited by dynamic range; the two terms reach that depth but, with the traced phase extrapolated, at 2.10–2.32 THz rather than 1.99 THz |
 | Only E∥ fibres, only DC across fibres | Not explained; bulk heating and drying would act for both DC directions |
 | Onset ~5 min, recovery ~1 h | Component grows 4 → 12 → 17 → 22 % (0.5, 2, 4, 5 min); recovery not traced |
 | No significant change of average power | Traced energy −1.2 dB (H3), consistent |
 
-Decisive measurements are cheap: logging current and slice mass (a water gain of 8–16 % is
-~2.5–5 mg on a 20 × 20 × 0.1 mm slice), measuring the cuvette gap and slice thickness, an N₂ purge, a reference through a
+Decisive measurements are cheap: logging current and slice mass (18–37 µm more water-based tissue
+in the beam is ~6–11 mg over 20 × 20 mm), measuring the cuvette gap and the slice thickness during bias, an N₂ purge, a reference through a
 heated or dried slice without bias, a measurement with the slice clamped between two windows, and
 release of the raw data.
 
@@ -554,11 +562,11 @@ and permittivity contrast, within 2.3 % of full wave for fibres up to 10 µm. Fo
 published scan, no node state changes a 100 µm slice by more than 1.1 dB at internodes ≥ 200 µm
 and packing ≤ 0.6; with every extreme combined (50 µm internodes, packing 0.8, the ~220 µm optical
 thickness of the measured slice) node states reach 1.5 dB at 0.6 THz but give at most 0.06 rad of
-the ≥ 0.19 rad of extra delay the 0.6 THz feature needs, and no state gives loss and delay together. The conducting-fibre model proposed for the Yerevan
+the ≥ 0.23 rad of extra delay the 0.6 THz feature needs, and no state gives loss and delay together. The conducting-fibre model proposed for the Yerevan
 experiments gives the required loss at 23–46 S/m but almost none of the required delay.
 The published waveforms, all from one session, instead contain a component at the empty-cuvette
-delay that grows over the four biased scans, together with a ~10 % thicker tissue path, which an 8–16 % water gain of the slice reproduces in
-loss and delay and heating, ions or conduction do not; these are
+delay that grows over the four biased scans, together with a 9–18 % longer optical path through the tissue, which needs more tissue in the
+beam: heating, ions, conduction and water content do not give its loss and delay. These are
 consistent with the 0.6 THz dip but do not reproduce the 2 THz dip, a feature of one scan whose
 origin cannot be decided from the published data. Their physical cause, and the reported selectivity, need the raw data or the
 control measurements listed in Sec. 5.7.
@@ -585,7 +593,7 @@ withdrawn results in `REPORT.md`.
 8. `fig_paper1_spectra.png` — H1's published spectra relative to the empty cuvette and the two-term
    model with a, b, τ (and q = 1.09 at 4 min) from the waveform fits; nothing fitted to the spectra.
 9. `fig_tissue_change.png` — extra loss vs extra delay of the slice at 0.6 and 1.0 THz: the change of
-   T the fits need (q = 1.09–1.18) against every node state with every extreme, heating, water gain,
+   T the fits need (q = 1.09–1.18) against every node state with every extreme, heating (two water models), water gain,
    ions and axoplasm conduction (Sim 46).
 
 ## References
@@ -634,6 +642,9 @@ withdrawn results in `REPORT.md`.
 - McIntyre CC, Richardson AG, Grill WM (2002) Modeling the excitability of mammalian nerve fibers:
   influence of afterpotentials on the recovery cycle. J Neurophysiol 87(2):995–1006.
   doi:10.1152/jn.00353.2001
+- Millon C, Schmidt J, Ramos S, van Dam EP, Buchmann A, Saraceno C, Novelli F (2022)
+  Temperature-independent non-linear terahertz transmission by liquid water. AIP Adv
+  12(11):115319. doi:10.1063/5.0120417
 - Pickett HM, Poynter RL, Cohen EA, Delitsky ML, Pearson JC, Müller HSP (1998) Submillimeter,
   millimeter, and microwave spectral line catalog. J Quant Spectrosc Radiat Transf 60(5):883–890.
   doi:10.1016/S0022-4073(98)00091-0

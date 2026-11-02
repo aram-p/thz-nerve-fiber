@@ -13,6 +13,7 @@ Writes results/sim45/sim45.txt.
 """
 from pathlib import Path
 
+from thznerve.physics.tissue_change import OFFSET_RAD, TAU_S
 import numpy as np
 from scipy.optimize import brentq
 
@@ -31,7 +32,7 @@ def say(s=""):
 
 N_PTFE = 1.43
 MEAS_DB = {0.6: -12.1, 1.0: -14.9, 1.5: -20.1, 2.0: -29.2}       # Sim 43 (c), no voltage / empty cuvette
-DELAY_PS, OFFSET_RAD = 0.611, -0.22                                # Sim 43 (d)
+DELAY_PS, OFFSET_RAD = TAU_S * 1e12, OFFSET_RAD   # Sim 43 (d): delay phase -arg T = w*0.611 ps + 0.22
 
 
 def t_rel(f, water, d_um, p=0.6):
@@ -55,7 +56,7 @@ for wname, w in (("Kindt-Schmuttenmaer", WATER_KS1996), ("broadband", WATER_BROA
         return c[0] * 1e12, -c[1]
     d_delay = brentq(lambda d: fit(d)[0] - DELAY_PS, 20, 1000)
     say(f"  {wname:20s} water: from loss {', '.join(out)}; from the delay (linear fit with offset, 0.2-1.4 THz) "
-        f"{d_delay:.0f} um, model offset {fit(d_delay)[1]:+.2f} rad (measured {OFFSET_RAD:+.2f})")
+        f"{d_delay:.0f} um, model offset of the delay phase {fit(d_delay)[1]:+.2f} rad (measured {OFFSET_RAD:+.2f})")
 
 say()
 say("(b) Opening through the full thickness on the beam axis, Gaussian beam 5 mm across (H1)")

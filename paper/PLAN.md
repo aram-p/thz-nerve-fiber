@@ -17,14 +17,14 @@ not resonate. Its absorbed power follows a quasi-static law (exact limits, three
 length over myelin thickness, g-ratio and permittivity contrast, within 2.3 % of full wave for
 fibres up to 10 µm, independent of internode length. For the THz field along the fibres (every
 published scan), no node state changes a 100 µm slice by more than 1.1 dB, and with every extreme
-combined none gives the extra delay the measured change needs (≤ 0.06 of ≥ 0.19 rad at 0.6 THz).
+combined none gives the extra delay the measured change needs (≤ 0.06 of ≥ 0.23 rad at 0.6 THz).
 Open channels add 10⁻⁶ of the membrane admittance. The three reports share reference waveforms; in
 their four biased scans the pulse gains a component at the empty-cuvette delay, 4–22 % of the empty-
-cuvette pulse after 0.5–5 min, plus a ~10 % optically thicker tissue path. Together they are
-consistent with the 0.6 THz dip. Only a water gain of 8–16 % gives the thicker path's loss and delay
-together at 0.6–1.4 THz; heating, ions and axoplasm conduction (23–46 S/m) do not. A 2.0 THz dip in
-one scan is not reproduced. The undelayed component's source and the reported polarisation and
-bias-direction selectivity (shown without data) remain open.
+cuvette pulse after 0.5–5 min, plus a 9–18 % longer optical path through the tissue. Together they
+are consistent with the 0.6 THz dip. That needs more tissue in the beam: no change of the tissue's
+permittivity (heating, ions, axoplasm conduction of 23–46 S/m, water content) gives its loss and
+delay together. A 2.0 THz dip in one scan is not reproduced. The undelayed component's source and
+the reported polarisation and bias-direction selectivity (shown without data) remain open.
 
 ## Section outline
 
@@ -66,7 +66,7 @@ bias-direction selectivity (shown without data) remain open.
    packing ≤ 0.6: conductivity ≤ 0.05 dB, passive ε (ε″ ≥ 0.1) 0.1/0.2/0.6/1.1 dB at 0.6/1/2/3 THz
    including the combined ±20 % materials (×1.45); every extreme combined (internode 50 µm, packing
    0.8, measured slice's optical thickness ×2.2 / ×3.1) 1.5/2.9/10/17 dB (50 µm internode solved
-   directly). At 0.6 THz compared with the change of T the q fit needs (1.1–2.2 dB and +0.19–0.37 rad
+   directly). At 0.6 THz compared with the change of T the q fit needs (1.1–2.2 dB and +0.23–0.45 rad
    of delay), signed over 116 states: ≤ 0.06 rad of extra delay with every extreme, no state gives
    loss and delay together. 2 THz: extreme 10 dB vs ≥ 14 dB (nominal margin 7×). Near 3 THz the
    measured change is a rise; node states ≤ 0.4 dB.
@@ -78,9 +78,11 @@ bias-direction selectivity (shown without data) remain open.
    ps-fast nonlinearity at TDS fields; why the filter-order test does not prove nonlinearity
    (cascade reflections, beam path, sample changing between scans). 5.5 Tissue effective medium,
    E ∥ / E ⊥; DC side effects (≈1 mA, 3 MW m⁻³, electrolysis, drying) and their limits (DC along the
-   fibres heats more yet reportedly does nothing); against T^q (Sim 46): heating fails at 1–1.4 THz,
-   water loss has the wrong sign, ions give loss without delay, an 8–16 % water gain fits loss and
-   delay at 0.6–1.4 THz (0.84–1.15×); selectivity stated in the electrode frame
+   fibres heats more yet reportedly does nothing); against T^q (Sim 46): no permittivity change fits
+   (heating with Liebe or Liebe ×2.31 to the measured 1 THz coefficient 37–56 % rms; ions and
+   conduction loss without delay; water content at fixed thickness ≤ 0.22×); only a longer path does
+   (same tissue 8–17 % thicker 7 % rms; water gain into thickness only 10 %): more tissue in the beam,
+   cause unknown; selectivity stated in the electrode frame
    (E_THz ⊥ E_DC, parallel to electrodes 1–2); post-mortem tissue; ~70 mV across a fibre.
    5.6 Baseline 30 dB/0.1 mm at 2 THz vs 11.6–15.8 dB for water, and a tissue delay that implies
    n = 2.8–3.1 at the stated 100 µm (traced phase, Sim 39) vs 1.95–2.2 for water-based tissue: the
@@ -135,4 +137,4 @@ bias-direction selectivity (shown without data) remain open.
 8. `figures/fig_paper1_spectra.png`: paper 1's published spectra and the two-term model with nothing
    fitted to the spectra.
 9. `figures/fig_tissue_change.png`: extra loss vs extra delay of the slice at 0.6 and 1.0 THz;
-   the change of T the fits need against node states, heating, water gain, ions and conduction.
+   the change of T the fits need against node states, heating (two water models), water gain, ions and conduction.

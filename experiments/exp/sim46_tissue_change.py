@@ -1,30 +1,41 @@
-"""Sim 46 - Review round 12: which change of the tissue itself gives the T -> T^q the waveform fits need?
+"""Sim 46 - Review rounds 12-13: which change of the tissue itself gives the T -> T^q the waveform fits need?
 
 The two-term fits (Sim 42/43) need the unbiased tissue transfer T raised to q = 1.09 (H1, 4 min) to
-1.18 (H3): at each frequency an extra loss (q-1)*|T|^2_dB AND an extra delay (q-1)*arg T. Each
-candidate change of the slice is applied to the effective-medium white-matter slab (E-par, packing
-0.6, on PTFE, 220 um optical thickness from Sim 45), and its change of loss and delay is compared
-with the requirement at 0.6, 1.0 and 1.4 THz:
-  heating (Liebe water at 20 + dT C in every water-bearing compartment); water uptake or loss (water
-  fraction 0.77, Looyenga with dry matter, thickness following the water volume as in Sim 34);
+1.18 (H3): at each frequency an extra loss (q-1)*|T|^2_dB AND an extra delay (q-1)*(-arg T), with
+arg T = -2 pi f 0.611 ps - 0.22 rad from Sim 43 (numpy FFT, delay = -arg). Each candidate change of
+the slice is applied to the effective-medium white-matter slab (E-par, packing 0.6, on PTFE, 220 um
+optical thickness from Sim 45, Kindt-Schmuttenmaer water as in the node bounds), and its change of
+loss and delay is compared with the requirement at 0.6, 1.0 and 1.4 THz:
+  heating: the temperature change of Liebe et al. (1991) water added to the base water, as given and
+    scaled so that its absorption change from 4 to 21 C at 1 THz equals the measured 46 cm^-1
+    (Millon et al. 2022; literature 50 +- 9); Liebe is fitted below 1 THz and 30 C, so neither is
+    trusted beyond that, and the two bracket the model dependence;
+  water uptake or loss (water fraction 0.77, Looyenga with dry matter; the added volume goes into
+    thickness only, as in Sim 34), split into its thickness part and its permittivity part, and
+    with isotropic swelling (thickness grows as the cube root of the volume);
   extra conductivity of all tissue water (ions); extra conductivity of the axoplasm only (the
-  conducting-fibre model; quasi-static mixing, within 3 % of full wave at <= 1 THz up to 400 S/m,
-  Sec. 5.2); and a geometrically thicker path (reproduces T^q by construction).
+    conducting-fibre model; quasi-static mixing, within 3 % of full wave at <= 1 THz up to 400 S/m,
+    Sec. 5.2); and a geometrically thicker path (T^q up to the slab model's own error).
 For each, the parameter that gives the required 0.6 THz loss is found and the rest is predicted.
 Every transfer is taken relative to air of the same thickness, so a thicker slice displaces air.
-Writes results/sim46/sim46.txt.
+Writes results/sim46/sim46.txt and paper/figures/fig_tissue_change.{png,pdf}.
 """
+import json
 from pathlib import Path
 
+import matplotlib.pyplot as plt
 import numpy as np
 from scipy.optimize import brentq, least_squares
 
 from thznerve.physics.effmedium import tissue_eps
-from thznerve.physics.materials import EPS0, PROTEIN, Looyenga, axoplasm, myelin, water_liebe
+from thznerve.physics.materials import (EPS0, PROTEIN, WATER_KS1996, alpha_per_cm, axoplasm, myelin,
+                                        water_liebe)
+from thznerve.physics.tissue_change import LOSS_DB, delay_phase
 from thznerve.physics.tmm import slab_rta
 
 ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / "results" / "sim46"; OUT.mkdir(parents=True, exist_ok=True)
+FIG = ROOT / "paper" / "figures"
 lines = []
 
 
@@ -34,9 +45,23 @@ def say(s=""):
 
 D_UM, P, N_PTFE, WF = 220.0, 0.6, 1.43, 0.77
 F = np.array([0.6, 1.0, 1.4]) * 1e12
-MEAS_LOSS = np.array([12.1, 14.9, 19.5])          # unbiased |T|^2 (dB below empty), Sim 43 (c) band medians
-ARG_T = 2 * np.pi * F * 0.611e-12 - 0.22          # tissue phase delay, Sim 43 (d)
-W0 = water_liebe(20.0)
+MEAS_LOSS = np.array([LOSS_DB[f] for f in F])     # unbiased |T|^2 (dB below empty), Sim 43 (c) band medians
+DELAY_T = delay_phase(F)                          # tissue delay phase -arg T, Sim 43 (d)
+W0 = WATER_KS1996
+
+# Liebe's temperature change, scaled to the measured 4 -> 21 C absorption change at 1 THz
+_dA = alpha_per_cm(water_liebe(21.0)(1e12), 1e12) - alpha_per_cm(water_liebe(4.0)(1e12), 1e12)
+K_MILLON = 46.0 / _dA
+
+
+class HeatedWater:
+    """Base water plus k times Liebe's change of eps from 20 C to 20 + dT C."""
+
+    def __init__(self, dT, k=1.0):
+        self.dT, self.k = dT, k
+
+    def __call__(self, f):
+        return W0(f) + self.k * (water_liebe(20.0 + self.dT)(f) - water_liebe(20.0)(f))
 
 
 def eps_tissue(f, water=W0, sig_ax=0.0, sig_w=0.0):
@@ -61,28 +86,54 @@ def change(fn):
     return np.array(out)
 
 
-def water_frac(x):
-    """Fractional change x of the water content (x < 0: loss); thickness follows the water volume."""
+def _mix_delta(f, x):
+    """Change of tissue eps when its water content changes by the fraction x (dry matter fixed)."""
+    dry = PROTEIN(f)
+    mix = lambda wf: (wf * W0(f) ** (1 / 3) + (1 - wf) * dry ** (1 / 3)) ** 3
+    wf1 = WF * (1 + x) / (1 + WF * x)
+    return mix(wf1) - mix(WF)
+
+
+def water_frac(x, mode="thickness"):
+    """Water content changed by the fraction x (x < 0: loss). mode: 'thickness' (added volume into
+    thickness), 'eps' (permittivity only, thickness fixed), 'geom' (thickness only, eps fixed),
+    'isotropic' (volume spread in 3D: thickness x cube root)."""
     def fn(f):
-        dry = Looyenga(W0, PROTEIN, 0.0)(f)
-        mix = lambda wf: (wf * W0(f) ** (1 / 3) + (1 - wf) * dry ** (1 / 3)) ** 3
-        wf1 = WF * (1 + x) / (1 + WF * x)
-        return eps_tissue(f) + mix(wf1) - mix(WF), D_UM * (1 + WF * x)
+        de = 0.0 if mode == "geom" else _mix_delta(f, x)
+        d = {"thickness": D_UM * (1 + WF * x), "geom": D_UM * (1 + WF * x), "eps": D_UM,
+             "isotropic": D_UM * (1 + WF * x) ** (1 / 3)}[mode]
+        return eps_tissue(f) + de, d
     return fn
 
 
 MECH = {
-    "heating (dT, K)": (lambda v: (lambda f: (eps_tissue(f, water_liebe(20.0 + v)), D_UM)), (0.0, 60.0)),
+    "heating, Liebe (dT, K)": (lambda v: (lambda f: (eps_tissue(f, HeatedWater(v)), D_UM)), (0.0, 80.0)),
+    f"heating, Liebe x{K_MILLON:.2f} (dT, K)": (lambda v: (lambda f: (eps_tissue(f, HeatedWater(v, K_MILLON)), D_UM)), (0.0, 60.0)),
     "water content (fractional change)": (water_frac, (-0.5, 0.5)),
     "ions: all tissue water (S/m)": (lambda v: (lambda f: (eps_tissue(f, sig_w=v), D_UM)), (0.0, 500.0)),
     "axoplasm conductivity (S/m)": (lambda v: (lambda f: (eps_tissue(f, sig_ax=v), D_UM)), (0.0, 2000.0)),
     "thicker path (fraction)": (lambda v: (lambda f: (eps_tissue(f), D_UM * (1 + v))), (0.0, 0.5)),
 }
 
+def _base_delay():
+    """Unwrapped delay phase of the base slab at F (from 0.02 THz up)."""
+    fr = np.linspace(0.02e12, F.max(), 400)
+    ph = -np.unwrap(np.angle([t_slab(f, eps_tissue(f), D_UM) for f in fr]))
+    return np.interp(F, fr, ph)
+
+
+say(f"Base slab {D_UM:.0f} um, KS water: |T|^2 {', '.join(f'{-20 * np.log10(abs(t_slab(f, eps_tissue(f), D_UM))):.1f}' for f in F)} dB, "
+    f"delay phase {', '.join(f'{v:.2f}' for v in _base_delay())} rad at 0.6/1.0/1.4 THz "
+    f"(measured {', '.join(f'{v:.1f}' for v in MEAS_LOSS)} dB; {', '.join(f'{v:.2f}' for v in DELAY_T)} rad)")
+say(f"Liebe water, 4 -> 21 C absorption change at 1 THz: {_dA:.1f} /cm (measured 46 +- 1.5, Millon et al. 2022): "
+    f"scaled version x{K_MILLON:.2f}")
+say()
+REQ = {}
 for q in (1.09, 1.18):
-    req = np.column_stack([(q - 1) * MEAS_LOSS, (q - 1) * ARG_T])
+    req = np.column_stack([(q - 1) * MEAS_LOSS, (q - 1) * DELAY_T]); REQ[q] = req
     say(f"q = {q}: required extra loss / delay at 0.6, 1.0, 1.4 THz: "
         + "; ".join(f"{l:.2f} dB, {p:+.3f} rad" for l, p in req))
+    roots_at = {}
     for name, (mk, (lo, hi)) in MECH.items():
         g = lambda v: change(mk(v))[0, 0] - req[0, 0]
         grid = np.linspace(lo, hi, 201); vals = [g(v) for v in grid]
@@ -90,48 +141,53 @@ for q in (1.09, 1.18):
         if not roots:
             say(f"  {name:36s}: never gives the required 0.6 THz loss over {lo}..{hi} "
                 f"(range {min(vals) + req[0, 0]:+.2f} to {max(vals) + req[0, 0]:+.2f} dB)"); continue
+        roots_at[name] = roots[0]
         for v in roots:
             c = change(mk(v))
+            rr = np.concatenate([(c[:, 0] - req[:, 0]) / req[:, 0], (c[:, 1] - req[:, 1]) / req[:, 1]])
             say(f"  {name:36s} = {v:+.3g}: " + "; ".join(f"{l:+.2f} dB ({l / r[0]:.2f}x), {p:+.3f} rad ({p / r[1]:+.2f}x)"
-                                                      for (l, p), r in zip(c, req)))
-    # best pair of mechanisms (least squares on loss in dB and delay in rad*10, all three frequencies)
+                                                      for (l, p), r in zip(c, req)) + f"; rms misfit {np.sqrt(np.mean(rr ** 2)):.0%}")
+    x = roots_at["water content (fractional change)"]
+    for mode, lab in (("geom", "its thickness change only"), ("eps", "its permittivity change only"),
+                      ("isotropic", "isotropic swelling instead")):
+        c = change(water_frac(x, mode))
+        say(f"    water gain {x:+.3f}, {lab:30s}: " + "; ".join(f"{l / r[0]:.2f}x loss, {p / r[1]:+.2f}x delay" for (l, p), r in zip(c, req)))
+    say(f"    water gain {x:+.3f}: added thickness {D_UM * WF * x:.1f} um, water {D_UM * WF * x * 1e-3 * 400:.1f} mg over 20 x 20 mm")
     best = []
-    names = list(MECH)
-    for i in range(len(names) - 1):            # the thicker path is excluded from pairs (it is T^q itself)
-        for j in range(i + 1, len(names) - 1):
+    names = [n for n in MECH if not n.startswith("thicker")]   # the thicker path is excluded from pairs
+    for i in range(len(names)):
+        for j in range(i + 1, len(names)):
+            if names[i].startswith("heating") and names[j].startswith("heating"):
+                continue
             (mi, (li, hi_)), (mj, (lj, hj)) = MECH[names[i]], MECH[names[j]]
+
             def res(v):
                 fi, fj = mi(v[0]), mj(v[1])
                 c = change(lambda f: (fi(f)[0] + fj(f)[0] - eps_tissue(f), fi(f)[1] * fj(f)[1] / D_UM))
                 return np.concatenate([(c[:, 0] - req[:, 0]) / req[:, 0], (c[:, 1] - req[:, 1]) / req[:, 1]])
-            s = least_squares(res, [0.25 * (li + hi_), 0.25 * (lj + hj)], bounds=([li, lj], [hi_, hj]))
+            s = least_squares(res, [0.05 * (li + hi_), 0.05 * (lj + hj)], bounds=([li, lj], [hi_, hj]))
             best.append((np.sqrt(np.mean(s.fun ** 2)), names[i], names[j], s.x))
     best.sort(key=lambda b: b[0])
-    for r, a, b, x in best[:3]:
-        say(f"  pair {a} = {x[0]:+.3g} with {b} = {x[1]:+.3g}: rms relative misfit {r:.0%} over loss and delay at 3 frequencies")
+    for r, a, b, xv in best[:4]:
+        say(f"  pair {a} = {xv[0]:+.3g} with {b} = {xv[1]:+.3g}: rms relative misfit {r:.0%} over loss and delay at 3 frequencies")
     say()
 (OUT / "sim46.txt").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 # Figure 9: extra loss vs extra delay of the slice at 0.6 and 1.0 THz
-import json
-import matplotlib.pyplot as plt
-
-FIG = ROOT / "paper" / "figures"
 fig, ax = plt.subplots(1, 2, figsize=(10, 4))
 node = json.loads((ROOT / "results" / "sim30" / "sim36_signed06.json").read_text())["states"]
+hk = [n for n in MECH if n.startswith("heating, Liebe x")][0]
 for k, axi in enumerate(ax):
-    for q0, q1 in ((1.09, 1.18),):
-        axi.plot([(q0 - 1) * MEAS_LOSS[k], (q1 - 1) * MEAS_LOSS[k]], [(q0 - 1) * ARG_T[k], (q1 - 1) * ARG_T[k]],
-                 color="0.6", lw=7, solid_capstyle="butt", label="required: T^q, q = 1.09-1.18")
+    axi.plot([REQ[1.09][k, 0], REQ[1.18][k, 0]], [REQ[1.09][k, 1], REQ[1.18][k, 1]],
+             color="0.6", lw=7, solid_capstyle="butt", label="required: T^q, q = 1.09-1.18")
     qq = np.linspace(0, 0.2, 21)
-    axi.plot((qq) * MEAS_LOSS[k], qq * ARG_T[k], color="0.5", lw=0.8, ls=":")
-    for name, col, vals in (("heating (0-30 K)", "C3", np.linspace(0, 30, 16)),
-                            ("water gain (0-16 %)", "C0", np.linspace(0, 0.16, 17)),
-                            ("ions in tissue water (0-18 S/m)", "C2", np.linspace(0, 18, 10)),
-                            ("axoplasm conduction (0-46 S/m)", "C1", np.linspace(0, 46, 10))):
-        mk = {"heating": MECH["heating (dT, K)"][0], "water": MECH["water content (fractional change)"][0],
-              "ions": MECH["ions: all tissue water (S/m)"][0], "axoplasm": MECH["axoplasm conductivity (S/m)"][0]}[name.split()[0]]
-        c = np.array([change(mk(v))[k] for v in vals])
+    axi.plot(qq * MEAS_LOSS[k], qq * DELAY_T[k], color="0.5", lw=0.8, ls=":")
+    for name, col, key, vals in (("heating, Liebe (0-40 K)", "C3", "heating, Liebe (dT, K)", np.linspace(0, 40, 17)),
+                                 (f"heating, Liebe x{K_MILLON:.1f} (0-20 K)", "C4", hk, np.linspace(0, 20, 17)),
+                                 ("water gain (0-16 %)", "C0", "water content (fractional change)", np.linspace(0, 0.16, 17)),
+                                 ("ions in tissue water (0-18 S/m)", "C2", "ions: all tissue water (S/m)", np.linspace(0, 18, 10)),
+                                 ("axoplasm conduction (0-46 S/m)", "C1", "axoplasm conductivity (S/m)", np.linspace(0, 46, 10))):
+        c = np.array([change(MECH[key][0](v))[k] for v in vals])
         axi.plot(c[:, 0], c[:, 1], "o-", color=col, ms=2.5, lw=1, label=name)
     if k == 0:
         axi.plot([s["loss_db"] for s in node], [s["delay_rad"] for s in node], "k.", ms=3,
