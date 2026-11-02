@@ -8,8 +8,9 @@ state, and no fibre state the experimenters proposed (open channels turning fibr
 conducting wires forming a grating), changes tissue transmission by an amount close to the reported
 ~9 dB, so the 0.6/2 THz features reported under DC bias (Hovhannisyan, Makaryan, Martirosyan 2024)
 do not come from the linear electromagnetic response of nodes or fibres. The published waveforms
-instead show about a fifth of the beam reaching the detector without crossing tissue (Sim 39); its
-cause is unknown and it conflicts with the reported polarisation and bias-direction selectivity.
+instead contain ~21 % of the empty-cuvette pulse at its own delay, plus a change of the tissue path
+(Sim 39); their cause is unknown and they conflict with the reported polarisation and bias-direction
+selectivity.
 
 Reviewer stance: a sceptical THz-biophysics and computational-EM referee looking for a fatal flaw.
 Each objection is followed by the response and where the evidence is. "Fixed" means a simulation,
@@ -25,8 +26,7 @@ solver and realistic internode lengths together. New here: (i) a benchmarked ful
 (transfer matrix, Mie series per azimuthal order, null test, energy balance on every solve);
 (ii) a closed-form law for node absorption with its accuracy against full wave; (iii) a
 quantitative bound from full wave: no node conductivity between 10⁻⁴ and 3 × 10⁶ S/m and no passive
-node permittivity changes a 100 µm slab by more than 0.1 dB for E∥ (≤ 1 dB for E⊥) even at
-worst-case packing and internode, because a conducting gap screens its own field (item 16); fully
+node permittivity changes a 100 µm slab by more than the bounds of item 43 (round 4) for E∥, because a conducting gap screens its own field (item 16); fully
 open Na channels (~10⁻⁴ S/m) give 10⁻⁹ dB; (iv) a test of the experimenters' own wire/grating model
 (item 14). **Fixed** by the prior-work
 table (`paper/PLAN.md`) and by narrowing the claim to 0.1–3 THz.
@@ -69,9 +69,9 @@ any mode in 35–118 µm (power). **Fixed.**
 
 ### 6. "The closed law is curve fitting."
 **Response.** Both limits are exact (thin gap: normal-D continuity for E ∥, the coated-cylinder
-shell series for E ⊥; long gap: bulk water, F = 1). Two shape constants per polarisation are fitted
-to the Laplace solver over x = 0.2–8, g = 0.6–0.8, 0.1–3 THz, not to full wave and not to any
-experiment: three constants per polarisation (the transition length scales as |ε_w/ε_my|^q),
+shell series for E ⊥; long gap: bulk water, F = 1). Three constants per polarisation (two shape constants and the exponent q with which the
+transition length scales as |ε_w/ε_my|^q) are fitted to the Laplace solver over x = 0.2–8,
+g = 0.6–0.8, 0.1–3 THz, not to full wave and not to any experiment;
 max error 2.1 % against the Laplace solver, tested off the fit grid. Against full wave the law
 holds to ≤ 2.2 % for fibre radius ≤ 5 µm, 4.3 % at 6.5 µm and 9.8 % at 10.7 µm and 3 THz, where
 k_w·b = 1.3 and retardation begins. It also predicts the ±20 % material changes to ≤ 5 %. The Laplace solver itself
@@ -132,7 +132,7 @@ model fails on four independent counts (Sim 37; full wave in Sim 36 'axon'):
 exceeds that of all Na channels open (3 × 10⁴ S/m², MRG) by 10⁶. Channel state cannot change THz
 current paths, and the axoplasm is continuous through the node in any state.
 (b) Full wave with extra conductivity in the whole axoplasm, converted to an exact 100 µm slab:
-9 dB for E∥ needs +480–580 S/m, against 1.4 S/m physiological and ~25 S/m for saturated NaCl.
+9 dB for E∥ needs +470–565 S/m at packing 0.5 (290–980 S/m over 0.3–0.7; item 44), against 1.4 S/m physiological and ~25 S/m for saturated NaCl.
 Quasi-static mixing matches full wave to 3 % (≤ 1 THz) and 10 % (3 THz) up to 400 S/m; fibres act
 as wires (inductive regime) only above ~10⁴ S/m. (A conducting axon would be E∥-selective at
 0.6 THz, so polarisation does not discriminate; item 25.)
@@ -164,7 +164,7 @@ and packing 0.6 is 6× that: E∥ ≤ 0.05 dB, E⊥ ≤ 1.1 dB. Internode indepe
 ### 17. MAJOR: "'No resonance' covers only conductors; a node with a resonant constituent could resonate."
 **Response.** Sim 36 sweeps any passive node permittivity, ε′ −30…30, ε″ 0.01…30, at 0.6 and 2 THz.
 A negative-ε ring resonance exists near ε′ ≈ −1.5 (E∥, η ≈ 100), but the lossy water around the gap
-caps the slice change at ≤ 0.08 dB (≤ 0.5 dB at internode 200 µm); mesh check 4 %. Negative ε′ with
+caps the slice change at ≤ 0.08 dB (≤ 0.5 dB at internode 200 µm; dense grid in item 51: ≤ 0.8 dB); mesh check 4 %. Negative ε′ with
 ε″ ≪ 1 is not possible in an aqueous gap at THz. **Fixed**; claim stated for passive media with
 ε″ ≥ 0.1 (item 31).
 
@@ -201,7 +201,7 @@ Electrode gaps stated per report (18 mm, 15 mm). The E∥ bound is quoted in the
 **Response.** Abstract now quotes ≤ 0.5 dB for E∥ (all node states, internode ≥ 200 µm); REPORT
 row 36 gives every case: 0.1 dB at 1 mm, 0.5 dB at 200 µm, E⊥ ≤ 1 dB, 3.5 dB only for a metallic
 node in a 21 µm fibre with 200 µm internodes. The smallest CNS fibres (50–100 µm internodes) add
-2–4×, still ≥ 9× below the smallest reported dip. **Fixed.**
+2–4×. (Superseded by item 43.) **Fixed.**
 
 ### 24. MAJOR: "'Does not come from nodes or fibres' is broader than a linear passive model can show."
 **Response.** Narrowed to "the linear electromagnetic response of nodes and fibres". DC-driven
@@ -210,7 +210,7 @@ through their bulk effects (heating, water loss, gas), §6. **Narrowed.**
 
 ### 25. MAJOR: "The E⊥ argument against the wire model fails at 0.6 THz."
 **Response.** Correct (6.6 vs 2.7 dB at 0.6 THz for +400 S/m). Dropped; the case rests on the
-conductivity required (350–400× physiological) and the missing mechanism (membrane admittance).
+conductivity required (200–700× physiological, item 44) and the missing mechanism (membrane admittance).
 **Fixed.**
 
 ### 26. MAJOR: "The 9 dB target has no traceable source."
@@ -324,7 +324,7 @@ not used further). **Moot.**
 ### 43. MAJOR: "One bound everywhere: 0.1 dB in the table, 0.5 dB in the abstract, 1–2 dB for small fibres."
 **Response.** One statement now, in abstract, PLAN §4.6 and the table: for E∥, internode ≥ 200 µm
 and fibre packing ≤ 0.6, node conductivity changes a 100 µm slice by ≤ 0.05 dB and a passive node
-permittivity (ε″ ≥ 0.1) by ≤ 0.5 dB, the latter only near a negative-ε ring resonance; the smallest
+permittivity (ε″ ≥ 0.1) by ≤ 0.8 dB (item 51), the latter only near a negative-ε ring resonance; the smallest
 CNS fibres (internodes 50–100 µm) can reach 1–2 dB. All are ≥ 4× below the smallest reported change. **Fixed.**
 
 ### 44. MINOR: "Bracket the 9 dB conductivity with full-wave points; give its packing dependence; '350× physiological' needs a second reference."
@@ -341,16 +341,68 @@ an axon radius of 3.5 µm and L ≥ 70 µm, which lowers the dipole by ≤ 2 % a
 needed (|Δε| ≈ 15 at 0.6 THz). Treating fibres as infinite cannot underestimate the conductivity
 needed. **Fixed.**
 
+## Fifth round (independent reviewer, 2026-11-02; verdict: major revision, no fatal flaw; tracing, node bounds and the 9 dB conductivity recomputed and confirmed)
+
+### 46. MAJOR: "The two-path fit is statistically rejected, so 'equals' is wrong; a = 0.59 < 1 − b needs an unexplained loss in the tissue path; a slightly thicker tissue path plus the bypass fits better."
+**Response.** Agreed and adopted. The residual is 8× the tracing jitter (0.013, measured before
+the pulse), so the sum is not an exact description, and the abstract now says the waveform
+"contains" the component. Sim 39 now fits in the frequency domain over 0.15–1.7 THz with the
+measured tissue transfer T = B/K raised to a free power: 0.69 × (tissue path 1.11× thicker) +
+0.21 × empty cuvette leaves 20 % (vs 27 % for a·B + b·K) and puts the dip at 0.57 THz, −10.7 dB
+(reported 0.56 THz, −11.4 dB); a + b = 0.9. So the data need both an undelayed component and a
+change of the tissue path; both are stated. **Fixed.**
+
+### 47. MAJOR: "The drift claim (0.76 → 0.50 THz) is in no result file, and a pure bypass cannot give a deep dip below ~0.7 THz."
+**Response.** Correct; the claim was computed in a scratch run and not committed. Sim 39 now
+prints the sweep: a pure bypass (x 0.05–0.35) dips deeply (−8 to −21 dB) only at 0.74–0.76 THz;
+with the tissue path 10 % or 20 % thicker, the deep dip moves to 0.61–0.70 or 0.56–0.65 THz. The
+table now says this: the reported 0.7 → 0.5 THz drift is compatible with a bypass plus a slowly
+thickening tissue path, qualitatively, not fitted. **Fixed.**
+
+### 48. MAJOR: "'Without crossing tissue' is not identified: a path through 10–20 % of the tissue fits nearly as well."
+**Response.** Agreed (Sim 39: 29 % and 32 % against 27 % for air). Now stated as "a component at the
+empty-cuvette delay (±0.02 ps) that crosses at most ~20 % of the tissue's optical thickness".
+**Narrowed.**
+
+### 49. MAJOR: "The thickness anomaly is used selectively: the traced phase gives n ≈ 2.8–3.1 at 100 µm, and the bypass dip frequency depends on that delay; if the slice is ~200 µm every per-slice bound doubles."
+**Response.** Agreed. Sim 39 prints the traced index (3.04/3.10/3.03/2.84 at 0.3/0.6/1/1.5 THz).
+PLAN §5.6 now states the anomaly once and its consequence: at ~200 µm the node bounds double
+(≤ 0.1 dB for conductivity, ≤ twice the passive-ε bound) and the 9 dB conductivity halves
+(~150–500 S/m), still far from the reported change. The waveform test uses the measured tissue
+pulse, so its dip frequency does not assume any thickness. **Fixed.**
+
+### 50. MINOR: "Fig. 1b alone tests the bypass up to 3 THz: biased − empty is flat at −11 to −13 dB over 1.5–3 THz."
+**Response.** Added (Sim 39, REPORT row 39, PLAN §5.8): an undelayed component of 0.22–0.27 of the
+empty-cuvette field dominates where tissue loss is 30–50 dB, model-free and consistent with the
+waveform fit (0.21–0.22). **Fixed.**
+
+### 51. MINOR: "The passive-ε bound is under-sampled: the ring resonance lies between grid points and only 0.6/2 THz were run."
+**Response.** Dense grid run (`sim36_review.py epsdense`): ε′ = −2.0…−1.0 in 10 steps (0.05 apart
+near the peak) at ε″ = 0.1 (the worst case the claim covers; the peak falls as ε″ grows), at 0.6,
+1, 2 and 3 THz, with a parabola through the top three points. The peak grows with frequency and sits at ε′ = −1.45 to −1.8: E∥ 0.014/0.028/0.072/0.123 dB at 0.6/1/2/3 THz (internode 1 mm, packing 0.5), so ≤ 0.43 dB at 0.6–2 THz and 0.74 dB at 3 THz for internode 200 µm and packing 0.6; E⊥ ≤ 0.11 dB. The reviewer was right that 0.5 dB was exceeded (at 3 THz); the bound is now ≤ 0.8 dB everywhere it is quoted. **Fixed.**
+
+### 52. MINOR: stale numbers (items 1, 6, 14b, 23, 25; PLAN §4.6 E⊥; abstract law accuracy).
+**Response.** Item 1 now points to the single bound of item 43; item 6 states three constants per
+polarisation; item 14b gives 470–565 S/m (290–980 over packing); item 23 is marked superseded;
+item 25 gives 200–700×; PLAN §4.6 adds E⊥ 3.5 dB for a metallic node in a 21 µm fibre; the
+abstract gives the law's 2 % for fibres up to 10 µm in diameter (9.8 % at 21 µm, 3 THz, stated in
+§4.2). **Fixed.**
+
+### 53. MINOR: novelty.
+**Response.** Framed as in item 28: the contribution is the quantitative bounds, the closed law,
+the test of the experimenters' model and the analysis of their published waveforms, not the
+qualitative expectation. **Unchanged.**
+
 ---
 
 ## What matches and what does not (experiment)
 
 | Reported (Hovhannisyan, Makaryan, Martirosyan 2024) | This work |
 |---|---|
-| Dip near 0.6 THz (9–20 dB), changes near 2 THz | No node or fibre resonance anywhere in 0.1–3 THz. Paper 3's biased waveform = 0.59 × unbiased + 0.21 × empty cuvette (residual 28 %): ~20 % of the beam bypasses the tissue; dip at 0.61 THz with ~60 % of the depth (Sim 39). Paper 3 shows no dip near 2 THz; paper 1's 2 THz features not explained |
-| Dip drifts 0.7 → 0.5 THz in minutes | Water-vapour lines cannot drift. In the traced pulses a growing bypass moves the cancellation down, 0.76 → 0.50 THz as the fraction grows 0.1 → 0.3, while the dip gets shallower (Sim 39); qualitative, not fitted |
+| Dip near 0.6 THz (9–20 dB), changes near 2 THz | No node or fibre resonance anywhere in 0.1–3 THz. Paper 3's biased waveform contains ~21 % of the empty-cuvette pulse at its own delay (no one-path tissue change fits); with the tissue path ~10 % thicker the dip falls at 0.57 THz, −10.7 dB (reported 0.56, −11.4; Sim 39). Paper 3 shows no dip near 2 THz; paper 1's 2 THz features not explained |
+| Dip drifts 0.7 → 0.5 THz in minutes | Water-vapour lines cannot drift. A pure bypass dips deeply only at 0.74–0.76 THz; with the tissue path 10–20 % thicker the dip moves to 0.56–0.70 THz (Sim 39, qualitative) |
 | High frequencies rise by 17–18 dB (2–2.5 THz, traced) | The bypass skips tissue loss: the waveform fit follows the rise to 1.7 THz within 1.5 dB rms (not testable above with the traced window); drying alone ≤ 3 dB (Sim 34) |
-| ~9 dB change under 100 V DC | Node (E∥, internode ≥ 200 µm, packing ≤ 0.6): ≤ 0.05 dB for any conductivity, ≤ 0.5 dB for any passive ε (ε″ ≥ 0.1); channels 10⁻⁹ dB. Fibre conduction: needs 290–980 S/m axoplasm (200–700× physiological). Heating/drying: smooth, ≤ 3 dB |
+| ~9 dB change under 100 V DC | Node (E∥, internode ≥ 200 µm, packing ≤ 0.6): ≤ 0.05 dB for any conductivity, ≤ 0.8 dB for any passive ε (ε″ ≥ 0.1); channels 10⁻⁹ dB. Fibre conduction: needs 290–980 S/m axoplasm (200–700× physiological). Heating/drying: smooth, ≤ 3 dB |
 | Effect only with E ∥ fibres | Not explained, and contradicts the bypass; model dichroism −0.35 dB; a conducting axon is itself E∥-selective (6.6 vs 2.7 dB at 0.6 THz), so this does not discriminate the wire model |
 | Effect only with DC across the fibres | Not explained, and contradicts the bypass; heating predicts the opposite (σ∥ ≈ 7σ⊥) |
 | Generated high frequencies (nonlinearity) | No ps nonlinearity at TDS fields (10⁻³ of onset); drying raises high-frequency transmission linearly |

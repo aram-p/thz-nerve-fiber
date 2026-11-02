@@ -173,6 +173,62 @@ say(f"  1.5-2.6 THz on Fig. 1b: red - blue rises from {red_blue[hi][0]:.1f} to {
     f"largest local drop {max(0.0, -np.min(np.cumsum(d2) - np.maximum.accumulate(np.cumsum(d2)))):.1f} dB (no dip near 2 THz)")
 
 
+# ---- 3b. review round 5: what else fits, how much is noise, where the dip goes ---------------
+pre = tt < -362.8
+jit = max(float(np.std(np.polyval(np.polyfit(tt[pre], W[k][pre], 1), tt[pre]) - W[k][pre])) for k in W)
+say(f"\nTracing jitter before the pulse (detrended rms, worst trace) {jit:.4f}: the 28 % residual is "
+    f"{rms(r2.fun)/jit:.0f}x that, so the two-path sum is rejected as an exact description")
+FR, FB, FK = (np.fft.rfft(W[k], N) for k in ("red", "blue", "black"))
+w_rad = 2 * np.pi * fr * 1e12
+vb = (fr >= 0.15) & (fr <= F_OK)
+T = FB / FK                                         # measured tissue transfer (cuvette with tissue / empty)
+phi = np.unwrap(np.angle(T[vb]))
+n_tr = 1 - C0 * phi / (w_rad[vb] * 100e-6)          # numpy FFT: a delay multiplies by exp(-i w t)
+say("  index from the traced tissue phase at the stated d = 100 um: " + ", ".join(
+    f"{v:.1f} THz {np.interp(v, fr[vb], n_tr):.2f}" for v in (0.3, 0.6, 1.0, 1.5))
+    + " (water-based tissue model 1.95-2.2): the slice delays like ~2x its stated thickness")
+Tp = lambda q: np.abs(T[vb]) ** q * np.exp(1j * q * phi)   # tissue path scaled to q x its optical thickness
+E_R = float(np.sum(np.abs(FR[vb]) ** 2))
+
+
+def band_fit(name, model, x0):
+    r = least_squares(lambda q: np.concatenate([(model(q) - FR[vb]).real, (model(q) - FR[vb]).imag]), x0)
+    m = model(r.x)
+    res = np.sqrt(np.sum(np.abs(m - FR[vb]) ** 2) / E_R)
+    g = 20 * np.log10(np.abs(m) / np.abs(FB[vb]))
+    sel = (fr[vb] > 0.35) & (fr[vb] < 1.0)
+    say(f"  {name:62s} residual {res:.0%}  dip {fr[vb][sel][np.argmin(g[sel])]:.2f} THz {g[sel].min():5.1f} dB  "
+        + ", ".join(f"{v:.3f}" for v in r.x))
+    return r.x
+
+
+say(f"Frequency-domain fits over 0.15-{F_OK:.2f} THz (residual = band-limited time-domain rms / signal), "
+    "dip of model/no-voltage; reported dip 0.56 THz, -11.4 dB")
+ph = lambda tau: np.exp(-1j * w_rad[vb] * tau * 1e-12)
+band_fit("air bypass: a*B + b*K(tau)                         [a b tau]", lambda q: q[0] * FB[vb] + q[1] * FK[vb] * ph(q[2]), [0.6, 0.2, 0.0])
+band_fit("air bypass, a + b = 1                              [x tau]", lambda q: (1 - q[0]) * FB[vb] + q[0] * FK[vb] * ph(q[1]), [0.2, 0.0])
+m4 = band_fit("tissue path q x thicker + air bypass               [a b tau q]", lambda q: q[0] * FK[vb] * Tp(q[3]) + q[1] * FK[vb] * ph(q[2]), [0.6, 0.2, 0.0, 1.1])
+for qf in (1.1, 1.2):
+    band_fit(f"tissue path {qf} x thicker + air bypass               [a b tau]", lambda q, qf=qf: q[0] * FK[vb] * Tp(qf) + q[1] * FK[vb] * ph(q[2]), [0.6, 0.2, 0.0])
+for s_ in (0.1, 0.2):
+    band_fit(f"bypass crosses {s_:.0%} of the tissue                   [a b tau]", lambda q, s_=s_: q[0] * FB[vb] + q[1] * FK[vb] * Tp(s_) * ph(q[2]), [0.6, 0.2, 0.0])
+band_fit("one path: tissue q x thicker, no bypass            [a q]", lambda q: q[0] * FK[vb] * Tp(q[1]), [0.6, 0.9])
+say("Dip of a pure bypass, (1 - x)*B + x*K, as the bypass grows (model/no-voltage, 0.35-1 THz):")
+sel = (fr[vb] > 0.35) & (fr[vb] < 1.0)
+for qf in (1.0, 1.1, 1.2):
+    row = []
+    for x in (0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35):
+        g = 20 * np.log10(np.abs((1 - x) * FK[vb] * Tp(qf) + x * FK[vb]) / np.abs(FB[vb]))
+        row.append(f"x {x:.2f}: {fr[vb][sel][np.argmin(g[sel])]:.2f} THz {g[sel].min():5.1f} dB")
+    say(f"  tissue path {qf} x: " + "; ".join(row))
+hb = (ff >= 1.5) & (ff <= 3.0)
+rk = S["red"] - S["black"]
+say("Fig. 1b alone, 1.5-3 THz, 5 min at 100 V minus empty cuvette (dB): "
+    + ", ".join(f"{np.interp(v, ff, rk):.1f}" for v in (1.5, 1.75, 2.0, 2.25, 2.5, 2.75, 3.0))
+    + f" -> flat, as an undelayed component that dominates where tissue loss is 30-50 dB; amplitude "
+    f"{10 ** (rk[hb].max() / 20):.2f}-{10 ** (rk[hb].min() / 20):.2f} of the empty-cuvette field")
+
+
 # ---- 4. Sim 38 gas column through modelled tissue, refitted to the pixel points ----------------
 def n_tissue(f, water):
     e_par, _ = tissue_eps(axoplasm(water)(f), myelin(water)(f), water(f), 0.7, 0.6)
@@ -201,10 +257,12 @@ for w, name in ((WATER_KS1996, "KS1996"), (WATER_BROADBAND, "broadband")):
             gas_fit = r.x
 
 say("\nReading")
-say("  The 5-min trace is the no-voltage trace scaled down plus ~20 % of the empty-cuvette pulse at the")
-say("  empty-cuvette delay: part of the beam no longer crosses tissue. The dip near 0.56 THz is where these")
-say("  two paths cancel. One-path changes of the tissue fit worse. The mechanism that opens the air path")
-say("  (gas, the slice drying or pulling away from the window, beam or sample moving) is not identified.")
+say("  The 5-min trace contains ~21 % of the empty-cuvette pulse at the empty-cuvette delay (+-0.02 ps): a")
+say("  component that crosses at most ~20 % of the tissue's optical thickness. Without it nothing fits (94 %).")
+say("  With it, the tissue path must also change: 0.59 x in amplitude, or ~10 % more optical thickness, which")
+say("  gives the dip at 0.57 THz with 10.7 of 11.4 dB. Neither the cause of the undelayed component (gas,")
+say("  slice pulling away from a window, beam or sample movement) nor of the tissue change is identified;")
+say("  the sum is rejected as an exact description (residual 8x tracing jitter).")
 
 # ---- figure -----------------------------------------------------------------------------------
 fig, ax = plt.subplots(1, 2, figsize=(10, 4.6))
@@ -217,7 +275,9 @@ ax[0].set_xlabel("Time (ps)"); ax[0].set_ylabel("THz field (a.u., paper 3 Fig. 1
 ax[0].legend(fontsize=7, loc="lower right")
 ax[1].plot(ff, red_blue, "C3", lw=1.4, label="reported: 5 min at 100 V − no voltage (Fig. 1b, traced)")
 ax[1].plot(ff[ok], fft_rb[ok], "C3:", lw=0.9, label="same, from the traced 7-ps waveforms")
-ax[1].plot(ff[ok], pred[ok], "k--", lw=1.0, label="air bypass fitted on the waveforms (no tissue model)")
+ax[1].plot(ff[ok], pred[ok], "k--", lw=1.0, label=f"{a:.3f} × no voltage + {b:.3f} × empty cuvette (waveform fit)")
+g4 = 20 * np.log10(np.abs(m4[0] * FK[vb] * Tp(m4[3]) + m4[1] * FK[vb] * ph(m4[2])) / np.abs(FB[vb]))
+ax[1].plot(fr[vb], g4, "C2-.", lw=1.0, label=f"{m4[0]:.2f} × tissue path {m4[3]:.2f}× thicker + {m4[1]:.2f} × empty cuvette (fit)")
 ax[1].axvspan(F_OK, 3.0, color="0.92", lw=0, zorder=0)
 ax[1].plot(ff, ratio_db(ff, *gas_fit, WATER_KS1996), "C7", lw=0.8,
            label=f"withdrawn: gas column in modelled tissue, x = {gas_fit[0]:.2f}, t = {gas_fit[1]:.0f} µm")

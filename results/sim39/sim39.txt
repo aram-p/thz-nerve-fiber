@@ -23,6 +23,23 @@ Frequency domain (dB). Check of the waveform digitising: tissue insertion loss b
   dip: Fig. 1b 0.56 THz (-11.4 dB); bypass fit 0.61 THz (-6.8 dB)
   1.5-2.6 THz on Fig. 1b: red - blue rises from 9.2 to 18.3 dB; largest local drop 0.4 dB (no dip near 2 THz)
 
+Tracing jitter before the pulse (detrended rms, worst trace) 0.0130: the 28 % residual is 8x that, so the two-path sum is rejected as an exact description
+  index from the traced tissue phase at the stated d = 100 um: 0.3 THz 3.04, 0.6 THz 3.10, 1.0 THz 3.03, 1.5 THz 2.84 (water-based tissue model 1.95-2.2): the slice delays like ~2x its stated thickness
+Frequency-domain fits over 0.15-1.70 THz (residual = band-limited time-domain rms / signal), dip of model/no-voltage; reported dip 0.56 THz, -11.4 dB
+  air bypass: a*B + b*K(tau)                         [a b tau]   residual 27%  dip 0.59 THz  -7.0 dB  0.589, 0.216, -0.022
+  air bypass, a + b = 1                              [x tau]     residual 32%  dip 0.62 THz  -6.7 dB  0.241, -0.018
+  tissue path q x thicker + air bypass               [a b tau q] residual 20%  dip 0.57 THz -10.7 dB  0.689, 0.207, -0.015, 1.109
+  tissue path 1.1 x thicker + air bypass               [a b tau] residual 20%  dip 0.57 THz -10.3 dB  0.683, 0.208, -0.015
+  tissue path 1.2 x thicker + air bypass               [a b tau] residual 24%  dip 0.55 THz -14.7 dB  0.730, 0.194, -0.014
+  bypass crosses 10% of the tissue                   [a b tau]   residual 29%  dip 0.60 THz  -6.6 dB  0.589, 0.252, -0.088
+  bypass crosses 20% of the tissue                   [a b tau]   residual 32%  dip 0.61 THz  -6.4 dB  0.586, 0.292, -0.154
+  one path: tissue q x thicker, no bypass            [a q]       residual 94%  dip 0.99 THz -12.0 dB  0.435, 1.310
+Dip of a pure bypass, (1 - x)*B + x*K, as the bypass grows (model/no-voltage, 0.35-1 THz):
+  tissue path 1.0 x: x 0.05: 0.74 THz  -3.2 dB; x 0.10: 0.74 THz  -8.2 dB; x 0.15: 0.74 THz -21.4 dB; x 0.20: 0.76 THz -13.1 dB; x 0.25: 0.77 THz  -5.6 dB; x 0.30: 0.56 THz  -2.8 dB; x 0.35: 0.54 THz  -1.0 dB
+  tissue path 1.1 x: x 0.05: 0.71 THz  -5.1 dB; x 0.10: 0.70 THz -11.6 dB; x 0.15: 0.67 THz -33.2 dB; x 0.20: 0.61 THz -12.2 dB; x 0.25: 0.56 THz  -7.3 dB; x 0.30: 0.54 THz  -4.3 dB; x 0.35: 0.51 THz  -2.2 dB
+  tissue path 1.2 x: x 0.05: 0.67 THz  -6.8 dB; x 0.10: 0.65 THz -13.4 dB; x 0.15: 0.60 THz -41.8 dB; x 0.20: 0.56 THz -14.8 dB; x 0.25: 0.54 THz  -8.8 dB; x 0.30: 0.51 THz  -5.4 dB; x 0.35: 0.50 THz  -3.0 dB
+Fig. 1b alone, 1.5-3 THz, 5 min at 100 V minus empty cuvette (dB): -11.3, -11.8, -12.3, -12.2, -11.9, -12.2, -13.2 -> flat, as an undelayed component that dominates where tissue loss is 30-50 dB; amplitude 0.27-0.22 of the empty-cuvette field
+
 Sim 38 gas column through modelled tissue (E || fibres), refitted to pixel points at 0.3, 0.45, 0.56, 0.75, 1, 1.25, 1.5, 2, 2.5, 3 THz, sigma 2 dB
   KS1996    t <= 600 um: x = 0.238, t = 244 um, chi2 = 52 on 8 dof, rms 4.6 dB
   KS1996    t <= 100 um: x = 0.000, t = 100 um, chi2 = 301 on 8 dof, rms 11.0 dB
@@ -30,7 +47,9 @@ Sim 38 gas column through modelled tissue (E || fibres), refitted to pixel point
   broadband t <= 100 um: x = 0.000, t = 100 um, chi2 = 301 on 8 dof, rms 11.0 dB
 
 Reading
-  The 5-min trace is the no-voltage trace scaled down plus ~20 % of the empty-cuvette pulse at the
-  empty-cuvette delay: part of the beam no longer crosses tissue. The dip near 0.56 THz is where these
-  two paths cancel. One-path changes of the tissue fit worse. The mechanism that opens the air path
-  (gas, the slice drying or pulling away from the window, beam or sample moving) is not identified.
+  The 5-min trace contains ~21 % of the empty-cuvette pulse at the empty-cuvette delay (+-0.02 ps): a
+  component that crosses at most ~20 % of the tissue's optical thickness. Without it nothing fits (94 %).
+  With it, the tissue path must also change: 0.59 x in amplitude, or ~10 % more optical thickness, which
+  gives the dip at 0.57 THz with 10.7 of 11.4 dB. Neither the cause of the undelayed component (gas,
+  slice pulling away from a window, beam or sample movement) nor of the tissue change is identified;
+  the sum is rejected as an exact description (residual 8x tracing jitter).

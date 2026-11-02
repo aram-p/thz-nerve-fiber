@@ -313,6 +313,42 @@ def epsfine():
     print(f"mesh check {best}: eta {out[best]['par']['eta']} vs fine {out[best + '_h']['par']['eta']}", flush=True)
 
 
+def epsdense():
+    """Review round 5: the passive-eps bound was sampled only at 0.6/2 THz and with the ring
+    resonance between grid points (-1.6, -1.3). Dense eps' grid at eps'' = 0.1 (the worst case the
+    claim covers: the peak falls as eps'' grows) at 0.6/1/2/3 THz; parabola through the top three."""
+    f4 = np.array([0.6, 1.0, 2.0, 3.0]) * 1e12
+    path = OUT / "sim36_epsdense.json"
+    out = json.loads(path.read_text()) if path.exists() else {}
+    if "ref" not in out:
+        out["ref"] = sim30.run("s36", tag="s36_epsd_ref", freqs=list(f4), Lint=200.0, **MESH)
+    for er in (-2.0, -1.8, -1.6, -1.5, -1.45, -1.4, -1.35, -1.3, -1.2, -1.0):
+        k = f"{er}_0.1"
+        if k not in out:
+            out[k] = sim30.run("s36", tag=f"s36_epsd_{k}", freqs=list(f4), Lint=200.0,
+                               eps_override=dict(node=ConstantEps(complex(er, -0.1))), **MESH)
+            path.write_text(json.dumps(out))
+    report_epsdense(out)
+
+
+def report_epsdense(out=None):
+    out = out or json.loads((OUT / "sim36_epsdense.json").read_text())
+    f4 = np.array([0.6, 1.0, 2.0, 3.0]) * 1e12
+    ref = out["ref"]
+    keys = sorted((k for k in out if k != "ref"), key=lambda k: float(k.split("_")[0]))
+    er = np.array([float(k.split("_")[0]) for k in keys])
+    for pol in ("par", "perp"):
+        db = np.array([[max(abs(v) for v in vals) for vals in zip(*(tissue_db(out[k], ref, f4, pol)[o] for o in ("P_fibre", "flux_in", "dipole")))]
+                       for k in keys])
+        eta = np.array([out[k][pol]["eta"] for k in keys])
+        for i, fi in enumerate(f4):
+            j = int(np.argmax(db[:, i])); jj = np.clip([j - 1, j, j + 1], 0, len(er) - 1)
+            c = np.polyfit(er[jj], db[jj, i], 2) if len(set(jj)) == 3 else None
+            peak = (c[2] - c[1] ** 2 / (4 * c[0])) if c is not None and c[0] < 0 else db[j, i]
+            print(f"{pol} {fi/1e12:.1f} THz: max |dB| {db[j, i]:.3f} at eps' {er[j]} (eta {eta[j, i]:.1f}); "
+                  f"parabola peak {peak:.3f} dB; x6 (internode 200 um, packing 0.6) {6 * peak:.2f} dB", flush=True)
+
+
 def report_dense(p=0.6, Lint_t=200.0):
     """Tissue dB of the dense sweeps (worst case Lint 200 um, p 0.6)."""
     out = json.loads((OUT / "sim36_dense.json").read_text())
@@ -327,4 +363,4 @@ def report_dense(p=0.6, Lint_t=200.0):
 
 if __name__ == "__main__":
     OUT.mkdir(parents=True, exist_ok=True)
-    {"sigma": sigma, "report_sigma": report_sigma, "dense": dense, "aniso": aniso, "epsnode": epsnode, "axon": axon, "axon2": axon2, "axon_threshold": axon_threshold, "report_axon": report_axon, "epsfine": epsfine, "report_dense": report_dense}[sys.argv[1]]()
+    {"sigma": sigma, "report_sigma": report_sigma, "dense": dense, "aniso": aniso, "epsnode": epsnode, "axon": axon, "axon2": axon2, "axon_threshold": axon_threshold, "report_axon": report_axon, "epsfine": epsfine, "epsdense": epsdense, "report_epsdense": report_epsdense, "report_dense": report_dense}[sys.argv[1]]()
