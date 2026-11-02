@@ -424,7 +424,7 @@ water-vapour lines of paper 1 Fig. 4b, so it is stated as not tested. **New resu
 
 ### 57. MAJOR: "The small-fibre and 200 µm-thickness bounds are stale after the dense ε grid."
 **Response.** Corrected everywhere: small CNS fibres 2–4× the 0.74 dB, i.e. 1.5–3 dB, ≥ 3× below
-9 dB (3.6 dB and 2.5× with ±20 % materials, item 59); at a doubled slice thickness the passive bound is 1.6 dB. **Fixed.**
+9 dB (3.6 dB and 2.5× with ±20 % materials, item 59); at a doubled slice thickness the passive bound is 1.8 dB. **Fixed.**
 
 ### 58. MINOR: wording ("~20 % bypassing", 28 % residual, "three constants", 2 %, packing ranges).
 **Response.** Prior-work row and limitations updated; the abstract no longer counts constants and

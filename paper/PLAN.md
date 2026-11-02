@@ -78,7 +78,7 @@ selectivity, remain unexplained.
    5.6 Baseline 30 dB/0.1 mm at 2 THz vs 11.6–15.8 dB for water, and a tissue delay that implies
    n = 2.8–3.1 at the stated 100 µm (traced phase, Sim 39) vs 1.95–2.2 for water-based tissue: the
    slice is optically ~2× thicker than stated, or not water-based. If it is ~200 µm thick, every
-   per-slice bound here doubles (node ≤ 0.1 dB conductivity / ≤ 1.6 dB passive ε) and the 9 dB
+   per-slice bound here doubles (node ≤ 0.1 dB conductivity / ≤ 1.8 dB passive ε) and the 9 dB
    conductivity halves (~150–500 S/m); the conclusions stand; dynamic range. 5.7 What matches, what does not, and decisive measurements (current and
    mass logging, N₂ purge, reference through a heated or dried slice, raw data on IEEE DataPort)
    5.8 The published waveforms (traced from the PDFs; Figs. 7–8). Robust result: both reports' biased
@@ -114,7 +114,7 @@ selectivity, remain unexplained.
 | Zangari A, Micheli D, Galeazzi R 2018, *Sci. Rep.* 8, 539 | Node of Ranvier as an array of bio-nanoantennas, FEM | IR (tens–hundreds of THz) | lossless or constant ε | none reported | In 0.1–3 THz, with water's dispersive loss, the node is a quasi-static gap with no antenna resonance; closed-form absorption law |
 | Kumar S et al. 2016, *Sci. Rep.* 6, 36508 | Myelinated axons as optical waveguides for biophotons | visible–near-IR | n/a | FDTD, no benchmark | Shows the waveguide picture does not carry over to THz: myelin index below water, axon-core V ≤ 0.4 |
 | Xiang Z, Tang C, Chang C, Liu G 2021, *Nano Res.* 14, 590 | THz/IR signal transmission along neurons (ordered surface water) | THz–mid-IR | not dispersive water | none | Passive THz response of a myelinated fibre with measured water, verified solver |
-| Hovhannisyan, Makaryan (Martirosyan) 2024, *Armenian J. Phys.* 17, 17; IET Conf. Proc. (IRPhE 2024) | THz-TDS of cord slices, features at 0.6 and 2 THz with DC bias, E ∥ fibres; model: open node channels make fibres nonlinear wires, slice a grating | 0.2–4 THz | n/a (experiment) | n/a | Tests their model and node resonance: open channels are 10⁶× below membrane capacitive admittance; 9 dB needs ~500 S/m axoplasm (full wave); no grating orders below 6 THz; no node state gives > 0.8 dB (E∥); their published waveforms (both reports) contain a component at the empty-cuvette delay, 4–21 % of the empty-cuvette pulse, growing with bias time |
+| Hovhannisyan, Makaryan (Martirosyan) 2024, *Armenian J. Phys.* 17, 17; IET Conf. Proc. (IRPhE 2024) | THz-TDS of cord slices, features at 0.6 and 2 THz with DC bias, E ∥ fibres; model: open node channels make fibres nonlinear wires, slice a grating | 0.2–4 THz | n/a (experiment) | n/a | Tests their model and node resonance: open channels are 10⁶× below membrane capacitive admittance; 9 dB needs ~500 S/m axoplasm (full wave); no grating orders below 6 THz; no node state gives > 0.9 dB (E∥); their published waveforms (both reports) contain a component at the empty-cuvette delay, 4–21 % of the empty-cuvette pulse, growing with bias time |
 
 ## Figures
 
