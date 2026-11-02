@@ -359,6 +359,37 @@ def epsdense_mesh():
               f"{np.round(db[2], 4)}; eta {np.round(out['-1.45_0.1_q'][pol]['eta'], 1)} at 0.0625", flush=True)
 
 
+def epsdense_hscan():
+    """Review round 8: refinement lowered eps' -1.5 more than -1.45, so the peak may move. Rescan
+    eps' at h_frac 0.125 (the peak is converging downwards; see epsdense_mesh) and compare the peak."""
+    path = OUT / "sim36_epsdense.json"
+    out = json.loads(path.read_text())
+    f4 = np.array([0.6, 1.0, 2.0, 3.0]) * 1e12
+    for er in (-1.2, -1.3, -1.35, -1.4, -1.6, -1.8):
+        key = f"{er}_0.1_h"
+        if key not in out:
+            out[key] = sim30.run("s36", tag=f"s36_epsd_{key}", freqs=list(f4), Lint=200.0,
+                                 eps_override=dict(node=ConstantEps(complex(er, -0.1))), **(MESH | dict(h_frac=0.125)))
+            path.write_text(json.dumps(out))
+    report_epsdense_h(out)
+
+
+def report_epsdense_h(out=None):
+    out = out or json.loads((OUT / "sim36_epsdense.json").read_text())
+    f4 = np.array([0.6, 1.0, 2.0, 3.0]) * 1e12
+    keys = sorted((k for k in out if k.endswith("_0.1_h")), key=lambda k: float(k.split("_")[0]))
+    er = np.array([float(k.split("_")[0]) for k in keys])
+    for pol in ("par",):
+        for lvl, ks, ref in (("h_frac 0.25", [k[:-2] for k in keys], out["ref"]), ("h_frac 0.125", keys, out["ref_h"])):
+            t = [tissue_db(out[k], ref, f4, pol) for k in ks]
+            db = np.array([np.max(np.abs([d[o] for o in ("P_fibre", "flux_in", "dipole")]), axis=0) for d in t])
+            sgn = np.array([[d[o][i] for o in ("P_fibre", "flux_in", "dipole")] for d in t for i in range(4)]).reshape(len(ks), 4, 3)
+            for i, fi in enumerate(f4):
+                j = int(np.argmax(db[:, i]))
+                print(f"{pol} {lvl} {fi/1e12:.1f} THz: peak |dB| {db[j, i]:.4f} at eps' {er[j]} "
+                      f"(P_fibre, flux_in, dipole signed: {np.round(sgn[j, i], 4)}); all {np.round(db[:, i], 4)}", flush=True)
+
+
 def epsrobust():
     """Review round 6: the +-20 % material test (Sim 33) covered node power only. Here the passive-eps
     slice bound at its peak (3 THz, E-par) with eps' and eps'' of axon, myelin, water (water includes
@@ -439,4 +470,4 @@ def report_dense(p=0.6, Lint_t=200.0):
 
 if __name__ == "__main__":
     OUT.mkdir(parents=True, exist_ok=True)
-    {"sigma": sigma, "report_sigma": report_sigma, "dense": dense, "aniso": aniso, "epsnode": epsnode, "axon": axon, "axon2": axon2, "axon_threshold": axon_threshold, "report_axon": report_axon, "epsfine": epsfine, "epsdense": epsdense, "epsdense_mesh": epsdense_mesh, "epsrobust": epsrobust, "report_epsrobust": report_epsrobust, "report_epsdense": report_epsdense, "report_dense": report_dense}[sys.argv[1]]()
+    {"sigma": sigma, "report_sigma": report_sigma, "dense": dense, "aniso": aniso, "epsnode": epsnode, "axon": axon, "axon2": axon2, "axon_threshold": axon_threshold, "report_axon": report_axon, "epsfine": epsfine, "epsdense": epsdense, "epsdense_mesh": epsdense_mesh, "epsrobust": epsrobust, "report_epsrobust": report_epsrobust, "report_epsdense": report_epsdense, "report_dense": report_dense, "epsdense_hscan": epsdense_hscan, "report_epsdense_h": report_epsdense_h}[sys.argv[1]]()

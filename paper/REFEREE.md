@@ -8,10 +8,10 @@ state, and no fibre state the experimenters proposed (open channels turning fibr
 conducting wires forming a grating), changes tissue transmission by an amount close to the reported
 ~9 dB, so the 0.6/2 THz features reported under DC bias (Hovhannisyan, Makaryan, Martirosyan 2024)
 do not come from the linear electromagnetic response of nodes or fibres. The published waveforms
-of the three reports, which share one set of reference scans, instead contain a component at the
-empty-cuvette delay (4, 12, 17, 22 % after 0.5, 2, 4, 5 min), plus a ~10 % thicker tissue path
-(Sims 39, 42, 43); the same two terms, unfitted to the spectra, place a transient dip at 2.24 THz
-after 30 s (measured 2.00 THz); their cause is unknown and they conflict with the reported polarisation and bias-direction
+of the three reports, which share reference scans, instead contain a component at the
+empty-cuvette delay (4, 12, 17, 22 % in four biased scans after 0.5, 2, 4, 5 min), plus a ~10 %
+thicker tissue path (Sims 39, 42, 43), consistent with the 0.6 THz dip; the 2 THz dip is not
+reproduced; their cause is unknown and they conflict with the reported polarisation and bias-direction
 selectivity.
 
 Reviewer stance: a sceptical THz-biophysics and computational-EM referee looking for a fatal flaw.
@@ -497,6 +497,64 @@ post-processing call after the values were written (values confirmed from the JS
 ### 71. MINOR: missing citations (lipid-bilayer dielectric dispersion; salt and THz water absorption); title should say "below 3 THz".
 **Response.** Zhang et al. 2022 and Xu et al. 2007 cited; title changed. **Fixed.**
 
+## Eighth round (independent reviewer, 2026-11-03; verdict: major revision, no fatal flaw; abstract numbers traced to result files; simulation bounds confirmed)
+
+### 72. MAJOR: "The 2 THz 'prediction' misses; 'within 1.6–3.4 dB above 1.85 THz' is false (5.6 dB at 1.85–2.15 THz); model and data have separate dips; the miss is ~9× the phase-fit error and dispersion makes it 18 %; a transient dip in that region is generic."
+**Response.** Agreed on every point. §5.6 now reports the 2 THz dip as not reproduced, gives the
+band errors (+5.6 dB at 1.85–2.15 THz, −3.3 dB at 2.3–3 THz), states that the two dips are separate
+(model −30 dB at 2.00 THz against −43.5 dB; published −32 dB at 2.20 THz against the model's −40 dB
+at 2.25 THz), the ~8× phase-error margin, the dispersive shift to ~2.35 THz, and why a transient dip
+there is generic. "Predict" and "accounts for" are removed from abstract, introduction, §5.7 and
+conclusion. **Fixed (claim withdrawn).**
+
+### 73. MAJOR: "The 2 THz dip is ~10 dB above the noise floor."
+**Response.** Confirmed on H1 Fig. 3b: the dip lies at about −63 dB, the spectra flatten into noise
+at −70 to −85 dB above 3.5 THz. Stated with Jepsen and Fischer 2005 and Withayachumnankul and Naftaly
+2014. **Fixed.**
+
+### 74. MAJOR: "With every extreme the paper allows multiplied, the passive-ε bound reaches 9.5 dB at 3 THz."
+**Response.** Confirmed and now stated per frequency in §4.6: ×11 for internode 50 µm, packing 0.8
+and a 200 µm slice gives 1.1/2.1/5.5/9.5 dB at 0.6/1/2/3 THz (materials ×1.2 included). The reported
+changes are 9–20 dB at 0.6 THz (and 3–4 dB after 30 s), ≥ 2.6× above; 14 dB at 2 THz, 2.5× above;
+near 3 THz the reported change is a transmission rise of up to 17–18 dB, while every passive node
+state adds loss there, and the largest rise any node state gives is 0.008 dB per slice at 1 mm
+internodes (0.5 dB with all extremes; checked over all ε grids). The conductivity bound with all
+extremes is 0.5 dB. **Fixed.**
+
+### 75. MAJOR: "Shared reference scans do not prove one continuous bias run; the b series is not a time series; the reuse undermines every number from the reports."
+**Response.** Adopted: "four biased scans from reports that share reference scans"; whether they come
+from one bias run cannot be checked; every number from the reports, including the 9–20 dB, rests on
+one sample. **Fixed.**
+
+### 76. MAJOR: "The abstract ties the thicker path to the 2.2 THz cancellation (q = 1 at 30 s); the Fig. 8 caption says nothing is fitted though the 4-min panel uses q = 1.09."
+**Response.** Abstract rewritten (the 2 THz claim is withdrawn); the caption now says a, b, τ and
+q = 1.09 come from the waveform fits and nothing is fitted to the spectra. **Fixed.**
+
+### 77. MINOR: "The ε mesh check was at two ε′ values; the peak may move under refinement."
+**Response.** ε′ re-scanned on the 2× finer mesh (8 values, 0.6/1/2/3 THz; `sim36_review.py
+epsdense_hscan`): peaks 0.0138/0.0267/0.0662/0.1117 dB against coarse 0.0143/0.0279/0.0716/0.1227;
+the 3 THz peak moves to ε′ −1.35 but stays 9 % below the coarse peak, so the coarse values bound it.
+**Fixed.**
+
+### 78. MINOR: figures (Fig. 5 cited for the passive-ε scan; Fig. 2 caption says "benchmarks").
+**Response.** Fig. 5 is cited for conductivity only; the Fig. 2 caption now names the legacy artefact.
+**Fixed.**
+
+### 79. MINOR: "H3's 0.56 THz dip sits on the 0.557 THz water-vapour line."
+**Response.** Stated in §5.6 with van Exter et al. 1989; its exact frequency does not discriminate.
+**Fixed.**
+
+### 80. MINOR: "The 30-s change (3–4 dB) is within the small-fibre bound."
+**Response.** The per-frequency bound at 0.6 THz is 1.1 dB with every extreme, so the 3–4 dB is
+≥ 2.6× above it. **Fixed.**
+
+### 81. MINOR: numbers ("3.4 dB" is 3.3; 0.64 K/s; 300–1000 S/m omits 0.1 THz; "closed law" has fitted constants).
+**Response.** 3.3 dB; 0.6–0.9 K/s in both files; 300–1300 S/m; the abstract says the law is exact in
+its limits with three constants fitted to a Laplace solver. **Fixed.**
+
+### 82. MINOR: prior work (Wilmink and Grundt 2011; Romanenko et al. 2017; van Exter et al. 1989; Jepsen and Fischer 2005); title undersells the waveform analysis.
+**Response.** All cited; title ends "re-analysis of published spinal-cord THz waveforms". **Fixed.**
+
 ---
 
 ## What matches and what does not (experiment)
@@ -504,15 +562,15 @@ post-processing call after the values were written (values confirmed from the JS
 | Reported (Hovhannisyan, Makaryan, Martirosyan 2024) | This work |
 |---|---|
 | Dip near 0.6 THz (9–20 dB) | No node or fibre resonance anywhere in 0.1–3 THz. The shared session's biased waveforms contain a component at the empty-cuvette delay (4, 12, 17, 22 % at 0.5, 2, 4, 5 min); no one-path tissue change fits. With the tissue path also 1.09–1.18× thicker, the dip falls at 0.57 THz (5 min, reported 0.56) and 0.63–0.65 THz (4 min, published 0.65): consistent, q fitted (Sims 39, 42, 43) |
-| 2 THz dip (30 s, paper 1) | Without fitting the spectra the same two terms give a −40 dB antiphase dip at 2.24 THz after 30 s that vanishes by 4 min, as published; measured 2.00 THz, −43.5 dB (12 % off). Unpurged water-vapour lines lie at 1.92–2.20 THz (Sim 43) |
+| 2 THz dip (30 s, paper 1) | Not reproduced: the two terms give a separate transient dip at 2.25 THz (measured 2.00 THz); the measured dip is ~10 dB above the noise floor, among water-vapour lines at 1.92–2.20 THz (Sim 43) |
 | Dip drifts 0.7 → 0.5 THz in minutes | Water-vapour lines cannot drift. At 30 s the traced ratio is a broad −3 to −4 dB trough over 0.56–0.78 THz; by 4 min the dip is at 0.62–0.65 THz as b reaches 0.17 and q 1.09 (Sims 42, 43). Matches the direction; fitted, not predicted |
 | High frequencies rise by 17–18 dB (2–2.5 THz, traced) | The bypass skips tissue loss: the waveform fit follows the rise to 1.7 THz within 1.5 dB rms (not testable above with the traced window); drying alone ≤ 3 dB (Sim 34) |
-| ~9 dB change under 100 V DC | Node (E∥, internode ≥ 200 µm, packing ≤ 0.6): ≤ 0.05 dB for any conductivity, ≤ 0.9 dB for any passive ε (ε″ ≥ 0.1, ±20 % materials); channels 10⁻⁹ dB. Fibre conduction: needs 290–980 S/m axoplasm (200–700× physiological). Heating/drying: smooth, ≤ 3 dB |
+| ~9 dB change under 100 V DC | Node (E∥, internode ≥ 200 µm, packing ≤ 0.6): ≤ 0.05 dB for any conductivity, ≤ 0.1/0.5/0.9 dB at 0.6/2/3 THz for any passive ε (ε″ ≥ 0.1, ±20 % materials); with internode 50 µm, packing 0.8 and a 200 µm slice together 1.1/5.5/9.5 dB, below the 9–20 dB (0.6 THz) and 14 dB (2 THz) reported; near 3 THz the reported change is a rise, which node states cannot give (≤ 0.5 dB); channels 10⁻⁹ dB. Fibre conduction: needs 290–980 S/m axoplasm (200–700× physiological). Heating/drying: smooth, ≤ 3 dB |
 | Effect only with E ∥ fibres | Not explained, and contradicts the bypass; model dichroism −0.35 dB; a conducting axon is itself E∥-selective (6.6 vs 2.7 dB at 0.6 THz), so this does not discriminate the wire model |
 | Effect only with DC across the fibres | Not explained, and contradicts the bypass; heating predicts the opposite (σ∥ ≈ 7σ⊥) |
 | Generated high frequencies (nonlinearity) | No ps nonlinearity at TDS fields (10⁻³ of onset); drying raises high-frequency transmission linearly |
 | Sample acts as a grating of wires | No diffraction orders below 6 THz; fibres are not periodic |
-| Onset ~5 min, recovery ~1 h; no further change after ~6 min (paper 1) | The undelayed component grows 4 → 12 → 17 → 22 % (0.5, 2, 4, 5 min); saturation after ~6 min not testable (no later trace). Timing compatible with heating/drying (0.64 K/s adiabatic), but see DC direction |
+| Onset ~5 min, recovery ~1 h; no further change after ~6 min (paper 1) | The undelayed component grows 4 → 12 → 17 → 22 % (0.5, 2, 4, 5 min); saturation after ~6 min not testable (no later trace). Timing compatible with heating/drying (0.6–0.9 K/s adiabatic), but see DC direction |
 | No significant change of average power (paper 3) | Traced pulse energy 1.03 (biased) vs 1.36 (no voltage): −1.2 dB, consistent with a small change of a heavily attenuated signal |
 | Tissue n = 3.6–3.9 | Inconsistent with water-based tissue (model and Berry 2003: 1.95–2.2) |
 
