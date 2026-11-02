@@ -1,4 +1,4 @@
-"""Fit the two geometric constants (c, p) of the closed node law to the extrapolated Laplace
+"""Fit the three constants (c0, p, q) of the closed node law to the extrapolated Laplace
 solver. The Laplace problem has no length scale, so F depends only on x = Ln/t, g = a/b and the
 permittivities; the axon radius is fixed at 3.5 um.
 
@@ -46,12 +46,13 @@ def law(cp, r, pol):
     b = A / r["g"]
     F0 = abs(e[1] / e[2]) ** 2 if pol == "par" else nodelaw.shell_factor(*e, r["g"])
     xp = r["x"] ** cp[1]
-    return F0 + (1 - F0) * xp / (xp + cp[0])
+    c = cp[0] * abs(e[2] / e[1]) ** cp[2]
+    return F0 + (1 - F0) * xp / (xp + c)
 
 
 for pol in ("par", "perp"):
     rr = [r for r in rows if r["pol"] == pol]
-    fit = least_squares(lambda cp: [law(cp, r, pol) / r["F"] - 1 for r in rr], x0=[1.0, 1.0],
-                        bounds=([0.01, 0.2], [20, 3]))
+    fit = least_squares(lambda cp: [law(cp, r, pol) / r["F"] - 1 for r in rr], x0=[1.0, 1.0, 0.0],
+                        bounds=([0.01, 0.2, -3], [20, 3, 3]))
     err = np.abs(fit.fun)
-    print(f"{pol}: c = {fit.x[0]:.3f}, p = {fit.x[1]:.3f}; max error {err.max():.3f}, rms {np.sqrt((err ** 2).mean()):.3f}")
+    print(f"{pol}: c0 = {fit.x[0]:.3f}, p = {fit.x[1]:.3f}, q = {fit.x[2]:.3f}; max error {err.max():.3f}, rms {np.sqrt((err ** 2).mean()):.3f}")

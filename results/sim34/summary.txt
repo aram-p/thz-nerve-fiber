@@ -1,7 +1,7 @@
 water volume fraction of model tissue: 0.77
 slab 100um rel. PTFE: E|| -6.2 dB @0.6, -9.6 dB @2 THz; Eperp -5.8, -9.2
 dichroism (par - perp): -0.35 dB @0.6, -0.34 dB @2
-node d_sigma for 9 dB: 6.64e+05 S/m @0.6, 4.77e+05 @2 THz (node fraction 3.06e-04)
+largest node effect, any d_sigma 1e-4..3e6 S/m (full wave): E|| 0.002 dB @0.6, 0.006 @2 THz; Eperp 0.015, 0.071 (node fraction 3.06e-04, internode 1 mm)
 physiological channel opening (1e-4 S/m): 1.4e-09 dB @0.6, 1.9e-09 dB @2
 heating +5K: -0.13 dB @0.6; +15K: -0.43 dB @0.6 (Liebe, <1 THz)
 water loss 10%: +0.56 / +0.89 dB; 30%: +1.54 / +2.83 dB (0.6 / 2 THz)

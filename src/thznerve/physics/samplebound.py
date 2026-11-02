@@ -35,7 +35,10 @@ def delta_db(f_hz, d_eps_im, F, f_n, n, d_m):
 
 
 def required_delta_sigma(f_hz, db, F, f_n, n, d_m):
-    """Node conductivity change (S/m) needed for a transmission change of `db` dB."""
+    """Node conductivity change (S/m) needed for `db` dB, at FIXED node field factor F (linear
+    response). Valid only while d_sigma/(w eps0) is small next to |eps_water|: at larger d_sigma
+    the gap screens its own field (full wave, Sim 33: no d_sigma up to 3e6 S/m gives more than
+    0.14 dB per 100 um). Do not use it to claim a d_sigma that reaches a large effect."""
     k0 = 2 * np.pi * np.asarray(f_hz) / C0
     d_eps_im = db * n / (DB_PER_NEPER_POWER * k0 * F * f_n * d_m)
     return 2 * np.pi * np.asarray(f_hz) * EPS0 * d_eps_im

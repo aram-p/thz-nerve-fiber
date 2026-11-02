@@ -57,17 +57,21 @@ def robust():
     return out
 
 
-def state():
-    out = {}
+def state(ds_list=(0.0, 1e-4, 1e2, 1e3, 1e4, 1e5, 1e6), checks=(1e5, 1e6), resume=False):
+    """resume=True adds d_sigma values to the saved sweep (fill mode) and recomputes the summary."""
+    js = sim30.OUT / "sim33_state.json"
+    out = json.loads(js.read_text()) if resume and js.exists() else {}
     fn = node_volume_fraction(3.5, 5.0, 1.0, 1000.0)
-    for ds in (0.0, 1e-4, 1e2, 1e3, 1e4, 1e5, 1e6):
+    for ds in ds_list:
+        if f"{ds:g}" in out:
+            continue
         node = PlusSigma(WATER_KS1996, ds) if ds else WATER_KS1996
         r = sim30.run("state", tag=f"state_{ds:g}", freqs=list(F), eps_override=dict(node=node), **MESH)
         out[f"{ds:g}"] = r
         (sim30.OUT / "sim33_state.json").write_text(json.dumps(out))
     # skin depth at 1e6 S/m, 3 THz is ~0.3 um, comparable to the node mesh: re-solve the two
     # largest d_sigma with the node mesh halved and report the change
-    for ds in (1e5, 1e6):
+    for ds in checks:
         r = sim30.run("state", tag=f"state_{ds:g}_fine", freqs=list(F),
                       eps_override=dict(node=PlusSigma(WATER_KS1996, ds)), **(MESH | dict(h_frac=0.125)))
         out[f"{ds:g}_fine"] = r
@@ -96,4 +100,5 @@ def state():
 
 if __name__ == "__main__":
     sim30.OUT.mkdir(parents=True, exist_ok=True)
-    {"robust": robust, "state": state}[sys.argv[1] if len(sys.argv) > 1 else "state"]()
+    fill = lambda: state((3e3, 3e4, 3e5, 3e6), checks=(3e6,), resume=True)   # full-wave gaps between decades
+    {"robust": robust, "state": state, "fill": fill}[sys.argv[1] if len(sys.argv) > 1 else "state"]()

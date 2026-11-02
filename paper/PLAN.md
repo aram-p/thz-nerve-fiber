@@ -30,7 +30,8 @@ the tissue-level and experimental-design sections up front.
    4.3 Scaling with Ln, myelin thickness, axon radius, internode length (Fig. 4).
    4.4 Why no resonance: sub-wavelength node (k_w Ln < 0.15), no Fröhlich pole (all Re ε > 0),
    myelin index below water (anti-guiding), water damping (field 1/e length 70–235 µm, below most internodes).
-   4.5 Node states: conductivity, permittivity, constriction; Δσ needed for a 9 dB change (Fig. 5).
+   4.5 Robustness and node states: ±20 % materials, constriction, membrane, dense packing; node
+   conductivity 10⁻⁴–3×10⁶ S/m: the gap screens itself, ≤ 0.14 dB (Fig. 5).
 5. **Comparison with experiment.** Tissue effective medium for E ∥ / E ⊥; DC mechanisms (channels,
    heating, water loss); what matches and what does not; instrumental explanations to test
    (water-vapour lines, partial air path) (Figs. 5–6).
@@ -47,14 +48,16 @@ the tissue-level and experimental-design sections up front.
 | Liu Y et al. 2020, *Sci. China PMA* 63, 274211 | Node as an active amplifier (three-level gain) of guided THz/IR | mid-IR–THz | not stated | none | Passive, energy-conserving calculation: what the node does without assumed gain; their gain hypothesis is outside our scope (stated) |
 | Guo L et al. 2022, *Front. Bioeng. Biotechnol.* 10, 1055232 | Analytic 3-layer fibre modes + mode matching at the node, vs CST | 0–30 THz (node 10–30) | constant complex ε, no Debye | vs CST only | 0.1–3 THz with double-Debye water, realistic internodes, absorbed power per node, Mie benchmark, convergence |
 | Song M et al. 2026, *Bioengineering* 13, 955 | COMSOL/HFSS: node as impedance transformer, peaks vs node length | 10–40 THz | lossless fluids, ε = 1.44 | none | With water's real ε (4.1−2.1j at 1 THz) the node is quasi-static and non-resonant in 0.1–3 THz; scaling law instead of resonance |
-| Hovhannisyan & Makaryan 2024, *Armenian J. Phys.* 17, 17; IRPhE 2024 | THz-TDS of cord slices, peaks at 0.6 and 2 THz with DC bias, E ∥ fibres | 0.2–4 THz | n/a (experiment) | n/a | Quantitative bound: a node change needs Δσ ≈ 5×10⁵ S/m (channels give 10⁻⁴); identifies testable instrumental explanations |
+| Hovhannisyan & Makaryan 2024, *Armenian J. Phys.* 17, 17; IRPhE 2024 | THz-TDS of cord slices, peaks at 0.6 and 2 THz with DC bias, E ∥ fibres | 0.2–4 THz | n/a (experiment) | n/a | Full-wave bound: no node conductivity up to 3×10⁶ S/m changes a 100 µm slab by more than 0.14 dB (E∥ ≤ 0.006 dB; channels 10⁻⁹ dB); DC Joule heating (0.6 K/s) and water-vapour lines as testable explanations |
 
 ## Figures
 
-1. Geometry and materials (to make): fibre schematic, ε(f) of water, myelin, axoplasm.
+1. `figures/fig_model.png`: unit cell, ε(f) of water/axoplasm/myelin, n, absorption length, k_w·Ln.
 2. `figures/fig_legacy_artefact.png`: legacy pipeline artefact (supplement) and benchmarks.
 3. `figures/fig_node_spectrum.png`: η, node cross-section, node share vs f, both polarisations,
    full wave vs quasi-static.
-4. Scaling (Sim 32): η/F_qs and P_node vs Ln, t, a, Lint.
-5. `figures/fig_tissue_voltage.png`: tissue transmission E ∥ / E ⊥; DC mechanisms vs 9 dB.
+4. `figures/fig_scaling.png`: η vs node length / myelin thickness with the closed law; full wave vs
+   Laplace for all 10 geometries; P_node vs internode length.
+5. `figures/fig_tissue_voltage.png`: tissue transmission E ∥ / E ⊥; DC mechanisms (channels, any node
+   conductivity, heating, drying) vs the reported 9 dB.
 6. `figures/fig_twopath.png`: partial-air-path model vs reported features (discussion).

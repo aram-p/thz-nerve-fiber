@@ -8,10 +8,14 @@ F interpolates between two exact limits in x = Ln / t (t = b - a, myelin thickne
     is bulk water in a tangential field, F = 1.
   * E perpendicular. Thin gap: the gap takes the tangential field of the myelin shell of an
     infinite coated cylinder, F0 = S (exact 2D series, `shell_factor`). Long gap: F = 1.
-    F = F0 + (1 - F0) x^p / (x^p + c)
-The two geometric constants (c, p) per polarisation were fitted once to the Laplace solver
-(thznerve.physics.quasistatic) over x = 0.25-5, g = 0.7-0.875, a = 1-7.5 um, 0.1-3 THz:
-max error 7.6 % (parallel) and 4.7 % (perpendicular). They are not fitted to any experiment.
+    F = F0 + (1 - F0) x^p / (x^p + c),   c = c0 |eps_w / eps_my|^q
+The transition length depends on the water/myelin contrast: E parallel needs a longer gap when
+water is more polarisable than myelin (q > 0), E perpendicular a shorter one (q < 0).
+The three constants (c0, p, q) per polarisation were fitted once to the Laplace solver
+(thznerve.physics.quasistatic, Richardson-extrapolated) over x = 0.2-8, g = 0.6-0.8,
+0.1-3 THz (experiments/prod/fit_nodelaw.py): max error 2.1 % (parallel), 2.0 % (perpendicular),
+rms 0.7 % / 0.5 %. They are not fitted to full-wave results or to any experiment.
+The Laplace problem has no length scale, so F depends on x, g and the permittivities only.
 No length in the law compares with the wavelength, and the internode length does not enter:
 there is no resonance condition.
 """
@@ -22,8 +26,8 @@ import numpy as np
 
 from thznerve.physics.materials import EPS0
 
-C_PAR, P_PAR = 2.115, 0.983
-C_PERP, P_PERP = 0.467, 0.841
+C_PAR, P_PAR, Q_PAR = 1.066, 0.934, 0.742
+C_PERP, P_PERP, Q_PERP = 0.999, 0.826, -0.784
 
 
 def shell_factor(eps_ax, eps_my, eps_w, g):
@@ -38,10 +42,11 @@ def shell_factor(eps_ax, eps_my, eps_w, g):
 
 def node_factor_closed(a, b, Ln, eps_ax, eps_my, eps_w, pol="par"):
     x = Ln / (b - a)
+    rho = abs(eps_w / eps_my)
     if pol == "par":
-        F0, c, p = abs(eps_my / eps_w) ** 2, C_PAR, P_PAR
+        F0, c, p = abs(eps_my / eps_w) ** 2, C_PAR * rho ** Q_PAR, P_PAR
     else:
-        F0, c, p = shell_factor(eps_ax, eps_my, eps_w, a / b), C_PERP, P_PERP
+        F0, c, p = shell_factor(eps_ax, eps_my, eps_w, a / b), C_PERP * rho ** Q_PERP, P_PERP
     return F0 + (1 - F0) * x ** p / (x ** p + c)
 
 
