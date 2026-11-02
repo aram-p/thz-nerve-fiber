@@ -4,7 +4,7 @@ Aram Poghossian
 
 Target journal: *Journal of Infrared, Millimeter, and Terahertz Waves* (Springer).
 Figures are in `paper/figures/`; every number below traces to a script and a result file listed in
-`REPORT.md` (Sims 27–43) and to `results/run_log.csv`.
+`REPORT.md` (Sims 27–44) and to `results/run_log.csv`.
 
 ## Abstract
 
@@ -21,9 +21,9 @@ conduction needs 300–1300 S/m extra axoplasm conductivity (physiological: 1.4)
 experimental reports share reference scans; in their four biased scans the pulse gains a component
 at the empty-cuvette delay, 4, 12, 17 and 22 % of the empty-cuvette pulse after 0.5, 2, 4 and 5 min,
 that no tissue-only change fits. With a ~10 % optically thicker tissue path, the two terms are
-consistent with the 0.6 THz dip; a 2.0 THz dip measured after 30 s is not reproduced (the model's
-lies at 2.25 THz). Its source and the reported polarisation and bias-direction selectivity remain
-unexplained.
+consistent with the 0.6 THz dip; a 2.0 THz dip, seen in one scan at the noise floor, is not
+reproduced. Its source and the reported polarisation and bias-direction selectivity, reported
+without data, remain unexplained.
 
 **Keywords:** terahertz; node of Ranvier; myelinated axon; finite-element method; dosimetry;
 terahertz time-domain spectroscopy; spinal cord.
@@ -369,11 +369,16 @@ over 0.56–0.78 THz with no clear minimum. In these data the reported drift fro
 dip that deepens and moves from ~0.7 THz (where q = 1 puts it) to 0.62–0.65 THz as q grows.
 
 **The 2 THz dip is not reproduced.** The published 30-s spectrum of H1 has a narrow dip at
-2.00 THz, 43.5 dB below the empty cuvette and 14 dB below the unbiased spectrum. In absolute terms it
-lies at about −63 dB, while the spectra flatten into noise at −70 to −85 dB above 3.5 THz (H1,
-Fig. 3b), so the dip is only ~10 dB above the noise floor, inside a band of unpurged water-vapour
-lines (1.92–2.20 THz; Pickett et al. 1998); its depth is limited by dynamic range (Jepsen and Fischer
-2005; Withayachumnankul and Naftaly 2014). We tested whether the two terms produce it. Taking |T|
+2.00 THz, 43.5 dB below the empty cuvette and 14 dB below the unbiased spectrum. Traced per pixel
+column (Sim 44), it is a ~0.08 THz wide depression centred at 1.99 THz, 15 dB below the curve's own
+level, whose bottom (−71 dB absolute) reaches the noise floor: the unbiased sample spectrum is flat
+noise at −73 to −76 dB above 3.6 THz (H1, Fig. 3b). Its depth is therefore set by dynamic range
+(Jepsen and Fischer 2005; Withayachumnankul and Naftaly 2014). Every published curve, the empty
+cuvette included, shows the same 17–19 narrow dips over 1.5–2.9 THz (unpurged water vapour; Pickett
+et al. 1998), 7–9 of them at least as deep as this one; the 1.99 THz dip is the only one that
+appears in a single scan (not in the unbiased, empty or 4-min spectra). From one scan at the noise
+floor it cannot be established as a property of the sample. We still tested whether the two terms
+produce it. Taking |T|
 from the published unbiased spectrum, the phase of T from the traced waveforms (linear, rms
 0.11 rad over 0.2–1.4 THz, extrapolated), and a, b, τ from the waveform fits, nothing is fitted to
 the biased spectra (q = 1 at 30 s; q = 1.09 at 4 min, fitted to the waveform). The model follows the
@@ -396,7 +401,8 @@ be tested without later traces. A gas column inside the tissue was fitted and wi
 (a gap opening between slice and window, gas, the slice shrinking or moving) would appear this way,
 and a drying or swelling slice would change the tissue path. The data cannot identify the cause. If
 the polarisation and DC-direction controls were done as described, they argue against any such
-cause, and they remain unexplained.
+cause, and they remain unexplained. They are described in words only (H1, p. 18; H3), with no
+waveforms or spectra, so they cannot be tested on the published data.
 
 ### 5.7 What matches and what does not
 
@@ -404,7 +410,7 @@ cause, and they remain unexplained.
 |---|---|
 | Dip near 0.6 THz (9–20 dB) | No node or fibre resonance in 0.1–3 THz. The undelayed component plus a 9–18 % thicker tissue path is consistent with it (0.57–0.65 THz against 0.56–0.65 measured); q is fitted |
 | Drift 0.7 → 0.5 THz | The dip deepens and moves from ~0.7 to 0.62–0.65 THz as b and q grow; water-vapour lines cannot drift |
-| 2 THz dip (30 s) | Not explained. The two terms give a separate transient dip at 2.25 THz (measured 2.00); the measured dip is ~10 dB above the noise floor among water-vapour lines |
+| 2 THz dip (30 s) | Not reproduced, and not established as a sample feature: it appears in one scan only, reaches the noise floor (−71 vs −73 to −76 dB) and is no deeper than 7–9 water-vapour dips in every curve. The two terms give a separate transient dip at 2.25 THz |
 | Only E∥ fibres, only DC across fibres | Not explained; bulk heating and drying would act for both DC directions |
 | Onset ~5 min, recovery ~1 h | Component grows 4 → 12 → 17 → 22 % (0.5, 2, 4, 5 min); recovery not traced |
 | No significant change of average power | Traced energy −1.2 dB (H3), consistent |
@@ -441,7 +447,8 @@ and permittivity contrast, within 2.2 % of full wave for fibres up to 10 µm. No
 the conducting-fibre model proposed for the Yerevan experiments, can change a 100 µm slice by 9 dB.
 The published waveforms, all from one session, instead contain a component at the empty-cuvette
 delay that grows over the four biased scans, together with a ~10 % thicker tissue path; these are
-consistent with the 0.6 THz dip but do not reproduce the 2 THz dip. Their physical cause, and the reported selectivity, need the raw data or the
+consistent with the 0.6 THz dip but do not reproduce the 2 THz dip, which appears in one scan at the
+noise floor and is not established as a property of the sample. Their physical cause, and the reported selectivity, need the raw data or the
 control measurements listed in Sec. 5.7.
 
 ## Data and code availability

@@ -91,3 +91,56 @@ def trace(mask: np.ndarray, min_hits: int = 1):
         if len(yy) >= min_hits:
             xs.append(x); ys.append(yy.mean())
     return np.array(xs, float), np.array(ys, float)
+
+
+def column_extent(mask: np.ndarray):
+    """x pixels with the top and bottom y pixel of the masked curve in each column. A plotted spectrum
+    with a narrow dip draws a vertical stroke, so the bottom pixel holds the dip and the top the level."""
+    xs = np.flatnonzero(mask.any(axis=0))
+    top = np.array([np.flatnonzero(mask[:, x])[0] for x in xs], float)
+    bot = np.array([np.flatnonzero(mask[:, x])[-1] for x in xs], float)
+    return xs.astype(float), top, bot
+
+
+def narrow_dips(f, top_db, bottom_db, half_window: float, min_depth: float):
+    """Narrow dips of a traced spectrum: depth = running maximum of the upper envelope within
+    +-half_window minus the curve's lowest value in that column. Contiguous columns deeper than
+    min_depth form one dip; returns (frequency, depth) of the deepest column of each."""
+    f = np.asarray(f, float); top_db = np.asarray(top_db, float); bottom_db = np.asarray(bottom_db, float)
+    env = np.array([top_db[np.abs(f - fi) <= half_window].max() for fi in f])
+    depth = env - bottom_db
+    deep = depth >= min_depth
+    out = []
+    i = 0
+    while i < len(f):
+        if deep[i]:
+            j = i
+            while j + 1 < len(f) and deep[j + 1]:
+                j += 1
+            k = i + int(np.argmax(depth[i:j + 1]))
+            out.append((float(f[k]), float(depth[k])))
+            i = j + 1
+        else:
+            i += 1
+    return out
+
+
+def copies_disagree(f1, y1, f2, y2, tol: float, step: float = 0.01):
+    """Bands where two traced copies of the same published curve differ by more than tol.
+    Plot annotations (arrows, labels) in the curve's own colour corrupt a trace silently; a second
+    copy of the same scan, from another figure, exposes them. Returns [(f_lo, f_hi, max |diff|)]."""
+    lo, hi = max(np.min(f1), np.min(f2)), min(np.max(f1), np.max(f2))
+    g = np.arange(lo, hi + step / 2, step)
+    d = np.abs(np.interp(g, f1, y1) - np.interp(g, f2, y2))
+    bad = d > tol
+    out, i = [], 0
+    while i < len(g):
+        if bad[i]:
+            j = i
+            while j + 1 < len(g) and bad[j + 1]:
+                j += 1
+            out.append((float(g[i]), float(g[j]), float(d[i:j + 1].max())))
+            i = j + 1
+        else:
+            i += 1
+    return out

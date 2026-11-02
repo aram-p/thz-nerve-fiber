@@ -23,9 +23,9 @@ conduction needs 300–1300 S/m extra axoplasm conductivity (physiological: 1.4)
 experimental reports share reference scans; in their four biased scans the pulse gains a component
 at the empty-cuvette delay, 4, 12, 17 and 22 % of the empty-cuvette pulse after 0.5, 2, 4 and 5 min,
 that no tissue-only change fits. With a ~10 % optically thicker tissue path, the two terms are
-consistent with the 0.6 THz dip; a 2.0 THz dip measured after 30 s is not reproduced (the model's
-lies at 2.25 THz). Its source and the reported polarisation and bias-direction selectivity remain
-unexplained.
+consistent with the 0.6 THz dip; a 2.0 THz dip, seen in one scan at the noise floor, is not
+reproduced. Its source and the reported polarisation and bias-direction selectivity, reported
+without data, remain unexplained.
 
 ## Section outline
 
@@ -88,8 +88,8 @@ unexplained.
    no one-path tissue change fits (63–84 %). With the tissue path also 1.09–1.18× optically thicker
    (band dependent), the 0.6 THz dip falls at 0.57–0.65 THz (measured 0.56–0.65; 0.557 THz is a
    vapour line): a consistency check, q is fitted. The 2 THz dip (30 s) is not reproduced: the model
-   gives a separate dip at 2.25 THz; the measured one is ~10 dB above the noise floor among vapour
-   lines. Causes unknown; the reported selectivity contradicts them. DataPort needs a subscription.
+   gives a separate dip at 2.25 THz; the measured one appears in one scan only and reaches the noise
+   floor (Sim 44). Causes unknown; the reported selectivity contradicts them. DataPort needs a subscription.
 6. **Discussion and limits.** Linear passive EM response only: DC-driven structural changes of
    fibres (swelling, electro-osmotic water flow, pH fronts) are tested only through their bulk
    effect (heating, water loss, gas). Single fibre plus effective medium; quasi-static local field
