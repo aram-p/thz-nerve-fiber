@@ -1,7 +1,6 @@
 # Paper plan
 
-**Working title.** Can nodes of Ranvier explain voltage-dependent terahertz absorption in white
-matter? A verified full-wave study of a myelinated fibre in water (0.1–3 THz)
+**Working title.** No terahertz resonance at the node of Ranvier: a quasi-static absorption law and a re-analysis of published spinal-cord waveforms
 
 **Target journal.** *Journal of Infrared, Millimeter, and Terahertz Waves* (Springer, Scopus-indexed).
 It publishes THz biophotonics and computational EM, and a quantitative negative result about a
@@ -10,21 +9,21 @@ the tissue-level and experimental-design sections up front.
 
 ## Abstract (draft, 250 words max)
 
-Biased (100 V DC) spinal-cord slices reportedly show a 9–20 dB THz transmission dip drifting from
-0.7 to 0.5 THz, attributed to resonant nodes of Ranvier or DC-opened channels. We test both with a
-full-wave model of a myelinated fibre in water, benchmarked to 2 × 10⁻⁴. In 0.1–3 THz the node does
-not resonate. Its absorbed power follows a quasi-static law (exact limits, three constants) in node
-length over myelin thickness, g-ratio and permittivity contrast, within 2.3 % of full wave for
-fibres up to 10 µm and any internode length. For the THz field along the fibres (every published
-scan), no node state changes a 100 µm slice by more than 1.1 dB; open channels add 10⁻⁶ of membrane
-admittance. The four traced biased pulses fit as the unbiased pulse plus a second pulse at the
-empty-cuvette delay, 4–22 % of it after 0.5–5 min, with the tissue pulse 0.04–0.07 ps later from 2
-min. Together they are consistent with the 0.6 THz dip. The later tissue pulse fits a 5–18 % thicker
-slice or warming. Node states cannot, even with every parameter at its extreme: they mostly advance
-the phase (≤ 0.06 of ≥ 0.15 rad). Ions or axoplasm conduction need conductivities above saturated
-brine and more loss than the fits allow. A single-scan 2.0 THz dip is not reproduced; no node state
-moves the model's dip there. The source of the second pulse and the reported polarisation and
-bias-direction selectivity (described without data) remain open.
+Biased (100 V DC) spinal-cord slices reportedly show a 9–20 dB terahertz transmission dip drifting
+from 0.7 to 0.5 THz, attributed to resonant nodes of Ranvier or DC-opened channels. We test both
+with a full-wave model of a myelinated fibre in water, benchmarked to 2 × 10⁻⁴. In 0.1–3 THz the
+node does not resonate. Its absorbed power follows a three-constant quasi-static law with exact
+limits, within 2.3 % of full wave for fibres up to 10 µm. For the field along the fibres, as in
+every published scan, no node state changes a 100 µm slice by more than 1.1 dB (internodes ≥ 200 µm,
+packing ≤ 0.6); open channels add 10⁻⁶ of the membrane admittance. Each published biased pulse is
+the unbiased pulse, arriving 0.04–0.07 ps later from 2 min, plus a second pulse that bypasses the
+tissue, growing from 4 to 22 % over 0.5–5 min. With fitted parameters this is consistent with the
+0.6 THz dip. The later arrival fits a 5–18 % thicker slice, warming or a drift of the delay stage.
+Node states cannot delay it, even with every parameter at its extreme: they mostly advance the phase, giving
+at most 0.06 of the ≥ 0.11 rad needed. Ion or axoplasm conduction would need conductivities above
+saturated brine. A single-scan 2.0 THz dip is not reproduced, and no node state makes the model's
+dip there as deep as measured. Each remaining cause would act for both polarisations, against the
+reported selectivity (described without data).
 
 ## Section outline
 
@@ -81,13 +80,13 @@ bias-direction selectivity (described without data) remain open.
    fibres heats more yet reportedly does nothing); delay-matched (Sim 46): ions and conduction need 7.5 dB, Liebe
    heating 76 K and 7 dB (allowed ≤ 3.3 dB); with the tracing floor (0.15 rad) heating of 5–17 K
    fits too; a thicker slab, a water gain into thickness and a 0.061 ps time shift fit: the data fix a
-   later tissue term, not its cause (thicker slice or warming; stage drift disfavoured); selectivity stated in the electrode frame
+   later tissue term, not its cause (thicker slice, warming or stage drift); selectivity stated in the electrode frame
    (E_THz ⊥ E_DC, parallel to electrodes 1–2); post-mortem tissue; ~70 mV across a fibre.
    5.6 Baseline 30 dB/0.1 mm at 2 THz vs 11.6–15.8 dB for water, and a tissue delay that implies
    n = 2.8–3.1 at the stated 100 µm (traced phase, Sim 39) vs 1.95–2.2 for water-based tissue: the
    slice is optically ~2× thicker than stated, or not water-based. Optical thickness from loss
    and delay ~220 µm (Sim 45) conflicts with the stated 100 µm cuvette; unresolved, so the factors
-   ×2.2 / ×3.1 are used as a conservative scaling of the bounds, not as a thickness; dynamic range. 5.7 What matches, what does not, and decisive measurements (current and
+   ×2.2 / ×3.1 are used as a conservative scaling of the bounds, not as a thickness; dynamic range. 5.7 What could make the tissue pulse later: delay requirement and floor, node states (sign; 2 THz depth test over b = 0.034–0.044), ions and conduction (above saturated brine), warming, more tissue, stage drift; every remaining cause contradicts the reported selectivity. 5.8 What matches, what does not, and decisive measurements (current and
    mass logging, N₂ purge, reference through a heated or dried slice, raw data on IEEE DataPort)
    5.8 Shared reference scans (Sim 43): the three reports share the same empty-cuvette and
    no-voltage scans (2–4 % rms), so they are one sample with four biased scans (0.5, 2, 4, 5 min);

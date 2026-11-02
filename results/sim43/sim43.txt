@@ -91,4 +91,8 @@ component of the fitted size allows, whatever its phase.
   band 0.2-1.6 THz, no node change: minimum in 1.85-2.15 THz at 2.149 THz, -32.3 dB
   closest node state: epsfine:-2.0_0.1 (band 0.2-1.0): minimum at 1.969 THz, -32.8 dB; its change at 2 THz +0.40 rad, 5.4 dB; at 0.6 THz -0.005 rad
   node-state/band pairs placing the minimum within 0.03 THz of 1.993 THz: 3; deepest -34.6 dB (epsfine:-2.5_0.1, band 0.2-1.0) against -43.5 dB published
-  node states placing a minimum within 0.03 THz of 1.993 THz and at least as deep as -43.5 dB: 0
+  b = 0.034: deepest node-state minimum within 0.03 THz of 1.993 THz -37.5 dB (epsfine:-2.5_0.1)
+  b = 0.039: deepest node-state minimum within 0.03 THz of 1.993 THz -34.6 dB (epsfine:-2.5_0.1)
+  b = 0.044: deepest node-state minimum within 0.03 THz of 1.993 THz -32.6 dB (epsfine:-2.5_0.1)
+  2.00 THz bin: a|T| = 0.0300; two-term floor |b - a|T|| at b = 0.034/0.039/0.044: -48.0/-40.7/-37.1 dB; published -43.5 dB; reached for b in 0.0233-0.0368
+  node states (b 0.034-0.044) placing a minimum within 0.03 THz of 1.993 THz and at least as deep as -43.5 dB: 0

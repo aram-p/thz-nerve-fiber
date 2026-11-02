@@ -259,16 +259,23 @@ node2 = json.loads((ROOT / "results" / "sim30" / "sim36_signed2thz.json").read_t
 fg = np.linspace(1.80, 2.40, 1201)
 mg = 10 ** (np.interp(fg, fb, rel["none"]) / 20)
 a30, b30, t30 = rows["30 s (paper 1)"]
-hits, best, placed = [], (np.inf, None), []
-for lo, hi in ((0.2, 1.0), (0.2, 1.2), (0.2, 1.4), (0.3, 1.4), (0.4, 1.4), (0.2, 1.6)):
+hits, best, placed, placed_b = [], (np.inf, None), [], {}
+for (lo, hi), bb in [(bd, bv) for bv in (0.034, b30, 0.044)
+                     for bd in ((0.2, 1.0), (0.2, 1.2), (0.2, 1.4), (0.3, 1.4), (0.4, 1.4), (0.2, 1.6))]:
     sb = (fq > lo) & (fq < hi)
     d1, d0 = np.polyfit(fq[sb], ph[sb], 1)
     for st in [{"state": "none", "loss_db_2": 0.0, "delay_rad_2": 0.0, "delay_rad_06": 0.0}] + node2:
         m = 20 * np.log10(np.abs(a30 * mg * 10 ** (-st["loss_db_2"] / 20) * np.exp(1j * (d1 * fg + d0 - st["delay_rad_2"]))
-                                 + b30 * np.exp(-1j * 2 * np.pi * fg * t30)))
+                                 + bb * np.exp(-1j * 2 * np.pi * fg * t30)))
         sel = (fg > 1.85) & (fg < 2.15)
         i = int(np.argmin(np.where(sel, m, np.inf)))
         miss = abs(fg[i] - 1.993)
+        if st["state"] != "none" and miss <= 0.03:
+            placed_b[bb] = min(placed_b.get(bb, (np.inf, "")), (m[i], st["state"]))
+        if bb != b30:
+            if miss <= 0.03 and m[i] <= -43.5:
+                hits.append((lo, hi, st["state"], fg[i], m[i], st["delay_rad_2"], st["loss_db_2"], st["delay_rad_06"]))
+            continue
         if st["state"] != "none" and miss < best[0]:
             best = (miss, (lo, hi, st["state"], fg[i], m[i], st["delay_rad_2"], st["loss_db_2"], st["delay_rad_06"]))
         if st["state"] != "none" and miss <= 0.03:
@@ -284,7 +291,14 @@ if placed:
     dm = min(placed)
     say(f"  node-state/band pairs placing the minimum within 0.03 THz of 1.993 THz: {len(placed)}; deepest {dm[0]:.1f} dB "
         f"({dm[1]}, band {dm[2]}-{dm[3]}) against -43.5 dB published")
-say(f"  node states placing a minimum within 0.03 THz of 1.993 THz and at least as deep as -43.5 dB: {len(hits)}"
+for bv, (mm, sn) in sorted(placed_b.items()):
+    say(f"  b = {bv:.3f}: deepest node-state minimum within 0.03 THz of 1.993 THz {mm:.1f} dB ({sn})")
+i2 = int(np.argmin(np.abs(fb - 2.00)))
+aT = a30 * 10 ** (rel["none"][i2] / 20)
+say(f"  2.00 THz bin: a|T| = {aT:.4f}; two-term floor |b - a|T|| at b = 0.034/{b30:.3f}/0.044: "
+    + "/".join(f"{20 * np.log10(abs(bv - aT)):.1f}" for bv in (0.034, b30, 0.044))
+    + f" dB; published {rel['30s'][i2]:.1f} dB; reached for b in {aT - 10 ** (rel['30s'][i2] / 20):.4f}-{aT + 10 ** (rel['30s'][i2] / 20):.4f}")
+say(f"  node states (b 0.034-0.044) placing a minimum within 0.03 THz of 1.993 THz and at least as deep as -43.5 dB: {len(hits)}"
     + "".join(f"\n    {h[2]} (band {h[0]}-{h[1]}): {h[3]:.3f} THz, {h[4]:.1f} dB; 2 THz {h[5]:+.2f} rad {h[6]:.1f} dB; "
               f"0.6 THz {h[7]:+.3f} rad" for h in hits[:10]))
 (OUT / "sim43.txt").write_text("\n".join(lines) + "\n", encoding="utf-8")

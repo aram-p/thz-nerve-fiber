@@ -913,6 +913,59 @@ only. Range "5–18 %". **Fixed.**
 **Response.** Sims 27–46; "−0.026 to −0.042 ps, up to 2.6 native pixels"; §6 notes that the delay
 test covers the conductivity scan; §5.5 gives the broadband-water 181–194 µm. **Fixed.**
 
+## Seventeenth round (independent reviewer, whole paper, 2026-11-04; verdict: major revision, no fatal flaw; law, slice bounds, node delays, loss bounds, ion and conduction requirements recomputed and confirmed, the latter also by an independent transfer-matrix calculation; no new prior work beyond Guo et al. 2022)
+
+### 143. MAJOR: abstract and conclusion say no node state "moves the model's dip there", but 3 state–band pairs do move it within 0.03 THz of 1.993 THz; they fail on depth, a criterion §5.6 calls not robust.
+**Response.** Abstract and conclusion now say no node state makes the model's dip at 2 THz as deep
+as measured. §5.7 ends "Node states fail at 2 THz on depth, not on position" and gives the reason
+depth is a fair test there: the measured 2 THz depth is a lower bound set by dynamic range, unlike
+the 0.6 THz depth. Sim 43 (e) now also scans b over 0.034–0.044: the deepest placed minimum is
+−37.5 dB (b = 0.034), against −43.5 dB, reproducing the reviewer's number. **Fixed.**
+
+### 144. MAJOR: stage drift is judged by a double standard; in the preferred reading the second pulse also leads the empty-cuvette pulse (0.019–0.044 ps), so both readings need a path faster than air.
+**Response.** Agreed. Drift is restored as an equal reading in the abstract, §5.6, §5.7, §5.8, §6 and
+the conclusion. §5.6 states that both readings have the second pulse lead (6–13 µm of optical path
+if the tissue pulse is later, 21–25 µm if the stage drifted), that we cannot explain either lead,
+and that the traces cannot separate them; a drift needs no change of the tissue. **Fixed.**
+
+### 145. MAJOR (readability): §4.6 uses T^q, s, the second pulse, the 30-s model and the 220 µm thickness before §5.5–5.6 define them; title 33 words; abstract cryptic.
+**Response.** All waveform-based tests moved to a new §5.7 "What could make the tissue pulse later",
+after §5.6 defines the model: what the fits need, node states (sign), node states at 2 THz, ions and
+conduction, warming, more tissue in the beam, stage drift, the reported selectivity. §4.6 keeps only
+the loss bounds and points forward; §5.2 and §5.4 point to §5.7. Title shortened to 19 words. Abstract
+rewritten without "4–22 % of it", "Together they" and the bare "(≤ 0.06 of ≥ 0.15 rad)". **Fixed.**
+
+### 146. MAJOR (criterion 5): every cause offered acts for both polarisations and heating predicts the opposite DC direction; the abstract does not say this contradicts two of the four reported observations.
+**Response.** Stated in the abstract ("Each remaining cause would act for both polarisations, against
+the reported selectivity (described without data)"), the introduction, §5.7 (last paragraph, which
+also calls the two-pulse model a decomposition of the waveforms, not an explanation of the effect),
+§5.8 and the conclusion. **Fixed.**
+
+### 147. MINOR: the abstract slice bound drops "internode ≥ 200 µm, packing ≤ 0.6".
+**Response.** Added. **Fixed.**
+
+### 148. MINOR: the abstract quotes the 0.15 rad floor; native pixels give 0.13 rad, 0.11 rad with the 2-min scan; the margin is 1.7×.
+**Response.** Abstract and conclusion use ≥ 0.11 rad; §5.7 gives 1.7× against the lowest floor and
+2.3× against 0.15 rad. **Fixed.**
+
+### 149. MINOR: "the any-direction change of 0.175 would not clear the floor" reads backwards.
+**Response.** Reworded: 0.175 exceeds the floor, so a test of size alone would not exclude node
+states; the exclusion rests on the sign. **Fixed.**
+
+### 150. MINOR: H1 describes the sample "on 1.2 mm thick PTFE substrate"; if open-faced, the thickness conflict and the case against thickening weaken.
+**Response.** Checked: H1 p. 2 says samples "are placed inside a cuvette made from PTFE plates with a
+thickness of 1.2 mm" and refers to the "empty cuvette"; H2 gives a 100 µm PTFE cuvette. §5.7 now
+says this and that H1's Fig. 1b shows the slice on one plate, so whether the gap is fixed is not
+stated. **Fixed (clarified).**
+
+### 151. MINOR: the 3.2 dB margin is the 1.95–2.10 THz band mean; at the 2.00 THz bin the published −43.5 dB lies 2.8 dB below the floor at nominal b and is reached only for b ≤ 0.036.
+**Response.** Confirmed in Sim 43 (floor −48.0/−40.7/−37.1 dB at b = 0.034/0.039/0.044; reached for
+b ≤ 0.037). §5.6 now gives both the band mean and the bin. **Fixed.**
+
+### 152. MINOR: the passive-ε peak is not mesh-converged (0.123 → 0.107 → 0.097 dB, 21 %); the < 3 % bar is met only for node power.
+**Response.** Added to §6 as a limit; the coarse value is used as an upper bound because it falls
+monotonically with refinement. **Fixed (stated).**
+
 ---
 
 ## What matches and what does not (experiment)
@@ -920,12 +973,12 @@ test covers the conductivity scan; §5.5 gives the broadband-water 181–194 µm
 | Reported (Hovhannisyan, Makaryan, Martirosyan 2024) | This work |
 |---|---|
 | Dip near 0.6 THz (9–20 dB) | No node or fibre resonance anywhere in 0.1–3 THz. The shared session's biased waveforms contain a component at the empty-cuvette delay (4, 12, 17, 22 % at 0.5, 2, 4, 5 min); no one-path tissue change fits. With the tissue path also 1.09–1.18× thicker, the dip falls at 0.57 THz (5 min, reported 0.56) and 0.63–0.65 THz (4 min, published 0.65): consistent, q fitted (Sims 39, 42, 43). The tissue term is 0.04–0.07 ps later from 2 min: a 7–18 % thicker slice, warming or a stage drift, not separable on the published traces; ions and axoplasm conduction need ≥ 5.2 dB of extra loss to give even the 0.15 rad floor, more than the fits allow (≤ 3.3 dB), and node states give ≤ 0.06 rad (Sim 46) |
-| 2 THz dip (30 s, paper 1) | Not reproduced, not excluded. A real feature of one scan: 15 dB at 1.99 THz, twice any other single-curve dip, its bottom (−71 dB) 2–5 dB above the noise, so the depth is a lower bound; origin unknown. With the traced phase extrapolated the two pulses put their antiphase at 2.10–2.32 THz, and the data are only 3.2 dB above the two-pulse floor (Sims 43, 44). No node state (65, every extreme, six phase bands) moves the model's minimum within 0.03 THz of 1.99 THz deeper than −34.6 dB (published −43.5 dB; Sim 43 (e)) |
+| 2 THz dip (30 s, paper 1) | Not reproduced, not excluded. A real feature of one scan: 15 dB at 1.99 THz, twice any other single-curve dip, its bottom (−71 dB) 2–5 dB above the noise, so the depth is a lower bound; origin unknown. With the traced phase extrapolated the two pulses put their antiphase at 2.10–2.32 THz, and the data are only 3.2 dB above the two-pulse floor (Sims 43, 44). No node state (65, every extreme, six phase bands, b = 0.034–0.044) makes the model's minimum within 0.03 THz of 1.99 THz deeper than −37.5 dB (published ≤ −43.5 dB; Sim 43 (e)) |
 | Dip drifts 0.7 → 0.5 THz in minutes | Water-vapour lines cannot drift. At 30 s the traced ratio is a broad −3 to −4 dB trough over 0.56–0.78 THz; by 4 min the dip is at 0.62–0.65 THz as b reaches 0.17 and q 1.09 (Sims 42, 43). Matches the direction; fitted, not predicted |
 | High frequencies rise by 17–18 dB (2–2.5 THz, traced) | The bypass skips tissue loss: the waveform fit follows the rise to 1.7 THz within 1.5 dB rms (not testable above with the traced window); drying alone ≤ 3 dB (Sim 34) |
 | ~9 dB change under 100 V DC | Node (E∥, internode ≥ 200 µm, packing ≤ 0.6): ≤ 0.05 dB for any conductivity, ≤ 0.1/0.6/1.1 dB at 0.6/2/3 THz for any passive ε (ε″ ≥ 0.1, combined ±20 % materials); with internode 50 µm, packing 0.8 and the measured slice's optical thickness (×2.2–3.1) 1.5/10/17 dB. At 0.6 THz the tissue must change by 1.1–2.2 dB and ≥ 0.15 rad of delay (traces, ±1 pixel; extra loss ≤ 3.3 dB); no node state gives more than 0.06 rad of delay with every extreme, and none gives loss and delay together. At 2 THz the extreme bound (10 dB) approaches the ≥ 14 dB change (nominal margin 7×). Near 3 THz the reported change is a rise (node states ≤ 0.4 dB); channels 10⁻⁹ dB. Fibre conduction: 130–1300 S/m axoplasm for 9 dB; to give the delay the fits need, ≥ 111 S/m and ≥ 5.2 dB of extra loss, more than they allow (Sim 46). Heating/drying: smooth, ≤ 3 dB |
-| Effect only with E ∥ fibres | Described without data (H1 p. 18, H3), so not testable on the published material. Not explained, and contradicts the bypass; model dichroism −0.35 dB; a conducting axon is itself E∥-selective (6.6 vs 2.7 dB at 0.6 THz), so this does not discriminate the wire model |
-| Effect only with DC across the fibres | Described without data. Not explained, and contradicts the bypass; heating predicts the opposite (σ∥ ≈ 7σ⊥) |
+| Effect only with E ∥ fibres | Described without data (H1 p. 18, H3), so not testable on the published material. Contradicted by every remaining cause of the later tissue pulse (warming, more tissue, stage drift act for both polarisations); model dichroism −0.35 dB; a conducting axon is itself E∥-selective (6.6 vs 2.7 dB at 0.6 THz) but needs conductivity above saturated brine |
+| Effect only with DC across the fibres | Described without data. Not explained; heating predicts the opposite (σ∥ ≈ 7σ⊥) |
 | Generated high frequencies (nonlinearity) | No ps nonlinearity at TDS fields (10⁻³ of onset); drying raises high-frequency transmission linearly |
 | Sample acts as a grating of wires | No diffraction orders below 6 THz; fibres are not periodic |
 | Onset ~5 min, recovery ~1 h; no further change after ~6 min (paper 1) | The second pulse grows 4 → 12 → 17 → 22 % (0.5, 2, 4, 5 min); saturation after ~6 min not testable (no later trace). Timing compatible with heating/drying (0.6–0.9 K/s adiabatic), but see DC direction |
