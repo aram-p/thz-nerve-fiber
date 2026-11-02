@@ -60,6 +60,7 @@ on every solve. See the iteration log below.
 | 46 | review round 11: the node cannot supply the change of T the 0.6 THz fit needs once sign is kept; slice thickness and opening size computed, not estimated | `sim36_review.py round10` extended to ε′ −10 (combined materials) and `report_round10` now signed over 116 states (ε″ ≥ 0.1); largest extra delay 9.0e-4 rad per 100 µm, 0.06 rad with every extreme against ≥ 0.19 rad needed; the largest-loss state advances the phase; no state gives both. `experiments/exp/sim45_slice_checks.py` (`results/sim45/sim45.txt`): thickness from loss 198/198/232/314 µm (KS water) and 191/181/194/232 µm (broadband) at 0.6/1/1.5/2 THz, from the delay 216–220 µm, model offset −0.5 vs −0.22 rad; on-axis opening 1.5–3.0 mm for b 0.17–0.22, but one opening would pass 0.87–0.94 at 2 THz if the waist scales with λ, against a flat 0.20–0.27. Sim 43: τ = 0 common shift (drift test) raises residuals; ±1-pixel ranges ±0.013 ps; lead 0.019–0.044 ps not interpreted. Bounds with per-frequency slice factors (×2.2 / ×3.1): 1.5/2.9/10/17 dB | **confirmed by phase, not by loss; the 2 THz margin at the extremes is lost (10 vs ≥ 14 dB, 7× nominal); single on-axis opening disfavoured** |
 | 47 | review round 12: which change of the slice gives the T → T^q the waveform fits need | `experiments/exp/sim46_tissue_change.py` (`results/sim46/sim46.txt`, `paper/figures/fig_tissue_change.png`): effective-medium slab, 220 µm, E∥, packing 0.6, on PTFE, relative to air of the same thickness; each mechanism set to the 0.6 THz loss of q = 1.09 / 1.18, then loss and delay compared at 0.6/1.0/1.4 THz. Heating 17–30 K: delay 0.49–0.81×, loss at 1–1.4 THz 0.06–0.34×. Water gain 8.1–16 %: loss 0.87–1.02×, delay 0.84–1.15×. Ions in tissue water 8.7–17.5 S/m and axoplasm 23–46 S/m: delay 0.05–0.15×. Thicker slab: 0.88–1.32×. Best pairs 9–10 % rms, dominated by water gain. Sim 43: tissue phase refitted over 0.2–1.0 … 0.2–1.6 THz puts the 30-s antiphase at 2.10–2.32 THz (measured 1.99); data 3.2 dB above the two-term floor | **positive: a water gain of the slice reproduces the tissue change in loss and delay; heating, ions, conduction and node states do not. 2 THz dip not reproduced, not excluded. 220 µm vs 100 µm cuvette stated as unresolved** |
 | 48 | review round 13: the tissue change survives a corrected delay and a second water model, as a longer path | Sim 46 rerun after the reviewer found the measured phase offset sign flipped (required extra delay 0.23–0.45 rad, not 0.19–0.37), with Kindt–Schmuttenmaer base water and heating as Liebe's change of ε as given and ×2.31 (to the measured 46 cm⁻¹ for 4–21 °C at 1 THz, Millon et al. 2022). Rms misfit over loss and delay at 0.6/1.0/1.4 THz: thicker slab 7 %, water gain into thickness 10 % (0.67–0.86 of it from thickness; permittivity part 0.07–0.22×; isotropic 0.32–0.47×), heating 37–56 % (Liebe) / 37–39 % (×2.31), ions and axoplasm conduction 66–67 % (delay 0.04–0.12×). `report_round10` with the 0.23 rad threshold: no node state gives loss and delay together (largest delay 0.063 rad) | **reframed: the fits need more tissue in the beam, not different tissue; "only a water gain" withdrawn, cause unknown; node exclusion now 3.3× on delay** |
+| 49 | review round 14: what the waveform fits fix is a later tissue term, not its cause | Sim 46 (b): each change set to the H1 delay at 0.6 THz (0.23 rad), its extra loss compared with the ≤ 3.3 dB that a fitted amplitude ≤ 1 allows (A = 0.778). Ions / axoplasm conduction 63 / 165 S/m, 7.5 dB: excluded. Liebe heating 76 K, 7.0 dB: excluded. Liebe ×2.31 heating 9 K, 1.1 dB, delay 1.43/1.54× at 1.0/1.4 THz: disfavoured, not excluded. Thicker slab 7.6 % (1.0 dB, 0.92/0.87×), water gain 8.7 % into thickness (1.1 dB, 0.91/0.86×), time shift 0.061 ps (1.04/1.05×): fit. q − 1 ≈ s/0.611 ps (Sim 43), so a stage drift is an equal reading; in it the component leads the empty cuvette by 0.07–0.08 ps. `report_round10`: 80 distinct node states, largest delay 0.063 rad, largest |Δ ln T| in any direction 0.175 < 0.21 | **node, ion and conduction exclusion confirmed on delay with a loss bound; the tissue-change mechanism withdrawn: thicker slice or stage drift** |
 
 
 ### Review after 5 iterations (Sims 27–31)
@@ -108,6 +109,19 @@ on every solve. See the iteration log below.
   narrow dips of the empty-cuvette spectrum (Sim 44).
 - COMSOL: the negative-ε corner peak does not converge under refinement; rescan the parameter on
   the finer mesh (Sim 41 round 8; in the comsol skill).
+
+### Review after 5 iterations (Sims 45–46, review rounds 10–14)
+- Biggest time sink: a constant typed into three scripts with the sign of the phase offset flipped
+  (Sim 46, round 12). Every round-12 number on the tissue change was wrong by 15–20 % and a review
+  round went to finding it. Fix: `thznerve.physics.tissue_change` (tested against Sim 43's arg T at
+  2 THz) now holds the delay, the offset and the measured losses; Sims 45 and 46 import it.
+- Repeated mistake: naming a mechanism from a fitted parameter before listing the models that give
+  the same parameter. Round 12 named a water gain (it was a thicker slab); round 13 named a thicker
+  slab (q is a time shift, equally a stage drift) and compared losses the fit does not fix (the free
+  amplitude absorbs them). Rule now: before a mechanism is named, write down every model that
+  produces the fitted quantity and which observable is actually constrained; claim only what
+  excludes alternatives.
+- No COMSOL runs in these rounds; no new COMSOL trap.
 
 ---
 

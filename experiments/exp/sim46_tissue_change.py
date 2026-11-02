@@ -171,6 +171,31 @@ for q in (1.09, 1.18):
     for r, a, b, xv in best[:4]:
         say(f"  pair {a} = {xv[0]:+.3g} with {b} = {xv[1]:+.3g}: rms relative misfit {r:.0%} over loss and delay at 3 frequencies")
     say()
+# (b) The fits leave the amplitude A of the tissue term free, so only the delay is fixed; extra loss L
+# at 0.6 THz must be paid for by a larger A. H1 4 min (Sim 42): A = 0.778, b = 0.164, q = 1.091.
+# a <= 1 bounds L <= (q-1)|T|^2 + 20 log10(1/A); a <= 1 - b (the component takes area from the tissue path) is tighter.
+A_H1, B_H1, Q_H1 = 0.778, 0.164, 1.091
+req = np.column_stack(required := [(Q_H1 - 1) * MEAS_LOSS, (Q_H1 - 1) * DELAY_T])
+L_A1 = req[0, 0] + 20 * np.log10(1 / A_H1); L_AB = req[0, 0] + 20 * np.log10((1 - B_H1) / A_H1)
+say(f"(b) Delay-matched, H1 4 min (q = {Q_H1}, A = {A_H1}, b = {B_H1}): required delay "
+    + ", ".join(f"{v:.3f}" for v in req[:, 1]) + f" rad at 0.6/1.0/1.4 THz; extra loss at 0.6 THz allowed "
+    f"<= {L_A1:.2f} dB (a <= 1) or <= {L_AB:.2f} dB (a <= 1 - b); loss rise 0.6->1.0/1.4 THz needed "
+    f"{req[1, 0] - req[0, 0]:+.2f}/{req[2, 0] - req[0, 0]:+.2f} dB")
+DM = dict(MECH)
+for name, (mk, (lo, hi)) in DM.items():
+    g = lambda v: change(mk(v))[0, 1] - req[0, 1]
+    grid = np.linspace(lo, hi, 201); vals = [g(v) for v in grid]
+    roots = [brentq(g, grid[i], grid[i + 1]) for i in range(200) if vals[i] * vals[i + 1] < 0]
+    if not roots:
+        say(f"  {name:36s}: never gives the 0.6 THz delay over {lo}..{hi} (max {max(vals) + req[0, 1]:+.3f} rad)"); continue
+    v = roots[0]; c = change(mk(v))
+    ok = "allowed" if c[0, 0] <= L_A1 else "NOT allowed (a > 1)"
+    say(f"  {name:36s} = {v:+.3g}: loss at 0.6 THz {c[0, 0]:+.2f} dB ({ok}); delay at 1.0/1.4 THz "
+        f"{c[1, 1] / req[1, 1]:.2f}x/{c[2, 1] / req[2, 1]:.2f}x; loss rise {c[1, 0] - c[0, 0]:+.2f}/{c[2, 0] - c[0, 0]:+.2f} dB")
+s_ps = req[0, 1] / (2 * np.pi * F[0]) * 1e12
+say(f"  {'time shift of the tissue term (drift)':36s} = {s_ps:+.3f} ps: loss 0 dB (allowed); delay at 1.0/1.4 THz "
+    f"{2 * np.pi * F[1] * s_ps * 1e-12 / req[1, 1]:.2f}x/{2 * np.pi * F[2] * s_ps * 1e-12 / req[2, 1]:.2f}x; loss rise 0 dB")
+say()
 (OUT / "sim46.txt").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 # Figure 9: extra loss vs extra delay of the slice at 0.6 and 1.0 THz
@@ -180,11 +205,15 @@ hk = [n for n in MECH if n.startswith("heating, Liebe x")][0]
 for k, axi in enumerate(ax):
     axi.plot([REQ[1.09][k, 0], REQ[1.18][k, 0]], [REQ[1.09][k, 1], REQ[1.18][k, 1]],
              color="0.6", lw=7, solid_capstyle="butt", label="required: T^q, q = 1.09-1.18")
+    axi.axvline(req[k, 0] + 20 * np.log10(1 / A_H1), color="0.4", ls="--", lw=0.8,
+                label="most extra loss the H1 fit allows (a ≤ 1)")
+    axi.plot([0], [2 * np.pi * F[k] * s_ps * 1e-12], "kx", ms=6, label=f"time shift of the tissue term, {s_ps:.3f} ps")
     qq = np.linspace(0, 0.2, 21)
     axi.plot(qq * MEAS_LOSS[k], qq * DELAY_T[k], color="0.5", lw=0.8, ls=":")
     for name, col, key, vals in (("heating, Liebe (0-40 K)", "C3", "heating, Liebe (dT, K)", np.linspace(0, 40, 17)),
                                  (f"heating, Liebe x{K_MILLON:.1f} (0-20 K)", "C4", hk, np.linspace(0, 20, 17)),
                                  ("water gain (0-16 %)", "C0", "water content (fractional change)", np.linspace(0, 0.16, 17)),
+                                 ("same tissue thicker (0-16 %)", "C5", "thicker path (fraction)", np.linspace(0, 0.16, 17)),
                                  ("ions in tissue water (0-18 S/m)", "C2", "ions: all tissue water (S/m)", np.linspace(0, 18, 10)),
                                  ("axoplasm conduction (0-46 S/m)", "C1", "axoplasm conductivity (S/m)", np.linspace(0, 46, 10))):
         c = np.array([change(MECH[key][0](v))[k] for v in vals])

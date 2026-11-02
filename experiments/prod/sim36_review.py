@@ -586,6 +586,12 @@ def report_round10(out=None):
                 continue
             t = tissue_db(r, ref, fa, "par")
             rows.append((f"{name}:{k}", t["dipole"][ii], max(t[o][ii] for o in obs), t["phase_rad"][ii], name == "joint"))
+    seen, uniq = set(), []                            # epsfine repeats some epsnode states: keep each state once
+    for r in rows:
+        key = (round(r[2], 7), round(r[3], 9), r[4])
+        if key not in seen:
+            seen.add(key); uniq.append(r)
+    rows = uniq
     mat = lambda r: 1.0 if r[4] else 1.45            # joint scan already holds the combined materials
     ext = 6 * 4 * 4 / 3 * 2.2                         # internode 50 um, packing 0.8, 220 um optical path (Sim 45)
     pos = max(rows, key=lambda r: r[3] * mat(r)); neg = min(rows, key=lambda r: r[3] * mat(r))
@@ -599,8 +605,11 @@ def report_round10(out=None):
         {"note": "0.6 THz, E-par, every node state with eps'' >= 0.1; first-order change of a slice with every extreme "
                  "(internode 50 um, packing 0.8, 220 um path) and combined materials", "factor": ext,
          "states": [{"state": r[0], "loss_db": ext * mat(r) * r[2], "delay_rad": ext * mat(r) * r[3]} for r in rows]}, indent=1))
-    both = [r for r in rows if ext * mat(r) * r[3] >= 0.23 and ext * mat(r) * r[2] >= 1.1]
-    print(f"  states giving both >= 0.23 rad extra delay and >= 1.1 dB extra loss with every extreme: {len(both)}", flush=True)
+    both = [r for r in rows if ext * mat(r) * r[3] >= 0.21]
+    print(f"  states giving >= 0.21 rad extra delay (the least the q fits need) with every extreme: {len(both)}", flush=True)
+    mag = max(rows, key=lambda r: np.hypot(r[2] / 8.686, r[3]) * mat(r))
+    print(f"  largest |change of ln T| in any direction (sign or phase reference wrong): {mag[0]} "
+          f"{ext * mat(mag) * np.hypot(mag[2] / 8.686, mag[3]):.3f} with every extreme (needed >= 0.21 rad)", flush=True)
 
 if __name__ == "__main__":
     OUT.mkdir(parents=True, exist_ok=True)
