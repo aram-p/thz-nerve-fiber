@@ -54,6 +54,35 @@ def axis_map(pixels, values):
     return (lambda x: k * np.asarray(x, float) + c), float(np.max(np.abs(k * p + c - v)))
 
 
+def trace_track(mask: np.ndarray, y_start: float, max_jump: float = 40.0):
+    """Follow one curve column by column, keeping the run of mask pixels that touches (or is
+    nearest) the curve's extent in the last kept column. Survives labels, arrows and stray pixels
+    of the same colour; where the curve is hidden under another curve the allowed jump grows by
+    max_jump per missing column, so tracking resumes where it reappears (gap left for the caller
+    to interpolate)."""
+    xs, ys = [], []
+    lo = hi = float(y_start)                 # pixel extent of the curve in the last column kept
+    last = None
+    for x in range(mask.shape[1]):
+        yy = np.flatnonzero(mask[:, x])
+        if not len(yy):
+            continue
+        runs = np.split(yy, np.where(np.diff(yy) > 1)[0] + 1)
+        # gap between each run and the previous extent (0 if they overlap): steep edges are long
+        # vertical runs whose centres jump, but consecutive runs of one line always touch
+        gap = np.array([max(0.0, r[0] - hi, lo - r[-1]) for r in runs])
+        if gap.min() == 0:                   # several touch: the one sharing most pixels
+            overlap = np.array([min(hi, r[-1]) - max(lo, r[0]) + 1 for r in runs])
+            k = int(np.argmax(np.where(gap == 0, overlap, -np.inf)))
+        else:
+            k = int(np.argmin(gap))
+        allowed = max_jump * (1 if last is None else x - last)
+        if gap[k] <= allowed:
+            xs.append(x); ys.append(runs[k].mean()); lo, hi = float(runs[k][0]), float(runs[k][-1])
+            last = x
+    return np.array(xs, float), np.array(ys, float)
+
+
 def trace(mask: np.ndarray, min_hits: int = 1):
     """x pixels and mean y pixel of the masked curve in each column that has >= min_hits pixels."""
     xs, ys = [], []

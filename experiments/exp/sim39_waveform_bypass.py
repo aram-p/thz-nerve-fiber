@@ -221,6 +221,32 @@ for qf in (1.0, 1.1, 1.2):
         g = 20 * np.log10(np.abs((1 - x) * FK[vb] * Tp(qf) + x * FK[vb]) / np.abs(FB[vb]))
         row.append(f"x {x:.2f}: {fr[vb][sel][np.argmin(g[sel])]:.2f} THz {g[sel].min():5.1f} dB")
     say(f"  tissue path {qf} x: " + "; ".join(row))
+# review round 6: tracing noise on the pulse (each trace moved by -1/0/+1 pixel in time, 27 cases),
+# band dependence of the 4-parameter fit, and the energy of the traces
+PX = 1.0 / 118.07                                     # ps per pixel in Fig. 1a
+Wpx = {k: {s: np.interp(tt, wave[k][0] + s * PX, wave[k][1]) for s in (-1, 0, 1)} for k in W}
+spread = []
+for s1 in (-1, 0, 1):
+    for s2 in (-1, 0, 1):
+        for s3 in (-1, 0, 1):
+            Rr, Bb, Kk = Wpx["red"][s1], Wpx["blue"][s2], Wpx["black"][s3]
+            r = least_squares(lambda q: q[0] * Bb + q[1] * shift(Kk, q[2]) - Rr, [0.6, 0.2, 0.0])
+            spread.append((r.x[1], r.x[2], rms(r.fun) / rms(Rr), rms(Rr - Wpx["red"][0])))
+spread = np.array(spread)
+say(f"Tracing noise: moving each trace by +-1 pixel ({PX:.4f} ps) changes the red trace by up to rms "
+    f"{spread[:, 3].max():.3f}; the 3-parameter fit gives b = {spread[:, 0].min():.3f}-{spread[:, 0].max():.3f}, "
+    f"tau = {spread[:, 1].min():+.3f} to {spread[:, 1].max():+.3f} ps, residual {spread[:, 2].min():.0%}-{spread[:, 2].max():.0%}; "
+    f"so the residual is ~{rms(r2.fun) / max(spread[:, 3].max(), jit):.0f}x the pixel-level noise")
+for fmax in (1.0, 1.3, F_OK):
+    vb2 = (fr >= 0.15) & (fr <= fmax)
+    T2 = FB[vb2] / FK[vb2]; phi2 = np.unwrap(np.angle(T2))
+    m = lambda q: q[0] * FK[vb2] * np.abs(T2) ** q[3] * np.exp(1j * q[3] * phi2) + q[1] * FK[vb2] * np.exp(-1j * w_rad[vb2] * q[2] * 1e-12)
+    r = least_squares(lambda q: np.concatenate([(m(q) - FR[vb2]).real, (m(q) - FR[vb2]).imag]), [0.6, 0.2, 0.0, 1.1])
+    say(f"  band 0.15-{fmax:.2f} THz: tissue path {r.x[3]:.3f}x, b = {r.x[1]:.3f}, tau = {r.x[2]:+.3f} ps, residual "
+        f"{np.sqrt(np.sum(np.abs(m(r.x) - FR[vb2]) ** 2) / np.sum(np.abs(FR[vb2]) ** 2)):.0%}")
+en = {k: float(np.sum(W[k] ** 2) * (tt[1] - tt[0])) for k in W}
+say(f"Trace energy (a.u.^2 ps): 5 min at 100 V {en['red']:.2f}, no voltage {en['blue']:.2f}, empty {en['black']:.2f} "
+    f"(paper 3 reports no significant change of average power)")
 hb = (ff >= 1.5) & (ff <= 3.0)
 rk = S["red"] - S["black"]
 say("Fig. 1b alone, 1.5-3 THz, 5 min at 100 V minus empty cuvette (dB): "

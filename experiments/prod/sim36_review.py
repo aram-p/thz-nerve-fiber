@@ -331,11 +331,87 @@ def epsdense():
     report_epsdense(out)
 
 
+def epsdense_mesh():
+    """Review round 6: mesh check of the passive-eps bound where it peaks (3 THz, eps' -1.45/-1.5)."""
+    path = OUT / "sim36_epsdense.json"
+    out = json.loads(path.read_text())
+    f4 = np.array([0.6, 1.0, 2.0, 3.0]) * 1e12
+    n145 = dict(eps_override=dict(node=ConstantEps(complex(-1.45, -0.1))))
+    for key, kw, hf in (("ref_h", {}, 0.125), ("-1.45_0.1_h", n145, 0.125),
+                        ("-1.5_0.1_h", dict(eps_override=dict(node=ConstantEps(complex(-1.5, -0.1)))), 0.125),
+                        ("ref_q", {}, 0.0625), ("-1.45_0.1_q", n145, 0.0625)):
+        if key not in out:
+            out[key] = sim30.run("s36", tag=f"s36_epsd_{key}", freqs=list(f4), Lint=200.0, **kw,
+                                 **(MESH | dict(h_frac=hf)))
+            path.write_text(json.dumps(out))
+    for k in ("-1.45_0.1", "-1.5_0.1"):
+        for pol in ("par", "perp"):
+            base = tissue_db(out[k], out["ref"], f4, pol)
+            fine = tissue_db(out[k + "_h"], out["ref_h"], f4, pol)
+            b = np.max(np.abs([base[o] for o in ("P_fibre", "flux_in", "dipole")]), axis=0)
+            fn = np.max(np.abs([fine[o] for o in ("P_fibre", "flux_in", "dipole")]), axis=0)
+            print(f"{k} {pol}: max |dB| base {np.round(b, 4)} fine {np.round(fn, 4)} change {np.round(fn / b - 1, 3)}; "
+                  f"eta base {np.round(out[k][pol]['eta'], 1)} fine {np.round(out[k + '_h'][pol]['eta'], 1)}", flush=True)
+    for pol in ("par", "perp"):
+        lv = [tissue_db(out["-1.45_0.1" + s_], out["ref" + s_], f4, pol) for s_ in ("", "_h", "_q")]
+        db = [np.max(np.abs([d[o] for o in ("P_fibre", "flux_in", "dipole")]), axis=0) for d in lv]
+        print(f"-1.45_0.1 {pol} h_frac 0.25/0.125/0.0625: max |dB| {np.round(db[0], 4)} / {np.round(db[1], 4)} / "
+              f"{np.round(db[2], 4)}; eta {np.round(out['-1.45_0.1_q'][pol]['eta'], 1)} at 0.0625", flush=True)
+
+
+def epsrobust():
+    """Review round 6: the +-20 % material test (Sim 33) covered node power only. Here the passive-eps
+    slice bound at its peak (3 THz, E-par) with eps' and eps'' of axon, myelin, water (water includes
+    the host around the node) each scaled by 0.8 / 1.2; eps'_node scanned so the peak can move.
+    dB uses the unscaled tissue normalisation (V_cell, I0, n_t), so only the fibre response changes."""
+    f1 = [3.0e12]
+    path = OUT / "sim36_epsrobust.json"
+    out = json.loads(path.read_text()) if path.exists() else {}
+    base = dict(axon=axoplasm(), myelin=myelin(), water=WATER_KS1996)
+    ers = (-2.0, -1.7, -1.45, -1.2, -1.0)
+    for dom in ("axon", "myelin", "water"):
+        for part in ("re", "im"):
+            for s in (0.8, 1.2):
+                ov = {dom: Scaled(base[dom], **{part: s})}
+                for er in (None,) + ers:
+                    k = f"{dom}_{part}{s}_{er}"
+                    if k in out:
+                        continue
+                    o = dict(ov)
+                    if er is not None:
+                        o["node"] = ConstantEps(complex(er, -0.1))
+                    elif dom == "water":
+                        o["node"] = ov["water"]
+                    out[k] = sim30.run("s36", tag=f"s36_epsr_{k}", freqs=f1, Lint=200.0, eps_override=o,
+                                       pols=("par",), **MESH)
+                    path.write_text(json.dumps(out))
+    report_epsrobust(out)
+
+
+def report_epsrobust(out=None):
+    out = out or json.loads((OUT / "sim36_epsrobust.json").read_text())
+    f1 = np.array([3.0e12])
+    ers = np.array([-2.0, -1.7, -1.45, -1.2, -1.0])
+    rows = []
+    for dom in ("axon", "myelin", "water"):
+        for part in ("re", "im"):
+            for s in (0.8, 1.2):
+                ref = out[f"{dom}_{part}{s}_None"]
+                db = np.array([max(abs(tissue_db(out[f"{dom}_{part}{s}_{er}"], ref, f1, "par")[o][0])
+                                   for o in ("P_fibre", "flux_in", "dipole")) for er in ers])
+                j = int(np.argmax(db))
+                rows.append((f"{dom} eps{part} x{s}", db[j], ers[j]))
+                print(f"{dom} eps{part} x{s}: max |dB| {db[j]:.3f} at eps' {ers[j]} (all: {np.round(db, 3)}); "
+                      f"x6 (internode 200 um, packing 0.6) {6 * db[j]:.2f} dB", flush=True)
+    worst = max(rows, key=lambda r: r[1])
+    print(f"worst: {worst[0]} {worst[1]:.3f} dB (x6 {6 * worst[1]:.2f} dB); unscaled peak 0.123 dB (x6 0.74)", flush=True)
+
+
 def report_epsdense(out=None):
     out = out or json.loads((OUT / "sim36_epsdense.json").read_text())
     f4 = np.array([0.6, 1.0, 2.0, 3.0]) * 1e12
     ref = out["ref"]
-    keys = sorted((k for k in out if k != "ref"), key=lambda k: float(k.split("_")[0]))
+    keys = sorted((k for k in out if not k.startswith("ref") and k.count("_") == 1), key=lambda k: float(k.split("_")[0]))
     er = np.array([float(k.split("_")[0]) for k in keys])
     for pol in ("par", "perp"):
         db = np.array([[max(abs(v) for v in vals) for vals in zip(*(tissue_db(out[k], ref, f4, pol)[o] for o in ("P_fibre", "flux_in", "dipole")))]
@@ -363,4 +439,4 @@ def report_dense(p=0.6, Lint_t=200.0):
 
 if __name__ == "__main__":
     OUT.mkdir(parents=True, exist_ok=True)
-    {"sigma": sigma, "report_sigma": report_sigma, "dense": dense, "aniso": aniso, "epsnode": epsnode, "axon": axon, "axon2": axon2, "axon_threshold": axon_threshold, "report_axon": report_axon, "epsfine": epsfine, "epsdense": epsdense, "report_epsdense": report_epsdense, "report_dense": report_dense}[sys.argv[1]]()
+    {"sigma": sigma, "report_sigma": report_sigma, "dense": dense, "aniso": aniso, "epsnode": epsnode, "axon": axon, "axon2": axon2, "axon_threshold": axon_threshold, "report_axon": report_axon, "epsfine": epsfine, "epsdense": epsdense, "epsdense_mesh": epsdense_mesh, "epsrobust": epsrobust, "report_epsrobust": report_epsrobust, "report_epsdense": report_epsdense, "report_dense": report_dense}[sys.argv[1]]()

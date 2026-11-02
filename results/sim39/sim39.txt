@@ -38,6 +38,11 @@ Dip of a pure bypass, (1 - x)*B + x*K, as the bypass grows (model/no-voltage, 0.
   tissue path 1.0 x: x 0.05: 0.74 THz  -3.2 dB; x 0.10: 0.74 THz  -8.2 dB; x 0.15: 0.74 THz -21.4 dB; x 0.20: 0.76 THz -13.1 dB; x 0.25: 0.77 THz  -5.6 dB; x 0.30: 0.56 THz  -2.8 dB; x 0.35: 0.54 THz  -1.0 dB
   tissue path 1.1 x: x 0.05: 0.71 THz  -5.1 dB; x 0.10: 0.70 THz -11.6 dB; x 0.15: 0.67 THz -33.2 dB; x 0.20: 0.61 THz -12.2 dB; x 0.25: 0.56 THz  -7.3 dB; x 0.30: 0.54 THz  -4.3 dB; x 0.35: 0.51 THz  -2.2 dB
   tissue path 1.2 x: x 0.05: 0.67 THz  -6.8 dB; x 0.10: 0.65 THz -13.4 dB; x 0.15: 0.60 THz -41.8 dB; x 0.20: 0.56 THz -14.8 dB; x 0.25: 0.54 THz  -8.8 dB; x 0.30: 0.51 THz  -5.4 dB; x 0.35: 0.50 THz  -3.0 dB
+Tracing noise: moving each trace by +-1 pixel (0.0085 ps) changes the red trace by up to rms 0.023; the 3-parameter fit gives b = 0.214-0.216, tau = -0.040 to -0.007 ps, residual 25%-30%; so the residual is ~5x the pixel-level noise
+  band 0.15-1.00 THz: tissue path 1.181x, b = 0.212, tau = +0.020 ps, residual 9%
+  band 0.15-1.30 THz: tissue path 1.134x, b = 0.206, tau = -0.001 ps, residual 17%
+  band 0.15-1.70 THz: tissue path 1.109x, b = 0.207, tau = -0.015 ps, residual 20%
+Trace energy (a.u.^2 ps): 5 min at 100 V 1.03, no voltage 1.36, empty 25.67 (paper 3 reports no significant change of average power)
 Fig. 1b alone, 1.5-3 THz, 5 min at 100 V minus empty cuvette (dB): -11.3, -11.8, -12.3, -12.2, -11.9, -12.2, -13.2 -> flat, as an undelayed component that dominates where tissue loss is 30-50 dB; amplitude 0.27-0.22 of the empty-cuvette field
 
 Sim 38 gas column through modelled tissue (E || fibres), refitted to pixel points at 0.3, 0.45, 0.56, 0.75, 1, 1.25, 1.5, 2, 2.5, 3 THz, sigma 2 dB

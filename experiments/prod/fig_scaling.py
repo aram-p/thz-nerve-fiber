@@ -49,7 +49,7 @@ for pol, mk, col in (("par", "o", "C0"), ("perp", "s", "C1")):
     e = EPS[1e12]
     ax[0].plot(xs, [node_factor_closed(3.5, 5.0, xx * 1.5, *e, pol=pol) for xx in xs], "-", color=col, lw=1)
 ax[0].set_xscale("log"); ax[0].set_xlabel("node length / myelin thickness"); ax[0].set_ylabel("η at 1 THz")
-ax[0].set_title("(a) node length, a = 3.5, b = 5 µm (line: closed law)"); ax[0].legend(fontsize=7)
+ax[0].set_title("(a) node length, a = 3.5, b = 5 µm\n(line: closed law)", fontsize=10); ax[0].legend(fontsize=7)
 ax[1].plot(Fq, eta, ".", ms=5)
 lim = [0, max(eta.max(), Fq.max()) * 1.05]
 ax[1].plot(lim, lim, "k-", lw=0.7); ax[1].set_xlim(lim); ax[1].set_ylim(lim)

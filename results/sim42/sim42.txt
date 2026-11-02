@@ -1,0 +1,23 @@
+Paper 1 Fig. 3a / 4a traced (page 3, 300 dpi)
+  axis maps: Fig. 3a misfit 0.004 ps / 0.042; Fig. 4a 0.002 ps / 0.018; 1 pixel = 0.0133 ps
+  same scale check, no-voltage trace in Fig. 3a vs Fig. 4a: minima -1.76 vs -1.77 at -360.21 vs -360.20 ps; rms difference 0.017
+
+Time domain: biased = a * no voltage + b * empty cuvette(t - tau); spread over +-1 pixel shifts of each trace
+  30s : a = 0.866, b = 0.040 (0.034-0.045), tau = -0.043 ps (-0.071 to -0.002), residual 10% (10%-16%); one path (no voltage scaled+shifted) 21% (21%-21%)
+  4min: a = 0.684, b = 0.174 (0.171-0.175), tau = -0.039 ps (-0.065 to -0.012), residual 27% (22%-33%); one path (no voltage scaled+shifted) 84% (84%-84%)
+  tissue index from the traced phase at the stated 70 um: 0.3 THz 3.89, 0.6 THz 3.96, 1.0 THz 3.86
+
+Frequency domain, 0.15-1.5 THz: biased = A * tissue path^q + b * empty(tau); dip of model / no voltage (0.35-1.2 THz)
+  30s: traced spectrum biased/no voltage: dip 0.78 THz -4.1 dB
+    air component only, tissue path unchanged    residual 9%  dip 0.72 THz   -3.6 dB  0.870, 0.041, -0.036
+    air component + tissue path q x thicker      residual 9%  dip 0.72 THz   -3.6 dB  0.870, 0.041, -0.037, 1.000
+    tissue path change only (no air component)   residual 21%  dip 1.20 THz   -2.2 dB  0.803, 1.017
+  4min: traced spectrum biased/no voltage: dip 0.62 THz -19.1 dB
+    air component only, tissue path unchanged    residual 26%  dip 0.71 THz  -14.4 dB  0.687, 0.174, -0.036
+    air component + tissue path q x thicker      residual 16%  dip 0.63 THz  -20.5 dB  0.779, 0.165, -0.026, 1.091
+    tissue path change only (no air component)   residual 83%  dip 1.20 THz   -8.9 dB  0.561, 1.223
+
+Reading
+  Paper 1 shows the same signature as paper 3 if b > 0 at tau ~ 0 with one-path fits much worse; how b and
+  q change from 30 s to 4 min tests whether the dip moves because the undelayed component grows or because
+  the tissue path changes. Above ~1.5 THz the 75 px/ps tracing cannot test the 2 THz feature.

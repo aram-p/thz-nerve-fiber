@@ -40,7 +40,7 @@ AX = axoplasm(WATER)
 
 def run(case: str, a=3.5, b=5.0, Ln=1.0, Lint=1000.0, R=100.0, pml=60.0, h_water=5.0, h_frac=0.25,
         h_far_frac=0.5, m_max=3, fmin=0.1, fmax=3.0, nf=30, node="water", outer="pml", tag=None,
-        eps_override=None, freqs=None, max_gb=6.0, a_node=None):
+        eps_override=None, freqs=None, max_gb=6.0, a_node=None, pols=("par", "perp")):
     f = np.asarray(freqs, dtype=float) if freqs is not None else np.linspace(fmin, fmax, int(nf)) * 1e12
     node_m = {"water": WATER, "myelin": MY}[node]
     mats = dict(axon=AX, myelin=MY, node=node_m, water=WATER) | (eps_override or {})
@@ -51,7 +51,7 @@ def run(case: str, a=3.5, b=5.0, Ln=1.0, Lint=1000.0, R=100.0, pml=60.0, h_water
                           a_node_um=a_node)
     tag = tag or case
     res = {}
-    for pol in ("par", "perp"):
+    for pol in pols:
         with RunLog("sim30", f"{tag} {pol} a={a} b={b} Ln={Ln} Lint={Lint} R={R} {outer} h={h_water}/{h_frac}/{h_far_frac} m<={m_max} nf={nf}" + (f" a_node={a_node}" if a_node else "")) as log:
             t0 = time.monotonic()
             model = axisym.build(spec, name=f"s30{tag}{pol}")
