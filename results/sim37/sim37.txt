@@ -1,0 +1,41 @@
+(1) Node membrane at THz
+  0.6 THz: capacitive admittance wCm = 3.77e+10 S/m^2 vs all Na channels open 3e+04 S/m^2 -> ratio 1.3e+06
+  2.0 THz: capacitive admittance wCm = 1.26e+11 S/m^2 vs all Na channels open 3e+04 S/m^2 -> ratio 4.2e+06
+  The membrane is already a short circuit for THz currents; opening channels cannot change THz current paths.
+
+(2) Extra conductivity needed for a 9 dB change of a 100 um slice (E || fibres)
+  0.6 THz: tissue +114 S/m; in the axoplasm alone (volume share 0.29) +389 S/m; axoplasm now: ionic 1.4 S/m, water loss already w*eps0*eps'' = 82 S/m
+  2.0 THz: tissue +102 S/m; in the axoplasm alone (volume share 0.29) +348 S/m; axoplasm now: ionic 1.4 S/m, water loss already w*eps0*eps'' = 115 S/m
+  Physiological axoplasm 1.4 S/m; saturated NaCl ~25 S/m. Ion channels change the radial membrane path, not the
+  axial conductivity of the axoplasm, which is continuous through the node in any state.
+
+(3) Wire regime: spacing 11.4 um, axon radius 3.5 um, inductance 2.37e-07 H/m
+  0.6 THz: inductance matters only above sigma ~ 2.9e+04 S/m (2e+04 x physiological); below it the fibres just mix in (Wiener), no wire-grid physics
+  2.0 THz: inductance matters only above sigma ~ 8.7e+03 S/m (6e+03 x physiological); below it the fibres just mix in (Wiener), no wire-grid physics
+
+(4) Grating orders
+  fibre radius  1.0 um: spacing   2.3 um; first order propagates in tissue (n~2.1) only above  62.4 THz, in air above 131.0 THz
+  fibre radius  5.0 um: spacing  11.4 um; first order propagates in tissue (n~2.1) only above  12.5 THz, in air above  26.2 THz
+  fibre radius 10.0 um: spacing  22.9 um; first order propagates in tissue (n~2.1) only above   6.2 THz, in air above  13.1 THz
+  Fibres in white matter are not periodic and their spacing is far below the wavelength: no diffraction orders in 0.1-3 THz.
+
+(5) Nonlinear response to a ~2 ps pulse
+  Na-channel gating: activation ~0.1 ms, fastest kinetics ~10 us: 1e7 x slower than the pulse.
+  E = 1e+03 V/m: ion drift in 1 ps = 5e-17 m; field / Wien-effect onset (1e7 V/m) = 1e-04
+  E = 1e+04 V/m: ion drift in 1 ps = 5e-16 m; field / Wien-effect onset (1e7 V/m) = 1e-03
+  The fitted J = a1 E + a2 E^2 + ... with a2/a1 = 7.5 means the quadratic current equals the linear one at 13 % of
+  the pulse peak; bulk electrolytes and water need >~1e7-1e8 V/m for any measurable THz nonlinearity.
+  A quadratic term also needs broken inversion symmetry, which an isotropic electrolyte lacks.
+
+(6) 100 V DC across the slice (field across the fibres)
+  paper 1: E = 5556 V/m, J = 461 A/m^2, I ~ 0.65 mA, Joule 2.6 MW/m^3 (0.64 K/s), electrolysis gas ~37 mm^3 in 5 min (sample ~28 mm^3)
+  paper 3: E = 6667 V/m, J = 553 A/m^2, I ~ 1.11 mA, Joule 3.7 MW/m^3 (0.92 K/s), electrolysis gas ~63 mm^3 in 5 min (sample ~40 mm^3)
+  Current along the fibres (sigma_par ~ 0.6 S/m) would heat ~7x more; the papers report no effect for that
+  direction, so heating alone does not explain the DC-direction selectivity either.
+
+(7) Reported baseline vs pure water, 100 um
+  0.6 THz: pure water 7.4 dB
+  2.0 THz: pure water 11.6 dB
+  Reported: ~5 dB at 0.25 THz rising to ~30 dB at 2 THz for 0.1 mm (paper 3). 30 dB at 2 THz is 2.6x pure water;
+  a water-based tissue cannot absorb more than water, so the 2 THz signal carries extra loss (scatter, thickness,
+  reflection) and sits close to the spectrometer's dynamic range there, where a 9 dB 'feature' is least reliable.
