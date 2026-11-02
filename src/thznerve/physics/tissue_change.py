@@ -24,11 +24,11 @@ def required_change(f_hz, q, loss_db=None, offset=True):
     loss = np.array([LOSS_DB[float(f)] for f in np.atleast_1d(f_hz)]) if loss_db is None else np.asarray(loss_db)
     return (q - 1) * loss, (q - 1) * delay_phase(f_hz, offset)
 
-# Time-domain shift of the tissue term with the component free (Sim 43): central value and the range
-# over +-1 pixel shifts of the biased trace, ps. q - 1 ~ s / TAU_S.
-SHIFT_PS = {"2 min": (0.043, 0.029, 0.056), "4 min": (0.053, 0.039, 0.066), "5 min": (0.066, 0.049, 0.077)}
+# Shift s of the tissue pulse with the second pulse free (Sims 43, 47), ps: best fit and the one-sided
+# 95 % lower bound from a moving-block bootstrap of the correlated residual (Sim 47). q - 1 ~ s / TAU_S.
+SHIFT_PS = {"2 min": (0.043, 0.0275), "4 min": (0.053, 0.0345), "5 min": (0.066, 0.0399)}
 
 
-def min_required_delay(f_hz, scans=("4 min", "5 min")):
-    """Smallest extra delay (rad) of the tissue term that the traces allow at f_hz over the given scans."""
+def min_required_delay(f_hz, scans=("2 min", "4 min", "5 min")):
+    """Smallest extra delay (rad) of the tissue pulse that the traces allow (95 %, one-sided) at f_hz, over the scans."""
     return 2 * np.pi * np.asarray(f_hz, dtype=float) * min(SHIFT_PS[s][1] for s in scans) * 1e-12

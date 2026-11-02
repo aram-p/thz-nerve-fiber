@@ -11,7 +11,8 @@ explain paper 1's published spectra at 1.5-3 THz, including the 2 THz feature?
     dB, traced as the upper envelope per pixel column (water-vapour lines are narrow downward
     spikes) and binned to 0.05 THz (median). For a biased spectrum S = |a T + b e^{i phi}| |K|, any
     phase gives |S/K| >= |b - a |T||; the observed ratio is compared with that floor.
-Writes results/sim43/sim43.txt, results/sim43/spectra.npz, results/sim43/trace_check.png.
+Writes results/sim43/sim43.txt, results/sim43/spectra.npz, results/sim43/paper2_2min.npz,
+results/sim43/trace_check.png.
 """
 from pathlib import Path
 
@@ -68,6 +69,7 @@ for c, m in masks.items():
     xs, ys = trace_track(m, y_start=207.5, max_jump=25)
     tr2[c] = (xs, ys)
 w2 = {c: np.interp(tt, fx(xs), fy(ys)) for c, (xs, ys) in tr2.items()}
+np.savez(OUT / "paper2_2min.npz", t_ps=tt, none=w2["blue"], biased=w2["red"])   # used by Sim 47
 say()
 say(f"(b) Paper 2 Fig. 2 (page 3), axis misfit {ex:.3f} ps / {ey:.3f}")
 compare(w2["blue"], H1["none"], "no voltage, paper 2 vs paper 1")

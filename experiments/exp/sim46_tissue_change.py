@@ -200,7 +200,7 @@ say()
 
 # Figure 9: extra loss vs extra delay of the slice at 0.6 and 1.0 THz
 D_MIN = min_required_delay(F)
-say(f"Lowest extra delay the traces allow at 4-5 min (+-1 pixel): {', '.join(f'{v:.3f}' for v in D_MIN)} rad at 0.6/1.0/1.4 THz")
+say(f"Lowest extra delay the traces allow (Sim 47, one-sided 95 %, 2-5 min): {', '.join(f'{v:.3f}' for v in D_MIN)} rad at 0.6/1.0/1.4 THz")
 for name, (mk, (lo, hi)) in MECH.items():
     g = lambda v: change(mk(v))[0, 1] - D_MIN[0]
     grid = np.linspace(lo, hi, 201); vals = [g(v) for v in grid]
@@ -209,6 +209,24 @@ for name, (mk, (lo, hi)) in MECH.items():
         c = change(mk(roots[0]))
         say(f"  {name:36s} = {roots[0]:+.3g} gives that delay at 0.6 THz with {c[0, 0]:+.2f} dB "
             f"({'allowed' if c[0, 0] <= L_A1 else 'NOT allowed'}, <= {L_A1:.2f})")
+# per scan: each scan's own 95 % lower bound on the delay (Sim 47) against its own loss allowance
+# (H1 4 min: A = 0.778, q = 1.091; H3 5 min: A = 0.689, q = 1.109 from Sim 39 over 0.15-1.70 THz; H2 has no spectral fit)
+A_H3, Q_H3 = 0.689, 1.109
+L_A3 = (Q_H3 - 1) * MEAS_LOSS[0] + 20 * np.log10(1 / A_H3)
+for scan, allow in (("2 min", None), ("4 min", L_A1), ("5 min", L_A3)):
+    dmin = min_required_delay(F[:1], (scan,))[0]
+    say(f"Per scan, {scan}: 95 % lower bound {dmin:.3f} rad at 0.6 THz; allowed extra loss "
+        + (f"{allow:.2f} dB" if allow is not None else "not fitted"))
+    for name in ("ions: all tissue water (S/m)", "axoplasm conductivity (S/m)", "heating, Liebe (dT, K)",
+                 [n for n in MECH if n.startswith("heating, Liebe x")][0], "thicker path (fraction)"):
+        mk, (lo, hi) = MECH[name]
+        g = lambda v: change(mk(v))[0, 1] - dmin
+        grid = np.linspace(lo, hi, 201); vals = [g(v) for v in grid]
+        roots = [brentq(g, grid[i], grid[i + 1]) for i in range(200) if vals[i] * vals[i + 1] < 0]
+        if roots:
+            c = change(mk(roots[0]))
+            verdict = "" if allow is None else (" allowed" if c[0, 0] <= allow else " NOT allowed")
+            say(f"  {name:36s} = {roots[0]:+.3g} with {c[0, 0]:+.2f} dB{verdict}")
 (OUT / "sim46.txt").write_text("\n".join(lines) + "\n", encoding="utf-8")
 fig, ax = plt.subplots(1, 2, figsize=(11, 5.2))
 node = json.loads((ROOT / "results" / "sim30" / "sim36_signed06.json").read_text())["states"]
@@ -216,7 +234,7 @@ hk = [n for n in MECH if n.startswith("heating, Liebe x")][0]
 for k, axi in enumerate(ax):
     ceil = req[k, 0] + 20 * np.log10(1 / A_H1)
     axi.fill_between([0, ceil], D_MIN[k], REQ[1.18][k, 1], color="0.85", lw=0,
-                     label="what the fits allow: extra delay (traces, 4-5 min), extra loss up to a = 1 (H1)")
+                     label="what the fits allow: extra delay (95 % lower bound to q = 1.18), extra loss up to a = 1 (H1)")
     axi.plot([0], [2 * np.pi * F[k] * s_ps * 1e-12], "kx", ms=7, mew=1.5, label=f"time shift of the tissue term ({s_ps:.3f} ps)")
     for name, col, key, vals in (("heating, Liebe (0-80 K)", "C3", "heating, Liebe (dT, K)", np.linspace(0, 80, 21)),
                                  (f"heating, Liebe x{K_MILLON:.1f} (0-20 K)", "C4", hk, np.linspace(0, 20, 17)),

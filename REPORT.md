@@ -64,6 +64,7 @@ on every solve. See the iteration log below.
 | 50 | review round 15 (whole paper): heating cannot be excluded; delay floor from the tracing spread | Sim 46: lowest delay the traces allow at 4–5 min (±1 pixel, 0.039 ps) 0.147/0.245/0.343 rad at 0.6/1.0/1.4 THz; at that floor Liebe heating 16.5 K (1.0 dB), Liebe ×2.31 5.1 K (0.6 dB), water gain 5.6 % (0.7 dB), thicker slab 4.8 % (0.6 dB) allowed; ions 42 S/m and axoplasm 111 S/m need 5.2 dB (> 3.3): excluded. Node states ≤ 0.063 rad (2.3× short); sign check: metallic node +0.042 rad, ε′ = 1 −0.039 rad. Convergence over 433 production CSVs: last order ≤ 9 × 10⁻³ (thickest fibre E⊥), balance ≤ 4.7 × 10⁻⁵. `fit_nodelaw.log` regenerated (2.1 % / 2.0 %). Fig. 9 redrawn | **node, ion and conduction exclusion holds at the tracing floor; warming joins thicker slice and stage drift as readings of the later tissue term** |
 | 51 | review round 16 (whole paper): the argument rewritten for readers; the 2 THz node test done as a phase test | Sim 43 (e): 65 distinct node states (every extreme) applied to T in the 30-s two-pulse model over 1.8–2.4 THz, six phase bands: without node change the lowest point in 1.85–2.15 THz is at 2.08–2.15 THz (−32 to −39 dB); 3 state–band pairs reach within 0.03 THz of 1.993 THz, deepest −34.6 dB against −43.5 dB published; none both. Closest state ε = −2.0 − 0.1j: 1.969 THz, −32.8 dB, +0.40 rad and 5.4 dB at 2 THz, −0.005 rad at 0.6 THz. `report_round10` rerun (round16.log): sign check +0.0423 / −0.0393 rad, 2 THz largest |delay| 0.685 rad, loss 10.3 dB. Abstract, §4.6, §5.6 rewritten with the tissue pulse and the second pulse defined; ions and conduction excluded first on conductivity (4× / 1.7× saturated NaCl); drift disfavoured | **node states cannot place the 2 THz dip; the 2 THz dip stays not reproduced, not excluded** |
 | 52 | review round 17 (whole paper): waveform tests moved after the model they use; drift restored; selectivity contradiction stated | Sim 43 (e) rerun over b = 0.034/0.039/0.044: deepest node-state minimum within 0.03 THz of 1.993 THz −37.5/−34.6/−32.6 dB against −43.5 dB; at the 2.00 THz bin the two-pulse floor is −48.0/−40.7/−37.1 dB, the published value reached only for b ≤ 0.037. Manuscript: new §5.7 (what could make the tissue pulse later) holds the delay requirement, node-state sign and 2 THz tests, ions and conduction, warming, thickening and drift; §4.6 keeps the loss bounds; title 19 words; abstract and conclusion: depth not position at 2 THz, floor ≥ 0.11 rad, drift an equal reading, every remaining cause contradicts the reported selectivity. H1 and H2 checked: the slice sits in a PTFE cuvette | **no number changed; the 2 THz node test now covers the b range; drift is a live reading** |
+| 53 | Sim 47 and review round 18: a confidence interval for the later tissue pulse | `experiments/exp/sim47_shift_confidence.py` → `results/sim47/`: residual correlated over 0.31–0.34 ps (N_eff 16–17 of 1121 points). Bootstrap s = 0.043 ± 0.008 / 0.053 ± 0.011 / 0.066 ± 0.014 ps at 2/4/5 min, one-sided 95 % lower bounds 0.028/0.035/0.040 ps; profile 95 % intervals 0.023–0.065 / 0.025–0.081 / 0.020–0.108 ps. Node limit (0.016 ps) rejected at 2.4/2.5/2.1σ, jointly 3.3σ (p = 9 × 10⁻⁴); s = 0 jointly 5.3σ. Sim 46 per scan at its own bound and allowance: ions 31/38/43 S/m, axoplasm 81/99.5/113 S/m, 3.8/4.65/5.27 dB (4 min > 3.28, 5 min > 4.55); warming 3.4–5.2 K (scaled) or 9–17 K; thicker 3.4–5.0 %. Helper `thznerve.manuscript` (abstract limit, reflow, PLAN sync; tested) | **delay real at 5.3σ; node states rejected at 3.3σ, not excluded outright; ions and conduction fail per scan on loss and plausibility** |
 
 
 ### Review after 5 iterations (Sims 27–31)
@@ -124,6 +125,19 @@ on every solve. See the iteration log below.
   amplitude absorbs them). Rule now: before a mechanism is named, write down every model that
   produces the fitted quantity and which observable is actually constrained; claim only what
   excludes alternatives.
+- No COMSOL runs in these rounds; no new COMSOL trap.
+
+### Review after 5 iterations (Sims 46–47, review rounds 15–18)
+- Biggest time sink: the delay floor. Rounds 15–17 refined a ±1-pixel sensitivity (0.21 → 0.15 →
+  0.13/0.11 rad) before round 18 pointed out it was never a confidence bound; s is measured between
+  curves on the same axes, so pixel registration cancels and only the residual matters. One block
+  bootstrap (Sim 47, 6 s) settled it. Rule now: any "smallest value the data allow" gets a
+  statistical interval from the residual, with its correlation length, before it carries a claim.
+- Repeated mistake: the abstract and conclusion said more than the body (positions vs depths at
+  2 THz, "bypasses the tissue", "cannot" where the evidence is 2–3σ). Each round found one. The
+  abstract is now checked line by line against the section that supports it.
+- Repeated step made a helper: abstract word count, reflow and PLAN sync (`thznerve.manuscript`).
+- Tooling: two bash heredocs failed on quoting; long patch scripts now go to a file through Write.
 - No COMSOL runs in these rounds; no new COMSOL trap.
 
 ---

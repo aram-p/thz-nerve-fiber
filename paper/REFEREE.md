@@ -966,6 +966,54 @@ b ≤ 0.037). §5.6 now gives both the band mean and the bin. **Fixed.**
 **Response.** Added to §6 as a limit; the coarse value is used as an upper bound because it falls
 monotonically with refinement. **Fixed (stated).**
 
+## Eighteenth round (independent reviewer, whole paper, 2026-11-04; verdict: major revision, no fatal flaw; law, slice bounds, delay requirement, loss allowances, waveform fits and bias side effects recomputed and confirmed)
+
+### 153. MAJOR: the node-state exclusion on delay is a pixel limit, not a statistical one; fixing s at the node value raises the misfit only ×1.27–1.38 and the residual is correlated over ~0.2 ps (13–14 independent points).
+**Response.** Agreed that the ±1-pixel floor was the wrong yardstick: s is measured between curves on
+the same axes, so axis registration cancels and the residual sets the error. New Sim 47 gives a
+proper interval two ways. (1) Profile of the misfit with N_eff from the residual autocorrelation
+(correlation length 0.31–0.34 ps, N_eff 16–17): 95 % intervals 0.023–0.065, 0.025–0.081 and
+0.020–0.108 ps at 2, 4 and 5 min. (2) Moving-block bootstrap of the residual (400 resamples): s =
+0.043 ± 0.008, 0.053 ± 0.011, 0.066 ± 0.014 ps, one-sided 95 % lower bounds 0.028/0.035/0.040 ps
+(0.10/0.13/0.15 rad at 0.6 THz). The node limit (0.016 ps) is rejected at 2.4/2.5/2.1σ per scan,
+which matches the reviewer's 1.5–2σ order, and at 3.3σ over the three independent scans
+(p = 9 × 10⁻⁴); s = 0 at 5.3σ. The paper now states these levels instead of "cannot", and §6 notes
+that the intervals treat the misfit as correlated noise. `tissue_change.SHIFT_PS` now holds the
+bootstrap bounds (tested against `sim47.json`). **Fixed.**
+
+### 154. MAJOR: the abstract says the second pulse "bypasses the tissue", but it arrives 0.019–0.044 ps before the empty-cuvette pulse, which such a pulse cannot do.
+**Response.** Abstract: "a second pulse near the empty-cuvette delay … arrives 0.02–0.04 ps early,
+unexplained. The waveforms are decomposed, not explained." §5.6 defines the second pulse by its delay
+only, and "What the second pulse could be" now calls the bypass reading a hypothesis for this
+reason. **Fixed.**
+
+### 155. MAJOR: novelty and readability: both limits of the law are textbook; the cited resonance papers work at 10–40 THz, so "no resonance below 3 THz" contradicts none of them; the abstract carries ~20 numbers.
+**Response.** The introduction now says both: the limits are textbook electrostatics and the new part
+is a closed-form interpolation checked against full wave over realistic geometry, and a null result
+below 3 THz does not contradict the 10–40 THz models; it bears on the node reading of H1–H3 and on
+dosimetry. The abstract is rebuilt as three numbered findings with fewer numbers. **Fixed.**
+
+### 156. MINOR: "both g-ratios outside the fit range" are within 2.3 %; only g = 0.875 is (g = 0.54 has b = 6.5 µm, 4.35 %).
+**Response.** Corrected in §4.2. **Fixed.**
+
+### 157. MINOR: "≥ 111 S/m to give that delay" belongs to the 0.147 rad floor; at the 0.11 rad bound it is ~71–83 S/m with ~3.3 dB, inside H3's allowance.
+**Response.** Sim 46 now tests each scan at its own 95 % lower bound against its own loss
+allowance: 2 min 0.104 rad, 31 S/m (tissue water) or 81 S/m (axoplasm), 3.8 dB (no spectral fit, so
+no allowance); 4 min 0.130 rad, 38 or 99.5 S/m, 4.65 dB against 3.28 dB (H1); 5 min 0.150 rad, 43 or
+113 S/m, 5.27 dB against 4.55 dB (H3). The loss exclusion holds where an allowance exists; the
+conductivity (1.2–1.7× and 3.2–4.5× saturated NaCl) is stated first. Conclusion uses ≥ 81 S/m.
+**Fixed.**
+
+### 158. MINOR: "5–18 % thicker slice": 18 % is the optical-path factor q − 1; Sim 46 gives 16.6 % thickness for q = 1.18.
+**Response.** "3–17 %" (3.4 % at the 2-min lower bound, 16.6 % at q = 1.18). **Fixed.**
+
+### 159. MINOR: the abstract slice bound drops "ε″ ≥ 0.1".
+**Response.** Added in the abstract and the conclusion. **Fixed.**
+
+### 160. MINOR: H1's arrow covers the 30-s curve at 1.96–1.99 THz, hiding the dip's low-frequency flank on which the 0.03 THz position test depends.
+**Response.** Stated in §5.6 (centre uncertain by up to ~0.03 THz). The node test at 2 THz fails on
+depth, which the arrow does not affect. **Fixed (stated).**
+
 ---
 
 ## What matches and what does not (experiment)

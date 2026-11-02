@@ -10,20 +10,20 @@ the tissue-level and experimental-design sections up front.
 ## Abstract (draft, 250 words max)
 
 Biased (100 V DC) spinal-cord slices reportedly show a 9–20 dB terahertz transmission dip drifting
-from 0.7 to 0.5 THz, attributed to resonant nodes of Ranvier or DC-opened channels. We test both
-with a full-wave model of a myelinated fibre in water, benchmarked to 2 × 10⁻⁴. In 0.1–3 THz the
-node does not resonate. Its absorbed power follows a three-constant quasi-static law with exact
-limits, within 2.3 % of full wave for fibres up to 10 µm. For the field along the fibres, as in
-every published scan, no node state changes a 100 µm slice by more than 1.1 dB (internodes ≥ 200 µm,
-packing ≤ 0.6); open channels add 10⁻⁶ of the membrane admittance. Each published biased pulse is
-the unbiased pulse, arriving 0.04–0.07 ps later from 2 min, plus a second pulse that bypasses the
-tissue, growing from 4 to 22 % over 0.5–5 min. With fitted parameters this is consistent with the
-0.6 THz dip. The later arrival fits a 5–18 % thicker slice, warming or a drift of the delay stage.
-Node states cannot delay it, even with every parameter at its extreme: they mostly advance the phase, giving
-at most 0.06 of the ≥ 0.11 rad needed. Ion or axoplasm conduction would need conductivities above
-saturated brine. A single-scan 2.0 THz dip is not reproduced, and no node state makes the model's
-dip there as deep as measured. Each remaining cause would act for both polarisations, against the
-reported selectivity (described without data).
+from 0.7 to 0.5 THz, attributed to resonant nodes of Ranvier or DC-opened channels. We test this
+with a full-wave model of a myelinated fibre in water, benchmarked to 2 × 10⁻⁴. First, in 0.1–3 THz
+the node does not resonate: its absorbed power follows a three-constant quasi-static law with exact
+limits, within 2.3 % of full wave for fibres up to 10 µm. Second, for the field along the fibres, as
+in every published scan, no node state (ε″ ≥ 0.1) changes a 100 µm slice by more than 1.1 dB at
+internodes ≥ 200 µm and packing ≤ 0.6, and open channels add 10⁻⁶ of membrane admittance. Third,
+each published biased waveform fits as the unbiased pulse, delayed by 0.04–0.07 ps after 2–5 min,
+plus a second pulse near the empty-cuvette delay growing to 22 % of the field. With fitted
+parameters this is consistent with the 0.6 THz dip; a single-scan 2.0 THz dip is not reproduced. A
+zero delay is rejected at 5.3σ, and the largest any node state gives, even at every parameter
+extreme, at 3.3σ; ion or axoplasm conduction would need conductivities above saturated brine. A 3–17
+% thicker slice, warming or a drift of the delay stage fits, but each would act for both
+polarisations, against the reported selectivity (described without data), and the second pulse
+arrives 0.02–0.04 ps early, unexplained. The waveforms are decomposed, not explained.
 
 ## Section outline
 
@@ -86,7 +86,7 @@ reported selectivity (described without data).
    n = 2.8–3.1 at the stated 100 µm (traced phase, Sim 39) vs 1.95–2.2 for water-based tissue: the
    slice is optically ~2× thicker than stated, or not water-based. Optical thickness from loss
    and delay ~220 µm (Sim 45) conflicts with the stated 100 µm cuvette; unresolved, so the factors
-   ×2.2 / ×3.1 are used as a conservative scaling of the bounds, not as a thickness; dynamic range. 5.7 What could make the tissue pulse later: delay requirement and floor, node states (sign; 2 THz depth test over b = 0.034–0.044), ions and conduction (above saturated brine), warming, more tissue, stage drift; every remaining cause contradicts the reported selectivity. 5.8 What matches, what does not, and decisive measurements (current and
+   ×2.2 / ×3.1 are used as a conservative scaling of the bounds, not as a thickness; dynamic range. 5.7 What could make the tissue pulse later: delay requirement and its 95 % lower bound per scan (Sim 47, block bootstrap; s = 0 rejected at 5.3σ, node limit at 3.3σ), node states (sign; 2 THz depth test over b = 0.034–0.044), ions and conduction (above saturated brine), warming, more tissue, stage drift; every remaining cause contradicts the reported selectivity. 5.8 What matches, what does not, and decisive measurements (current and
    mass logging, N₂ purge, reference through a heated or dried slice, raw data on IEEE DataPort)
    5.8 Shared reference scans (Sim 43): the three reports share the same empty-cuvette and
    no-voltage scans (2–4 % rms), so they are one sample with four biased scans (0.5, 2, 4, 5 min);

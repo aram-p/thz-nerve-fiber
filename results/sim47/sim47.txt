@@ -1,0 +1,15 @@
+Sim 47: confidence interval for the shift s of the tissue pulse (tau free)
+  node-state limit: 0.06 rad at 0.6 THz = s 0.0159 ps
+  30 s (H1): s = -0.0025 ps, tau = -0.0419 ps, residual 9%; correlation length 0.62 ps, N = 1121, N_eff = 12.8
+      profile: 68 % -0.006 to +0.002 ps, 95 % -0.012 to +0.008 ps; dchi2 at s = 0.0159 (node limit) 9.4 (3.1 sigma two-sided), at s = 0 0.2
+      block bootstrap (block 0.62 ps, 400 resamples): s -0.0025 +- 0.0040 ps; one-sided 95 % lower bound -0.0094 ps, 97.5 % -0.0102 ps; fraction of resamples with s <= node limit 1.000
+  2 min (H2): s = +0.0428 ps, tau = -0.0688 ps, residual 18%; correlation length 0.34 ps, N = 1121, N_eff = 15.8
+      profile: 68 % +0.033 to +0.053 ps, 95 % +0.023 to +0.065 ps; dchi2 at s = 0.0159 (node limit) 5.8 (2.4 sigma two-sided), at s = 0 14.4
+      block bootstrap (block 0.34 ps, 400 resamples): s +0.0427 +- 0.0079 ps; one-sided 95 % lower bound +0.0275 ps, 97.5 % +0.0234 ps; fraction of resamples with s <= node limit 0.000
+  4 min (H1): s = +0.0526 ps, tau = -0.0821 ps, residual 20%; correlation length 0.31 ps, N = 1121, N_eff = 16.6
+      profile: 68 % +0.039 to +0.067 ps, 95 % +0.025 to +0.081 ps; dchi2 at s = 0.0159 (node limit) 6.3 (2.5 sigma two-sided), at s = 0 12.8
+      block bootstrap (block 0.31 ps, 400 resamples): s +0.0530 +- 0.0107 ps; one-sided 95 % lower bound +0.0345 ps, 97.5 % +0.0311 ps; fraction of resamples with s <= node limit 0.003
+  5 min (H3): s = +0.0655 ps, tau = -0.0840 ps, residual 23%; correlation length 0.31 ps, N = 1121, N_eff = 17.0
+      profile: 68 % +0.042 to +0.086 ps, 95 % +0.020 to +0.108 ps; dchi2 at s = 0.0159 (node limit) 4.5 (2.1 sigma two-sided), at s = 0 8.1
+      block bootstrap (block 0.31 ps, 400 resamples): s +0.0661 +- 0.0142 ps; one-sided 95 % lower bound +0.0399 ps, 97.5 % +0.0358 ps; fraction of resamples with s <= node limit 0.000
+  joint over 2, 4, 5 min (independent scans): dchi2 16.6 at the node limit (p = 8.7e-04, 3.3 sigma), 35.3 at s = 0 (p = 1.0e-07, 5.3 sigma)
