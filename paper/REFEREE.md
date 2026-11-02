@@ -129,10 +129,11 @@ model fails on four independent counts (Sim 37; full wave in Sim 36 'axon'):
 (a) At 0.6/2 THz the node membrane's capacitive admittance (ωC_m = 4 × 10¹⁰–1.3 × 10¹¹ S/m²)
 exceeds that of all Na channels open (3 × 10⁴ S/m², MRG) by 10⁶. Channel state cannot change THz
 current paths, and the axoplasm is continuous through the node in any state.
-(b) Full wave with extra conductivity in the whole axoplasm: 9 dB for E∥ needs +460–520 S/m,
-against 1.4 S/m physiological and ~25 S/m for saturated NaCl. Quasi-static mixing matches full wave
-to 3 % up to 400 S/m; fibres act as wires (inductive regime) only above ~10⁴ S/m. The change is
-broadband and also large for E⊥ (6 dB at 2 THz), which was not observed.
+(b) Full wave with extra conductivity in the whole axoplasm, converted to an exact 100 µm slab:
+9 dB for E∥ needs +480–580 S/m, against 1.4 S/m physiological and ~25 S/m for saturated NaCl.
+Quasi-static mixing matches full wave to 3 % (≤ 1 THz) and 10 % (3 THz) up to 400 S/m; fibres act
+as wires (inductive regime) only above ~10⁴ S/m. (A conducting axon would be E∥-selective at
+0.6 THz, so polarisation does not discriminate; item 25.)
 (c) Fibre spacing is 2–23 µm; the first diffraction order needs > 6 THz in tissue, > 13 THz in air,
 and white matter is not periodic.
 (d) No ps-fast nonlinearity: Na gating ≥ 10 µs; ion drift during the pulse ≤ 5 × 10⁻¹⁶ m; TDS fields
@@ -153,19 +154,20 @@ stated as **unexplained**.
 **Response.** Sim 36 repeats the node σ sweep (12 values, 0–3 × 10⁶ S/m) with three observables:
 fibre absorption, absorption inside r = 25 µm (fibre plus near-field water), and the change of the
 fibre's induced dipole, which gives the coherent change of the slice permittivity (dipole checked
-against the coated-cylinder value to ≤ 0.6 %). At internode 1000 µm and packing 0.5: E∥ ≤ 0.006 dB,
-E⊥ ≤ 0.18 dB. The slice effect scales as packing/internode; the worst realistic case (200 µm,
-packing 0.6) is 6× that: E∥ ≤ 0.035 dB, E⊥ ≤ 1.1 dB. Internode independence rechecked at
+against the coated-cylinder value to ≤ 0.6 %). At internode 1000 µm and packing 0.5: E∥ ≤ 0.006 dB at
+0.6/2 THz (0.008 dB at 3 THz), E⊥ ≤ 0.18 dB. The slice effect scales as packing/internode; 200 µm
+and packing 0.6 is 6× that: E∥ ≤ 0.05 dB, E⊥ ≤ 1.1 dB. Internode independence rechecked at
 3 × 10⁴ S/m: ≤ 7 × 10⁻⁴. **Fixed.**
 
 ### 17. MAJOR: "'No resonance' covers only conductors; a node with a resonant constituent could resonate."
 **Response.** Sim 36 sweeps any passive node permittivity, ε′ −30…30, ε″ 0.01…30, at 0.6 and 2 THz.
 A negative-ε ring resonance exists near ε′ ≈ −1.5 (E∥, η ≈ 100), but the lossy water around the gap
 caps the slice change at ≤ 0.08 dB (≤ 0.5 dB at internode 200 µm); mesh check 4 %. Negative ε′ with
-ε″ ≪ 1 is not possible in an aqueous gap at THz. **Fixed**; claim stated for passive media.
+ε″ ≪ 1 is not possible in an aqueous gap at THz. **Fixed**; claim stated for passive media with
+ε″ ≥ 0.1 (item 31).
 
 ### 18. MAJOR: "The reported baseline exceeds pure water; the 9 dB may sit at the dynamic-range limit."
-**Response.** Agreed and stated: 30 dB per 0.1 mm at 2 THz is 2.6× pure water (11.6 dB). Our
+**Response.** Agreed and stated: 30 dB per 0.1 mm at 2 THz is 1.9–2.6× pure water (15.8 / 11.6 dB). Our
 comparisons use changes, not absolute values; the raw data (IEEE DataPort, doi:10.21227/h17h-tp94)
 would settle it. **Narrowed.**
 
@@ -191,11 +193,91 @@ Electrode gaps stated per report (18 mm, 15 mm). The E∥ bound is quoted in the
 
 ---
 
+## Third round (independent reviewer, 2026-11-02; verdict before fixes: major revision, no fatal flaw; key numbers recomputed and confirmed)
+
+### 23. MAJOR: "The abstract overstates the bounds (0.1 dB vs 0.5 dB at 200 µm; E⊥ up to 3.5 dB)."
+**Response.** Abstract now quotes ≤ 0.5 dB for E∥ (all node states, internode ≥ 200 µm); REPORT
+row 36 gives every case: 0.1 dB at 1 mm, 0.5 dB at 200 µm, E⊥ ≤ 1 dB, 3.5 dB only for a metallic
+node in a 21 µm fibre with 200 µm internodes. The smallest CNS fibres (50–100 µm internodes) add
+2–4×, still ≥ 9× below the smallest reported dip. **Fixed.**
+
+### 24. MAJOR: "'Does not come from nodes or fibres' is broader than a linear passive model can show."
+**Response.** Narrowed to "the linear electromagnetic response of nodes and fibres". DC-driven
+structural changes (swelling, electro-osmotic water flow, pH fronts) are listed as untested except
+through their bulk effects (heating, water loss, gas), §6. **Narrowed.**
+
+### 25. MAJOR: "The E⊥ argument against the wire model fails at 0.6 THz."
+**Response.** Correct (6.6 vs 2.7 dB at 0.6 THz for +400 S/m). Dropped; the case rests on the
+conductivity required (350–400× physiological) and the missing mechanism (membrane admittance).
+**Fixed.**
+
+### 26. MAJOR: "The 9 dB target has no traceable source."
+**Response.** Read off the published spectra: the 0.6 THz dip is 9–12 dB below the no-voltage
+spectrum after 5 min (paper 3, Fig. 1b, 100 µm) and 15–20 dB after 4 min (paper 1, Fig. 4b, 70 µm);
+power spectra in dB. The digitised points (±2 dB) are in `experiments/exp/sim38_gas_path.py`.
+The raw data on IEEE DataPort (doi:10.21227/h17h-tp94) need a subscription we do not have; the
+paper says so and offers the analysis code. **Fixed.**
+
+### 27. MAJOR: "The dip drifts (0.7 → 0.5 THz); fixed water-vapour lines cannot explain it."
+**Response.** Correct; the vapour-line attribution is withdrawn as the explanation. Sim 38 tests a
+gas path through the slice with physical tissue optics. The reported n (3.6–3.9 at a stated 100 µm)
+and the 2 THz loss independently imply an optical thickness of 190–300 µm. A two-parameter fit
+(beam fraction 0.11–0.22, column 225–240 µm) to the published 5-min spectrum (rms 3.1–3.5 dB vs
+±2 dB reading error) puts dips at 0.55–0.64 and 2.0–2.2 THz, both reported frequencies, raises
+2–3 THz as reported, and moves the first dip down as the column grows. The bias electrolyses
+~40–60 mm³ of gas in 5 min, the order of the slice volume. Stated as a fit and a hypothesis; it
+does not explain the E∥ or DC-direction selectivity. **Narrowed / new result.**
+
+### 28. MAJOR: "Novelty: the null result follows from k_w·b ≤ 0.6, Re ε > 0 and n_myelin < n_water; prior work omits Zangari 2018, Kumar 2016, Xiang 2021."
+**Response.** Added to the prior-work table. The one-paragraph argument does not give the node's
+absorbed power, its scaling law, the full-wave bound on node states including negative-ε ring
+resonances (which do exist, η ≈ 100, item 17), the quantitative test of the experimenters' model,
+or the gas-path account of the measured dips; those are the contributions. The introduction now
+motivates the closed-form law by node-level THz dosimetry. If the editor prefers, the paper fits a
+regular article of moderate length. **Fixed.**
+
+### 29. MINOR: "The axon mesh check refined the wrong region."
+**Response.** The production check refined only the node region; a second check refined the whole
+axon 4× (`scripts/probe/probe_axon_mesh.py`, 0.44 µm elements vs 0.92 µm skin depth at 10⁵ S/m,
+3 THz): changes ≤ 7 × 10⁻⁴ up to 10⁵ S/m. REPORT row 37 now cites it. **Fixed.**
+
+### 30. MINOR: "Why do the absorbed-power and dipole observables differ?"
+**Response.** At low σ the absorbed power per incident intensity uses ½n′|E|²/η0 and misses the
+coupling to host loss; their ratio is |n_t|²/n_t′² (1.30 at 0.1 THz, 1.04 at 2 THz). The coherent
+observable −k0 Im(Δε/n) is the right one for transmission; above ~10⁴ S/m Re Δε dominates and the
+first-order form fails, so the axon results are now converted with an exact slab on PTFE (`slab_rta`,
+column dB_exact_slab). Text added to §2.4. **Fixed.**
+
+### 31. MINOR: "Negative-ε node with ε″ = 0.01 has contrast in the corner-singular range."
+**Response.** Agreed; those points are not mesh-converged (η 100 → 103). The claim is made for
+ε″ ≥ 0.1, which covers any aqueous material. **Narrowed.**
+
+### 32. MINOR: "Wiener 'within 3 %' holds only to 1 THz; 'wire-like fibres need 500 S/m' contradicts your own crossover."
+**Response.** Wording fixed: 3 % at ≤ 1 THz, 10 % at 3 THz; "a 9 dB change from fibre conduction
+would need ~500 S/m"; at that conductivity fibres are resistive, not wires. **Fixed.**
+
+### 33. MINOR: "Tissue can absorb more than water (Berry 2003)."
+**Response.** Fixed: nerve tissue absorbs within ~10 % of water; the reported loss is 1.9–2.6× water
+(broadband / Kindt–Schmuttenmaer). **Fixed.**
+
+### 34. MINOR: "The DC bias breaks inversion symmetry."
+**Response.** Estimated: χ(2)_eff = 3χ(3)E_dc with water's Kerr-derived χ(3) ≈ 2 × 10⁻¹⁹ m²/V² gives
+≤ 10⁻¹¹ of the linear response (Sim 37). **Fixed.**
+
+### 35. MINOR: biology and geometry.
+**Response.** Added: the tissue is post-mortem; the bias puts ~70 mV across a 10 µm fibre, not ~1 V;
+the selectivity is stated in the electrode frame (E_THz ⊥ E_DC, parallel to electrodes 1–2); finite
+fibre segments in a 70–100 µm slice only lower the E∥ response, so 500 S/m is a lower bound. **Fixed.**
+
+---
+
 ## What matches and what does not (experiment)
 
 | Reported (Hovhannisyan, Makaryan, Martirosyan 2024) | This work |
 |---|---|
-| Features at 0.6 and 2 THz | No node or fibre resonance anywhere in 0.1–3 THz; both frequencies sit on water-vapour line groups (0.557; 1.92–2.20 THz) |
+| Dips at 0.6 and 2 THz (9–20 dB) | No node or fibre resonance anywhere in 0.1–3 THz. A gas column of ~230 µm through ~10–20 % of the beam puts dips at 0.55–0.64 and 2.0–2.2 THz (two-parameter fit, Sim 38) |
+| Dip drifts 0.7 → 0.5 THz in minutes | Water-vapour lines cannot drift; a growing gas column moves the dip down (Sim 38) |
+| High frequencies rise by 12–17 dB | Gas path skips tissue loss: +7–24 dB at 2–3 THz in the fit; drying also raises them (≤ 3 dB, Sim 34) |
 | ~9 dB change under 100 V DC | Node: ≤ 0.1 dB (E∥) for any conductivity or passive ε; channels 10⁻⁹ dB. Fibres as wires: needs ~500 S/m axoplasm (350× physiological). Heating/drying: smooth, ≤ 3 dB |
 | Effect only with E ∥ fibres | Not explained; model dichroism −0.35 dB; the wire model would change E⊥ too |
 | Effect only with DC across the fibres | Not explained; heating predicts the opposite (σ∥ ≈ 7σ⊥) |
@@ -206,6 +288,8 @@ Electrode gaps stated per report (18 mm, 15 mm). The E∥ bound is quoted in the
 
 ## Remaining (non-fatal) limitations stated in the paper
 - Single fibre plus effective medium; dense-packing corrections are O(1) (item 4).
-- No raw experimental data; the instrumental explanations are hypotheses with stated tests
-  (purge with N₂; record the DC current and slice mass; reference scan with the same humidity).
+- No raw experimental data; the gas-path and heating explanations are hypotheses with stated
+  tests (record the DC current and slice mass; image the cuvette during bias; N₂ purge; measure
+  the slice thickness).
+- Linear passive EM response only; DC-driven structural changes enter only through bulk effects.
 - Passive linear model only; band limited to 0.1–3 THz.

@@ -32,6 +32,7 @@ from thznerve.physics.effmedium import tissue_eps
 from thznerve.physics.materials import (DRY_LIPID, ETA0, WATER_BROADBAND, WATER_KS1996, ConstantEps, PlusSigma, Scaled, Uniaxial,
                                         Wiener, axoplasm, myelin, myelin_lamellar, refractive_index)
 from thznerve.physics.samplebound import DB_PER_NEPER_POWER, node_volume_fraction
+from thznerve.physics.tmm import slab_rta
 
 ROOT = Path(__file__).resolve().parents[2]
 spec = importlib.util.spec_from_file_location("sim30", ROOT / "experiments/prod/sim30_node_spectrum.py")
@@ -227,13 +228,20 @@ def report_axon(out=None, p=0.5):
             f_ax = p * (A / B) ** 2
             d_eps_ax = PlusSigma(axoplasm(), float(k.split("_")[0]))(F5) - axoplasm()(F5)
             db_wiener = DB_PER_NEPER_POWER * (-k0 * np.imag(f_ax * d_eps_ax / n_t)) * D_SLAB
+            # exact 100 um slab on PTFE (as Sim 34) with eps_t + d_eps from the dipole: includes the
+            # change of reflection, which the first-order -k0 Im(d_eps/n) leaves out
+            e_t = e_par if pol == "par" else e_perp
+            db_slab = np.array([10 * np.log10(slab_rta(fi, 1.0, [(complex(e_t[i] + dp[i] / V_cell), D_SLAB)], 1.43)[1]
+                                              / slab_rta(fi, 1.0, [(complex(e_t[i]), D_SLAB)], 1.43)[1])
+                                for i, fi in enumerate(F5)])
+            print(f"   exact slab dB {np.round(-db_slab, 3)}", flush=True)
             for i, fi in enumerate(F5):
                 rows.append([float(k.split("_")[0]), "_h" in k, 0 if pol == "par" else 1, fi / 1e12,
-                             db_abs[i], db_dip[i], db_wiener[i] if pol == "par" else np.nan])
+                             db_abs[i], db_dip[i], db_wiener[i] if pol == "par" else np.nan, -db_slab[i]])
             print(f"axon +{k} S/m {pol}: dB(abs) {np.round(db_abs, 3)} dB(dipole) {np.round(db_dip, 3)}"
                   + (f" Wiener {np.round(db_wiener, 3)}" if pol == "par" else ""), flush=True)
     np.savetxt(OUT / "sim36_axon.csv", np.array(rows, dtype=float), delimiter=",",
-               header="d_sigma_axon,fine_mesh,pol(0=par),f_THz,dB_abs,dB_dipole,dB_wiener_par (100 um slab, p 0.5)")
+               header="d_sigma_axon,fine_mesh,pol(0=par),f_THz,dB_abs,dB_dipole,dB_wiener_par,dB_exact_slab (100 um slab, p 0.5)")
 
 
 def epsfine():

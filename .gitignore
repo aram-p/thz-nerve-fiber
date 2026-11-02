@@ -23,6 +23,7 @@ results/*
 !results/sim30/
 !results/sim34/
 !results/sim37/
+!results/sim38/
 data/raw/
 *.csv
 *.h5
@@ -43,3 +44,4 @@ Thumbs.db
 !results/sim30/
 !results/sim34/
 !results/sim37/
+!results/sim38/

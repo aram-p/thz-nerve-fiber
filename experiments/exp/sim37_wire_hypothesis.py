@@ -85,7 +85,14 @@ for E in E_thz:
     say(f"  E = {E:.0e} V/m: ion drift in 1 ps = {mu_na*E*1e-12:.0e} m; field / Wien-effect onset (1e7 V/m) = {E/1e7:.0e}")
 say("  The fitted J = a1 E + a2 E^2 + ... with a2/a1 = 7.5 means the quadratic current equals the linear one at 13 % of")
 say("  the pulse peak; bulk electrolytes and water need >~1e7-1e8 V/m for any measurable THz nonlinearity.")
-say("  A quadratic term also needs broken inversion symmetry, which an isotropic electrolyte lacks.")
+# the DC bias breaks inversion symmetry: chi2_eff = 3 chi3 E_dc. Water's static Kerr constant
+# B = 9.4e-14 m/V^2 (589 nm, orientational) gives chi3 ~ 8 n lambda B / 3 ~ 2e-19 m^2/V^2
+chi3 = 8 * 1.33 * 589e-9 * 9.4e-14 / 3
+E_dc = 100 / 15e-3
+say(f"  The DC bias breaks inversion symmetry: chi2_eff E_THz / chi1 = 3 chi3 E_dc E_THz / chi1 <= "
+    f"{3 * chi3 * E_dc * 1e4 / 3.0:.0e} (water chi3 ~ {chi3:.0e} m^2/V^2 from its Kerr constant).")
+say("  The tissue is post-mortem (slaughterhouse); its channels are unlikely to gate at all.")
+say(f"  Their '1 V per fibre' estimate: the bias drops only ~2 E r = {2 * E_dc * 5e-6 * 1e3:.0f} mV across a 10 um fibre.")
 
 # (6) DC side effects
 sig_perp = 0.083                   # S/m, white matter across fibres (Ranck & BeMent 1965)
@@ -108,8 +115,11 @@ aw = 2 * w * (-refractive_index(WATER_KS1996(f)).imag) / C0
 say("\n(7) Reported baseline vs pure water, 100 um")
 for i, fi in enumerate(f):
     say(f"  {fi/1e12:.1f} THz: pure water {10/np.log(10)*aw[i]*100e-6:.1f} dB")
-say("  Reported: ~5 dB at 0.25 THz rising to ~30 dB at 2 THz for 0.1 mm (paper 3). 30 dB at 2 THz is 2.6x pure water;")
-say("  a water-based tissue cannot absorb more than water, so the 2 THz signal carries extra loss (scatter, thickness,")
-say("  reflection) and sits close to the spectrometer's dynamic range there, where a 9 dB 'feature' is least reliable.")
+from thznerve.physics.materials import WATER_BROADBAND
+ab = 2 * w * (-refractive_index(WATER_BROADBAND(f)).imag) / C0
+say(f"  broadband water (Liebe Lorentz bands): {10/np.log(10)*ab[1]*100e-6:.1f} dB at 2 THz")
+say("  Reported: ~5 dB at 0.25 THz rising to ~30 dB at 2 THz for 0.1 mm (paper 3): 1.9-2.6x pure water at 2 THz.")
+say("  Measured nerve tissue absorbs within ~10 % of water (Berry 2003: 246 vs 225 /cm), so the slice is optically")
+say("  thicker than stated or carries extra loss (scatter, reflection); see Sim 38.")
 
 (OUT / "sim37.txt").write_text("\n".join(lines), encoding="utf-8")

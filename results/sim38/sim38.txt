@@ -1,0 +1,24 @@
+Effective optical thickness implied by the reports (E || fibres tissue model)
+  0.3 THz: reported n 3.9 at d = 100 um -> delay equals physical n 2.27 at d = 229 um
+  1.0 THz: reported n 3.85 at d = 100 um -> delay equals physical n 1.97 at d = 294 um
+  2.0 THz: reported n 3.6 at d = 100 um -> delay equals physical n 1.86 at d = 302 um
+  2 THz loss 30 dB vs pure water (Kindt-Schmuttenmaer) 11.6 dB per 100 um -> 259 um of water
+  2 THz loss 30 dB vs pure water (broadband) 15.8 dB per 100 um -> 190 um of water
+
+Fit (KS1996 water): beam fraction through gas x = 0.222, gas column t = 240 um, rms misfit 3.5 dB over 10 points (reading uncertainty ~2 dB)
+  dips at [0.55] THz; change at 2/2.5/3 THz [ 7.3  9.2 12.4] dB
+  gas column 144 um (growing in time): dips at [1.09] THz
+  gas column 192 um (growing in time): dips at [0.75 2.81] THz
+  gas column 240 um (growing in time): dips at [0.55 2.16] THz
+
+Fit (broadband water): beam fraction through gas x = 0.111, gas column t = 225 um, rms misfit 3.1 dB over 10 points (reading uncertainty ~2 dB)
+  dips at [0.64] THz; change at 2/2.5/3 THz [ 8.1 14.3 23.9] dB
+  gas column 135 um (growing in time): dips at [1.23] THz
+  gas column 180 um (growing in time): dips at [0.86] THz
+  gas column 225 um (growing in time): dips at [0.64 1.98] THz
+
+Reading: the first dip falls as the gas column grows (reported 0.7 -> 0.5 THz) and high
+frequencies rise because the gas path skips tissue loss. A dip at 0.6 THz needs a column of
+~200 um, i.e. an optical thickness ~2x the stated 100 um, which the reported n and 2 THz loss
+also imply. This is a two-parameter fit to digitised points, not a prediction; the raw data,
+the slice mass and an image of the cuvette during bias would test it.

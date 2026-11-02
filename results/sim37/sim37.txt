@@ -25,7 +25,9 @@
   E = 1e+04 V/m: ion drift in 1 ps = 5e-16 m; field / Wien-effect onset (1e7 V/m) = 1e-03
   The fitted J = a1 E + a2 E^2 + ... with a2/a1 = 7.5 means the quadratic current equals the linear one at 13 % of
   the pulse peak; bulk electrolytes and water need >~1e7-1e8 V/m for any measurable THz nonlinearity.
-  A quadratic term also needs broken inversion symmetry, which an isotropic electrolyte lacks.
+  The DC bias breaks inversion symmetry: chi2_eff E_THz / chi1 = 3 chi3 E_dc E_THz / chi1 <= 1e-11 (water chi3 ~ 2e-19 m^2/V^2 from its Kerr constant).
+  The tissue is post-mortem (slaughterhouse); its channels are unlikely to gate at all.
+  Their '1 V per fibre' estimate: the bias drops only ~2 E r = 67 mV across a 10 um fibre.
 
 (6) 100 V DC across the slice (field across the fibres)
   paper 1: E = 5556 V/m, J = 461 A/m^2, I ~ 0.65 mA, Joule 2.6 MW/m^3 (0.64 K/s), electrolysis gas ~37 mm^3 in 5 min (sample ~28 mm^3)
@@ -36,6 +38,7 @@
 (7) Reported baseline vs pure water, 100 um
   0.6 THz: pure water 7.4 dB
   2.0 THz: pure water 11.6 dB
-  Reported: ~5 dB at 0.25 THz rising to ~30 dB at 2 THz for 0.1 mm (paper 3). 30 dB at 2 THz is 2.6x pure water;
-  a water-based tissue cannot absorb more than water, so the 2 THz signal carries extra loss (scatter, thickness,
-  reflection) and sits close to the spectrometer's dynamic range there, where a 9 dB 'feature' is least reliable.
+  broadband water (Liebe Lorentz bands): 15.8 dB at 2 THz
+  Reported: ~5 dB at 0.25 THz rising to ~30 dB at 2 THz for 0.1 mm (paper 3): 1.9-2.6x pure water at 2 THz.
+  Measured nerve tissue absorbs within ~10 % of water (Berry 2003: 246 vs 225 /cm), so the slice is optically
+  thicker than stated or carries extra loss (scatter, reflection); see Sim 38.
