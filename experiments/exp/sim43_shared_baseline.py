@@ -217,6 +217,14 @@ c1, c0 = np.polyfit(fq[s], ph[s], 1)
 dt_T = -c1 / (2 * np.pi)
 say(f"  tissue phase over 0.2-1.4 THz: linear, delay {dt_T:.3f} ps relative to the empty cuvette, offset {c0:+.2f} rad, "
     f"rms deviation {np.std(ph[s] - (c1 * fq[s] + c0)):.2f} rad")
+tau30 = rows["30 s (paper 1)"][2]
+for lo, hi in ((0.2, 1.0), (0.2, 1.2), (0.2, 1.4), (0.3, 1.4), (0.4, 1.4), (0.2, 1.6)):
+    sb = (fq > lo) & (fq < hi)
+    d1, d0 = np.polyfit(fq[sb], ph[sb], 1)
+    # second antiphase of a*T and b*exp(-i w tau) at 30 s: d1 f + d0 + 2 pi f tau = -3 pi
+    f2 = (-3 * np.pi - d0) / (d1 + 2 * np.pi * tau30)
+    say(f"  phase band {lo}-{hi} THz: delay {-d1 / (2 * np.pi):.3f} ps, offset {d0:+.2f} rad, arg T at 2.0 THz "
+        f"{d1 * 2.0 + d0:+.2f} rad, 30-s second antiphase {f2:.2f} THz")
 magT = 10 ** (rel["none"] / 20)
 phT = c1 * fb + c0
 for name, key, q in (("30 s", "30 s (paper 1)", 1.0), ("4 min", "4 min (paper 1)", 1.0), ("4 min, q 1.09", "4 min (paper 1)", 1.09)):

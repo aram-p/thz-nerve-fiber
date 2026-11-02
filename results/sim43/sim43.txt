@@ -63,6 +63,12 @@ component of the fitted size allows, whatever its phase.
 
 (d) Antiphase of the two terms, |T| from the published spectra, phase of T from the traced waveforms
   tissue phase over 0.2-1.4 THz: linear, delay 0.611 ps relative to the empty cuvette, offset -0.22 rad, rms deviation 0.11 rad
+  phase band 0.2-1.0 THz: delay 0.670 ps, offset -0.01 rad, arg T at 2.0 THz -8.43 rad, 30-s second antiphase 2.10 THz
+  phase band 0.2-1.2 THz: delay 0.652 ps, offset -0.07 rad, arg T at 2.0 THz -8.27 rad, 30-s second antiphase 2.15 THz
+  phase band 0.2-1.4 THz: delay 0.611 ps, offset -0.22 rad, arg T at 2.0 THz -7.90 rad, 30-s second antiphase 2.24 THz
+  phase band 0.3-1.4 THz: delay 0.600 ps, offset -0.29 rad, arg T at 2.0 THz -7.83 rad, 30-s second antiphase 2.26 THz
+  phase band 0.4-1.4 THz: delay 0.583 ps, offset -0.40 rad, arg T at 2.0 THz -7.73 rad, 30-s second antiphase 2.30 THz
+  phase band 0.2-1.6 THz: delay 0.583 ps, offset -0.34 rad, arg T at 2.0 THz -7.66 rad, 30-s second antiphase 2.32 THz
   30 s         : antiphase at 0.71, 2.24 THz; model minima 0.70 THz -17.3 dB, 0.85 THz -17.6 dB, 1.10 THz -18.1 dB, 1.40 THz -17.8 dB, 2.25 THz -40.7 dB, 2.75 THz -26.2 dB; published minima 2.00 THz -43.5 dB, 2.20 THz -32.2 dB, 2.40 THz -26.8 dB, 2.90 THz -26.7 dB
       0.50-0.80 THz: model  -15.4 dB, published  -15.8 dB
       1.85-2.15 THz: model  -29.6 dB, published  -35.1 dB

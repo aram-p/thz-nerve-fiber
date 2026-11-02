@@ -595,6 +595,10 @@ def report_round10(out=None):
     for lab, r in (("largest extra delay (+phase)", pos), ("largest advance (-phase)", neg), ("largest loss", los)):
         print(f"  {lab}: {r[0]} phase {r[3] * mat(r):+.2e} rad, loss {r[2] * mat(r):+.4f} dB; every extreme (x{ext:.0f}): "
               f"{ext * r[3] * mat(r):+.3f} rad, {ext * r[2] * mat(r):+.2f} dB", flush=True)
+    (OUT / "sim36_signed06.json").write_text(json.dumps(
+        {"note": "0.6 THz, E-par, every node state with eps'' >= 0.1; first-order change of a slice with every extreme "
+                 "(internode 50 um, packing 0.8, 220 um path) and combined materials", "factor": ext,
+         "states": [{"state": r[0], "loss_db": ext * mat(r) * r[2], "delay_rad": ext * mat(r) * r[3]} for r in rows]}, indent=1))
     both = [r for r in rows if ext * mat(r) * r[3] >= 0.19 and ext * mat(r) * r[2] >= 1.1]
     print(f"  states giving both >= 0.19 rad extra delay and >= 1.1 dB extra loss with every extreme: {len(both)}", flush=True)
 
