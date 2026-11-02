@@ -90,6 +90,19 @@ with RunLog("sim34", "tissue-level polarisation + DC-voltage mechanisms (analyti
         e_old = (wf * WATER_KS1996(f) ** (1 / 3) + (1 - wf) * dry_eps ** (1 / 3)) ** 3
         dry[x] = smooth(slab_db(e_new, d * (1 - wf * x))) - smooth(slab_db(e_old))
 
+    # Joule heating by the DC bias itself: 100 V over 18 mm, current across the fibres.
+    # Transverse white-matter conductivity 0.083 S/m (cat dorsal columns, Ranck & BeMent 1965;
+    # longitudinal 0.6 S/m). Upper bound: all of the voltage drops in the tissue.
+    E_dc, sig_t, rho_c = 100.0 / 18e-3, 0.083, 4.0e6
+    p_j = sig_t * E_dc ** 2                                   # W/m^3
+    dTdt = p_j / rho_c                                        # K/s, adiabatic
+    q = p_j * d                                               # W/m^2 leaving a 100 um slice
+    dT_ptfe = q * (1.2e-3 / 0.25 + 1 / 10.0)                  # through 1.2 mm PTFE, then air h ~ 10 W/m^2K
+    evap = q / 2.26e6 / 1000 * 1e6                            # um of water per s if all heat evaporates water
+    joule = (f"DC Joule heating (sigma_perp 0.083 S/m, 5.6 kV/m): {p_j / 1e6:.1f} MW/m^3, {dTdt:.2f} K/s adiabatic; "
+             f"steady rise via PTFE+air {dT_ptfe:.0f} K, or {evap:.2f} um/s of water evaporated "
+             f"({evap * 60 / (d * 1e6 * wf) * 100:.0f} % of the slice water per minute)")
+
     i06, i2 = np.argmin(abs(f - 0.6e12)), np.argmin(abs(f - 2e12))
     rows = np.column_stack([f / 1e12, db_par, db_perp, ds_9db, db_phys, heat[5.0], heat[15.0], dry[0.1], dry[0.3]])
     np.savetxt(OUT / "tissue_voltage.csv", rows, delimiter=",",
@@ -102,6 +115,7 @@ with RunLog("sim34", "tissue-level polarisation + DC-voltage mechanisms (analyti
         f"physiological channel opening (1e-4 S/m): {db_phys[i06]:.1e} dB @0.6, {db_phys[i2]:.1e} dB @2",
         f"heating +5K: {heat[5.0][i06]:+.2f} dB @0.6; +15K: {heat[15.0][i06]:+.2f} dB @0.6 (Liebe, <1 THz)",
         f"water loss 10%: {dry[0.1][i06]:+.2f} / {dry[0.1][i2]:+.2f} dB; 30%: {dry[0.3][i06]:+.2f} / {dry[0.3][i2]:+.2f} dB (0.6 / 2 THz)",
+        joule,
     ]
     (OUT / "summary.txt").write_text("\n".join(lines))
     print("\n".join(lines))

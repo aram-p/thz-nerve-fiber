@@ -32,7 +32,8 @@ spec = importlib.util.spec_from_file_location("sim30", ROOT / "experiments/prod/
 sim30 = importlib.util.module_from_spec(spec); spec.loader.exec_module(sim30)
 
 F = np.array([0.1, 0.6, 1.0, 2.0, 3.0]) * 1e12
-MESH = dict(h_water=5.0, h_frac=0.25, h_far_frac=0.5)     # level L1 (Sim 31)
+MESH = dict(h_water=5.0, h_frac=0.25, h_far_frac=0.5, Lint=200.0)   # level L1; node quantities are
+# internode-independent to 2e-5 (Sim 31), and the tissue dB below uses the 1000 um node fraction
 BASE = dict(axon=axoplasm(), myelin=myelin(), node=WATER_KS1996, water=WATER_KS1996)
 
 
@@ -63,6 +64,16 @@ def state():
         node = PlusSigma(WATER_KS1996, ds) if ds else WATER_KS1996
         r = sim30.run("state", tag=f"state_{ds:g}", freqs=list(F), eps_override=dict(node=node), **MESH)
         out[f"{ds:g}"] = r
+        (sim30.OUT / "sim33_state.json").write_text(json.dumps(out))
+    # skin depth at 1e6 S/m, 3 THz is ~0.3 um, comparable to the node mesh: re-solve the two
+    # largest d_sigma with the node mesh halved and report the change
+    for ds in (1e5, 1e6):
+        r = sim30.run("state", tag=f"state_{ds:g}_fine", freqs=list(F),
+                      eps_override=dict(node=PlusSigma(WATER_KS1996, ds)), **(MESH | dict(h_frac=0.125)))
+        out[f"{ds:g}_fine"] = r
+        for pol in ("par", "perp"):
+            rel = np.array(r[pol]["P_fibre"]) / np.array(out[f"{ds:g}"][pol]["P_fibre"]) - 1
+            print(f"mesh check d_sigma={ds:g} {pol}: P_fibre fine/L1 - 1 = {np.round(rel, 4)}", flush=True)
         (sim30.OUT / "sim33_state.json").write_text(json.dumps(out))
     ref = out["0"]
     nw = refractive_index(WATER_KS1996(F)).real

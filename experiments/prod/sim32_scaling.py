@@ -31,7 +31,7 @@ BASE = dict(a=3.5, b=5.0, Ln=1.0, Lint=1000.0)
 SWEEPS = {
     "Ln": [dict(Ln=x) for x in (0.5, 2.0, 5.0)],
     "t": [dict(b=3.5 + t) for t in (0.5, 3.0)],
-    "a": [dict(a=1.0, b=1.0 / 0.7), dict(a=7.5, b=7.5 / 0.7)],
+    "a": [dict(a=1.0, b=1.0 / 0.7, Lint=200.0), dict(a=7.5, b=7.5 / 0.7, Lint=200.0)],   # Lint-independent (Sim 31), keeps a=1 under the RAM budget
     "Lint": [dict(Lint=x) for x in (200.0, 500.0, 1500.0)],
 }
 

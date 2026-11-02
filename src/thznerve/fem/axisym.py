@@ -44,6 +44,7 @@ class AxiSpec:
     zg_um: float = 10.0          # half-length of the refined zone around the node
     h_far_frac: float = 0.5      # far from the node: myelin h = frac * t, axon h = frac * a
     order: int = 2               # shape-function order
+    a_node_um: float | None = None   # axon radius inside the node (constriction); None = a
     freqs_hz: list = field(default_factory=lambda: [1e12])
 
 
@@ -75,11 +76,17 @@ def build(spec: AxiSpec, name: str = "axi"):
     h = P / 2
     rmax = R + (spec.pml_um if spec.outer == "pml" else 0.0)
     zg = min(spec.zg_um, 0.45 * P)
+    an = a if spec.a_node_um is None else spec.a_node_um
     for i, (z0, z1) in enumerate(((-h, -zg), (-zg, zg), (zg, h))):
-        _rect(geom, f"r_ax{i}", 0, a, z0, z1)
+        if i == 1 and an < a:     # constricted axon at the node; a < r < a_node is node material
+            _rect(geom, "r_ax1a", 0, a, -zg, -Ln / 2)
+            _rect(geom, "r_ax1n", 0, an, -Ln / 2, Ln / 2)
+            _rect(geom, "r_ax1b", 0, a, Ln / 2, zg)
+        else:
+            _rect(geom, f"r_ax{i}", 0, a, z0, z1)
     _rect(geom, "r_my1f", a, b, -h, -zg)
     _rect(geom, "r_my1", a, b, -zg, -Ln / 2)
-    _rect(geom, "r_nd", a, b, -Ln / 2, Ln / 2)
+    _rect(geom, "r_nd", an, b, -Ln / 2, Ln / 2)
     _rect(geom, "r_my2", a, b, Ln / 2, zg)
     _rect(geom, "r_my2f", a, b, zg, h)
     Rf = R - 2 * spec.h_water_um     # flux contour inside water (Poav on the PML interface reads half)
@@ -90,7 +97,7 @@ def build(spec: AxiSpec, name: str = "axi"):
     geom.run("fin")
     e = 1e-3 * min(Ln, b - a)
     _box(geom, "s_axon", 2, -e, a + e, -h - e, h + e)
-    _box(geom, "s_node", 2, a - e, b + e, -Ln / 2 - e, Ln / 2 + e)
+    _box(geom, "s_node", 2, an - e, b + e, -Ln / 2 - e, Ln / 2 + e)
     _box(geom, "s_my1", 2, a - e, b + e, -h - e, -Ln / 2 + e)
     _box(geom, "s_my2", 2, a - e, b + e, Ln / 2 - e, h + e)
     u = geom.create("s_myelin", "UnionSelection")
@@ -146,7 +153,7 @@ def build(spec: AxiSpec, name: str = "axi"):
     sz = mesh.feature("size")
     sz.set("custom", "on"); sz.set("hmax", str(spec.h_water_um)); sz.set("hmin", str(1e-3))
     sz.set("hgrad", "1.2")
-    hf = spec.h_fibre_frac * min(b - a, Ln)
+    hf = spec.h_fibre_frac * min(b - a, Ln, *([a - spec.a_node_um] if spec.a_node_um else []))
     for tag, sel, hh in (("sn", "geom1_s_near", hf),
                          ("smf", "geom1_s_myfar", spec.h_far_frac * (b - a)),
                          ("saf", "geom1_s_axfar", spec.h_far_frac * a)):
@@ -160,6 +167,26 @@ def build(spec: AxiSpec, name: str = "axi"):
     st = std.create("freq", "Frequency")
     st.set("punit", "Hz"); st.set("plist", " ".join(f"{f:.10g}" for f in spec.freqs_hz))
     return model
+
+
+DOF_PER_ELEM = 7.0          # quadratic vector EWFD, axisym (calibrated: 61k/180k/16k elements)
+GB_BASE, GB_PER_MDOF = 1.1, 5.5   # peak private memory, MUMPS, 4 cores (113k-1.26M DOF runs)
+
+
+def estimate(model) -> dict:
+    """Predicted DOF and peak memory (GB) of one solve, from the mesh alone."""
+    n = int(model.java.component("comp1").mesh("mesh1").getNumElem())
+    dof = DOF_PER_ELEM * n
+    return dict(n_elem=n, dof=dof, gb=GB_BASE + GB_PER_MDOF * dof / 1e6)
+
+
+def check_memory(model, max_gb: float = 6.0) -> dict:
+    """Raise before solving if the mesh would push the 8 GB box into paging."""
+    e = estimate(model)
+    if e["gb"] > max_gb:
+        raise MemoryError(f"mesh {e['n_elem']} elements ~ {e['dof']/1e6:.2f} M DOF ~ {e['gb']:.1f} GB "
+                          f"> {max_gb} GB budget: shorten the internode or coarsen the far mesh")
+    return e
 
 
 def set_background(model, pol: str):

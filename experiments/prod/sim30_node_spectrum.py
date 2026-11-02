@@ -40,27 +40,30 @@ AX = axoplasm(WATER)
 
 def run(case: str, a=3.5, b=5.0, Ln=1.0, Lint=1000.0, R=100.0, pml=60.0, h_water=5.0, h_frac=0.25,
         h_far_frac=0.5, m_max=3, fmin=0.1, fmax=3.0, nf=30, node="water", outer="pml", tag=None,
-        eps_override=None, freqs=None):
+        eps_override=None, freqs=None, max_gb=6.0, a_node=None):
     f = np.asarray(freqs, dtype=float) if freqs is not None else np.linspace(fmin, fmax, int(nf)) * 1e12
     node_m = {"water": WATER, "myelin": MY}[node]
     mats = dict(axon=AX, myelin=MY, node=node_m, water=WATER) | (eps_override or {})
     node_m = mats["node"]
     eps = {k: m.comsol() for k, m in mats.items()}
     spec = axisym.AxiSpec(a_um=a, b_um=b, Ln_um=Ln, Lint_um=Lint, R_um=R, pml_um=pml, eps=eps, outer=outer,
-                          h_water_um=h_water, h_fibre_frac=h_frac, h_far_frac=h_far_frac, freqs_hz=list(f))
+                          h_water_um=h_water, h_fibre_frac=h_frac, h_far_frac=h_far_frac, freqs_hz=list(f),
+                          a_node_um=a_node)
     tag = tag or case
     res = {}
     for pol in ("par", "perp"):
-        with RunLog("sim30", f"{tag} {pol} a={a} b={b} Ln={Ln} Lint={Lint} R={R} {outer} h={h_water}/{h_frac}/{h_far_frac} m<={m_max} nf={nf}") as log:
+        with RunLog("sim30", f"{tag} {pol} a={a} b={b} Ln={Ln} Lint={Lint} R={R} {outer} h={h_water}/{h_frac}/{h_far_frac} m<={m_max} nf={nf}" + (f" a_node={a_node}" if a_node else "")) as log:
             t0 = time.monotonic()
             model = axisym.build(spec, name=f"s30{tag}{pol}")
+            axisym.check_memory(model, max_gb)
             o = axisym.solve_pol(model, pol, m_max)
             client().remove(model)
             w = 2 * np.pi * f
             ew = mats["water"](f)
             nw = refractive_index(ew).real
             I0 = 0.5 * nw / ETA0                                   # W/m^2 for |E0| = 1 V/m
-            Vn = np.pi * (b ** 2 - a ** 2) * Ln * 1e-18            # m^3
+            an = a if a_node is None else a_node
+            Vn = np.pi * (b ** 2 - an ** 2) * Ln * 1e-18           # m^3 (node gap, incl. constriction)
             q_bulk = 0.5 * w * EPS0 * (-np.imag(node_m(f)))         # W/m^3 at |E| = 1
             P_fib = o["P_axon"] + o["P_myelin"] + o["P_node"]
             r = dict(f_THz=f / 1e12, P_node=o["P_node"], P_axon=o["P_axon"], P_myelin=o["P_myelin"],
