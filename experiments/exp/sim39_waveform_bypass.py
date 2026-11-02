@@ -305,8 +305,6 @@ ax[1].plot(ff[ok], pred[ok], "k--", lw=1.0, label=f"{a:.3f} × no voltage + {b:.
 g4 = 20 * np.log10(np.abs(m4[0] * FK[vb] * Tp(m4[3]) + m4[1] * FK[vb] * ph(m4[2])) / np.abs(FB[vb]))
 ax[1].plot(fr[vb], g4, "C2-.", lw=1.0, label=f"{m4[0]:.2f} × tissue path {m4[3]:.2f}× thicker + {m4[1]:.2f} × empty cuvette (fit)")
 ax[1].axvspan(F_OK, 3.0, color="0.92", lw=0, zorder=0)
-ax[1].plot(ff, ratio_db(ff, *gas_fit, WATER_KS1996), "C7", lw=0.8,
-           label=f"withdrawn: gas column in modelled tissue, x = {gas_fit[0]:.2f}, t = {gas_fit[1]:.0f} µm")
 ax[1].axhline(0, color="0.6", lw=0.6)
 ax[1].set_xlabel("Frequency (THz)"); ax[1].set_ylabel("Δ power spectrum (dB)")
 ax[1].legend(fontsize=7, loc="upper center", bbox_to_anchor=(0.5, -0.17), ncol=1, frameon=False)

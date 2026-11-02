@@ -8,8 +8,10 @@ state, and no fibre state the experimenters proposed (open channels turning fibr
 conducting wires forming a grating), changes tissue transmission by an amount close to the reported
 ~9 dB, so the 0.6/2 THz features reported under DC bias (Hovhannisyan, Makaryan, Martirosyan 2024)
 do not come from the linear electromagnetic response of nodes or fibres. The published waveforms
-of both reports instead contain a component at the empty-cuvette delay (4–21 %, growing with bias
-time), plus a ~10 % thicker tissue path (Sims 39, 42); their cause is unknown and they conflict with the reported polarisation and bias-direction
+of the three reports, which share one set of reference scans, instead contain a component at the
+empty-cuvette delay (4, 12, 17, 22 % after 0.5, 2, 4, 5 min), plus a ~10 % thicker tissue path
+(Sims 39, 42, 43); the same two terms, unfitted to the spectra, place a transient dip at 2.24 THz
+after 30 s (measured 2.00 THz); their cause is unknown and they conflict with the reported polarisation and bias-direction
 selectivity.
 
 Reviewer stance: a sceptical THz-biophysics and computational-EM referee looking for a fatal flaw.
@@ -164,7 +166,7 @@ and packing 0.6 is 6× that: E∥ ≤ 0.05 dB, E⊥ ≤ 1.1 dB. Internode indepe
 ### 17. MAJOR: "'No resonance' covers only conductors; a node with a resonant constituent could resonate."
 **Response.** Sim 36 sweeps any passive node permittivity, ε′ −30…30, ε″ 0.01…30, at 0.6 and 2 THz.
 A negative-ε ring resonance exists near ε′ ≈ −1.5 (E∥, η ≈ 100), but the lossy water around the gap
-caps the slice change at ≤ 0.08 dB (≤ 0.5 dB at internode 200 µm; dense grid in item 51: ≤ 0.8 dB); mesh check 4 %. Negative ε′ with
+caps the slice change at ≤ 0.08 dB (≤ 0.5 dB at internode 200 µm; dense grid in item 51: ≤ 0.8 dB; with mesh and ±20 % materials, item 59: ≤ 0.9 dB); mesh check 4 %. Negative ε′ with
 ε″ ≪ 1 is not possible in an aqueous gap at THz. **Fixed**; claim stated for passive media with
 ε″ ≥ 0.1 (item 31).
 
@@ -442,28 +444,82 @@ quotes 2.2 %; the node bounds are stated for packing ≤ 0.6 and the 9 dB conduc
 **Response.** The abstract now leads with the closed law and the bounds, and closes with the
 waveform analysis of both reports. **Fixed.**
 
+## Seventh round (independent reviewer, 2026-11-03; verdict: major revision; every abstract number recomputed and confirmed, scripts reproduce, tracer follows the curves)
+
+### 62. FATAL: "The three reports are one experiment: H1's and H3's empty-cuvette and no-voltage waveforms are the same scans. The paper counts them as independent replications."
+**Response.** Confirmed and adopted (Sim 43): H1 vs H3 empty cuvette 2.2 % rms, minima 0.005 ps
+apart; no-voltage H1/H2/H3 1.8–3.7 %. §5.5 now treats them as one sample in one session with biased
+scans at 0.5, 2, 4 and 5 min, and notes that stated thickness, spectrometer and electrode gap
+differ between reports sharing these scans. "Both reports replicate" is removed everywhere. **Fixed.**
+
+### 63. MAJOR: "Trace H2's 2-min waveform; cite the fourth report; get the DataPort data."
+**Response.** H2 traced after the other fits: b = 0.120 (0.118–0.121), between 30 s and 4 min
+(linear interpolation predicts 0.10), residual 25 %, one path 63 % (Sim 43). The fourth report
+(Reports NAS RA 124(2):16–23) is cited as H4, not seen. The DataPort dataset (doi:10.21227/h17h-tp94)
+needs a subscription; stated in §5.6. **Fixed / not available.**
+
+### 64. MAJOR: "The 2 THz feature of paper 1 is untested."
+**Response.** Tested (Sim 43). H1's spectra traced (Figs. 3b, 4b; the arrow and label in 4b corrupt
+0.7–1.3 THz by up to 11 dB, so the no-voltage curve comes from 3b); the 30-s spectrum near 2 THz is
+2.4 dB above the traced floor. With |T| from the spectra, the phase of T from the waveforms and the
+fitted a, b, the two terms reach antiphase at 2.24 THz where at 30 s they are nearly equal: a −40 dB
+dip at 2.25 THz, which vanishes by 4 min as in the published spectrum. Measured 2.00 THz, −43.5 dB:
+12 % off. Stated as a partial match with the possible causes (super-linear tissue phase above
+1.4 THz, water-vapour lines). **Fixed (partial match, stated).**
+
+### 65. MAJOR: "'Reproduce' overclaims; q depends on the band."
+**Response.** "Consistent with" throughout; q = 1.09–1.18 with its band dependence given. **Fixed.**
+
+### 66. MAJOR: "The drift: at 30 s there is no dip at 0.78 THz to drift from."
+**Response.** Agreed: the 30-s ratio is a broad −2.9 to −4.1 dB trough over 0.56–0.78 THz. The drift
+is now described as a dip that deepens and moves from ~0.7 THz (q = 1) to 0.62–0.65 THz as b and q
+grow. **Fixed.**
+
+### 67. MAJOR: "τ < 0 in every fit is unphysical for any path through the cuvette."
+**Response.** −0.026 to −0.043 ps (2–3 pixels); explained as delay-stage drift between scans, and
+"undelayed" defined as within ~0.1 ps of the empty-cuvette delay (a path through ≤ 20 % of the
+tissue fits as well). **Fixed.**
+
+### 68. MAJOR: "§2.4 says the exact slab is used throughout; the bounds are first order."
+**Response.** Correct. §2.4 now says the node bounds are first order and checks them against the
+exact slab at their largest value (0.1223 vs 0.1227 dB); the exact slab is used for the
+conducting-axon case. **Fixed.**
+
+### 69. MINOR: "Spinal white matter packs at 0.7–0.8; the 5-point ε′ grid in the ±20 % check may miss the peak."
+**Response.** Packing 0.7–0.8 scales the bound to 1.0–1.2 dB, stated in §4.6; a peak missed by the
+5-point grid would have to be 7× the dense grid's to reach 9 dB. **Fixed.**
+
+### 70. MINOR: inconsistencies (18 mm for all reports; author lists; REPORT row 36 "≤ 0.8 dB"; row 39 "frequency and depth"; Fig. 6 uses withdrawn eye-read points; Fig. 7 shows the withdrawn gas column; KeyError in `sim36_sigma.log`).
+**Response.** 15–18 mm; "Hovhannisyan and co-workers"; REPORT rows 36 and 39 corrected; the
+two-path figure dropped; the gas-column curve removed from `fig_bypass`; the log error comes from a
+post-processing call after the values were written (values confirmed from the JSON). **Fixed.**
+
+### 71. MINOR: missing citations (lipid-bilayer dielectric dispersion; salt and THz water absorption); title should say "below 3 THz".
+**Response.** Zhang et al. 2022 and Xu et al. 2007 cited; title changed. **Fixed.**
+
 ---
 
 ## What matches and what does not (experiment)
 
 | Reported (Hovhannisyan, Makaryan, Martirosyan 2024) | This work |
 |---|---|
-| Dip near 0.6 THz (9–20 dB), changes near 2 THz | No node or fibre resonance anywhere in 0.1–3 THz. Both reports' biased waveforms contain a component at the empty-cuvette delay (paper 3: 21 %; paper 1: 4 % at 30 s, 17 % at 4 min); no one-path tissue change fits. With the tissue path also 1.09–1.11× thicker, fitted dips fall at 0.57 THz (paper 3, reported 0.56) and 0.63 THz (paper 1, traced 0.62): a consistency check (Sims 39, 42). Paper 3 shows no dip near 2 THz; paper 1's 2 THz feature is above the traced band and among unpurged water-vapour lines: not tested |
-| Dip drifts 0.7 → 0.5 THz in minutes | Water-vapour lines cannot drift. Paper 1 traced: at 30 s the undelayed component is 4 % and the shallow dip sits at 0.78 THz, where a pure bypass puts it; at 4 min it is 17 %, the tissue path 1.09× thicker and the dip at 0.62–0.63 THz (Sim 42). Matches the direction; fitted, not predicted |
+| Dip near 0.6 THz (9–20 dB) | No node or fibre resonance anywhere in 0.1–3 THz. The shared session's biased waveforms contain a component at the empty-cuvette delay (4, 12, 17, 22 % at 0.5, 2, 4, 5 min); no one-path tissue change fits. With the tissue path also 1.09–1.18× thicker, the dip falls at 0.57 THz (5 min, reported 0.56) and 0.63–0.65 THz (4 min, published 0.65): consistent, q fitted (Sims 39, 42, 43) |
+| 2 THz dip (30 s, paper 1) | Without fitting the spectra the same two terms give a −40 dB antiphase dip at 2.24 THz after 30 s that vanishes by 4 min, as published; measured 2.00 THz, −43.5 dB (12 % off). Unpurged water-vapour lines lie at 1.92–2.20 THz (Sim 43) |
+| Dip drifts 0.7 → 0.5 THz in minutes | Water-vapour lines cannot drift. At 30 s the traced ratio is a broad −3 to −4 dB trough over 0.56–0.78 THz; by 4 min the dip is at 0.62–0.65 THz as b reaches 0.17 and q 1.09 (Sims 42, 43). Matches the direction; fitted, not predicted |
 | High frequencies rise by 17–18 dB (2–2.5 THz, traced) | The bypass skips tissue loss: the waveform fit follows the rise to 1.7 THz within 1.5 dB rms (not testable above with the traced window); drying alone ≤ 3 dB (Sim 34) |
 | ~9 dB change under 100 V DC | Node (E∥, internode ≥ 200 µm, packing ≤ 0.6): ≤ 0.05 dB for any conductivity, ≤ 0.9 dB for any passive ε (ε″ ≥ 0.1, ±20 % materials); channels 10⁻⁹ dB. Fibre conduction: needs 290–980 S/m axoplasm (200–700× physiological). Heating/drying: smooth, ≤ 3 dB |
 | Effect only with E ∥ fibres | Not explained, and contradicts the bypass; model dichroism −0.35 dB; a conducting axon is itself E∥-selective (6.6 vs 2.7 dB at 0.6 THz), so this does not discriminate the wire model |
 | Effect only with DC across the fibres | Not explained, and contradicts the bypass; heating predicts the opposite (σ∥ ≈ 7σ⊥) |
 | Generated high frequencies (nonlinearity) | No ps nonlinearity at TDS fields (10⁻³ of onset); drying raises high-frequency transmission linearly |
 | Sample acts as a grating of wires | No diffraction orders below 6 THz; fibres are not periodic |
-| Onset ~5 min, recovery ~1 h; no further change after ~6 min (paper 1) | The undelayed component grows from 4 % (30 s) to 17–21 % (4–5 min); saturation after ~6 min not testable (no later trace). Timing compatible with heating/drying (0.64 K/s adiabatic), but see DC direction |
+| Onset ~5 min, recovery ~1 h; no further change after ~6 min (paper 1) | The undelayed component grows 4 → 12 → 17 → 22 % (0.5, 2, 4, 5 min); saturation after ~6 min not testable (no later trace). Timing compatible with heating/drying (0.64 K/s adiabatic), but see DC direction |
 | No significant change of average power (paper 3) | Traced pulse energy 1.03 (biased) vs 1.36 (no voltage): −1.2 dB, consistent with a small change of a heavily attenuated signal |
 | Tissue n = 3.6–3.9 | Inconsistent with water-based tissue (model and Berry 2003: 1.95–2.2) |
 
 ## Remaining (non-fatal) limitations stated in the paper
 - Single fibre plus effective medium; dense-packing corrections are O(1) (item 4).
-- No raw experimental data; the undelayed component rests on traced published waveforms (fits
-  leave 16–20 %, ~5× tracing noise) and its cause is unknown. Tests: image the cuvette during bias; record DC current and slice
+- No raw experimental data; the undelayed component rests on traced published waveforms from one
+  measurement session (fits leave 16–28 %, several times tracing noise; q depends on the band) and its cause is unknown. Tests: image the cuvette during bias; record DC current and slice
   mass; measure slice thickness; repeat the E⊥ and DC-direction controls on the same slice.
 - Linear passive EM response only; DC-driven structural changes enter only through bulk effects.
 - Passive linear model only; band limited to 0.1–3 THz.
