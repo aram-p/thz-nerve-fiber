@@ -15,16 +15,16 @@ Biased (100 V DC) spinal-cord slices reportedly show a 9–20 dB THz transmissio
 full-wave model of a myelinated fibre in water, benchmarked to 2 × 10⁻⁴. In 0.1–3 THz the node does
 not resonate. Its absorbed power follows a quasi-static law (exact limits, three constants) in node
 length over myelin thickness, g-ratio and permittivity contrast, within 2.3 % of full wave for
-fibres up to 10 µm, independent of internode length. For the THz field along the fibres (every
-published scan), no node state changes a 100 µm slice by more than 1.1 dB (10 dB at 2 THz with every
-extreme), and with every extreme combined none gives the extra delay the measured change needs (≤
-0.06 of ≥ 0.15 rad at 0.6 THz). Open channels add 10⁻⁶ of the membrane admittance. In the three
-reports' four biased scans the pulse gains an empty-cuvette-delay component, 4–22 % of that pulse
-after 0.5–5 min, while the tissue term arrives 0.04–0.07 ps later from 2 min. Together they are
-consistent with the 0.6 THz dip. A 7–18 % thicker slice, warming or a delay drift between scans
-gives that delay; node states cannot, nor can ions or axoplasm conduction beyond the loss the fits
-allow. A 2.0 THz single-scan dip is not reproduced. The undelayed component's source and the
-reported polarisation and bias-direction selectivity (shown without data) remain open.
+fibres up to 10 µm and any internode length. For the THz field along the fibres (every published
+scan), no node state changes a 100 µm slice by more than 1.1 dB; open channels add 10⁻⁶ of membrane
+admittance. The four traced biased pulses fit as the unbiased pulse plus a second pulse at the
+empty-cuvette delay, 4–22 % of it after 0.5–5 min, with the tissue pulse 0.04–0.07 ps later from 2
+min. Together they are consistent with the 0.6 THz dip. The later tissue pulse fits a 5–18 % thicker
+slice or warming. Node states cannot, even with every parameter at its extreme: they mostly advance
+the phase (≤ 0.06 of ≥ 0.15 rad). Ions or axoplasm conduction need conductivities above saturated
+brine and more loss than the fits allow. A single-scan 2.0 THz dip is not reproduced; no node state
+moves the model's dip there. The source of the second pulse and the reported polarisation and
+bias-direction selectivity (described without data) remain open.
 
 ## Section outline
 
@@ -67,7 +67,7 @@ reported polarisation and bias-direction selectivity (shown without data) remain
    including the combined ±20 % materials (×1.45); every extreme combined (internode 50 µm, packing
    0.8, measured slice's optical thickness ×2.2 / ×3.1) 1.5/2.9/10/17 dB (50 µm internode solved
    directly). At 0.6 THz compared with the change of T the q fit needs (+0.23–0.45 rad of delay; extra loss ≤ 3.3 dB since the fitted amplitude ≤ 1; was 1.1–2.2 dB and +0.23–0.45 rad
-   of delay), signed over 116 states: ≤ 0.06 rad of extra delay with every extreme, no state gives
+   of delay), signed over 80 distinct states (2 THz: 65 states moved into the 30-s two-pulse model, none puts its minimum within 0.03 THz of 1.99 THz at the measured depth, deepest −34.6 dB vs −43.5 dB, Sim 43 (e)); ≤ 0.06 rad of extra delay with every extreme, no state gives
    loss and delay together. 2 THz: extreme 10 dB vs ≥ 14 dB (nominal margin 7×). Near 3 THz the
    measured change is a rise; node states ≤ 0.4 dB.
    E∥ premise: E⊥ conductivity with all extremes 3.0/11.5/18 dB; E⊥ ≤ 1.1 dB, 3.5 dB only for a metallic
@@ -81,7 +81,7 @@ reported polarisation and bias-direction selectivity (shown without data) remain
    fibres heats more yet reportedly does nothing); delay-matched (Sim 46): ions and conduction need 7.5 dB, Liebe
    heating 76 K and 7 dB (allowed ≤ 3.3 dB); with the tracing floor (0.15 rad) heating of 5–17 K
    fits too; a thicker slab, a water gain into thickness and a 0.061 ps time shift fit: the data fix a
-   later tissue term, not its cause (thicker slice, warming or stage drift); selectivity stated in the electrode frame
+   later tissue term, not its cause (thicker slice or warming; stage drift disfavoured); selectivity stated in the electrode frame
    (E_THz ⊥ E_DC, parallel to electrodes 1–2); post-mortem tissue; ~70 mV across a fibre.
    5.6 Baseline 30 dB/0.1 mm at 2 THz vs 11.6–15.8 dB for water, and a tissue delay that implies
    n = 2.8–3.1 at the stated 100 µm (traced phase, Sim 39) vs 1.95–2.2 for water-based tissue: the

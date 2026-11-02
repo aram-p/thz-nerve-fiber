@@ -575,7 +575,7 @@ def report_round10(out=None):
     src = {"sigma": ("sim36_sigma.json", "0", [0.1, 0.6, 1.0, 2.0, 3.0]), "epsnode": ("sim36_epsnode.json", "ref", [0.6, 2.0]),
            "epsfine": ("sim36_epsfine.json", "ref", [0.6, 2.0]), "epsdense": ("sim36_epsdense.json", "ref", [0.6, 1.0, 2.0, 3.0]),
            "joint": ("sim36_round10.json", "joint_None", [0.6, 3.0])}
-    rows = []
+    rows, rows2 = [], []
     for name, (fn, rk, fl) in src.items():
         d = json.loads((OUT / fn).read_text()); fa = np.array(fl) * 1e12; ii = fl.index(0.6)
         for k, r in d.items():
@@ -586,6 +586,10 @@ def report_round10(out=None):
                 continue
             t = tissue_db(r, ref, fa, "par")
             rows.append((f"{name}:{k}", t["dipole"][ii], max(t[o][ii] for o in obs), t["phase_rad"][ii], name == "joint"))
+            if 2.0 in fl:
+                i2 = fl.index(2.0)
+                rows2.append((f"{name}:{k}", t["dipole"][i2], max(t[o][i2] for o in obs), t["phase_rad"][i2], False,
+                              t["phase_rad"][ii], max(t[o][ii] for o in obs)))
     seen, uniq = set(), []                            # epsfine repeats some epsnode states: keep each state once
     for r in rows:
         key = (round(r[2], 7), round(r[3], 9), r[4])
@@ -605,11 +609,28 @@ def report_round10(out=None):
         {"note": "0.6 THz, E-par, every node state with eps'' >= 0.1; first-order change of a slice with every extreme "
                  "(internode 50 um, packing 0.8, 220 um path) and combined materials", "factor": ext,
          "states": [{"state": r[0], "loss_db": ext * mat(r) * r[2], "delay_rad": ext * mat(r) * r[3]} for r in rows]}, indent=1))
-    both = [r for r in rows if ext * mat(r) * r[3] >= 0.21]
-    print(f"  states giving >= 0.21 rad extra delay (the least the q fits need) with every extreme: {len(both)}", flush=True)
+    for key in ("sigma:3e+06", "epsnode:1_0.3"):
+        r = [x for x in rows if x[0] == key][0]
+        print(f"  sign check {key}: extra delay {ext * mat(r) * r[3]:+.4f} rad with every extreme "
+              "(a metallic node is more polarisable than water and should delay; eps' = 1 less, and should advance)", flush=True)
+    seen2, u2 = set(), []
+    for r in rows2:
+        key = (round(r[2], 7), round(r[3], 9))
+        if key not in seen2:
+            seen2.add(key); u2.append(r)
+    ext2 = 6 * 4 * 4 / 3 * 3.1                        # slice factor 3.1 at 2-3 THz (Sim 45)
+    (OUT / "sim36_signed2thz.json").write_text(json.dumps(
+        {"note": "2 THz, E-par, node states with eps'' >= 0.1 solved at 2 THz; first-order change of the slice with every "
+                 "extreme (x6 x4 x4/3 x3.1) and combined materials x1.45; the same state's 0.6 THz values (x70.4)",
+         "states": [{"state": r[0], "loss_db_2": ext2 * 1.45 * r[2], "delay_rad_2": ext2 * 1.45 * r[3],
+                     "loss_db_06": ext * 1.45 * r[6], "delay_rad_06": ext * 1.45 * r[5]} for r in u2]}, indent=1))
+    print(f"  2 THz: {len(u2)} states written to sim36_signed2thz.json; largest |delay| "
+          f"{max(abs(ext2 * 1.45 * r[3]) for r in u2):.3f} rad, largest loss {max(ext2 * 1.45 * r[2] for r in u2):.2f} dB", flush=True)
+    both = [r for r in rows if ext * mat(r) * r[3] >= 0.15]
+    print(f"  states giving >= 0.15 rad extra delay (the least the traces allow) with every extreme: {len(both)}", flush=True)
     mag = max(rows, key=lambda r: np.hypot(r[2] / 8.686, r[3]) * mat(r))
     print(f"  largest |change of ln T| in any direction (sign or phase reference wrong): {mag[0]} "
-          f"{ext * mat(mag) * np.hypot(mag[2] / 8.686, mag[3]):.3f} with every extreme (needed >= 0.21 rad)", flush=True)
+          f"{ext * mat(mag) * np.hypot(mag[2] / 8.686, mag[3]):.3f} with every extreme (floor 0.15 rad)", flush=True)
 
 if __name__ == "__main__":
     OUT.mkdir(parents=True, exist_ok=True)

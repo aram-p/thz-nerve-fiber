@@ -81,3 +81,14 @@ component of the fitted size allows, whatever its phase.
       0.50-0.80 THz: model  -22.9 dB, published  -22.8 dB
       1.85-2.15 THz: model  -16.0 dB, published  -14.0 dB
       2.30-3.00 THz: model  -14.9 dB, published  -13.7 dB
+
+(e) Node states at 2 THz in the 30-s two-term model (every extreme; change held constant over 1.8-2.4 THz)
+  band 0.2-1.0 THz, no node change: minimum in 1.85-2.15 THz at 2.084 THz, -39.1 dB
+  band 0.2-1.2 THz, no node change: minimum in 1.85-2.15 THz at 2.131 THz, -38.2 dB
+  band 0.2-1.4 THz, no node change: minimum in 1.85-2.15 THz at 2.149 THz, -35.1 dB
+  band 0.3-1.4 THz, no node change: minimum in 1.85-2.15 THz at 2.149 THz, -34.2 dB
+  band 0.4-1.4 THz, no node change: minimum in 1.85-2.15 THz at 2.149 THz, -33.0 dB
+  band 0.2-1.6 THz, no node change: minimum in 1.85-2.15 THz at 2.149 THz, -32.3 dB
+  closest node state: epsfine:-2.0_0.1 (band 0.2-1.0): minimum at 1.969 THz, -32.8 dB; its change at 2 THz +0.40 rad, 5.4 dB; at 0.6 THz -0.005 rad
+  node-state/band pairs placing the minimum within 0.03 THz of 1.993 THz: 3; deepest -34.6 dB (epsfine:-2.5_0.1, band 0.2-1.0) against -43.5 dB published
+  node states placing a minimum within 0.03 THz of 1.993 THz and at least as deep as -43.5 dB: 0

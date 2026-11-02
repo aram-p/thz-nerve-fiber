@@ -15,6 +15,8 @@ Writes results/sim43/sim43.txt, results/sim43/spectra.npz, results/sim43/trace_c
 """
 from pathlib import Path
 
+import json
+
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy.optimize import least_squares
@@ -243,6 +245,48 @@ for name, key, q in (("30 s", "30 s (paper 1)", 1.0), ("4 min", "4 min (paper 1)
     for lo, hi in ((0.5, 0.8), (1.85, 2.15), (2.3, 3.0)):
         m_ = (fb >= lo - 1e-9) & (fb <= hi + 1e-9)
         say(f"      {lo:.2f}-{hi:.2f} THz: model {np.nanmean(model[m_]):6.1f} dB, published {np.nanmean(rel[spec_key][m_]):6.1f} dB")
+(OUT / "sim43.txt").write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+# ---------------------------------------------------------------- (e) can a node state place the 30-s dip at 1.99 THz?
+# Under the two-term reading the dip's narrowness comes from interference, so a fixed node material only has to
+# shift the phase (and keep |a T| ~ b). Each node state solved at 2 THz (sim36 report_round10, every extreme,
+# combined materials) multiplies T by its first-order change, held constant over 1.8-2.4 THz (a fixed material
+# is smooth there, Sec. 4.5); the 30-s model minimum is then compared with the published dip (1.993 THz, -43.5 dB
+# re empty, a lower bound on depth). Every phase band of (d) is tried.
+say()
+say("(e) Node states at 2 THz in the 30-s two-term model (every extreme; change held constant over 1.8-2.4 THz)")
+node2 = json.loads((ROOT / "results" / "sim30" / "sim36_signed2thz.json").read_text())["states"]
+fg = np.linspace(1.80, 2.40, 1201)
+mg = 10 ** (np.interp(fg, fb, rel["none"]) / 20)
+a30, b30, t30 = rows["30 s (paper 1)"]
+hits, best, placed = [], (np.inf, None), []
+for lo, hi in ((0.2, 1.0), (0.2, 1.2), (0.2, 1.4), (0.3, 1.4), (0.4, 1.4), (0.2, 1.6)):
+    sb = (fq > lo) & (fq < hi)
+    d1, d0 = np.polyfit(fq[sb], ph[sb], 1)
+    for st in [{"state": "none", "loss_db_2": 0.0, "delay_rad_2": 0.0, "delay_rad_06": 0.0}] + node2:
+        m = 20 * np.log10(np.abs(a30 * mg * 10 ** (-st["loss_db_2"] / 20) * np.exp(1j * (d1 * fg + d0 - st["delay_rad_2"]))
+                                 + b30 * np.exp(-1j * 2 * np.pi * fg * t30)))
+        sel = (fg > 1.85) & (fg < 2.15)
+        i = int(np.argmin(np.where(sel, m, np.inf)))
+        miss = abs(fg[i] - 1.993)
+        if st["state"] != "none" and miss < best[0]:
+            best = (miss, (lo, hi, st["state"], fg[i], m[i], st["delay_rad_2"], st["loss_db_2"], st["delay_rad_06"]))
+        if st["state"] != "none" and miss <= 0.03:
+            placed.append((m[i], st["state"], lo, hi))
+        if miss <= 0.03 and m[i] <= -43.5:
+            hits.append((lo, hi, st["state"], fg[i], m[i], st["delay_rad_2"], st["loss_db_2"], st["delay_rad_06"]))
+        if st["state"] == "none":
+            say(f"  band {lo}-{hi} THz, no node change: minimum in 1.85-2.15 THz at {fg[i]:.3f} THz, {m[i]:.1f} dB")
+lo, hi, s_, f_, m_, dp, dl, d06 = best[1]
+say(f"  closest node state: {s_} (band {lo}-{hi}): minimum at {f_:.3f} THz, {m_:.1f} dB; its change at 2 THz "
+    f"{dp:+.2f} rad, {dl:.1f} dB; at 0.6 THz {d06:+.3f} rad")
+if placed:
+    dm = min(placed)
+    say(f"  node-state/band pairs placing the minimum within 0.03 THz of 1.993 THz: {len(placed)}; deepest {dm[0]:.1f} dB "
+        f"({dm[1]}, band {dm[2]}-{dm[3]}) against -43.5 dB published")
+say(f"  node states placing a minimum within 0.03 THz of 1.993 THz and at least as deep as -43.5 dB: {len(hits)}"
+    + "".join(f"\n    {h[2]} (band {h[0]}-{h[1]}): {h[3]:.3f} THz, {h[4]:.1f} dB; 2 THz {h[5]:+.2f} rad {h[6]:.1f} dB; "
+              f"0.6 THz {h[7]:+.3f} rad" for h in hits[:10]))
 (OUT / "sim43.txt").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 # ---------------------------------------------------------------- figure for the paper
