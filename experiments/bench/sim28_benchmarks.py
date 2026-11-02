@@ -40,12 +40,13 @@ def b1():
         arr = o["arr"]
         print("EvalPoint shape", arr.shape, flush=True)
         # arr layout: [expr][freq*points] or [freq][...]: reshape robustly
-        a = arr.reshape(4, len(f), 2) if arr.size == 4 * len(f) * 2 else None
+        # EvalPoint.getReal(): rows = expr-major over points (expr0@p0, expr0@p1, ...), cols = freqs
+        a = arr.reshape(4, 2, len(f))
         res = []
         for i, fi in enumerate(f):
             k0 = 2 * np.pi * fi / C0
-            esc_l = complex(a[0, i, 0], a[1, i, 0])
-            et_r = complex(a[2, i, 1], a[3, i, 1])
+            esc_l = complex(a[0, 0, i], a[1, 0, i])
+            et_r = complex(a[2, 1, i], a[3, 1, i])
             r = esc_l * np.exp(-1j * k0 * o["xl"] * 1e-6)
             t = et_r * np.exp(1j * k0 * (o["xr"] - d) * 1e-6)
             A = o["P"][i] / (0.5 / ETA0 * o["height"] * 1e-6)
@@ -118,7 +119,7 @@ def b3():
                         im = list(s.ms).index(m)
                         fe_ax = o["P_axon"][i] / L
                         fe_sh = (o["P_myelin"][i] + o["P_node"][i]) / L
-                        tot = o["P_axon"][i] + o["P_myelin"][i] + o["P_node"][i] + o["P_water"][i]
+                        tot = o["P_axon"][i] + o["P_myelin"][i] + o["P_node"][i] + o["P_win"][i]
                         bal = (o["flux_in"][i] - tot) / o["flux_in"][i]
                         rows.append([m, fi / 1e12, fe_ax, fe_sh, po[0, im], po[1, im], bal])
                         print(f"B3 null={null} {pol} m={m} f={fi/1e12:.1f} axon fem/an={fe_ax/po[0,im]:.5f} "

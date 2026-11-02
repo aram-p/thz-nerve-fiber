@@ -57,7 +57,7 @@ def build_and_solve(eps_expr: str, d_um: float, freqs_hz, air_um: float = 150.0,
     sz = mesh.feature("size"); sz.set("custom", "on"); sz.set("hmax", str(h_um))
     mesh.run()
     std = j.study().create("std1")
-    std.create("freq", "Frequency").set("plist", " ".join(f"{f:.10g}" for f in freqs_hz))
+    sf = std.create("freq", "Frequency"); sf.set("punit", "Hz"); sf.set("plist", " ".join(f"{f:.10g}" for f in freqs_hz))
     std.run()
 
     xl, xr = -air_um / 2, d_um + air_um / 2

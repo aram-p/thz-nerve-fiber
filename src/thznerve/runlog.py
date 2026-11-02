@@ -64,7 +64,8 @@ class RunLog:
 
     def __exit__(self, exc_type, exc, tb) -> bool:
         if exc is not None and not self.outcome:
-            self.outcome = f"FAILED: {exc_type.__name__}: {str(exc)[:120]}"
+            msg = " ".join(str(exc).split())          # one line: COMSOL messages are multi-line
+            self.outcome = f"FAILED: {exc_type.__name__}: {msg[-200:]}"
         append_row(
             {
                 "date": _dt.datetime.now().isoformat(timespec="seconds"),

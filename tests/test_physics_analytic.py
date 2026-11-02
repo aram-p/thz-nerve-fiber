@@ -67,3 +67,19 @@ def test_mie_flux_matches_volume_integral(pol):
     p_vol = 0.5 * w * EPS0 * 0.3 * np.trapezoid(integ, rs)
     p_vol += 0.5 * w * EPS0 * 0.3 * 0  # endpoints negligible
     assert s.absorbed_per_layer()[1] == pytest.approx(p_vol, rel=0.03)
+
+
+def test_mixtures_and_literature_values():
+    from thznerve.physics.materials import (WATER_KS1996, ConstantEps, Looyenga, axoplasm, myelin,
+                                            refractive_index)
+    f = 1e12
+    w = complex(WATER_KS1996(f))
+    assert abs(w - (4.14 - 2.14j)) < 0.02                      # docs/literature.md 2a table
+    assert abs(complex(myelin()(f)) - (3.01 - 0.70j)) < 0.02    # 2b table, 40 % water
+    d = ConstantEps(2.3 - 0.05j)
+    assert abs(complex(Looyenga(WATER_KS1996, d, 1.0)(f)) - w) < 1e-12
+    assert abs(complex(Looyenga(WATER_KS1996, d, 0.0)(f)) - d.eps) < 1e-12
+    # myelin index stays below water's over the whole band (anti-guiding)
+    fs = np.linspace(0.1e12, 3e12, 30)
+    assert np.all(refractive_index(myelin(phi=0.5)(fs)).real < refractive_index(WATER_KS1996(fs)).real)
+    assert np.all(refractive_index(axoplasm()(fs)).real < refractive_index(WATER_KS1996(fs)).real)

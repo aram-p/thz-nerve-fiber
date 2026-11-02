@@ -25,7 +25,7 @@ Evidence (Sim 27, `experiments/audit/`, figure `paper/figures/fig_legacy_artefac
 4. **Unresolved mesh.** The legacy |E|(z) on the axis jumps by 2× between neighbouring sample
    points (panel b): "peak |E| over the node window" was the maximum of mesh noise. Sim 22 also
    baked the water ε at 0.55 THz into a 1.85–2.15 THz sweep.
-5. **The "EWFD ignores σ" diagnosis** was drawn from the same blind metric; it is withdrawn.
+5. **Root cause: every legacy solve ran at 10²³–10²⁴ Hz.** The Frequency step defaulted to `punit = THz` and the code passed Hz numbers (`plist = "600000000000.0"` → 6e23 Hz, verified with `scripts/probe/probe_legacy_freq.py`). At that frequency the wavelength is far below the mesh, so the output is noise, and analytic σ/(ωε0) and Debye terms in `freq` collapse to 0 or ε∞. The "EWFD ignores σ / analytic εr" diagnosis was this unit bug and is withdrawn.
    The new pipeline puts all loss into complex εr and tests it against analytic results.
 6. **Energy.** Sim 23 reported ~10 W absorbed per unit cell for a 1 V/m incident wave
    (incident power ~10⁻¹² W): energy balance was violated by ~12 orders of magnitude.
@@ -39,6 +39,7 @@ on every solve. See the iteration log below.
 | # | hypothesis | evidence | verdict |
 |---|---|---|---|
 | 27 | legacy peaks are artefacts | fibre ≡ no fibre on axis; peaks move with box length; mesh noise | **confirmed: Sims 1–26 invalid** |
+| 28 | the new pipeline is exact on problems with known answers | B1 water slab vs transfer matrix: R+T+A−1 ≤ 8e-6, T error 9e-5 (30 freqs, 18 s). B2 2D layered cylinder vs Mie series, TM and TE: absorbed power per layer ≤ 8e-6, flux balance ≤ 5e-7. B3 axisymmetric harmonic model (m = 0..3) vs per-order series, both polarisations: ≤ 2e-4, balance ≤ 2e-5; null test (fibre = water) ≤ 1e-7. Bugs found on the way: flux on the PML interface reads half; axisym integrals need 2πr weighting; axisym PML must be Cylindrical (`experiments/bench/sim28_benchmarks.py`) | **passed: tools trusted** |
 | 29 | reported voltage-induced features come from a partial air path, not fibre physics | authors' own n, d give notches at 0.52–0.58 THz (d = 100 µm) and 0.74/2.2 THz (d = 70 µm); the other 2π unwrap branch passes through their n = 7.8/4.2/2.9 points; high-f gain +9/+18/+17 dB vs +8/+11/+18 (`paper/figures/fig_twopath.png`) | consistent, hypothesis only (needs raw data) |
 
 ---

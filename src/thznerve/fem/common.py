@@ -6,7 +6,7 @@ from typing import Any, Sequence
 
 import numpy as np
 
-from thznerve.physics.materials import DoubleDebye
+from thznerve.physics.materials import DoubleDebye, PlusSigma
 
 _CLIENT = None
 
@@ -24,15 +24,7 @@ def client(cores: int = 4):
 
 def debye_expr(m: DoubleDebye, extra_sigma: float = 0.0) -> str:
     """COMSOL analytic expression of a double-Debye model in `freq` (+ optional sigma)."""
-    s = (
-        f"({m.eps_inf})"
-        f"+({m.eps_s - m.eps_1})/(1+i*2*pi*freq*{m.tau1_s}[s])"
-        f"+({m.eps_1 - m.eps_inf})/(1+i*2*pi*freq*{m.tau2_s}[s])"
-    )
-    sig = m.sigma_dc + extra_sigma
-    if sig:
-        s += f"-i*({sig}[S/m])/(2*pi*freq*epsilon0_const)"
-    return s
+    return (PlusSigma(m, extra_sigma) if extra_sigma else m).comsol()
 
 
 def complex_literal(z: complex) -> str:
@@ -63,13 +55,20 @@ def set_eps(comp, tag: str, sel: str, expr: str):
 
 
 def integrate(model, kind: str, sel: str | None, exprs: Sequence[str], tag: str = "intx",
-              dataset: str = "dset1") -> np.ndarray:
-    """Integrate expressions over a named selection for every solution. Returns (n_expr, n_sol)."""
+              dataset: str = "dset1", revolve: bool = False) -> np.ndarray:
+    """Integrate expressions over a named selection for every solution. Returns (n_expr, n_sol).
+
+    revolve=True (2D axisymmetric): weight by 2*pi*r, i.e. IntSurface -> volume integral and
+    IntLine -> surface integral. COMSOL leaves this off by default, so an axisymmetric
+    integral without it is per radian per metre and off by 1/(2*pi*r_mean).
+    """
     num = model.java.result().numerical()
     if tag in [str(t) for t in num.tags()]:
         num.remove(tag)
     f = num.create(tag, kind)
     f.set("data", dataset)
+    if revolve:
+        f.set({"IntSurface": "intvolume", "IntLine": "intsurface"}[kind], "on")
     if sel is not None:
         f.selection().named(sel)
     f.set("expr", list(exprs))

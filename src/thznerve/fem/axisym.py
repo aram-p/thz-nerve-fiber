@@ -76,7 +76,9 @@ def build(spec: AxiSpec, name: str = "axi"):
     _rect(geom, "r_my1", a, b, -h, -Ln / 2)
     _rect(geom, "r_nd", a, b, -Ln / 2, Ln / 2)
     _rect(geom, "r_my2", a, b, Ln / 2, h)
-    _rect(geom, "r_w", b, R, -h, h)
+    Rf = R - 2 * spec.h_water_um     # flux contour inside water (Poav on the PML interface reads half)
+    _rect(geom, "r_w", b, Rf, -h, h)
+    _rect(geom, "r_w2", Rf, R, -h, h)
     if spec.outer == "pml":
         _rect(geom, "r_pml", R, rmax, -h, h)
     geom.run("fin")
@@ -87,10 +89,12 @@ def build(spec: AxiSpec, name: str = "axi"):
     _box(geom, "s_my2", 2, a - e, b + e, Ln / 2 - e, h + e)
     u = geom.create("s_myelin", "UnionSelection")
     u.set("entitydim", "2"); u.set("input", ["s_my1", "s_my2"])
+    _box(geom, "s_win", 2, b - e, Rf + e, -h - e, h + e)       # water inside the flux contour
     _box(geom, "s_water", 2, b - e, R + e, -h - e, h + e)
     if spec.outer == "pml":
         _box(geom, "s_pml", 2, R - e, rmax + e, -h - e, h + e)
-    _box(geom, "s_rR", 1, R - e, R + e, -h - e, h + e)       # flux surface r = R
+    _box(geom, "s_rR", 1, R - e, R + e, -h - e, h + e)       # outer boundary r = R (SBC)
+    _box(geom, "s_rf", 1, Rf - e, Rf + e, -h - e, h + e)     # flux surface r = Rf
     _box(geom, "s_zlo", 1, -e, rmax + e, -h - e, -h + e)
     _box(geom, "s_zhi", 1, -e, rmax + e, h - e, h + e)
     up = geom.create("s_per", "UnionSelection")
@@ -108,6 +112,7 @@ def build(spec: AxiSpec, name: str = "axi"):
         set_eps(comp, "mat_pml", "geom1_s_pml", "eps_water")
         pml = comp.coordSystem().create("pml1", "PML")
         pml.selection().named("geom1_s_pml")
+        pml.set("ScalingType", "Cylindrical")   # default Spherical fails: "no spherical regions"
 
     ph = comp.physics().create("ewfd", "ElectromagneticWavesFrequencyDomain", "geom1")
     ph.prop("outofplanewavenumber").set("mFloquet", "m")
@@ -139,7 +144,7 @@ def build(spec: AxiSpec, name: str = "axi"):
 
     std = j.study().create("std1")
     st = std.create("freq", "Frequency")
-    st.set("plist", " ".join(f"{f:.10g}" for f in spec.freqs_hz))
+    st.set("punit", "Hz"); st.set("plist", " ".join(f"{f:.10g}" for f in spec.freqs_hz))
     return model
 
 
@@ -164,8 +169,31 @@ def solve_mode(model, m: int, pol: str):
     model.java.study("std1").run()
     out = {}
     for d in ("axon", "myelin", "node", "water"):
-        r = integrate(model, "IntSurface", f"geom1_s_{d}", [QEXPR.format(d=d)], tag="iq")
+        r = integrate(model, "IntSurface", f"geom1_s_{d}", [QEXPR.format(d=d)], tag="iq", revolve=True)
         out[f"P_{d}"] = r[0]
-    out["flux_in"] = integrate(model, "IntLine", "geom1_s_rR", ["-ewfd.Poavr"], tag="ifl")[0]
+    # inward flux through r = Rf balances P_axon + P_myelin + P_node + P_win
+    out["P_win"] = integrate(model, "IntSurface", "geom1_s_win", [QEXPR.format(d="water")], tag="iq", revolve=True)[0]
+    out["flux_in"] = integrate(model, "IntLine", "geom1_s_rf", ["-ewfd.Poavr"], tag="ifl", revolve=True)[0]
     out["dof"] = n_dof(model)
+    return out
+
+
+def solve_pol(model, pol: str, m_max: int = 3):
+    """Sum the azimuthal orders m = -m_max..m_max for one polarisation (normal incidence).
+
+    Returns per-domain absorbed power per period (W, |E0| = 1 V/m at the axis), the
+    per-order arrays, the energy-balance residual of every order and the share of the
+    last order (truncation check).
+    """
+    per = [solve_mode(model, m, pol) for m in range(m_max + 1)]
+    keys = ("P_axon", "P_myelin", "P_node", "P_water", "P_win", "flux_in")
+    w = np.array([1.0] + [2.0] * m_max)
+    out = {k: np.tensordot(w, np.array([p[k] for p in per]), axes=1) for k in keys}
+    out["per_order"] = {k: np.array([p[k] for p in per]) for k in keys}
+    inner = sum(np.array([p[k] for p in per]) for k in ("P_axon", "P_myelin", "P_node", "P_win"))
+    flux = np.array([p["flux_in"] for p in per])
+    out["balance"] = np.max(np.abs(flux - inner) / np.abs(flux).sum(axis=0, keepdims=True), axis=0)
+    fib = sum(out["per_order"][k] for k in ("P_axon", "P_myelin", "P_node"))
+    out["last_order_share"] = w[-1] * fib[-1] / np.tensordot(w, fib, axes=1)
+    out["dof"] = per[0]["dof"]
     return out

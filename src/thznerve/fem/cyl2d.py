@@ -6,8 +6,8 @@ Benchmarked against the exact series in thznerve.physics.mie_cyl.
 
 pol "TM": E along the cylinder axis (out-of-plane Ez).
 pol "TE": E perpendicular to the axis (in-plane, E along y).
-Energy balance: inward flux of the total field through the water/PML circle
-r = R equals the power absorbed inside it.
+Energy balance: inward flux of the total field through a circle r = Rf inside the
+water (Rf = R - 2 h_water) equals the power absorbed inside it.
 """
 
 from __future__ import annotations
@@ -39,7 +39,8 @@ def build_and_solve(spec: Cyl2DSpec, name: str = "cyl2d"):
     comp = j.component().create("comp1", True)
     geom = comp.geom().create("geom1", 2)
     geom.lengthUnit("um")
-    radii = list(spec.radii_um) + [spec.R_um, spec.R_um + spec.pml_um]
+    Rf = spec.R_um - 2 * spec.h_water_um          # flux contour, inside water (not on the PML interface)
+    radii = list(spec.radii_um) + [Rf, spec.R_um, spec.R_um + spec.pml_um]
     for i, r in enumerate(radii):
         cc = geom.create(f"c{i}", "Circle")
         cc.set("r", str(r))
@@ -48,14 +49,14 @@ def build_and_solve(spec: Cyl2DSpec, name: str = "cyl2d"):
     mids = [0.0] + [0.5 * (radii[i] + radii[i + 1]) for i in range(len(radii) - 1)]
     for i, rm in enumerate(mids):
         ball_sel(geom, f"d{i}", rm, 0.0, r=1e-3, dim=2)
-    # boundary circle r = R (water/PML interface) for the flux balance
-    ibR = len(spec.radii_um)
+    # flux contour r = Rf. Not on the water/PML interface: there ewfd.Poav is the mean of
+    # the water side and the PML side and reads half the flux.
     s = geom.create("bR", "BallSelection")
     s.set("entitydim", "1"); s.set("posx", "0"); s.set("posy", "0")
-    s.set("r", str(spec.R_um * 1.001)); s.set("condition", "inside")
+    s.set("r", str(Rf * 1.0001)); s.set("condition", "inside")
     s2 = geom.create("bRin", "BallSelection")
     s2.set("entitydim", "1"); s2.set("posx", "0"); s2.set("posy", "0")
-    s2.set("r", str(spec.R_um * 0.999)); s2.set("condition", "inside")
+    s2.set("r", str(Rf * 0.9999)); s2.set("condition", "inside")
     d = geom.create("bflux", "DifferenceSelection")
     d.set("entitydim", "1"); d.set("add", ["bR"]); d.set("subtract", ["bRin"])
     geom.run()
@@ -72,10 +73,11 @@ def build_and_solve(spec: Cyl2DSpec, name: str = "cyl2d"):
     # materials: layers 0..n_lay-1, host also in PML domain
     for i in range(n_lay):
         set_eps(comp, f"mat{i}", f"geom1_d{i}", f"eps{i}")
-    set_eps(comp, "matpml", f"geom1_d{n_lay}", "epsh")
+    set_eps(comp, "matw2", f"geom1_d{n_lay}", "epsh")
+    set_eps(comp, "matpml", f"geom1_d{n_lay + 1}", "epsh")
 
     pml = comp.coordSystem().create("pml1", "PML")
-    pml.selection().named(f"geom1_d{n_lay}")
+    pml.selection().named(f"geom1_d{n_lay + 1}")
     pml.set("ScalingType", "Cylindrical")
 
     ph = comp.physics().create("ewfd", "ElectromagneticWavesFrequencyDomain", "geom1")
@@ -90,7 +92,6 @@ def build_and_solve(spec: Cyl2DSpec, name: str = "cyl2d"):
 
     mesh = comp.mesh().create("mesh1")
     ft = mesh.create("ftri", "FreeTri")
-    ft.selection().all()
     sz = mesh.feature("size")
     sz.set("custom", "on"); sz.set("hmax", str(spec.h_water_um)); sz.set("hmin", "0.01")
     rr = [0.0] + list(spec.radii_um)
@@ -105,13 +106,13 @@ def build_and_solve(spec: Cyl2DSpec, name: str = "cyl2d"):
 
     std = j.study().create("std1")
     st = std.create("freq", "Frequency")
-    st.set("plist", " ".join(f"{f:.10g}" for f in spec.freqs_hz))
+    st.set("punit", "Hz"); st.set("plist", " ".join(f"{f:.10g}" for f in spec.freqs_hz))
     std.run()
 
     # absorbed power per unit length in each layer and water annulus (W/m)
     q = "0.5*2*pi*freq*epsilon0_const*(-imag(eps{i}))*(abs(ewfd.Ex)^2+abs(ewfd.Ey)^2+abs(ewfd.Ez)^2)"
     P = np.vstack([integrate(model, "IntSurface", f"geom1_d{i}", [q.format(i=i)])[0] for i in range(n_lay)])
-    # inward total-field flux through r = R (W/m)
+    # inward total-field flux through r = Rf (W/m); balances sum(P_layers)
     flux = integrate(model, "IntLine", "geom1_bflux", ["-(ewfd.Poavx*x+ewfd.Poavy*y)/sqrt(x^2+y^2)"])[0]
     out = dict(P_layers=P, flux_in=flux, dof=n_dof(model), freqs=np.array(spec.freqs_hz))
     return model, out
