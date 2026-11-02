@@ -92,7 +92,9 @@ x, t = fits["KS1996"]
 ff = np.linspace(0.2, 3.0, 600)
 fig, ax = plt.subplots(figsize=(6, 3.6))
 ax.errorbar(F_DIG, DB_DIG, yerr=2, fmt="ko", ms=4, label="reported, 5 min at 100 V (read off Fig. 1b)")
-ax.plot(ff, ratio_db(ff, x, t), "C3", label=f"gas path: x = {x:.2f}, t = {t:.0f} µm (fit)")
+ax.plot(ff, ratio_db(ff, x, t), "C3", label=f"gas path, water KS1996: x = {x:.2f}, t = {t:.0f} µm (fit)")
+xb, tb = fits["broadband"]
+ax.plot(ff, ratio_db(ff, xb, tb, WATER_BROADBAND), "C0", label=f"gas path, broadband water: x = {xb:.2f}, t = {tb:.0f} µm (fit)")
 for tt, ls in ((0.6 * t, ":"), (0.8 * t, "--")):
     ax.plot(ff, ratio_db(ff, x, tt), "C3", ls=ls, lw=0.8, label=f"same x, t = {tt:.0f} µm (earlier)")
 ax.axhline(0, color="0.6", lw=0.6)
