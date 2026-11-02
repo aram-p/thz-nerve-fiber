@@ -68,7 +68,8 @@ def run(case: str, a=3.5, b=5.0, Ln=1.0, Lint=1000.0, R=100.0, pml=60.0, h_water
             P_fib = o["P_axon"] + o["P_myelin"] + o["P_node"]
             r = dict(f_THz=f / 1e12, P_node=o["P_node"], P_axon=o["P_axon"], P_myelin=o["P_myelin"],
                      P_fibre=P_fib, sigma_node=o["P_node"] / I0, eta=o["P_node"] / (q_bulk * Vn),
-                     share=o["P_node"] / P_fib, balance=o["balance"], last_m=o["last_order_share"])
+                     share=o["P_node"] / P_fib, balance=o["balance"], last_m=o["last_order_share"],
+                     P_win=o["P_win"], flux_in=o["flux_in"], p_re=o["p_dip"].real, p_im=o["p_dip"].imag)
             log.dof = o["dof"]
             log.outcome = (f"eta {r['eta'].min():.3f}-{r['eta'].max():.3f} share {r['share'].min():.2e}-"
                            f"{r['share'].max():.2e} bal<={r['balance'].max():.1e} lastm<={r['last_m'].max():.1e}")

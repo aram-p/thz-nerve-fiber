@@ -64,3 +64,14 @@ def test_node_sigma_imaginary_offset():
     eps_n = complex(node_epsilon(_F_TEST_HZ, sigma_S_per_m=sigma))
     expected_offset = 1j * sigma / (2 * np.pi * _F_TEST_HZ * EPS_0)
     assert (eps_n - eps_w) == pytest.approx(expected_offset)
+
+
+def test_plus_lorentz_broadband_water():
+    """Liebe broadband bands: no change at low frequency, extra loss growing to ~2x at 3 THz."""
+    import numpy as np
+    from thznerve.physics.materials import WATER_BROADBAND, WATER_KS1996
+    f = np.array([1e9, 3e12])
+    r = WATER_BROADBAND(f) / WATER_KS1996(f)
+    assert abs(r[0] - 1) < 1e-3
+    assert 1.8 < WATER_BROADBAND(f)[1].imag / WATER_KS1996(f)[1].imag < 2.2
+    assert "freq/1[THz]" in WATER_BROADBAND.comsol()

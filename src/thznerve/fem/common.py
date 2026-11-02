@@ -42,12 +42,15 @@ def ball_sel(geom, tag: str, x: float, y: float, r: float = 1e-3, dim: int = 2, 
     return s
 
 
-def set_eps(comp, tag: str, sel: str, expr: str):
+def set_eps(comp, tag: str, sel: str, expr):
+    """expr: one expression (isotropic) or a (xx, yy, zz) tuple; in 2D axisymmetry these are
+    (rr, phiphi, zz)."""
     mats = comp.material()
     if tag in [str(t) for t in mats.tags()]:
         mats.remove(tag)
     m = mats.create(tag, "Common")
-    m.propertyGroup("def").set("relpermittivity", [expr, "0", "0", "0", expr, "0", "0", "0", expr])
+    ex, ey, ez = (expr, expr, expr) if isinstance(expr, str) else expr
+    m.propertyGroup("def").set("relpermittivity", [ex, "0", "0", "0", ey, "0", "0", "0", ez])
     m.propertyGroup("def").set("relpermeability", ["1", "0", "0", "0", "1", "0", "0", "0", "1"])
     m.propertyGroup("def").set("electricconductivity", ["0", "0", "0", "0", "0", "0", "0", "0", "0"])
     m.selection().named(sel)

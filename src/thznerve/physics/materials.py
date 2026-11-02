@@ -127,6 +127,74 @@ class PlusSigma:
         return f"({self.m.comsol()}-i*({self.sigma}[S/m])/(2*pi*freq*epsilon0_const))"
 
 
+@dataclass(frozen=True)
+class Wiener:
+    """Wiener bound of a two-phase lamellar mix: "par" (field along the layers, arithmetic mean)
+    or "series" (field across the layers, harmonic mean). Exact for thin layers."""
+
+    a: object
+    b: object
+    phi: float
+    kind: str = "par"
+
+    def __call__(self, f_hz):
+        ea = np.asarray(self.a(f_hz), dtype=complex)
+        eb = np.asarray(self.b(f_hz), dtype=complex)
+        if self.kind == "par":
+            return self.phi * ea + (1 - self.phi) * eb
+        return 1 / (self.phi / ea + (1 - self.phi) / eb)
+
+    def comsol(self) -> str:
+        ea, eb = self.a.comsol(), self.b.comsol()
+        if self.kind == "par":
+            return f"(({self.phi})*({ea})+({1 - self.phi})*({eb}))"
+        return f"(1/(({self.phi})/({ea})+({1 - self.phi})/({eb})))"
+
+
+@dataclass(frozen=True)
+class Uniaxial:
+    """Diagonal permittivity in cylindrical axes (rr, phiphi, zz). Calling it returns the zz value."""
+
+    rr: object
+    pp: object
+    zz: object
+
+    def __call__(self, f_hz):
+        return self.zz(f_hz)
+
+    def comsol(self):
+        return (self.rr.comsol(), self.pp.comsol(), self.zz.comsol())
+
+
+@dataclass(frozen=True)
+class PlusLorentz:
+    """Adds Lorentz bands sum A/(f0^2 - f^2 + j f g) - A/f0^2 (frequencies in THz, exp(+jwt)).
+    Subtracting the static part keeps the low-frequency fit of the base model."""
+
+    m: object
+    bands: tuple = ((5.11, 4.46, 25.03), (18.2, 15.4, 282.4))   # Liebe et al. 1991, 30 THz extension
+
+    def __call__(self, f_hz):
+        F = np.asarray(f_hz, dtype=float) / 1e12
+        add = sum(A / (f0 ** 2 - F ** 2 + 1j * F * g) - A / f0 ** 2 for f0, g, A in self.bands)
+        return self.m(f_hz) + add
+
+    def comsol(self) -> str:
+        F = "(freq/1[THz])"
+        terms = "+".join(f"({A}/({f0 ** 2}-{F}^2+i*{F}*{g})-{A / f0 ** 2})" for f0, g, A in self.bands)
+        return f"({self.m.comsol()}+{terms})"
+
+
+WATER_BROADBAND = PlusLorentz(WATER_KS1996)
+
+
+def myelin_lamellar(water=WATER_KS1996, phi: float = 0.4):
+    """Myelin as concentric water/lipid lamellae (period ~17 nm << wavelength): radial component
+    is the series (harmonic) mix, phi and z the parallel (arithmetic) mix."""
+    return Uniaxial(Wiener(water, DRY_LIPID, phi, "series"), Wiener(water, DRY_LIPID, phi, "par"),
+                    Wiener(water, DRY_LIPID, phi, "par"))
+
+
 # Dry lipid/protein of myelin and protein of axoplasm (docs/literature.md 2b, 2d).
 DRY_LIPID = ConstantEps(2.3 - 0.05j, source="dry lipid/protein, n ~ 1.52 (Berry 2003 adipose, lipid TDS)")
 PROTEIN = ConstantEps(2.5 - 0.1j, source="dry protein, eps ~ 2.5")

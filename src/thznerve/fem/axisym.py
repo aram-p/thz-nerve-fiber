@@ -124,10 +124,13 @@ def build(spec: AxiSpec, name: str = "axi"):
     j.param().set("m", "0")
     var = comp.variable().create("var1")
     for d in ("axon", "myelin", "node", "water"):
-        var.set(f"eps_{d}", spec.eps[d])
+        e = spec.eps[d]
+        er, ep, ez = (e, e, e) if isinstance(e, str) else e      # tuple = (rr, phiphi, zz)
+        var.set(f"eps_{d}_r", er); var.set(f"eps_{d}_p", ep); var.set(f"eps_{d}_z", ez)
+        var.set(f"eps_{d}", f"eps_{d}_z")
     var.set("kw", "ewfd.k0*sqrt(eps_water)")
     for d in ("axon", "myelin", "node", "water"):
-        set_eps(comp, f"mat_{d}", f"geom1_s_{d}", f"eps_{d}")
+        set_eps(comp, f"mat_{d}", f"geom1_s_{d}", (f"eps_{d}_r", f"eps_{d}_p", f"eps_{d}_z"))
     if spec.outer == "pml":
         set_eps(comp, "mat_pml", "geom1_s_pml", "eps_water")
         pml = comp.coordSystem().create("pml1", "PML")
@@ -138,6 +141,8 @@ def build(spec: AxiSpec, name: str = "axi"):
     ph.prop("outofplanewavenumber").set("mFloquet", "m")
     ph.prop("BackgroundField").set("SolveFor", "scatteredField")
     ph.prop("ShapeProperty").set("order_electricfield", str(spec.order))
+    # default "RefractiveIndex" input cannot take an anisotropic (rr, phiphi, zz) tensor
+    ph.feature("wee1").set("DisplacementFieldModel", "RelativePermittivity")
     pc = ph.create("pc1", "PeriodicCondition", 1)
     pc.selection().named("geom1_s_per")
     if spec.outer == "sbc":
@@ -199,8 +204,13 @@ def set_background(model, pol: str):
     ph.prop("BackgroundField").set("Eb", eb)
 
 
-QEXPR = ("0.5*2*pi*freq*epsilon0_const*(-imag(eps_{d}))"
-         "*(abs(ewfd.Er)^2+abs(ewfd.Ephi)^2+abs(ewfd.Ez)^2)")
+QEXPR = ("0.5*2*pi*freq*epsilon0_const*((-imag(eps_{d}_r))*abs(ewfd.Er)^2"
+         "+(-imag(eps_{d}_p))*abs(ewfd.Ephi)^2+(-imag(eps_{d}_z))*abs(ewfd.Ez)^2)")
+# induced dipole moment of the fibre relative to water, integral of (eps - eps_w) E over the
+# fibre (V m^2 for |E0| = 1 V/m): z component from order m = 0 (E par), x component from the
+# m = 1 field (Er + i Ephi), which with the revolve weighting already counts m = -1 as well
+DIP = {"z": "(eps_{d}_z-eps_water)*ewfd.Ez",
+       "x": "((eps_{d}_r-eps_water)*ewfd.Er+i*(eps_{d}_p-eps_water)*ewfd.Ephi)"}
 
 
 def solve_mode(model, m: int, pol: str):
@@ -215,6 +225,13 @@ def solve_mode(model, m: int, pol: str):
     # inward flux through r = Rf balances P_axon + P_myelin + P_node + P_win
     out["P_win"] = integrate(model, "IntSurface", "geom1_s_win", [QEXPR.format(d="water")], tag="iq", revolve=True)[0]
     out["flux_in"] = integrate(model, "IntLine", "geom1_s_rf", ["-ewfd.Poavr"], tag="ifl", revolve=True)[0]
+    for c, e in DIP.items():
+        tot = 0
+        for d in ("axon", "myelin", "node"):
+            x = e.format(d=d)
+            rr = integrate(model, "IntSurface", f"geom1_s_{d}", [f"real({x})", f"imag({x})"], tag="ip", revolve=True)
+            tot = tot + rr[0] + 1j * rr[1]
+        out[f"p_{c}"] = tot
     out["dof"] = n_dof(model)
     return out
 
@@ -236,5 +253,6 @@ def solve_pol(model, pol: str, m_max: int = 3):
     out["balance"] = np.max(np.abs(flux - inner) / np.abs(flux).sum(axis=0, keepdims=True), axis=0)
     fib = sum(out["per_order"][k] for k in ("P_axon", "P_myelin", "P_node"))
     out["last_order_share"] = w[-1] * fib[-1] / np.tensordot(w, fib, axes=1)
+    out["p_dip"] = per[0]["p_z"] if pol == "par" else per[1]["p_x"]
     out["dof"] = per[0]["dof"]
     return out
