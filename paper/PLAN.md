@@ -16,14 +16,14 @@ the node does not resonate: its absorbed power follows a three-constant quasi-st
 limits, within 2.3 % of full wave for fibres up to 10 µm. Second, for the field along the fibres, as
 in every published scan, no node state (ε″ ≥ 0.1) changes a 100 µm slice by more than 1.1 dB at
 internodes ≥ 200 µm and packing ≤ 0.6, and open channels add 10⁻⁶ of membrane admittance. Third,
-each published biased waveform fits as the unbiased pulse, delayed by 0.04–0.07 ps after 2–5 min,
-plus a second pulse near the empty-cuvette delay growing to 22 % of the field. With fitted
-parameters this is consistent with the 0.6 THz dip; a single-scan 2.0 THz dip is not reproduced. A
-zero delay is rejected at 5.3σ, and the largest any node state gives, even at every parameter
-extreme, at 3.3σ; ion or axoplasm conduction would need conductivities above saturated brine. A 3–17
-% thicker slice, warming or a drift of the delay stage fits, but each would act for both
-polarisations, against the reported selectivity (described without data), and the second pulse
-arrives 0.02–0.04 ps early, unexplained. The waveforms are decomposed, not explained.
+each published biased waveform fits as the unbiased pulse, lagging by 0.16–0.56 rad at 0.6 THz after
+2–5 min, plus a second pulse near the empty-cuvette delay growing to 22 % of the field. This fits
+the 0.6 THz dip, not a single-scan 2.0 THz dip. Applied inside the waveform fits, a 6–9 % thicker
+tissue path or a drift of the delay stage reproduces the lag, as does conduction, but only at
+saturated-brine conductivity; node states do so only with every geometric extreme combined and a
+node permittivity an aqueous gap cannot hold. Each remaining cause would act for both polarisations,
+against the reported selectivity (described without data), and the second pulse arrives 0.02–0.04 ps
+early, unexplained. The waveforms are decomposed, not explained.
 
 ## Section outline
 

@@ -632,6 +632,44 @@ def report_round10(out=None):
     print(f"  largest |change of ln T| in any direction (sign or phase reference wrong): {mag[0]} "
           f"{ext * mat(mag) * np.hypot(mag[2] / 8.686, mag[3]):.3f} with every extreme (floor 0.15 rad)", flush=True)
 
+
+def report_band():
+    """Every node state (eps'' >= 0.1) at every frequency it was solved at: signed first-order change of the slice
+    with every extreme, for applying inside the waveform fit (Sim 48). Writes sim36_signedband.json."""
+    src = {"sigma": ("sim36_sigma.json", "0", [0.1, 0.6, 1.0, 2.0, 3.0]), "epsnode": ("sim36_epsnode.json", "ref", [0.6, 2.0]),
+           "epsfine": ("sim36_epsfine.json", "ref", [0.6, 2.0]), "epsdense": ("sim36_epsdense.json", "ref", [0.6, 1.0, 2.0, 3.0]),
+           "joint": ("sim36_round10.json", "joint_None", [0.6, 3.0])}
+    obs = ("P_fibre", "flux_in", "dipole")
+    ext = lambda f: 6 * 4 * 4 / 3 * (2.2 if f <= 1.0 else 3.1)    # slice factor 2.2 to 1 THz, 3.1 above (Sim 45)
+    seen, states = set(), []
+    for name, (fn, rk, fl) in src.items():
+        d = json.loads((OUT / fn).read_text()); fa = np.array(fl) * 1e12; ii = fl.index(0.6)
+        mat = 1.0 if name == "joint" else 1.45
+        for k, r in d.items():
+            if k == rk or k.startswith(("ref", "L")) or "_0.01" in k:
+                continue
+            ref = d.get(f"ref_{k.split('_')[-1]}") if k.endswith(("_h", "_q")) else d[rk]
+            if ref is None:
+                continue
+            t = tissue_db(r, ref, fa, "par")
+            loss = [max(t[o][i] for o in obs) for i in range(len(fl))]
+            key = (round(loss[ii], 7), round(t["phase_rad"][ii], 9), name == "joint")
+            if key in seen:
+                continue
+            seen.add(key)
+            states.append({"state": f"{name}:{k}", "f_thz": fl,
+                           "loss_db": [ext(f) * mat * x for f, x in zip(fl, loss)],
+                           "loss_db_dipole": [ext(f) * mat * x for f, x in zip(fl, t["dipole"])],
+                           "delay_rad": [ext(f) * mat * x for f, x in zip(fl, t["phase_rad"])]})
+    (OUT / "sim36_signedband.json").write_text(json.dumps(
+        {"note": "E-par, node states with eps'' >= 0.1 at every solved frequency; first-order change of the slice with every "
+                 "extreme (x6 x4 x4/3, x2.2 to 1 THz and x3.1 above) and combined materials x1.45 (joint scan x1); loss_db is the "
+                 "largest of three observables, loss_db_dipole the one that goes with delay_rad",
+         "states": states}, indent=1))
+    print(f"{len(states)} node states written to sim36_signedband.json; frequencies per state: "
+          f"{sorted(set(len(s['f_thz']) for s in states))}", flush=True)
+
+
 if __name__ == "__main__":
     OUT.mkdir(parents=True, exist_ok=True)
-    {"sigma": sigma, "report_sigma": report_sigma, "dense": dense, "aniso": aniso, "epsnode": epsnode, "axon": axon, "axon2": axon2, "axon_threshold": axon_threshold, "report_axon": report_axon, "epsfine": epsfine, "epsdense": epsdense, "epsdense_mesh": epsdense_mesh, "epsrobust": epsrobust, "report_epsrobust": report_epsrobust, "report_epsdense": report_epsdense, "report_dense": report_dense, "epsdense_hscan": epsdense_hscan, "report_epsdense_h": report_epsdense_h, "round9": round9, "report_round9": report_round9, "round10": round10, "report_round10": report_round10}[sys.argv[1]]()
+    {"sigma": sigma, "report_sigma": report_sigma, "dense": dense, "aniso": aniso, "epsnode": epsnode, "axon": axon, "axon2": axon2, "axon_threshold": axon_threshold, "report_axon": report_axon, "epsfine": epsfine, "epsdense": epsdense, "epsdense_mesh": epsdense_mesh, "epsrobust": epsrobust, "report_epsrobust": report_epsrobust, "report_epsdense": report_epsdense, "report_dense": report_dense, "epsdense_hscan": epsdense_hscan, "report_epsdense_h": report_epsdense_h, "round9": round9, "report_round9": report_round9, "round10": round10, "report_round10": report_round10, "report_band": report_band}[sys.argv[1]]()

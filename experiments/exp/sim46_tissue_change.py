@@ -27,11 +27,10 @@ import matplotlib.pyplot as plt
 import numpy as np
 from scipy.optimize import brentq, least_squares
 
-from thznerve.physics.effmedium import tissue_eps
-from thznerve.physics.materials import (EPS0, PROTEIN, WATER_KS1996, alpha_per_cm, axoplasm, myelin,
-                                        water_liebe)
+from thznerve.physics.materials import alpha_per_cm, water_liebe
+from thznerve.physics.slice_change import (D_UM, WF, eps_tissue, k_millon, mechanisms, t_slab,
+                                          water_frac)
 from thznerve.physics.tissue_change import LOSS_DB, delay_phase, min_required_delay
-from thznerve.physics.tmm import slab_rta
 
 ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / "results" / "sim46"; OUT.mkdir(parents=True, exist_ok=True)
@@ -43,37 +42,13 @@ def say(s=""):
     print(s, flush=True); lines.append(s)
 
 
-D_UM, P, N_PTFE, WF = 220.0, 0.6, 1.43, 0.77
 F = np.array([0.6, 1.0, 1.4]) * 1e12
 MEAS_LOSS = np.array([LOSS_DB[f] for f in F])     # unbiased |T|^2 (dB below empty), Sim 43 (c) band medians
 DELAY_T = delay_phase(F)                          # tissue delay phase -arg T, Sim 43 (d)
-W0 = WATER_KS1996
 
 # Liebe's temperature change, scaled to the measured 4 -> 21 C absorption change at 1 THz
 _dA = alpha_per_cm(water_liebe(21.0)(1e12), 1e12) - alpha_per_cm(water_liebe(4.0)(1e12), 1e12)
-K_MILLON = 46.0 / _dA
-
-
-class HeatedWater:
-    """Base water plus k times Liebe's change of eps from 20 C to 20 + dT C."""
-
-    def __init__(self, dT, k=1.0):
-        self.dT, self.k = dT, k
-
-    def __call__(self, f):
-        return W0(f) + self.k * (water_liebe(20.0 + self.dT)(f) - water_liebe(20.0)(f))
-
-
-def eps_tissue(f, water=W0, sig_ax=0.0, sig_w=0.0):
-    ax = axoplasm(water)(f) - 1j * sig_ax / (2 * np.pi * f * EPS0)
-    e, _ = tissue_eps(ax, myelin(water)(f), water(f), 0.7, P)
-    return e - 1j * WF * sig_w / (2 * np.pi * f * EPS0)
-
-
-def t_slab(f, e, d_um):
-    """Transfer relative to the same thickness of air on PTFE: a thicker slice displaces air, as a
-    cuvette window moving outwards would (extra phase k0 (n - 1) dd)."""
-    return slab_rta(f, 1.0, [(complex(e), d_um * 1e-6)], N_PTFE)[4] / slab_rta(f, 1.0, [(1.0 + 0j, d_um * 1e-6)], N_PTFE)[4]
+K_MILLON = k_millon()
 
 
 def change(fn):
@@ -86,34 +61,8 @@ def change(fn):
     return np.array(out)
 
 
-def _mix_delta(f, x):
-    """Change of tissue eps when its water content changes by the fraction x (dry matter fixed)."""
-    dry = PROTEIN(f)
-    mix = lambda wf: (wf * W0(f) ** (1 / 3) + (1 - wf) * dry ** (1 / 3)) ** 3
-    wf1 = WF * (1 + x) / (1 + WF * x)
-    return mix(wf1) - mix(WF)
+MECH = mechanisms(K_MILLON)
 
-
-def water_frac(x, mode="thickness"):
-    """Water content changed by the fraction x (x < 0: loss). mode: 'thickness' (added volume into
-    thickness), 'eps' (permittivity only, thickness fixed), 'geom' (thickness only, eps fixed),
-    'isotropic' (volume spread in 3D: thickness x cube root)."""
-    def fn(f):
-        de = 0.0 if mode == "geom" else _mix_delta(f, x)
-        d = {"thickness": D_UM * (1 + WF * x), "geom": D_UM * (1 + WF * x), "eps": D_UM,
-             "isotropic": D_UM * (1 + WF * x) ** (1 / 3)}[mode]
-        return eps_tissue(f) + de, d
-    return fn
-
-
-MECH = {
-    "heating, Liebe (dT, K)": (lambda v: (lambda f: (eps_tissue(f, HeatedWater(v)), D_UM)), (0.0, 80.0)),
-    f"heating, Liebe x{K_MILLON:.2f} (dT, K)": (lambda v: (lambda f: (eps_tissue(f, HeatedWater(v, K_MILLON)), D_UM)), (0.0, 60.0)),
-    "water content (fractional change)": (water_frac, (-0.5, 0.5)),
-    "ions: all tissue water (S/m)": (lambda v: (lambda f: (eps_tissue(f, sig_w=v), D_UM)), (0.0, 500.0)),
-    "axoplasm conductivity (S/m)": (lambda v: (lambda f: (eps_tissue(f, sig_ax=v), D_UM)), (0.0, 2000.0)),
-    "thicker path (fraction)": (lambda v: (lambda f: (eps_tissue(f), D_UM * (1 + v))), (0.0, 0.5)),
-}
 
 def _base_delay():
     """Unwrapped delay phase of the base slab at F (from 0.02 THz up)."""

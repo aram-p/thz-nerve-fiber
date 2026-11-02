@@ -1,0 +1,55 @@
+Sim 48 (A): phase lag of the tissue pulse at 0.6 THz, per scan, two model forms and three windows (moving-block bootstrap, 200 resamples)
+  30 s (H1)   shift         whole trace         : lag -0.009 +- 0.016 rad (one-sided 95 % lower bound -0.038, t with N_eff - 4 = 8.8 dof), s -0.0025 ps, residual 9%
+  30 s (H1)   shift         t0-0.6 to t0+0.8 ps : lag +0.014 +- 0.008 rad (one-sided 95 % lower bound -0.002, t with N_eff - 4 = 6.6 dof), s +0.0038 ps, residual 4%
+  30 s (H1)   shift         without t0+-0.4 ps  : lag +0.032 +- 0.030 rad (one-sided 95 % lower bound -0.025, t with N_eff - 4 = 7.4 dof), s +0.0085 ps, residual 15%
+  30 s (H1)   shift + phase whole trace         : lag +0.012 +- 0.012 rad (one-sided 95 % lower bound -0.009, t with N_eff - 5 = 16.9 dof), s -0.0394 ps, residual 7%
+  30 s (H1)   shift + phase t0-0.6 to t0+0.8 ps : lag +0.035 +- 0.004 rad (one-sided 95 % lower bound +0.028, t with N_eff - 5 = 24.6 dof), s -0.0323 ps, residual 2%
+  30 s (H1)   shift + phase without t0+-0.4 ps  : lag +0.030 +- 0.017 rad (one-sided 95 % lower bound -0.002, t with N_eff - 5 = 7.4 dof), s -0.0400 ps, residual 11%
+  30 s (H1): lag -0.009 to 0.035 rad over forms and windows; smallest 95 % lower bound -0.038
+  2 min (H2)  shift         whole trace         : lag +0.161 +- 0.029 rad (one-sided 95 % lower bound +0.109, t with N_eff - 4 = 11.8 dof), s +0.0428 ps, residual 18%
+  2 min (H2)  shift         t0-0.6 to t0+0.8 ps : lag +0.216 +- 0.018 rad (one-sided 95 % lower bound +0.179, t with N_eff - 4 = 5.1 dof), s +0.0573 ps, residual 11%
+  2 min (H2)  shift         without t0+-0.4 ps  : lag +0.310 +- 0.036 rad (one-sided 95 % lower bound +0.246, t with N_eff - 4 = 10.6 dof), s +0.0822 ps, residual 19%
+  2 min (H2)  shift + phase whole trace         : lag +0.188 +- 0.027 rad (one-sided 95 % lower bound +0.141, t with N_eff - 5 = 14.6 dof), s -0.0276 ps, residual 16%
+  2 min (H2)  shift + phase t0-0.6 to t0+0.8 ps : lag +0.260 +- 0.011 rad (one-sided 95 % lower bound +0.241, t with N_eff - 5 = 11.4 dof), s -0.0454 ps, residual 6%
+  2 min (H2)  shift + phase without t0+-0.4 ps  : lag +0.314 +- 0.030 rad (one-sided 95 % lower bound +0.261, t with N_eff - 5 = 14.3 dof), s +0.0131 ps, residual 16%
+  2 min (H2): lag 0.161 to 0.314 rad over forms and windows; smallest 95 % lower bound +0.109
+  4 min (H1)  shift         whole trace         : lag +0.198 +- 0.036 rad (one-sided 95 % lower bound +0.134, t with N_eff - 4 = 12.6 dof), s +0.0526 ps, residual 20%
+  4 min (H1)  shift         t0-0.6 to t0+0.8 ps : lag +0.251 +- 0.029 rad (one-sided 95 % lower bound +0.189, t with N_eff - 4 = 3.7 dof), s +0.0667 ps, residual 18%
+  4 min (H1)  shift         without t0+-0.4 ps  : lag +0.399 +- 0.051 rad (one-sided 95 % lower bound +0.308, t with N_eff - 4 = 11.5 dof), s +0.1059 ps, residual 18%
+  4 min (H1)  shift + phase whole trace         : lag +0.236 +- 0.029 rad (one-sided 95 % lower bound +0.185, t with N_eff - 5 = 16.0 dof), s -0.0670 ps, residual 15%
+  4 min (H1)  shift + phase t0-0.6 to t0+0.8 ps : lag +0.312 +- 0.014 rad (one-sided 95 % lower bound +0.287, t with N_eff - 5 = 10.1 dof), s -0.0937 ps, residual 8%
+  4 min (H1)  shift + phase without t0+-0.4 ps  : lag +0.395 +- 0.030 rad (one-sided 95 % lower bound +0.343, t with N_eff - 5 = 20.4 dof), s -0.0210 ps, residual 12%
+  4 min (H1): lag 0.198 to 0.399 rad over forms and windows; smallest 95 % lower bound +0.134
+  5 min (H3)  shift         whole trace         : lag +0.247 +- 0.041 rad (one-sided 95 % lower bound +0.175, t with N_eff - 4 = 13.0 dof), s +0.0655 ps, residual 23%
+  5 min (H3)  shift         t0-0.6 to t0+0.8 ps : lag +0.300 +- 0.050 rad (one-sided 95 % lower bound +0.196, t with N_eff - 4 = 4.6 dof), s +0.0795 ps, residual 27%
+  5 min (H3)  shift         without t0+-0.4 ps  : lag +0.556 +- 0.079 rad (one-sided 95 % lower bound +0.415, t with N_eff - 4 = 12.0 dof), s +0.1474 ps, residual 18%
+  5 min (H3)  shift + phase whole trace         : lag +0.281 +- 0.041 rad (one-sided 95 % lower bound +0.209, t with N_eff - 5 = 15.9 dof), s -0.0791 ps, residual 18%
+  5 min (H3)  shift + phase t0-0.6 to t0+0.8 ps : lag +0.383 +- 0.027 rad (one-sided 95 % lower bound +0.336, t with N_eff - 5 = 13.2 dof), s -0.1195 ps, residual 14%
+  5 min (H3)  shift + phase without t0+-0.4 ps  : lag +0.564 +- 0.037 rad (one-sided 95 % lower bound +0.501, t with N_eff - 5 = 24.0 dof), s -0.0021 ps, residual 13%
+  5 min (H3): lag 0.247 to 0.564 rad over forms and windows; smallest 95 % lower bound +0.175
+
+  largest node-state delay at 0.6 THz, every extreme: joint:joint_-3.0 0.0634 rad
+
+Sim 48 (B): each node state's change of ln T over the band applied to the unbiased pulse inside the fit (80 states, scaled to a fraction lam of every extreme, 1/70.4 being nominal geometry; loss of the dipole observable or the largest of three). Per family: the best state, the share of the s-free misfit reduction it recovers, and the F test p of its fit against s free
+  30 s (H1): s free removes 1.4% of the s = 0 misfit (F = 0.1, p = 0.7353, 1 and 8.8 dof)
+  2 min (H2): s free removes 47.8% of the s = 0 misfit (F = 10.8, p = 0.0067, 1 and 11.8 dof)
+    x0.0142 of every extreme: sigma 1e+06 1% (p 0.01); epsnode -3_0.3 1% (p 0.01); epsfine -2.5_0.1 1% (p 0.01); epsdense -2.0_0.1_h 1% (p 0.01); joint joint_-2.7 2% (p 0.01); aqueous epsnode:-10_30.0 1% (p 0.01)
+    x0.188 of every extreme: sigma 1e+06 11% (p 0.01); epsnode -3_0.3 14% (p 0.01); epsfine -2.5_0.1 18% (p 0.01); epsdense -2.0_0.1_h 15% (p 0.01); joint joint_-2.7 22% (p 0.01); aqueous epsnode:-10_30.0 9% (p 0.01)
+    x0.25 of every extreme: sigma 1e+06 15% (p 0.01); epsnode -3_0.3 19% (p 0.01); epsfine -2.5_0.1 24% (p 0.01); epsdense -2.0_0.1_h 19% (p 0.01); joint joint_-2.7 29% (p 0.02); aqueous epsnode:-10_30.0 12% (p 0.01)
+    x0.5 of every extreme: sigma 1e+06 28% (p 0.02); epsnode -3_0.3 37% (p 0.02); epsfine -2.5_0.1 46% (p 0.03); epsdense -2.0_0.1_h 37% (p 0.02); joint joint_-2.7 55% (p 0.05); aqueous epsnode:-10_30.0 24% (p 0.01)
+    x0.75 of every extreme: sigma 1e+06 41% (p 0.03); epsnode -3_0.3 53% (p 0.04); epsfine -2.5_0.1 65% (p 0.08); epsdense -2.0_0.1_h 52% (p 0.04); joint joint_-2.7 77% (p 0.14); aqueous epsnode:-10_30.0 35% (p 0.02)
+    x1 of every extreme: sigma 1e+06 53% (p 0.04); epsnode -3_0.3 68% (p 0.09); epsfine -2.5_0.1 82% (p 0.19); epsdense -2.0_0.1_h 66% (p 0.08); joint joint_-2.7 96% (p 0.54); aqueous epsnode:-10_30.0 45% (p 0.03)
+  4 min (H1): s free removes 43.5% of the s = 0 misfit (F = 9.7, p = 0.0084, 1 and 12.6 dof)
+    x0.0142 of every extreme: sigma 1e+06 1% (p 0.01); epsnode -3_0.3 1% (p 0.01); epsfine -2.5_0.1 1% (p 0.01); epsdense -2.0_0.1_h 1% (p 0.01); joint joint_-2.7 1% (p 0.01); aqueous epsnode:-10_30.0 1% (p 0.01)
+    x0.188 of every extreme: sigma 1e+06 9% (p 0.01); epsnode -3_0.3 11% (p 0.01); epsfine -2.5_0.1 14% (p 0.01); epsdense -2.0_0.1_h 11% (p 0.01); joint joint_-2.7 17% (p 0.01); aqueous epsnode:-10_30.0 7% (p 0.01)
+    x0.25 of every extreme: sigma 1e+06 12% (p 0.01); epsnode -3_0.3 15% (p 0.01); epsfine -2.5_0.1 18% (p 0.01); epsdense -2.0_0.1_h 14% (p 0.01); joint joint_-2.7 22% (p 0.02); aqueous epsnode:-10_30.0 10% (p 0.01)
+    x0.5 of every extreme: sigma 1e+06 23% (p 0.02); epsnode -3_0.3 29% (p 0.02); epsfine -2.5_0.1 36% (p 0.03); epsdense -2.0_0.1_h 26% (p 0.02); joint joint_-2.7 43% (p 0.04); aqueous epsnode:-10_30.0 19% (p 0.02)
+    x0.75 of every extreme: sigma 1e+06 33% (p 0.02); epsnode -3_0.3 42% (p 0.03); epsfine -2.5_0.1 51% (p 0.05); epsdense -2.0_0.1_h 37% (p 0.03); joint joint_-2.7 61% (p 0.08); aqueous epsnode:-10_30.0 28% (p 0.02)
+    x1 of every extreme: sigma 1e+06 43% (p 0.04); epsnode -3_0.3 54% (p 0.05); epsfine -2.5_0.1 65% (p 0.09); epsdense -2.0_0.1_h 47% (p 0.04); joint joint_-2.7 78% (p 0.17); aqueous epsnode:-10_30.0 37% (p 0.03)
+  5 min (H3): s free removes 32.3% of the s = 0 misfit (F = 6.2, p = 0.0273, 1 and 13.0 dof)
+    x0.0142 of every extreme: sigma 1e+06 1% (p 0.03); epsnode -3_0.3 1% (p 0.03); epsfine -2.5_0.1 1% (p 0.03); epsdense -2.0_0.1_h 1% (p 0.03); joint joint_-2.7 1% (p 0.03); aqueous epsnode:-10_30.0 0% (p 0.03)
+    x0.188 of every extreme: sigma 3e+06 8% (p 0.03); epsnode -3_0.3 10% (p 0.03); epsfine -2.5_0.1 12% (p 0.04); epsdense -2.0_0.1_h 10% (p 0.03); joint joint_-2.7 15% (p 0.04); aqueous epsnode:-10_30.0 6% (p 0.03)
+    x0.25 of every extreme: sigma 3e+06 10% (p 0.03); epsnode -3_0.3 13% (p 0.04); epsfine -2.5_0.1 16% (p 0.04); epsdense -2.0_0.1_h 13% (p 0.04); joint joint_-2.7 20% (p 0.04); aqueous epsnode:-10_30.0 8% (p 0.03)
+    x0.5 of every extreme: sigma 3e+06 20% (p 0.04); epsnode -3_0.3 26% (p 0.05); epsfine -2.5_0.1 32% (p 0.06); epsdense -2.0_0.1_h 25% (p 0.05); joint joint_-2.7 39% (p 0.07); aqueous epsnode:-10_30.0 16% (p 0.04)
+    x0.75 of every extreme: sigma 3e+06 29% (p 0.06); epsnode -3_0.3 38% (p 0.07); epsfine -2.5_0.1 46% (p 0.09); epsdense -2.0_0.1_h 37% (p 0.07); joint joint_-2.7 56% (p 0.12); aqueous epsnode:-10_30.0 24% (p 0.05)
+    x1 of every extreme: sigma 3e+06 38% (p 0.07); epsnode -3_0.3 49% (p 0.10); epsfine -2.5_0.1 60% (p 0.14); epsdense -2.0_0.1_h 46% (p 0.09); joint joint_-2.7 72% (p 0.21); aqueous epsnode:-10_30.0 32% (p 0.06)

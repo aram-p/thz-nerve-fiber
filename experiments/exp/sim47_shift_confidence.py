@@ -8,12 +8,15 @@ so two methods are used:
 
 (1) profile: for s on a grid the other parameters are refitted; with the noise variance estimated from the
     best fit and N_eff = N / (1 + 2 sum rho_k) independent points (rho summed to its first zero),
-    dchi2(s) = N_eff * (S(s) / S_min - 1).
+    F(s) = (S(s) - S_min) / (S_min / (N_eff - 4)), compared with F(1, N_eff - 4) (the 4 fitted parameters
+    taken off the degrees of freedom; review round 19).
 (2) moving-block bootstrap: residual blocks of the correlation length are resampled (circularly) and added to
     the best-fit model, which is refitted; percentiles of s.
 
-Node states give at most 0.06 rad of extra delay at 0.6 THz with every extreme (Sec. 5.7), a shift of
-0.0159 ps; that value and s = 0 are tested per scan and jointly over the 2, 4 and 5 min scans.
+Node states give at most 0.063 rad of extra delay at 0.6 THz with every extreme (Sec. 5.7), a shift of
+0.0168 ps; that value and s = 0 are tested per scan. No joint test: the scans share the empty-cuvette
+pulse and come from one session, so they are not independent. Sim 48 applies each node state's whole-band
+change inside the fit, which supersedes the 0.6 THz shift test.
 Writes results/sim47/sim47.txt and results/sim47/sim47.json.
 """
 import json
@@ -21,7 +24,7 @@ from pathlib import Path
 
 import numpy as np
 from scipy.optimize import least_squares
-from scipy.stats import chi2, norm
+from scipy.stats import f as fdist, norm
 
 ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / "results" / "sim47"; OUT.mkdir(parents=True, exist_ok=True)
@@ -38,7 +41,7 @@ P2 = np.load(ROOT / "results" / "sim43" / "paper2_2min.npz")
 tt = H1["t_ps"]; dt = tt[1] - tt[0]
 h3 = {k: np.interp(tt, H3["t_ps"], H3["wave_" + k]) for k in ("blue", "red")}
 K = H1["empty"]
-S_NODE = 0.06 / (2 * np.pi * 0.6e12) * 1e12          # ps: largest node-state delay at 0.6 THz, every extreme
+S_NODE = 0.0634 / (2 * np.pi * 0.6e12) * 1e12        # ps: largest node-state delay at 0.6 THz, every extreme
 SCANS = {"30 s (H1)": (H1["30s"], H1["none"]), "2 min (H2)": (P2["biased"], P2["none"]),
          "4 min (H1)": (H1["4min"], H1["none"]), "5 min (H3)": (h3["red"], h3["blue"])}
 rng = np.random.default_rng(47)
@@ -72,8 +75,8 @@ def n_eff(res):
 
 
 say("Sim 47: confidence interval for the shift s of the tissue pulse (tau free)")
-say(f"  node-state limit: 0.06 rad at 0.6 THz = s {S_NODE:.4f} ps")
-out, joint_node, joint_zero = {}, 0.0, 0.0
+say(f"  node-state limit: 0.063 rad at 0.6 THz = s {S_NODE:.4f} ps")
+out = {}
 for name, (y, x0) in SCANS.items():
     p, smin, res = fit(y, x0)
     ne, lc = n_eff(res)
@@ -84,11 +87,15 @@ for name, (y, x0) in SCANS.items():
         q, ss, _ = fit(y, x0, s=s, p0=q0)
         prof.append(ss)
     prof = np.array(prof)
-    d = ne * (prof / smin - 1)
-    ci = lambda lev: (grid[d <= chi2.ppf(lev, 1)].min(), grid[d <= chi2.ppf(lev, 1)].max())
+    dof = ne - 4
+    Fs = lambda ss: (ss - smin) / (smin / dof)
+    d = Fs(prof)
+    ci = lambda lev: (grid[d <= fdist.ppf(lev, 1, dof)].min(), grid[d <= fdist.ppf(lev, 1, dof)].max())
     c68, c95 = ci(0.6827), ci(0.95)
-    dnode = ne * (fit(y, x0, s=S_NODE, p0=q0)[1] / smin - 1)
-    dzero = ne * (fit(y, x0, s=0.0, p0=q0)[1] / smin - 1)
+    lo1 = grid[d <= fdist.ppf(0.90, 1, dof)].min()     # one-sided 95 % lower bound from the profile
+    dnode = Fs(fit(y, x0, s=S_NODE, p0=q0)[1])
+    dzero = Fs(fit(y, x0, s=0.0, p0=q0)[1])
+    sig = lambda F: norm.isf(fdist.sf(max(F, 0), 1, dof) / 2)
     # moving-block bootstrap
     L = max(2, int(round(lc / dt)))
     base = model(p, x0)
@@ -102,20 +109,15 @@ for name, (y, x0) in SCANS.items():
     say(f"  {name}: s = {p[2]:+.4f} ps, tau = {p[3]:+.4f} ps, residual {np.sqrt(smin / np.sum(y ** 2)):.0%}; "
         f"correlation length {lc:.2f} ps, N = {len(y)}, N_eff = {ne:.1f}")
     say(f"      profile: 68 % {c68[0]:+.3f} to {c68[1]:+.3f} ps, 95 % {c95[0]:+.3f} to {c95[1]:+.3f} ps; "
-        f"dchi2 at s = {S_NODE:.4f} (node limit) {dnode:.1f} ({norm.isf(chi2.sf(dnode, 1) / 2):.1f} sigma two-sided), "
-        f"at s = 0 {dzero:.1f}")
+        f"one-sided 95 % lower bound {lo1:+.4f} ps; F (1, {dof:.1f} dof) at s = {S_NODE:.4f} (node limit) {dnode:.1f} "
+        f"({sig(dnode):.1f} sigma two-sided), at s = 0 {dzero:.1f} ({sig(dzero):.1f} sigma)")
     say(f"      block bootstrap (block {L * dt:.2f} ps, 400 resamples): s {np.mean(boot):+.4f} +- {np.std(boot):.4f} ps; "
         f"one-sided 95 % lower bound {one_sided(boot, 0.95):+.4f} ps, 97.5 % {one_sided(boot, 0.975):+.4f} ps; "
         f"fraction of resamples with s <= node limit {np.mean(boot <= S_NODE):.3f}")
     out[name] = dict(s=float(p[2]), tau=float(p[3]), n_eff=float(ne), corr_len_ps=float(lc), ci68=list(map(float, c68)),
-                     ci95=list(map(float, c95)), dchi2_node=float(dnode), dchi2_zero=float(dzero),
+                     ci95=list(map(float, c95)), prof_lo95=float(lo1), F_node=float(dnode), F_zero=float(dzero),
+                     sigma_node=float(sig(dnode)), sigma_zero=float(sig(dzero)), dof=float(dof),
                      boot_mean=float(np.mean(boot)), boot_sd=float(np.std(boot)),
                      boot_lo95=one_sided(boot, 0.95), boot_lo975=one_sided(boot, 0.975))
-    if name != "30 s (H1)":
-        joint_node += dnode; joint_zero += dzero
-pn, pz = chi2.sf(joint_node, 3), chi2.sf(joint_zero, 3)
-say(f"  joint over 2, 4, 5 min (independent scans): dchi2 {joint_node:.1f} at the node limit (p = {pn:.1e}, "
-    f"{norm.isf(pn / 2):.1f} sigma), {joint_zero:.1f} at s = 0 (p = {pz:.1e}, {norm.isf(pz / 2):.1f} sigma)")
-out["joint"] = dict(dchi2_node=joint_node, p_node=pn, dchi2_zero=joint_zero, p_zero=pz, s_node_ps=S_NODE)
 (OUT / "sim47.json").write_text(json.dumps(out, indent=1))
 (OUT / "sim47.txt").write_text("\n".join(lines) + "\n", encoding="utf-8")

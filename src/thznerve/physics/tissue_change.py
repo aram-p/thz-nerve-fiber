@@ -25,8 +25,9 @@ def required_change(f_hz, q, loss_db=None, offset=True):
     return (q - 1) * loss, (q - 1) * delay_phase(f_hz, offset)
 
 # Shift s of the tissue pulse with the second pulse free (Sims 43, 47), ps: best fit and the one-sided
-# 95 % lower bound from a moving-block bootstrap of the correlated residual (Sim 47). q - 1 ~ s / TAU_S.
-SHIFT_PS = {"2 min": (0.043, 0.0275), "4 min": (0.053, 0.0345), "5 min": (0.066, 0.0399)}
+# 95 % lower bound from the misfit profile with N_eff - 4 degrees of freedom (Sim 47, review round 19; the
+# block bootstrap gives higher bounds, 0.0275/0.0345/0.0399 ps). q - 1 ~ s / TAU_S.
+SHIFT_PS = {"2 min": (0.043, 0.0208), "4 min": (0.053, 0.0246), "5 min": (0.066, 0.0195)}
 
 
 def min_required_delay(f_hz, scans=("2 min", "4 min", "5 min")):
