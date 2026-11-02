@@ -94,15 +94,30 @@ for name, y, x0 in (("30 s (paper 1)", H1["30s"], H1["none"]), ("2 min (paper 2)
     rows[name] = p
     say(f"  {name:16s}: a = {p[0]:.3f}, b = {p[1]:.3f} ({min(spread + [p[1]]):.3f}-{max(spread + [p[1]]):.3f}), "
         f"tau = {p[2]:+.3f} ps, residual {res:.0%}; one path {one:.0%}")
-say("  delay-stage drift moves both terms: biased = a * no voltage(t - s) + b * empty(t - s - tau)")
+say("  common shift s of the whole biased scan (a delay-stage drift moves both terms; tau = 0 is the drift test),")
+say("  then tau free (two independent shifts: a tissue-delay model); ranges over +-1 pixel shifts of the biased trace")
+
+
+def fit_shift(y, x0, free_tau):
+    if free_tau:
+        r = lambda p: p[0] * shift(x0, p[2]) + p[1] * shift(H1["empty"], p[2] + p[3]) - y
+        s = min((least_squares(r, [0.6, b0, t0, 0.0]) for b0 in (0.05, 0.2) for t0 in (-0.1, 0.0, 0.1)), key=lambda s: s.cost)
+    else:
+        r = lambda p: p[0] * shift(x0, p[2]) + p[1] * shift(H1["empty"], p[2]) - y
+        s = min((least_squares(r, [0.6, b0, t0]) for b0 in (0.05, 0.2) for t0 in (-0.1, 0.0, 0.1)), key=lambda s: s.cost)
+    return s.x, rms(s.fun) / rms(y)
+
+
 for name, y, x0 in (("30 s (paper 1)", H1["30s"], H1["none"]), ("2 min (paper 2)", w2["red"], w2["blue"]),
                     ("4 min (paper 1)", H1["4min"], H1["none"]), ("5 min (paper 3)", h3["red"], h3["blue"])):
-    r0 = lambda p: p[0] * shift(x0, p[2]) + p[1] * shift(H1["empty"], p[2]) - y
-    s0 = min((least_squares(r0, [0.6, b0, t0]) for b0 in (0.05, 0.2) for t0 in (-0.1, 0.0, 0.1)), key=lambda s: s.cost)
-    r1 = lambda p: p[0] * shift(x0, p[2]) + p[1] * shift(H1["empty"], p[2] + p[3]) - y
-    s1 = min((least_squares(r1, [0.6, b0, t0, 0.0]) for b0 in (0.05, 0.2) for t0 in (-0.1, 0.0, 0.1)), key=lambda s: s.cost)
-    say(f"  {name:16s}: tau = 0: b = {s0.x[1]:.3f}, s = {s0.x[2]:+.3f} ps, residual {rms(s0.fun) / rms(y):.0%}; "
-        f"tau free: b = {s1.x[1]:.3f}, s = {s1.x[2]:+.3f} ps, tau = {s1.x[3]:+.3f} ps, residual {rms(s1.fun) / rms(y):.0%}")
+    p0, r0 = fit_shift(y, x0, False)
+    p1, r1 = fit_shift(y, x0, True)
+    sp = [fit_shift(np.interp(tt - d * 0.0133, tt, y), x0, True)[0] for d in (-1, 1)] + [p1]
+    rng = lambda i: f"{min(q[i] for q in sp):+.3f} to {max(q[i] for q in sp):+.3f}"
+    lead = [q[2] + q[3] for q in sp]
+    say(f"  {name:16s}: tau = 0: b = {p0[1]:.3f}, s = {p0[2]:+.3f} ps, residual {r0:.0%}; tau free: b = {p1[1]:.3f}, "
+        f"s = {p1[2]:+.3f} ({rng(2)}) ps, tau = {p1[3]:+.3f} ({rng(3)}) ps, component vs empty cuvette "
+        f"{p1[2] + p1[3]:+.3f} ({min(lead):+.3f} to {max(lead):+.3f}) ps, residual {r1:.0%}")
 b30, b4 = rows["30 s (paper 1)"][1], rows["4 min (paper 1)"][1]
 b2 = rows["2 min (paper 2)"][1]
 lin = b30 + (b4 - b30) * (2.0 - 0.5) / (4.0 - 0.5)

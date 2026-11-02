@@ -28,6 +28,7 @@ results/*
 !results/sim42/
 !results/sim43/
 !results/sim44/
+!results/sim45/
 data/raw/
 *.csv
 *.h5

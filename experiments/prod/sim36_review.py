@@ -538,7 +538,7 @@ def round10():
     f2 = [0.6e12, 3.0e12]
     path = OUT / "sim36_round10.json"
     out = json.loads(path.read_text()) if path.exists() else {}
-    for er in (None, -2.7, -2.4, -2.2, -2.0, -1.7, -1.45, -1.3, -1.2, -1.0):
+    for er in (None, -10.0, -7.0, -5.0, -4.0, -3.5, -3.0, -2.7, -2.4, -2.2, -2.0, -1.7, -1.45, -1.3, -1.2, -1.0):
         k = f"joint_{er}"
         if k not in out:
             o = dict(JOINT)
@@ -550,6 +550,9 @@ def round10():
 
 
 def report_round10(out=None):
+    """Joint-materials peak (0.6 and 3 THz), then the signed change of slice loss and phase at 0.6 THz over
+    every node state with eps'' >= 0.1 (conductivity scan, coarse and fine eps grids, dense eps' scans,
+    joint-materials scan). The q fit of Sec. 5.6 needs extra delay (positive phase) and extra loss together."""
     out = out or json.loads((OUT / "sim36_round10.json").read_text())
     f2 = np.array([0.6e12, 3.0e12]); f4 = np.array([0.6, 1.0, 2.0, 3.0]) * 1e12
     dense = json.loads((OUT / "sim36_epsdense.json").read_text())
@@ -559,16 +562,41 @@ def report_round10(out=None):
     er = np.array([float(k[6:]) for k in jk])
     for i, (fi, j) in enumerate(zip(f2, (0, 3))):      # j: index of 0.6 / 3 THz in the dense scan
         nd = [tissue_db(dense[k], dense["ref"], f4, "par") for k in dk]
-        nom = max(max(abs(t[o][j]) for o in obs) for t in nd); nph = max(abs(t["phase_rad"][j]) for t in nd)
+        nom = max(max(abs(t[o][j]) for o in obs) for t in nd)
         tj = [tissue_db(out[k], out["joint_None"], f2, "par") for k in jk]
-        db = np.array([max(abs(t[o][i]) for o in obs) for t in tj]); ph = np.array([abs(t["phase_rad"][i]) for t in tj])
+        db = np.array([max(abs(t[o][i]) for o in obs) for t in tj])
         m = int(np.argmax(db)); jj = np.clip([m - 1, m, m + 1], 0, len(er) - 1)
         c = np.polyfit(er[jj], db[jj], 2) if len(set(jj)) == 3 else None
         peak = c[2] - c[1] ** 2 / (4 * c[0]) if c is not None and c[0] < 0 else db[m]
         print(f"{fi/1e12:.1f} THz E-par, joint worst materials (axon eps' x1.2, myelin eps' x1.2, eps'' x0.8), per 100 um at "
-              f"internode 1000 um, packing 0.5: |dB| {dict(zip(er, np.round(db, 4)))}; parabola peak {peak:.4f} "
-              f"(nominal materials {nom:.4f}: x{peak/nom:.2f}); max |phase| {ph.max():.2e} rad at eps' {er[np.argmax(ph)]} "
-              f"(nominal {nph:.2e}: x{ph.max()/nph:.2f})", flush=True)
+              f"internode 1000 um, packing 0.5: |dB| {dict(zip(er.tolist(), np.round(db, 4).tolist()))}; parabola peak "
+              f"{peak:.4f} (nominal materials {nom:.4f}: x{peak/nom:.2f})", flush=True)
+    # signed loss and phase at 0.6 THz over every state with eps'' >= 0.1
+    src = {"sigma": ("sim36_sigma.json", "0", [0.1, 0.6, 1.0, 2.0, 3.0]), "epsnode": ("sim36_epsnode.json", "ref", [0.6, 2.0]),
+           "epsfine": ("sim36_epsfine.json", "ref", [0.6, 2.0]), "epsdense": ("sim36_epsdense.json", "ref", [0.6, 1.0, 2.0, 3.0]),
+           "joint": ("sim36_round10.json", "joint_None", [0.6, 3.0])}
+    rows = []
+    for name, (fn, rk, fl) in src.items():
+        d = json.loads((OUT / fn).read_text()); fa = np.array(fl) * 1e12; ii = fl.index(0.6)
+        for k, r in d.items():
+            if k == rk or k.startswith(("ref", "L")) or "_0.01" in k:
+                continue
+            ref = d.get(f"ref_{k.split('_')[-1]}") if k.endswith(("_h", "_q")) else d[rk]
+            if ref is None:
+                continue
+            t = tissue_db(r, ref, fa, "par")
+            rows.append((f"{name}:{k}", t["dipole"][ii], max(t[o][ii] for o in obs), t["phase_rad"][ii], name == "joint"))
+    mat = lambda r: 1.0 if r[4] else 1.45            # joint scan already holds the combined materials
+    ext = 6 * 4 * 4 / 3 * 2.2                         # internode 50 um, packing 0.8, 220 um optical path (Sim 45)
+    pos = max(rows, key=lambda r: r[3] * mat(r)); neg = min(rows, key=lambda r: r[3] * mat(r))
+    los = max(rows, key=lambda r: r[2] * mat(r))
+    print(f"0.6 THz, {len(rows)} node states (eps'' >= 0.1), first-order dipole values per 100 um at internode 1000 um, packing 0.5 "
+          f"(x1.45 for non-joint scans):", flush=True)
+    for lab, r in (("largest extra delay (+phase)", pos), ("largest advance (-phase)", neg), ("largest loss", los)):
+        print(f"  {lab}: {r[0]} phase {r[3] * mat(r):+.2e} rad, loss {r[2] * mat(r):+.4f} dB; every extreme (x{ext:.0f}): "
+              f"{ext * r[3] * mat(r):+.3f} rad, {ext * r[2] * mat(r):+.2f} dB", flush=True)
+    both = [r for r in rows if ext * mat(r) * r[3] >= 0.19 and ext * mat(r) * r[2] >= 1.1]
+    print(f"  states giving both >= 0.19 rad extra delay and >= 1.1 dB extra loss with every extreme: {len(both)}", flush=True)
 
 if __name__ == "__main__":
     OUT.mkdir(parents=True, exist_ok=True)

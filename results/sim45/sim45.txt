@@ -1,0 +1,14 @@
+(a) Slice optical thickness (effective-medium white matter, packing 0.6, on PTFE)
+  Kindt-Schmuttenmaer  water: from loss 0.6 THz 198 um, 1.0 THz 198 um, 1.5 THz 232 um, 2.0 THz 314 um; from the delay (linear fit with offset, 0.2-1.4 THz) 220 um, model offset -0.56 rad (measured -0.22)
+  broadband            water: from loss 0.6 THz 191 um, 1.0 THz 181 um, 1.5 THz 194 um, 2.0 THz 232 um; from the delay (linear fit with offset, 0.2-1.4 THz) 216 um, model offset -0.52 rad (measured -0.22)
+
+(b) Opening through the full thickness on the beam axis, Gaussian beam 5 mm across (H1)
+    field fraction b = fraction of beam power through the opening (mode-matched detection)
+  1/e^2 diameter 5 mm: opening diameter for b = 0.04 / 0.17 / 0.22: 0.71 / 1.53 / 1.76 mm
+    sized for b = 0.17 at 0.6 THz, waist ~ wavelength: b at 1/1.5/2/3 THz = 0.40 / 0.69 / 0.87 / 0.99
+    sized for b = 0.22 at 0.6 THz, waist ~ wavelength: b at 1/1.5/2/3 THz = 0.50 / 0.79 / 0.94 / 1.00
+  FWHM 5 mm: opening diameter for b = 0.04 / 0.17 / 0.22: 1.21 / 2.59 / 2.99 mm
+    sized for b = 0.17 at 0.6 THz, waist ~ wavelength: b at 1/1.5/2/3 THz = 0.40 / 0.69 / 0.87 / 0.99
+    sized for b = 0.22 at 0.6 THz, waist ~ wavelength: b at 1/1.5/2/3 THz = 0.50 / 0.79 / 0.94 / 1.00
+  Measured: b 0.17 (4 min) and 0.22 (5 min) from the pulse fit, 0.20-0.21 and 0.22-0.27 flat over 1.5-3 THz.
+  An opening spread across the beam (area fraction b) gives b independent of frequency.
