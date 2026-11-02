@@ -1,0 +1,3 @@
+date,sim,description,dof,peak_mem_gb,wall_s,outcome,time_wasted_min,why_wasted
+2026-11-02T16:13:09,sim27,legacy pipeline config A_fibre_L240,166978,3.71,366.1,22 freqs ok,0.0,
+2026-11-02T16:25:37,sim27,legacy pipeline config D_fibre_L300,207142,4.48,458.1,22 freqs ok,0.0,

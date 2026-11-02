@@ -16,7 +16,8 @@ env/
 *.egg-info/
 
 # Data outputs (regeneratable from simulations)
-results/
+results/*
+!results/run_log.csv
 data/raw/
 *.csv
 *.h5
@@ -31,3 +32,4 @@ Thumbs.db
 .idea/
 .vscode/
 *.swp
+!results/run_log.csv

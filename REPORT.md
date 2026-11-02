@@ -1,4 +1,50 @@
-# THz nerve-fibre simulation — tutor briefing
+# THz nerve-fibre simulation — report
+
+## Phase 0 audit (2026-11-02): Sims 1–26 are invalid
+
+**Verdict.** The 0.6 THz and 2 THz "resonances", their Q values, the half-wave mode
+identification (Sim 24), the polarisation enhancement (Sims 18/20/21) and the σ results
+(Sims 2, 17, 23) of the legacy 3D pipeline are numerical artefacts. None of them is evidence
+about the fibre. Everything below the "Legacy report" line is kept only as a record.
+
+Evidence (Sim 27, `experiments/audit/`, figure `paper/figures/fig_legacy_artefact.png`):
+
+1. **Wrong background field.** The scattered-field background was `exp(-i*k0*z)` with the
+   vacuum k0 in a water-filled box. That is not a solution in water, so every water element
+   carries a volume source k0²(ε_w−1)E_b. The on-axis |E| at the node came out 1.7–2.5 V/m,
+   where a plane wave entering water would have decayed to 0.3–0.6 V/m (panel a).
+2. **The fibre has no effect on the reported metric.** In the solved legacy model, the on-axis
+   |E| at the node centre is 1.6466 V/m with lipid myelin, with the myelin replaced by water,
+   and with the node set to σ = 1e10 S/m (`scripts/probe/probe_legacy_rematerial.py`).
+   Replacing the whole fibre by water reproduced config A to four digits. The material edits did
+   reach the solver (the field 1 µm outside the axon changed), so the axis metric is blind to
+   the fibre.
+3. **The "spectrum" moves with the box.** Changing only the box/fibre length 240 → 300 µm moves
+   the local maxima (0.5 → 0.6 THz and others); the 22-point spectra are uncorrelated noise
+   between 1.5 and 2.6 V/m (panel a).
+4. **Unresolved mesh.** The legacy |E|(z) on the axis jumps by 2× between neighbouring sample
+   points (panel b): "peak |E| over the node window" was the maximum of mesh noise. Sim 22 also
+   baked the water ε at 0.55 THz into a 1.85–2.15 THz sweep.
+5. **The "EWFD ignores σ" diagnosis** was drawn from the same blind metric; it is withdrawn.
+   The new pipeline puts all loss into complex εr and tests it against analytic results.
+6. **Energy.** Sim 23 reported ~10 W absorbed per unit cell for a 1 V/m incident wave
+   (incident power ~10⁻¹² W): energy balance was violated by ~12 orders of magnitude.
+
+What replaces it: a benchmarked pipeline (`src/thznerve/physics`, `src/thznerve/fem`) with
+the correct lossy background field, PMLs, a null test, a Mie/TMM benchmark and an energy balance
+on every solve. See the iteration log below.
+
+## Iteration log
+
+| # | hypothesis | evidence | verdict |
+|---|---|---|---|
+| 27 | legacy peaks are artefacts | fibre ≡ no fibre on axis; peaks move with box length; mesh noise | **confirmed: Sims 1–26 invalid** |
+| 29 | reported voltage-induced features come from a partial air path, not fibre physics | authors' own n, d give notches at 0.52–0.58 THz (d = 100 µm) and 0.74/2.2 THz (d = 70 µm); the other 2π unwrap branch passes through their n = 7.8/4.2/2.9 points; high-f gain +9/+18/+17 dB vs +8/+11/+18 (`paper/figures/fig_twopath.png`) | consistent, hypothesis only (needs raw data) |
+
+---
+
+# Legacy report (Sims 1–26, invalidated by the Phase 0 audit above)
+
 
 **One-paragraph summary.** Hovhannisyan & Makaryan (Armenian J. Phys. 2024) observed resonant THz absorption peaks near **0.6 THz** and **2 THz** in spinal-cord samples *when* (a) the THz E-field is polarised parallel to the nerve fibres and (b) a DC voltage is applied perpendicular to them. Paper 3 frames the sample as a *periodic diffraction grating of nerve fibres*. This project builds a first-principles 3-D FEM simulation of one fibre as the unit cell of that grating (axon + myelin sheaths + node of Ranvier, periodic in *x* and *y*, plane-wave excitation in *z*) to ask: **does the model reproduce the resonance, and what physical parameters control it?** Headline results:
 
