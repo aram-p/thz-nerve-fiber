@@ -99,3 +99,20 @@ def test_quasistatic_transverse_vs_2d_coated_cylinder():
     assert abs(r.F_node / shell - 1) < 0.03
     u = solve_node_qs(a, b, 1.0, e3, e3, e3, e3, field="transverse")
     assert abs(u.F_node - 1) < 1e-9
+
+
+def test_liebe_matches_tabulated_37c():
+    from thznerve.physics.materials import WATER_LIEBE37, water_liebe
+    w = water_liebe(37.0)
+    for f in (0.1e12, 0.5e12, 1e12):
+        assert abs(complex(w(f)) / complex(WATER_LIEBE37(f)) - 1) < 5e-3
+
+
+def test_node_factor_extrapolation_converges():
+    from thznerve.physics.quasistatic import node_factor, solve_node_qs
+    e = [6.97 - 10.4j, 4.53 - 3.16j, 7.55 - 13.8j, 7.55 - 13.8j]     # 0.1 THz, strongest contrast
+    F = node_factor(3.5, 5.0, 0.5, *e)                       # from h, h/2
+    F_fine = node_factor(3.5, 5.0, 0.5, *e, h_fine=0.5 / 80)  # from h/2, h/4
+    single = solve_node_qs(3.5, 5.0, 0.5, *e).F_node
+    assert abs(F / F_fine - 1) < 1e-3          # extrapolation is grid-independent
+    assert abs(single / F_fine - 1) > 0.02     # the single default grid is not

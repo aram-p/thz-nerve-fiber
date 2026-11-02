@@ -177,3 +177,16 @@ def alpha_per_cm(eps, f_hz):
 def sigma_eff(eps, f_hz):
     """Effective THz conductivity w eps0 eps'' (S/m)."""
     return 2 * np.pi * np.asarray(f_hz) * EPS0 * (-np.imag(eps))
+
+
+def water_liebe(T_c: float) -> DoubleDebye:
+    """Liebe, Hufford & Manabe (1991) double-Debye water at temperature T_c (deg C), f < 1 THz.
+
+    th = 1 - 300/(273.15 + T); eps_s = 77.66 - 103.3 th; eps_1 = 0.0671 eps_s;
+    eps_inf = 3.52 + 7.52 th; gamma_1 = 20.20 + 146.4 th + 316 th^2 GHz; gamma_2 = 39.8 gamma_1.
+    """
+    th = 1 - 300 / (273.15 + T_c)
+    eps_s = 77.66 - 103.3 * th
+    g1 = (20.20 + 146.4 * th + 316 * th ** 2) * 1e9
+    return DoubleDebye(eps_s, 0.0671 * eps_s, 3.52 + 7.52 * th, 1 / (2 * np.pi * g1),
+                       1 / (2 * np.pi * 39.8 * g1), source=f"Liebe et al. 1991 at {T_c} C")

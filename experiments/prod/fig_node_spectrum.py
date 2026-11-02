@@ -16,9 +16,9 @@ f = par["f_THz"]
 
 fig, ax = plt.subplots(1, 3, figsize=(11, 3.3))
 ax[0].plot(f, par["eta"], "o", ms=4, color="C0", label="full wave, E ∥ fibre")
-ax[0].plot(qs[:, 0], qs[:, 1], "-", color="C0", lw=1, label="quasi-static, E ∥")
+ax[0].plot(qs[:, 0], qs[:, 1], "-", color="C0", lw=1, label="quasi-static (extrapolated), E ∥")
 ax[0].plot(f, perp["eta"], "s", ms=4, color="C1", label="full wave, E ⊥ fibre")
-ax[0].plot(qs[:, 0], qs[:, 2], "-", color="C1", lw=1, label="quasi-static, E ⊥")
+ax[0].plot(qs[:, 0], qs[:, 2], "-", color="C1", lw=1, label="quasi-static (extrapolated), E ⊥")
 ax[0].axhline(1, color="0.6", lw=0.7)
 ax[0].set_xlabel("Frequency (THz)"); ax[0].set_ylabel("η = ⟨|E|²⟩_node / |E0|²")
 ax[0].set_ylim(0, 2); ax[0].legend(fontsize=7); ax[0].set_title("(a) node field factor")

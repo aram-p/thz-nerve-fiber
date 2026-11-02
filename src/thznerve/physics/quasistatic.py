@@ -51,13 +51,15 @@ class QSResult:
 
 
 def solve_node_qs(a, b, Ln, eps_axon, eps_myelin, eps_node, eps_out,
-                  R=None, Z=None, h_fine=None, h_max=None, field="axial"):
+                  R=None, Z=None, h_fine=None, h_max=None, field="axial", a_node=None):
     """Solve the quasi-static node problem. Lengths in any consistent unit.
 
     field="axial" applies E0 along the fibre axis (E parallel to fibre, m = 0).
     field="transverse" applies E0 along x (E perpendicular to fibre): potential
     psi(r, z) cos(phi) with psi = -E0 r far away, and an extra eps m^2/r^2 term (m = 1).
     F is then averaged over phi: <|E|^2> = (|d_r psi|^2 + |psi/r|^2 + |d_z psi|^2) / 2.
+    a_node (default a): axon radius inside the node; real nodes constrict the axon, and the
+    space a_node < r < a at the node is filled with node material (counted in F_node).
     """
     if field not in ("axial", "transverse"):
         raise ValueError(field)
@@ -67,7 +69,8 @@ def solve_node_qs(a, b, Ln, eps_axon, eps_myelin, eps_node, eps_out,
     Z = Z or max(12 * b, 20 * Ln)
     h_fine = h_fine or min(Ln, t, a) / 20
     h_max = h_max or b / 2
-    re = graded_edges([0, a, b, R], h_fine, h_max)
+    an = a if a_node is None else a_node
+    re = graded_edges(sorted({0, an, a, b, R}), h_fine, h_max)
     ze = graded_edges([-Z, -Ln / 2, 0, Ln / 2, Z], h_fine, h_max)
     rc, zc = 0.5 * (re[1:] + re[:-1]), 0.5 * (ze[1:] + ze[:-1])
     dr, dz = np.diff(re), np.diff(ze)
@@ -77,7 +80,8 @@ def solve_node_qs(a, b, Ln, eps_axon, eps_myelin, eps_node, eps_out,
     eps[RC < a] = eps_axon
     shell = (RC > a) & (RC < b)
     eps[shell] = eps_myelin
-    eps[shell & (np.abs(ZC) < Ln / 2)] = eps_node
+    gap = (RC > an) & (RC < b) & (np.abs(ZC) < Ln / 2)
+    eps[gap] = eps_node
 
     idx = np.arange(nr * nz).reshape(nr, nz)
     rows, cols, vals = [], [], []
@@ -130,8 +134,23 @@ def solve_node_qs(a, b, Ln, eps_axon, eps_myelin, eps_node, eps_out,
     if m:
         E2 = 0.5 * (E2 + np.abs(phi / RC) ** 2)
     vol = np.outer(ring, dz)
-    node = shell & (np.abs(ZC) < Ln / 2)
+    node = gap
     my = shell & (np.abs(ZC) > Ln / 2 + 5 * t) & (np.abs(ZC) < Z / 2)
-    ax = (RC < a) & (np.abs(ZC) < Ln / 2)
+    ax = (RC < an) & (np.abs(ZC) < Ln / 2)
     F = lambda m: float(np.sum(E2[m] * vol[m]) / np.sum(vol[m]))
     return QSResult(F(node), F(my), F(ax), rc, zc, E2)
+
+
+def node_factor(a, b, Ln, eps_axon, eps_myelin, eps_node, eps_out, field="axial", a_node=None,
+                h_fine=None):
+    """Node field factor F with Richardson extrapolation of the first-order FV scheme.
+
+    Solves at h and h/2 (default h = min(Ln, b - a, a) / 40) and returns 2 F(h/2) - F(h).
+    The single-grid value is 2-8 % high for high-contrast (low-frequency) water; the
+    extrapolated value matched the full-wave FEM to 0.5 % (Sim 32).
+    """
+    h = h_fine or min(Ln, b - a, a) / 40
+    kw = dict(field=field, a_node=a_node)
+    F1 = solve_node_qs(a, b, Ln, eps_axon, eps_myelin, eps_node, eps_out, h_fine=h, **kw).F_node
+    F2 = solve_node_qs(a, b, Ln, eps_axon, eps_myelin, eps_node, eps_out, h_fine=h / 2, **kw).F_node
+    return 2 * F2 - F1
