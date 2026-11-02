@@ -12,20 +12,20 @@ the tissue-level and experimental-design sections up front.
 
 Biased (100 V DC) spinal-cord slices reportedly show a 9–20 dB THz transmission dip drifting from
 0.7 to 0.5 THz, attributed to resonant nodes of Ranvier or DC-opened channels. We test both with a
-full-wave model of a myelinated fibre in water (internodes 0.2–1.5 mm), benchmarked against
-transfer-matrix and Mie solutions to 2 × 10⁻⁴. In 0.1–3 THz the node does not resonate. Its absorbed
-power follows a quasi-static law (exact limits, three constants fitted to a Laplace solver) in node
-length over myelin thickness, g-ratio and permittivity contrast, within 2.2 % of full wave for
-fibres up to 10 µm and independent of internode length. For internodes ≥ 200 µm and packing ≤ 0.6,
-no node conductivity changes a 100 µm slice by more than 0.05 dB (E∥), and no passive node
-permittivity by more than 0.9 dB. Open channels add 10⁻⁶ of the membrane admittance; 9 dB from fibre
-conduction needs 300–1300 S/m extra axoplasm conductivity (physiological: 1.4). The three reports
-show identical reference waveforms; in their four biased scans the pulse gains a component at the
-empty-cuvette delay, 4, 12, 17 and 22 % of the empty-cuvette pulse after 0.5, 2, 4 and 5 min, that
-no tissue-only change fits. With a ~10 % optically thicker tissue path, the two terms are consistent
-with the 0.6 THz dip; a 2.0 THz dip, seen in one scan near the noise floor, is not reproduced. Its
-source and the reported polarisation and bias-direction selectivity, reported without data, remain
-unexplained.
+full-wave model of a myelinated fibre in water, benchmarked against analytic solutions to
+2 × 10⁻⁴. In 0.1–3 THz the node does not resonate. Its absorbed power follows a
+quasi-static law (exact limits, three constants) in node length over
+myelin thickness, g-ratio and permittivity contrast, within 2.3 % of full wave for fibres up to
+10 µm, independent of internode length. For the THz field along the fibres (every published scan), no node state changes a 100 µm slice by more than 1.1 dB (internodes ≥ 200 µm,
+packing ≤ 0.6); with every extreme combined, node states give at most half the extra phase the
+0.6 THz feature needs. Open channels add 10⁻⁶ of the membrane admittance; 9 dB from fibre
+conduction needs 300–1300 S/m axoplasm conductivity (physiological: 1.4). The three reports share
+reference waveforms; in their four biased scans the pulse gains a component at the empty-cuvette
+delay, 4–22 % of the empty-cuvette pulse after 0.5–5 min, that no uniform change of the tissue path
+fits. With a ~10 % optically thicker tissue path, found in time and frequency, the
+two terms are consistent with the 0.6 THz dip; a 2.0 THz dip in one scan is not
+reproduced. Its source and the reported polarisation and bias-direction selectivity
+(shown without data) remain open.
 
 ## Section outline
 
@@ -64,8 +64,14 @@ unexplained.
    4.6 Node states: conductivity 10⁻⁴–3×10⁶ S/m (the gap screens itself) and any passive ε (a
    negative-ε ring resonance is capped by the surrounding water's loss); slice change from three
    observables (absorbed power, near-field absorption, induced dipole). For E∥, internode ≥ 200 µm,
-   packing ≤ 0.6: conductivity ≤ 0.05 dB, passive ε (ε″ ≥ 0.1) ≤ 0.9 dB including ±20 % materials (negative-ε ring resonance
-   only, dense ε′ grid at 0.6/1/2/3 THz); per frequency 0.1/0.2/0.5/0.9 dB at 0.6/1/2/3 THz; every extreme combined (internode 50 µm, packing 0.8, 200 µm slice; ×11) 1.1/2.1/5.5/9.5 dB, against 9–20 dB at 0.6 THz and 14 dB at 2 THz (50 µm internode solved directly, ≤ 0.3 % from the scaling); near 3 THz the measured change is a rise, and node states can raise transmission by ≤ 0.18 dB (full ε grid); E∥ premise: E⊥ conductivity with all extremes 2.7/7.4/11.5 dB; E⊥ ≤ 1.1 dB, 3.5 dB only for a metallic
+   packing ≤ 0.6: conductivity ≤ 0.05 dB, passive ε (ε″ ≥ 0.1) 0.1/0.2/0.6/1.1 dB at 0.6/1/2/3 THz
+   including the combined ±20 % materials (×1.45; negative-ε ring resonance, dense ε′ grid); every
+   extreme combined (internode 50 µm, packing 0.8, 230 µm optical path; ×12.3) 1.5/3.0/7.7/13 dB
+   (50 µm internode solved directly, ≤ 0.3 % from the scaling). At 0.6 THz compared with what the
+   tissue must change (q fit: 1.1–2.2 dB and 0.19–0.37 rad), not with the dip depth: node states give
+   ≤ 0.3 dB and 0.02 rad nominally, 1.5 dB and 0.11 rad with every extreme (phase 1.8× short). Near
+   3 THz the measured change is a rise; node states raise transmission by ≤ 0.3 dB (full ε grid).
+   E∥ premise: E⊥ conductivity with all extremes 3.1/8.5/13 dB; E⊥ ≤ 1.1 dB, 3.5 dB only for a metallic
    node in a 21 µm fibre (Fig. 5).
 5. **The experimenters' model and the experiment.** 5.1 Membrane admittance at THz vs open
    channels. 5.2 Fibres as conductors: full-wave axoplasm conductivity needed for 9 dB (470–565 S/m at fibre packing 0.5 and 290–980 S/m over packing 0.7–0.3 (0.6–2 THz),
@@ -105,10 +111,10 @@ unexplained.
 | Liu Y et al. 2020, *Sci. China PMA* 63, 274211 | Node as an active amplifier (three-level gain) of guided THz/IR | mid-IR–THz | not stated | none | Passive, energy-conserving calculation: what the node does without assumed gain; their gain hypothesis is outside our scope (stated) |
 | Guo L et al. 2022, *Front. Bioeng. Biotechnol.* 10, 1055232 | Analytic 3-layer fibre modes + mode matching at the node, vs CST | 0–30 THz (node 10–30) | constant complex ε, no Debye | vs CST only | 0.1–3 THz with double-Debye water, realistic internodes, absorbed power per node, Mie benchmark, convergence |
 | Song M et al. 2026, *Bioengineering* 13, 955 | COMSOL/HFSS: node as impedance transformer, peaks vs node length | 10–40 THz | lossless fluids, ε = 1.44 | none | With water's real ε (4.1−2.1j at 1 THz) the node is quasi-static and non-resonant in 0.1–3 THz; scaling law instead of resonance |
-| Zangari A, Micheli D, Galeazzi R 2018, *Sci. Rep.* 8, 539 | Node of Ranvier as an array of bio-nanoantennas, FEM | IR (tens–hundreds of THz) | lossless or constant ε | none reported | In 0.1–3 THz, with water's dispersive loss, the node is a quasi-static gap with no antenna resonance; closed-form absorption law |
+| Zangari A, Micheli D, Galeazzi R 2018, *Sci. Rep.* 8, 539 | Node of Ranvier as an array of bio-nanoantennas, FEM | IR (tens–hundreds of THz) | lossless or constant ε | none reported | In 0.1–3 THz, with water's dispersive loss, the node is a quasi-static gap with no antenna resonance; interpolation law with exact limits (limits from boundary conditions, as in RF microdosimetry) |
 | Kumar S et al. 2016, *Sci. Rep.* 6, 36508 | Myelinated axons as optical waveguides for biophotons | visible–near-IR | n/a | FDTD, no benchmark | Shows the waveguide picture does not carry over to THz: myelin index below water, axon-core V ≤ 0.4 |
 | Xiang Z, Tang C, Chang C, Liu G 2021, *Nano Res.* 14, 590 | THz/IR signal transmission along neurons (ordered surface water) | THz–mid-IR | not dispersive water | none | Passive THz response of a myelinated fibre with measured water, verified solver |
-| Hovhannisyan, Makaryan (Martirosyan) 2024, *Armenian J. Phys.* 17, 17; IET Conf. Proc. (IRPhE 2024) | THz-TDS of cord slices, features at 0.6 and 2 THz with DC bias, E ∥ fibres; model: open node channels make fibres nonlinear wires, slice a grating | 0.2–4 THz | n/a (experiment) | n/a | Tests their model and node resonance: open channels are 10⁶× below membrane capacitive admittance; 9 dB needs ~500 S/m axoplasm (full wave); no grating orders below 6 THz; no node state gives > 0.9 dB (E∥); their published waveforms (shared reference scans) contain a component at the empty-cuvette delay, 4–22 % of the empty-cuvette pulse over four biased scans, consistent with the 0.6 THz dip; the 2 THz dip is not reproduced |
+| Hovhannisyan, Makaryan (Martirosyan) 2024, *Armenian J. Phys.* 17, 17; IET Conf. Proc. (IRPhE 2024) | THz-TDS of cord slices, features at 0.6 and 2 THz with DC bias, E ∥ fibres; model: open node channels make fibres nonlinear wires, slice a grating | 0.2–4 THz | n/a (experiment) | n/a | Tests their model and node resonance: open channels are 10⁶× below membrane capacitive admittance; 9 dB needs ~500 S/m axoplasm (full wave); no grating orders below 6 THz; no node state gives > 1.1 dB (E∥), and with every extreme combined at most half the phase the 0.6 THz feature needs; their published waveforms (shared reference scans) contain a component at the empty-cuvette delay, 4–22 % of the empty-cuvette pulse over four biased scans, consistent with the 0.6 THz dip; the 2 THz dip is not reproduced |
 
 ## Figures
 

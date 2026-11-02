@@ -166,14 +166,15 @@ say("  the tissue path changes. Above ~1.5 THz the 75 px/ps tracing cannot test 
 
 # figure: traces and fits
 fig, ax = plt.subplots(1, 2, figsize=(10, 3.8))
+V = lambda y: np.where(VALID, y, np.nan)                 # draw only where every curve was traced
 for i, key in enumerate(("30s", "4min")):
     (a_, b_, t_), res = base[(key, "bypass")]
-    ax[i].plot(tt, W["empty"] / 4, "C0", lw=0.8, label="empty cuvette / 4 (Fig. 3a)")
-    ax[i].plot(tt, W["none"], "k", lw=0.9, label="no voltage (Fig. 4a)")
-    ax[i].plot(tt, W[key], "C3" if key == "4min" else "m", lw=1.3, label=f"{key} at 100 V (Fig. 4a)")
-    ax[i].plot(tt, a_ * W["none"] + b_ * shift(W["empty"], t_), "k--", lw=1.0,
+    ax[i].plot(tt, V(W["empty"] / 4), "C0", lw=0.8, label="empty cuvette / 4 (Fig. 3a)")
+    ax[i].plot(tt, V(W["none"]), "k", lw=0.9, label="no voltage (Fig. 4a)")
+    ax[i].plot(tt, V(W[key]), "C3" if key == "4min" else "m", lw=1.3, label=f"{key} at 100 V (Fig. 4a)")
+    ax[i].plot(tt, V(a_ * W["none"] + b_ * shift(W["empty"], t_)), "k--", lw=1.0,
                label=f"{a_:.2f} × no voltage + {b_:.3f} × empty")
-    ax[i].set_xlim(-362.5, -357.5); ax[i].set_ylim(-2.2, 1.5)
+    ax[i].set_xlim(tt[VALID][0] - 0.1, tt[VALID][-1] + 0.1); ax[i].set_ylim(-2.2, 1.5)
     ax[i].set_xlabel("Time (ps)"); ax[i].set_title(f"paper 1, {key} at 100 V", fontsize=9)
     ax[i].legend(fontsize=7, loc="lower right")
 ax[0].set_ylabel("THz field (a.u.)")

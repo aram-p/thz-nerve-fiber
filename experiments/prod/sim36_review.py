@@ -67,6 +67,7 @@ def tissue_db(r_new, r_ref, f, pol, Lint_t=1000.0, p=0.5, a=A, b=B, Ln=LN):
         - (np.array(r_ref[pol]["p_re"]) + 1j * np.array(r_ref[pol]["p_im"]))
     d_eps = dp / V_cell
     out["dipole"] = DB_PER_NEPER_POWER * (-k0 * np.imag(d_eps / n_t)) * D_SLAB
+    out["phase_rad"] = k0 * np.real(d_eps / (2 * n_t)) * D_SLAB      # extra phase delay of the slab, first order
     return out
 
 
@@ -527,6 +528,48 @@ def report_dense(p=0.6, Lint_t=200.0):
             print(f"{k} {pol}: max |dB| over f {m.max():.3f} at {f16[np.argmax(m)]/1e12:.2f} THz", flush=True)
 
 
+JOINT = dict(axon=Scaled(axoplasm(), re=1.2), myelin=Scaled(myelin(), re=1.2, im=0.8))
+
+
+def round10():
+    """Review round 10: the +-20 % materials test varied one material at a time; three changes raise the
+    passive-eps peak (axon eps' x1.2, myelin eps' x1.2, myelin eps'' x0.8). Combine them and rescan
+    eps'_node at 0.6 and 3 THz (E-par), reporting loss and phase."""
+    f2 = [0.6e12, 3.0e12]
+    path = OUT / "sim36_round10.json"
+    out = json.loads(path.read_text()) if path.exists() else {}
+    for er in (None, -2.7, -2.4, -2.2, -2.0, -1.7, -1.45, -1.3, -1.2, -1.0):
+        k = f"joint_{er}"
+        if k not in out:
+            o = dict(JOINT)
+            if er is not None:
+                o["node"] = ConstantEps(complex(er, -0.1))
+            out[k] = sim30.run("s36", tag=f"s36_r10_{k}", freqs=f2, Lint=200.0, eps_override=o, pols=("par",), **MESH)
+            path.write_text(json.dumps(out))
+    report_round10(out)
+
+
+def report_round10(out=None):
+    out = out or json.loads((OUT / "sim36_round10.json").read_text())
+    f2 = np.array([0.6e12, 3.0e12]); f4 = np.array([0.6, 1.0, 2.0, 3.0]) * 1e12
+    dense = json.loads((OUT / "sim36_epsdense.json").read_text())
+    obs = ("P_fibre", "flux_in", "dipole")
+    dk = [k for k in dense if not k.startswith("ref") and k.count("_") == 1]
+    jk = sorted((k for k in out if k != "joint_None"), key=lambda k: float(k[6:]))
+    er = np.array([float(k[6:]) for k in jk])
+    for i, (fi, j) in enumerate(zip(f2, (0, 3))):      # j: index of 0.6 / 3 THz in the dense scan
+        nd = [tissue_db(dense[k], dense["ref"], f4, "par") for k in dk]
+        nom = max(max(abs(t[o][j]) for o in obs) for t in nd); nph = max(abs(t["phase_rad"][j]) for t in nd)
+        tj = [tissue_db(out[k], out["joint_None"], f2, "par") for k in jk]
+        db = np.array([max(abs(t[o][i]) for o in obs) for t in tj]); ph = np.array([abs(t["phase_rad"][i]) for t in tj])
+        m = int(np.argmax(db)); jj = np.clip([m - 1, m, m + 1], 0, len(er) - 1)
+        c = np.polyfit(er[jj], db[jj], 2) if len(set(jj)) == 3 else None
+        peak = c[2] - c[1] ** 2 / (4 * c[0]) if c is not None and c[0] < 0 else db[m]
+        print(f"{fi/1e12:.1f} THz E-par, joint worst materials (axon eps' x1.2, myelin eps' x1.2, eps'' x0.8), per 100 um at "
+              f"internode 1000 um, packing 0.5: |dB| {dict(zip(er, np.round(db, 4)))}; parabola peak {peak:.4f} "
+              f"(nominal materials {nom:.4f}: x{peak/nom:.2f}); max |phase| {ph.max():.2e} rad at eps' {er[np.argmax(ph)]} "
+              f"(nominal {nph:.2e}: x{ph.max()/nph:.2f})", flush=True)
+
 if __name__ == "__main__":
     OUT.mkdir(parents=True, exist_ok=True)
-    {"sigma": sigma, "report_sigma": report_sigma, "dense": dense, "aniso": aniso, "epsnode": epsnode, "axon": axon, "axon2": axon2, "axon_threshold": axon_threshold, "report_axon": report_axon, "epsfine": epsfine, "epsdense": epsdense, "epsdense_mesh": epsdense_mesh, "epsrobust": epsrobust, "report_epsrobust": report_epsrobust, "report_epsdense": report_epsdense, "report_dense": report_dense, "epsdense_hscan": epsdense_hscan, "report_epsdense_h": report_epsdense_h, "round9": round9, "report_round9": report_round9}[sys.argv[1]]()
+    {"sigma": sigma, "report_sigma": report_sigma, "dense": dense, "aniso": aniso, "epsnode": epsnode, "axon": axon, "axon2": axon2, "axon_threshold": axon_threshold, "report_axon": report_axon, "epsfine": epsfine, "epsdense": epsdense, "epsdense_mesh": epsdense_mesh, "epsrobust": epsrobust, "report_epsrobust": report_epsrobust, "report_epsdense": report_epsdense, "report_dense": report_dense, "epsdense_hscan": epsdense_hscan, "report_epsdense_h": report_epsdense_h, "round9": round9, "report_round9": report_round9, "round10": round10, "report_round10": report_round10}[sys.argv[1]]()

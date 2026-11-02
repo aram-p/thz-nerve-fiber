@@ -10,6 +10,11 @@
   2 min (paper 2) : a = 0.743, b = 0.120 (0.118-0.121), tau = -0.039 ps, residual 25%; one path 63%
   4 min (paper 1) : a = 0.683, b = 0.173 (0.172-0.174), tau = -0.039 ps, residual 27%; one path 84%
   5 min (paper 3) : a = 0.586, b = 0.217 (0.216-0.217), tau = -0.026 ps, residual 28%; one path 77%
+  delay-stage drift moves both terms: biased = a * no voltage(t - s) + b * empty(t - s - tau)
+  30 s (paper 1)  : tau = 0: b = 0.039, s = -0.001 ps, residual 10%; tau free: b = 0.040, s = -0.002 ps, tau = -0.042 ps, residual 9%
+  2 min (paper 2) : tau = 0: b = 0.115, s = +0.016 ps, residual 29%; tau free: b = 0.113, s = +0.043 ps, tau = -0.069 ps, residual 18%
+  4 min (paper 1) : tau = 0: b = 0.173, s = -0.010 ps, residual 34%; tau free: b = 0.166, s = +0.053 ps, tau = -0.082 ps, residual 20%
+  5 min (paper 3) : tau = 0: b = 0.218, s = -0.014 ps, residual 31%; tau free: b = 0.209, s = +0.066 ps, tau = -0.084 ps, residual 23%
   check: 2 min lies between 30 s and 4 min if b30 < b2 < b4: 0.039 < 0.120 < 0.173 -> yes; linear-in-time interpolation gives 0.097
 
 (c) paper 1 Fig. 3b: axis misfit 0.0015 THz / 0.144 dB

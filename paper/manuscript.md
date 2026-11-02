@@ -10,20 +10,20 @@ Figures are in `paper/figures/`; every number below traces to a script and a res
 
 Biased (100 V DC) spinal-cord slices reportedly show a 9–20 dB THz transmission dip drifting from
 0.7 to 0.5 THz, attributed to resonant nodes of Ranvier or DC-opened channels. We test both with a
-full-wave model of a myelinated fibre in water (internodes 0.2–1.5 mm), benchmarked against
-transfer-matrix and Mie solutions to 2 × 10⁻⁴. In 0.1–3 THz the node does not resonate. Its absorbed
-power follows a quasi-static law (exact limits, three constants fitted to a Laplace solver) in node
-length over myelin thickness, g-ratio and permittivity contrast, within 2.2 % of full wave for
-fibres up to 10 µm and independent of internode length. For internodes ≥ 200 µm and packing ≤ 0.6,
-no node conductivity changes a 100 µm slice by more than 0.05 dB (E∥), and no passive node
-permittivity by more than 0.9 dB. Open channels add 10⁻⁶ of the membrane admittance; 9 dB from fibre
-conduction needs 300–1300 S/m extra axoplasm conductivity (physiological: 1.4). The three reports
-show identical reference waveforms; in their four biased scans the pulse gains a component at the
-empty-cuvette delay, 4, 12, 17 and 22 % of the empty-cuvette pulse after 0.5, 2, 4 and 5 min, that
-no tissue-only change fits. With a ~10 % optically thicker tissue path, the two terms are consistent
-with the 0.6 THz dip; a 2.0 THz dip, seen in one scan near the noise floor, is not reproduced. Its
-source and the reported polarisation and bias-direction selectivity, reported without data, remain
-unexplained.
+full-wave model of a myelinated fibre in water, benchmarked against analytic solutions to
+2 × 10⁻⁴. In 0.1–3 THz the node does not resonate. Its absorbed power follows a
+quasi-static law (exact limits, three constants) in node length over
+myelin thickness, g-ratio and permittivity contrast, within 2.3 % of full wave for fibres up to
+10 µm, independent of internode length. For the THz field along the fibres (every published scan), no node state changes a 100 µm slice by more than 1.1 dB (internodes ≥ 200 µm,
+packing ≤ 0.6); with every extreme combined, node states give at most half the extra phase the
+0.6 THz feature needs. Open channels add 10⁻⁶ of the membrane admittance; 9 dB from fibre
+conduction needs 300–1300 S/m axoplasm conductivity (physiological: 1.4). The three reports share
+reference waveforms; in their four biased scans the pulse gains a component at the empty-cuvette
+delay, 4–22 % of the empty-cuvette pulse after 0.5–5 min, that no uniform change of the tissue path
+fits. With a ~10 % optically thicker tissue path, found in time and frequency, the
+two terms are consistent with the 0.6 THz dip; a 2.0 THz dip in one scan is not
+reproduced. Its source and the reported polarisation and bias-direction selectivity
+(shown without data) remain open.
 
 **Keywords:** terahertz; node of Ranvier; myelinated axon; finite-element method; dosimetry;
 terahertz time-domain spectroscopy; spinal cord.
@@ -61,11 +61,31 @@ state could change a 100 µm slice by 9 dB, are questions a full-wave calculatio
    100 µm slice by the reported amount?
 4. What do the published waveforms themselves show?
 
-The answers are: no resonance; a quasi-static law, exact in its limits; no, by at least 2.5× for
-the THz field along the fibres, the configuration of every published scan; and an
+The answers are: no resonance; a quasi-static law, exact in its limits; no for the THz field
+along the fibres, the configuration of every published scan (with every extreme combined, node
+states give at most half the phase change the 0.6 THz feature needs); and an
 undelayed beam component plus a thicker tissue path, which are consistent with the 0.6 THz dip but
 not with the 2 THz dip. Section 2 describes the model, Section 3 its verification, Section 4 the node results,
 Section 5 the experimenters' model and the published data, and Section 6 the limits.
+
+**Prior work and what is new.** Quasi-static field factors of cell and membrane compartments are
+standard in radio-frequency and microwave microdosimetry (Gimsa and Wachner 1999; Kotnik and
+Miklavčič 2000), and both limits of the law below follow from the boundary conditions (continuity of
+normal D and of tangential E). What is new is (i) the interpolation between the limits, with three
+constants fitted once to a Laplace solver and tested against full wave over node length, myelin
+thickness, axon radius and frequency, for the node in water with measured THz dispersion; (ii)
+bounds on what any node state can do to a slice, including the negative-ε ring resonance; and (iii)
+a re-analysis of the published waveforms. Table 0 lists the closest work.
+
+| Paper | What they did | Band | Water | This work |
+|---|---|---|---|---|
+| Liu G et al. 2019 | myelin index ~2× surroundings; sheath as dielectric waveguide (SR-FTIR) | mid-IR | measured, mid-IR | below 3 THz myelin's index is below water's and the axon-core V number ≤ 0.4: guided modes leak |
+| Liu Y et al. 2020 | node as an active (three-level gain) amplifier | mid-IR–THz | not stated | passive response only; gain is outside scope |
+| Guo et al. 2022 | three-layer fibre modes, mode matching at the node, vs CST | 0–30 THz | constant complex ε | double-Debye water, realistic internodes, node power, Mie benchmark, convergence |
+| Song et al. 2026 | node as impedance transformer, peaks vs node length | 10–40 THz | lossless, ε = 1.44 | with water's ε the node is quasi-static and non-resonant below 3 THz |
+| Zangari et al. 2018 | node as an array of nano-antennas (FEM) | IR | lossless or constant | no antenna resonance below 3 THz; interpolation law with exact limits |
+| Kumar et al. 2016 | myelinated axons as optical waveguides | visible–NIR | n/a | the waveguide picture does not carry over to THz |
+| H1–H3 (2024) | THz-TDS of biased cord slices; dips at 0.6 and 2 THz; open node channels | 0.2–4 THz | experiment | tests their model and node resonance; re-analyses their waveforms |
 
 ## 2. Model
 
@@ -89,7 +109,8 @@ is a Looyenga mixture of 40 % water with dry lipid (ε ≈ 2.3 − 0.05j), and a
 water. In 0.1–3 THz this gives indices of 1.91–3.42 (water), 1.86–3.12 (axoplasm) and 1.67–2.25
 (myelin) (Fig. 1b, c). Myelin is lamellar; a uniaxial Wiener tensor (radial harmonic, axial
 arithmetic mean) is tested as a variant, with and without confined interlamellar water at half the
-bulk loss. Every material is also scaled by ±20 % in ε′ and ε″, one at a time. All loss enters as a
+bulk loss. Every material is also scaled by ±20 % in ε′ and ε″, one at a time, and for the slice bound
+with the three changes that raise it combined. All loss enters as a
 literal complex permittivity, tested against analytic results.
 
 ### 2.3 Full-wave method
@@ -176,10 +197,12 @@ with the wavelength, and the internode length does not enter: there is no resona
 
 ### 4.3 Scaling
 
-Full wave at 0.1/0.6/1/2/3 THz for ten geometries (Fig. 4): every spectrum is smooth. Full wave
+Full wave at 0.1/0.6/1/2/3 THz for the reference fibre and ten variants (Fig. 4): node length
+0.5/2/5 µm; myelin thickness 0.5 and 3 µm (g = 0.875 and 0.54, outside the fitted 0.6–0.8); axon
+radius 1 and 7.5 µm at g = 0.7; internode 200/500/1500 µm. Every spectrum is smooth. Full wave
 over the Laplace factor is 0.998–1.036 for fibres up to b = 6.5 µm and 1.089 for b = 10.7 µm at
-3 THz, where k_w·b = 1.3 and retardation begins. The law matches full wave within 2.2 % for
-b ≤ 5 µm (fibre diameter ≤ 10 µm), 4.3 % at b = 6.5 µm and 9.8 % at b = 10.7 µm and 3 THz. The
+3 THz, where k_w·b = 1.3 and retardation begins. The law matches full wave within 2.3 % for
+b ≤ 5 µm (fibre diameter ≤ 10 µm, including both g-ratios outside the fit range), 4.3 % at b = 6.5 µm and 9.8 % at b = 10.7 µm and 3 THz. The
 internode length changes P_node by < 10⁻⁴ (200–1500 µm).
 
 ### 4.4 Why there is no resonance
@@ -232,30 +255,42 @@ Three mesh levels at the peak give 0.123/0.107/0.097 dB at 3 THz: the value fall
 peaks of 0.014/0.027/0.066/0.112 dB, each below the coarse peak (at 3 THz it moves to ε′ ≈ −1.35;
 at 0.6 THz the fine peak at ε′ = −1.8 is bracketed by −2.0, 0.013 dB), so the coarse values are
 upper bounds.
-Re-scanning ε′ with each material scaled by ±20 % moves the peak to at most 0.148 dB (myelin ε′
-×1.2). Including the material uncertainty, the passive bound is 0.9 dB at internode 200 µm and
-packing 0.6. At ε″ = 0.01 the gap's 90° corners are singular and the points do not converge, so the
+Re-scanning ε′ with each material scaled by ±20 % one at a time moves the peak to at most
+0.148 dB (myelin ε′ ×1.2). The three changes that raise it (axon ε′ ×1.2, myelin ε′ ×1.2, myelin
+ε″ ×0.8), applied together, raise it ×1.45 at 0.6 THz and ×1.43 at 3 THz (0.021 and 0.176 dB;
+the 0.6 THz peak moves to ε′ ≈ −2.0, bracketed by a scan from −2.7 to −1.0). Including this, the
+passive bound at internode 200 µm and packing 0.6 is 0.12/0.24/0.63/1.07 dB at 0.6/1/2/3 THz
+(×1.45 assumed at 1 and 2 THz). At ε″ = 0.01 the gap's 90° corners are singular and the points do not converge, so the
 claim is made for ε″ ≥ 0.1; negative ε′ with ε″ ≪ 1 is not possible in an aqueous gap at THz, where
 ion collisions make ε″ ≫ |ε′|.
 
 **Bound.** For E∥, internode ≥ 200 µm and packing ≤ 0.6, no node conductivity changes a 100 µm
-slice by more than 0.05 dB, and no passive node permittivity by more than 0.1/0.2/0.5/0.9 dB at
-0.6/1/2/3 THz (±20 % materials included; the ×1.2 found at 3 THz is assumed at the other
-frequencies). The factors that could raise these multiply. Taking every extreme at once, internodes
-of 50 µm (the smallest CNS fibres; ×4), packing 0.8 (×1.33, assumed linear; at 0.6 the E∥ response
-is unchanged, Sec. 4.5) and a ~200 µm slice (Sec. 5.5; ×2), gives ×11: 1.1/2.1/5.5/9.5 dB. The
-internode scaling was checked by solving at 50 µm directly: the slice change matches the value
-scaled from 200 µm within 0.3 % at every frequency and in both polarisations. At 0.6 THz the
-reported 9–20 dB dip, and the 4.5 dB change after 30 s, are ≥ 4× above 1.1 dB. At 2 THz the 14 dB
-dip is 2.5× above 5.5 dB. Near 3 THz the extreme bound reaches 9.5 dB, but that is added loss,
-while the reported change there is a rise in transmission of up to 17–18 dB; over the full ε grid at
-3 THz (33 states) the largest rise any node state gives is 0.003 dB per slice at 1 mm internodes,
-0.18 dB with all extremes. The extreme also needs every node, in a slice made only of the smallest
-fibres, to hold ε′ ≈ −1.4 with ε″ = 0.1, which an aqueous gap cannot (above). With all extremes the
-conductivity bound is 0.5 dB.
+slice by more than 0.05 dB, and no passive node permittivity by more than 0.1/0.2/0.6/1.1 dB at
+0.6/1/2/3 THz (combined ±20 % materials included). The factors that could raise these multiply.
+Taking every extreme at once, internodes of 50 µm (the smallest CNS fibres; ×4), packing 0.8
+(×1.33, assumed linear; at 0.6 the E∥ response is unchanged, Sec. 4.5) and the optical thickness of
+the measured slice, up to ~230 µm (Sec. 5.5; ×2.3), gives ×12.3: 1.5/3.0/7.7/13 dB for passive ε
+and 0.6 dB for conductivity. The internode scaling was checked by solving at 50 µm directly: the
+slice change matches the value scaled from 200 µm within 0.3 % at every frequency and in both
+polarisations.
+
+The right comparison at 0.6 THz is not the dip depth: in the two-term reading of Sec. 5.6 the dip is
+an interference null whose depth depends on how exactly two terms cancel. What the tissue itself must
+change is its transfer, T → T^q with q − 1 = 0.09–0.18, which at 0.6 THz (|T|² = −12.1 dB, phase
+2.1 rad) is 1.1–2.2 dB of extra loss and 0.19–0.37 rad of extra phase. Node states give at most
+0.3 dB and 0.02 rad under nominal parameters (internode 200 µm, packing 0.6, 230 µm path), ≥ 4× and
+≥ 9× short. With every extreme combined the loss bound (1.5 dB) lies inside the required range, but
+the phase bound (0.11 rad, the largest |Δφ| over all states with ε″ ≥ 0.1, combined materials
+included) is 1.8× below the smallest phase required. The 4.5 dB change after 30 s is 3× the extreme
+loss bound. At 2 THz the 14 dB change in the 30-s scan is 1.8× above 7.7 dB. Near 3 THz the extreme
+bound reaches 13 dB, but that is added loss, while the reported change there is a rise in
+transmission of up to 17–18 dB; over the full ε grid at 3 THz (33 states) the largest rise any node
+state gives is 0.003 dB per 100 µm at 1 mm internodes, ≤ 0.3 dB with all extremes. The extremes
+also need every node, in a slice made only of the smallest fibres, to hold ε′ between −2 and −1.4
+with ε″ = 0.1, which an aqueous gap cannot (above).
 
 These bounds are for the THz field along the fibres, the configuration of every published scan
-(H1, p. 18). For E⊥ the conductivity bound with all extremes would be 2.7/7.4/11.5 dB at
+(H1, p. 18). For E⊥ the conductivity bound with all extremes would be 3.1/8.5/13 dB at
 0.6/2/3 THz, so the E∥ margin does not carry over to the reported E⊥ controls, which were described
 without data (Sec. 5.6).
 
@@ -300,8 +335,8 @@ drives ~0.7–1.1 mA through the slice: 2.6–3.7 MW/m³ of Joule heat (σ⊥ = 
 1965), 0.6–0.9 K/s adiabatic, enough to evaporate ~9 % of the slice water per minute. Heating by
 5/15 K changes 0.6 THz transmission by −0.13/−0.43 dB; losing 10/30 % of the water by +0.6/+1.5 dB
 (0.6 THz) and +0.9/+2.8 dB (2 THz). Electrolysis makes 25–42 mm³ of H₂ in 5 min at the electrodes,
-7.5 mm from the beam. Every bulk mechanism is smooth in frequency and none gives a narrow 9 dB
-feature. DC along the fibres (σ∥ ≈ 7σ⊥) heats more and reportedly does nothing, so heating alone
+7.5 mm from the beam. Applied uniformly, every bulk mechanism is smooth in frequency and none
+gives a narrow 9 dB feature (partial coverage is a different case, Sec. 5.6). DC along the fibres (σ∥ ≈ 7σ⊥) heats more and reportedly does nothing, so heating alone
 does not explain the DC-direction selectivity. The tissue is post-mortem, and the bias puts ~70 mV
 across a 10 µm fibre, not the ~1 V the authors estimate.
 
@@ -321,11 +356,14 @@ the 9–20 dB, therefore rests on one sample.
 
 The reported baseline loss of 30 dB per 0.1 mm at 2 THz is 1.9–2.6× that of pure water (15.8 or
 11.6 dB with the broadband or Kindt–Schmuttenmaer model), while nerve tissue absorbs within ~10 % of
-water (Berry et al. 2003). The shared tissue delay is 0.61 ps relative to the empty cuvette (linear
-phase over 0.2–1.4 THz, rms deviation 0.11 rad), so (n − 1)d ≈ 183 µm. Water-based tissue
-(n = 1.95–2.2) then needs d ≈ 150–190 µm, about twice either stated thickness. If the slice is
-~200 µm thick, every per-slice bound of Sec. 4.6 doubles (≤ 0.1 dB conductivity, ≤ 1.8 dB passive
-ε) and the 9 dB conductivity of Sec. 5.2 halves (~150–500 S/m); Sec. 4.6 combines this with the other extremes.
+water (Berry et al. 2003). Read as a thickness instead, the measured loss of the unbiased slice
+relative to the empty cuvette (−12.1/−14.9/−20.1/−29.2 dB at 0.6/1/1.5/2 THz) is that of an
+effective-medium white-matter slab on PTFE (broadband water) 190/180/195/230 µm thick. The shared
+tissue delay is 0.61 ps relative to the empty cuvette (linear phase over 0.2–1.4 THz, rms deviation
+0.11 rad), so (n − 1)d ≈ 183 µm, and water-based tissue (n = 1.95–2.2) needs d ≈ 150–190 µm. Loss
+and delay agree: the slice is optically ~150–230 µm thick, about twice either stated thickness.
+Every per-slice bound of Sec. 4.6 then scales by up to 2.3 (Sec. 4.6 combines this with the other
+extremes), and the 9 dB conductivity of Sec. 5.2 falls to ~130–500 S/m.
 
 ### 5.6 The published waveforms
 
@@ -340,24 +378,34 @@ envelope of each published curve and binned to 0.05 THz.
 **An undelayed component.** Each biased pulse was fitted as a·(no voltage) + b·(empty)(t − τ),
 with the shared empty-cuvette pulse (Figs. 6 and 7):
 
-| Bias time (report) | b | τ (ps) | residual | best one-path fit (tissue only) |
-|---|---|---|---|---|
-| 30 s (H1) | 0.039 (0.036–0.042) | −0.042 | 9 % | 20 % |
-| 2 min (H2) | 0.120 (0.118–0.121) | −0.039 | 25 % | 63 % |
-| 4 min (H1) | 0.173 (0.172–0.174) | −0.039 | 27 % | 84 % |
-| 5 min (H3) | 0.217 (0.216–0.217) | −0.026 | 28 % | 77 % |
+| Bias time (report) | b, time domain | b, other estimates | τ (ps) | residual | tissue term shifted too: shift (ps), residual | best one-path fit |
+|---|---|---|---|---|---|---|
+| 30 s (H1) | 0.039–0.040 | — | −0.042 | 9 % | −0.002, 9 % | 20 % |
+| 2 min (H2) | 0.113–0.120 | — | −0.039 | 25 % | +0.043, 18 % | 63 % |
+| 4 min (H1) | 0.166–0.174 | 0.164 (spectral fit with q); 0.20–0.21 (1.5–3 THz level) | −0.039 | 27 % | +0.053, 20 % | 84 % |
+| 5 min (H3) | 0.209–0.217 | 0.206–0.212 (spectral fit with q); 0.22–0.27 (1.5–3 THz level) | −0.026 | 28 % | +0.066, 23 % | 77 % |
 
-Ranges are over ±1-pixel shifts of the traces. The tissue pulse arrives 0.61 ps after the empty
+The time-domain range covers two independent tracings (Sims 39/42 and 43), ±1-pixel shifts
+(≤ 0.006) and both fit forms; the spread between methods, up to ~25 % at 4–5 min, is the
+uncertainty of b and is several times the tracing noise. The tissue pulse arrives 0.61 ps after the empty
 cuvette; the second component sits within 0.05 ps of the empty-cuvette delay and grows steadily with
 bias time. The 2-min scan of H2 was traced after the others had been fitted and falls between them
-(0.12, against 0.10 from linear interpolation). Two spectra show the component without fitting. In
-H3's Fig. 1b, biased minus empty cuvette is flat at −11.3 to −13.2 dB over 1.5–3 THz, a field
-fraction of 0.22–0.27. In H1's Fig. 4b, the 4-min spectrum is flat at −13.7 dB relative to the empty
-cuvette over 1.5–3 THz (0.21), where the unbiased tissue transmits −20 to −32 dB.
+(0.12, against 0.10 from linear interpolation). Two spectra show a component of this size without fitting. In H3's Fig. 1b, biased minus empty
+cuvette is flat at −11.3 to −13.2 dB over 1.5–3 THz, a field fraction of 0.22–0.27. In H1's
+Fig. 4b, the 4-min spectrum is flat at −13.7 dB relative to the empty cuvette over 1.5–3 THz (0.21),
+where the unbiased tissue transmits −20 to −32 dB. These high-band levels exceed the time-domain b
+by 15–25 %, and above 1.85 THz the 4-min model (Fig. 8) lies 1.2–2.0 dB below the published
+spectrum: the component is larger at high frequency than the pulse fit, dominated by 0.3–1 THz,
+gives.
 
 τ is slightly negative in every fit (−0.026 to −0.043 ps, 2–3 pixels), where an air path gives
-τ = 0 and any tissue in the path gives τ > 0. A drift of the delay stage between scans of this size
-would explain it. A component that crosses up to ~20 % of the tissue's optical thickness fits H3 as
+τ = 0 and any tissue in the path gives τ > 0. A drift of the delay stage would shift both terms, so
+we refitted with a common shift s of the whole biased scan and τ of the component relative to it.
+With τ = 0 the residuals rise to 10/29/34/31 %. With τ free, the tissue term moves later by
+−0.002/+0.043/+0.053/+0.066 ps (0/7/9/11 % of the tissue delay, growing with bias time) and the
+residuals fall to 9/18/20/23 %, while the component stays 0.02–0.04 ps ahead of the empty-cuvette
+pulse. Drift therefore does not explain the lead, which remains 2–4× the cross-figure alignment
+error (≤ 0.01 ps) and unexplained. A component that crosses up to ~20 % of the tissue's optical thickness fits H3 as
 well as one that crosses none (residuals 29–32 % against 28 %), so "undelayed" here means "within
 ~0.1 ps of the empty-cuvette delay".
 
@@ -366,7 +414,9 @@ well as one that crosses none (residuals 29–32 % against 28 %), so "undelayed"
 measured tissue transfer T = B/K (B no voltage, K empty) raised to a power q, the model
 A·K·T^q + b·K·e^{−iωτ} leaves 17 % (H1, 4 min, q = 1.09) and 9–20 % (H3, q = 1.18 to 1.11 for bands
 ending at 1.0 to 1.7 THz), with b stable (H3: 0.206–0.212). The tissue path is 9–18 % optically
-thicker under bias; the value of q depends on the band used.
+thicker under bias; the value of q depends on the band used. The time-domain fit with the tissue
+term free to shift finds the same thing independently: an extra tissue delay of 0, 7, 9 and 11 %
+after 0.5, 2, 4 and 5 min (q = 1.00 at 30 s and 1.09 at 4 min in the frequency domain).
 
 **The 0.6 THz dip.** This is a consistency check, not a prediction: q and b are fitted to the same
 traces, and q is what places the dip (H1 at 4 min: 0.71 THz with q = 1, 0.62–0.65 THz with
@@ -411,19 +461,26 @@ region is generic. We count the 2 THz feature as not explained.
 be tested without later traces. A gas column inside the tissue was fitted and withdrawn: it needed a
 225–240 µm column in a 100 µm cuvette.
 
-**What the component could be.** Part of the beam reaching the detector without crossing the tissue
-(a gap opening between slice and window, gas, the slice shrinking or moving) would appear this way,
-and a drying or swelling slice would change the tissue path. The data cannot identify the cause. If
-the polarisation and DC-direction controls were done as described, they argue against any such
-cause, and they remain unexplained. They are described in words only (H1, p. 18; H3), with no
-waveforms or spectra, so they cannot be tested on the published data.
+**What the component could be.** It is beam that reaches the detector without crossing the
+tissue. A gap between slice and window is in series with the tissue and cannot do this, and a slice
+shrinking at its edges cannot clear the beam (H1: beam ~5 mm across; H3: 20 × 20 mm samples;
+electrodes 15–18 mm apart). For a Gaussian beam 5 mm across (as 1/e² or as FWHM diameter),
+b = 0.17–0.22 needs an opening through the full thickness on the beam axis 1.8–3 mm across
+(0.7–1.2 mm at 30 s): a hole or tear from drying, or a gas bubble. A 2 mm bubble in a 0.1 mm layer
+holds 0.3 mm³, against 25–42 mm³ of electrolytic gas in 5 min (Sec. 5.4). An opening on the axis
+also passes a larger fraction at high frequency, where the beam waist is smaller, as the high-band
+levels above show; we have not modelled this. A drying or swelling slice would change the tissue
+path. The data cannot identify the cause. If the polarisation and DC-direction controls were done
+as described, they argue against any such cause, and they remain unexplained. They are described in
+words only (H1, p. 18; H3), with no waveforms or spectra, so they cannot be tested on the published
+data.
 
 ### 5.7 What matches and what does not
 
 | Reported | This work |
 |---|---|
 | Dip near 0.6 THz (9–20 dB) | No node or fibre resonance in 0.1–3 THz. The undelayed component plus a 9–18 % thicker tissue path is consistent with it (0.57–0.65 THz against 0.56–0.65 measured); q is fitted |
-| Drift 0.7 → 0.5 THz | The dip deepens and moves from ~0.7 to 0.62–0.65 THz as b and q grow; water-vapour lines cannot drift |
+| Drift 0.7 → 0.5 THz | The dip deepens and moves from ~0.7 to 0.62–0.65 THz as b and q grow; water-vapour lines cannot drift. No traced spectrum has a dip below 0.56 THz, so the 0.5 THz endpoint is not in the published figures |
 | 2 THz dip (30 s) | Not reproduced. A real feature of one scan (15 dB, twice any other single-curve dip), its depth limited by dynamic range (bottom 2–5 dB above the noise); origin unknown. The two terms give a separate transient dip at 2.25 THz |
 | Only E∥ fibres, only DC across fibres | Not explained; bulk heating and drying would act for both DC directions |
 | Onset ~5 min, recovery ~1 h | Component grows 4 → 12 → 17 → 22 % (0.5, 2, 4, 5 min); recovery not traced |
@@ -444,10 +501,10 @@ release of the raw data.
 - **Band.** 0.1–3 THz. Song et al. (2026) work at 10–40 THz; mid-IR guiding (Liu G et al. 2019) is
   not tested.
 - **No raw experimental data.** The waveform analysis rests on traced published figures from one
-  measurement session; its fits leave 16–28 % (several times the tracing noise), the tissue-path
+  measurement session; its fits leave 9–28 % (18–23 % with the tissue term free to shift; several times the tracing noise), the tissue-path
   factor q depends on the fitted band, and the cause of the undelayed component is unknown.
-- **Conductivity bound** was not rerun with ±20 % materials; its margin is 18× with every extreme
-  combined.
+- **Conductivity bound** was not rerun with ±20 % materials; with the passive-ε material factor
+  (×1.45) and every extreme combined it is 0.9 dB, 10× below 9 dB.
 
 The result is a negative one for the resonance hypothesis and a positive one for dosimetry: node
 absorption in this band is fixed by water loss, node volume and a geometric factor that the
@@ -457,8 +514,12 @@ law gives within a few percent, with no free parameter fitted to full wave.
 
 In 0.1–3 THz the node of Ranvier is a quasi-static water gap. Its absorbed power follows
 P_node = ½ωε0ε″_w|E0|²V_nF with F from an interpolation law, exact in its limits, in node length over myelin thickness, g-ratio
-and permittivity contrast, within 2.2 % of full wave for fibres up to 10 µm. No node state, and not
-the conducting-fibre model proposed for the Yerevan experiments, can change a 100 µm slice by 9 dB.
+and permittivity contrast, within 2.3 % of full wave for fibres up to 10 µm. For the THz field along the fibres, as in every
+published scan, no node state changes a 100 µm slice by more than 1.1 dB at internodes ≥ 200 µm
+and packing ≤ 0.6; with every extreme combined (50 µm internodes, packing 0.8, the ~230 µm optical
+thickness of the measured slice) node states reach 1.5 dB and 0.11 rad at 0.6 THz, about half the
+phase change the 0.6 THz feature needs. The conducting-fibre model proposed for the Yerevan
+experiments needs 100–1000× physiological axoplasm conductivity.
 The published waveforms, all from one session, instead contain a component at the empty-cuvette
 delay that grows over the four biased scans, together with a ~10 % thicker tissue path; these are
 consistent with the 0.6 THz dip but do not reproduce the 2 THz dip, a feature of one scan whose
@@ -495,6 +556,9 @@ withdrawn results in `REPORT.md`.
 - Berry E, Fitzgerald AJ, Zinov'ev NN, Walker GC, Homer-Vanniasinkam S, Sudworth CD, Miles RE,
   Chamberlain JM, Smith MA (2003) Optical properties of tissue measured using terahertz pulsed
   imaging. Proc SPIE 5030:459–470. doi:10.1117/12.479993
+- Gimsa J, Wachner D (1999) A polarization model overcoming the geometric restrictions of the Laplace
+  solution for spheroidal cells: obtaining new equations for field-induced forces and transmembrane
+  potential. Biophys J 77(3):1316–1326. doi:10.1016/S0006-3495(99)76981-X
 - Guo L, Xu D, Wang K, Sun Y, Zhang Q, Ning H, Lu C, Wang S, Gong Y (2022) Electromagnetic
   characteristics of in vivo nerve fibers at the terahertz-far-infrared band. Front Bioeng
   Biotechnol 10:1055232. doi:10.3389/fbioe.2022.1055232
@@ -509,6 +573,9 @@ withdrawn results in `REPORT.md`.
   H2 and H3)
 - Kindt JT, Schmuttenmaer CA (1996) Far-infrared dielectric properties of polar liquids probed by
   femtosecond terahertz pulse spectroscopy. J Phys Chem 100(24):10373–10379. doi:10.1021/jp960141g
+- Kotnik T, Miklavčič D (2000) Theoretical evaluation of the distributed power dissipation in
+  biological cells exposed to electric fields. Bioelectromagnetics 21(5):385–394.
+  doi:10.1002/1521-186X(200007)21:5<385::AID-BEM7>3.0.CO;2-F
 - Kumar S, Boone K, Tuszynski J, Barclay P, Simon C (2016) Possible existence of optical
   communication channels in the brain. Sci Rep 6:36508. doi:10.1038/srep36508
 - Jepsen PU, Møller U, Merbold H (2007) Investigation of aqueous alcohol and sugar solutions with

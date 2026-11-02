@@ -94,6 +94,15 @@ for name, y, x0 in (("30 s (paper 1)", H1["30s"], H1["none"]), ("2 min (paper 2)
     rows[name] = p
     say(f"  {name:16s}: a = {p[0]:.3f}, b = {p[1]:.3f} ({min(spread + [p[1]]):.3f}-{max(spread + [p[1]]):.3f}), "
         f"tau = {p[2]:+.3f} ps, residual {res:.0%}; one path {one:.0%}")
+say("  delay-stage drift moves both terms: biased = a * no voltage(t - s) + b * empty(t - s - tau)")
+for name, y, x0 in (("30 s (paper 1)", H1["30s"], H1["none"]), ("2 min (paper 2)", w2["red"], w2["blue"]),
+                    ("4 min (paper 1)", H1["4min"], H1["none"]), ("5 min (paper 3)", h3["red"], h3["blue"])):
+    r0 = lambda p: p[0] * shift(x0, p[2]) + p[1] * shift(H1["empty"], p[2]) - y
+    s0 = min((least_squares(r0, [0.6, b0, t0]) for b0 in (0.05, 0.2) for t0 in (-0.1, 0.0, 0.1)), key=lambda s: s.cost)
+    r1 = lambda p: p[0] * shift(x0, p[2]) + p[1] * shift(H1["empty"], p[2] + p[3]) - y
+    s1 = min((least_squares(r1, [0.6, b0, t0, 0.0]) for b0 in (0.05, 0.2) for t0 in (-0.1, 0.0, 0.1)), key=lambda s: s.cost)
+    say(f"  {name:16s}: tau = 0: b = {s0.x[1]:.3f}, s = {s0.x[2]:+.3f} ps, residual {rms(s0.fun) / rms(y):.0%}; "
+        f"tau free: b = {s1.x[1]:.3f}, s = {s1.x[2]:+.3f} ps, tau = {s1.x[3]:+.3f} ps, residual {rms(s1.fun) / rms(y):.0%}")
 b30, b4 = rows["30 s (paper 1)"][1], rows["4 min (paper 1)"][1]
 b2 = rows["2 min (paper 2)"][1]
 lin = b30 + (b4 - b30) * (2.0 - 0.5) / (4.0 - 0.5)
@@ -223,11 +232,11 @@ for axi, (name, key, spec_key, col, q) in zip(ax, (("30 s at 100 V", "30 s (pape
     axi.plot(fb, rel["none"], "k-", lw=1, label="no voltage (published)")
     axi.plot(fb, rel[spec_key], "-", color=col, lw=1.4, label=f"{name} (published)")
     axi.plot(fb, model, "--", color=col, lw=1, label=f"{a_:.2f}·T{'' if q == 1 else '^%.2f' % q} + {b_:.3f}·empty")
-    axi.axvspan(1.92, 2.20, color="0.9", zorder=0)
+    axi.axvspan(1.95, 2.05, color="0.9", zorder=0)
     axi.set_title(f"paper 1, {name}", fontsize=10); axi.set_xlabel("frequency (THz)")
     axi.legend(fontsize=7, loc="lower left")
 ax[0].set_ylabel("power re empty cuvette (dB)")
-ax[0].text(2.06, -6, "H₂O lines", ha="center", fontsize=7, color="0.4")
+ax[0].text(2.0, -6, "30-s dip", ha="center", fontsize=7, color="0.4")
 fig.tight_layout()
 for ext in ("png", "pdf"):
     fig.savefig(FIG / f"fig_paper1_spectra.{ext}", dpi=200)

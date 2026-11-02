@@ -35,7 +35,7 @@ with open(R / "sim32_table.csv", "w") as fh:
     for r in rows:
         fh.write(",".join(str(x) for x in r) + "\n")
 eta = np.array([r[7] for r in rows]); Fq = np.array([r[8] for r in rows]); Fc = np.array([r[9] for r in rows])
-print(f"full wave vs QS: max |ratio-1| = {np.max(abs(eta / Fq - 1)):.3f}; vs closed law: {np.max(abs(eta / Fc - 1)):.3f}")
+print(f"full wave vs QS: max |ratio-1| = {np.max(abs(eta / Fq - 1)):.3f}; vs interpolation law: {np.max(abs(eta / Fc - 1)):.3f}")
 for tag in runs:
     k = [i for i, r in enumerate(rows) if r[0] == tag]
     print(tag, runs[tag]["params"], "eta/F_qs", np.round(eta[k] / Fq[k], 3).min(), np.round(eta[k] / Fq[k], 3).max())
@@ -49,7 +49,7 @@ for pol, mk, col in (("par", "o", "C0"), ("perp", "s", "C1")):
     e = EPS[1e12]
     ax[0].plot(xs, [node_factor_closed(3.5, 5.0, xx * 1.5, *e, pol=pol) for xx in xs], "-", color=col, lw=1)
 ax[0].set_xscale("log"); ax[0].set_xlabel("node length / myelin thickness"); ax[0].set_ylabel("η at 1 THz")
-ax[0].set_title("(a) node length, a = 3.5, b = 5 µm\n(line: closed law)", fontsize=10); ax[0].legend(fontsize=7)
+ax[0].set_title("(a) node length, a = 3.5, b = 5 µm\n(line: interpolation law)", fontsize=10); ax[0].legend(fontsize=7)
 ax[1].plot(Fq, eta, ".", ms=5)
 lim = [0, max(eta.max(), Fq.max()) * 1.05]
 ax[1].plot(lim, lim, "k-", lw=0.7); ax[1].set_xlim(lim); ax[1].set_ylim(lim)
