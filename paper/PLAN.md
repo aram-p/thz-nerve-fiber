@@ -17,12 +17,12 @@ limits, within 2.3 % of full wave for fibres up to 10 µm. Second, for the field
 in every published scan, no node state (ε″ ≥ 0.1) changes a 100 µm slice by more than 1.1 dB at
 internodes ≥ 200 µm and packing ≤ 0.6, and open channels add 10⁻⁶ of membrane admittance. Third,
 each published biased waveform fits as the unbiased pulse whose tissue part lags by 0.16–0.28 rad at
-0.6 THz and loses more at high frequency (1.7–7.1 dB/THz more than at 30 s, depending on the fit),
-plus a second pulse near the empty-cuvette delay growing to 22 % of the field. This holds over 36
-fitting assumptions and is many times the difference between tracings of the unbiased pulse. It fits
-the 0.6 THz dip, not a single-scan 2.0 THz dip. Ions, conduction and warming cannot produce it; a
-6–10 % thicker tissue path can, as can gas with a timing drift or node states 2–4.5 times beyond
-every geometric extreme, which the bounds exclude. The reported polarisation selectivity, described
+0.6 THz and loses more at high frequency, the two trading off between fits, plus a second pulse near
+the empty-cuvette delay growing to 22 % of the field. This holds over 36 fitting assumptions and is
+many times the difference between tracings of the unbiased pulse. It fits the 0.6 THz dip, not a
+single-scan 2.0 THz dip. Ions, conduction and warming fail alone, and with a timing drift at 5 min;
+a 6–10 % thicker tissue path fits, as do gas with a drift and node states near or beyond every
+geometric extreme, which the bounds exclude. The reported polarisation selectivity, described
 without data, stays unexplained.
 
 ## Section outline

@@ -692,7 +692,7 @@ mode-matching assumption and now says a single on-axis opening is disfavoured by
 **Response.** Sim 45: loss gives 198/198/232/314 µm (KS) and 191/181/194/232 µm (broadband) at
 0.6/1/1.5/2 THz; the delay, fitted the same way on the model, gives 216–220 µm; model offset −0.5 rad
 against −0.22 measured, stated as unexplained. The bounds now use ×2.2 at 0.6–1 THz and ×3.1 at
-2–3 THz: 1.5/2.9/10/17 dB passive, ≤ 1.2 dB conductivity, E⊥ 3.0/11.5/18 dB. The 2 THz margin at the
+2–3 THz: 1.5/2.7/10/18 dB passive, ≤ 1.2 dB conductivity, E⊥ 3.0/11.5/18 dB. The 2 THz margin at the
 extremes is lost (10 vs ≥ 14 dB); §4.6 says so and gives the nominal margin (7×) and the width
 argument. **Fixed.**
 
@@ -1322,10 +1322,29 @@ states the bootstrap's few blocks, the bounds and the number of tests. **Fixed.*
 **Response.** The abstract now leads with the lag and gives the loss as 1.7–7.1 dB/THz "depending on the fit"; Sec. 5.7 says the thicker path fits through its delay and the water loss that comes with it, and the argument that ions and conduction are "too flat" is now "too flat and too little lag", which Sim 59 supports (they fail also at twice the size). **Fixed.**
 
 ### 217. MINOR: bootstrap details: one start for the full fit; the no-change threshold reused for candidate tests with a fitted size and screened node states; the 5 % quantile from 600 draws is uncertain by ~±0.015.
-**Response.** Stated in Sec. 6; verdicts near a threshold (the thicker path at 5 min) are called marginal. The verdicts that carry the conclusion (ions, conduction and warming at 4–5 min, p ≤ 0.014 alone) are clear of the thresholds. **Stated.**
+**Response.** Stated in Sec. 6; verdicts near a threshold (the thicker path at 5 min) are called marginal. Alone, ions, conduction and warming (p ≤ 0.015) are clear of the thresholds; with a drift their rejection at 5 min is marginal (item 219). **Stated.**
 
 ### 218. MINOR: ions p 0.008 for 0.007; 3.1–7.4 against 1.7–7.1 unnamed; sim56.txt still says 'calibrated' against the withdrawn threshold; gas r 120 µm left out of Sim 58.
 **Response.** Fixed in the text; Sec. 5.6 names 3.1–7.4 as the increment over the floor; sim56.txt carries a note that all its rows also pass at the Sim 57 thresholds; bubbles of 120 µm radius are larger than the 100 µm slice and are not physical here (Sec. 5.7 already says 80 µm does not fit). **Fixed.**
+
+---
+
+## Twenty-sixth round (independent reviewer, whole paper, 2026-11-03; verdict: no fatal flaw, major revision; three wordings beyond Sim 59)
+
+### 219. MAJOR: "ions, conduction and warming cannot produce it, alone or with a timing drift" goes beyond Sim 59: with a drift they pass 2/1/0 and 2/2/0 of 8 and fail only at 5 min (p 0.013–0.014 against 0.023), and the drift test reuses the shift-test threshold for a different null.
+**Response.** Agreed. The abstract, Sec. 1, Sec. 5.7 and Sec. 7 now say they fail alone at every scan and with a drift only at 5 min, marginally; Sec. 6 states that the drift threshold was calibrated for another null. A bootstrap of the drift test is not run. **Narrowed.**
+
+### 220. MAJOR: the 1.7–7.1 dB/THz is not a property of the data: the thicker path passes with 0.4–0.7 dB/THz; "too flat" cannot be why ions fail; at 2 min a drift alone passes in 1 of 8.
+**Response.** The abstract no longer gives the loss as a number; it says the loss and the lag trade off between fits. Sec. 5.6 says so and names the lag as the robust quantity. Sec. 5.7 says the candidates' change of loss and delay with frequency does not match, and that at 2 min a drift alone passes in one of eight. **Fixed.**
+
+### 221. MINOR: node states with a drift pass at λ 0.75–5.5; alone at 2 min the range is 2–2.5.
+**Response.** Table 2, Sec. 5.7 and Sec. 7 give both ranges ("near or beyond every geometric extreme"). The forward-bound exclusion stands (every extreme is 11–16 times the change at internode 200 µm and packing 0.6). **Fixed.**
+
+### 222. MINOR: a positive drift makes the second pulse lead the empty cuvette further; a constraint on its arrival would test gas with a drift.
+**Response.** Not run; the second pulse's lead is already listed as unexplained (Sec. 5.6, Sec. 7). **Open.**
+
+### 223. MINOR: inconsistencies: 2 % vs 2.3 %; the quasi-static solver at 6.4 %; the every-extreme value at 1 THz; the selectivity row; stale REFEREE entries.
+**Response.** Sec. 4.4 says 2.3 %; Sec. 4.1 gives 0.1–6.4 % (largest at 0.1 THz); the every-extreme values recomputed from `results/sim30/sim36_signedband.json` are 1.5/2.7/10/18 dB (were 1.5/2.9/10/17); the Sec. 5.8 selectivity row names only the causes that fit; response 217 and the match-table rows on the bypass and on timing are updated. The figure file names keep 'bypass' (file names only). **Fixed.**
 
 ---
 
@@ -1333,16 +1352,16 @@ states the bootstrap's few blocks, the bounds and the number of tests. **Fixed.*
 
 | Reported (Hovhannisyan, Makaryan, Martirosyan 2024) | This work |
 |---|---|
-| Dip near 0.6 THz (9–20 dB) | No node or fibre resonance anywhere in 0.1–3 THz. The shared session's biased waveforms contain a second pulse near the empty-cuvette delay (4, 12, 17, 22 % at 0.5, 2, 4, 5 min) and a tissue pulse with an extra loss rising 1.7–7.1 dB/THz above its 30 s value and a lag of 0.16–0.28 rad at 0.6 THz, over 36 reference fits (Sim 55); the dip then falls at 0.57 THz (5 min, reported 0.56) and 0.63–0.65 THz (4 min, published 0.65): consistent, q fitted. Ions, conduction and warming do not fit, alone or with a timing drift; a 6–10 % thicker tissue path fits alone, gas in a swelling slice with a drift of 0.03–0.06 ps, node states only at 2–4.5× every geometric extreme (Table 2, Sims 57–59) |
+| Dip near 0.6 THz (9–20 dB) | No node or fibre resonance anywhere in 0.1–3 THz. The shared session's biased waveforms contain a second pulse near the empty-cuvette delay (4, 12, 17, 22 % at 0.5, 2, 4, 5 min) and a tissue pulse with an extra loss rising 1.7–7.1 dB/THz above its 30 s value and a lag of 0.16–0.28 rad at 0.6 THz, over 36 reference fits (Sim 55); the dip then falls at 0.57 THz (5 min, reported 0.56) and 0.63–0.65 THz (4 min, published 0.65): consistent, q fitted. Ions, conduction and warming fail alone at every scan and with a timing drift at 5 min (marginally); a 6–10 % thicker tissue path fits alone, gas in a swelling slice with a drift of 0.03–0.06 ps, node states only near or beyond every geometric extreme (Table 2, Sims 57–59) |
 | 2 THz dip (30 s, paper 1) | Not reproduced, not excluded. A real feature of one scan: 15 dB at 1.99 THz, twice any other single-curve dip, its bottom (−71 dB) 2–5 dB above the noise, so the depth is a lower bound; origin unknown. With the traced phase extrapolated the two pulses put their antiphase at 2.10–2.32 THz, and the data are only 3.2 dB above the two-pulse floor (Sims 43, 44). No node state (65, every extreme, six phase bands, b = 0.034–0.044) makes the model's minimum within 0.03 THz of 1.99 THz deeper than −37.5 dB (published ≤ −43.5 dB; Sim 43 (e)) |
 | Dip drifts 0.7 → 0.5 THz in minutes | Water-vapour lines cannot drift. At 30 s the traced ratio is a broad −3 to −4 dB trough over 0.56–0.78 THz; by 4 min the dip is at 0.62–0.65 THz as b reaches 0.17 and q 1.09 (Sims 42, 43). Matches the direction; fitted, not predicted |
-| High frequencies rise by 17–18 dB (2–2.5 THz, traced) | The bypass skips tissue loss: the waveform fit follows the rise to 1.7 THz within 1.5 dB rms (not testable above with the traced window); drying alone ≤ 3 dB (Sim 34) |
+| High frequencies rise by 17–18 dB (2–2.5 THz, traced) | In the two-pulse fit the second pulse skips the tissue loss; the fit follows the rise to 1.7 THz within 1.5 dB rms (not testable above with the traced window); drying alone ≤ 3 dB (Sim 34) |
 | ~9 dB change under 100 V DC | Node (E∥, internode ≥ 200 µm, packing ≤ 0.6): ≤ 0.05 dB for any conductivity, ≤ 0.1/0.6/1.1 dB at 0.6/2/3 THz for any passive ε (ε″ ≥ 0.1, combined ±20 % materials); with internode 50 µm, packing 0.8 and the measured slice's optical thickness (×2.2–3.1) 1.5/10/17 dB. Inside the waveform fits node states are rejected at their every-extreme size but fit at 2–4.5 times it (Sim 59); the forward bounds exclude them. At 2 THz the extreme bound (10 dB) approaches the ≥ 14 dB change (nominal margin 7×). Near 3 THz the reported change is a rise (node states ≤ 0.4 dB); channels 10⁻⁹ dB. Fibre conduction: 130–450 S/m for 9 dB at 0.6–2 THz on the slice's optical thickness; the waveform fits reject it in all 24 references (Table 2). Heating/drying: smooth, ≤ 3 dB |
 | Effect only with E ∥ fibres | Described without data (H1 p. 18, H3), so not testable on the published material. Contradicted by every plausible remaining cause of the change (more tissue, warming, scattering and conduction in the tissue water act for both polarisations); model dichroism −0.35 dB; a conducting axon is itself E∥-selective (6.6 vs 2.7 dB at 0.6 THz) but needs 130–450 S/m for 9 dB |
 | Effect only with DC across the fibres | Described without data. Not explained; heating predicts the opposite (σ∥ ≈ 7σ⊥) |
 | Generated high frequencies (nonlinearity) | No ps nonlinearity at TDS fields (10⁻³ of onset); drying raises high-frequency transmission linearly |
 | Sample acts as a grating of wires | No diffraction orders below 6 THz; fibres are not periodic |
-| Onset ~5 min, recovery ~1 h; no further change after ~6 min (paper 1) | The second pulse grows 4 → 12 → 17 → 22 % (0.5, 2, 4, 5 min); saturation after ~6 min not testable (no later trace). Timing compatible with heating/drying (0.6–0.9 K/s adiabatic), but see DC direction |
+| Onset ~5 min, recovery ~1 h; no further change after ~6 min (paper 1) | The second pulse grows 4 → 12 → 17 → 22 % (0.5, 2, 4, 5 min); saturation after ~6 min not testable (no later trace). Heating and drying are rejected by the waveform fits alone (Table 2); a thicker path or gas with a drift fits |
 | No significant change of average power (paper 3) | Traced pulse energy 1.03 (biased) vs 1.36 (no voltage): −1.2 dB, consistent with a small change of a heavily attenuated signal |
 | Tissue n = 3.6–3.9 | Inconsistent with water-based tissue (model and Berry 2003: 1.95–2.2) |
 
