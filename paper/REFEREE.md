@@ -1418,13 +1418,36 @@ states the bootstrap's few blocks, the bounds and the number of tests. **Fixed.*
 ### 245. MINOR: the tracing pairs are built differently from the references (no floor, no a + b ≤ 1).
 **Response.** Sim 68 builds them like each reference (floor applied, a ≤ 1, a + b ≤ 1 where used): largest D 2.6–4.3 % without a shift, ≤ 0.08 % with one. **Fixed.**
 
+## Thirtieth round (independent reviewer, whole paper, 2026-11-03; verdict: no fatal flaw, major revision; the threshold rule differs between script and text, the noise is too small, the node paragraph contradicts the transfers used)
+
+### 246. MAJOR: the Sim 68 script judges at the 95th percentile of 30 draws while the paper uses the largest; Table 2 is in no file.
+**Response.** Sim 69 applies one rule in the script and the text: per scan the 1 − 0.05/3 quantile of 100 draws, combined with the tracing D in quadrature; excluded if D exceeds it at one of 2, 4, 5 min. Table 2 is now printed by `sim69_threshold_rule.py` into `results/sim69/sim69.txt`. The rule is a tested helper (`threshold_verdict`), which reproduces every Sim 69 verdict. **Fixed.**
+
+### 247. MAJOR: the full fit's residual understates the noise (5 parameters against N_eff 13–20), and the largest of 30 draws is itself noisy; the false exclusion rate is 13–22 %, not 9 %.
+**Response.** Agreed. Sim 69 scales the residual by the factor at which noise injected into the full fit's own curve leaves a residual as large as on the data: 1.07–1.24 (sqrt(N_eff/(N_eff − 5)) gives 1.16–1.29), tested helper `noise_scale`. 100 draws per fit, per-scan level 1 − 0.05/3 so about 5 % per reference over three scans; counted on the draws themselves, 0–6 %. Each verdict is bootstrapped over the draws (200 resamples); a flip rate above 10 % is reported as borderline (Table 2, in brackets). **Fixed.**
+
+### 248. MAJOR: the margins for warming and conduction are overstated ("1.5 times or more").
+**Response.** After the correction they are 1.33–3.19 (ions with a drift lowest, 1.33), none borderline, in all eight references; Sec. 5.7, 5.8 and 6 now say 1.3. The exclusions stand. **Fixed.**
+
+### 249. MAJOR: the node paragraph gives a 1.6 dB/THz slope and ε′ −3.5 to −2.4, against 4.6–5.2 dB/THz and −1.0 to −5 in the transfers the fits use; λ = 1 is the forward bound itself, so the bound cannot exclude it.
+**Response.** Agreed; recomputed over 0.2–1.7 THz at every extreme. The steepest slope is 5.2 dB/THz, from ε′ −1.7 to −1.4 with ε″ = 0.1, which advance the pulse (−0.08 to −0.11 rad at 0.6 THz); the largest delay, 0.063 rad (ε = −3.0 − 0.1j), comes with 1.1 dB/THz. No state gives both. Sim 69's best states are ε′ −1.3 to −1.0 with a drift (within the threshold in all eight references, 0.83–0.98), −5 to −2.7 alone, or a 1000 S/m node. The exclusion now rests on what an aqueous gap can hold (ε″ ≫ |ε′|, Sec. 4.6), not on the waveforms or the λ range; Sec. 1, 5.7, 5.8 and 7 say so. **Fixed.**
+
+### 250. MINOR: "thicker path excluded in every reference with a drift" is not robust (flips in 31 % of resamples).
+**Response.** With the corrected noise it is within the threshold in three references with a drift (0.82–0.95) and one alone (0.96, borderline); the text calls it not excluded. **Fixed.**
+
+### 251. MINOR: leftovers: "Sims 27–67", Fig. 9 caption (Sim 66), a 0.4–0.7 dB/THz slope found nowhere, "bulk effects" excluded while gas is not, 0.96 vs 0.97, the What-matches row citing the withdrawn 1.63 %.
+**Response.** All corrected (Sims 27–69; Sim 69; phrase removed; "warming and extra conduction"; the gas numbers come from Sim 69, 0.75–1.00 within and 1.02–1.26 above; the row now cites 2.2–3.3 times the threshold). **Fixed.**
+
+### 252. MINOR: disclose that D compares fits that are not nested and that sizes are free per scan.
+**Response.** Both are stated in Sec. 5.6 and Sec. 6, with the note that both favour the candidates. **Fixed.**
+
 ---
 
 ## What matches and what does not (experiment)
 
 | Reported (Hovhannisyan, Makaryan, Martirosyan 2024) | This work |
 |---|---|
-| Dip near 0.6 THz (9–20 dB) | No node or fibre resonance anywhere in 0.1–3 THz. The shared session's biased waveforms contain a second pulse near the empty-cuvette delay (4, 12, 17, 22 % at 0.5, 2, 4, 5 min) and a tissue pulse with an extra loss rising with frequency and a lag of 0.16–0.28 rad at 0.6 THz, over 36 reference fits (Sim 55); without the change the fits miss by 17.9–23.0 % of the trace rms at 2–5 min, against at most 1.63 % between traced unbiased pulses of different reports (Sim 66). The dip then falls at 0.57 THz (5 min, reported 0.56) and 0.63–0.65 THz (4 min, published 0.65): consistent, q fitted. Against fitting noise and tracing (Sim 68), warming and conduction up to 60/150 S/m are excluded in all eight references (1.5–3.7× the threshold); a thicker path and gas in a swelling slice with a drift are not, and the waveforms cannot decide between them; node states fit only at 1–6× every extreme (Table 2) |
+| Dip near 0.6 THz (9–20 dB) | No node or fibre resonance anywhere in 0.1–3 THz. The shared session's biased waveforms contain a second pulse near the empty-cuvette delay (4, 12, 17, 22 % at 0.5, 2, 4, 5 min) and a tissue pulse with an extra loss rising with frequency and a lag of 0.16–0.28 rad at 0.6 THz, over 36 reference fits (Sim 55); without the change the fits miss at 2–5 min by 17.9–23.0 % of the trace rms, 2.2–3.3 times what fitting noise and tracing allow (Sim 69). The dip then falls at 0.57 THz (5 min, reported 0.56) and 0.63–0.65 THz (4 min, published 0.65): consistent, q fitted. Against fitting noise and tracing (Sim 69), warming and conduction up to 60/150 S/m are excluded in all eight references (1.3–3.2× the threshold, none borderline); a thicker path and gas in a swelling slice with a drift are not, and the waveforms cannot decide between them; node states fit with a drift in every reference but only at 1–6× every extreme and as states an aqueous gap cannot hold (Table 2) |
 | 2 THz dip (30 s, paper 1) | Not reproduced, not excluded. A real feature of one scan: 15 dB at 1.99 THz, twice any other single-curve dip, its bottom (−71 dB) 2–5 dB above the noise, so the depth is a lower bound; origin unknown. With the traced phase extrapolated the two pulses put their antiphase at 2.10–2.32 THz, and the data are only 3.2 dB above the two-pulse floor (Sims 43, 44). No node state (65, every extreme, six phase bands, b = 0.034–0.044) makes the model's minimum within 0.03 THz of 1.99 THz deeper than −37.5 dB (published ≤ −43.5 dB; Sim 43 (e)) |
 | Dip drifts 0.7 → 0.5 THz in minutes | Water-vapour lines cannot drift. At 30 s the traced ratio is a broad −3 to −4 dB trough over 0.56–0.78 THz; by 4 min the dip is at 0.62–0.65 THz as b reaches 0.17 and q 1.09 (Sims 42, 43). Matches the direction; fitted, not predicted |
 | High frequencies rise by 17–18 dB (2–2.5 THz, traced) | In the two-pulse fit the second pulse skips the tissue loss; the fit follows the rise to 1.7 THz within 1.5 dB rms (not testable above with the traced window); drying alone ≤ 3 dB (Sim 34) |

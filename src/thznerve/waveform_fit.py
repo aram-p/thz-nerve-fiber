@@ -339,3 +339,27 @@ def effect_noise(fit_r, fit_f, y_model, res, nb, rng):
         yy = y_model + phase_surrogate(rng, res)
         out.append(effect_size(fit_r(yy)[1], fit_f(yy)[1], yy))
     return np.array(out)
+
+
+def noise_scale(fit_f, y_model, res, n, rng):
+    """Factor by which the full fit's residual understates the noise: inject phase-randomised copies of
+    res into the full fit's curve y_model, refit, and return 1 / mean(sqrt(S_after / |noise|^2))."""
+    r = [np.sqrt(fit_f(y_model + e)[1] / np.sum(e ** 2)) for e in (phase_surrogate(rng, res) for _ in range(n))]
+    return float(1 / np.mean(r))
+
+
+def threshold_verdict(D, draws, tracing, level, nboot=200, rng=None):
+    """Any-of-scans rule. D: effect size per scan; draws: noise draws per scan (scans x nb); tracing: tracing D.
+    Threshold per scan = hypot(quantile(draws, level), tracing). Returns dict with the ratio per scan, the
+    largest, excluded (largest > 1), the false-exclusion rate counted on the draws, and the fraction of
+    bootstrap resamples of the draws that flip the verdict."""
+    draws = np.atleast_2d(np.asarray(draws, float)); D = np.asarray(D, float)
+    th = np.hypot(np.quantile(draws, level, axis=1), tracing)
+    ratio = D / th; exc = bool(ratio.max() > 1)
+    false = float(np.mean(np.any(draws / th[:, None] > 1, axis=0)))
+    rng = rng or np.random.default_rng(0); nb = draws.shape[1]; flips = 0
+    for _ in range(nboot):
+        idx = rng.integers(0, nb, nb)
+        tb = np.hypot(np.quantile(draws[:, idx], level, axis=1), tracing)
+        flips += bool((D / tb).max() > 1) != exc
+    return dict(ratio=ratio.tolist(), largest=float(ratio.max()), excluded=exc, false_rate=false, flip=flips / nboot if nboot else float("nan"))

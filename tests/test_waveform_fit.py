@@ -201,3 +201,25 @@ def test_effect_noise_small_when_restricted_model_true():
     d1 = effect_size(fit_r(y)[1], fit_f(y)[1], y)
     assert np.quantile(d0, 0.95) < 0.3 * d1
     assert effect_size(1.0, 2.0, y) == 0.0
+
+
+def test_noise_scale_recovers_absorbed_noise():
+    from thznerve.waveform_fit import noise_scale
+    rng = np.random.default_rng(2)
+    n, k = 60, 20
+    X = rng.standard_normal((n, k))
+    fit_f = lambda y: (None, float(np.sum((y - X @ np.linalg.lstsq(X, y, rcond=None)[0]) ** 2)))
+    res = rng.standard_normal(n)
+    s = noise_scale(fit_f, X[:, 0], res, 200, rng)
+    assert abs(s - np.sqrt(n / (n - k))) < 0.05 * np.sqrt(n / (n - k))
+
+
+def test_threshold_verdict_false_rate_near_level():
+    from thznerve.waveform_fit import threshold_verdict
+    rng = np.random.default_rng(3)
+    draws = rng.standard_normal((3, 2000)) ** 2
+    v = threshold_verdict([0.1, 0.1, 0.1], draws, 0.0, 1 - 0.05 / 3, nboot=20, rng=rng)
+    assert not v["excluded"] and v["flip"] == 0.0
+    assert 0.03 < v["false_rate"] < 0.07
+    v = threshold_verdict([0.1, 50.0, 0.1], draws, 1.0, 1 - 0.05 / 3, nboot=20, rng=rng)
+    assert v["excluded"] and v["largest"] > 1
