@@ -4,7 +4,7 @@ Aram Poghossian
 
 Target journal: *Journal of Infrared, Millimeter, and Terahertz Waves* (Springer).
 Figures are in `paper/figures/`; every number below traces to a script and a result file listed in
-`REPORT.md` (Sims 27–54) and to `results/run_log.csv`.
+`REPORT.md` (Sims 27–56) and to `results/run_log.csv`.
 
 ## Abstract
 
@@ -15,14 +15,14 @@ the node does not resonate: its absorbed power follows a three-constant quasi-st
 limits, within 2.3 % of full wave for fibres up to 10 µm. Second, for the field along the fibres, as
 in every published scan, no node state (ε″ ≥ 0.1) changes a 100 µm slice by more than 1.1 dB at
 internodes ≥ 200 µm and packing ≤ 0.6, and open channels add 10⁻⁶ of membrane admittance. Third,
-each published biased waveform fits as the unbiased pulse with an extra causal loss that rises with
-frequency and grows with bias time (2–7.5 dB per THz after 2–5 min), plus a second pulse near the
-empty-cuvette delay growing to 22 % of the field. This fits the 0.6 THz dip, not a single-scan 2.0
-THz dip. No change of the slice's water, ions, thickness or nodes gives a loss this steep (all ≤ 1.6
-dB per THz). Gas bubbles of ~30 µm radius in a swelling slice do, and fit every scan, but need gas
-fractions rising from ~0.2 to ~0.4, beyond the dilute-scattering theory used; imaging the slice
-under bias would decide. The reported polarisation selectivity, described without data, stays
-unexplained.
+each published biased waveform fits as the unbiased pulse with an extra loss rising with frequency
+and bias time (1.7–7.1 dB per THz above its 30 s value after 2–5 min), lagging by 0.16–0.28 rad at
+0.6 THz, plus a second pulse near the empty-cuvette delay growing to 22 % of the field. This holds
+over 36 fitting assumptions and is significant in each scan after bootstrap calibration of the
+tests. It fits the 0.6 THz dip, not a single-scan 2.0 THz dip. The traced waveforms cannot identify
+the cause: a thicker tissue path, conduction, warming and node states all pass the calibrated tests,
+so node states and conduction are excluded only by the forward bounds. The reported polarisation
+selectivity, described without data, stays unexplained.
 
 **Keywords:** terahertz; node of Ranvier; myelinated axon; finite-element method; dosimetry;
 terahertz time-domain spectroscopy; spinal cord.
@@ -67,9 +67,9 @@ ask:
 The answers are: no resonance; a quasi-static law, exact in its limits; no for the THz field
 along the fibres, the configuration of every published scan; and a second pulse at the
 empty-cuvette delay plus a tissue pulse that loses more at high frequency, consistent with the 0.6 THz dip but not with the 2 THz
-dip. The change of the tissue pulse is a causal loss that rises steeply with frequency; tested
-inside the waveform fits, no change of the slice's water, ions, thickness or nodes supplies it, and
-gas bubbles in a swelling slice do only at gas fractions beyond the dilute-scattering theory. Section 2 describes the model, Section 3 its verification, Section 4 the node results, Section 5 the experimenters' model and the published data, and Section 6 the limits.
+dip. The change of the tissue pulse, a loss rising with frequency and a lag, is robust to the
+fitting assumptions, but the traced waveforms cannot tell its cause; node states are excluded by the
+forward bounds, not by the waveforms. Section 2 describes the model, Section 3 its verification, Section 4 the node results, Section 5 the experimenters' model and the published data, and Section 6 the limits.
 
 **Prior work and what is new.** Quasi-static field factors of cell and membrane compartments are
 standard in radio-frequency and microwave microdosimetry (Gimsa and Wachner 1999; Kotnik and
@@ -424,38 +424,38 @@ crosses up to ~20 % of the tissue's optical thickness fits H3 as well as one tha
 
 **The change of the tissue pulse.** With s = 0 and no loss term the residuals at 2–5 min (25–28 %)
 are several times the spread from ±1-pixel shifts (~5× in H3), so the tissue pulse itself changes
-under bias. Two descriptions fit. (i) A shift: the tissue pulse arrives later by
-−0.002/+0.043/+0.053/+0.066 ps at 0.5/2/4/5 min (residuals 9/18/20/23 %). (ii) A smooth extra loss
-that rises with frequency. The 30 s scan, traced before the reported onset, already carries
-2.1 dB per THz of field amplitude, with no phase: taken as causal, it makes the fit find a shift at
-30 s (p = 0.008), where nothing has changed (Sims 51–52), so it is a zero-phase floor, from the tracing or
-the slice before bias. The growth after it, taken as a causal (minimum-phase) loss held constant above
-1.5–4 THz, is 2.1–3.1, 2.8–4.5 and 5.0–7.5 dB/THz at 2, 4 and 5 min (0.8–1.2, 1.1–1.7 and 1.9–2.8 dB
-at 0.6 THz; Sim 53). Put on the whole biased trace instead, as a smoothing would act, the loss fits
-worse (Sim 50), so it belongs to the tissue pulse. With (ii) no shift is needed in 16 of 18 fits (s = 0 at p = 0.06–0.89; 0.014 and 0.036 at 5 min
-with the increment held above 4 and 2 THz and a ≤ 1; Sim 52),
-the residuals are 7/10/13/14 %, and the fit is better than a shift with a zero-phase loss, which has
-the same number of parameters (misfit 1.4/2.5/3.9 against 1.6/3.4/5.4 at 2/4/5 min). Some change is
-needed in every description: no change at all is rejected at p ≤ 0.002 (F(2, N_eff − 5); the residual is correlated over ~0.3 ps, N_eff = 13–20 independent points per
-trace). The curves are traced from the same figure on the same axes, so the axis calibration
-cancels. The scans share the empty-cuvette pulse and one session, so no joint significance is
-claimed.
+under bias. A shift alone (the tissue pulse later by −0.002/+0.043/+0.053/+0.066 ps at 0.5/2/4/5 min;
+residuals 9/18/20/23 %) leaves a misfit that a smooth extra loss rising with frequency removes. That
+loss belongs to the tissue pulse: put on the whole biased trace, as a smoothing would act, it fits
+worse (Sim 50). The 30 s scan, traced before the reported onset, already carries ~2 dB per THz of it.
+How the change splits into a loss and a shift depends on what the traces cannot fix: whether the loss
+is causal, how it continues beyond the traced band (up to ~1.7 THz), and whether the 30 s part is a
+tracing artefact (zero-phase) or a property of the slice. Sim 55 covers these with 36 reference fits:
+a zero-phase floor of 0–2.5 dB/THz, a causal (minimum-phase) increment held constant above 1.5, 2 or
+4 THz, a free shift, and a ≤ 1 or a + b ≤ 1. In all of them the loss rises above its 30 s value by
+1.7–2.8, 2.4–4.2 and 4.4–7.1 dB/THz at 2, 4 and 5 min, and the tissue pulse lags at 0.6 THz by
+0.16–0.28 rad (−0.02 to −0.01 rad at 30 s); the residuals are 7/10/13/14 % and N_eff = 13–20.
 
-The descriptions agree on one observable, the phase lag of the tissue pulse at 0.6 THz: 0.15–0.28
-rad at 2–5 min and −0.02 to −0.01 rad at 30 s over all ten reference fits of Sim 52 (no loss term, a
-zero-phase loss, or the 30 s floor with a causal increment held above 1.5, 2 or 4 THz; each with
-a ≤ 1 or a + b ≤ 1); its 95 % range reaches down to 0.04 rad without a loss term and 0.08 rad with
-one. Without the loss term the lag is 0.16–0.56 rad over model forms (a pure shift, or a shift plus a
-frequency-independent phase) and fitting windows (Sim 48). The frequency-domain fit finds the same
-independently: q = 1.00 at 30 s, 1.09 at 4 min (H1, residual 17 %) and 1.18 to 1.11 at 5 min (H3,
+The misfit is systematic rather than noise, so the F tests (residual correlated over ~0.3 ps, N_eff
+from its autocorrelation) are calibrated. On 600 block-bootstrap 'no change' versions of the 30 s scan
+(Sim 55b; blocks of one and two correlation lengths) the nominal 5 % tests reject 19–38 % of the time;
+a true 5 % rate needs p < 0.0027 for the 2-dof tests and p < 0.0006 for the shift. Against that
+distribution no change at all is rejected at p = 0.020–0.042, 0.005–0.033 and 0.005–0.032 at 2, 4 and
+5 min (nominal ≤ 0.002). Whether the tissue pulse also shifts is not decided: at the calibrated
+threshold s = 0 is rejected in none of the 108 fits. The curves are traced from the same figure on
+the same axes, so the axis calibration cancels; the scans share the empty-cuvette pulse and one
+session, so no joint significance is claimed.
+
+The lag is also found without any loss term: 0.16–0.56 rad over model forms (a pure shift, or a shift
+plus a frequency-independent phase) and fitting windows (Sim 48). The frequency-domain fit finds the
+same independently: q = 1.00 at 30 s, 1.09 at 4 min (H1, residual 17 %) and 1.18 to 1.11 at 5 min (H3,
 bands ending at 1.0 to 1.7 THz; residuals 9–20 %), with b stable (H3: 0.206–0.212); q depends on the
-band used. In description (i) the tissue path would be 9–18 % optically longer by q (7–11 % by s);
-in (ii) its optical length is unchanged.
+band used.
 
-The second pulse leads the empty-cuvette pulse in every description: by 0.019–0.044 ps with a shift
-and no loss term (±0.013), by 0.023–0.044 ps at 2–5 min and 0.074–0.081 ps at 30 s with the loss of
-(ii), 1.5–5× the 0.015 ps to which the no-voltage minima of the three reports agree. Description (i)
-also reads as a drift of the delay stage by s between the shared reference scans and each biased
+The second pulse leads the empty-cuvette pulse in every fit: by 0.019–0.044 ps with a shift
+and no loss term (±0.013), by 0.023–0.044 ps at 2–5 min and 0.074–0.081 ps at 30 s with the loss
+term, 1.5–5× the 0.015 ps to which the no-voltage minima of the three reports agree. A shift of the
+tissue pulse also reads as a drift of the delay stage by s between the shared reference scans and each biased
 scan (one common shift of the whole biased scan with τ = 0 raises the residuals to 10/29/34/31 %, but
 with both shifts free it is the same fit, the second pulse then leading by 0.07–0.10 ps); a drift
 alone cannot make the tissue pulse weaker at high frequency. A lead needs a path faster than the
@@ -527,70 +527,59 @@ area fraction does not depend on frequency, fit the flat level better.
 
 **How the candidates were tested.** In the two-pulse model the 0.6 THz dip is a cancellation, so its
 depth is not the quantity to bound; what the fits need is the change of the tissue pulse of Sec. 5.6.
-The reference is description (ii): the 30 s floor, a causal increment held constant above 1.5, 2 or
-4 THz, and a shift, with a ≤ 1 or a + b ≤ 1 (six reference fits, all passing the 30 s control). Each
-candidate's computed change of the slice over the whole band (size v; Sec. 5.5 slab of 220 µm,
+Each candidate's computed change of the slice over the whole band (size v; Sec. 5.5 slab of 220 µm,
 Kindt–Schmuttenmaer water, or the node states of Sec. 4.6) multiplies the spectrum of the unbiased
-pulse and must replace the increment and the shift: the candidate supplies the change if fixing both
-at zero, with v free, is not rejected against the fit with v, the increment and the shift all free
-(F(2, N_eff − 6); with N_eff from both the full fit's and the candidate's own residual, 'edge' where
-the two disagree). Node states are the best three of the 80 at every extreme (Sec. 4.6), scaled by
-0–1 of it. At 30 s no change is needed (p = 0.70), and no candidate is selected (Sim 53).
+pulse and must replace the loss increment and the shift: the candidate supplies the change if fixing
+both at zero, with v free, is not rejected against the fit with v, the increment and the shift all
+free (F(2, N_eff − 6), judged at the calibrated threshold p < 0.0027 of Sec. 5.6). References: the
+30 s floor (2.07 dB/THz) times a causal increment held above 1.5, 2 or 4 THz, with a ≤ 1 or a + b ≤ 1
+(Sim 53). Node states are the best three of the 80 at every extreme (Sec. 4.6), scaled by 0–1 of it.
+Scattering is modelled as spheres of radius r at volume fraction v ≤ 0.2 in the tissue, a coherent
+medium (Foldy 1945) with the Mie forward amplitude in the absorbing host (complex size parameter); it
+reduces to Maxwell Garnett for small spheres and reproduces the Mie extinction of Bohren and Huffman
+(1983), both tested (Sim 54).
 
-Table 2. Candidates that would supply the change, over the six reference fits (pass/edge/fail at
-2, 4 and 5 min) and the loss slope over 0.3–1.5 THz each gives at the sizes that fit best, against
-the slope of the increment the fits need: 2.1–3.1, 2.8–4.5 and 5.0–7.5 dB/THz (Sim 53).
+Table 2. Candidates for the change of the tissue pulse: reference fits (of six) in which the
+candidate is not rejected at the calibrated threshold at 2, 4 and 5 min (Sim 55b, from the tests of
+Sims 53–54), and the loss slope over 0.3–1.5 THz it gives at the sizes that fit best, against the
+1.7–7.1 dB/THz the fits find (Sec. 5.6).
 
-| Candidate (range tested) | 2 min | 4 min | 5 min | Sizes that pass | Loss slope (dB/THz) |
-|---|---|---|---|---|---|
-| Thicker tissue path (0–20 %) | 6/0/0 | 3/0/3 | 1/0/5 | 4–12 % | 0.4–0.7 |
-| Warming, Liebe (0–30 K) | 0/1/5 | 0/3/3 | 0/0/6 | none | −0.3 |
-| Warming, Liebe ×2.31 (0–12 K) | 0/3/3 | 0/3/3 | 0/0/6 | none | −0.2 to −0.1 |
-| Ions in all tissue water (0–60 S/m) | 0/0/6 | 0/6/0 | 0/6/0 | none | 0.2–0.9 |
-| Axoplasm conduction (0–150 S/m) | 0/0/6 | 0/6/0 | 0/6/0 | none | 0.3–0.9 |
-| Node states, best three at every extreme | 0/6/0 | 0/6/0 | 0/6/0 | none | 0.5–1.6 |
-| Gas bubbles in a swelling slice, r 30–50 µm (0–20 %; Sim 54) | 6/0/0 | 0/6/0 | 0/6/0 | 8–20 % at 2 min, ≥ 14 % at 4–5 min | 4.5–7.0 |
-| The same, r 30 µm, 0–40 % (Sim 54b; two references) | 2/0/0 | 1/1/0 | 2/0/0 | 12–38 %, 18–38 %, 24–40 % | 4.5–7.3 |
-| Gas bubbles displacing tissue, r 15–120 µm (0–20 %) | 0/0/6 | 0/≤3/≥3 | 0/≤3/≥3 | none | (best: none) |
-| Lipid-like fragments (ε 2.4), r 15–120 µm (0–20 %) | 0/0/6 | 0/≤3/≥3 | 0/≤3/≥3 | none | (best: none) |
+| Candidate (range tested) | 2 min | 4 min | 5 min | Loss slope (dB/THz) |
+|---|---|---|---|---|
+| Thicker tissue path (0–20 %; best 6–10 %) | 6 | 6 | 6 | 0.4–0.7 |
+| Warming, Liebe (0–30 K) | 6 | 3 | 0 | −0.3 |
+| Warming, Liebe ×2.31 (0–12 K) | 6 | 6 | 3 | −0.2 to −0.1 |
+| Ions in all tissue water (0–60 S/m; best 10–35) | 6 | 3 | 6 | 0.2–0.9 |
+| Axoplasm conduction (0–150 S/m; best 30–90) | 6 | 4 | 6 | 0.3–0.9 |
+| Node states, best three at every extreme | 6 | 6 | 3 | 0.5–1.6 |
+| Gas bubbles in a slice that swells, r 30–80 µm (v 0–0.2) | 6 | 5–6 | 3–6 | 3.3–8.5 |
+| Gas bubbles displacing tissue, r 15–50 µm | 0 | 0 | 0 | — (best v = 0) |
+| Lipid-like fragments (ε 2.4), r 15–80 µm | 0 | 0 | 0 | — (best v = 0) |
 
-**What the table shows.** The change the waveforms need is mainly a loss that rises steeply with
-frequency and adds no optical path. Every candidate's loss is flat or rises far more slowly: warming
-adds a loss that shrinks with frequency over 0.3–1.5 THz in both water models used, conduction in water adds a loss nearly flat in frequency, and node states with every extreme
-reach 1.6 dB/THz. A thicker path adds mostly delay, which mimics the increment's causal phase but not
-its loss; it passes at 2 min, at 4 min only with a + b ≤ 1, and at 5 min in one fit of six. No
-change of the slice's water, ions, thickness or nodes supplies the change at all three bias times.
-
-**Scattering.** A loss rising this steeply without added path is what scattering by structure on the
-scale of the THz wavelength in tissue (~100 µm) gives. Sim 54 models spheres of radius 15–120 µm at
-volume fraction v ≤ 0.2 in the tissue as a coherent effective medium (Foldy 1945, with the Mie
-forward amplitude; it reduces to Maxwell Garnett for small spheres and reproduces the Mie extinction
-of Bohren and Huffman 1983, both tested). Gas bubbles that displace tissue remove absorbing water and
-advance the pulse: they fail. Lipid-like fragments in the tissue water do the same. Gas bubbles that
-make the slice swell (thickness D/(1 − v)) give a loss slope of 4.5–7.0 dB/THz at r = 30–50 µm, in the
-measured range and the only candidate that does. They pass every fit at 2 min (v = 0.08–0.20) and
-stay at the edge at 4 and 5 min with the best v at the grid limit of 0.2. Extended to v = 0.4 (Sim 54b),
-r = 30 µm passes at 2 and 5 min and at 4 min in one of the two references, with v rising with bias time
-(best 0.22–0.26, 0.28–0.34, 0.38–0.40). At those fractions the dilute theory no longer holds; for
-dense suspensions correlated positions reduce scattering per bubble, so a dense-medium model would
-need still more gas. Bubbles of 30 µm radius fit inside a 100 µm slice; 80–120 µm ones do not. The
-gas could come from electrolysis (0.7–1.1 mA, Sec. 5.4, releases 8–13 µL of H₂ and O₂ per minute,
-against 40–90 µL of slice, but at the electrodes) or from boiling: the adiabatic 0.6–0.9 K/s
-(Sec. 5.4) reaches 100 °C from room temperature within 1.4–2.1 min. Scattering by gas is thus the one mechanism found that
-gives the change's frequency dependence, but it is not demonstrated: it needs gas fractions where the
-model is not valid, and an image of the slice under bias would confirm or exclude it. With weaker references (no loss term, or a zero-phase loss, which the 30 s control and
-the misfit both disfavour), a thicker path and warming pass through their delay and the verdicts
-change with the reference (Sim 51); we do not use those.
+**What the table shows.** The calibrated tests reject only changes that go the wrong way: gas that
+displaces tissue and lipid-like fragments remove absorbing water and advance the pulse, and fail
+everywhere. Every candidate that adds loss or delay passes most fits, node states with every extreme
+included. The nominal tests (Sims 53–54) separated the candidates further, but they reject a true
+'no change' scan 19–38 % of the time, so those verdicts are not used. The traced waveforms therefore
+do not identify the cause. Two descriptive differences remain. The fitted loss rises more steeply
+(1.7–7.1 dB/THz) than any change of water, ions or nodes gives at the sizes that fit (≤ 1.6 dB/THz); a
+thicker path fits through its delay, not its loss. Only wavelength-scale gas in a slice that swells
+gives a slope that steep, but almost no delay (≤ 0.04 rad at 0.6 THz for r ≤ 80 µm); with a thicker
+path added (Sim 56, both sizes charged) every scan passes, but so does zero gas, so the gas is not
+needed. Bubbles of 80 µm radius do not fit in a 100 µm slice, and a fixed-gap cuvette would not let it
+swell. Electrolysis gives 8–13 µL of gas per minute (0.7–1.1 mA, Sec. 5.4), but at the electrodes
+7.5 mm from the beam.
 
 **Node states.** With every extreme the largest delay any node state gives at 0.6 THz is 0.061 rad
-(ε = −3.0 − 0.1j, combined materials) and the steepest loss slope 1.6 dB/THz; in the fits they stay at
-the edge, passing only with the more lenient N_eff. At internode 200 µm and packing 0.6 the change is
-11–16× smaller, and the states that come closest need ε′ between −3.5 and −2.4 with ε″ = 0.1, which an
-aqueous gap cannot hold (Sec. 4.6); states between lipid and water (ε′ 2–5, ε″ ≤ 3) pass in no fit
-(Sim 52). A frequency-independent ε is not causal (Kramers–Kronig), so these states are bounds on
-what a gap can do, not models of one. The sign of the first-order change behaves as it should: a metallic node, more
-polarisable than the water it replaces, delays (+0.042 rad at 0.6 THz), and a node with ε′ = 1
-advances (−0.039 rad).
+(ε = −3.0 − 0.1j, combined materials) against a lag of 0.16–0.28 rad, and the steepest loss slope is
+1.6 dB/THz; they pass the calibrated tests because those tests barely discriminate, not because they
+supply the change. At internode 200 µm and packing 0.6 the change is 11–16× smaller, and the states
+that come closest need ε′ between −3.5 and −2.4 with ε″ = 0.1, which an aqueous gap cannot hold
+(Sec. 4.6). A frequency-independent ε is not causal (Kramers–Kronig), so these states are bounds on
+what a gap can do, not models of one. Node states are excluded by these forward bounds, not by the
+waveforms. The sign of the first-order change behaves as it should: a metallic node, more polarisable
+than the water it replaces, delays (+0.042 rad at 0.6 THz), and a node with ε′ = 1 advances
+(−0.039 rad).
 
 **Node states at 2 THz.** With every extreme the 2 THz loss bound (10 dB, Sec. 4.6) approaches the
 14 dB by which the 30-s scan falls below the unbiased one at its 1.99 THz dip (Sec. 5.6). In the
@@ -605,25 +594,23 @@ Without a node change the model's lowest point in 1.85–2.15 THz lies at 2.08�
 The dip is not reproduced with or without node states; since the model is 5.5 dB off in this band
 without them, this does not exclude them.
 
-**Ions and conduction.** Extra conductivity in the tissue water or the axoplasm stays at the edge at 4
-and 5 min and fails at 2 min (best 10–35 S/m in the tissue water, 30–90 S/m in the axoplasm); its loss
-is nearly flat in frequency. The conducting-fibre model proposed for these experiments is therefore
-not supported by the waveforms. The forward bound is the firmer argument: 9 dB needs 130–450 S/m of
-axoplasm at 0.6–2 THz on the slice's optical thickness (Sec. 5.2), against 1.4 S/m physiological and
-~25 S/m for saturated NaCl.
+**Ions and conduction.** Extra conductivity in the tissue water or the axoplasm passes most
+calibrated tests (best 10–35 S/m in the tissue water, 30–90 S/m in the axoplasm) with a loss nearly
+flat in frequency, so the waveforms neither support nor exclude it. The forward bound is the argument:
+9 dB needs 130–450 S/m of axoplasm at 0.6–2 THz on the slice's optical thickness (Sec. 5.2), against
+1.4 S/m physiological and ~25 S/m for saturated NaCl.
 
 **Warming.** Liebe's temperature dependence of water is fitted below 1 THz and 30 °C, so two versions
 bracket it: as given, and scaled ×2.31 to the measured 4–21 °C absorption change at 1 THz (46 cm⁻¹;
-Millon et al. 2022). Neither passes in any fit; at 0.6–1.5 THz warming lowers the loss slope. The bias
-heats the slice by 0.6–0.9 K/s if no heat is lost (Sec. 5.4), so warming is expected, but it does not
-give the change.
+Millon et al. 2022). Warming lowers the loss slope over 0.3–1.5 THz and fails at 5 min in most fits.
+The bias heats the slice by 0.6–0.9 K/s if no heat is lost (Sec. 5.4); heat flows into the 1.2 mm
+PTFE plates within ~13 s, so the real rate is lower.
 
-**More tissue in the beam.** A path 4–12 % thicker passes at 2 min and partly at 4 min. On the
-~220 µm optical path this is 9–26 µm, ~2–11 mg over 20 × 20 mm depending on a 100 or 220 µm slice. It
+**More tissue in the beam.** A path 6–10 % thicker fits best and passes every calibrated test. On the
+~220 µm optical path this is 13–22 µm, ~3–9 mg over 20 × 20 mm depending on a 100 or 220 µm slice. It
 could be a slice swelling (water drawn in under the bias, e.g. by electro-osmotic flow) or tissue
 moving into the beam. The slice is held in a PTFE cuvette (H1, p. 2; H2 gives a 100 µm gap, while H1's
-Fig. 1b shows the slice on one 1.2 mm plate, so whether the gap is fixed is not stated), and the
-Joule heat favours evaporation (Sec. 5.4).
+Fig. 1b shows the slice on one 1.2 mm plate, so whether the gap is fixed is not stated).
 
 **The reported selectivity.** More tissue in the beam, warming, a stage drift, scattering by gas or
 disrupted tissue and conduction in the tissue water would each act for both THz polarisations, and DC along the fibres (σ∥ ≈ 7σ⊥) heats more than DC
@@ -638,15 +625,15 @@ therefore a decomposition of the published waveforms, not an explanation of the 
 
 | Reported | This work |
 |---|---|
-| Dip near 0.6 THz (9–20 dB) | No node or fibre resonance in 0.1–3 THz. The second pulse plus a changed tissue pulse (a causal loss rising with frequency, 2–7.5 dB/THz, lagging 0.15–0.28 rad at 0.6 THz) is consistent with it (0.57–0.65 THz against 0.56–0.65 measured); q is fitted. No change of water, ions, thickness or nodes gives the loss's frequency dependence; gas bubbles in a swelling slice do, at gas fractions (0.2–0.4) beyond the dilute theory used (Table 2, Sim 54) |
+| Dip near 0.6 THz (9–20 dB) | No node or fibre resonance in 0.1–3 THz. The second pulse plus a changed tissue pulse (a loss rising 1.7–7.1 dB/THz above its 30 s value, lagging 0.16–0.28 rad at 0.6 THz) is consistent with it (0.57–0.65 THz against 0.56–0.65 measured); q is fitted. The traced waveforms do not identify the cause (Table 2) |
 | Drift 0.7 → 0.5 THz | The dip deepens and moves from ~0.7 to 0.62–0.65 THz as b and q grow; water-vapour lines cannot drift. No traced spectrum has a dip below 0.56 THz, so the 0.5 THz endpoint is not in the published figures |
 | 2 THz dip (30 s) | Not reproduced, with or without node states. A real feature of one scan (15 dB, twice any other single-curve dip), its depth limited by dynamic range; the two pulses reach that depth but, with the traced phase extrapolated, at 2.10–2.32 THz rather than 1.99 THz. With node states (65, every extreme, six phase bands, b = 0.034–0.044) the model's minimum within 0.03 THz of 1.99 THz is at most −37.5 dB (measured ≤ −43.5 dB) |
 | Only E∥ fibres, only DC across fibres | Not explained, and contradicted by every plausible remaining cause: more tissue in the beam, warming, a stage drift, scattering and conduction in the tissue water act for both polarisations, and DC along the fibres heats more. Described without data |
 | Onset ~5 min, recovery ~1 h | Second pulse grows 4 → 12 → 17 → 22 % (0.5, 2, 4, 5 min); recovery not traced |
 | No significant change of average power | Traced energy −1.2 dB (H3), consistent |
 
-Decisive measurements are cheap: logging current and slice mass (4–12 % more tissue in the beam is
-~2–11 mg over 20 × 20 mm, depending on whether the slice is 100 or 220 µm thick), imaging the slice
+Decisive measurements are cheap: logging current and slice mass (6–10 % more tissue in the beam is
+~3–9 mg over 20 × 20 mm, depending on whether the slice is 100 or 220 µm thick), imaging the slice
 for gas or disruption, a second empty-cuvette scan after each biased one (stage drift), measuring the cuvette gap and the slice thickness during bias, an N₂ purge, a reference through a
 heated or dried slice without bias, a measurement with the slice clamped between two windows, and
 release of the raw data.
@@ -665,16 +652,13 @@ release of the raw data.
   measurement session; its fits leave 9–28 % (7–14 % with the tissue pulse free to lose;
   several times the tracing noise), the tissue-path
   factor q depends on the fitted band, and the cause of the second pulse is unknown.
-- **Statistics of the waveform fits.** The F tests treat the model's misfit as correlated noise with
-  N_eff (12–20) from its correlation length; a systematic misfit that mimics a shift would not be
-  covered, and fits with a at its bound (a = 1) are outside the F distribution's assumptions.
-- **Loss term and cause of the change.** The 30 s loss floor is taken as zero-phase (the 30 s
-  control rejects it as causal) and the growth after it as causal, held constant above 1.5–4 THz; the
-  traced band ends near 1.7 THz. Scattering is modelled as a dilute coherent medium (Foldy) of
-  spheres in an absorbing host, with the size parameter from the host's real wavenumber; the gas
-  fractions the 4–5 min scans ask for (0.2–0.4) are beyond its range.
-- **Change of the tissue pulse.** The fits cannot separate a causal loss from a shift of the tissue
-  pulse with a zero-phase loss; the first fits better and passes the 30 s control.
+- **Statistics of the waveform fits.** The misfit is systematic; the F tests are calibrated by a
+  block bootstrap of the 30 s residual (Sim 55b), which has only ~6–12 blocks per trace, so the
+  calibrated thresholds are themselves uncertain. Fits with a at its bound (a = 1) are outside the F
+  distribution's assumptions, and many candidates, sizes and references were tested.
+- **Loss term.** Whether the loss is causal and how it continues above the traced band (~1.7 THz)
+  changes how the change splits into a loss and a shift, not the loss slope or the lag (Sim 55).
+  Scattering is modelled as a dilute coherent medium (Foldy) of spheres in an absorbing host.
 - **Node states between solved frequencies.** Each state's change is interpolated linearly in
   frequency between the frequencies it was solved at; the combined-materials states were solved at
   0.6 and 3 THz only.
@@ -698,19 +682,16 @@ In 0.1–3 THz the node of Ranvier is a quasi-static water gap. Its absorbed pow
 thickness, g-ratio and permittivity contrast, within 2.3 % of full wave for fibres up to 10 µm. For
 the THz field along the fibres, as in every published scan, no node state (ε″ ≥ 0.1) changes a 100
 µm slice by more than 1.1 dB at internodes ≥ 200 µm and packing ≤ 0.6. The published waveforms, all
-from one session, decompose into the unbiased pulse with an extra causal loss that rises with
-frequency and grows with bias time (2–7.5 dB per THz after 2–5 min), lagging the pulse by 0.15–0.28
-rad at 0.6 THz, plus a second pulse near the empty-cuvette delay that grows over the four biased
-scans. This is consistent with the 0.6 THz dip but not with the 2 THz dip. Applied inside the
-waveform fits, no change of the slice's water, ions, thickness or nodes gives a loss that rises this steeply: warming gives one that
-shrinks with frequency,
-conduction in the tissue water or the axoplasm, the fibre model proposed for these experiments, adds
-a nearly flat one, and node states, even with every geometric extreme, at most 1.6 dB per THz; a
-thicker tissue path fits the 2 min scan only, through its delay. Gas bubbles in a swelling slice
-give such a loss and fit every scan, but only at gas fractions (0.2–0.4) beyond the dilute-scattering
-theory used, so this is a candidate for imaging, not a demonstration. Every slab cause would act for both THz
-polarisations, against the reported selectivity, and the second pulse arrives slightly before the
-empty-cuvette pulse, which we cannot explain. Telling these apart needs the raw
+from one session, decompose into the unbiased pulse with an extra loss that rises with frequency
+and bias time (1.7–7.1 dB per THz above its 30 s value after 2–5 min), lagging by 0.16–0.28 rad at
+0.6 THz, plus a second pulse near the empty-cuvette delay that grows over the four biased scans. This
+holds over 36 fitting assumptions and is significant in each scan after the tests are calibrated by
+bootstrap. It is consistent with the 0.6 THz dip but not with the 2 THz dip. The traced waveforms
+cannot tell what causes it: a thicker tissue path, conduction, warming and node states with every
+extreme all pass the calibrated tests, and only changes that advance the pulse fail. Node states and
+conduction are excluded by the forward bounds (every geometric extreme; 130–450 S/m), not by the
+waveforms. Every slab cause would act for both THz polarisations, against the reported selectivity,
+and the second pulse arrives slightly before the empty-cuvette pulse, which we cannot explain. Telling these apart needs the raw
 data or the control measurements listed in Sec. 5.8.
 
 ## Data and code availability
@@ -741,7 +722,7 @@ withdrawn results in `REPORT.md`.
    pulse. Curves: heating (two water models), water gain into thickness, a thicker slab, ions, axoplasm
    conduction; dots: node states with every extreme, computed at 0.6 THz only (Sim 46). The bands pool
    three scans and two frequencies; a cause must match one scan over the whole band at once, which is
-   the test of Table 2 (Sim 53).
+   the test of Table 2 (Sims 53–55).
 
 ## References
 

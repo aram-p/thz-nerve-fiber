@@ -23,3 +23,18 @@ def test_foldy_small_spheres_is_maxwell_garnett_to_first_order():
 
 def test_foldy_zero_fraction_is_host():
     assert foldy_eps(1e12, 4.0 - 1.0j, 1.0, 50, 0.0) == 4.0 - 1.0j
+
+
+def test_absorbing_host_uses_sphere_wavenumber_inside():
+    # a sphere of the host's own material changes nothing, at any size and host loss
+    from thznerve.physics.scattering import mie_ab
+    nh = 2.1 + 0.6j
+    _, a, b = mie_ab(1.0 + 0j, (2 * np.pi * 1e12 / 3e8) * nh * 40e-6)
+    assert np.max(np.abs(a)) < 1e-12 and np.max(np.abs(b)) < 1e-12
+
+
+def test_absorbing_host_lossless_limit_continuous():
+    # as the host loss goes to zero the complex-x result joins the real-x one
+    a = foldy_eps(0.6e12, 4.4 - 1e-9j, 1.0, 30, 0.1)
+    b = foldy_eps(0.6e12, 4.4 + 0j, 1.0, 30, 0.1)
+    assert abs(a - b) < 1e-6

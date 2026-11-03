@@ -1,58 +1,58 @@
 Floor (30 s, zero phase): 2.07 dB/THz
 Forward: candidate at v = 0.1 and 0.2 (loss and delay at 0.6 THz, loss slope 0.3-1.5 THz)
-  gas, slice swells        r  15 um v 0.1: +0.08 dB, +0.018 rad, slope +0.77 dB/THz
-  gas, slice swells        r  15 um v 0.2: +0.24 dB, +0.037 rad, slope +1.72 dB/THz
-  gas, slice swells        r  30 um v 0.1: +0.38 dB, +0.032 rad, slope +2.02 dB/THz
-  gas, slice swells        r  30 um v 0.2: +0.91 dB, +0.067 rad, slope +4.53 dB/THz
-  gas, slice swells        r  50 um v 0.1: +0.87 dB, +0.045 rad, slope +3.14 dB/THz
-  gas, slice swells        r  50 um v 0.2: +2.01 dB, +0.097 rad, slope +7.05 dB/THz
-  gas, slice swells        r  80 um v 0.1: +1.54 dB, +0.074 rad, slope +3.25 dB/THz
-  gas, slice swells        r  80 um v 0.2: +3.49 dB, +0.162 rad, slope +7.29 dB/THz
-  gas, slice swells        r 120 um v 0.1: +2.11 dB, +0.140 rad, slope +1.69 dB/THz
-  gas, slice swells        r 120 um v 0.2: +4.78 dB, +0.312 rad, slope +3.78 dB/THz
-  gas, displacing tissue   r  15 um v 0.1: -1.19 dB, -0.278 rad, slope -0.04 dB/THz
-  gas, displacing tissue   r  15 um v 0.2: -2.37 dB, -0.555 rad, slope -0.07 dB/THz
-  gas, displacing tissue   r  30 um v 0.1: -0.92 dB, -0.266 rad, slope +1.09 dB/THz
-  gas, displacing tissue   r  30 um v 0.2: -1.83 dB, -0.531 rad, slope +2.17 dB/THz
-  gas, displacing tissue   r  50 um v 0.1: -0.48 dB, -0.254 rad, slope +2.10 dB/THz
-  gas, displacing tissue   r  50 um v 0.2: -0.96 dB, -0.508 rad, slope +4.19 dB/THz
-  gas, displacing tissue   r  80 um v 0.1: +0.11 dB, -0.228 rad, slope +2.20 dB/THz
-  gas, displacing tissue   r  80 um v 0.2: +0.22 dB, -0.456 rad, slope +4.39 dB/THz
-  gas, displacing tissue   r 120 um v 0.1: +0.63 dB, -0.168 rad, slope +0.79 dB/THz
-  gas, displacing tissue   r 120 um v 0.2: +1.25 dB, -0.336 rad, slope +1.59 dB/THz
-  lipid-like fragments     r  15 um v 0.1: -1.23 dB, -0.143 rad, slope -0.41 dB/THz
-  lipid-like fragments     r  15 um v 0.2: -2.46 dB, -0.285 rad, slope -0.82 dB/THz
-  lipid-like fragments     r  30 um v 0.1: -1.11 dB, -0.147 rad, slope -0.12 dB/THz
-  lipid-like fragments     r  30 um v 0.2: -2.21 dB, -0.293 rad, slope -0.25 dB/THz
-  lipid-like fragments     r  50 um v 0.1: -0.91 dB, -0.159 rad, slope +0.22 dB/THz
-  lipid-like fragments     r  50 um v 0.2: -1.82 dB, -0.317 rad, slope +0.43 dB/THz
-  lipid-like fragments     r  80 um v 0.1: -0.59 dB, -0.179 rad, slope +0.96 dB/THz
-  lipid-like fragments     r  80 um v 0.2: -1.18 dB, -0.358 rad, slope +1.93 dB/THz
-  lipid-like fragments     r 120 um v 0.1: -0.11 dB, -0.201 rad, slope +2.18 dB/THz
-  lipid-like fragments     r 120 um v 0.2: -0.21 dB, -0.401 rad, slope +4.35 dB/THz
+  gas, slice swells        r  15 um v 0.1: +0.11 dB, +0.011 rad, slope +0.84 dB/THz
+  gas, slice swells        r  15 um v 0.2: +0.30 dB, +0.022 rad, slope +1.89 dB/THz
+  gas, slice swells        r  30 um v 0.1: +0.42 dB, +0.011 rad, slope +2.21 dB/THz
+  gas, slice swells        r  30 um v 0.2: +1.01 dB, +0.020 rad, slope +4.97 dB/THz
+  gas, slice swells        r  50 um v 0.1: +0.96 dB, +0.007 rad, slope +3.77 dB/THz
+  gas, slice swells        r  50 um v 0.2: +2.20 dB, +0.012 rad, slope +8.45 dB/THz
+  gas, slice swells        r  80 um v 0.1: +1.82 dB, +0.021 rad, slope +4.22 dB/THz
+  gas, slice swells        r  80 um v 0.2: +4.14 dB, +0.045 rad, slope +9.45 dB/THz
+  gas, slice swells        r 120 um v 0.1: +2.81 dB, +0.105 rad, slope +0.86 dB/THz
+  gas, slice swells        r 120 um v 0.2: +6.35 dB, +0.235 rad, slope +1.90 dB/THz
+  gas, displacing tissue   r  15 um v 0.1: -1.17 dB, -0.284 rad, slope +0.03 dB/THz
+  gas, displacing tissue   r  15 um v 0.2: -2.32 dB, -0.567 rad, slope +0.06 dB/THz
+  gas, displacing tissue   r  30 um v 0.1: -0.88 dB, -0.285 rad, slope +1.26 dB/THz
+  gas, displacing tissue   r  30 um v 0.2: -1.76 dB, -0.569 rad, slope +2.52 dB/THz
+  gas, displacing tissue   r  50 um v 0.1: -0.41 dB, -0.288 rad, slope +2.66 dB/THz
+  gas, displacing tissue   r  50 um v 0.2: -0.81 dB, -0.575 rad, slope +5.31 dB/THz
+  gas, displacing tissue   r  80 um v 0.1: +0.37 dB, -0.275 rad, slope +3.07 dB/THz
+  gas, displacing tissue   r  80 um v 0.2: +0.73 dB, -0.549 rad, slope +6.14 dB/THz
+  gas, displacing tissue   r 120 um v 0.1: +1.26 dB, -0.200 rad, slope +0.05 dB/THz
+  gas, displacing tissue   r 120 um v 0.2: +2.51 dB, -0.399 rad, slope +0.11 dB/THz
+  lipid-like fragments     r  15 um v 0.1: -1.24 dB, -0.145 rad, slope -0.44 dB/THz
+  lipid-like fragments     r  15 um v 0.2: -2.47 dB, -0.291 rad, slope -0.87 dB/THz
+  lipid-like fragments     r  30 um v 0.1: -1.15 dB, -0.155 rad, slope -0.19 dB/THz
+  lipid-like fragments     r  30 um v 0.2: -2.28 dB, -0.309 rad, slope -0.39 dB/THz
+  lipid-like fragments     r  50 um v 0.1: -1.00 dB, -0.174 rad, slope +0.17 dB/THz
+  lipid-like fragments     r  50 um v 0.2: -1.98 dB, -0.347 rad, slope +0.34 dB/THz
+  lipid-like fragments     r  80 um v 0.1: -0.72 dB, -0.208 rad, slope +1.07 dB/THz
+  lipid-like fragments     r  80 um v 0.2: -1.43 dB, -0.415 rad, slope +2.13 dB/THz
+  lipid-like fragments     r 120 um v 0.1: -0.20 dB, -0.250 rad, slope +2.83 dB/THz
+  lipid-like fragments     r 120 um v 0.2: -0.40 dB, -0.499 rad, slope +5.65 dB/THz
 === increment held above 1.5 THz, a <= 1 ===
 30 s (H1): increment 0.38 dB/THz, s -0.0117 ps, misfit 0.832, N_eff 12.9; no change at all: p = 0.6973
   gas, slice swells, r 15 um         n/a  p = 0.730 (0.691); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.20
-  gas, slice swells, r 30 um         n/a  p = 0.730 (0.691); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.12
+  gas, slice swells, r 30 um         n/a  p = 0.730 (0.691); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.16
   gas, slice swells, r 50 um         n/a  p = 0.730 (0.691); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.08
   gas, slice swells, r 80 um         n/a  p = 0.730 (0.691); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.04
   gas, slice swells, r 120 um        n/a  p = 0.730 (0.691); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.02
   gas, displacing tissue, r 15 um    n/a  p = 0.730 (0.691); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.02
   gas, displacing tissue, r 30 um    n/a  p = 0.730 (0.691); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.02
-  gas, displacing tissue, r 50 um    n/a  p = 0.730 (0.691); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.04
+  gas, displacing tissue, r 50 um    n/a  p = 0.730 (0.691); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.02
   gas, displacing tissue, r 80 um    n/a  p = 0.730 (0.691); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.04
-  gas, displacing tissue, r 120 um   n/a  p = 0.730 (0.691); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.06
+  gas, displacing tissue, r 120 um   n/a  p = 0.730 (0.691); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.04
   lipid-like fragments, r 15 um      n/a  p = 0.730 (0.691); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.06
   lipid-like fragments, r 30 um      n/a  p = 0.730 (0.691); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.06
-  lipid-like fragments, r 50 um      n/a  p = 0.730 (0.691); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.06
+  lipid-like fragments, r 50 um      n/a  p = 0.730 (0.691); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.04
   lipid-like fragments, r 80 um      n/a  p = 0.730 (0.691); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.04
   lipid-like fragments, r 120 um     n/a  p = 0.730 (0.691); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.04
 2 min (H2): increment 3.03 dB/THz, s -0.0186 ps, misfit 1.37, N_eff 14.4; no change at all: p = 0.0008
-  gas, slice swells, r 15 um         edge p = 0.012 (0.061); best v 0.20: +0.24 dB, +0.037 rad at 0.6 THz, slope +1.72 dB/THz; no v passes
-  gas, slice swells, r 30 um         pass p = 0.094 (0.227); best v 0.20: +0.91 dB, +0.067 rad at 0.6 THz, slope +4.53 dB/THz; v passing 0.14 to 0.20
-  gas, slice swells, r 50 um         pass p = 0.149 (0.189); best v 0.18: +1.76 dB, +0.086 rad at 0.6 THz, slope +6.19 dB/THz; v passing 0.10 to 0.20
-  gas, slice swells, r 80 um         pass p = 0.175 (0.229); best v 0.12: +1.89 dB, +0.090 rad at 0.6 THz, slope +3.99 dB/THz; v passing 0.06 to 0.16
-  gas, slice swells, r 120 um        pass p = 0.146 (0.115); best v 0.10: +2.11 dB, +0.140 rad at 0.6 THz, slope +1.69 dB/THz; v passing 0.06 to 0.12
+  gas, slice swells, r 15 um         fail p = 0.007 (0.041); best v 0.20: +0.30 dB, +0.022 rad at 0.6 THz, slope +1.89 dB/THz; no v passes
+  gas, slice swells, r 30 um         edge p = 0.018 (0.075); best v 0.20: +1.01 dB, +0.020 rad at 0.6 THz, slope +4.97 dB/THz; no v passes
+  gas, slice swells, r 50 um         edge p = 0.018 (0.061); best v 0.16: +1.66 dB, +0.010 rad at 0.6 THz, slope +6.45 dB/THz; no v passes
+  gas, slice swells, r 80 um         edge p = 0.034 (0.094); best v 0.12: +2.24 dB, +0.026 rad at 0.6 THz, slope +5.17 dB/THz; v passing 0.08 to 0.12
+  gas, slice swells, r 120 um        pass p = 0.094 (0.194); best v 0.08: +2.20 dB, +0.083 rad at 0.6 THz, slope +0.68 dB/THz; v passing 0.06 to 0.10
   gas, displacing tissue, r 15 um    fail p = 0.002 (0.014); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   gas, displacing tissue, r 30 um    fail p = 0.002 (0.014); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   gas, displacing tissue, r 50 um    fail p = 0.002 (0.014); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
@@ -64,11 +64,11 @@ Forward: candidate at v = 0.1 and 0.2 (loss and delay at 0.6 THz, loss slope 0.3
   lipid-like fragments, r 80 um      fail p = 0.002 (0.014); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   lipid-like fragments, r 120 um     fail p = 0.002 (0.014); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
 4 min (H1): increment 4.38 dB/THz, s -0.0340 ps, misfit 2.49, N_eff 18.3; no change at all: p = 0.0001
-  gas, slice swells, r 15 um         edge p = 0.002 (0.070); best v 0.20: +0.24 dB, +0.037 rad at 0.6 THz, slope +1.72 dB/THz; no v passes
-  gas, slice swells, r 30 um         edge p = 0.011 (0.139); best v 0.20: +0.91 dB, +0.067 rad at 0.6 THz, slope +4.53 dB/THz; no v passes
-  gas, slice swells, r 50 um         edge p = 0.030 (0.190); best v 0.20: +2.01 dB, +0.097 rad at 0.6 THz, slope +7.05 dB/THz; v passing 0.18 to 0.20
-  gas, slice swells, r 80 um         edge p = 0.026 (0.132); best v 0.14: +2.26 dB, +0.107 rad at 0.6 THz, slope +4.75 dB/THz; v passing 0.14 to 0.16
-  gas, slice swells, r 120 um        edge p = 0.023 (0.064); best v 0.10: +2.11 dB, +0.140 rad at 0.6 THz, slope +1.69 dB/THz; no v passes
+  gas, slice swells, r 15 um         edge p = 0.001 (0.062); best v 0.20: +0.30 dB, +0.022 rad at 0.6 THz, slope +1.89 dB/THz; no v passes
+  gas, slice swells, r 30 um         edge p = 0.003 (0.086); best v 0.20: +1.01 dB, +0.020 rad at 0.6 THz, slope +4.97 dB/THz; no v passes
+  gas, slice swells, r 50 um         edge p = 0.003 (0.082); best v 0.20: +2.20 dB, +0.012 rad at 0.6 THz, slope +8.45 dB/THz; no v passes
+  gas, slice swells, r 80 um         edge p = 0.004 (0.102); best v 0.12: +2.24 dB, +0.026 rad at 0.6 THz, slope +5.17 dB/THz; no v passes
+  gas, slice swells, r 120 um        edge p = 0.010 (0.076); best v 0.10: +2.81 dB, +0.105 rad at 0.6 THz, slope +0.86 dB/THz; no v passes
   gas, displacing tissue, r 15 um    fail p = 0.000 (0.033); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   gas, displacing tissue, r 30 um    fail p = 0.000 (0.033); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   gas, displacing tissue, r 50 um    fail p = 0.000 (0.033); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
@@ -80,11 +80,11 @@ Forward: candidate at v = 0.1 and 0.2 (loss and delay at 0.6 THz, loss slope 0.3
   lipid-like fragments, r 80 um      fail p = 0.000 (0.033); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   lipid-like fragments, r 120 um     fail p = 0.000 (0.033); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
 5 min (H3): increment 7.19 dB/THz, s -0.0792 ps, misfit 3.92, N_eff 19.6; no change at all: p = 0.0001
-  gas, slice swells, r 15 um         fail p = 0.001 (0.049); best v 0.20: +0.24 dB, +0.037 rad at 0.6 THz, slope +1.72 dB/THz; no v passes
-  gas, slice swells, r 30 um         edge p = 0.004 (0.079); best v 0.20: +0.91 dB, +0.067 rad at 0.6 THz, slope +4.53 dB/THz; no v passes
-  gas, slice swells, r 50 um         edge p = 0.014 (0.094); best v 0.20: +2.01 dB, +0.097 rad at 0.6 THz, slope +7.05 dB/THz; no v passes
-  gas, slice swells, r 80 um         fail p = 0.021 (0.045); best v 0.20: +3.49 dB, +0.162 rad at 0.6 THz, slope +7.29 dB/THz; no v passes
-  gas, slice swells, r 120 um        fail p = 0.011 (0.021); best v 0.14: +3.10 dB, +0.205 rad at 0.6 THz, slope +2.47 dB/THz; no v passes
+  gas, slice swells, r 15 um         fail p = 0.001 (0.049); best v 0.20: +0.30 dB, +0.022 rad at 0.6 THz, slope +1.89 dB/THz; no v passes
+  gas, slice swells, r 30 um         edge p = 0.001 (0.070); best v 0.20: +1.01 dB, +0.020 rad at 0.6 THz, slope +4.97 dB/THz; no v passes
+  gas, slice swells, r 50 um         edge p = 0.003 (0.079); best v 0.20: +2.20 dB, +0.012 rad at 0.6 THz, slope +8.45 dB/THz; no v passes
+  gas, slice swells, r 80 um         edge p = 0.004 (0.074); best v 0.18: +3.63 dB, +0.040 rad at 0.6 THz, slope +8.30 dB/THz; no v passes
+  gas, slice swells, r 120 um        fail p = 0.005 (0.033); best v 0.12: +3.45 dB, +0.129 rad at 0.6 THz, slope +1.05 dB/THz; no v passes
   gas, displacing tissue, r 15 um    fail p = 0.000 (0.036); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   gas, displacing tissue, r 30 um    fail p = 0.000 (0.036); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   gas, displacing tissue, r 50 um    fail p = 0.000 (0.036); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
@@ -99,92 +99,92 @@ Forward: candidate at v = 0.1 and 0.2 (loss and delay at 0.6 THz, loss slope 0.3
 === increment held above 1.5 THz, a + b <= 1 ===
 30 s (H1): increment 0.35 dB/THz, s -0.0110 ps, misfit 0.833, N_eff 12.9; no change at all: p = 0.6988
   gas, slice swells, r 15 um         n/a  p = 0.731 (0.692); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.20
-  gas, slice swells, r 30 um         n/a  p = 0.731 (0.692); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.12
-  gas, slice swells, r 50 um         n/a  p = 0.731 (0.692); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.06
+  gas, slice swells, r 30 um         n/a  p = 0.731 (0.692); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.14
+  gas, slice swells, r 50 um         n/a  p = 0.731 (0.692); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.08
   gas, slice swells, r 80 um         n/a  p = 0.731 (0.692); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.04
   gas, slice swells, r 120 um        n/a  p = 0.731 (0.692); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.02
   gas, displacing tissue, r 15 um    n/a  p = 0.731 (0.692); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.02
   gas, displacing tissue, r 30 um    n/a  p = 0.731 (0.692); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.02
-  gas, displacing tissue, r 50 um    n/a  p = 0.731 (0.692); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.04
+  gas, displacing tissue, r 50 um    n/a  p = 0.731 (0.692); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.02
   gas, displacing tissue, r 80 um    n/a  p = 0.731 (0.692); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.04
-  gas, displacing tissue, r 120 um   n/a  p = 0.731 (0.692); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.06
+  gas, displacing tissue, r 120 um   n/a  p = 0.731 (0.692); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.04
   lipid-like fragments, r 15 um      n/a  p = 0.731 (0.692); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.06
   lipid-like fragments, r 30 um      n/a  p = 0.731 (0.692); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.06
-  lipid-like fragments, r 50 um      n/a  p = 0.731 (0.692); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.06
+  lipid-like fragments, r 50 um      n/a  p = 0.731 (0.692); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.04
   lipid-like fragments, r 80 um      n/a  p = 0.731 (0.692); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.04
   lipid-like fragments, r 120 um     n/a  p = 0.731 (0.692); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.04
 2 min (H2): increment 2.15 dB/THz, s -0.0000 ps, misfit 1.57, N_eff 14.6; no change at all: p = 0.0014
-  gas, slice swells, r 15 um         edge p = 0.017 (0.081); best v 0.20: +0.24 dB, +0.037 rad at 0.6 THz, slope +1.72 dB/THz; no v passes
-  gas, slice swells, r 30 um         pass p = 0.132 (0.239); best v 0.20: +0.91 dB, +0.067 rad at 0.6 THz, slope +4.53 dB/THz; v passing 0.12 to 0.20
-  gas, slice swells, r 50 um         pass p = 0.096 (0.148); best v 0.14: +1.29 dB, +0.065 rad at 0.6 THz, slope +4.60 dB/THz; v passing 0.08 to 0.20
-  gas, slice swells, r 80 um         pass p = 0.107 (0.176); best v 0.10: +1.54 dB, +0.074 rad at 0.6 THz, slope +3.25 dB/THz; v passing 0.06 to 0.14
-  gas, slice swells, r 120 um        pass p = 0.141 (0.231); best v 0.08: +1.65 dB, +0.110 rad at 0.6 THz, slope +1.32 dB/THz; v passing 0.04 to 0.10
+  gas, slice swells, r 15 um         edge p = 0.010 (0.055); best v 0.20: +0.30 dB, +0.022 rad at 0.6 THz, slope +1.89 dB/THz; no v passes
+  gas, slice swells, r 30 um         edge p = 0.024 (0.063); best v 0.20: +1.01 dB, +0.020 rad at 0.6 THz, slope +4.97 dB/THz; no v passes
+  gas, slice swells, r 50 um         edge p = 0.018 (0.057); best v 0.12: +1.18 dB, +0.008 rad at 0.6 THz, slope +4.62 dB/THz; no v passes
+  gas, slice swells, r 80 um         edge p = 0.030 (0.101); best v 0.08: +1.42 dB, +0.017 rad at 0.6 THz, slope +3.30 dB/THz; v passing 0.08 to 0.08
+  gas, slice swells, r 120 um        pass p = 0.073 (0.226); best v 0.06: +1.61 dB, +0.061 rad at 0.6 THz, slope +0.50 dB/THz; v passing 0.04 to 0.10
   gas, displacing tissue, r 15 um    fail p = 0.002 (0.016); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   gas, displacing tissue, r 30 um    fail p = 0.002 (0.017); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
-  gas, displacing tissue, r 50 um    fail p = 0.002 (0.018); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
-  gas, displacing tissue, r 80 um    fail p = 0.003 (0.020); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
+  gas, displacing tissue, r 50 um    fail p = 0.002 (0.019); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
+  gas, displacing tissue, r 80 um    fail p = 0.003 (0.021); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   gas, displacing tissue, r 120 um   fail p = 0.003 (0.021); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   lipid-like fragments, r 15 um      fail p = 0.002 (0.016); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   lipid-like fragments, r 30 um      fail p = 0.002 (0.016); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   lipid-like fragments, r 50 um      fail p = 0.002 (0.016); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   lipid-like fragments, r 80 um      fail p = 0.002 (0.017); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
-  lipid-like fragments, r 120 um     fail p = 0.002 (0.019); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
+  lipid-like fragments, r 120 um     fail p = 0.003 (0.019); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
 4 min (H1): increment 2.82 dB/THz, s -0.0011 ps, misfit 2.96, N_eff 18.3; no change at all: p = 0.0004
-  gas, slice swells, r 15 um         edge p = 0.005 (0.106); best v 0.20: +0.24 dB, +0.037 rad at 0.6 THz, slope +1.72 dB/THz; no v passes
-  gas, slice swells, r 30 um         edge p = 0.030 (0.204); best v 0.20: +0.91 dB, +0.067 rad at 0.6 THz, slope +4.53 dB/THz; v passing 0.20 to 0.20
-  gas, slice swells, r 50 um         edge p = 0.033 (0.136); best v 0.16: +1.52 dB, +0.075 rad at 0.6 THz, slope +5.38 dB/THz; v passing 0.14 to 0.20
-  gas, slice swells, r 80 um         edge p = 0.031 (0.103); best v 0.12: +1.89 dB, +0.090 rad at 0.6 THz, slope +3.99 dB/THz; v passing 0.10 to 0.12
-  gas, slice swells, r 120 um        edge p = 0.037 (0.094); best v 0.10: +2.11 dB, +0.140 rad at 0.6 THz, slope +1.69 dB/THz; v passing 0.08 to 0.10
+  gas, slice swells, r 15 um         edge p = 0.003 (0.092); best v 0.20: +0.30 dB, +0.022 rad at 0.6 THz, slope +1.89 dB/THz; no v passes
+  gas, slice swells, r 30 um         edge p = 0.007 (0.113); best v 0.20: +1.01 dB, +0.020 rad at 0.6 THz, slope +4.97 dB/THz; no v passes
+  gas, slice swells, r 50 um         edge p = 0.005 (0.081); best v 0.14: +1.41 dB, +0.009 rad at 0.6 THz, slope +5.51 dB/THz; no v passes
+  gas, slice swells, r 80 um         edge p = 0.007 (0.085); best v 0.10: +1.82 dB, +0.021 rad at 0.6 THz, slope +4.22 dB/THz; no v passes
+  gas, slice swells, r 120 um        edge p = 0.018 (0.132); best v 0.08: +2.20 dB, +0.083 rad at 0.6 THz, slope +0.68 dB/THz; no v passes
   gas, displacing tissue, r 15 um    fail p = 0.000 (0.040); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   gas, displacing tissue, r 30 um    fail p = 0.001 (0.044); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
-  gas, displacing tissue, r 50 um    fail p = 0.001 (0.050); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
+  gas, displacing tissue, r 50 um    edge p = 0.001 (0.051); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   gas, displacing tissue, r 80 um    edge p = 0.001 (0.051); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   gas, displacing tissue, r 120 um   edge p = 0.001 (0.051); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   lipid-like fragments, r 15 um      fail p = 0.000 (0.039); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
-  lipid-like fragments, r 30 um      fail p = 0.000 (0.039); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
+  lipid-like fragments, r 30 um      fail p = 0.000 (0.038); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   lipid-like fragments, r 50 um      fail p = 0.000 (0.040); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
-  lipid-like fragments, r 80 um      fail p = 0.001 (0.045); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
+  lipid-like fragments, r 80 um      fail p = 0.001 (0.044); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   lipid-like fragments, r 120 um     edge p = 0.001 (0.051); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
 5 min (H3): increment 5.03 dB/THz, s -0.0328 ps, misfit 4.61, N_eff 19.4; no change at all: p = 0.0004
-  gas, slice swells, r 15 um         edge p = 0.002 (0.077); best v 0.20: +0.24 dB, +0.037 rad at 0.6 THz, slope +1.72 dB/THz; no v passes
-  gas, slice swells, r 30 um         edge p = 0.012 (0.130); best v 0.20: +0.91 dB, +0.067 rad at 0.6 THz, slope +4.53 dB/THz; no v passes
-  gas, slice swells, r 50 um         edge p = 0.042 (0.161); best v 0.20: +2.01 dB, +0.097 rad at 0.6 THz, slope +7.05 dB/THz; v passing 0.18 to 0.20
-  gas, slice swells, r 80 um         edge p = 0.037 (0.104); best v 0.16: +2.65 dB, +0.125 rad at 0.6 THz, slope +5.56 dB/THz; v passing 0.14 to 0.20
-  gas, slice swells, r 120 um        edge p = 0.028 (0.071); best v 0.12: +2.60 dB, +0.172 rad at 0.6 THz, slope +2.07 dB/THz; v passing 0.12 to 0.14
+  gas, slice swells, r 15 um         edge p = 0.002 (0.075); best v 0.20: +0.30 dB, +0.022 rad at 0.6 THz, slope +1.89 dB/THz; no v passes
+  gas, slice swells, r 30 um         edge p = 0.005 (0.110); best v 0.20: +1.01 dB, +0.020 rad at 0.6 THz, slope +4.97 dB/THz; no v passes
+  gas, slice swells, r 50 um         edge p = 0.009 (0.111); best v 0.20: +2.20 dB, +0.012 rad at 0.6 THz, slope +8.45 dB/THz; no v passes
+  gas, slice swells, r 80 um         edge p = 0.009 (0.093); best v 0.14: +2.68 dB, +0.030 rad at 0.6 THz, slope +6.17 dB/THz; no v passes
+  gas, slice swells, r 120 um        edge p = 0.013 (0.063); best v 0.12: +3.45 dB, +0.129 rad at 0.6 THz, slope +1.05 dB/THz; no v passes
   gas, displacing tissue, r 15 um    fail p = 0.000 (0.042); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   gas, displacing tissue, r 30 um    fail p = 0.000 (0.046); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
-  gas, displacing tissue, r 50 um    edge p = 0.001 (0.051); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
+  gas, displacing tissue, r 50 um    edge p = 0.001 (0.052); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   gas, displacing tissue, r 80 um    edge p = 0.001 (0.056); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   gas, displacing tissue, r 120 um   edge p = 0.001 (0.056); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   lipid-like fragments, r 15 um      fail p = 0.000 (0.040); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   lipid-like fragments, r 30 um      fail p = 0.000 (0.041); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
-  lipid-like fragments, r 50 um      fail p = 0.000 (0.042); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
+  lipid-like fragments, r 50 um      fail p = 0.000 (0.041); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   lipid-like fragments, r 80 um      fail p = 0.000 (0.046); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   lipid-like fragments, r 120 um     edge p = 0.001 (0.054); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
 
 === increment held above 2 THz, a <= 1 ===
 30 s (H1): increment 0.39 dB/THz, s -0.0132 ps, misfit 0.834, N_eff 12.9; no change at all: p = 0.7031
   gas, slice swells, r 15 um         n/a  p = 0.735 (0.696); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.20
-  gas, slice swells, r 30 um         n/a  p = 0.735 (0.696); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.12
+  gas, slice swells, r 30 um         n/a  p = 0.735 (0.696); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.16
   gas, slice swells, r 50 um         n/a  p = 0.735 (0.696); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.08
   gas, slice swells, r 80 um         n/a  p = 0.735 (0.696); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.04
   gas, slice swells, r 120 um        n/a  p = 0.735 (0.696); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.02
   gas, displacing tissue, r 15 um    n/a  p = 0.735 (0.696); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.02
   gas, displacing tissue, r 30 um    n/a  p = 0.735 (0.696); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.02
-  gas, displacing tissue, r 50 um    n/a  p = 0.735 (0.696); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.04
+  gas, displacing tissue, r 50 um    n/a  p = 0.735 (0.696); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.02
   gas, displacing tissue, r 80 um    n/a  p = 0.735 (0.696); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.04
-  gas, displacing tissue, r 120 um   n/a  p = 0.735 (0.696); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.06
+  gas, displacing tissue, r 120 um   n/a  p = 0.735 (0.696); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.04
   lipid-like fragments, r 15 um      n/a  p = 0.735 (0.696); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.06
   lipid-like fragments, r 30 um      n/a  p = 0.735 (0.696); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.06
-  lipid-like fragments, r 50 um      n/a  p = 0.735 (0.696); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.06
+  lipid-like fragments, r 50 um      n/a  p = 0.735 (0.696); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.04
   lipid-like fragments, r 80 um      n/a  p = 0.735 (0.696); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.04
   lipid-like fragments, r 120 um     n/a  p = 0.735 (0.696); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.04
 2 min (H2): increment 3.11 dB/THz, s -0.0317 ps, misfit 1.36, N_eff 14.1; no change at all: p = 0.0010
-  gas, slice swells, r 15 um         edge p = 0.014 (0.061); best v 0.20: +0.24 dB, +0.037 rad at 0.6 THz, slope +1.72 dB/THz; no v passes
-  gas, slice swells, r 30 um         pass p = 0.098 (0.224); best v 0.20: +0.91 dB, +0.067 rad at 0.6 THz, slope +4.53 dB/THz; v passing 0.14 to 0.20
-  gas, slice swells, r 50 um         pass p = 0.153 (0.184); best v 0.18: +1.76 dB, +0.086 rad at 0.6 THz, slope +6.19 dB/THz; v passing 0.10 to 0.20
-  gas, slice swells, r 80 um         pass p = 0.178 (0.224); best v 0.12: +1.89 dB, +0.090 rad at 0.6 THz, slope +3.99 dB/THz; v passing 0.06 to 0.16
-  gas, slice swells, r 120 um        pass p = 0.150 (0.111); best v 0.10: +2.11 dB, +0.140 rad at 0.6 THz, slope +1.69 dB/THz; v passing 0.06 to 0.12
+  gas, slice swells, r 15 um         fail p = 0.008 (0.041); best v 0.20: +0.30 dB, +0.022 rad at 0.6 THz, slope +1.89 dB/THz; no v passes
+  gas, slice swells, r 30 um         edge p = 0.020 (0.074); best v 0.20: +1.01 dB, +0.020 rad at 0.6 THz, slope +4.97 dB/THz; no v passes
+  gas, slice swells, r 50 um         edge p = 0.020 (0.060); best v 0.16: +1.66 dB, +0.010 rad at 0.6 THz, slope +6.45 dB/THz; no v passes
+  gas, slice swells, r 80 um         edge p = 0.037 (0.093); best v 0.12: +2.24 dB, +0.026 rad at 0.6 THz, slope +5.17 dB/THz; v passing 0.08 to 0.12
+  gas, slice swells, r 120 um        pass p = 0.098 (0.190); best v 0.08: +2.20 dB, +0.083 rad at 0.6 THz, slope +0.68 dB/THz; v passing 0.06 to 0.10
   gas, displacing tissue, r 15 um    fail p = 0.002 (0.014); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   gas, displacing tissue, r 30 um    fail p = 0.002 (0.014); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   gas, displacing tissue, r 50 um    fail p = 0.002 (0.014); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
@@ -196,11 +196,11 @@ Forward: candidate at v = 0.1 and 0.2 (loss and delay at 0.6 THz, loss slope 0.3
   lipid-like fragments, r 80 um      fail p = 0.002 (0.014); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   lipid-like fragments, r 120 um     fail p = 0.002 (0.014); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
 4 min (H1): increment 4.47 dB/THz, s -0.0522 ps, misfit 2.51, N_eff 18.1; no change at all: p = 0.0002
-  gas, slice swells, r 15 um         edge p = 0.002 (0.072); best v 0.20: +0.24 dB, +0.037 rad at 0.6 THz, slope +1.72 dB/THz; no v passes
-  gas, slice swells, r 30 um         edge p = 0.012 (0.142); best v 0.20: +0.91 dB, +0.067 rad at 0.6 THz, slope +4.53 dB/THz; no v passes
-  gas, slice swells, r 50 um         edge p = 0.033 (0.194); best v 0.20: +2.01 dB, +0.097 rad at 0.6 THz, slope +7.05 dB/THz; v passing 0.18 to 0.20
-  gas, slice swells, r 80 um         edge p = 0.029 (0.135); best v 0.14: +2.26 dB, +0.107 rad at 0.6 THz, slope +4.75 dB/THz; v passing 0.14 to 0.16
-  gas, slice swells, r 120 um        edge p = 0.026 (0.066); best v 0.10: +2.11 dB, +0.140 rad at 0.6 THz, slope +1.69 dB/THz; v passing 0.10 to 0.12
+  gas, slice swells, r 15 um         edge p = 0.001 (0.063); best v 0.20: +0.30 dB, +0.022 rad at 0.6 THz, slope +1.89 dB/THz; no v passes
+  gas, slice swells, r 30 um         edge p = 0.003 (0.087); best v 0.20: +1.01 dB, +0.020 rad at 0.6 THz, slope +4.97 dB/THz; no v passes
+  gas, slice swells, r 50 um         edge p = 0.003 (0.084); best v 0.20: +2.20 dB, +0.012 rad at 0.6 THz, slope +8.45 dB/THz; no v passes
+  gas, slice swells, r 80 um         edge p = 0.005 (0.103); best v 0.12: +2.24 dB, +0.026 rad at 0.6 THz, slope +5.17 dB/THz; no v passes
+  gas, slice swells, r 120 um        edge p = 0.012 (0.078); best v 0.10: +2.81 dB, +0.105 rad at 0.6 THz, slope +0.86 dB/THz; no v passes
   gas, displacing tissue, r 15 um    fail p = 0.000 (0.034); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   gas, displacing tissue, r 30 um    fail p = 0.000 (0.034); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   gas, displacing tissue, r 50 um    fail p = 0.000 (0.034); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
@@ -212,11 +212,11 @@ Forward: candidate at v = 0.1 and 0.2 (loss and delay at 0.6 THz, loss slope 0.3
   lipid-like fragments, r 80 um      fail p = 0.000 (0.034); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   lipid-like fragments, r 120 um     fail p = 0.000 (0.034); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
 5 min (H3): increment 7.35 dB/THz, s -0.1097 ps, misfit 3.94, N_eff 19.4; no change at all: p = 0.0001
-  gas, slice swells, r 15 um         edge p = 0.001 (0.050); best v 0.20: +0.24 dB, +0.037 rad at 0.6 THz, slope +1.72 dB/THz; no v passes
-  gas, slice swells, r 30 um         edge p = 0.004 (0.080); best v 0.20: +0.91 dB, +0.067 rad at 0.6 THz, slope +4.53 dB/THz; no v passes
-  gas, slice swells, r 50 um         edge p = 0.015 (0.096); best v 0.20: +2.01 dB, +0.097 rad at 0.6 THz, slope +7.05 dB/THz; no v passes
-  gas, slice swells, r 80 um         fail p = 0.023 (0.047); best v 0.20: +3.49 dB, +0.162 rad at 0.6 THz, slope +7.29 dB/THz; v passing 0.20 to 0.20
-  gas, slice swells, r 120 um        fail p = 0.012 (0.022); best v 0.14: +3.10 dB, +0.205 rad at 0.6 THz, slope +2.47 dB/THz; no v passes
+  gas, slice swells, r 15 um         edge p = 0.001 (0.050); best v 0.20: +0.30 dB, +0.022 rad at 0.6 THz, slope +1.89 dB/THz; no v passes
+  gas, slice swells, r 30 um         edge p = 0.002 (0.071); best v 0.20: +1.01 dB, +0.020 rad at 0.6 THz, slope +4.97 dB/THz; no v passes
+  gas, slice swells, r 50 um         edge p = 0.003 (0.081); best v 0.20: +2.20 dB, +0.012 rad at 0.6 THz, slope +8.45 dB/THz; no v passes
+  gas, slice swells, r 80 um         edge p = 0.004 (0.075); best v 0.18: +3.63 dB, +0.040 rad at 0.6 THz, slope +8.30 dB/THz; no v passes
+  gas, slice swells, r 120 um        fail p = 0.005 (0.034); best v 0.12: +3.45 dB, +0.129 rad at 0.6 THz, slope +1.05 dB/THz; no v passes
   gas, displacing tissue, r 15 um    fail p = 0.000 (0.037); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   gas, displacing tissue, r 30 um    fail p = 0.000 (0.037); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   gas, displacing tissue, r 50 um    fail p = 0.000 (0.037); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
@@ -231,30 +231,30 @@ Forward: candidate at v = 0.1 and 0.2 (loss and delay at 0.6 THz, loss slope 0.3
 === increment held above 2 THz, a + b <= 1 ===
 30 s (H1): increment 0.35 dB/THz, s -0.0123 ps, misfit 0.834, N_eff 12.9; no change at all: p = 0.7046
   gas, slice swells, r 15 um         n/a  p = 0.737 (0.697); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.20
-  gas, slice swells, r 30 um         n/a  p = 0.737 (0.697); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.12
-  gas, slice swells, r 50 um         n/a  p = 0.737 (0.697); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.06
+  gas, slice swells, r 30 um         n/a  p = 0.737 (0.697); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.14
+  gas, slice swells, r 50 um         n/a  p = 0.737 (0.697); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.08
   gas, slice swells, r 80 um         n/a  p = 0.737 (0.697); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.04
   gas, slice swells, r 120 um        n/a  p = 0.737 (0.697); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.02
   gas, displacing tissue, r 15 um    n/a  p = 0.737 (0.697); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.02
   gas, displacing tissue, r 30 um    n/a  p = 0.737 (0.697); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.02
-  gas, displacing tissue, r 50 um    n/a  p = 0.737 (0.697); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.04
+  gas, displacing tissue, r 50 um    n/a  p = 0.737 (0.697); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.02
   gas, displacing tissue, r 80 um    n/a  p = 0.737 (0.697); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.04
-  gas, displacing tissue, r 120 um   n/a  p = 0.737 (0.697); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.06
+  gas, displacing tissue, r 120 um   n/a  p = 0.737 (0.697); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.04
   lipid-like fragments, r 15 um      n/a  p = 0.737 (0.697); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.06
   lipid-like fragments, r 30 um      n/a  p = 0.737 (0.697); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.06
-  lipid-like fragments, r 50 um      n/a  p = 0.737 (0.697); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.06
+  lipid-like fragments, r 50 um      n/a  p = 0.737 (0.697); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.04
   lipid-like fragments, r 80 um      n/a  p = 0.737 (0.697); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.04
   lipid-like fragments, r 120 um     n/a  p = 0.737 (0.697); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.04
 2 min (H2): increment 2.11 dB/THz, s -0.0071 ps, misfit 1.58, N_eff 14.5; no change at all: p = 0.0015
-  gas, slice swells, r 15 um         edge p = 0.018 (0.082); best v 0.20: +0.24 dB, +0.037 rad at 0.6 THz, slope +1.72 dB/THz; no v passes
-  gas, slice swells, r 30 um         pass p = 0.134 (0.242); best v 0.20: +0.91 dB, +0.067 rad at 0.6 THz, slope +4.53 dB/THz; v passing 0.12 to 0.20
-  gas, slice swells, r 50 um         pass p = 0.097 (0.149); best v 0.14: +1.29 dB, +0.065 rad at 0.6 THz, slope +4.60 dB/THz; v passing 0.08 to 0.20
-  gas, slice swells, r 80 um         pass p = 0.108 (0.177); best v 0.10: +1.54 dB, +0.074 rad at 0.6 THz, slope +3.25 dB/THz; v passing 0.06 to 0.14
-  gas, slice swells, r 120 um        pass p = 0.142 (0.232); best v 0.08: +1.65 dB, +0.110 rad at 0.6 THz, slope +1.32 dB/THz; v passing 0.04 to 0.10
+  gas, slice swells, r 15 um         edge p = 0.011 (0.056); best v 0.20: +0.30 dB, +0.022 rad at 0.6 THz, slope +1.89 dB/THz; no v passes
+  gas, slice swells, r 30 um         edge p = 0.025 (0.064); best v 0.20: +1.01 dB, +0.020 rad at 0.6 THz, slope +4.97 dB/THz; v passing 0.20 to 0.20
+  gas, slice swells, r 50 um         edge p = 0.019 (0.057); best v 0.12: +1.18 dB, +0.008 rad at 0.6 THz, slope +4.62 dB/THz; no v passes
+  gas, slice swells, r 80 um         edge p = 0.030 (0.101); best v 0.08: +1.42 dB, +0.017 rad at 0.6 THz, slope +3.30 dB/THz; v passing 0.08 to 0.08
+  gas, slice swells, r 120 um        pass p = 0.074 (0.227); best v 0.06: +1.61 dB, +0.061 rad at 0.6 THz, slope +0.50 dB/THz; v passing 0.04 to 0.10
   gas, displacing tissue, r 15 um    fail p = 0.002 (0.016); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   gas, displacing tissue, r 30 um    fail p = 0.002 (0.017); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
-  gas, displacing tissue, r 50 um    fail p = 0.002 (0.019); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
-  gas, displacing tissue, r 80 um    fail p = 0.003 (0.020); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
+  gas, displacing tissue, r 50 um    fail p = 0.003 (0.019); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
+  gas, displacing tissue, r 80 um    fail p = 0.003 (0.021); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   gas, displacing tissue, r 120 um   fail p = 0.003 (0.021); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   lipid-like fragments, r 15 um      fail p = 0.002 (0.015); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   lipid-like fragments, r 30 um      fail p = 0.002 (0.016); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
@@ -262,61 +262,61 @@ Forward: candidate at v = 0.1 and 0.2 (loss and delay at 0.6 THz, loss slope 0.3
   lipid-like fragments, r 80 um      fail p = 0.002 (0.017); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   lipid-like fragments, r 120 um     fail p = 0.003 (0.019); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
 4 min (H1): increment 2.85 dB/THz, s -0.0124 ps, misfit 2.98, N_eff 18.2; no change at all: p = 0.0005
-  gas, slice swells, r 15 um         edge p = 0.005 (0.109); best v 0.20: +0.24 dB, +0.037 rad at 0.6 THz, slope +1.72 dB/THz; no v passes
-  gas, slice swells, r 30 um         edge p = 0.033 (0.208); best v 0.20: +0.91 dB, +0.067 rad at 0.6 THz, slope +4.53 dB/THz; v passing 0.18 to 0.20
-  gas, slice swells, r 50 um         edge p = 0.036 (0.140); best v 0.16: +1.52 dB, +0.075 rad at 0.6 THz, slope +5.38 dB/THz; v passing 0.14 to 0.20
-  gas, slice swells, r 80 um         edge p = 0.034 (0.107); best v 0.12: +1.89 dB, +0.090 rad at 0.6 THz, slope +3.99 dB/THz; v passing 0.10 to 0.14
-  gas, slice swells, r 120 um        edge p = 0.040 (0.098); best v 0.10: +2.11 dB, +0.140 rad at 0.6 THz, slope +1.69 dB/THz; v passing 0.08 to 0.10
+  gas, slice swells, r 15 um         edge p = 0.003 (0.094); best v 0.20: +0.30 dB, +0.022 rad at 0.6 THz, slope +1.89 dB/THz; no v passes
+  gas, slice swells, r 30 um         edge p = 0.008 (0.116); best v 0.20: +1.01 dB, +0.020 rad at 0.6 THz, slope +4.97 dB/THz; no v passes
+  gas, slice swells, r 50 um         edge p = 0.006 (0.083); best v 0.14: +1.41 dB, +0.009 rad at 0.6 THz, slope +5.51 dB/THz; no v passes
+  gas, slice swells, r 80 um         edge p = 0.008 (0.087); best v 0.10: +1.82 dB, +0.021 rad at 0.6 THz, slope +4.22 dB/THz; no v passes
+  gas, slice swells, r 120 um        edge p = 0.020 (0.135); best v 0.08: +2.20 dB, +0.083 rad at 0.6 THz, slope +0.68 dB/THz; no v passes
   gas, displacing tissue, r 15 um    fail p = 0.000 (0.041); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   gas, displacing tissue, r 30 um    fail p = 0.001 (0.046); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
-  gas, displacing tissue, r 50 um    edge p = 0.001 (0.051); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
+  gas, displacing tissue, r 50 um    edge p = 0.001 (0.052); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   gas, displacing tissue, r 80 um    edge p = 0.001 (0.052); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   gas, displacing tissue, r 120 um   edge p = 0.001 (0.052); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   lipid-like fragments, r 15 um      fail p = 0.000 (0.039); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   lipid-like fragments, r 30 um      fail p = 0.000 (0.040); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   lipid-like fragments, r 50 um      fail p = 0.000 (0.041); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
-  lipid-like fragments, r 80 um      fail p = 0.001 (0.046); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
+  lipid-like fragments, r 80 um      fail p = 0.001 (0.045); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   lipid-like fragments, r 120 um     edge p = 0.001 (0.052); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
 5 min (H3): increment 5.09 dB/THz, s -0.0528 ps, misfit 4.65, N_eff 19.3; no change at all: p = 0.0005
-  gas, slice swells, r 15 um         edge p = 0.003 (0.079); best v 0.20: +0.24 dB, +0.037 rad at 0.6 THz, slope +1.72 dB/THz; no v passes
-  gas, slice swells, r 30 um         edge p = 0.013 (0.134); best v 0.20: +0.91 dB, +0.067 rad at 0.6 THz, slope +4.53 dB/THz; no v passes
-  gas, slice swells, r 50 um         edge p = 0.046 (0.167); best v 0.20: +2.01 dB, +0.097 rad at 0.6 THz, slope +7.05 dB/THz; v passing 0.18 to 0.20
-  gas, slice swells, r 80 um         edge p = 0.040 (0.109); best v 0.16: +2.65 dB, +0.125 rad at 0.6 THz, slope +5.56 dB/THz; v passing 0.12 to 0.20
-  gas, slice swells, r 120 um        edge p = 0.031 (0.075); best v 0.12: +2.60 dB, +0.172 rad at 0.6 THz, slope +2.07 dB/THz; v passing 0.12 to 0.14
+  gas, slice swells, r 15 um         edge p = 0.002 (0.077); best v 0.20: +0.30 dB, +0.022 rad at 0.6 THz, slope +1.89 dB/THz; no v passes
+  gas, slice swells, r 30 um         edge p = 0.006 (0.113); best v 0.20: +1.01 dB, +0.020 rad at 0.6 THz, slope +4.97 dB/THz; no v passes
+  gas, slice swells, r 50 um         edge p = 0.010 (0.114); best v 0.20: +2.20 dB, +0.012 rad at 0.6 THz, slope +8.45 dB/THz; no v passes
+  gas, slice swells, r 80 um         edge p = 0.010 (0.096); best v 0.14: +2.68 dB, +0.030 rad at 0.6 THz, slope +6.17 dB/THz; no v passes
+  gas, slice swells, r 120 um        edge p = 0.014 (0.065); best v 0.12: +3.45 dB, +0.129 rad at 0.6 THz, slope +1.05 dB/THz; no v passes
   gas, displacing tissue, r 15 um    fail p = 0.000 (0.043); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   gas, displacing tissue, r 30 um    fail p = 0.000 (0.047); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
-  gas, displacing tissue, r 50 um    edge p = 0.001 (0.053); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
+  gas, displacing tissue, r 50 um    edge p = 0.001 (0.054); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   gas, displacing tissue, r 80 um    edge p = 0.001 (0.057); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   gas, displacing tissue, r 120 um   edge p = 0.001 (0.057); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   lipid-like fragments, r 15 um      fail p = 0.000 (0.042); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   lipid-like fragments, r 30 um      fail p = 0.000 (0.042); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   lipid-like fragments, r 50 um      fail p = 0.000 (0.043); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
-  lipid-like fragments, r 80 um      fail p = 0.000 (0.048); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
-  lipid-like fragments, r 120 um     edge p = 0.001 (0.056); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
+  lipid-like fragments, r 80 um      fail p = 0.000 (0.047); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
+  lipid-like fragments, r 120 um     edge p = 0.001 (0.055); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
 
 === increment held above 4 THz, a <= 1 ===
 30 s (H1): increment 0.37 dB/THz, s -0.0160 ps, misfit 0.835, N_eff 12.9; no change at all: p = 0.7093
   gas, slice swells, r 15 um         n/a  p = 0.741 (0.702); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.20
-  gas, slice swells, r 30 um         n/a  p = 0.741 (0.702); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.12
+  gas, slice swells, r 30 um         n/a  p = 0.741 (0.702); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.16
   gas, slice swells, r 50 um         n/a  p = 0.741 (0.702); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.08
   gas, slice swells, r 80 um         n/a  p = 0.741 (0.702); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.04
   gas, slice swells, r 120 um        n/a  p = 0.741 (0.702); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.02
   gas, displacing tissue, r 15 um    n/a  p = 0.741 (0.702); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.02
   gas, displacing tissue, r 30 um    n/a  p = 0.741 (0.702); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.02
-  gas, displacing tissue, r 50 um    n/a  p = 0.741 (0.702); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.04
+  gas, displacing tissue, r 50 um    n/a  p = 0.741 (0.702); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.02
   gas, displacing tissue, r 80 um    n/a  p = 0.741 (0.702); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.04
-  gas, displacing tissue, r 120 um   n/a  p = 0.741 (0.702); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.06
+  gas, displacing tissue, r 120 um   n/a  p = 0.741 (0.702); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.04
   lipid-like fragments, r 15 um      n/a  p = 0.741 (0.702); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.06
   lipid-like fragments, r 30 um      n/a  p = 0.741 (0.702); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.06
   lipid-like fragments, r 50 um      n/a  p = 0.741 (0.702); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.06
   lipid-like fragments, r 80 um      n/a  p = 0.741 (0.702); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.04
   lipid-like fragments, r 120 um     n/a  p = 0.741 (0.702); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.04
 2 min (H2): increment 3.14 dB/THz, s -0.0588 ps, misfit 1.35, N_eff 14.0; no change at all: p = 0.0010
-  gas, slice swells, r 15 um         edge p = 0.014 (0.061); best v 0.20: +0.24 dB, +0.037 rad at 0.6 THz, slope +1.72 dB/THz; no v passes
-  gas, slice swells, r 30 um         pass p = 0.099 (0.221); best v 0.20: +0.91 dB, +0.067 rad at 0.6 THz, slope +4.53 dB/THz; v passing 0.14 to 0.20
-  gas, slice swells, r 50 um         pass p = 0.154 (0.182); best v 0.18: +1.76 dB, +0.086 rad at 0.6 THz, slope +6.19 dB/THz; v passing 0.10 to 0.20
-  gas, slice swells, r 80 um         pass p = 0.179 (0.221); best v 0.12: +1.89 dB, +0.090 rad at 0.6 THz, slope +3.99 dB/THz; v passing 0.06 to 0.16
-  gas, slice swells, r 120 um        pass p = 0.151 (0.109); best v 0.10: +2.11 dB, +0.140 rad at 0.6 THz, slope +1.69 dB/THz; v passing 0.06 to 0.12
+  gas, slice swells, r 15 um         fail p = 0.009 (0.041); best v 0.20: +0.30 dB, +0.022 rad at 0.6 THz, slope +1.89 dB/THz; no v passes
+  gas, slice swells, r 30 um         edge p = 0.021 (0.073); best v 0.20: +1.01 dB, +0.020 rad at 0.6 THz, slope +4.97 dB/THz; no v passes
+  gas, slice swells, r 50 um         edge p = 0.020 (0.059); best v 0.16: +1.66 dB, +0.010 rad at 0.6 THz, slope +6.45 dB/THz; no v passes
+  gas, slice swells, r 80 um         edge p = 0.037 (0.091); best v 0.12: +2.24 dB, +0.026 rad at 0.6 THz, slope +5.17 dB/THz; v passing 0.08 to 0.12
+  gas, slice swells, r 120 um        pass p = 0.099 (0.188); best v 0.08: +2.20 dB, +0.083 rad at 0.6 THz, slope +0.68 dB/THz; v passing 0.06 to 0.10
   gas, displacing tissue, r 15 um    fail p = 0.002 (0.014); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   gas, displacing tissue, r 30 um    fail p = 0.002 (0.014); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   gas, displacing tissue, r 50 um    fail p = 0.002 (0.014); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
@@ -328,11 +328,11 @@ Forward: candidate at v = 0.1 and 0.2 (loss and delay at 0.6 THz, loss slope 0.3
   lipid-like fragments, r 80 um      fail p = 0.002 (0.014); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   lipid-like fragments, r 120 um     fail p = 0.002 (0.014); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
 4 min (H1): increment 4.52 dB/THz, s -0.0911 ps, misfit 2.52, N_eff 18.0; no change at all: p = 0.0002
-  gas, slice swells, r 15 um         edge p = 0.002 (0.073); best v 0.20: +0.24 dB, +0.037 rad at 0.6 THz, slope +1.72 dB/THz; no v passes
-  gas, slice swells, r 30 um         edge p = 0.013 (0.144); best v 0.20: +0.91 dB, +0.067 rad at 0.6 THz, slope +4.53 dB/THz; no v passes
-  gas, slice swells, r 50 um         edge p = 0.034 (0.197); best v 0.20: +2.01 dB, +0.097 rad at 0.6 THz, slope +7.05 dB/THz; v passing 0.18 to 0.20
-  gas, slice swells, r 80 um         edge p = 0.031 (0.138); best v 0.14: +2.26 dB, +0.107 rad at 0.6 THz, slope +4.75 dB/THz; v passing 0.12 to 0.16
-  gas, slice swells, r 120 um        edge p = 0.027 (0.068); best v 0.10: +2.11 dB, +0.140 rad at 0.6 THz, slope +1.69 dB/THz; v passing 0.10 to 0.12
+  gas, slice swells, r 15 um         edge p = 0.001 (0.064); best v 0.20: +0.30 dB, +0.022 rad at 0.6 THz, slope +1.89 dB/THz; no v passes
+  gas, slice swells, r 30 um         edge p = 0.003 (0.088); best v 0.20: +1.01 dB, +0.020 rad at 0.6 THz, slope +4.97 dB/THz; no v passes
+  gas, slice swells, r 50 um         edge p = 0.004 (0.085); best v 0.20: +2.20 dB, +0.012 rad at 0.6 THz, slope +8.45 dB/THz; no v passes
+  gas, slice swells, r 80 um         edge p = 0.005 (0.105); best v 0.12: +2.24 dB, +0.026 rad at 0.6 THz, slope +5.17 dB/THz; no v passes
+  gas, slice swells, r 120 um        edge p = 0.012 (0.079); best v 0.10: +2.81 dB, +0.105 rad at 0.6 THz, slope +0.86 dB/THz; no v passes
   gas, displacing tissue, r 15 um    fail p = 0.000 (0.034); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   gas, displacing tissue, r 30 um    fail p = 0.000 (0.034); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   gas, displacing tissue, r 50 um    fail p = 0.000 (0.034); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
@@ -344,11 +344,11 @@ Forward: candidate at v = 0.1 and 0.2 (loss and delay at 0.6 THz, loss slope 0.3
   lipid-like fragments, r 80 um      fail p = 0.000 (0.034); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   lipid-like fragments, r 120 um     fail p = 0.000 (0.034); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
 5 min (H3): increment 7.48 dB/THz, s -0.1750 ps, misfit 3.99, N_eff 19.5; no change at all: p = 0.0001
-  gas, slice swells, r 15 um         edge p = 0.001 (0.052); best v 0.20: +0.24 dB, +0.037 rad at 0.6 THz, slope +1.72 dB/THz; no v passes
-  gas, slice swells, r 30 um         edge p = 0.004 (0.083); best v 0.20: +0.91 dB, +0.067 rad at 0.6 THz, slope +4.53 dB/THz; no v passes
-  gas, slice swells, r 50 um         edge p = 0.017 (0.101); best v 0.20: +2.01 dB, +0.097 rad at 0.6 THz, slope +7.05 dB/THz; no v passes
-  gas, slice swells, r 80 um         edge p = 0.025 (0.050); best v 0.20: +3.49 dB, +0.162 rad at 0.6 THz, slope +7.29 dB/THz; v passing 0.20 to 0.20
-  gas, slice swells, r 120 um        fail p = 0.013 (0.024); best v 0.14: +3.10 dB, +0.205 rad at 0.6 THz, slope +2.47 dB/THz; no v passes
+  gas, slice swells, r 15 um         edge p = 0.001 (0.052); best v 0.20: +0.30 dB, +0.022 rad at 0.6 THz, slope +1.89 dB/THz; no v passes
+  gas, slice swells, r 30 um         edge p = 0.002 (0.074); best v 0.20: +1.01 dB, +0.020 rad at 0.6 THz, slope +4.97 dB/THz; no v passes
+  gas, slice swells, r 50 um         edge p = 0.004 (0.083); best v 0.20: +2.20 dB, +0.012 rad at 0.6 THz, slope +8.45 dB/THz; no v passes
+  gas, slice swells, r 80 um         edge p = 0.005 (0.078); best v 0.18: +3.63 dB, +0.040 rad at 0.6 THz, slope +8.30 dB/THz; no v passes
+  gas, slice swells, r 120 um        fail p = 0.006 (0.035); best v 0.12: +3.45 dB, +0.129 rad at 0.6 THz, slope +1.05 dB/THz; no v passes
   gas, displacing tissue, r 15 um    fail p = 0.000 (0.038); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   gas, displacing tissue, r 30 um    fail p = 0.000 (0.038); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   gas, displacing tissue, r 50 um    fail p = 0.000 (0.038); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
@@ -363,45 +363,45 @@ Forward: candidate at v = 0.1 and 0.2 (loss and delay at 0.6 THz, loss slope 0.3
 === increment held above 4 THz, a + b <= 1 ===
 30 s (H1): increment 0.34 dB/THz, s -0.0150 ps, misfit 0.835, N_eff 12.8; no change at all: p = 0.7108
   gas, slice swells, r 15 um         n/a  p = 0.743 (0.702); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.20
-  gas, slice swells, r 30 um         n/a  p = 0.743 (0.702); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.12
-  gas, slice swells, r 50 um         n/a  p = 0.743 (0.702); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.06
+  gas, slice swells, r 30 um         n/a  p = 0.743 (0.702); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.14
+  gas, slice swells, r 50 um         n/a  p = 0.743 (0.702); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.08
   gas, slice swells, r 80 um         n/a  p = 0.743 (0.702); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.04
   gas, slice swells, r 120 um        n/a  p = 0.743 (0.702); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.02
   gas, displacing tissue, r 15 um    n/a  p = 0.743 (0.702); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.02
   gas, displacing tissue, r 30 um    n/a  p = 0.743 (0.702); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.02
-  gas, displacing tissue, r 50 um    n/a  p = 0.743 (0.702); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.04
+  gas, displacing tissue, r 50 um    n/a  p = 0.743 (0.702); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.02
   gas, displacing tissue, r 80 um    n/a  p = 0.743 (0.702); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.04
-  gas, displacing tissue, r 120 um   n/a  p = 0.743 (0.702); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.06
+  gas, displacing tissue, r 120 um   n/a  p = 0.743 (0.702); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.04
   lipid-like fragments, r 15 um      n/a  p = 0.743 (0.702); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.06
   lipid-like fragments, r 30 um      n/a  p = 0.743 (0.702); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.06
   lipid-like fragments, r 50 um      n/a  p = 0.743 (0.702); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.06
-  lipid-like fragments, r 80 um      n/a  p = 0.743 (0.702); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.06
+  lipid-like fragments, r 80 um      n/a  p = 0.743 (0.702); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.04
   lipid-like fragments, r 120 um     n/a  p = 0.743 (0.702); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; v passing 0.00 to 0.04
 2 min (H2): increment 2.13 dB/THz, s -0.0254 ps, misfit 1.57, N_eff 14.4; no change at all: p = 0.0016
-  gas, slice swells, r 15 um         edge p = 0.019 (0.083); best v 0.20: +0.24 dB, +0.037 rad at 0.6 THz, slope +1.72 dB/THz; no v passes
-  gas, slice swells, r 30 um         pass p = 0.137 (0.241); best v 0.20: +0.91 dB, +0.067 rad at 0.6 THz, slope +4.53 dB/THz; v passing 0.12 to 0.20
-  gas, slice swells, r 50 um         pass p = 0.098 (0.146); best v 0.14: +1.29 dB, +0.065 rad at 0.6 THz, slope +4.60 dB/THz; v passing 0.08 to 0.20
-  gas, slice swells, r 80 um         pass p = 0.109 (0.175); best v 0.10: +1.54 dB, +0.074 rad at 0.6 THz, slope +3.25 dB/THz; v passing 0.06 to 0.14
-  gas, slice swells, r 120 um        pass p = 0.143 (0.229); best v 0.08: +1.65 dB, +0.110 rad at 0.6 THz, slope +1.32 dB/THz; v passing 0.04 to 0.10
+  gas, slice swells, r 15 um         edge p = 0.011 (0.056); best v 0.20: +0.30 dB, +0.022 rad at 0.6 THz, slope +1.89 dB/THz; no v passes
+  gas, slice swells, r 30 um         edge p = 0.026 (0.064); best v 0.20: +1.01 dB, +0.020 rad at 0.6 THz, slope +4.97 dB/THz; v passing 0.20 to 0.20
+  gas, slice swells, r 50 um         edge p = 0.019 (0.056); best v 0.12: +1.18 dB, +0.008 rad at 0.6 THz, slope +4.62 dB/THz; no v passes
+  gas, slice swells, r 80 um         edge p = 0.031 (0.100); best v 0.08: +1.42 dB, +0.017 rad at 0.6 THz, slope +3.30 dB/THz; v passing 0.08 to 0.10
+  gas, slice swells, r 120 um        pass p = 0.075 (0.224); best v 0.06: +1.61 dB, +0.061 rad at 0.6 THz, slope +0.50 dB/THz; v passing 0.04 to 0.10
   gas, displacing tissue, r 15 um    fail p = 0.002 (0.016); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   gas, displacing tissue, r 30 um    fail p = 0.002 (0.017); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   gas, displacing tissue, r 50 um    fail p = 0.003 (0.019); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
-  gas, displacing tissue, r 80 um    fail p = 0.003 (0.020); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
+  gas, displacing tissue, r 80 um    fail p = 0.003 (0.021); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   gas, displacing tissue, r 120 um   fail p = 0.003 (0.021); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   lipid-like fragments, r 15 um      fail p = 0.002 (0.015); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   lipid-like fragments, r 30 um      fail p = 0.002 (0.015); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
-  lipid-like fragments, r 50 um      fail p = 0.002 (0.015); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
+  lipid-like fragments, r 50 um      fail p = 0.002 (0.016); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   lipid-like fragments, r 80 um      fail p = 0.002 (0.017); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   lipid-like fragments, r 120 um     fail p = 0.003 (0.019); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
 4 min (H1): increment 2.87 dB/THz, s -0.0368 ps, misfit 2.99, N_eff 18.1; no change at all: p = 0.0005
-  gas, slice swells, r 15 um         edge p = 0.006 (0.110); best v 0.20: +0.24 dB, +0.037 rad at 0.6 THz, slope +1.72 dB/THz; no v passes
-  gas, slice swells, r 30 um         edge p = 0.034 (0.210); best v 0.20: +0.91 dB, +0.067 rad at 0.6 THz, slope +4.53 dB/THz; v passing 0.18 to 0.20
-  gas, slice swells, r 50 um         edge p = 0.037 (0.141); best v 0.16: +1.52 dB, +0.075 rad at 0.6 THz, slope +5.38 dB/THz; v passing 0.14 to 0.20
-  gas, slice swells, r 80 um         edge p = 0.035 (0.108); best v 0.12: +1.89 dB, +0.090 rad at 0.6 THz, slope +3.99 dB/THz; v passing 0.10 to 0.14
-  gas, slice swells, r 120 um        edge p = 0.041 (0.098); best v 0.10: +2.11 dB, +0.140 rad at 0.6 THz, slope +1.69 dB/THz; v passing 0.08 to 0.10
+  gas, slice swells, r 15 um         edge p = 0.004 (0.096); best v 0.20: +0.30 dB, +0.022 rad at 0.6 THz, slope +1.89 dB/THz; no v passes
+  gas, slice swells, r 30 um         edge p = 0.008 (0.116); best v 0.20: +1.01 dB, +0.020 rad at 0.6 THz, slope +4.97 dB/THz; no v passes
+  gas, slice swells, r 50 um         edge p = 0.006 (0.083); best v 0.14: +1.41 dB, +0.009 rad at 0.6 THz, slope +5.51 dB/THz; no v passes
+  gas, slice swells, r 80 um         edge p = 0.009 (0.088); best v 0.10: +1.82 dB, +0.021 rad at 0.6 THz, slope +4.22 dB/THz; no v passes
+  gas, slice swells, r 120 um        edge p = 0.021 (0.136); best v 0.08: +2.20 dB, +0.083 rad at 0.6 THz, slope +0.68 dB/THz; no v passes
   gas, displacing tissue, r 15 um    fail p = 0.001 (0.041); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   gas, displacing tissue, r 30 um    fail p = 0.001 (0.046); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
-  gas, displacing tissue, r 50 um    edge p = 0.001 (0.051); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
+  gas, displacing tissue, r 50 um    edge p = 0.001 (0.052); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   gas, displacing tissue, r 80 um    edge p = 0.001 (0.053); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   gas, displacing tissue, r 120 um   edge p = 0.001 (0.053); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   lipid-like fragments, r 15 um      fail p = 0.000 (0.040); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
@@ -410,33 +410,33 @@ Forward: candidate at v = 0.1 and 0.2 (loss and delay at 0.6 THz, loss slope 0.3
   lipid-like fragments, r 80 um      fail p = 0.001 (0.046); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   lipid-like fragments, r 120 um     edge p = 0.001 (0.053); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
 5 min (H3): increment 5.13 dB/THz, s -0.0964 ps, misfit 4.69, N_eff 19.3; no change at all: p = 0.0005
-  gas, slice swells, r 15 um         edge p = 0.003 (0.080); best v 0.20: +0.24 dB, +0.037 rad at 0.6 THz, slope +1.72 dB/THz; no v passes
-  gas, slice swells, r 30 um         edge p = 0.014 (0.137); best v 0.20: +0.91 dB, +0.067 rad at 0.6 THz, slope +4.53 dB/THz; no v passes
-  gas, slice swells, r 50 um         edge p = 0.049 (0.172); best v 0.20: +2.01 dB, +0.097 rad at 0.6 THz, slope +7.05 dB/THz; v passing 0.16 to 0.20
-  gas, slice swells, r 80 um         edge p = 0.043 (0.112); best v 0.16: +2.65 dB, +0.125 rad at 0.6 THz, slope +5.56 dB/THz; v passing 0.12 to 0.20
-  gas, slice swells, r 120 um        edge p = 0.032 (0.077); best v 0.12: +2.60 dB, +0.172 rad at 0.6 THz, slope +2.07 dB/THz; v passing 0.10 to 0.14
+  gas, slice swells, r 15 um         edge p = 0.002 (0.078); best v 0.20: +0.30 dB, +0.022 rad at 0.6 THz, slope +1.89 dB/THz; no v passes
+  gas, slice swells, r 30 um         edge p = 0.006 (0.115); best v 0.20: +1.01 dB, +0.020 rad at 0.6 THz, slope +4.97 dB/THz; no v passes
+  gas, slice swells, r 50 um         edge p = 0.011 (0.117); best v 0.20: +2.20 dB, +0.012 rad at 0.6 THz, slope +8.45 dB/THz; no v passes
+  gas, slice swells, r 80 um         edge p = 0.011 (0.098); best v 0.14: +2.68 dB, +0.030 rad at 0.6 THz, slope +6.17 dB/THz; no v passes
+  gas, slice swells, r 120 um        edge p = 0.015 (0.067); best v 0.12: +3.45 dB, +0.129 rad at 0.6 THz, slope +1.05 dB/THz; no v passes
   gas, displacing tissue, r 15 um    fail p = 0.000 (0.044); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   gas, displacing tissue, r 30 um    fail p = 0.001 (0.048); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
-  gas, displacing tissue, r 50 um    edge p = 0.001 (0.053); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
+  gas, displacing tissue, r 50 um    edge p = 0.001 (0.054); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   gas, displacing tissue, r 80 um    edge p = 0.001 (0.058); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   gas, displacing tissue, r 120 um   edge p = 0.001 (0.058); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   lipid-like fragments, r 15 um      fail p = 0.000 (0.043); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   lipid-like fragments, r 30 um      fail p = 0.000 (0.043); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
   lipid-like fragments, r 50 um      fail p = 0.000 (0.044); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
-  lipid-like fragments, r 80 um      fail p = 0.001 (0.049); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
-  lipid-like fragments, r 120 um     edge p = 0.001 (0.057); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
+  lipid-like fragments, r 80 um      fail p = 0.001 (0.048); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
+  lipid-like fragments, r 120 um     edge p = 0.001 (0.056); best v 0.00: -0.00 dB, -0.000 rad at 0.6 THz, slope +0.00 dB/THz; no v passes
 
 === Summary (2, 4, 5 min; 6 references) ===
   gas, displacing tissue, r 120 um   pass 0, edge 6, fail 12, n/a 0 of 18
   gas, displacing tissue, r 15 um    pass 0, edge 0, fail 18, n/a 0 of 18
   gas, displacing tissue, r 30 um    pass 0, edge 0, fail 18, n/a 0 of 18
-  gas, displacing tissue, r 50 um    pass 0, edge 5, fail 13, n/a 0 of 18
+  gas, displacing tissue, r 50 um    pass 0, edge 6, fail 12, n/a 0 of 18
   gas, displacing tissue, r 80 um    pass 0, edge 6, fail 12, n/a 0 of 18
   gas, slice swells, r 120 um        pass 6, edge 9, fail 3, n/a 0 of 18
-  gas, slice swells, r 15 um         pass 0, edge 17, fail 1, n/a 0 of 18
-  gas, slice swells, r 30 um         pass 6, edge 12, fail 0, n/a 0 of 18
-  gas, slice swells, r 50 um         pass 6, edge 12, fail 0, n/a 0 of 18
-  gas, slice swells, r 80 um         pass 6, edge 10, fail 2, n/a 0 of 18
+  gas, slice swells, r 15 um         pass 0, edge 14, fail 4, n/a 0 of 18
+  gas, slice swells, r 30 um         pass 0, edge 18, fail 0, n/a 0 of 18
+  gas, slice swells, r 50 um         pass 0, edge 18, fail 0, n/a 0 of 18
+  gas, slice swells, r 80 um         pass 0, edge 18, fail 0, n/a 0 of 18
   lipid-like fragments, r 120 um     pass 0, edge 6, fail 12, n/a 0 of 18
   lipid-like fragments, r 15 um      pass 0, edge 0, fail 18, n/a 0 of 18
   lipid-like fragments, r 30 um      pass 0, edge 0, fail 18, n/a 0 of 18

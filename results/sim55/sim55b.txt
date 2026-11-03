@@ -1,0 +1,26 @@
+block 97 samples (1 correlation length): nominal 5 % rejects 0.38 (shift) and 0.23 (no change); calibrated thresholds p < 0.0006 (shift), p < 0.0027 (2-dof)
+block 194 samples (2 correlation lengths): nominal 5 % rejects 0.31 (shift) and 0.19 (no change); calibrated thresholds p < 0.0009 (shift), p < 0.0037 (2-dof)
+using the stricter: shift p < 0.0006, 2-dof p < 0.0027
+no change at all, 36 references x 3 scans: nominal p <= 0.0022; calibrated p <= 0.0417 (bootstrap floor 0.0017)
+references passing the 30 s control at the calibrated threshold: 36 of 36; s = 0 rejected at 2-5 min in 0 of 108
+  Sim 53 axoplasm conductivity (S/m)                references passing at 2/4/5 min (of 6): [6, 4, 6]
+  Sim 53 heating, Liebe (dT, K)                     references passing at 2/4/5 min (of 6): [6, 3, 0]
+  Sim 53 heating, Liebe x2.31 (dT, K)               references passing at 2/4/5 min (of 6): [6, 6, 3]
+  Sim 53 ions: all tissue water (S/m)               references passing at 2/4/5 min (of 6): [6, 3, 6]
+  Sim 53 thicker path (fraction)                    references passing at 2/4/5 min (of 6): [6, 6, 6]
+  Sim 53 node states (best of the three screened)   references passing at 2/4/5 min (of 6): [6, 6, 3]
+  Sim 54 gas, displacing tissue, r 120 um           references passing at 2/4/5 min (of 6): [3, 0, 0]
+  Sim 54 gas, displacing tissue, r 15 um            references passing at 2/4/5 min (of 6): [0, 0, 0]
+  Sim 54 gas, displacing tissue, r 30 um            references passing at 2/4/5 min (of 6): [0, 0, 0]
+  Sim 54 gas, displacing tissue, r 50 um            references passing at 2/4/5 min (of 6): [0, 0, 0]
+  Sim 54 gas, displacing tissue, r 80 um            references passing at 2/4/5 min (of 6): [3, 0, 0]
+  Sim 54 gas, slice swells, r 120 um                references passing at 2/4/5 min (of 6): [6, 6, 6]
+  Sim 54 gas, slice swells, r 15 um                 references passing at 2/4/5 min (of 6): [6, 3, 0]
+  Sim 54 gas, slice swells, r 30 um                 references passing at 2/4/5 min (of 6): [6, 5, 3]
+  Sim 54 gas, slice swells, r 50 um                 references passing at 2/4/5 min (of 6): [6, 6, 6]
+  Sim 54 gas, slice swells, r 80 um                 references passing at 2/4/5 min (of 6): [6, 6, 6]
+  Sim 54 lipid-like fragments, r 120 um             references passing at 2/4/5 min (of 6): [1, 0, 0]
+  Sim 54 lipid-like fragments, r 15 um              references passing at 2/4/5 min (of 6): [0, 0, 0]
+  Sim 54 lipid-like fragments, r 30 um              references passing at 2/4/5 min (of 6): [0, 0, 0]
+  Sim 54 lipid-like fragments, r 50 um              references passing at 2/4/5 min (of 6): [0, 0, 0]
+  Sim 54 lipid-like fragments, r 80 um              references passing at 2/4/5 min (of 6): [0, 0, 0]

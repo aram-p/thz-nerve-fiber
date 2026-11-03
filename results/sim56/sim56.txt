@@ -1,0 +1,7 @@
+calibrated 2-dof threshold (Sim 55b): p < 0.0027
+a <= 1     2 min (H2): nominal pass p = 0.550 (0.547); calibrated pass; best (t, v) = (np.float64(0.04), np.float64(0.16)); combinations passing nominal: t 0.00-0.08, v 0.00-0.20
+a <= 1     4 min (H1): nominal pass p = 0.200 (0.214); calibrated pass; best (t, v) = (np.float64(0.06), np.float64(0.2)); combinations passing nominal: t 0.02-0.10, v 0.00-0.20
+a <= 1     5 min (H3): nominal pass p = 0.105 (0.108); calibrated pass; best (t, v) = (np.float64(0.08), np.float64(0.2)); combinations passing nominal: t 0.04-0.14, v 0.00-0.20
+a + b <= 1 2 min (H2): nominal pass p = 0.457 (0.537); calibrated pass; best (t, v) = (np.float64(0.04), np.float64(0.12)); combinations passing nominal: t 0.00-0.10, v 0.00-0.20
+a + b <= 1 4 min (H1): nominal pass p = 0.298 (0.362); calibrated pass; best (t, v) = (np.float64(0.06), np.float64(0.08)); combinations passing nominal: t 0.02-0.12, v 0.00-0.20
+a + b <= 1 5 min (H3): nominal pass p = 0.242 (0.264); calibrated pass; best (t, v) = (np.float64(0.08), np.float64(0.2)); combinations passing nominal: t 0.02-0.14, v 0.00-0.20

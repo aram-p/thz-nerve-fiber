@@ -1238,17 +1238,62 @@ a + b ≤ 1, now superseded by 185. 178: the aqueous-gap argument names the ring
 manuscript no longer says "undelayed". Fig. 9 now shows the lag over the ten Sim 52 references and the
 Sim 53 loss increment. **Fixed.**
 
+## Twenty-third round (independent reviewer, whole paper, 2026-11-03; verdict: major revision, no fatal flaw; the gas result came from a Mie error)
+
+### 199. MAJOR: the gas-bubble fit came from the Mie approximation: the size parameter used Re(k) with a complex relative index, giving the gas interior a complex index; with x = k_h r the delay at r = 30 µm, v = 0.2 falls from 0.069 to 0.019 rad and no fit passes.
+**Response.** Confirmed and fixed: `foldy_eps` now uses the complex host wavenumber (x = k_h r, m x = k_s r,
+normalised by k_h³), with new tests (a sphere of the host's material changes nothing; the lossy result
+joins the lossless one). Sims 54 and 54b were re-run. Gas in a swelling slice gives the steep loss
+(3.3–8.5 dB/THz at r 30–80 µm) but ≤ 0.04 rad of delay; at nominal p it passes no fit. The gas claim is
+withdrawn from the abstract, Sec. 5.7 and the conclusion. Sim 56 adds a thicker path to the gas (both
+sizes charged): every scan passes, but zero gas passes too, so gas is not needed. **Fixed.**
+
+### 200. MAJOR: the reference was tuned on its own control (the 30 s floor fitted to the 30 s scan), the H1 floor is applied to H2 and H3, and verdicts flipped with each reference.
+**Response.** Agreed. Sim 55 varies the floor from 0 to 2.5 dB/THz (36 references with the hold
+frequency and the bound). The loss rise above the 30 s value (1.7–2.8, 2.4–4.2, 4.4–7.1 dB/THz at
+2/4/5 min) and the lag (0.16–0.28 rad) hold in all 36; only the split between loss and shift depends
+on the floor. The paper now claims only these, and that the cause is not identified. **Fixed.**
+
+### 201. MAJOR: the data do not pin down "causal"; the free shift cancels most of the increment's minimum-phase delay, and the hold frequency is a hidden parameter.
+**Response.** The paper now describes the change as a loss rising with frequency plus a net lag, says
+that whether the loss is causal and how it continues above ~1.7 THz decide only the split into loss and
+shift, and covers the hold frequency (1.5/2/4 THz) in the 36 references. **Fixed.**
+
+### 202. MAJOR: the Sim 54b loss slope in Table 2 was wrong.
+**Response.** Table 2 rebuilt from the corrected Sims 54 (slopes at the best sizes, 3.3–8.5 dB/THz);
+the Sim 54b row is removed with the gas claim. **Fixed.**
+
+### 203. MAJOR: swelling to 1.67× is impossible in a 100 µm cuvette; 60–100 µm bubbles make a monolayer; boiling is ~10× slower with heat flow into PTFE; electrolysis gas forms at the electrodes.
+**Response.** Sec. 5.7 states that 80 µm bubbles do not fit a 100 µm slice, that a fixed-gap cuvette
+would not let it swell, that the electrolytic gas forms 7.5 mm from the beam; the boiling estimate is
+removed and the warming paragraph notes heat flow into the plates within ~13 s. **Fixed.**
+
+### 204. MINOR: "fit every scan" overreaches; "no change of thickness" contradicts the thicker-path passes.
+**Response.** Both removed; the thicker path passes every calibrated test and is listed as such.
+**Fixed.**
+
+### 205. MINOR: the F tests are uncalibrated (systematic misfit, parameters at bounds, many tests, the Sim 54b grid widened after seeing Sim 54).
+**Response.** Sim 55b calibrates them on 600 block-bootstrap 'no change' versions of the 30 s scan: the
+nominal 5 % tests reject 19–38 % of the time; true 5 % needs p < 0.0027 (2-dof) and p < 0.0006 (shift).
+At those thresholds the change is still significant in each scan (calibrated p 0.005–0.042), the shift is
+never needed, and almost every candidate passes (Table 2 now shows calibrated passes). Hence the
+waveforms do not identify the cause; node states and conduction rest on the forward bounds. Sec. 6
+states the bootstrap's few blocks, the bounds and the number of tests. **Fixed.**
+
+### 206. MINOR: N_eff 12–20 in Sec. 6 against 13–20 in Sec. 5.6.
+**Response.** Sec. 6 no longer quotes it; Sec. 5.6 gives 13–20. **Fixed.**
+
 ---
 
 ## What matches and what does not (experiment)
 
 | Reported (Hovhannisyan, Makaryan, Martirosyan 2024) | This work |
 |---|---|
-| Dip near 0.6 THz (9–20 dB) | No node or fibre resonance anywhere in 0.1–3 THz. The shared session's biased waveforms contain a second pulse near the empty-cuvette delay (4, 12, 17, 22 % at 0.5, 2, 4, 5 min) and a tissue pulse with an extra causal loss rising with frequency (2–7.5 dB/THz over the 30 s floor, lag 0.15–0.28 rad at 0.6 THz; Sims 52–53); the dip then falls at 0.57 THz (5 min, reported 0.56) and 0.63–0.65 THz (4 min, published 0.65): consistent, q fitted. No passive change tested, node states included, supplies the loss; a thicker path fits at 2 min only (Table 2) |
+| Dip near 0.6 THz (9–20 dB) | No node or fibre resonance anywhere in 0.1–3 THz. The shared session's biased waveforms contain a second pulse near the empty-cuvette delay (4, 12, 17, 22 % at 0.5, 2, 4, 5 min) and a tissue pulse with an extra loss rising 1.7–7.1 dB/THz above its 30 s value and a lag of 0.16–0.28 rad at 0.6 THz, over 36 reference fits (Sim 55); the dip then falls at 0.57 THz (5 min, reported 0.56) and 0.63–0.65 THz (4 min, published 0.65): consistent, q fitted. The cause is not identified: at calibrated thresholds a thicker path, conduction, warming and node states all pass (Table 2) |
 | 2 THz dip (30 s, paper 1) | Not reproduced, not excluded. A real feature of one scan: 15 dB at 1.99 THz, twice any other single-curve dip, its bottom (−71 dB) 2–5 dB above the noise, so the depth is a lower bound; origin unknown. With the traced phase extrapolated the two pulses put their antiphase at 2.10–2.32 THz, and the data are only 3.2 dB above the two-pulse floor (Sims 43, 44). No node state (65, every extreme, six phase bands, b = 0.034–0.044) makes the model's minimum within 0.03 THz of 1.99 THz deeper than −37.5 dB (published ≤ −43.5 dB; Sim 43 (e)) |
 | Dip drifts 0.7 → 0.5 THz in minutes | Water-vapour lines cannot drift. At 30 s the traced ratio is a broad −3 to −4 dB trough over 0.56–0.78 THz; by 4 min the dip is at 0.62–0.65 THz as b reaches 0.17 and q 1.09 (Sims 42, 43). Matches the direction; fitted, not predicted |
 | High frequencies rise by 17–18 dB (2–2.5 THz, traced) | The bypass skips tissue loss: the waveform fit follows the rise to 1.7 THz within 1.5 dB rms (not testable above with the traced window); drying alone ≤ 3 dB (Sim 34) |
-| ~9 dB change under 100 V DC | Node (E∥, internode ≥ 200 µm, packing ≤ 0.6): ≤ 0.05 dB for any conductivity, ≤ 0.1/0.6/1.1 dB at 0.6/2/3 THz for any passive ε (ε″ ≥ 0.1, combined ±20 % materials); with internode 50 µm, packing 0.8 and the measured slice's optical thickness (×2.2–3.1) 1.5/10/17 dB. Inside the waveform fits no node state supplies the change (Table 2, Sim 53): at most 0.061 rad of delay and 1.6 dB/THz of loss slope with every extreme. At 2 THz the extreme bound (10 dB) approaches the ≥ 14 dB change (nominal margin 7×). Near 3 THz the reported change is a rise (node states ≤ 0.4 dB); channels 10⁻⁹ dB. Fibre conduction: 130–450 S/m for 9 dB at 0.6–2 THz on the slice's optical thickness; inside the waveform fits it passes nowhere (Table 2). Heating/drying: smooth, ≤ 3 dB |
+| ~9 dB change under 100 V DC | Node (E∥, internode ≥ 200 µm, packing ≤ 0.6): ≤ 0.05 dB for any conductivity, ≤ 0.1/0.6/1.1 dB at 0.6/2/3 THz for any passive ε (ε″ ≥ 0.1, combined ±20 % materials); with internode 50 µm, packing 0.8 and the measured slice's optical thickness (×2.2–3.1) 1.5/10/17 dB. Inside the waveform fits node states pass the calibrated tests (which barely discriminate) but give at most 0.061 rad of delay and 1.6 dB/THz of loss slope with every extreme; they are excluded by the forward bounds. At 2 THz the extreme bound (10 dB) approaches the ≥ 14 dB change (nominal margin 7×). Near 3 THz the reported change is a rise (node states ≤ 0.4 dB); channels 10⁻⁹ dB. Fibre conduction: 130–450 S/m for 9 dB at 0.6–2 THz on the slice's optical thickness; the waveform fits neither support nor exclude it (Table 2). Heating/drying: smooth, ≤ 3 dB |
 | Effect only with E ∥ fibres | Described without data (H1 p. 18, H3), so not testable on the published material. Contradicted by every plausible remaining cause of the change (more tissue, warming, scattering and conduction in the tissue water act for both polarisations); model dichroism −0.35 dB; a conducting axon is itself E∥-selective (6.6 vs 2.7 dB at 0.6 THz) but needs 130–450 S/m for 9 dB |
 | Effect only with DC across the fibres | Described without data. Not explained; heating predicts the opposite (σ∥ ≈ 7σ⊥) |
 | Generated high frequencies (nonlinearity) | No ps nonlinearity at TDS fields (10⁻³ of onset); drying raises high-frequency transmission linearly |

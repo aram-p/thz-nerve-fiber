@@ -16,14 +16,14 @@ the node does not resonate: its absorbed power follows a three-constant quasi-st
 limits, within 2.3 % of full wave for fibres up to 10 µm. Second, for the field along the fibres, as
 in every published scan, no node state (ε″ ≥ 0.1) changes a 100 µm slice by more than 1.1 dB at
 internodes ≥ 200 µm and packing ≤ 0.6, and open channels add 10⁻⁶ of membrane admittance. Third,
-each published biased waveform fits as the unbiased pulse with an extra causal loss that rises with
-frequency and grows with bias time (2–7.5 dB per THz after 2–5 min), plus a second pulse near the
-empty-cuvette delay growing to 22 % of the field. This fits the 0.6 THz dip, not a single-scan 2.0
-THz dip. No change of the slice's water, ions, thickness or nodes gives a loss this steep (all ≤ 1.6
-dB per THz). Gas bubbles of ~30 µm radius in a swelling slice do, and fit every scan, but need gas
-fractions rising from ~0.2 to ~0.4, beyond the dilute-scattering theory used; imaging the slice
-under bias would decide. The reported polarisation selectivity, described without data, stays
-unexplained.
+each published biased waveform fits as the unbiased pulse with an extra loss rising with frequency
+and bias time (1.7–7.1 dB per THz above its 30 s value after 2–5 min), lagging by 0.16–0.28 rad at
+0.6 THz, plus a second pulse near the empty-cuvette delay growing to 22 % of the field. This holds
+over 36 fitting assumptions and is significant in each scan after bootstrap calibration of the
+tests. It fits the 0.6 THz dip, not a single-scan 2.0 THz dip. The traced waveforms cannot identify
+the cause: a thicker tissue path, conduction, warming and node states all pass the calibrated tests,
+so node states and conduction are excluded only by the forward bounds. The reported polarisation
+selectivity, described without data, stays unexplained.
 
 ## Section outline
 

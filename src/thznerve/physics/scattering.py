@@ -5,9 +5,10 @@ engineering permittivity used elsewhere in the package (exp(+j w t), eps = eps' 
 
 Foldy / van de Hulst: m_eff = 1 + i 2 pi N S(0) / k^3, N the number density, S(0) the forward amplitude
 of one sphere in the host, k the host wavenumber. Valid for a dilute suspension (volume fraction up to
-~0.1-0.2); for small spheres it reduces to Maxwell Garnett. The host's absorption enters through its
-complex index; the size parameter uses the real part of the host wavenumber (an approximation for an
-absorbing host).
+~0.1-0.2); for small spheres it reduces to Maxwell Garnett. In an absorbing host the size parameter is
+complex, x = k_h r, and m x = k_s r, so the field inside the sphere has the sphere's own wavenumber; the
+forward amplitude is normalised by the complex k_h^3 (the far-field amplitude in an absorbing host is
+defined only up to this convention; it is exact to first order in the volume fraction for small spheres).
 """
 import numpy as np
 from scipy.special import spherical_jn, spherical_yn
@@ -17,9 +18,10 @@ C0 = 299792458.0
 
 def mie_ab(m, x, nmax=None):
     """Mie coefficients a_n, b_n (n = 1..nmax) for relative index m and size parameter x (BH 4.53)."""
-    x = float(x)
+    x = complex(x) if np.iscomplexobj(x) or np.iscomplexobj(m) else float(x)
     if nmax is None:
-        nmax = int(np.ceil(x + 4 * x ** (1 / 3) + 2)) + 2
+        ax = abs(x)
+        nmax = int(np.ceil(ax + 4 * ax ** (1 / 3) + 2)) + 2
     n = np.arange(1, nmax + 1)
     mx = m * x
     jx, djx = spherical_jn(n, x), spherical_jn(n, x, derivative=True)
@@ -55,7 +57,7 @@ def foldy_eps(f_hz, eps_host, eps_sph, r_um, fv):
     k0 = 2 * np.pi * f_hz / C0
     k = k0 * nh
     r = r_um * 1e-6
-    s0 = forward_amp(ns / nh, (k.real) * r)
+    s0 = forward_amp(ns / nh, k * r)                     # complex x = k_h r; m x = k_s r
     N = fv / (4 / 3 * np.pi * r ** 3)
-    n_eff = nh * (1 + 1j * 2 * np.pi * N * s0 / k.real ** 3)       # S(0) taken at x = Re(k) r
+    n_eff = nh * (1 + 1j * 2 * np.pi * N * s0 / k ** 3)
     return complex(np.conj(n_eff) ** 2)
