@@ -1,0 +1,12 @@
+a <= 1     2 min (H2): gas r 30 um, pass p = 0.186 (0.228); best v 0.26; v passing 0.14-0.38
+a <= 1     2 min (H2): gas r 50 um, pass p = 0.155 (0.187); best v 0.18; v passing 0.10-0.24
+a <= 1     4 min (H1): gas r 30 um, edge p = 0.041 (0.088); best v 0.34; v passing 0.26-0.38
+a <= 1     4 min (H1): gas r 50 um, edge p = 0.028 (0.188); best v 0.22; v passing 0.20-0.24
+a <= 1     5 min (H3): gas r 30 um, pass p = 0.063 (0.117); best v 0.40; v passing 0.32-0.40
+a <= 1     5 min (H3): gas r 50 um, edge p = 0.046 (0.082); best v 0.30; v passing 0.24-0.36
+a + b <= 1 2 min (H2): gas r 30 um, pass p = 0.155 (0.221); best v 0.22; v passing 0.12-0.32
+a + b <= 1 2 min (H2): gas r 50 um, pass p = 0.097 (0.151); best v 0.14; v passing 0.08-0.20
+a + b <= 1 4 min (H1): gas r 30 um, pass p = 0.064 (0.136); best v 0.28; v passing 0.18-0.36
+a + b <= 1 4 min (H1): gas r 50 um, edge p = 0.036 (0.141); best v 0.16; v passing 0.14-0.20
+a + b <= 1 5 min (H3): gas r 30 um, pass p = 0.116 (0.186); best v 0.38; v passing 0.24-0.40
+a + b <= 1 5 min (H3): gas r 50 um, pass p = 0.064 (0.145); best v 0.24; v passing 0.18-0.32

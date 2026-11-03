@@ -140,3 +140,31 @@ def node_transfer(state, fr_thz, lam=1.0, use="loss_db_dipole", delay_factor="pa
     fd = slice_factor(np.minimum(fr_thz, 1.0)) if delay_factor == "path" else slice_factor(fr_thz)
     d = lam * (slice_factor(fr_thz) * np.interp(fr_thz, f, raw_l) - 1j * fd * np.interp(fr_thz, f, raw_d))
     return np.exp(d)
+
+
+def supply_test(tp, fit, y, xf, tr, grid, q0, pr, s_ref, ne, p_pass=0.05):
+    """Can a candidate change supply a causal loss increment and a shift by itself? (Sims 53-54)
+
+    Reference: fit(y, xf, loss="minphase") gave parameters pr and misfit s_ref (a, b, s, tau, kappa free;
+    N_eff ne); fit(y, xf, s=0.0) gave q0. For each size v in grid the candidate tr(v) (a transfer on tp.fr)
+    is applied to xf and fitted with kappa = s = 0 (candidate) and with both free (full model, six
+    parameters with v). The candidate supplies the change if (kappa, s) = 0 is not rejected, F(2, N_eff - 6),
+    with N_eff from the reference and from the candidate's own residual ('edge' if they disagree); sizes
+    pass where (v, kappa, s) is not rejected, F(3, N_eff - 6)."""
+    S_c, S_f, R_c, prev_c, prev_f = [], [], [], list(q0), list(pr)
+    for v in grid:
+        xt = tp.apply_transfer(xf, tr(v))
+        qc, mc, rc = min((fit(y, xt, s=0.0, p0=prev_c), fit(y, xt, s=0.0, p0=q0)), key=lambda t: t[1])
+        qf, mf, _ = min((fit(y, xt, loss="minphase", p0=prev_f), fit(y, xt, loss="minphase", p0=pr)),
+                        key=lambda t: t[1])
+        prev_c, prev_f = list(qc), list(qf)
+        S_c.append(mc); S_f.append(mf); R_c.append(rc)
+    S_full = min(min(S_f), s_ref)
+    ib = int(np.argmin(S_c))
+    ne_own, _ = n_eff(R_c[ib])
+    p1 = f_test(S_c[ib], S_full, ne, 6, 2)[1]
+    p2 = f_test(S_c[ib], S_full, ne_own, 6, 2)[1]
+    verdict = "pass" if min(p1, p2) >= p_pass else ("fail" if max(p1, p2) < p_pass else "edge")
+    rng = [float(v) for v, m in zip(grid, S_c) if f_test(m, S_full, ne, 6, 3)[1] >= p_pass]
+    return dict(verdict=verdict, p=p1, p_own_neff=p2, best=float(grid[ib]), misfit=float(S_c[ib]),
+                misfit_full=float(S_full), pass_range=[min(rng), max(rng)] if rng else None)

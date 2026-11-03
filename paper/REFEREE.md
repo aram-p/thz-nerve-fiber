@@ -822,7 +822,7 @@ direction: 0.175, below 0.21; §4.6 states both. **Fixed.**
 **Response.** §4.6 now gives ×1.43 ± 0.16 at 3 THz; the bounds use ×1.45; at 3 THz the measured change
 is a rise, so no conclusion depends on it. **Fixed.**
 
-## Fifteenth round (independent reviewer, whole paper, 2026-11-04; verdict: major revision, no fatal flaw; law fit, law errors, mesh, ×70 scaling and bounds recomputed and confirmed; no prior full-wave node study below 3 THz found)
+## Fifteenth round (independent reviewer, whole paper, 2026-11-03; verdict: major revision, no fatal flaw; law fit, law errors, mesh, ×70 scaling and bounds recomputed and confirmed; no prior full-wave node study below 3 THz found)
 
 ### 126. MAJOR: heating with the measured temperature coefficient (9 K, 1.1 dB) is within the allowed loss and is set aside only by a frequency shape that comes from the T^q model itself.
 **Response.** Agreed. Heating is now one of the readings: abstract, §5.4, §5.6, §5.7, §6 and the
@@ -870,7 +870,7 @@ no-resonance point on the law holding at Ln = 5 µm within 2 %. **Fixed.**
 states labelled "0.6 THz only", curves to 70 / 180 S/m and Liebe heating to 80 K, grey region = the
 delay the traces allow up to q = 1.18 and the loss up to amplitude 1. **Fixed.**
 
-## Sixteenth round (independent reviewer, whole paper, 2026-11-04; verdict: major revision, no fatal flaw; round-15 fixes recomputed and confirmed; would move to minor if the argument is rewritten and the 2 THz node test replaced)
+## Sixteenth round (independent reviewer, whole paper, 2026-11-03; verdict: major revision, no fatal flaw; round-15 fixes recomputed and confirmed; would move to minor if the argument is rewritten and the 2 THz node test replaced)
 
 ### 136. MAJOR: the paper is written for referees, not readers; the abstract uses undefined terms ("empty-cuvette-delay component", "tissue term", "every extreme"), and §4.6 and §5.6 read like response letters.
 **Response.** Abstract, §4.6 and §5.6 rewritten. Two terms are defined once and used throughout: the
@@ -913,7 +913,7 @@ only. Range "5–18 %". **Fixed.**
 **Response.** Sims 27–46; "−0.026 to −0.042 ps, up to 2.6 native pixels"; §6 notes that the delay
 test covers the conductivity scan; §5.5 gives the broadband-water 181–194 µm. **Fixed.**
 
-## Seventeenth round (independent reviewer, whole paper, 2026-11-04; verdict: major revision, no fatal flaw; law, slice bounds, node delays, loss bounds, ion and conduction requirements recomputed and confirmed, the latter also by an independent transfer-matrix calculation; no new prior work beyond Guo et al. 2022)
+## Seventeenth round (independent reviewer, whole paper, 2026-11-03; verdict: major revision, no fatal flaw; law, slice bounds, node delays, loss bounds, ion and conduction requirements recomputed and confirmed, the latter also by an independent transfer-matrix calculation; no new prior work beyond Guo et al. 2022)
 
 ### 143. MAJOR: abstract and conclusion say no node state "moves the model's dip there", but 3 state–band pairs do move it within 0.03 THz of 1.993 THz; they fail on depth, a criterion §5.6 calls not robust.
 **Response.** Abstract and conclusion now say no node state makes the model's dip at 2 THz as deep
@@ -966,7 +966,7 @@ b ≤ 0.037). §5.6 now gives both the band mean and the bin. **Fixed.**
 **Response.** Added to §6 as a limit; the coarse value is used as an upper bound because it falls
 monotonically with refinement. **Fixed (stated).**
 
-## Eighteenth round (independent reviewer, whole paper, 2026-11-04; verdict: major revision, no fatal flaw; law, slice bounds, delay requirement, loss allowances, waveform fits and bias side effects recomputed and confirmed)
+## Eighteenth round (independent reviewer, whole paper, 2026-11-03; verdict: major revision, no fatal flaw; law, slice bounds, delay requirement, loss allowances, waveform fits and bias side effects recomputed and confirmed)
 
 ### 153. MAJOR: the node-state exclusion on delay is a pixel limit, not a statistical one; fixing s at the node value raises the misfit only ×1.27–1.38 and the residual is correlated over ~0.2 ps (13–14 independent points).
 **Response.** Agreed that the ±1-pixel floor was the wrong yardstick: s is measured between curves on
@@ -1014,7 +1014,7 @@ conductivity (1.2–1.7× and 3.2–4.5× saturated NaCl) is stated first. Concl
 **Response.** Stated in §5.6 (centre uncertain by up to ~0.03 THz). The node test at 2 THz fails on
 depth, which the arrow does not affect. **Fixed (stated).**
 
-## Nineteenth round (independent reviewer, whole paper, 2026-11-04; verdict: major revision, no fatal flaw; recommended change: state the waveform result as a phase lag, test node states with their whole-band change inside the fit with a degrees-of-freedom correction, and take the σ values out of the abstract and conclusion)
+## Nineteenth round (independent reviewer, whole paper, 2026-11-03; verdict: major revision, no fatal flaw; recommended change: state the waveform result as a phase lag, test node states with their whole-band change inside the fit with a degrees-of-freedom correction, and take the σ values out of the abstract and conclusion)
 
 ### 161. MAJOR: the σ values of Sim 47 are model-dependent, have no degrees-of-freedom correction, and the joint test treats scans that share the empty-cuvette pulse as independent; lower bounds came from the bootstrap and significances from the profile.
 **Response.** Agreed. Sim 47 now uses an F test with N_eff − 4 degrees of freedom: a free s beats
@@ -1068,7 +1068,7 @@ move to the supplement at submission. **Fixed in part.**
 **Response.** Agreed and stated in the introduction since round 17; the in-fit test of every
 candidate cause is added to the list of what is new. **Stated.**
 
-## Twentieth round (independent reviewer, whole paper, 2026-11-04; verdict: major revision, no fatal flaw; recommended change: one rule for every candidate, passing ranges instead of best fits, and a reference that does not understate the noise)
+## Twentieth round (independent reviewer, whole paper, 2026-11-03; verdict: major revision, no fatal flaw; recommended change: one rule for every candidate, passing ranges instead of best fits, and a reference that does not understate the noise)
 
 ### 168. MAJOR: the s-free reference leaves a structured misfit; a smooth extra loss of the tissue pulse halves it, so the F tests of Sims 48–49 used an understated noise level and were lenient.
 **Response.** Agreed. New Sim 50 adds a smooth loss L_κ (κ dB/THz above 0.2 THz, 1 at 0.2 THz) to the
@@ -1118,7 +1118,7 @@ a 100 or 220 µm slice. **Fixed.**
 the abstract gives the best-fit lag (0.15–0.26 rad) and the smallest the traces allow (0.08 rad).
 **Fixed.**
 
-## Twenty-first round (independent reviewer, whole paper, 2026-11-04; verdict: major revision, no fatal flaw; node physics holds, the ranking of causes in Sec. 5.7 does not)
+## Twenty-first round (independent reviewer, whole paper, 2026-11-03; verdict: major revision, no fatal flaw; node physics holds, the ranking of causes in Sec. 5.7 does not)
 
 ### 176. MAJOR: a zero-phase loss on a change of the sample breaks causality, and that choice decides the verdicts; the causal fit was demoted on an argument that fails (its 30 s lag is −0.004 rad).
 **Response.** Agreed. The loss belongs to the tissue pulse (put on the whole trace it fits worse:
@@ -1170,7 +1170,7 @@ repository DOI. **Partly fixed (submission copy).**
 waveforms are decomposed, not explained. The node result (law and slice bounds) carries the paper.
 **Answered.**
 
-## Twenty-second round (independent reviewer, whole paper, 2026-11-04; verdict: major revision, no fatal flaw; the causal references of Table 2 cannot test a candidate)
+## Twenty-second round (independent reviewer, whole paper, 2026-11-03; verdict: major revision, no fatal flaw; the causal references of Table 2 cannot test a candidate)
 
 ### 185. MAJOR: the six causal rows of Table 2 cannot test any candidate: at 30 s, before any change, they find a shift (p = 0.008), and the loss term's own delay (0.29–1.10 rad) exceeds the lag.
 **Response.** Agreed, and used as a control. New Sim 52 adds a reference with a zero-phase floor fixed

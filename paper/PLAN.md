@@ -17,13 +17,13 @@ limits, within 2.3 % of full wave for fibres up to 10 µm. Second, for the field
 in every published scan, no node state (ε″ ≥ 0.1) changes a 100 µm slice by more than 1.1 dB at
 internodes ≥ 200 µm and packing ≤ 0.6, and open channels add 10⁻⁶ of membrane admittance. Third,
 each published biased waveform fits as the unbiased pulse with an extra causal loss that rises with
-frequency and grows with bias time (2–7.5 dB per THz after 2–5 min), whose phase lags the pulse by
-0.15–0.28 rad at 0.6 THz, plus a second pulse near the empty-cuvette delay growing to 22 % of the
-field. This fits the 0.6 THz dip, not a single-scan 2.0 THz dip. No passive change tested (thicker
-tissue path, warming, ion or axoplasm conduction, node states) gives a loss that rises this steeply
-(all ≤ 1.6 dB per THz); a thicker path fits the 2 min scan only, through its delay. The reported
-polarisation selectivity, described without data, stays unexplained. The waveforms are decomposed,
-not explained.
+frequency and grows with bias time (2–7.5 dB per THz after 2–5 min), plus a second pulse near the
+empty-cuvette delay growing to 22 % of the field. This fits the 0.6 THz dip, not a single-scan 2.0
+THz dip. No change of the slice's water, ions, thickness or nodes gives a loss this steep (all ≤ 1.6
+dB per THz). Gas bubbles of ~30 µm radius in a swelling slice do, and fit every scan, but need gas
+fractions rising from ~0.2 to ~0.4, beyond the dilute-scattering theory used; imaging the slice
+under bias would decide. The reported polarisation selectivity, described without data, stays
+unexplained.
 
 ## Section outline
 

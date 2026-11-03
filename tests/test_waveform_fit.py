@@ -88,3 +88,22 @@ def test_mixed_loss_is_floor_times_causal_increment():
     m = tp.loss_transfer(3.0, "mixed")
     assert np.allclose(np.abs(m), tp.loss_transfer(5.0), rtol=1e-6)
     assert np.allclose(np.angle(m), np.angle(tp.loss_transfer(3.0, "minphase")), atol=1e-9)
+
+
+def test_supply_test_passes_true_cause_and_fails_none():
+    from thznerve.waveform_fit import supply_test
+    tt = np.arange(0, 8, 0.005)
+    B, K = _pulse(tt, 4.0), _pulse(tt, 3.4)
+    tp = TwoPulse(tt, K)
+    tr = lambda v: np.exp(-v * np.clip(tp.fr, 0, 4) ** 2)          # a steep loss, zero phase
+    y = 0.7 * tp.apply_transfer(B, tr(0.3)) + 0.15 * tp.shift(K, -0.03)
+    y = y + np.random.default_rng(1).normal(scale=1e-3 * np.abs(y).max(), size=len(y))
+    fit = lambda yy, x, **kw: tp.fit(yy, x, a_max=1.0, **kw)
+    pr, s_ref, res = fit(y, B, loss="minphase")
+    ne, _ = n_eff(res)
+    q0, _, _ = fit(y, B, s=0.0)
+    good = supply_test(tp, fit, y, B, tr, np.linspace(0, 0.6, 7), q0, pr, s_ref, ne)
+    assert good["verdict"] == "pass" and abs(good["best"] - 0.3) < 1e-9
+    flat = supply_test(tp, fit, y, B, lambda v: np.full(len(tp.fr), np.exp(-v)), np.linspace(0, 0.6, 7),
+                       q0, pr, s_ref, ne)
+    assert flat["verdict"] == "fail"

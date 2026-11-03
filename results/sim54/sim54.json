@@ -1,0 +1,5102 @@
+{
+ "kappa0": 2.0731493358389566,
+ "increment held above 1.5 THz, a <= 1": {
+  "30 s (H1)": {
+   "kappa": 0.383098800825081,
+   "s": -0.011692714965944363,
+   "misfit": 0.8323865500367107,
+   "n_eff": 12.915065169606104,
+   "p_no_change": 0.697299804863695,
+   "inc_slope": 0.38309880082508063,
+   "cands": {
+    "gas, slice swells, r 15 um": {
+     "verdict": "n/a",
+     "p": 0.7297970937121674,
+     "p_own_neff": 0.691233933354655,
+     "best": 0.0,
+     "misfit": 0.9117803446993136,
+     "misfit_full": 0.8323865500358296,
+     "pass_range": [
+      0.0,
+      0.2
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, slice swells, r 30 um": {
+     "verdict": "n/a",
+     "p": 0.7297970937121674,
+     "p_own_neff": 0.691233933354655,
+     "best": 0.0,
+     "misfit": 0.9117803446993136,
+     "misfit_full": 0.8323865500358296,
+     "pass_range": [
+      0.0,
+      0.12
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, slice swells, r 50 um": {
+     "verdict": "n/a",
+     "p": 0.7297970937121674,
+     "p_own_neff": 0.691233933354655,
+     "best": 0.0,
+     "misfit": 0.9117803446993136,
+     "misfit_full": 0.8323865500358296,
+     "pass_range": [
+      0.0,
+      0.08
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, slice swells, r 80 um": {
+     "verdict": "n/a",
+     "p": 0.7297970937121674,
+     "p_own_neff": 0.691233933354655,
+     "best": 0.0,
+     "misfit": 0.9117803446993136,
+     "misfit_full": 0.8323865500358296,
+     "pass_range": [
+      0.0,
+      0.04
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, slice swells, r 120 um": {
+     "verdict": "n/a",
+     "p": 0.7297970937121674,
+     "p_own_neff": 0.691233933354655,
+     "best": 0.0,
+     "misfit": 0.9117803446993136,
+     "misfit_full": 0.8323865500358296,
+     "pass_range": [
+      0.0,
+      0.02
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 15 um": {
+     "verdict": "n/a",
+     "p": 0.7297970937121674,
+     "p_own_neff": 0.691233933354655,
+     "best": 0.0,
+     "misfit": 0.9117803446993136,
+     "misfit_full": 0.8323865500358296,
+     "pass_range": [
+      0.0,
+      0.02
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 30 um": {
+     "verdict": "n/a",
+     "p": 0.7297970937121674,
+     "p_own_neff": 0.691233933354655,
+     "best": 0.0,
+     "misfit": 0.9117803446993136,
+     "misfit_full": 0.8323865500358296,
+     "pass_range": [
+      0.0,
+      0.02
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 50 um": {
+     "verdict": "n/a",
+     "p": 0.7297970937121674,
+     "p_own_neff": 0.691233933354655,
+     "best": 0.0,
+     "misfit": 0.9117803446993136,
+     "misfit_full": 0.8323865500358296,
+     "pass_range": [
+      0.0,
+      0.04
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 80 um": {
+     "verdict": "n/a",
+     "p": 0.7297970937121674,
+     "p_own_neff": 0.691233933354655,
+     "best": 0.0,
+     "misfit": 0.9117803446993136,
+     "misfit_full": 0.8323865500358296,
+     "pass_range": [
+      0.0,
+      0.04
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 120 um": {
+     "verdict": "n/a",
+     "p": 0.7297970937121674,
+     "p_own_neff": 0.691233933354655,
+     "best": 0.0,
+     "misfit": 0.9117803446993136,
+     "misfit_full": 0.8323865500358296,
+     "pass_range": [
+      0.0,
+      0.06
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 15 um": {
+     "verdict": "n/a",
+     "p": 0.7297970937121674,
+     "p_own_neff": 0.691233933354655,
+     "best": 0.0,
+     "misfit": 0.9117803446993136,
+     "misfit_full": 0.8323865500358296,
+     "pass_range": [
+      0.0,
+      0.06
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 30 um": {
+     "verdict": "n/a",
+     "p": 0.7297970937121674,
+     "p_own_neff": 0.691233933354655,
+     "best": 0.0,
+     "misfit": 0.9117803446993136,
+     "misfit_full": 0.8323865500358296,
+     "pass_range": [
+      0.0,
+      0.06
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 50 um": {
+     "verdict": "n/a",
+     "p": 0.7297970937121674,
+     "p_own_neff": 0.691233933354655,
+     "best": 0.0,
+     "misfit": 0.9117803446993136,
+     "misfit_full": 0.8323865500358296,
+     "pass_range": [
+      0.0,
+      0.06
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 80 um": {
+     "verdict": "n/a",
+     "p": 0.7297970937121674,
+     "p_own_neff": 0.691233933354655,
+     "best": 0.0,
+     "misfit": 0.9117803446993136,
+     "misfit_full": 0.8323865500358296,
+     "pass_range": [
+      0.0,
+      0.04
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 120 um": {
+     "verdict": "n/a",
+     "p": 0.7297970937121674,
+     "p_own_neff": 0.691233933354655,
+     "best": 0.0,
+     "misfit": 0.9117803446993136,
+     "misfit_full": 0.8323865500358296,
+     "pass_range": [
+      0.0,
+      0.04
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    }
+   }
+  },
+  "2 min (H2)": {
+   "kappa": 3.0284922672985233,
+   "s": -0.018553575898226617,
+   "misfit": 1.368572059216169,
+   "n_eff": 14.367998827176311,
+   "p_no_change": 0.0008485480976946418,
+   "inc_slope": 3.028492267298524,
+   "cands": {
+    "gas, slice swells, r 15 um": {
+     "verdict": "edge",
+     "p": 0.011947179512193217,
+     "p_own_neff": 0.06075246968773304,
+     "best": 0.2,
+     "misfit": 3.85184884336737,
+     "misfit_full": 1.3369789527528941,
+     "pass_range": null,
+     "loss06_db": 0.23699085831308103,
+     "delay06_rad": 0.03714666786233316,
+     "slope": 1.723751461635191
+    },
+    "gas, slice swells, r 30 um": {
+     "verdict": "pass",
+     "p": 0.09427337761087873,
+     "p_own_neff": 0.227479297684021,
+     "best": 0.2,
+     "misfit": 2.406548394408525,
+     "misfit_full": 1.3685720592161636,
+     "pass_range": [
+      0.14,
+      0.2
+     ],
+     "loss06_db": 0.9092812964355684,
+     "delay06_rad": 0.06733248352026591,
+     "slope": 4.531558401337106
+    },
+    "gas, slice swells, r 50 um": {
+     "verdict": "pass",
+     "p": 0.1492992141621356,
+     "p_own_neff": 0.1890009740801863,
+     "best": 0.18,
+     "misfit": 2.156118802454732,
+     "misfit_full": 1.3685720592161636,
+     "pass_range": [
+      0.1,
+      0.2
+     ],
+     "loss06_db": 1.759461863773406,
+     "delay06_rad": 0.08579235832130362,
+     "slope": 6.193258121706386
+    },
+    "gas, slice swells, r 80 um": {
+     "verdict": "pass",
+     "p": 0.17450091738222048,
+     "p_own_neff": 0.22903590789687425,
+     "best": 0.12,
+     "misfit": 2.077219495602008,
+     "misfit_full": 1.3685720592161636,
+     "pass_range": [
+      0.06,
+      0.16
+     ],
+     "loss06_db": 1.8906546752364286,
+     "delay06_rad": 0.0898793975728544,
+     "slope": 3.9852559313582794
+    },
+    "gas, slice swells, r 120 um": {
+     "verdict": "pass",
+     "p": 0.14591382293860028,
+     "p_own_neff": 0.11477756970198351,
+     "best": 0.1,
+     "misfit": 2.1679708765974772,
+     "misfit_full": 1.3685720592161636,
+     "pass_range": [
+      0.06,
+      0.12
+     ],
+     "loss06_db": 2.1123021314663677,
+     "delay06_rad": 0.14024256504972687,
+     "slope": 1.6900114314340764
+    },
+    "gas, displacing tissue, r 15 um": {
+     "verdict": "fail",
+     "p": 0.001805215881860968,
+     "p_own_neff": 0.013976076992841936,
+     "best": 0.0,
+     "misfit": 6.194026116694969,
+     "misfit_full": 1.3685720592161636,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 30 um": {
+     "verdict": "fail",
+     "p": 0.001805215881860968,
+     "p_own_neff": 0.013976076992841936,
+     "best": 0.0,
+     "misfit": 6.194026116694969,
+     "misfit_full": 1.3685720592161636,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 50 um": {
+     "verdict": "fail",
+     "p": 0.001805215881860968,
+     "p_own_neff": 0.013976076992841936,
+     "best": 0.0,
+     "misfit": 6.194026116694969,
+     "misfit_full": 1.3685720592161636,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 80 um": {
+     "verdict": "fail",
+     "p": 0.001805215881860968,
+     "p_own_neff": 0.013976076992841936,
+     "best": 0.0,
+     "misfit": 6.194026116694969,
+     "misfit_full": 1.3685720592161636,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 120 um": {
+     "verdict": "fail",
+     "p": 0.001805215881860968,
+     "p_own_neff": 0.013976076992841936,
+     "best": 0.0,
+     "misfit": 6.194026116694969,
+     "misfit_full": 1.3685720592161636,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 15 um": {
+     "verdict": "fail",
+     "p": 0.001805215881860968,
+     "p_own_neff": 0.013976076992841936,
+     "best": 0.0,
+     "misfit": 6.194026116694969,
+     "misfit_full": 1.3685720592161636,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 30 um": {
+     "verdict": "fail",
+     "p": 0.001805215881860968,
+     "p_own_neff": 0.013976076992841936,
+     "best": 0.0,
+     "misfit": 6.194026116694969,
+     "misfit_full": 1.3685720592161636,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 50 um": {
+     "verdict": "fail",
+     "p": 0.001805215881860968,
+     "p_own_neff": 0.013976076992841936,
+     "best": 0.0,
+     "misfit": 6.194026116694969,
+     "misfit_full": 1.3685720592161636,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 80 um": {
+     "verdict": "fail",
+     "p": 0.001805215881860968,
+     "p_own_neff": 0.013976076992841936,
+     "best": 0.0,
+     "misfit": 6.194026116694969,
+     "misfit_full": 1.3685720592161636,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 120 um": {
+     "verdict": "fail",
+     "p": 0.001805215881860968,
+     "p_own_neff": 0.013976076992841936,
+     "best": 0.0,
+     "misfit": 6.194026116694969,
+     "misfit_full": 1.3685720592161636,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    }
+   }
+  },
+  "4 min (H1)": {
+   "kappa": 4.383028921023846,
+   "s": -0.034010003909233394,
+   "misfit": 2.491666424127812,
+   "n_eff": 18.306055759580396,
+   "p_no_change": 0.00013660095047817407,
+   "inc_slope": 4.383028921023846,
+   "cands": {
+    "gas, slice swells, r 15 um": {
+     "verdict": "edge",
+     "p": 0.0017189980816801876,
+     "p_own_neff": 0.07043946301811319,
+     "best": 0.2,
+     "misfit": 7.0116042510324394,
+     "misfit_full": 2.4916664241263766,
+     "pass_range": null,
+     "loss06_db": 0.23699085831308103,
+     "delay06_rad": 0.03714666786233316,
+     "slope": 1.723751461635191
+    },
+    "gas, slice swells, r 30 um": {
+     "verdict": "edge",
+     "p": 0.010821987486665767,
+     "p_own_neff": 0.13927773104883984,
+     "best": 0.2,
+     "misfit": 5.199450973212906,
+     "misfit_full": 2.4916664241263766,
+     "pass_range": null,
+     "loss06_db": 0.9092812964355684,
+     "delay06_rad": 0.06733248352026591,
+     "slope": 4.531558401337106
+    },
+    "gas, slice swells, r 50 um": {
+     "verdict": "edge",
+     "p": 0.02953898904430134,
+     "p_own_neff": 0.19014553950099733,
+     "best": 0.2,
+     "misfit": 4.4165552313870675,
+     "misfit_full": 2.4916664241263766,
+     "pass_range": [
+      0.18,
+      0.2
+     ],
+     "loss06_db": 2.0118114598644916,
+     "delay06_rad": 0.09698016326800186,
+     "slope": 7.049957899345937
+    },
+    "gas, slice swells, r 80 um": {
+     "verdict": "edge",
+     "p": 0.026240034084524032,
+     "p_own_neff": 0.13246253426241691,
+     "best": 0.14,
+     "misfit": 4.5023821367515735,
+     "misfit_full": 2.4916664241263766,
+     "pass_range": [
+      0.14,
+      0.16
+     ],
+     "loss06_db": 2.2624893202693346,
+     "delay06_rad": 0.10687109732926267,
+     "slope": 4.754186800062671
+    },
+    "gas, slice swells, r 120 um": {
+     "verdict": "edge",
+     "p": 0.023089991857874154,
+     "p_own_neff": 0.06409824446296014,
+     "best": 0.1,
+     "misfit": 4.596940715400981,
+     "misfit_full": 2.4916664241263766,
+     "pass_range": null,
+     "loss06_db": 2.1123021314663677,
+     "delay06_rad": 0.14024256504972687,
+     "slope": 1.6900114314340764
+    },
+    "gas, displacing tissue, r 15 um": {
+     "verdict": "fail",
+     "p": 0.00026661763366774395,
+     "p_own_neff": 0.03324638588987732,
+     "best": 0.0,
+     "misfit": 9.49205392369412,
+     "misfit_full": 2.4916664241263766,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 30 um": {
+     "verdict": "fail",
+     "p": 0.00026661763366774395,
+     "p_own_neff": 0.03324638588987732,
+     "best": 0.0,
+     "misfit": 9.49205392369412,
+     "misfit_full": 2.4916664241263766,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 50 um": {
+     "verdict": "fail",
+     "p": 0.00026661763366774395,
+     "p_own_neff": 0.03324638588987732,
+     "best": 0.0,
+     "misfit": 9.49205392369412,
+     "misfit_full": 2.4916664241263766,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 80 um": {
+     "verdict": "fail",
+     "p": 0.00026661763366774395,
+     "p_own_neff": 0.03324638588987732,
+     "best": 0.0,
+     "misfit": 9.49205392369412,
+     "misfit_full": 2.4916664241263766,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 120 um": {
+     "verdict": "fail",
+     "p": 0.00026661763366774395,
+     "p_own_neff": 0.03324638588987732,
+     "best": 0.0,
+     "misfit": 9.49205392369412,
+     "misfit_full": 2.4916664241263766,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 15 um": {
+     "verdict": "fail",
+     "p": 0.00026661763366774395,
+     "p_own_neff": 0.03324638588987732,
+     "best": 0.0,
+     "misfit": 9.49205392369412,
+     "misfit_full": 2.4916664241263766,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 30 um": {
+     "verdict": "fail",
+     "p": 0.00026661763366774395,
+     "p_own_neff": 0.03324638588987732,
+     "best": 0.0,
+     "misfit": 9.49205392369412,
+     "misfit_full": 2.4916664241263766,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 50 um": {
+     "verdict": "fail",
+     "p": 0.00026661763366774395,
+     "p_own_neff": 0.03324638588987732,
+     "best": 0.0,
+     "misfit": 9.49205392369412,
+     "misfit_full": 2.4916664241263766,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 80 um": {
+     "verdict": "fail",
+     "p": 0.00026661763366774395,
+     "p_own_neff": 0.03324638588987732,
+     "best": 0.0,
+     "misfit": 9.49205392369412,
+     "misfit_full": 2.4916664241263766,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 120 um": {
+     "verdict": "fail",
+     "p": 0.00026661763366774395,
+     "p_own_neff": 0.03324638588987732,
+     "best": 0.0,
+     "misfit": 9.49205392369412,
+     "misfit_full": 2.4916664241263766,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    }
+   }
+  },
+  "5 min (H3)": {
+   "kappa": 7.190962236658429,
+   "s": -0.07915909055116882,
+   "misfit": 3.9153379374650568,
+   "n_eff": 19.642282573778797,
+   "p_no_change": 0.00010980851516190572,
+   "inc_slope": 7.190962236658431,
+   "cands": {
+    "gas, slice swells, r 15 um": {
+     "verdict": "fail",
+     "p": 0.0007779862473535893,
+     "p_own_neff": 0.04922966753852024,
+     "best": 0.2,
+     "misfit": 11.158156325894083,
+     "misfit_full": 3.906604948974937,
+     "pass_range": null,
+     "loss06_db": 0.23699085831308103,
+     "delay06_rad": 0.03714666786233316,
+     "slope": 1.723751461635191
+    },
+    "gas, slice swells, r 30 um": {
+     "verdict": "edge",
+     "p": 0.0036586578915926496,
+     "p_own_neff": 0.07850037501726932,
+     "best": 0.2,
+     "misfit": 8.912379403948638,
+     "misfit_full": 3.915337937463936,
+     "pass_range": null,
+     "loss06_db": 0.9092812964355684,
+     "delay06_rad": 0.06733248352026591,
+     "slope": 4.531558401337106
+    },
+    "gas, slice swells, r 50 um": {
+     "verdict": "edge",
+     "p": 0.013874391364286764,
+     "p_own_neff": 0.09406323816543037,
+     "best": 0.2,
+     "misfit": 7.330377206024493,
+     "misfit_full": 3.915337937463936,
+     "pass_range": null,
+     "loss06_db": 2.0118114598644916,
+     "delay06_rad": 0.09698016326800186,
+     "slope": 7.049957899345937
+    },
+    "gas, slice swells, r 80 um": {
+     "verdict": "fail",
+     "p": 0.02080893999305523,
+     "p_own_neff": 0.04532538893532561,
+     "best": 0.2,
+     "misfit": 6.9074684369515005,
+     "misfit_full": 3.915337937463936,
+     "pass_range": null,
+     "loss06_db": 3.49463939255717,
+     "delay06_rad": 0.16218060763741715,
+     "slope": 7.286704234339345
+    },
+    "gas, slice swells, r 120 um": {
+     "verdict": "fail",
+     "p": 0.010540514656761828,
+     "p_own_neff": 0.021273053229342868,
+     "best": 0.14,
+     "misfit": 7.631742463846656,
+     "misfit_full": 3.915337937463936,
+     "pass_range": null,
+     "loss06_db": 3.1040992465410437,
+     "delay06_rad": 0.2045054332741989,
+     "slope": 2.4694326575731
+    },
+    "gas, displacing tissue, r 15 um": {
+     "verdict": "fail",
+     "p": 0.00020466435971886477,
+     "p_own_neff": 0.036244748210274236,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 3.915337937463936,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 30 um": {
+     "verdict": "fail",
+     "p": 0.00020466435971886477,
+     "p_own_neff": 0.036244748210274236,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 3.915337937463936,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 50 um": {
+     "verdict": "fail",
+     "p": 0.00020466435971886477,
+     "p_own_neff": 0.036244748210274236,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 3.915337937463936,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 80 um": {
+     "verdict": "fail",
+     "p": 0.00020466435971886477,
+     "p_own_neff": 0.036244748210274236,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 3.915337937463936,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 120 um": {
+     "verdict": "fail",
+     "p": 0.00020466435971886477,
+     "p_own_neff": 0.036244748210274236,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 3.915337937463936,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 15 um": {
+     "verdict": "fail",
+     "p": 0.00020466435971886477,
+     "p_own_neff": 0.036244748210274236,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 3.915337937463936,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 30 um": {
+     "verdict": "fail",
+     "p": 0.00020466435971886477,
+     "p_own_neff": 0.036244748210274236,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 3.915337937463936,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 50 um": {
+     "verdict": "fail",
+     "p": 0.00020466435971886477,
+     "p_own_neff": 0.036244748210274236,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 3.915337937463936,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 80 um": {
+     "verdict": "fail",
+     "p": 0.00020466435971886477,
+     "p_own_neff": 0.036244748210274236,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 3.915337937463936,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 120 um": {
+     "verdict": "fail",
+     "p": 0.00020466435971886477,
+     "p_own_neff": 0.036244748210274236,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 3.915337937463936,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    }
+   }
+  }
+ },
+ "increment held above 1.5 THz, a + b <= 1": {
+  "30 s (H1)": {
+   "kappa": 0.34800619668777055,
+   "s": -0.010983083337640311,
+   "misfit": 0.8327443523937692,
+   "n_eff": 12.905331761188945,
+   "p_no_change": 0.6987950640869437,
+   "inc_slope": 0.3480061966877691,
+   "cands": {
+    "gas, slice swells, r 15 um": {
+     "verdict": "n/a",
+     "p": 0.7312049009355155,
+     "p_own_neff": 0.6924391126999899,
+     "best": 0.0,
+     "misfit": 0.9117803446993133,
+     "misfit_full": 0.8327443523934059,
+     "pass_range": [
+      0.0,
+      0.2
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, slice swells, r 30 um": {
+     "verdict": "n/a",
+     "p": 0.7312049009355155,
+     "p_own_neff": 0.6924391126999899,
+     "best": 0.0,
+     "misfit": 0.9117803446993133,
+     "misfit_full": 0.8327443523934059,
+     "pass_range": [
+      0.0,
+      0.12
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, slice swells, r 50 um": {
+     "verdict": "n/a",
+     "p": 0.7312049009355155,
+     "p_own_neff": 0.6924391126999899,
+     "best": 0.0,
+     "misfit": 0.9117803446993133,
+     "misfit_full": 0.8327443523934059,
+     "pass_range": [
+      0.0,
+      0.06
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, slice swells, r 80 um": {
+     "verdict": "n/a",
+     "p": 0.7312049009355155,
+     "p_own_neff": 0.6924391126999899,
+     "best": 0.0,
+     "misfit": 0.9117803446993133,
+     "misfit_full": 0.8327443523934059,
+     "pass_range": [
+      0.0,
+      0.04
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, slice swells, r 120 um": {
+     "verdict": "n/a",
+     "p": 0.7312049009355155,
+     "p_own_neff": 0.6924391126999899,
+     "best": 0.0,
+     "misfit": 0.9117803446993133,
+     "misfit_full": 0.8327443523934059,
+     "pass_range": [
+      0.0,
+      0.02
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 15 um": {
+     "verdict": "n/a",
+     "p": 0.7312049009355155,
+     "p_own_neff": 0.6924391126999899,
+     "best": 0.0,
+     "misfit": 0.9117803446993133,
+     "misfit_full": 0.8327443523934059,
+     "pass_range": [
+      0.0,
+      0.02
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 30 um": {
+     "verdict": "n/a",
+     "p": 0.7312049009355155,
+     "p_own_neff": 0.6924391126999899,
+     "best": 0.0,
+     "misfit": 0.9117803446993133,
+     "misfit_full": 0.8327443523934059,
+     "pass_range": [
+      0.0,
+      0.02
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 50 um": {
+     "verdict": "n/a",
+     "p": 0.7312049009355155,
+     "p_own_neff": 0.6924391126999899,
+     "best": 0.0,
+     "misfit": 0.9117803446993133,
+     "misfit_full": 0.8327443523934059,
+     "pass_range": [
+      0.0,
+      0.04
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 80 um": {
+     "verdict": "n/a",
+     "p": 0.7312049009355155,
+     "p_own_neff": 0.6924391126999899,
+     "best": 0.0,
+     "misfit": 0.9117803446993133,
+     "misfit_full": 0.8327443523934059,
+     "pass_range": [
+      0.0,
+      0.04
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 120 um": {
+     "verdict": "n/a",
+     "p": 0.7312049009355155,
+     "p_own_neff": 0.6924391126999899,
+     "best": 0.0,
+     "misfit": 0.9117803446993133,
+     "misfit_full": 0.8327443523934059,
+     "pass_range": [
+      0.0,
+      0.06
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 15 um": {
+     "verdict": "n/a",
+     "p": 0.7312049009355155,
+     "p_own_neff": 0.6924391126999899,
+     "best": 0.0,
+     "misfit": 0.9117803446993133,
+     "misfit_full": 0.8327443523934059,
+     "pass_range": [
+      0.0,
+      0.06
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 30 um": {
+     "verdict": "n/a",
+     "p": 0.7312049009355155,
+     "p_own_neff": 0.6924391126999899,
+     "best": 0.0,
+     "misfit": 0.9117803446993133,
+     "misfit_full": 0.8327443523934059,
+     "pass_range": [
+      0.0,
+      0.06
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 50 um": {
+     "verdict": "n/a",
+     "p": 0.7312049009355155,
+     "p_own_neff": 0.6924391126999899,
+     "best": 0.0,
+     "misfit": 0.9117803446993133,
+     "misfit_full": 0.8327443523934059,
+     "pass_range": [
+      0.0,
+      0.06
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 80 um": {
+     "verdict": "n/a",
+     "p": 0.7312049009355155,
+     "p_own_neff": 0.6924391126999899,
+     "best": 0.0,
+     "misfit": 0.9117803446993133,
+     "misfit_full": 0.8327443523934059,
+     "pass_range": [
+      0.0,
+      0.04
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 120 um": {
+     "verdict": "n/a",
+     "p": 0.7312049009355155,
+     "p_own_neff": 0.6924391126999899,
+     "best": 0.0,
+     "misfit": 0.9117803446993133,
+     "misfit_full": 0.8327443523934059,
+     "pass_range": [
+      0.0,
+      0.04
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    }
+   }
+  },
+  "2 min (H2)": {
+   "kappa": 2.14970204142628,
+   "s": -1.8420325101782344e-07,
+   "misfit": 1.5740643593015475,
+   "n_eff": 14.550903347959693,
+   "p_no_change": 0.001441592174022013,
+   "inc_slope": 2.1497020414262806,
+   "cands": {
+    "gas, slice swells, r 15 um": {
+     "verdict": "edge",
+     "p": 0.017202065868516286,
+     "p_own_neff": 0.08083525020588755,
+     "best": 0.2,
+     "misfit": 3.851848843360527,
+     "misfit_full": 1.489303312397451,
+     "pass_range": null,
+     "loss06_db": 0.23699085831308103,
+     "delay06_rad": 0.03714666786233316,
+     "slope": 1.723751461635191
+    },
+    "gas, slice swells, r 30 um": {
+     "verdict": "pass",
+     "p": 0.13183053283239113,
+     "p_own_neff": 0.23876051528272615,
+     "best": 0.2,
+     "misfit": 2.5100394045266445,
+     "misfit_full": 1.5626369045085475,
+     "pass_range": [
+      0.12,
+      0.2
+     ],
+     "loss06_db": 0.9092812964355684,
+     "delay06_rad": 0.06733248352026591,
+     "slope": 4.531558401337106
+    },
+    "gas, slice swells, r 50 um": {
+     "verdict": "pass",
+     "p": 0.09601992712818508,
+     "p_own_neff": 0.14775766936339838,
+     "best": 0.14,
+     "misfit": 2.722961231298707,
+     "misfit_full": 1.5740643478108414,
+     "pass_range": [
+      0.08,
+      0.2
+     ],
+     "loss06_db": 1.2931724343376672,
+     "delay06_rad": 0.06454468854384897,
+     "slope": 4.597695458215803
+    },
+    "gas, slice swells, r 80 um": {
+     "verdict": "pass",
+     "p": 0.10659953841156403,
+     "p_own_neff": 0.17633929861181472,
+     "best": 0.1,
+     "misfit": 2.657199190551176,
+     "misfit_full": 1.5740643478108414,
+     "pass_range": [
+      0.06,
+      0.14
+     ],
+     "loss06_db": 1.5364619868630005,
+     "delay06_rad": 0.07351811402911555,
+     "slope": 3.249637814088273
+    },
+    "gas, slice swells, r 120 um": {
+     "verdict": "pass",
+     "p": 0.1409494449237788,
+     "p_own_neff": 0.23077408348046025,
+     "best": 0.08,
+     "misfit": 2.4891493668259317,
+     "misfit_full": 1.5740643478108414,
+     "pass_range": [
+      0.04,
+      0.1
+     ],
+     "loss06_db": 1.649959409426346,
+     "delay06_rad": 0.11000415614066412,
+     "slope": 1.3243177505925614
+    },
+    "gas, displacing tissue, r 15 um": {
+     "verdict": "fail",
+     "p": 0.0018969278118348958,
+     "p_own_neff": 0.015823163185066713,
+     "best": 0.0,
+     "misfit": 6.194026116694968,
+     "misfit_full": 1.429970356724985,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 30 um": {
+     "verdict": "fail",
+     "p": 0.0020662467204375238,
+     "p_own_neff": 0.016743937081682134,
+     "best": 0.0,
+     "misfit": 6.194026116694968,
+     "misfit_full": 1.4588539593346228,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 50 um": {
+     "verdict": "fail",
+     "p": 0.0023652090146829984,
+     "p_own_neff": 0.018309741993223487,
+     "best": 0.0,
+     "misfit": 6.194026116694968,
+     "misfit_full": 1.505699835015938,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 80 um": {
+     "verdict": "fail",
+     "p": 0.0026990427415217824,
+     "p_own_neff": 0.019980929310438125,
+     "best": 0.0,
+     "misfit": 6.194026116694968,
+     "misfit_full": 1.5529229441669252,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 120 um": {
+     "verdict": "fail",
+     "p": 0.0028596815654552566,
+     "p_own_neff": 0.020759927609042043,
+     "best": 0.0,
+     "misfit": 6.194026116694968,
+     "misfit_full": 1.5740643478108414,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 15 um": {
+     "verdict": "fail",
+     "p": 0.0018637283760147257,
+     "p_own_neff": 0.015639411790002514,
+     "best": 0.0,
+     "misfit": 6.194026116694968,
+     "misfit_full": 1.4240770787899468,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 30 um": {
+     "verdict": "fail",
+     "p": 0.001871629831660864,
+     "p_own_neff": 0.01568324434252602,
+     "best": 0.0,
+     "misfit": 6.194026116694968,
+     "misfit_full": 1.4254869254430917,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 50 um": {
+     "verdict": "fail",
+     "p": 0.001889396197521884,
+     "p_own_neff": 0.015781573487830984,
+     "best": 0.0,
+     "misfit": 6.194026116694968,
+     "misfit_full": 1.4286403805628822,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 80 um": {
+     "verdict": "fail",
+     "p": 0.0020794904182225037,
+     "p_own_neff": 0.016814858540537513,
+     "best": 0.0,
+     "misfit": 6.194026116694968,
+     "misfit_full": 1.4610356507715845,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 120 um": {
+     "verdict": "fail",
+     "p": 0.002465186353676908,
+     "p_own_neff": 0.018818155516582835,
+     "best": 0.0,
+     "misfit": 6.194026116694968,
+     "misfit_full": 1.5203509859767221,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    }
+   }
+  },
+  "4 min (H1)": {
+   "kappa": 2.815219932927302,
+   "s": -0.0010934409917318633,
+   "misfit": 2.956749894810236,
+   "n_eff": 18.29369722677211,
+   "p_no_change": 0.0004296037230217612,
+   "inc_slope": 2.815219932927302,
+   "cands": {
+    "gas, slice swells, r 15 um": {
+     "verdict": "edge",
+     "p": 0.004640768151862862,
+     "p_own_neff": 0.10631301599991819,
+     "best": 0.2,
+     "misfit": 7.011604251388727,
+     "misfit_full": 2.9255437310187697,
+     "pass_range": null,
+     "loss06_db": 0.23699085831308103,
+     "delay06_rad": 0.03714666786233316,
+     "slope": 1.723751461635191
+    },
+    "gas, slice swells, r 30 um": {
+     "verdict": "edge",
+     "p": 0.030385971848601496,
+     "p_own_neff": 0.20392639286394085,
+     "best": 0.2,
+     "misfit": 5.219884520773968,
+     "misfit_full": 2.956749894810236,
+     "pass_range": [
+      0.2,
+      0.2
+     ],
+     "loss06_db": 0.9092812964355684,
+     "delay06_rad": 0.06733248352026591,
+     "slope": 4.531558401337106
+    },
+    "gas, slice swells, r 50 um": {
+     "verdict": "edge",
+     "p": 0.03281875578510458,
+     "p_own_neff": 0.1358582359115611,
+     "best": 0.16,
+     "misfit": 5.154888169620178,
+     "misfit_full": 2.956749894810236,
+     "pass_range": [
+      0.14,
+      0.2
+     ],
+     "loss06_db": 1.5201531395595373,
+     "delay06_rad": 0.07499069723781869,
+     "slope": 5.376782321284444
+    },
+    "gas, slice swells, r 80 um": {
+     "verdict": "edge",
+     "p": 0.03084074753482283,
+     "p_own_neff": 0.10339222488777325,
+     "best": 0.12,
+     "misfit": 5.207284307051884,
+     "misfit_full": 2.956749894810236,
+     "pass_range": [
+      0.1,
+      0.12
+     ],
+     "loss06_db": 1.8906546752364286,
+     "delay06_rad": 0.0898793975728544,
+     "slope": 3.9852559313582794
+    },
+    "gas, slice swells, r 120 um": {
+     "verdict": "edge",
+     "p": 0.03656049708159057,
+     "p_own_neff": 0.09420017651100634,
+     "best": 0.1,
+     "misfit": 5.065134151822767,
+     "misfit_full": 2.956749894810236,
+     "pass_range": [
+      0.08,
+      0.1
+     ],
+     "loss06_db": 2.1123021314663677,
+     "delay06_rad": 0.14024256504972687,
+     "slope": 1.6900114314340764
+    },
+    "gas, displacing tissue, r 15 um": {
+     "verdict": "fail",
+     "p": 0.0004229538012083987,
+     "p_own_neff": 0.04010781597198868,
+     "best": 0.0,
+     "misfit": 9.492053923694122,
+     "misfit_full": 2.682308334547593,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 30 um": {
+     "verdict": "fail",
+     "p": 0.0005428422662617151,
+     "p_own_neff": 0.044473411003381785,
+     "best": 0.0,
+     "misfit": 9.492053923694122,
+     "misfit_full": 2.7934481564988043,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 50 um": {
+     "verdict": "fail",
+     "p": 0.0007073008879726921,
+     "p_own_neff": 0.04962306710930294,
+     "best": 0.0,
+     "misfit": 9.492053923694122,
+     "misfit_full": 2.9163395711550475,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 80 um": {
+     "verdict": "edge",
+     "p": 0.0007697343003988594,
+     "p_own_neff": 0.051391723635575454,
+     "best": 0.0,
+     "misfit": 9.492053923694122,
+     "misfit_full": 2.956749894810236,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 120 um": {
+     "verdict": "edge",
+     "p": 0.0007697343003988594,
+     "p_own_neff": 0.051391723635575454,
+     "best": 0.0,
+     "misfit": 9.492053923694122,
+     "misfit_full": 2.956749894810236,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 15 um": {
+     "verdict": "fail",
+     "p": 0.0003871952693383699,
+     "p_own_neff": 0.038667503848802104,
+     "best": 0.0,
+     "misfit": 9.492053923694122,
+     "misfit_full": 2.6440376359914017,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 30 um": {
+     "verdict": "fail",
+     "p": 0.0003992035330161451,
+     "p_own_neff": 0.03915955904128589,
+     "best": 0.0,
+     "misfit": 9.492053923694122,
+     "misfit_full": 2.6572079352251157,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 50 um": {
+     "verdict": "fail",
+     "p": 0.000422499694775967,
+     "p_own_neff": 0.04008998199334559,
+     "best": 0.0,
+     "misfit": 9.492053923694122,
+     "misfit_full": 2.681839611617137,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 80 um": {
+     "verdict": "fail",
+     "p": 0.000554296539161375,
+     "p_own_neff": 0.044859554397475285,
+     "best": 0.0,
+     "misfit": 9.492053923694122,
+     "misfit_full": 2.8029537160659794,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 120 um": {
+     "verdict": "edge",
+     "p": 0.0007697343003988594,
+     "p_own_neff": 0.051391723635575454,
+     "best": 0.0,
+     "misfit": 9.492053923694122,
+     "misfit_full": 2.956749894810236,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    }
+   }
+  },
+  "5 min (H3)": {
+   "kappa": 5.032269361007175,
+   "s": -0.032790592220358405,
+   "misfit": 4.611329719066919,
+   "n_eff": 19.43651722065532,
+   "p_no_change": 0.00040661509559474716,
+   "inc_slope": 5.032269361007167,
+   "cands": {
+    "gas, slice swells, r 15 um": {
+     "verdict": "edge",
+     "p": 0.002437346843612165,
+     "p_own_neff": 0.07656100315379845,
+     "best": 0.2,
+     "misfit": 11.158156325894169,
+     "misfit_full": 4.556591159916717,
+     "pass_range": null,
+     "loss06_db": 0.23699085831308103,
+     "delay06_rad": 0.03714666786233316,
+     "slope": 1.723751461635191
+    },
+    "gas, slice swells, r 30 um": {
+     "verdict": "edge",
+     "p": 0.011952336062119227,
+     "p_own_neff": 0.13022584218062566,
+     "best": 0.2,
+     "misfit": 8.912379403948638,
+     "misfit_full": 4.611329719066915,
+     "pass_range": null,
+     "loss06_db": 0.9092812964355684,
+     "delay06_rad": 0.06733248352026591,
+     "slope": 4.531558401337106
+    },
+    "gas, slice swells, r 50 um": {
+     "verdict": "edge",
+     "p": 0.04237527656932005,
+     "p_own_neff": 0.16131832247184583,
+     "best": 0.2,
+     "misfit": 7.382064904867288,
+     "misfit_full": 4.611329719066915,
+     "pass_range": [
+      0.18,
+      0.2
+     ],
+     "loss06_db": 2.0118114598644916,
+     "delay06_rad": 0.09698016326800186,
+     "slope": 7.049957899345937
+    },
+    "gas, slice swells, r 80 um": {
+     "verdict": "edge",
+     "p": 0.03687200774569924,
+     "p_own_neff": 0.1042133192783047,
+     "best": 0.16,
+     "misfit": 7.536516078658103,
+     "misfit_full": 4.611329719066915,
+     "pass_range": [
+      0.14,
+      0.2
+     ],
+     "loss06_db": 2.652985730298449,
+     "delay06_rad": 0.12454312844125431,
+     "slope": 5.558917643804871
+    },
+    "gas, slice swells, r 120 um": {
+     "verdict": "edge",
+     "p": 0.027860912589086354,
+     "p_own_neff": 0.07130367676243635,
+     "best": 0.12,
+     "misfit": 7.8575229630603545,
+     "misfit_full": 4.611329719066915,
+     "pass_range": [
+      0.12,
+      0.14
+     ],
+     "loss06_db": 2.5966190436018177,
+     "delay06_rad": 0.17171164403637684,
+     "slope": 2.0713130480151647
+    },
+    "gas, displacing tissue, r 15 um": {
+     "verdict": "fail",
+     "p": 0.00033746620390918915,
+     "p_own_neff": 0.04200541017926812,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 4.13823681996489,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 30 um": {
+     "verdict": "fail",
+     "p": 0.00041702850215009,
+     "p_own_neff": 0.0456837023301619,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 4.270706809443821,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 50 um": {
+     "verdict": "edge",
+     "p": 0.0005454893114654589,
+     "p_own_neff": 0.05081664190032399,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 4.444864209855995,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 80 um": {
+     "verdict": "edge",
+     "p": 0.000698330865767331,
+     "p_own_neff": 0.056046018195578945,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 4.611329719066915,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 120 um": {
+     "verdict": "edge",
+     "p": 0.000698330865767331,
+     "p_own_neff": 0.056046018195578945,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 4.611329719066915,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 15 um": {
+     "verdict": "fail",
+     "p": 0.00030681556218140884,
+     "p_own_neff": 0.040448941346025655,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 4.079998841493918,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 30 um": {
+     "verdict": "fail",
+     "p": 0.0003131085058454717,
+     "p_own_neff": 0.04077590809237987,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 4.092347505671398,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 50 um": {
+     "verdict": "fail",
+     "p": 0.0003282720907691953,
+     "p_own_neff": 0.04154781698523239,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 4.121257119408523,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 80 um": {
+     "verdict": "fail",
+     "p": 0.0004322008153222982,
+     "p_own_neff": 0.0463356786564775,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 4.293484077423333,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 120 um": {
+     "verdict": "edge",
+     "p": 0.0006311148088232151,
+     "p_own_neff": 0.05384132059701681,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 4.542384316087466,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    }
+   }
+  }
+ },
+ "increment held above 2 THz, a <= 1": {
+  "30 s (H1)": {
+   "kappa": 0.38608916765785306,
+   "s": -0.013211342226584747,
+   "misfit": 0.8338689838012017,
+   "n_eff": 12.887346479319232,
+   "p_no_change": 0.7030972971149633,
+   "inc_slope": 0.3860891676578525,
+   "cands": {
+    "gas, slice swells, r 15 um": {
+     "verdict": "n/a",
+     "p": 0.7352103820210433,
+     "p_own_neff": 0.6962374972860189,
+     "best": 0.0,
+     "misfit": 0.9117803446993136,
+     "misfit_full": 0.8338689837987674,
+     "pass_range": [
+      0.0,
+      0.2
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, slice swells, r 30 um": {
+     "verdict": "n/a",
+     "p": 0.7352103820210433,
+     "p_own_neff": 0.6962374972860189,
+     "best": 0.0,
+     "misfit": 0.9117803446993136,
+     "misfit_full": 0.8338689837987674,
+     "pass_range": [
+      0.0,
+      0.12
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, slice swells, r 50 um": {
+     "verdict": "n/a",
+     "p": 0.7352103820210433,
+     "p_own_neff": 0.6962374972860189,
+     "best": 0.0,
+     "misfit": 0.9117803446993136,
+     "misfit_full": 0.8338689837987674,
+     "pass_range": [
+      0.0,
+      0.08
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, slice swells, r 80 um": {
+     "verdict": "n/a",
+     "p": 0.7352103820210433,
+     "p_own_neff": 0.6962374972860189,
+     "best": 0.0,
+     "misfit": 0.9117803446993136,
+     "misfit_full": 0.8338689837987674,
+     "pass_range": [
+      0.0,
+      0.04
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, slice swells, r 120 um": {
+     "verdict": "n/a",
+     "p": 0.7352103820210433,
+     "p_own_neff": 0.6962374972860189,
+     "best": 0.0,
+     "misfit": 0.9117803446993136,
+     "misfit_full": 0.8338689837987674,
+     "pass_range": [
+      0.0,
+      0.02
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 15 um": {
+     "verdict": "n/a",
+     "p": 0.7352103820210433,
+     "p_own_neff": 0.6962374972860189,
+     "best": 0.0,
+     "misfit": 0.9117803446993136,
+     "misfit_full": 0.8338689837987674,
+     "pass_range": [
+      0.0,
+      0.02
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 30 um": {
+     "verdict": "n/a",
+     "p": 0.7352103820210433,
+     "p_own_neff": 0.6962374972860189,
+     "best": 0.0,
+     "misfit": 0.9117803446993136,
+     "misfit_full": 0.8338689837987674,
+     "pass_range": [
+      0.0,
+      0.02
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 50 um": {
+     "verdict": "n/a",
+     "p": 0.7352103820210433,
+     "p_own_neff": 0.6962374972860189,
+     "best": 0.0,
+     "misfit": 0.9117803446993136,
+     "misfit_full": 0.8338689837987674,
+     "pass_range": [
+      0.0,
+      0.04
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 80 um": {
+     "verdict": "n/a",
+     "p": 0.7352103820210433,
+     "p_own_neff": 0.6962374972860189,
+     "best": 0.0,
+     "misfit": 0.9117803446993136,
+     "misfit_full": 0.8338689837987674,
+     "pass_range": [
+      0.0,
+      0.04
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 120 um": {
+     "verdict": "n/a",
+     "p": 0.7352103820210433,
+     "p_own_neff": 0.6962374972860189,
+     "best": 0.0,
+     "misfit": 0.9117803446993136,
+     "misfit_full": 0.8338689837987674,
+     "pass_range": [
+      0.0,
+      0.06
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 15 um": {
+     "verdict": "n/a",
+     "p": 0.7352103820210433,
+     "p_own_neff": 0.6962374972860189,
+     "best": 0.0,
+     "misfit": 0.9117803446993136,
+     "misfit_full": 0.8338689837987674,
+     "pass_range": [
+      0.0,
+      0.06
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 30 um": {
+     "verdict": "n/a",
+     "p": 0.7352103820210433,
+     "p_own_neff": 0.6962374972860189,
+     "best": 0.0,
+     "misfit": 0.9117803446993136,
+     "misfit_full": 0.8338689837987674,
+     "pass_range": [
+      0.0,
+      0.06
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 50 um": {
+     "verdict": "n/a",
+     "p": 0.7352103820210433,
+     "p_own_neff": 0.6962374972860189,
+     "best": 0.0,
+     "misfit": 0.9117803446993136,
+     "misfit_full": 0.8338689837987674,
+     "pass_range": [
+      0.0,
+      0.06
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 80 um": {
+     "verdict": "n/a",
+     "p": 0.7352103820210433,
+     "p_own_neff": 0.6962374972860189,
+     "best": 0.0,
+     "misfit": 0.9117803446993136,
+     "misfit_full": 0.8338689837987674,
+     "pass_range": [
+      0.0,
+      0.04
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 120 um": {
+     "verdict": "n/a",
+     "p": 0.7352103820210433,
+     "p_own_neff": 0.6962374972860189,
+     "best": 0.0,
+     "misfit": 0.9117803446993136,
+     "misfit_full": 0.8338689837987674,
+     "pass_range": [
+      0.0,
+      0.04
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    }
+   }
+  },
+  "2 min (H2)": {
+   "kappa": 3.1082588025128346,
+   "s": -0.03172424545972177,
+   "misfit": 1.359512014814532,
+   "n_eff": 14.135578171456338,
+   "p_no_change": 0.0009810697106813222,
+   "inc_slope": 3.108258802512834,
+   "cands": {
+    "gas, slice swells, r 15 um": {
+     "verdict": "edge",
+     "p": 0.013711890857534333,
+     "p_own_neff": 0.06134044631429937,
+     "best": 0.2,
+     "misfit": 3.85184884336737,
+     "misfit_full": 1.3418526250722513,
+     "pass_range": null,
+     "loss06_db": 0.23699085831308103,
+     "delay06_rad": 0.03714666786233316,
+     "slope": 1.723751461635191
+    },
+    "gas, slice swells, r 30 um": {
+     "verdict": "pass",
+     "p": 0.09798087779584926,
+     "p_own_neff": 0.22354989051615085,
+     "best": 0.2,
+     "misfit": 2.406548394408525,
+     "misfit_full": 1.3595120148145154,
+     "pass_range": [
+      0.14,
+      0.2
+     ],
+     "loss06_db": 0.9092812964355684,
+     "delay06_rad": 0.06733248352026591,
+     "slope": 4.531558401337106
+    },
+    "gas, slice swells, r 50 um": {
+     "verdict": "pass",
+     "p": 0.15320184708739062,
+     "p_own_neff": 0.18445534010819525,
+     "best": 0.18,
+     "misfit": 2.156118802454732,
+     "misfit_full": 1.3595120148145154,
+     "pass_range": [
+      0.1,
+      0.2
+     ],
+     "loss06_db": 1.759461863773406,
+     "delay06_rad": 0.08579235832130362,
+     "slope": 6.193258121706386
+    },
+    "gas, slice swells, r 80 um": {
+     "verdict": "pass",
+     "p": 0.17828824680246758,
+     "p_own_neff": 0.2237249234752022,
+     "best": 0.12,
+     "misfit": 2.077219495602008,
+     "misfit_full": 1.3595120148145154,
+     "pass_range": [
+      0.06,
+      0.16
+     ],
+     "loss06_db": 1.8906546752364286,
+     "delay06_rad": 0.0898793975728544,
+     "slope": 3.9852559313582794
+    },
+    "gas, slice swells, r 120 um": {
+     "verdict": "pass",
+     "p": 0.14982337785526412,
+     "p_own_neff": 0.11124556674438732,
+     "best": 0.1,
+     "misfit": 2.1679708765974772,
+     "misfit_full": 1.3595120148145154,
+     "pass_range": [
+      0.06,
+      0.12
+     ],
+     "loss06_db": 2.1123021314663677,
+     "delay06_rad": 0.14024256504972687,
+     "slope": 1.6900114314340764
+    },
+    "gas, displacing tissue, r 15 um": {
+     "verdict": "fail",
+     "p": 0.0020940876652232317,
+     "p_own_neff": 0.013715964424337942,
+     "best": 0.0,
+     "misfit": 6.194026116694969,
+     "misfit_full": 1.3595120148145154,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 30 um": {
+     "verdict": "fail",
+     "p": 0.0020940876652232317,
+     "p_own_neff": 0.013715964424337942,
+     "best": 0.0,
+     "misfit": 6.194026116694969,
+     "misfit_full": 1.3595120148145154,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 50 um": {
+     "verdict": "fail",
+     "p": 0.0020940876652232317,
+     "p_own_neff": 0.013715964424337942,
+     "best": 0.0,
+     "misfit": 6.194026116694969,
+     "misfit_full": 1.3595120148145154,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 80 um": {
+     "verdict": "fail",
+     "p": 0.0020940876652232317,
+     "p_own_neff": 0.013715964424337942,
+     "best": 0.0,
+     "misfit": 6.194026116694969,
+     "misfit_full": 1.3595120148145154,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 120 um": {
+     "verdict": "fail",
+     "p": 0.0020940876652232317,
+     "p_own_neff": 0.013715964424337942,
+     "best": 0.0,
+     "misfit": 6.194026116694969,
+     "misfit_full": 1.3595120148145154,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 15 um": {
+     "verdict": "fail",
+     "p": 0.0020940876652232317,
+     "p_own_neff": 0.013715964424337942,
+     "best": 0.0,
+     "misfit": 6.194026116694969,
+     "misfit_full": 1.3595120148145154,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 30 um": {
+     "verdict": "fail",
+     "p": 0.0020940876652232317,
+     "p_own_neff": 0.013715964424337942,
+     "best": 0.0,
+     "misfit": 6.194026116694969,
+     "misfit_full": 1.3595120148145154,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 50 um": {
+     "verdict": "fail",
+     "p": 0.0020940876652232317,
+     "p_own_neff": 0.013715964424337942,
+     "best": 0.0,
+     "misfit": 6.194026116694969,
+     "misfit_full": 1.3595120148145154,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 80 um": {
+     "verdict": "fail",
+     "p": 0.0020940876652232317,
+     "p_own_neff": 0.013715964424337942,
+     "best": 0.0,
+     "misfit": 6.194026116694969,
+     "misfit_full": 1.3595120148145154,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 120 um": {
+     "verdict": "fail",
+     "p": 0.0020940876652232317,
+     "p_own_neff": 0.013715964424337942,
+     "best": 0.0,
+     "misfit": 6.194026116694969,
+     "misfit_full": 1.3595120148145154,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    }
+   }
+  },
+  "4 min (H1)": {
+   "kappa": 4.466221286807356,
+   "s": -0.05220063576436557,
+   "misfit": 2.5068753176040124,
+   "n_eff": 18.08881387328734,
+   "p_no_change": 0.000164378186240678,
+   "inc_slope": 4.4662212868073565,
+   "cands": {
+    "gas, slice swells, r 15 um": {
+     "verdict": "edge",
+     "p": 0.0019955202288013114,
+     "p_own_neff": 0.07154724254929525,
+     "best": 0.2,
+     "misfit": 7.0116042510324394,
+     "misfit_full": 2.5068753175899614,
+     "pass_range": null,
+     "loss06_db": 0.23699085831308103,
+     "delay06_rad": 0.03714666786233316,
+     "slope": 1.723751461635191
+    },
+    "gas, slice swells, r 30 um": {
+     "verdict": "edge",
+     "p": 0.012161363351693683,
+     "p_own_neff": 0.14156765091095672,
+     "best": 0.2,
+     "misfit": 5.199450973212906,
+     "misfit_full": 2.5068753175899614,
+     "pass_range": null,
+     "loss06_db": 0.9092812964355684,
+     "delay06_rad": 0.06733248352026591,
+     "slope": 4.531558401337106
+    },
+    "gas, slice swells, r 50 um": {
+     "verdict": "edge",
+     "p": 0.03261162826978305,
+     "p_own_neff": 0.1935308820162918,
+     "best": 0.2,
+     "misfit": 4.4165552313870675,
+     "misfit_full": 2.5068753175899614,
+     "pass_range": [
+      0.18,
+      0.2
+     ],
+     "loss06_db": 2.0118114598644916,
+     "delay06_rad": 0.09698016326800186,
+     "slope": 7.049957899345937
+    },
+    "gas, slice swells, r 80 um": {
+     "verdict": "edge",
+     "p": 0.029030143246498177,
+     "p_own_neff": 0.13524543039719109,
+     "best": 0.14,
+     "misfit": 4.5023821367515735,
+     "misfit_full": 2.5068753175899614,
+     "pass_range": [
+      0.14,
+      0.16
+     ],
+     "loss06_db": 2.2624893202693346,
+     "delay06_rad": 0.10687109732926267,
+     "slope": 4.754186800062671
+    },
+    "gas, slice swells, r 120 um": {
+     "verdict": "edge",
+     "p": 0.025602892702441274,
+     "p_own_neff": 0.06587211568292259,
+     "best": 0.1,
+     "misfit": 4.596940715400981,
+     "misfit_full": 2.5068753175899614,
+     "pass_range": [
+      0.1,
+      0.12
+     ],
+     "loss06_db": 2.1123021314663677,
+     "delay06_rad": 0.14024256504972687,
+     "slope": 1.6900114314340764
+    },
+    "gas, displacing tissue, r 15 um": {
+     "verdict": "fail",
+     "p": 0.0003198585140181484,
+     "p_own_neff": 0.033765266730795336,
+     "best": 0.0,
+     "misfit": 9.49205392369412,
+     "misfit_full": 2.5068753175899614,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 30 um": {
+     "verdict": "fail",
+     "p": 0.0003198585140181484,
+     "p_own_neff": 0.033765266730795336,
+     "best": 0.0,
+     "misfit": 9.49205392369412,
+     "misfit_full": 2.5068753175899614,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 50 um": {
+     "verdict": "fail",
+     "p": 0.0003198585140181484,
+     "p_own_neff": 0.033765266730795336,
+     "best": 0.0,
+     "misfit": 9.49205392369412,
+     "misfit_full": 2.5068753175899614,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 80 um": {
+     "verdict": "fail",
+     "p": 0.0003198585140181484,
+     "p_own_neff": 0.033765266730795336,
+     "best": 0.0,
+     "misfit": 9.49205392369412,
+     "misfit_full": 2.5068753175899614,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 120 um": {
+     "verdict": "fail",
+     "p": 0.0003198585140181484,
+     "p_own_neff": 0.033765266730795336,
+     "best": 0.0,
+     "misfit": 9.49205392369412,
+     "misfit_full": 2.5068753175899614,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 15 um": {
+     "verdict": "fail",
+     "p": 0.0003198585140181484,
+     "p_own_neff": 0.033765266730795336,
+     "best": 0.0,
+     "misfit": 9.49205392369412,
+     "misfit_full": 2.5068753175899614,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 30 um": {
+     "verdict": "fail",
+     "p": 0.0003198585140181484,
+     "p_own_neff": 0.033765266730795336,
+     "best": 0.0,
+     "misfit": 9.49205392369412,
+     "misfit_full": 2.5068753175899614,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 50 um": {
+     "verdict": "fail",
+     "p": 0.0003198585140181484,
+     "p_own_neff": 0.033765266730795336,
+     "best": 0.0,
+     "misfit": 9.49205392369412,
+     "misfit_full": 2.5068753175899614,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 80 um": {
+     "verdict": "fail",
+     "p": 0.0003198585140181484,
+     "p_own_neff": 0.033765266730795336,
+     "best": 0.0,
+     "misfit": 9.49205392369412,
+     "misfit_full": 2.5068753175899614,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 120 um": {
+     "verdict": "fail",
+     "p": 0.0003198585140181484,
+     "p_own_neff": 0.033765266730795336,
+     "best": 0.0,
+     "misfit": 9.49205392369412,
+     "misfit_full": 2.5068753175899614,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    }
+   }
+  },
+  "5 min (H3)": {
+   "kappa": 7.354317441672495,
+   "s": -0.10968788209860592,
+   "misfit": 3.9400111258743973,
+   "n_eff": 19.435752034576176,
+   "p_no_change": 0.00013066971250619836,
+   "inc_slope": 7.354317441672493,
+   "cands": {
+    "gas, slice swells, r 15 um": {
+     "verdict": "edge",
+     "p": 0.0009170875787824185,
+     "p_own_neff": 0.05042384592693067,
+     "best": 0.2,
+     "misfit": 11.158156325894083,
+     "misfit_full": 3.9393750100649365,
+     "pass_range": null,
+     "loss06_db": 0.23699085831308103,
+     "delay06_rad": 0.03714666786233316,
+     "slope": 1.723751461635191
+    },
+    "gas, slice swells, r 30 um": {
+     "verdict": "edge",
+     "p": 0.004154471541068906,
+     "p_own_neff": 0.08003895834315784,
+     "best": 0.2,
+     "misfit": 8.912379403948638,
+     "misfit_full": 3.939980646624117,
+     "pass_range": null,
+     "loss06_db": 0.9092812964355684,
+     "delay06_rad": 0.06733248352026591,
+     "slope": 4.531558401337106
+    },
+    "gas, slice swells, r 50 um": {
+     "verdict": "edge",
+     "p": 0.015439885594164064,
+     "p_own_neff": 0.09631423858260278,
+     "best": 0.2,
+     "misfit": 7.330377206024493,
+     "misfit_full": 3.939980646624117,
+     "pass_range": null,
+     "loss06_db": 2.0118114598644916,
+     "delay06_rad": 0.09698016326800186,
+     "slope": 7.049957899345937
+    },
+    "gas, slice swells, r 80 um": {
+     "verdict": "fail",
+     "p": 0.023015217607730672,
+     "p_own_neff": 0.04690201327460714,
+     "best": 0.2,
+     "misfit": 6.9074684369515005,
+     "misfit_full": 3.939980646624117,
+     "pass_range": [
+      0.2,
+      0.2
+     ],
+     "loss06_db": 3.49463939255717,
+     "delay06_rad": 0.16218060763741715,
+     "slope": 7.286704234339345
+    },
+    "gas, slice swells, r 120 um": {
+     "verdict": "fail",
+     "p": 0.011778739737083686,
+     "p_own_neff": 0.022057150398144622,
+     "best": 0.14,
+     "misfit": 7.631742463846656,
+     "misfit_full": 3.939980646624117,
+     "pass_range": null,
+     "loss06_db": 3.1040992465410437,
+     "delay06_rad": 0.2045054332741989,
+     "slope": 2.4694326575731
+    },
+    "gas, displacing tissue, r 15 um": {
+     "verdict": "fail",
+     "p": 0.00024276969357827938,
+     "p_own_neff": 0.03685566103171255,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 3.939980646624117,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 30 um": {
+     "verdict": "fail",
+     "p": 0.00024276969357827938,
+     "p_own_neff": 0.03685566103171255,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 3.939980646624117,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 50 um": {
+     "verdict": "fail",
+     "p": 0.00024276969357827938,
+     "p_own_neff": 0.03685566103171255,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 3.939980646624117,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 80 um": {
+     "verdict": "fail",
+     "p": 0.00024276969357827938,
+     "p_own_neff": 0.03685566103171255,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 3.939980646624117,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 120 um": {
+     "verdict": "fail",
+     "p": 0.00024276969357827938,
+     "p_own_neff": 0.03685566103171255,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 3.939980646624117,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 15 um": {
+     "verdict": "fail",
+     "p": 0.00024276969357827938,
+     "p_own_neff": 0.03685566103171255,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 3.939980646624117,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 30 um": {
+     "verdict": "fail",
+     "p": 0.00024276969357827938,
+     "p_own_neff": 0.03685566103171255,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 3.939980646624117,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 50 um": {
+     "verdict": "fail",
+     "p": 0.00024276969357827938,
+     "p_own_neff": 0.03685566103171255,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 3.939980646624117,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 80 um": {
+     "verdict": "fail",
+     "p": 0.00024276969357827938,
+     "p_own_neff": 0.03685566103171255,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 3.939980646624117,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 120 um": {
+     "verdict": "fail",
+     "p": 0.00024276969357827938,
+     "p_own_neff": 0.03685566103171255,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 3.939980646624117,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    }
+   }
+  }
+ },
+ "increment held above 2 THz, a + b <= 1": {
+  "30 s (H1)": {
+   "kappa": 0.3497561623280662,
+   "s": -0.012341645570622325,
+   "misfit": 0.8342109484661729,
+   "n_eff": 12.875741923847373,
+   "p_no_change": 0.704598492886825,
+   "inc_slope": 0.34975616232806556,
+   "cands": {
+    "gas, slice swells, r 15 um": {
+     "verdict": "n/a",
+     "p": 0.7366291149147608,
+     "p_own_neff": 0.6973955710139994,
+     "best": 0.0,
+     "misfit": 0.9117803446993133,
+     "misfit_full": 0.8342109484635973,
+     "pass_range": [
+      0.0,
+      0.2
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, slice swells, r 30 um": {
+     "verdict": "n/a",
+     "p": 0.7366291149147608,
+     "p_own_neff": 0.6973955710139994,
+     "best": 0.0,
+     "misfit": 0.9117803446993133,
+     "misfit_full": 0.8342109484635973,
+     "pass_range": [
+      0.0,
+      0.12
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, slice swells, r 50 um": {
+     "verdict": "n/a",
+     "p": 0.7366291149147608,
+     "p_own_neff": 0.6973955710139994,
+     "best": 0.0,
+     "misfit": 0.9117803446993133,
+     "misfit_full": 0.8342109484635973,
+     "pass_range": [
+      0.0,
+      0.06
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, slice swells, r 80 um": {
+     "verdict": "n/a",
+     "p": 0.7366291149147608,
+     "p_own_neff": 0.6973955710139994,
+     "best": 0.0,
+     "misfit": 0.9117803446993133,
+     "misfit_full": 0.8342109484635973,
+     "pass_range": [
+      0.0,
+      0.04
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, slice swells, r 120 um": {
+     "verdict": "n/a",
+     "p": 0.7366291149147608,
+     "p_own_neff": 0.6973955710139994,
+     "best": 0.0,
+     "misfit": 0.9117803446993133,
+     "misfit_full": 0.8342109484635973,
+     "pass_range": [
+      0.0,
+      0.02
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 15 um": {
+     "verdict": "n/a",
+     "p": 0.7366291149147608,
+     "p_own_neff": 0.6973955710139994,
+     "best": 0.0,
+     "misfit": 0.9117803446993133,
+     "misfit_full": 0.8342109484635973,
+     "pass_range": [
+      0.0,
+      0.02
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 30 um": {
+     "verdict": "n/a",
+     "p": 0.7366291149147608,
+     "p_own_neff": 0.6973955710139994,
+     "best": 0.0,
+     "misfit": 0.9117803446993133,
+     "misfit_full": 0.8342109484635973,
+     "pass_range": [
+      0.0,
+      0.02
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 50 um": {
+     "verdict": "n/a",
+     "p": 0.7366291149147608,
+     "p_own_neff": 0.6973955710139994,
+     "best": 0.0,
+     "misfit": 0.9117803446993133,
+     "misfit_full": 0.8342109484635973,
+     "pass_range": [
+      0.0,
+      0.04
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 80 um": {
+     "verdict": "n/a",
+     "p": 0.7366291149147608,
+     "p_own_neff": 0.6973955710139994,
+     "best": 0.0,
+     "misfit": 0.9117803446993133,
+     "misfit_full": 0.8342109484635973,
+     "pass_range": [
+      0.0,
+      0.04
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 120 um": {
+     "verdict": "n/a",
+     "p": 0.7366291149147608,
+     "p_own_neff": 0.6973955710139994,
+     "best": 0.0,
+     "misfit": 0.9117803446993133,
+     "misfit_full": 0.8342109484635973,
+     "pass_range": [
+      0.0,
+      0.06
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 15 um": {
+     "verdict": "n/a",
+     "p": 0.7366291149147608,
+     "p_own_neff": 0.6973955710139994,
+     "best": 0.0,
+     "misfit": 0.9117803446993133,
+     "misfit_full": 0.8342109484635973,
+     "pass_range": [
+      0.0,
+      0.06
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 30 um": {
+     "verdict": "n/a",
+     "p": 0.7366291149147608,
+     "p_own_neff": 0.6973955710139994,
+     "best": 0.0,
+     "misfit": 0.9117803446993133,
+     "misfit_full": 0.8342109484635973,
+     "pass_range": [
+      0.0,
+      0.06
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 50 um": {
+     "verdict": "n/a",
+     "p": 0.7366291149147608,
+     "p_own_neff": 0.6973955710139994,
+     "best": 0.0,
+     "misfit": 0.9117803446993133,
+     "misfit_full": 0.8342109484635973,
+     "pass_range": [
+      0.0,
+      0.06
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 80 um": {
+     "verdict": "n/a",
+     "p": 0.7366291149147608,
+     "p_own_neff": 0.6973955710139994,
+     "best": 0.0,
+     "misfit": 0.9117803446993133,
+     "misfit_full": 0.8342109484635973,
+     "pass_range": [
+      0.0,
+      0.04
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 120 um": {
+     "verdict": "n/a",
+     "p": 0.7366291149147608,
+     "p_own_neff": 0.6973955710139994,
+     "best": 0.0,
+     "misfit": 0.9117803446993133,
+     "misfit_full": 0.8342109484635973,
+     "pass_range": [
+      0.0,
+      0.04
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    }
+   }
+  },
+  "2 min (H2)": {
+   "kappa": 2.111419765598429,
+   "s": -0.00711757395670035,
+   "misfit": 1.5770220326455058,
+   "n_eff": 14.542322920069864,
+   "p_no_change": 0.0014631359848527334,
+   "inc_slope": 2.111419765598428,
+   "cands": {
+    "gas, slice swells, r 15 um": {
+     "verdict": "edge",
+     "p": 0.017656620110842312,
+     "p_own_neff": 0.08194517496450866,
+     "best": 0.2,
+     "misfit": 3.851848843360527,
+     "misfit_full": 1.4969958368134706,
+     "pass_range": null,
+     "loss06_db": 0.23699085831308103,
+     "delay06_rad": 0.03714666786233316,
+     "slope": 1.723751461635191
+    },
+    "gas, slice swells, r 30 um": {
+     "verdict": "pass",
+     "p": 0.13445839428232634,
+     "p_own_neff": 0.24177035102481587,
+     "best": 0.2,
+     "misfit": 2.5100394045266445,
+     "misfit_full": 1.5691276095026956,
+     "pass_range": [
+      0.12,
+      0.2
+     ],
+     "loss06_db": 0.9092812964355684,
+     "delay06_rad": 0.06733248352026591,
+     "slope": 4.531558401337106
+    },
+    "gas, slice swells, r 50 um": {
+     "verdict": "pass",
+     "p": 0.09702076858440294,
+     "p_own_neff": 0.1487286189134217,
+     "best": 0.14,
+     "misfit": 2.722961231298707,
+     "misfit_full": 1.5770220326455058,
+     "pass_range": [
+      0.08,
+      0.2
+     ],
+     "loss06_db": 1.2931724343376672,
+     "delay06_rad": 0.06454468854384897,
+     "slope": 4.597695458215803
+    },
+    "gas, slice swells, r 80 um": {
+     "verdict": "pass",
+     "p": 0.10769935742602313,
+     "p_own_neff": 0.17743982169324743,
+     "best": 0.1,
+     "misfit": 2.657199190551176,
+     "misfit_full": 1.5770220326455058,
+     "pass_range": [
+      0.06,
+      0.14
+     ],
+     "loss06_db": 1.5364619868630005,
+     "delay06_rad": 0.07351811402911555,
+     "slope": 3.249637814088273
+    },
+    "gas, slice swells, r 120 um": {
+     "verdict": "pass",
+     "p": 0.14236375386208783,
+     "p_own_neff": 0.23216438936868578,
+     "best": 0.08,
+     "misfit": 2.4891493668259317,
+     "misfit_full": 1.5770220326455058,
+     "pass_range": [
+      0.04,
+      0.1
+     ],
+     "loss06_db": 1.649959409426346,
+     "delay06_rad": 0.11000415614066412,
+     "slope": 1.3243177505925614
+    },
+    "gas, displacing tissue, r 15 um": {
+     "verdict": "fail",
+     "p": 0.001918148051931796,
+     "p_own_neff": 0.01587391099422171,
+     "best": 0.0,
+     "misfit": 6.194026116694968,
+     "misfit_full": 1.4315901381424516,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 30 um": {
+     "verdict": "fail",
+     "p": 0.0021144369366730064,
+     "p_own_neff": 0.016931833323149067,
+     "best": 0.0,
+     "misfit": 6.194026116694968,
+     "misfit_full": 1.4646210784392544,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 50 um": {
+     "verdict": "fail",
+     "p": 0.0024314681766920685,
+     "p_own_neff": 0.018573045248653924,
+     "best": 0.0,
+     "misfit": 6.194026116694968,
+     "misfit_full": 1.5133199222041926,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 80 um": {
+     "verdict": "fail",
+     "p": 0.002779558408841779,
+     "p_own_neff": 0.02029376293132004,
+     "best": 0.0,
+     "misfit": 6.194026116694968,
+     "misfit_full": 1.561475936892099,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 120 um": {
+     "verdict": "fail",
+     "p": 0.0028996950505239217,
+     "p_own_neff": 0.020870448912349987,
+     "best": 0.0,
+     "misfit": 6.194026116694968,
+     "misfit_full": 1.5770220326455058,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 15 um": {
+     "verdict": "fail",
+     "p": 0.0018387899283797266,
+     "p_own_neff": 0.015435911888561566,
+     "best": 0.0,
+     "misfit": 6.194026116694968,
+     "misfit_full": 1.4174979538023018,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 30 um": {
+     "verdict": "fail",
+     "p": 0.0018632181401304468,
+     "p_own_neff": 0.015571406191527384,
+     "best": 0.0,
+     "misfit": 6.194026116694968,
+     "misfit_full": 1.4218846565026053,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 50 um": {
+     "verdict": "fail",
+     "p": 0.0018955013419614836,
+     "p_own_neff": 0.015749552449842382,
+     "best": 0.0,
+     "misfit": 6.194026116694968,
+     "misfit_full": 1.4276148511882378,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 80 um": {
+     "verdict": "fail",
+     "p": 0.0021673534297262345,
+     "p_own_neff": 0.01721126781349376,
+     "best": 0.0,
+     "misfit": 6.194026116694968,
+     "misfit_full": 1.4731217716368625,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 120 um": {
+     "verdict": "fail",
+     "p": 0.002539139494915332,
+     "p_own_neff": 0.019113695294114694,
+     "best": 0.0,
+     "misfit": 6.194026116694968,
+     "misfit_full": 1.5287503516831393,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    }
+   }
+  },
+  "4 min (H1)": {
+   "kappa": 2.849503740771238,
+   "s": -0.012426104667801741,
+   "misfit": 2.980285658566693,
+   "n_eff": 18.16609357222562,
+   "p_no_change": 0.0004875891082292283,
+   "inc_slope": 2.8495037407712394,
+   "cands": {
+    "gas, slice swells, r 15 um": {
+     "verdict": "edge",
+     "p": 0.005173862105955289,
+     "p_own_neff": 0.1087136281851764,
+     "best": 0.2,
+     "misfit": 7.011604251388727,
+     "misfit_full": 2.9511306400506365,
+     "pass_range": null,
+     "loss06_db": 0.23699085831308103,
+     "delay06_rad": 0.03714666786233316,
+     "slope": 1.723751461635191
+    },
+    "gas, slice swells, r 30 um": {
+     "verdict": "edge",
+     "p": 0.033064971226899845,
+     "p_own_neff": 0.20849983462340682,
+     "best": 0.2,
+     "misfit": 5.219884520773968,
+     "misfit_full": 2.980285658566524,
+     "pass_range": [
+      0.18,
+      0.2
+     ],
+     "loss06_db": 0.9092812964355684,
+     "delay06_rad": 0.06733248352026591,
+     "slope": 4.531558401337106
+    },
+    "gas, slice swells, r 50 um": {
+     "verdict": "edge",
+     "p": 0.03568370522692699,
+     "p_own_neff": 0.13978201552450237,
+     "best": 0.16,
+     "misfit": 5.154888169620178,
+     "misfit_full": 2.980285658566524,
+     "pass_range": [
+      0.14,
+      0.2
+     ],
+     "loss06_db": 1.5201531395595373,
+     "delay06_rad": 0.07499069723781869,
+     "slope": 5.376782321284444
+    },
+    "gas, slice swells, r 80 um": {
+     "verdict": "edge",
+     "p": 0.03355466809832608,
+     "p_own_neff": 0.10673175911591119,
+     "best": 0.12,
+     "misfit": 5.207284307051884,
+     "misfit_full": 2.980285658566524,
+     "pass_range": [
+      0.1,
+      0.14
+     ],
+     "loss06_db": 1.8906546752364286,
+     "delay06_rad": 0.0898793975728544,
+     "slope": 3.9852559313582794
+    },
+    "gas, slice swells, r 120 um": {
+     "verdict": "edge",
+     "p": 0.0397075620797644,
+     "p_own_neff": 0.09753555431493559,
+     "best": 0.1,
+     "misfit": 5.065134151822767,
+     "misfit_full": 2.980285658566524,
+     "pass_range": [
+      0.08,
+      0.1
+     ],
+     "loss06_db": 2.1123021314663677,
+     "delay06_rad": 0.14024256504972687,
+     "slope": 1.6900114314340764
+    },
+    "gas, displacing tissue, r 15 um": {
+     "verdict": "fail",
+     "p": 0.0004886472752817701,
+     "p_own_neff": 0.04119184167187212,
+     "best": 0.0,
+     "misfit": 9.492053923694122,
+     "misfit_full": 2.7105651036772214,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 30 um": {
+     "verdict": "fail",
+     "p": 0.0006263889177302292,
+     "p_own_neff": 0.04570151987600216,
+     "best": 0.0,
+     "misfit": 9.492053923694122,
+     "misfit_full": 2.8235092334661918,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 50 um": {
+     "verdict": "edge",
+     "p": 0.0008131637249905971,
+     "p_own_neff": 0.0509735548759627,
+     "best": 0.0,
+     "misfit": 9.492053923694122,
+     "misfit_full": 2.9472727260082703,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 80 um": {
+     "verdict": "edge",
+     "p": 0.0008701720862307658,
+     "p_own_neff": 0.05243919762313291,
+     "best": 0.0,
+     "misfit": 9.492053923694122,
+     "misfit_full": 2.980285658566524,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 120 um": {
+     "verdict": "edge",
+     "p": 0.0008701720862307658,
+     "p_own_neff": 0.05243919762313291,
+     "best": 0.0,
+     "misfit": 9.492053923694122,
+     "misfit_full": 2.980285658566524,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 15 um": {
+     "verdict": "fail",
+     "p": 0.0004373958947406051,
+     "p_own_neff": 0.03932597012405537,
+     "best": 0.0,
+     "misfit": 9.492053923694122,
+     "misfit_full": 2.661639329309727,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 30 um": {
+     "verdict": "fail",
+     "p": 0.00045103004631683345,
+     "p_own_neff": 0.03983423620565615,
+     "best": 0.0,
+     "misfit": 9.492053923694122,
+     "misfit_full": 2.6751039840171966,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 50 um": {
+     "verdict": "fail",
+     "p": 0.0004805098463629427,
+     "p_own_neff": 0.04090345915360275,
+     "best": 0.0,
+     "misfit": 9.492053923694122,
+     "misfit_full": 2.703092489252956,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 80 um": {
+     "verdict": "fail",
+     "p": 0.0006390744850655981,
+     "p_own_neff": 0.046086472578554104,
+     "best": 0.0,
+     "misfit": 9.492053923694122,
+     "misfit_full": 2.8328307980379326,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 120 um": {
+     "verdict": "edge",
+     "p": 0.0008701720862307658,
+     "p_own_neff": 0.05243919762313291,
+     "best": 0.0,
+     "misfit": 9.492053923694122,
+     "misfit_full": 2.980285658566524,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    }
+   }
+  },
+  "5 min (H3)": {
+   "kappa": 5.094413662656787,
+   "s": -0.052813539738570635,
+   "misfit": 4.652436471212372,
+   "n_eff": 19.3149535478357,
+   "p_no_change": 0.00046272502170544385,
+   "inc_slope": 5.0944136626567875,
+   "cands": {
+    "gas, slice swells, r 15 um": {
+     "verdict": "edge",
+     "p": 0.0027399016001000798,
+     "p_own_neff": 0.07865386036327378,
+     "best": 0.2,
+     "misfit": 11.158156325894169,
+     "misfit_full": 4.599622068226111,
+     "pass_range": null,
+     "loss06_db": 0.23699085831308103,
+     "delay06_rad": 0.03714666786233316,
+     "slope": 1.723751461635191
+    },
+    "gas, slice swells, r 30 um": {
+     "verdict": "edge",
+     "p": 0.01319794547373481,
+     "p_own_neff": 0.1338507977753919,
+     "best": 0.2,
+     "misfit": 8.912379403948638,
+     "misfit_full": 4.652436471212358,
+     "pass_range": null,
+     "loss06_db": 0.9092812964355684,
+     "delay06_rad": 0.06733248352026591,
+     "slope": 4.531558401337106
+    },
+    "gas, slice swells, r 50 um": {
+     "verdict": "edge",
+     "p": 0.0462586724286134,
+     "p_own_neff": 0.16696581748876982,
+     "best": 0.2,
+     "misfit": 7.382064904867288,
+     "misfit_full": 4.652436471212358,
+     "pass_range": [
+      0.18,
+      0.2
+     ],
+     "loss06_db": 2.0118114598644916,
+     "delay06_rad": 0.09698016326800186,
+     "slope": 7.049957899345937
+    },
+    "gas, slice swells, r 80 um": {
+     "verdict": "edge",
+     "p": 0.04030175908806889,
+     "p_own_neff": 0.10855889200689885,
+     "best": 0.16,
+     "misfit": 7.536516078658103,
+     "misfit_full": 4.652436471212358,
+     "pass_range": [
+      0.12,
+      0.2
+     ],
+     "loss06_db": 2.652985730298449,
+     "delay06_rad": 0.12454312844125431,
+     "slope": 5.558917643804871
+    },
+    "gas, slice swells, r 120 um": {
+     "verdict": "edge",
+     "p": 0.030529776059293197,
+     "p_own_neff": 0.0745092110128413,
+     "best": 0.12,
+     "misfit": 7.8575229630603545,
+     "misfit_full": 4.652436471212358,
+     "pass_range": [
+      0.12,
+      0.14
+     ],
+     "loss06_db": 2.5966190436018177,
+     "delay06_rad": 0.17171164403637684,
+     "slope": 2.0713130480151647
+    },
+    "gas, displacing tissue, r 15 um": {
+     "verdict": "fail",
+     "p": 0.0003860183198492286,
+     "p_own_neff": 0.04306223809946045,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 4.177015319477644,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 30 um": {
+     "verdict": "fail",
+     "p": 0.00047555912247227686,
+     "p_own_neff": 0.046811196838222664,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 4.309970692066004,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 50 um": {
+     "verdict": "edge",
+     "p": 0.0006366209008392285,
+     "p_own_neff": 0.0526066418400815,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 4.503000577742216,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 80 um": {
+     "verdict": "edge",
+     "p": 0.0007911768786894349,
+     "p_own_neff": 0.05738690086537979,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 4.652436471212358,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 120 um": {
+     "verdict": "edge",
+     "p": 0.0007911768786894349,
+     "p_own_neff": 0.05738690086537979,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 4.652436471212358,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 15 um": {
+     "verdict": "fail",
+     "p": 0.000365017166400239,
+     "p_own_neff": 0.04210899312448977,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 4.142064368794797,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 30 um": {
+     "verdict": "fail",
+     "p": 0.00037070869941033187,
+     "p_own_neff": 0.04237051359548824,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 4.151701856395687,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 50 um": {
+     "verdict": "fail",
+     "p": 0.00038646051769210374,
+     "p_own_neff": 0.04308197095636607,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 4.177733698800435,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 80 um": {
+     "verdict": "fail",
+     "p": 0.0004993973075319353,
+     "p_own_neff": 0.047736416950423584,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 4.341751541468216,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 120 um": {
+     "verdict": "edge",
+     "p": 0.0007278697990539567,
+     "p_own_neff": 0.05550332707442256,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 4.594518122600939,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    }
+   }
+  }
+ },
+ "increment held above 4 THz, a <= 1": {
+  "30 s (H1)": {
+   "kappa": 0.37266069627568515,
+   "s": -0.016002486905925133,
+   "misfit": 0.8354617082210334,
+   "n_eff": 12.857841961129106,
+   "p_no_change": 0.709322467214377,
+   "inc_slope": 0.3726606962756853,
+   "cands": {
+    "gas, slice swells, r 15 um": {
+     "verdict": "n/a",
+     "p": 0.7410125341034516,
+     "p_own_neff": 0.7016436704738654,
+     "best": 0.0,
+     "misfit": 0.9117803446993136,
+     "misfit_full": 0.8354617081969276,
+     "pass_range": [
+      0.0,
+      0.2
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, slice swells, r 30 um": {
+     "verdict": "n/a",
+     "p": 0.7410125341034516,
+     "p_own_neff": 0.7016436704738654,
+     "best": 0.0,
+     "misfit": 0.9117803446993136,
+     "misfit_full": 0.8354617081969276,
+     "pass_range": [
+      0.0,
+      0.12
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, slice swells, r 50 um": {
+     "verdict": "n/a",
+     "p": 0.7410125341034516,
+     "p_own_neff": 0.7016436704738654,
+     "best": 0.0,
+     "misfit": 0.9117803446993136,
+     "misfit_full": 0.8354617081969276,
+     "pass_range": [
+      0.0,
+      0.08
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, slice swells, r 80 um": {
+     "verdict": "n/a",
+     "p": 0.7410125341034516,
+     "p_own_neff": 0.7016436704738654,
+     "best": 0.0,
+     "misfit": 0.9117803446993136,
+     "misfit_full": 0.8354617081969276,
+     "pass_range": [
+      0.0,
+      0.04
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, slice swells, r 120 um": {
+     "verdict": "n/a",
+     "p": 0.7410125341034516,
+     "p_own_neff": 0.7016436704738654,
+     "best": 0.0,
+     "misfit": 0.9117803446993136,
+     "misfit_full": 0.8354617081969276,
+     "pass_range": [
+      0.0,
+      0.02
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 15 um": {
+     "verdict": "n/a",
+     "p": 0.7410125341034516,
+     "p_own_neff": 0.7016436704738654,
+     "best": 0.0,
+     "misfit": 0.9117803446993136,
+     "misfit_full": 0.8354617081969276,
+     "pass_range": [
+      0.0,
+      0.02
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 30 um": {
+     "verdict": "n/a",
+     "p": 0.7410125341034516,
+     "p_own_neff": 0.7016436704738654,
+     "best": 0.0,
+     "misfit": 0.9117803446993136,
+     "misfit_full": 0.8354617081969276,
+     "pass_range": [
+      0.0,
+      0.02
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 50 um": {
+     "verdict": "n/a",
+     "p": 0.7410125341034516,
+     "p_own_neff": 0.7016436704738654,
+     "best": 0.0,
+     "misfit": 0.9117803446993136,
+     "misfit_full": 0.8354617081969276,
+     "pass_range": [
+      0.0,
+      0.04
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 80 um": {
+     "verdict": "n/a",
+     "p": 0.7410125341034516,
+     "p_own_neff": 0.7016436704738654,
+     "best": 0.0,
+     "misfit": 0.9117803446993136,
+     "misfit_full": 0.8354617081969276,
+     "pass_range": [
+      0.0,
+      0.04
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 120 um": {
+     "verdict": "n/a",
+     "p": 0.7410125341034516,
+     "p_own_neff": 0.7016436704738654,
+     "best": 0.0,
+     "misfit": 0.9117803446993136,
+     "misfit_full": 0.8354617081969276,
+     "pass_range": [
+      0.0,
+      0.06
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 15 um": {
+     "verdict": "n/a",
+     "p": 0.7410125341034516,
+     "p_own_neff": 0.7016436704738654,
+     "best": 0.0,
+     "misfit": 0.9117803446993136,
+     "misfit_full": 0.8354617081969276,
+     "pass_range": [
+      0.0,
+      0.06
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 30 um": {
+     "verdict": "n/a",
+     "p": 0.7410125341034516,
+     "p_own_neff": 0.7016436704738654,
+     "best": 0.0,
+     "misfit": 0.9117803446993136,
+     "misfit_full": 0.8354617081969276,
+     "pass_range": [
+      0.0,
+      0.06
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 50 um": {
+     "verdict": "n/a",
+     "p": 0.7410125341034516,
+     "p_own_neff": 0.7016436704738654,
+     "best": 0.0,
+     "misfit": 0.9117803446993136,
+     "misfit_full": 0.8354617081969276,
+     "pass_range": [
+      0.0,
+      0.06
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 80 um": {
+     "verdict": "n/a",
+     "p": 0.7410125341034516,
+     "p_own_neff": 0.7016436704738654,
+     "best": 0.0,
+     "misfit": 0.9117803446993136,
+     "misfit_full": 0.8354617081969276,
+     "pass_range": [
+      0.0,
+      0.04
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 120 um": {
+     "verdict": "n/a",
+     "p": 0.7410125341034516,
+     "p_own_neff": 0.7016436704738654,
+     "best": 0.0,
+     "misfit": 0.9117803446993136,
+     "misfit_full": 0.8354617081969276,
+     "pass_range": [
+      0.0,
+      0.04
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    }
+   }
+  },
+  "2 min (H2)": {
+   "kappa": 3.143057383975491,
+   "s": -0.05876833867736087,
+   "misfit": 1.3543693690729286,
+   "n_eff": 14.046543258781211,
+   "p_no_change": 0.001031748018369191,
+   "inc_slope": 3.143057383975488,
+   "cands": {
+    "gas, slice swells, r 15 um": {
+     "verdict": "edge",
+     "p": 0.014377254161429398,
+     "p_own_neff": 0.061358215872822565,
+     "best": 0.2,
+     "misfit": 3.85184884336737,
+     "misfit_full": 1.3419994615074882,
+     "pass_range": null,
+     "loss06_db": 0.23699085831308103,
+     "delay06_rad": 0.03714666786233316,
+     "slope": 1.723751461635191
+    },
+    "gas, slice swells, r 30 um": {
+     "verdict": "pass",
+     "p": 0.09898289639087375,
+     "p_own_neff": 0.22133830989016878,
+     "best": 0.2,
+     "misfit": 2.406548394408525,
+     "misfit_full": 1.354369369072729,
+     "pass_range": [
+      0.14,
+      0.2
+     ],
+     "loss06_db": 0.9092812964355684,
+     "delay06_rad": 0.06733248352026591,
+     "slope": 4.531558401337106
+    },
+    "gas, slice swells, r 50 um": {
+     "verdict": "pass",
+     "p": 0.154013352719128,
+     "p_own_neff": 0.1819108160426269,
+     "best": 0.18,
+     "misfit": 2.156118802454732,
+     "misfit_full": 1.354369369072729,
+     "pass_range": [
+      0.1,
+      0.2
+     ],
+     "loss06_db": 1.759461863773406,
+     "delay06_rad": 0.08579235832130362,
+     "slope": 6.193258121706386
+    },
+    "gas, slice swells, r 80 um": {
+     "verdict": "pass",
+     "p": 0.17893542832597012,
+     "p_own_neff": 0.22074991036610386,
+     "best": 0.12,
+     "misfit": 2.077219495602008,
+     "misfit_full": 1.354369369072729,
+     "pass_range": [
+      0.06,
+      0.16
+     ],
+     "loss06_db": 1.8906546752364286,
+     "delay06_rad": 0.0898793975728544,
+     "slope": 3.9852559313582794
+    },
+    "gas, slice swells, r 120 um": {
+     "verdict": "pass",
+     "p": 0.15065374889737973,
+     "p_own_neff": 0.10927916881211196,
+     "best": 0.1,
+     "misfit": 2.1679708765974772,
+     "misfit_full": 1.354369369072729,
+     "pass_range": [
+      0.06,
+      0.12
+     ],
+     "loss06_db": 2.1123021314663677,
+     "delay06_rad": 0.14024256504972687,
+     "slope": 1.6900114314340764
+    },
+    "gas, displacing tissue, r 15 um": {
+     "verdict": "fail",
+     "p": 0.002206437337191464,
+     "p_own_neff": 0.013569722475911561,
+     "best": 0.0,
+     "misfit": 6.194026116694969,
+     "misfit_full": 1.354369369072729,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 30 um": {
+     "verdict": "fail",
+     "p": 0.002206437337191464,
+     "p_own_neff": 0.013569722475911561,
+     "best": 0.0,
+     "misfit": 6.194026116694969,
+     "misfit_full": 1.354369369072729,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 50 um": {
+     "verdict": "fail",
+     "p": 0.002206437337191464,
+     "p_own_neff": 0.013569722475911561,
+     "best": 0.0,
+     "misfit": 6.194026116694969,
+     "misfit_full": 1.354369369072729,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 80 um": {
+     "verdict": "fail",
+     "p": 0.002206437337191464,
+     "p_own_neff": 0.013569722475911561,
+     "best": 0.0,
+     "misfit": 6.194026116694969,
+     "misfit_full": 1.354369369072729,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 120 um": {
+     "verdict": "fail",
+     "p": 0.002206437337191464,
+     "p_own_neff": 0.013569722475911561,
+     "best": 0.0,
+     "misfit": 6.194026116694969,
+     "misfit_full": 1.354369369072729,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 15 um": {
+     "verdict": "fail",
+     "p": 0.002206437337191464,
+     "p_own_neff": 0.013569722475911561,
+     "best": 0.0,
+     "misfit": 6.194026116694969,
+     "misfit_full": 1.354369369072729,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 30 um": {
+     "verdict": "fail",
+     "p": 0.002206437337191464,
+     "p_own_neff": 0.013569722475911561,
+     "best": 0.0,
+     "misfit": 6.194026116694969,
+     "misfit_full": 1.354369369072729,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 50 um": {
+     "verdict": "fail",
+     "p": 0.002206437337191464,
+     "p_own_neff": 0.013569722475911561,
+     "best": 0.0,
+     "misfit": 6.194026116694969,
+     "misfit_full": 1.354369369072729,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 80 um": {
+     "verdict": "fail",
+     "p": 0.002206437337191464,
+     "p_own_neff": 0.013569722475911561,
+     "best": 0.0,
+     "misfit": 6.194026116694969,
+     "misfit_full": 1.354369369072729,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 120 um": {
+     "verdict": "fail",
+     "p": 0.002206437337191464,
+     "p_own_neff": 0.013569722475911561,
+     "best": 0.0,
+     "misfit": 6.194026116694969,
+     "misfit_full": 1.354369369072729,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    }
+   }
+  },
+  "4 min (H1)": {
+   "kappa": 4.5173493457571805,
+   "s": -0.09109807005641714,
+   "misfit": 2.5215161433249262,
+   "n_eff": 18.02150401844751,
+   "p_no_change": 0.00017855425350288466,
+   "inc_slope": 4.51734934575718,
+   "cands": {
+    "gas, slice swells, r 15 um": {
+     "verdict": "edge",
+     "p": 0.002139393037041214,
+     "p_own_neff": 0.07262362344657673,
+     "best": 0.2,
+     "misfit": 7.0116042510324394,
+     "misfit_full": 2.5215161431400177,
+     "pass_range": null,
+     "loss06_db": 0.23699085831308103,
+     "delay06_rad": 0.03714666786233316,
+     "slope": 1.723751461635191
+    },
+    "gas, slice swells, r 30 um": {
+     "verdict": "edge",
+     "p": 0.01290762328719155,
+     "p_own_neff": 0.1437941975461294,
+     "best": 0.2,
+     "misfit": 5.199450973212906,
+     "misfit_full": 2.5215161431400177,
+     "pass_range": null,
+     "loss06_db": 0.9092812964355684,
+     "delay06_rad": 0.06733248352026591,
+     "slope": 4.531558401337106
+    },
+    "gas, slice swells, r 50 um": {
+     "verdict": "edge",
+     "p": 0.034423200588067505,
+     "p_own_neff": 0.19682685255852603,
+     "best": 0.2,
+     "misfit": 4.4165552313870675,
+     "misfit_full": 2.5215161431400177,
+     "pass_range": [
+      0.18,
+      0.2
+     ],
+     "loss06_db": 2.0118114598644916,
+     "delay06_rad": 0.09698016326800186,
+     "slope": 7.049957899345937
+    },
+    "gas, slice swells, r 80 um": {
+     "verdict": "edge",
+     "p": 0.030662619521564023,
+     "p_own_neff": 0.1379632055575782,
+     "best": 0.14,
+     "misfit": 4.5023821367515735,
+     "misfit_full": 2.5215161431400177,
+     "pass_range": [
+      0.12,
+      0.16
+     ],
+     "loss06_db": 2.2624893202693346,
+     "delay06_rad": 0.10687109732926267,
+     "slope": 4.754186800062671
+    },
+    "gas, slice swells, r 120 um": {
+     "verdict": "edge",
+     "p": 0.027061564413979035,
+     "p_own_neff": 0.0676155405002835,
+     "best": 0.1,
+     "misfit": 4.596940715400981,
+     "misfit_full": 2.5215161431400177,
+     "pass_range": [
+      0.1,
+      0.12
+     ],
+     "loss06_db": 2.1123021314663677,
+     "delay06_rad": 0.14024256504972687,
+     "slope": 1.6900114314340764
+    },
+    "gas, displacing tissue, r 15 um": {
+     "verdict": "fail",
+     "p": 0.00034643313352174747,
+     "p_own_neff": 0.0342693824808111,
+     "best": 0.0,
+     "misfit": 9.49205392369412,
+     "misfit_full": 2.5215161431400177,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 30 um": {
+     "verdict": "fail",
+     "p": 0.00034643313352174747,
+     "p_own_neff": 0.0342693824808111,
+     "best": 0.0,
+     "misfit": 9.49205392369412,
+     "misfit_full": 2.5215161431400177,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 50 um": {
+     "verdict": "fail",
+     "p": 0.00034643313352174747,
+     "p_own_neff": 0.0342693824808111,
+     "best": 0.0,
+     "misfit": 9.49205392369412,
+     "misfit_full": 2.5215161431400177,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 80 um": {
+     "verdict": "fail",
+     "p": 0.00034643313352174747,
+     "p_own_neff": 0.0342693824808111,
+     "best": 0.0,
+     "misfit": 9.49205392369412,
+     "misfit_full": 2.5215161431400177,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 120 um": {
+     "verdict": "fail",
+     "p": 0.00034643313352174747,
+     "p_own_neff": 0.0342693824808111,
+     "best": 0.0,
+     "misfit": 9.49205392369412,
+     "misfit_full": 2.5215161431400177,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 15 um": {
+     "verdict": "fail",
+     "p": 0.00034643313352174747,
+     "p_own_neff": 0.0342693824808111,
+     "best": 0.0,
+     "misfit": 9.49205392369412,
+     "misfit_full": 2.5215161431400177,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 30 um": {
+     "verdict": "fail",
+     "p": 0.00034643313352174747,
+     "p_own_neff": 0.0342693824808111,
+     "best": 0.0,
+     "misfit": 9.49205392369412,
+     "misfit_full": 2.5215161431400177,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 50 um": {
+     "verdict": "fail",
+     "p": 0.00034643313352174747,
+     "p_own_neff": 0.0342693824808111,
+     "best": 0.0,
+     "misfit": 9.49205392369412,
+     "misfit_full": 2.5215161431400177,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 80 um": {
+     "verdict": "fail",
+     "p": 0.00034643313352174747,
+     "p_own_neff": 0.0342693824808111,
+     "best": 0.0,
+     "misfit": 9.49205392369412,
+     "misfit_full": 2.5215161431400177,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 120 um": {
+     "verdict": "fail",
+     "p": 0.00034643313352174747,
+     "p_own_neff": 0.0342693824808111,
+     "best": 0.0,
+     "misfit": 9.49205392369412,
+     "misfit_full": 2.5215161431400177,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    }
+   }
+  },
+  "5 min (H3)": {
+   "kappa": 7.4810622275390894,
+   "s": -0.17499943637823762,
+   "misfit": 3.9867793484328966,
+   "n_eff": 19.457388096921264,
+   "p_no_change": 0.00014041037083774765,
+   "inc_slope": 7.481062227539089,
+   "cands": {
+    "gas, slice swells, r 15 um": {
+     "verdict": "edge",
+     "p": 0.0009825752783165366,
+     "p_own_neff": 0.05217892350671443,
+     "best": 0.2,
+     "misfit": 11.158156325894083,
+     "misfit_full": 3.9866317864626866,
+     "pass_range": null,
+     "loss06_db": 0.23699085831308103,
+     "delay06_rad": 0.03714666786233316,
+     "slope": 1.723751461635191
+    },
+    "gas, slice swells, r 30 um": {
+     "verdict": "edge",
+     "p": 0.004458474440747256,
+     "p_own_neff": 0.08301680555775531,
+     "best": 0.2,
+     "misfit": 8.912379403948638,
+     "misfit_full": 3.986779331895645,
+     "pass_range": null,
+     "loss06_db": 0.9092812964355684,
+     "delay06_rad": 0.06733248352026591,
+     "slope": 4.531558401337106
+    },
+    "gas, slice swells, r 50 um": {
+     "verdict": "edge",
+     "p": 0.016604762512382548,
+     "p_own_neff": 0.1006977086840196,
+     "best": 0.2,
+     "misfit": 7.330377206024493,
+     "misfit_full": 3.986779331895645,
+     "pass_range": null,
+     "loss06_db": 2.0118114598644916,
+     "delay06_rad": 0.09698016326800186,
+     "slope": 7.049957899345937
+    },
+    "gas, slice swells, r 80 um": {
+     "verdict": "edge",
+     "p": 0.024767539336921163,
+     "p_own_neff": 0.050019449699469073,
+     "best": 0.2,
+     "misfit": 6.9074684369515005,
+     "misfit_full": 3.986779331895645,
+     "pass_range": [
+      0.2,
+      0.2
+     ],
+     "loss06_db": 3.49463939255717,
+     "delay06_rad": 0.16218060763741715,
+     "slope": 7.286704234339345
+    },
+    "gas, slice swells, r 120 um": {
+     "verdict": "fail",
+     "p": 0.012661878126563613,
+     "p_own_neff": 0.023612037573079576,
+     "best": 0.14,
+     "misfit": 7.631742463846656,
+     "misfit_full": 3.986779331895645,
+     "pass_range": null,
+     "loss06_db": 3.1040992465410437,
+     "delay06_rad": 0.2045054332741989,
+     "slope": 2.4694326575731
+    },
+    "gas, displacing tissue, r 15 um": {
+     "verdict": "fail",
+     "p": 0.00025934561095556513,
+     "p_own_neff": 0.038033455077511664,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 3.986779331895645,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 30 um": {
+     "verdict": "fail",
+     "p": 0.00025934561095556513,
+     "p_own_neff": 0.038033455077511664,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 3.986779331895645,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 50 um": {
+     "verdict": "fail",
+     "p": 0.00025934561095556513,
+     "p_own_neff": 0.038033455077511664,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 3.986779331895645,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 80 um": {
+     "verdict": "fail",
+     "p": 0.00025934561095556513,
+     "p_own_neff": 0.038033455077511664,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 3.986779331895645,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 120 um": {
+     "verdict": "fail",
+     "p": 0.00025934561095556513,
+     "p_own_neff": 0.038033455077511664,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 3.986779331895645,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 15 um": {
+     "verdict": "fail",
+     "p": 0.00025934561095556513,
+     "p_own_neff": 0.038033455077511664,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 3.986779331895645,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 30 um": {
+     "verdict": "fail",
+     "p": 0.00025934561095556513,
+     "p_own_neff": 0.038033455077511664,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 3.986779331895645,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 50 um": {
+     "verdict": "fail",
+     "p": 0.00025934561095556513,
+     "p_own_neff": 0.038033455077511664,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 3.986779331895645,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 80 um": {
+     "verdict": "fail",
+     "p": 0.00025934561095556513,
+     "p_own_neff": 0.038033455077511664,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 3.986779331895645,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 120 um": {
+     "verdict": "fail",
+     "p": 0.00025934561095556513,
+     "p_own_neff": 0.038033455077511664,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 3.986779331895645,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    }
+   }
+  }
+ },
+ "increment held above 4 THz, a + b <= 1": {
+  "30 s (H1)": {
+   "kappa": 0.3402722319844307,
+   "s": -0.01499999795894783,
+   "misfit": 0.8354969325428471,
+   "n_eff": 12.81478169074521,
+   "p_no_change": 0.7107757853515712,
+   "inc_slope": 0.34027223198442885,
+   "cands": {
+    "gas, slice swells, r 15 um": {
+     "verdict": "n/a",
+     "p": 0.7425151289141347,
+     "p_own_neff": 0.7017635885059619,
+     "best": 0.0,
+     "misfit": 0.9117803446993133,
+     "misfit_full": 0.8354969325428471,
+     "pass_range": [
+      0.0,
+      0.2
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, slice swells, r 30 um": {
+     "verdict": "n/a",
+     "p": 0.7425151289141347,
+     "p_own_neff": 0.7017635885059619,
+     "best": 0.0,
+     "misfit": 0.9117803446993133,
+     "misfit_full": 0.8354969325428471,
+     "pass_range": [
+      0.0,
+      0.12
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, slice swells, r 50 um": {
+     "verdict": "n/a",
+     "p": 0.7425151289141347,
+     "p_own_neff": 0.7017635885059619,
+     "best": 0.0,
+     "misfit": 0.9117803446993133,
+     "misfit_full": 0.8354969325428471,
+     "pass_range": [
+      0.0,
+      0.06
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, slice swells, r 80 um": {
+     "verdict": "n/a",
+     "p": 0.7425151289141347,
+     "p_own_neff": 0.7017635885059619,
+     "best": 0.0,
+     "misfit": 0.9117803446993133,
+     "misfit_full": 0.8354969325428471,
+     "pass_range": [
+      0.0,
+      0.04
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, slice swells, r 120 um": {
+     "verdict": "n/a",
+     "p": 0.7425151289141347,
+     "p_own_neff": 0.7017635885059619,
+     "best": 0.0,
+     "misfit": 0.9117803446993133,
+     "misfit_full": 0.8354969325428471,
+     "pass_range": [
+      0.0,
+      0.02
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 15 um": {
+     "verdict": "n/a",
+     "p": 0.7425151289141347,
+     "p_own_neff": 0.7017635885059619,
+     "best": 0.0,
+     "misfit": 0.9117803446993133,
+     "misfit_full": 0.8354969325428471,
+     "pass_range": [
+      0.0,
+      0.02
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 30 um": {
+     "verdict": "n/a",
+     "p": 0.7425151289141347,
+     "p_own_neff": 0.7017635885059619,
+     "best": 0.0,
+     "misfit": 0.9117803446993133,
+     "misfit_full": 0.8354969325428471,
+     "pass_range": [
+      0.0,
+      0.02
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 50 um": {
+     "verdict": "n/a",
+     "p": 0.7425151289141347,
+     "p_own_neff": 0.7017635885059619,
+     "best": 0.0,
+     "misfit": 0.9117803446993133,
+     "misfit_full": 0.8354969325428471,
+     "pass_range": [
+      0.0,
+      0.04
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 80 um": {
+     "verdict": "n/a",
+     "p": 0.7425151289141347,
+     "p_own_neff": 0.7017635885059619,
+     "best": 0.0,
+     "misfit": 0.9117803446993133,
+     "misfit_full": 0.8354969325428471,
+     "pass_range": [
+      0.0,
+      0.04
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 120 um": {
+     "verdict": "n/a",
+     "p": 0.7425151289141347,
+     "p_own_neff": 0.7017635885059619,
+     "best": 0.0,
+     "misfit": 0.9117803446993133,
+     "misfit_full": 0.8354969325428471,
+     "pass_range": [
+      0.0,
+      0.06
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 15 um": {
+     "verdict": "n/a",
+     "p": 0.7425151289141347,
+     "p_own_neff": 0.7017635885059619,
+     "best": 0.0,
+     "misfit": 0.9117803446993133,
+     "misfit_full": 0.8354969325428471,
+     "pass_range": [
+      0.0,
+      0.06
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 30 um": {
+     "verdict": "n/a",
+     "p": 0.7425151289141347,
+     "p_own_neff": 0.7017635885059619,
+     "best": 0.0,
+     "misfit": 0.9117803446993133,
+     "misfit_full": 0.8354969325428471,
+     "pass_range": [
+      0.0,
+      0.06
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 50 um": {
+     "verdict": "n/a",
+     "p": 0.7425151289141347,
+     "p_own_neff": 0.7017635885059619,
+     "best": 0.0,
+     "misfit": 0.9117803446993133,
+     "misfit_full": 0.8354969325428471,
+     "pass_range": [
+      0.0,
+      0.06
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 80 um": {
+     "verdict": "n/a",
+     "p": 0.7425151289141347,
+     "p_own_neff": 0.7017635885059619,
+     "best": 0.0,
+     "misfit": 0.9117803446993133,
+     "misfit_full": 0.8354969325428471,
+     "pass_range": [
+      0.0,
+      0.06
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 120 um": {
+     "verdict": "n/a",
+     "p": 0.7425151289141347,
+     "p_own_neff": 0.7017635885059619,
+     "best": 0.0,
+     "misfit": 0.9117803446993133,
+     "misfit_full": 0.8354969325428471,
+     "pass_range": [
+      0.0,
+      0.04
+     ],
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    }
+   }
+  },
+  "2 min (H2)": {
+   "kappa": 2.1303836188882856,
+   "s": -0.025374422810120943,
+   "misfit": 1.5698486044519642,
+   "n_eff": 14.425661282789287,
+   "p_no_change": 0.0015509926237731037,
+   "inc_slope": 2.130383618888288,
+   "cands": {
+    "gas, slice swells, r 15 um": {
+     "verdict": "edge",
+     "p": 0.018866453140135353,
+     "p_own_neff": 0.08252110923405864,
+     "best": 0.2,
+     "misfit": 3.851848843360527,
+     "misfit_full": 1.5009619172063446,
+     "pass_range": null,
+     "loss06_db": 0.23699085831308103,
+     "delay06_rad": 0.03714666786233316,
+     "slope": 1.723751461635191
+    },
+    "gas, slice swells, r 30 um": {
+     "verdict": "pass",
+     "p": 0.13747695666145587,
+     "p_own_neff": 0.24086995031029995,
+     "best": 0.2,
+     "misfit": 2.5100394045266445,
+     "misfit_full": 1.5671915925252669,
+     "pass_range": [
+      0.12,
+      0.2
+     ],
+     "loss06_db": 0.9092812964355684,
+     "delay06_rad": 0.06733248352026591,
+     "slope": 4.531558401337106
+    },
+    "gas, slice swells, r 50 um": {
+     "verdict": "pass",
+     "p": 0.09825612564837687,
+     "p_own_neff": 0.14638155169157827,
+     "best": 0.14,
+     "misfit": 2.722961231298707,
+     "misfit_full": 1.5698486044519633,
+     "pass_range": [
+      0.08,
+      0.2
+     ],
+     "loss06_db": 1.2931724343376672,
+     "delay06_rad": 0.06454468854384897,
+     "slope": 4.597695458215803
+    },
+    "gas, slice swells, r 80 um": {
+     "verdict": "pass",
+     "p": 0.10891525642948788,
+     "p_own_neff": 0.17477891615909588,
+     "best": 0.1,
+     "misfit": 2.657199190551176,
+     "misfit_full": 1.5698486044519633,
+     "pass_range": [
+      0.06,
+      0.14
+     ],
+     "loss06_db": 1.5364619868630005,
+     "delay06_rad": 0.07351811402911555,
+     "slope": 3.249637814088273
+    },
+    "gas, slice swells, r 120 um": {
+     "verdict": "pass",
+     "p": 0.14342339809355362,
+     "p_own_neff": 0.2288023162464969,
+     "best": 0.08,
+     "misfit": 2.4891493668259317,
+     "misfit_full": 1.5698486044519633,
+     "pass_range": [
+      0.04,
+      0.1
+     ],
+     "loss06_db": 1.649959409426346,
+     "delay06_rad": 0.11000415614066412,
+     "slope": 1.3243177505925614
+    },
+    "gas, displacing tissue, r 15 um": {
+     "verdict": "fail",
+     "p": 0.002043071760230333,
+     "p_own_neff": 0.015637508197567103,
+     "best": 0.0,
+     "misfit": 6.194026116694968,
+     "misfit_full": 1.424015793086851,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 30 um": {
+     "verdict": "fail",
+     "p": 0.0022748704689309674,
+     "p_own_neff": 0.016807498809124816,
+     "best": 0.0,
+     "misfit": 6.194026116694968,
+     "misfit_full": 1.4608095270908754,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 50 um": {
+     "verdict": "fail",
+     "p": 0.0026270125449543587,
+     "p_own_neff": 0.018512635999215484,
+     "best": 0.0,
+     "misfit": 6.194026116694968,
+     "misfit_full": 1.5115778616271327,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 80 um": {
+     "verdict": "fail",
+     "p": 0.002972338035048478,
+     "p_own_neff": 0.02011308307561564,
+     "best": 0.0,
+     "misfit": 6.194026116694968,
+     "misfit_full": 1.5565465648837469,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 120 um": {
+     "verdict": "fail",
+     "p": 0.003080827362741185,
+     "p_own_neff": 0.020603050853424246,
+     "best": 0.0,
+     "misfit": 6.194026116694968,
+     "misfit_full": 1.5698486044519633,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 15 um": {
+     "verdict": "fail",
+     "p": 0.0019464898426284516,
+     "p_own_neff": 0.015137262857709466,
+     "best": 0.0,
+     "misfit": 6.194026116694968,
+     "misfit_full": 1.4077403589921347,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 30 um": {
+     "verdict": "fail",
+     "p": 0.001962518657411855,
+     "p_own_neff": 0.015220838882378669,
+     "best": 0.0,
+     "misfit": 6.194026116694968,
+     "misfit_full": 1.4104834396014427,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 50 um": {
+     "verdict": "fail",
+     "p": 0.0020137085339680446,
+     "p_own_neff": 0.015486260215322496,
+     "best": 0.0,
+     "misfit": 6.194026116694968,
+     "misfit_full": 1.4191309039863294,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 80 um": {
+     "verdict": "fail",
+     "p": 0.002330175010631246,
+     "p_own_neff": 0.017080747698326158,
+     "best": 0.0,
+     "misfit": 6.194026116694968,
+     "misfit_full": 1.4691624031506523,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 120 um": {
+     "verdict": "fail",
+     "p": 0.0027460608802260945,
+     "p_own_neff": 0.019071773063341048,
+     "best": 0.0,
+     "misfit": 6.194026116694968,
+     "misfit_full": 1.5275640381743887,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    }
+   }
+  },
+  "4 min (H1)": {
+   "kappa": 2.8652634049968104,
+   "s": -0.03676032980175631,
+   "misfit": 2.9857584711530403,
+   "n_eff": 18.063268339977334,
+   "p_no_change": 0.0005237500510438305,
+   "inc_slope": 2.8652634049968095,
+   "cands": {
+    "gas, slice swells, r 15 um": {
+     "verdict": "edge",
+     "p": 0.005569240034146046,
+     "p_own_neff": 0.11006915301250733,
+     "best": 0.2,
+     "misfit": 7.011604251388727,
+     "misfit_full": 2.9654264668949395,
+     "pass_range": null,
+     "loss06_db": 0.23699085831308103,
+     "delay06_rad": 0.03714666786233316,
+     "slope": 1.723751461635191
+    },
+    "gas, slice swells, r 30 um": {
+     "verdict": "edge",
+     "p": 0.03441026530205227,
+     "p_own_neff": 0.2095726590082752,
+     "best": 0.2,
+     "misfit": 5.219884520773968,
+     "misfit_full": 2.9857584711512675,
+     "pass_range": [
+      0.18,
+      0.2
+     ],
+     "loss06_db": 0.9092812964355684,
+     "delay06_rad": 0.06733248352026591,
+     "slope": 4.531558401337106
+    },
+    "gas, slice swells, r 50 um": {
+     "verdict": "edge",
+     "p": 0.037111631373657285,
+     "p_own_neff": 0.1407060057335384,
+     "best": 0.16,
+     "misfit": 5.154888169620178,
+     "misfit_full": 2.9857584711512675,
+     "pass_range": [
+      0.14,
+      0.2
+     ],
+     "loss06_db": 1.5201531395595373,
+     "delay06_rad": 0.07499069723781869,
+     "slope": 5.376782321284444
+    },
+    "gas, slice swells, r 80 um": {
+     "verdict": "edge",
+     "p": 0.03491554749146987,
+     "p_own_neff": 0.10751976984313419,
+     "best": 0.12,
+     "misfit": 5.207284307051884,
+     "misfit_full": 2.9857584711512675,
+     "pass_range": [
+      0.1,
+      0.14
+     ],
+     "loss06_db": 1.8906546752364286,
+     "delay06_rad": 0.0898793975728544,
+     "slope": 3.9852559313582794
+    },
+    "gas, slice swells, r 120 um": {
+     "verdict": "edge",
+     "p": 0.04125923159753605,
+     "p_own_neff": 0.09832403599066625,
+     "best": 0.1,
+     "misfit": 5.065134151822767,
+     "misfit_full": 2.9857584711512675,
+     "pass_range": [
+      0.08,
+      0.1
+     ],
+     "loss06_db": 2.1123021314663677,
+     "delay06_rad": 0.14024256504972687,
+     "slope": 1.6900114314340764
+    },
+    "gas, displacing tissue, r 15 um": {
+     "verdict": "fail",
+     "p": 0.000529916039666849,
+     "p_own_neff": 0.04148210137199515,
+     "best": 0.0,
+     "misfit": 9.492053923694122,
+     "misfit_full": 2.7180543591860022,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 30 um": {
+     "verdict": "fail",
+     "p": 0.0006806193386457416,
+     "p_own_neff": 0.04610232557392442,
+     "best": 0.0,
+     "misfit": 9.492053923694122,
+     "misfit_full": 2.8332136605190206,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 50 um": {
+     "verdict": "edge",
+     "p": 0.0008806329432201202,
+     "p_own_neff": 0.05139635306362033,
+     "best": 0.0,
+     "misfit": 9.492053923694122,
+     "misfit_full": 2.956854551385417,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 80 um": {
+     "verdict": "edge",
+     "p": 0.0009338493914222988,
+     "p_own_neff": 0.05268460910526454,
+     "best": 0.0,
+     "misfit": 9.492053923694122,
+     "misfit_full": 2.9857584711512675,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 120 um": {
+     "verdict": "edge",
+     "p": 0.0009338493914222988,
+     "p_own_neff": 0.05268460910526454,
+     "best": 0.0,
+     "misfit": 9.492053923694122,
+     "misfit_full": 2.9857584711512675,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 15 um": {
+     "verdict": "fail",
+     "p": 0.0004807213778519883,
+     "p_own_neff": 0.039811410648447565,
+     "best": 0.0,
+     "misfit": 9.492053923694122,
+     "misfit_full": 2.6745015482311523,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 30 um": {
+     "verdict": "fail",
+     "p": 0.0004925832110590762,
+     "p_own_neff": 0.040222970180838945,
+     "best": 0.0,
+     "misfit": 9.492053923694122,
+     "misfit_full": 2.6853318423489303,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 50 um": {
+     "verdict": "fail",
+     "p": 0.0005197981189192402,
+     "p_own_neff": 0.04114605847994339,
+     "best": 0.0,
+     "misfit": 9.492053923694122,
+     "misfit_full": 2.709380887674181,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 80 um": {
+     "verdict": "fail",
+     "p": 0.0006928049161866846,
+     "p_own_neff": 0.04644879731884391,
+     "best": 0.0,
+     "misfit": 9.492053923694122,
+     "misfit_full": 2.841561347242299,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 120 um": {
+     "verdict": "edge",
+     "p": 0.0009338493914222988,
+     "p_own_neff": 0.05268460910526454,
+     "best": 0.0,
+     "misfit": 9.492053923694122,
+     "misfit_full": 2.9857584711512675,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    }
+   }
+  },
+  "5 min (H3)": {
+   "kappa": 5.130496661795811,
+   "s": -0.09637304051811457,
+   "misfit": 4.685527002991256,
+   "n_eff": 19.28735809777228,
+   "p_no_change": 0.0004940143437680296,
+   "inc_slope": 5.130496661795807,
+   "cands": {
+    "gas, slice swells, r 15 um": {
+     "verdict": "edge",
+     "p": 0.002906584372437713,
+     "p_own_neff": 0.08026076960638455,
+     "best": 0.2,
+     "misfit": 11.158156325894169,
+     "misfit_full": 4.632157840128987,
+     "pass_range": null,
+     "loss06_db": 0.23699085831308103,
+     "delay06_rad": 0.03714666786233316,
+     "slope": 1.723751461635191
+    },
+    "gas, slice swells, r 30 um": {
+     "verdict": "edge",
+     "p": 0.01395888762189574,
+     "p_own_neff": 0.136817990323523,
+     "best": 0.2,
+     "misfit": 8.912379403948638,
+     "misfit_full": 4.685527002987163,
+     "pass_range": null,
+     "loss06_db": 0.9092812964355684,
+     "delay06_rad": 0.06733248352026591,
+     "slope": 4.531558401337106
+    },
+    "gas, slice swells, r 50 um": {
+     "verdict": "edge",
+     "p": 0.04879875859244353,
+     "p_own_neff": 0.17161752096285435,
+     "best": 0.2,
+     "misfit": 7.382064904867288,
+     "misfit_full": 4.685527002987163,
+     "pass_range": [
+      0.16,
+      0.2
+     ],
+     "loss06_db": 2.0118114598644916,
+     "delay06_rad": 0.09698016326800186,
+     "slope": 7.049957899345937
+    },
+    "gas, slice swells, r 80 um": {
+     "verdict": "edge",
+     "p": 0.042526896627463937,
+     "p_own_neff": 0.11215900815507004,
+     "best": 0.16,
+     "misfit": 7.536516078658103,
+     "misfit_full": 4.685527002987163,
+     "pass_range": [
+      0.12,
+      0.2
+     ],
+     "loss06_db": 2.652985730298449,
+     "delay06_rad": 0.12454312844125431,
+     "slope": 5.558917643804871
+    },
+    "gas, slice swells, r 120 um": {
+     "verdict": "edge",
+     "p": 0.0322339296536614,
+     "p_own_neff": 0.07717231117208671,
+     "best": 0.12,
+     "misfit": 7.8575229630603545,
+     "misfit_full": 4.685527002987163,
+     "pass_range": [
+      0.1,
+      0.14
+     ],
+     "loss06_db": 2.5966190436018177,
+     "delay06_rad": 0.17171164403637684,
+     "slope": 2.0713130480151647
+    },
+    "gas, displacing tissue, r 15 um": {
+     "verdict": "fail",
+     "p": 0.00041217174217020335,
+     "p_own_neff": 0.043921402642570384,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 4.208105033638538,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 30 um": {
+     "verdict": "fail",
+     "p": 0.0005068887897989199,
+     "p_own_neff": 0.04771984591163564,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 4.34118573422344,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 50 um": {
+     "verdict": "edge",
+     "p": 0.0006735063897243145,
+     "p_own_neff": 0.05348019562399468,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 4.530924059727509,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 80 um": {
+     "verdict": "edge",
+     "p": 0.0008416880565673069,
+     "p_own_neff": 0.05848072135964381,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 4.685527002987163,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "gas, displacing tissue, r 120 um": {
+     "verdict": "edge",
+     "p": 0.0008416880565673069,
+     "p_own_neff": 0.05848072135964381,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 4.685527002987163,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 15 um": {
+     "verdict": "fail",
+     "p": 0.00038770559953879135,
+     "p_own_neff": 0.042856766702843434,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 4.169522836593012,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 30 um": {
+     "verdict": "fail",
+     "p": 0.00039451681632394104,
+     "p_own_neff": 0.04315710240873403,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 4.180466997676065,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 50 um": {
+     "verdict": "fail",
+     "p": 0.0004130092007128659,
+     "p_own_neff": 0.043957165486751444,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 4.209390878410533,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 80 um": {
+     "verdict": "fail",
+     "p": 0.0005320212589127013,
+     "p_own_neff": 0.04865487752343901,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 4.3729218890212085,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    },
+    "lipid-like fragments, r 120 um": {
+     "verdict": "edge",
+     "p": 0.0007733403962502355,
+     "p_own_neff": 0.05652805954053776,
+     "best": 0.0,
+     "misfit": 13.601338552885398,
+     "misfit_full": 4.6261774295264075,
+     "pass_range": null,
+     "loss06_db": -0.0,
+     "delay06_rad": -0.0,
+     "slope": 0.0
+    }
+   }
+  }
+ },
+ "summary": {
+  "gas, displacing tissue, r 120 um": {
+   "pass": 0,
+   "edge": 6,
+   "fail": 12,
+   "n/a": 0
+  },
+  "gas, displacing tissue, r 15 um": {
+   "pass": 0,
+   "edge": 0,
+   "fail": 18,
+   "n/a": 0
+  },
+  "gas, displacing tissue, r 30 um": {
+   "pass": 0,
+   "edge": 0,
+   "fail": 18,
+   "n/a": 0
+  },
+  "gas, displacing tissue, r 50 um": {
+   "pass": 0,
+   "edge": 5,
+   "fail": 13,
+   "n/a": 0
+  },
+  "gas, displacing tissue, r 80 um": {
+   "pass": 0,
+   "edge": 6,
+   "fail": 12,
+   "n/a": 0
+  },
+  "gas, slice swells, r 120 um": {
+   "pass": 6,
+   "edge": 9,
+   "fail": 3,
+   "n/a": 0
+  },
+  "gas, slice swells, r 15 um": {
+   "pass": 0,
+   "edge": 17,
+   "fail": 1,
+   "n/a": 0
+  },
+  "gas, slice swells, r 30 um": {
+   "pass": 6,
+   "edge": 12,
+   "fail": 0,
+   "n/a": 0
+  },
+  "gas, slice swells, r 50 um": {
+   "pass": 6,
+   "edge": 12,
+   "fail": 0,
+   "n/a": 0
+  },
+  "gas, slice swells, r 80 um": {
+   "pass": 6,
+   "edge": 10,
+   "fail": 2,
+   "n/a": 0
+  },
+  "lipid-like fragments, r 120 um": {
+   "pass": 0,
+   "edge": 6,
+   "fail": 12,
+   "n/a": 0
+  },
+  "lipid-like fragments, r 15 um": {
+   "pass": 0,
+   "edge": 0,
+   "fail": 18,
+   "n/a": 0
+  },
+  "lipid-like fragments, r 30 um": {
+   "pass": 0,
+   "edge": 0,
+   "fail": 18,
+   "n/a": 0
+  },
+  "lipid-like fragments, r 50 um": {
+   "pass": 0,
+   "edge": 0,
+   "fail": 18,
+   "n/a": 0
+  },
+  "lipid-like fragments, r 80 um": {
+   "pass": 0,
+   "edge": 0,
+   "fail": 18,
+   "n/a": 0
+  }
+ }
+}
