@@ -107,3 +107,54 @@ def test_supply_test_passes_true_cause_and_fails_none():
     flat = supply_test(tp, fit, y, B, lambda v: np.full(len(tp.fr), np.exp(-v)), np.linspace(0, 0.6, 7),
                        q0, pr, s_ref, ne)
     assert flat["verdict"] == "fail"
+
+
+def test_null_calibrated_test_accepts_null_and_rejects_change():
+    from thznerve.waveform_fit import null_calibrated_test
+    tt = np.arange(0, 6, 0.01)
+    B, K = _pulse(tt, 3.0), _pulse(tt, 2.5)
+    tp = TwoPulse(tt, K, f_loss=2.0)
+    fit = lambda y, x, **kw: tp.fit(y, x, a_max=1.0, **kw)
+    model = lambda q, x, s: tp.model(q, x, s=s)
+    rng = np.random.default_rng(1)
+    noise = np.convolve(rng.normal(size=len(tt)), np.ones(5) / 5, "same") * 0.01
+    y0 = 0.8 * B + 0.1 * tp.shift(K, -0.02) + noise                       # no change of the tissue pulse
+    d0 = null_calibrated_test(fit, y0, B, [B], 0.0, 2, nb=40, rng=rng, model=model)
+    assert d0["p_cal"] > 0.05
+    lossy = tp.apply_transfer(B, tp.loss_transfer(8.0, "minphase"))
+    y1 = 0.8 * lossy + 0.1 * tp.shift(K, -0.02) + noise                    # a causal loss and its delay
+    d1 = null_calibrated_test(fit, y1, B, [B], 0.0, 2, nb=40, rng=rng, model=model)
+    assert d1["p_cal"] < 0.05 and d1["p_nominal"] < d0["p_nominal"]
+
+
+def test_multistart_never_worse_than_one_start():
+    from thznerve.waveform_fit import multistart
+    tt = np.arange(0, 6, 0.01)
+    B, K = _pulse(tt, 3.0), _pulse(tt, 2.5)
+    tp = TwoPulse(tt, K, f_loss=2.0)
+    one = lambda y, x, **kw: tp.fit(y, x, a_max=1.0, **kw)
+    fit = multistart(one)
+    y = 0.8 * tp.apply_transfer(B, tp.loss_transfer(6.0, "minphase")) + 0.1 * tp.shift(K, -0.02)
+    for kw in (dict(s=0.0), dict(), dict(loss="minphase")):
+        assert fit(y, B, **kw)[1] <= one(y, B, **kw)[1] + 1e-12
+    q, m, _ = fit(y, B, loss="minphase")
+    assert len(q) == 5 and m < 1e-3
+
+
+def test_null_calibrated_test_stops_early_when_clear():
+    from thznerve.waveform_fit import null_calibrated_test
+    tt = np.arange(0, 6, 0.01)
+    B, K = _pulse(tt, 3.0), _pulse(tt, 2.5)
+    tp = TwoPulse(tt, K, f_loss=2.0)
+    fit = lambda y, x, **kw: tp.fit(y, x, a_max=1.0, **kw)
+    model = lambda q, x, s: tp.model(q, x, s=s)
+    rng = np.random.default_rng(2)
+    noise = np.convolve(rng.normal(size=len(tt)), np.ones(5) / 5, "same") * 0.01
+    y1 = 0.8 * tp.apply_transfer(B, tp.loss_transfer(8.0, "minphase")) + 0.1 * tp.shift(K, -0.02) + noise
+    d = null_calibrated_test(fit, y1, B, [B], 0.0, 2, nb=200, rng=rng, model=model, batch=20)
+    assert d["nb"] < 200 and d["p_cal"] < 0.05
+
+
+def test_f_test_without_dof_has_no_power():
+    from thznerve.waveform_fit import f_test
+    assert f_test(2.0, 1.0, 5.0, 6, 1)[1] == 1.0 and f_test(2.0, 1.0, 50.0, 6, 1)[1] < 0.01

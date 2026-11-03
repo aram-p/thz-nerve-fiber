@@ -113,8 +113,10 @@ def n_eff(res):
 
 def f_test(misfit, misfit_free, ne, n_par=4, n_fixed=1):
     """F statistic and p of a nested fit with n_fixed parameters fewer against the free fit with n_par
-    parameters (F(n_fixed, N_eff - n_par))."""
+    parameters (F(n_fixed, N_eff - n_par)). With N_eff <= n_par the test has no power: p = 1."""
     dof = ne - n_par
+    if dof <= 0:
+        return float("nan"), 1.0
     F = (misfit - misfit_free) / n_fixed / (misfit_free / dof)
     return F, float(fdist.sf(max(F, 0.0), n_fixed, dof))
 
@@ -171,3 +173,70 @@ def supply_test(tp, fit, y, xf, tr, grid, q0, pr, s_ref, ne, p_pass=0.05, n_size
     rng = [float(v) for v in ok] if n_size == 1 else ok
     return dict(verdict=verdict, p=p1, p_own_neff=p2, best=grid[ib] if n_size > 1 else float(grid[ib]), misfit=float(S_c[ib]),
                 misfit_full=float(S_full), pass_range=([min(rng), max(rng)] if rng else None) if n_size == 1 else rng)
+
+
+def block_resample(rng, res, blk):
+    """Circular block bootstrap of a residual: blocks of blk samples at random starts, cut to len(res)."""
+    n = len(res)
+    starts = rng.integers(0, n, size=n // max(blk, 1) + 1)
+    return np.concatenate([np.take(res, np.arange(s0, s0 + blk), mode="wrap") for s0 in starts])[:n]
+
+
+def null_calibrated_test(fit, y, x_null, x_alts, s_null, n_fixed, n_par=6, nb=100, rng=None, blk=None,
+                         model=None, batch=None, level=0.05):
+    """A nested F test calibrated on its own null by a block bootstrap.
+
+    Null: fit(y, x_null, s=s_null) with no loss term (s_null 0.0 fixes the shift, None leaves it free).
+    Alternative: the best of fit(y, x, loss='minphase') over x in x_alts (s free). The statistic is
+    f_test(null misfit, alternative misfit, N_eff of the best alternative's residual, n_par, n_fixed), computed
+    the same way on the data and on nb synthetic scans: the null model plus the best alternative's residual
+    resampled in circular blocks of blk samples (default: its correlation length). model(params, x, s) gives
+    the null model. Returns dict(p_nominal, p_cal, thr, rej_nominal, nb): p_cal = (1 + #{p_b <= p}) / (1 + nb).
+    With batch set, draws come in batches of that size and stop early once the 99 % Clopper-Pearson interval
+    of #{p_b <= p} / n lies wholly above or below level; nb is then the number of draws made.
+    """
+    rng = rng if rng is not None else np.random.default_rng(0)
+
+    def stat(yy, p0n=None, p0a=None):
+        qn, mn, _ = fit(yy, x_null, s=s_null, p0=p0n) if p0n is not None else fit(yy, x_null, s=s_null)
+        alts = [fit(yy, x, loss="minphase", p0=p0a) if p0a is not None else fit(yy, x, loss="minphase") for x in x_alts]
+        qa, ma, ra = min(alts, key=lambda t: t[1])
+        ne, corr = n_eff(ra)
+        return f_test(mn, ma, ne, n_par, n_fixed)[1], qn, qa, ra, corr, ne
+
+    p_obs, qn, qa, ra, corr, ne_obs = stat(y)
+    base = model(qn, x_null, s_null)
+    blk = blk or max(corr, 2)
+    from scipy.stats import beta
+    pb, neb = [], []
+    while len(pb) < nb:
+        for _ in range(min(batch or nb, nb - len(pb))):
+            st = stat(base + block_resample(rng, ra, blk), qn, qa)
+            pb.append(st[0]); neb.append(st[5])
+        k, n = int(np.sum(np.array(pb) <= p_obs)), len(pb)
+        lo = beta.ppf(0.005, k, n - k + 1) if k > 0 else 0.0
+        hi = beta.ppf(0.995, k + 1, n - k) if k < n else 1.0
+        if batch and (hi < level or lo > level):
+            break
+    pb = np.array(pb)
+    return dict(p_nominal=float(p_obs), p_cal=float((1 + np.sum(pb <= p_obs)) / (1 + len(pb))),
+                thr=float(np.quantile(pb, 0.05)), rej_nominal=float(np.mean(pb < 0.05)), nb=len(pb),
+                n_nan=int(np.sum(~np.isfinite(pb))), ne_obs=float(ne_obs), ne_draws=[float(np.min(neb)), float(np.median(neb))])
+
+
+def multistart(one):
+    """Wrap a fit(y, x, s=, loss=, p0=) so each call returns the best of several starts: the default, the
+    given p0, and the nested model's solution (for a loss fit, the no-loss fit plus kappa = 1; for a no-loss
+    fit, the loss fit without kappa, with s folded into tau when s is fixed)."""
+    def fit(y, x, s=None, loss=None, p0=None):
+        tries = [one(y, x, s=s, loss=loss)]
+        if p0 is not None:
+            tries.append(one(y, x, s=s, loss=loss, p0=p0))
+        if loss:
+            q, _, _ = one(y, x)
+            tries.append(one(y, x, loss=loss, p0=list(q) + [1.0]))
+        else:
+            q, _, _ = one(y, x, loss="minphase")
+            tries.append(one(y, x, s=s, p0=list(q[:4]) if s is None else [q[0], q[1], q[2] + q[3]]))
+        return min(tries, key=lambda t: t[1])
+    return fit

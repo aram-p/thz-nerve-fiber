@@ -1,0 +1,1801 @@
+{
+ "cases": {
+  "floor 1, a <= 1 | 2 min (H2) | thicker path (fraction) | alone": {
+   "size": 0.06,
+   "p_nominal": 0.027121286897088398,
+   "p_cal": 0.039603960396039604,
+   "thr": NaN,
+   "rej_nominal": 0.05
+  },
+  "floor 1, a <= 1 | 2 min (H2) | node joint:joint_-2.7 | drift": {
+   "size": 2.5,
+   "p_nominal": 0.10161823054295437,
+   "p_cal": 0.09900990099009901,
+   "thr": 0.07351966394250604,
+   "rej_nominal": 0.04
+  },
+  "floor 1, a <= 1 | 2 min (H2) | thicker path (fraction) | drift": {
+   "size": 0.18,
+   "p_nominal": 0.0972519052695481,
+   "p_cal": 0.09900990099009901,
+   "thr": 0.0847325749181595,
+   "rej_nominal": 0.04
+  },
+  "floor 1, a <= 1 | 2 min (H2) | node joint:joint_-2.7 | alone": {
+   "size": 2.5,
+   "p_nominal": 0.2379130994383859,
+   "p_cal": 0.19801980198019803,
+   "thr": 0.03681797611949698,
+   "rej_nominal": 0.08
+  },
+  "floor 1, a <= 1 | 2 min (H2) | gas, slice swells, r 30 um | drift": {
+   "size": 0.24,
+   "p_nominal": 0.17517211746296887,
+   "p_cal": 0.1188118811881188,
+   "thr": 0.09076239410893758,
+   "rej_nominal": 0.04
+  },
+  "floor 1, a <= 1 | 2 min (H2) | gas, slice swells, r 50 um | drift": {
+   "size": 0.16,
+   "p_nominal": 0.1028996309605444,
+   "p_cal": 0.06930693069306931,
+   "thr": 0.07537671213044839,
+   "rej_nominal": 0.05
+  },
+  "floor 1, a <= 1 | 2 min (H2) | ions: all tissue water (S/m) | alone": {
+   "size": 20.0,
+   "p_nominal": 0.008288238144368274,
+   "p_cal": 0.0297029702970297,
+   "thr": 0.0373025413723278,
+   "rej_nominal": 0.08
+  },
+  "floor 1, a <= 1 | 2 min (H2) | axoplasm conductivity (S/m) | alone": {
+   "size": 50.0,
+   "p_nominal": 0.008199634452006253,
+   "p_cal": 0.0297029702970297,
+   "thr": 0.03706371741065481,
+   "rej_nominal": 0.08
+  },
+  "floor 1, a <= 1 | 2 min (H2) | heating, Liebe x2.31 (dT, K) | alone": {
+   "size": 4.0,
+   "p_nominal": 0.005808710043960825,
+   "p_cal": 0.0297029702970297,
+   "thr": 0.031681055078145004,
+   "rej_nominal": 0.06
+  },
+  "floor 1, a <= 1 | 4 min (H1) | thicker path (fraction) | alone": {
+   "size": 0.08,
+   "p_nominal": 0.009206394891948183,
+   "p_cal": 0.039603960396039604,
+   "thr": 0.05638736686886075,
+   "rej_nominal": 0.05
+  },
+  "floor 1, a <= 1 | 4 min (H1) | node joint:joint_-2.7 | alone": {
+   "size": 3.0,
+   "p_nominal": 0.04596695124764461,
+   "p_cal": 0.039603960396039604,
+   "thr": 0.08652668312281872,
+   "rej_nominal": 0.03
+  },
+  "floor 1, a <= 1 | 4 min (H1) | thicker path (fraction) | drift": {
+   "size": 0.22,
+   "p_nominal": 0.07525485184262601,
+   "p_cal": 0.21782178217821782,
+   "thr": 0.005219030215013877,
+   "rej_nominal": 0.17
+  },
+  "floor 1, a <= 1 | 4 min (H1) | node joint:joint_-2.7 | drift": {
+   "size": 3.5,
+   "p_nominal": 0.015178559220422112,
+   "p_cal": 0.0297029702970297,
+   "thr": 0.05950149129991789,
+   "rej_nominal": 0.05
+  },
+  "floor 1, a <= 1 | 4 min (H1) | gas, slice swells, r 30 um | drift": {
+   "size": 0.28,
+   "p_nominal": 0.032001120645141885,
+   "p_cal": 0.04950495049504951,
+   "thr": 0.04317116459513519,
+   "rej_nominal": 0.06
+  },
+  "floor 1, a <= 1 | 4 min (H1) | gas, slice swells, r 50 um | drift": {
+   "size": 0.16,
+   "p_nominal": 0.017192590942803773,
+   "p_cal": 0.0297029702970297,
+   "thr": 0.04505034196783583,
+   "rej_nominal": 0.06
+  },
+  "floor 1, a <= 1 | 4 min (H1) | heating, Liebe x2.31 (dT, K) | drift": {
+   "size": 0.0,
+   "p_nominal": 0.0013198255804165344,
+   "p_cal": 0.009900990099009901,
+   "thr": 0.07328219272052858,
+   "rej_nominal": 0.04
+  },
+  "floor 1, a <= 1 | 5 min (H3) | thicker path (fraction) | alone": {
+   "size": 0.1,
+   "p_nominal": 0.003618176872514928,
+   "p_cal": 0.009900990099009901,
+   "thr": 0.035009604403229456,
+   "rej_nominal": 0.07
+  },
+  "floor 1, a <= 1 | 5 min (H3) | node joint:joint_-2.7 | alone": {
+   "size": 4.5,
+   "p_nominal": 0.032491503494621606,
+   "p_cal": 0.06930693069306931,
+   "thr": 0.018373285521839804,
+   "rej_nominal": 0.07
+  },
+  "floor 1, a <= 1 | 5 min (H3) | thicker path (fraction) | drift": {
+   "size": 0.3,
+   "p_nominal": 0.02995414506496517,
+   "p_cal": 0.12871287128712872,
+   "thr": 0.002176993002230066,
+   "rej_nominal": 0.17
+  },
+  "floor 1, a <= 1 | 5 min (H3) | node joint:joint_-2.7 | drift": {
+   "size": 5.0,
+   "p_nominal": 0.011460311099901902,
+   "p_cal": 0.039603960396039604,
+   "thr": 0.043145248119876696,
+   "rej_nominal": 0.06
+  },
+  "floor 1, a <= 1 | 5 min (H3) | gas, slice swells, r 30 um | drift": {
+   "size": 0.4,
+   "p_nominal": 0.03737291711859036,
+   "p_cal": 0.0891089108910891,
+   "thr": 0.01708128806294788,
+   "rej_nominal": 0.1
+  },
+  "floor 1, a <= 1 | 5 min (H3) | gas, slice swells, r 50 um | drift": {
+   "size": 0.28,
+   "p_nominal": 0.01733656763636801,
+   "p_cal": 0.0594059405940594,
+   "thr": 0.028862585667266506,
+   "rej_nominal": 0.09
+  },
+  "floor 1, a <= 1 | 5 min (H3) | ions: all tissue water (S/m) | drift": {
+   "size": 30.0,
+   "p_nominal": 0.003219294556647483,
+   "p_cal": 0.0594059405940594,
+   "thr": 0.009410391959939816,
+   "rej_nominal": 0.11
+  },
+  "floor 1, a <= 1 | 5 min (H3) | axoplasm conductivity (S/m) | drift": {
+   "size": 100.0,
+   "p_nominal": 0.0034625781821298277,
+   "p_cal": 0.07920792079207921,
+   "thr": 0.0020300996288298095,
+   "rej_nominal": 0.14
+  },
+  "floor 1, a <= 1 | 5 min (H3) | heating, Liebe x2.31 (dT, K) | drift": {
+   "size": 0.0,
+   "p_nominal": 0.0004908785812313427,
+   "p_cal": 0.009900990099009901,
+   "thr": 0.016614063212348738,
+   "rej_nominal": 0.09
+  },
+  "floor 1, a + b <= 1 | 2 min (H2) | thicker path (fraction) | alone": {
+   "size": 0.06,
+   "p_nominal": 0.07319407498186832,
+   "p_cal": 0.06930693069306931,
+   "thr": NaN,
+   "rej_nominal": 0.05
+  },
+  "floor 1, a + b <= 1 | 2 min (H2) | node joint:joint_-3.0 | alone": {
+   "size": 2.0,
+   "p_nominal": 0.1308847055895959,
+   "p_cal": 0.1485148514851485,
+   "thr": NaN,
+   "rej_nominal": 0.08
+  },
+  "floor 1, a + b <= 1 | 2 min (H2) | thicker path (fraction) | drift": {
+   "size": 0.1,
+   "p_nominal": 0.04635079128133312,
+   "p_cal": 0.0891089108910891,
+   "thr": NaN,
+   "rej_nominal": 0.08
+  },
+  "floor 1, a + b <= 1 | 2 min (H2) | node joint:joint_-2.7 | drift": {
+   "size": 1.5,
+   "p_nominal": 0.0706170616539755,
+   "p_cal": 0.13861386138613863,
+   "thr": NaN,
+   "rej_nominal": 0.11
+  },
+  "floor 1, a + b <= 1 | 2 min (H2) | gas, slice swells, r 30 um | drift": {
+   "size": 0.2,
+   "p_nominal": 0.30685087491458873,
+   "p_cal": 0.19801980198019803,
+   "thr": NaN,
+   "rej_nominal": 0.03
+  },
+  "floor 1, a + b <= 1 | 2 min (H2) | gas, slice swells, r 50 um | drift": {
+   "size": 0.12,
+   "p_nominal": 0.18706839243128698,
+   "p_cal": 0.12871287128712872,
+   "thr": NaN,
+   "rej_nominal": 0.03
+  },
+  "floor 1, a + b <= 1 | 2 min (H2) | ions: all tissue water (S/m) | alone": {
+   "size": 10.0,
+   "p_nominal": 0.0037515655374957936,
+   "p_cal": 0.019801980198019802,
+   "thr": NaN,
+   "rej_nominal": 0.09
+  },
+  "floor 1, a + b <= 1 | 2 min (H2) | axoplasm conductivity (S/m) | alone": {
+   "size": 25.0,
+   "p_nominal": 0.00363304399364011,
+   "p_cal": 0.019801980198019802,
+   "thr": NaN,
+   "rej_nominal": 0.09
+  },
+  "floor 1, a + b <= 1 | 2 min (H2) | heating, Liebe x2.31 (dT, K) | alone": {
+   "size": 4.0,
+   "p_nominal": 0.008457602553080187,
+   "p_cal": 0.039603960396039604,
+   "thr": NaN,
+   "rej_nominal": 0.04
+  },
+  "floor 1, a + b <= 1 | 4 min (H1) | thicker path (fraction) | alone": {
+   "size": 0.08,
+   "p_nominal": 0.04360335628019112,
+   "p_cal": 0.1188118811881188,
+   "thr": 0.02147864040621999,
+   "rej_nominal": 0.11
+  },
+  "floor 1, a + b <= 1 | 4 min (H1) | node joint:joint_-3.0 | alone": {
+   "size": 2.5,
+   "p_nominal": 0.04552461796784887,
+   "p_cal": 0.13861386138613863,
+   "thr": 0.004914641926281402,
+   "rej_nominal": 0.13
+  },
+  "floor 1, a + b <= 1 | 4 min (H1) | thicker path (fraction) | drift": {
+   "size": 0.12,
+   "p_nominal": 0.028113351508285887,
+   "p_cal": 0.15841584158415842,
+   "thr": 0.0037211434427122667,
+   "rej_nominal": 0.17
+  },
+  "floor 1, a + b <= 1 | 4 min (H1) | node joint:joint_-2.7 | drift": {
+   "size": 1.75,
+   "p_nominal": 0.023212245630388005,
+   "p_cal": 0.12871287128712872,
+   "thr": 0.004961783993308064,
+   "rej_nominal": 0.16
+  },
+  "floor 1, a + b <= 1 | 4 min (H1) | heating, Liebe x2.31 (dT, K) | drift": {
+   "size": 0.0,
+   "p_nominal": 0.004125505652749328,
+   "p_cal": 0.0297029702970297,
+   "thr": 0.04845591076396767,
+   "rej_nominal": 0.06
+  },
+  "floor 1, a + b <= 1 | 5 min (H3) | thicker path (fraction) | alone": {
+   "size": 0.1,
+   "p_nominal": 0.017385735877522936,
+   "p_cal": 0.039603960396039604,
+   "thr": 0.030114248601841698,
+   "rej_nominal": 0.1
+  },
+  "floor 1, a + b <= 1 | 4 min (H1) | gas, slice swells, r 30 um | drift": {
+   "size": 0.24,
+   "p_nominal": 0.09335471806570567,
+   "p_cal": 0.039603960396039604,
+   "thr": 0.10198812180914503,
+   "rej_nominal": 0.02
+  },
+  "floor 1, a + b <= 1 | 4 min (H1) | gas, slice swells, r 50 um | drift": {
+   "size": 0.12,
+   "p_nominal": 0.04485349738886737,
+   "p_cal": 0.039603960396039604,
+   "thr": 0.06762903055789464,
+   "rej_nominal": 0.03
+  },
+  "floor 1, a + b <= 1 | 5 min (H3) | node joint:joint_-3.0 | alone": {
+   "size": 3.5,
+   "p_nominal": 0.03255490896107813,
+   "p_cal": 0.07920792079207921,
+   "thr": 0.009828104383417845,
+   "rej_nominal": 0.11
+  },
+  "floor 1, a + b <= 1 | 5 min (H3) | thicker path (fraction) | drift": {
+   "size": 0.18,
+   "p_nominal": 0.014905093101131384,
+   "p_cal": 0.07920792079207921,
+   "thr": 0.008271026225184351,
+   "rej_nominal": 0.15
+  },
+  "floor 1, a + b <= 1 | 5 min (H3) | node joint:joint_-2.7 | drift": {
+   "size": 3.0,
+   "p_nominal": 0.01369403247727274,
+   "p_cal": 0.0891089108910891,
+   "thr": 0.008172812438959181,
+   "rej_nominal": 0.12
+  },
+  "floor 1, a + b <= 1 | 5 min (H3) | axoplasm conductivity (S/m) | drift": {
+   "size": 50.0,
+   "p_nominal": 0.004340491196446804,
+   "p_cal": 0.04950495049504951,
+   "thr": 0.012220970343043688,
+   "rej_nominal": 0.13,
+   "nb": 100
+  },
+  "floor 1, a + b <= 1 | 5 min (H3) | ions: all tissue water (S/m) | drift": {
+   "size": 20.0,
+   "p_nominal": 0.004244501137112363,
+   "p_cal": 0.04950495049504951,
+   "thr": 0.012155110177476834,
+   "rej_nominal": 0.13,
+   "nb": 100
+  },
+  "floor 1, a + b <= 1 | 5 min (H3) | gas, slice swells, r 50 um | drift": {
+   "size": 0.2,
+   "p_nominal": 0.043868213166597995,
+   "p_cal": 0.06930693069306931,
+   "thr": 0.029043708607913887,
+   "rej_nominal": 0.06,
+   "nb": 100
+  },
+  "floor 1, a + b <= 1 | 5 min (H3) | gas, slice swells, r 30 um | drift": {
+   "size": 0.36,
+   "p_nominal": 0.09412203280302041,
+   "p_cal": 0.10891089108910891,
+   "thr": 0.03617649224031326,
+   "rej_nominal": 0.07,
+   "nb": 100
+  },
+  "floor 1.5, a <= 1 | 2 min (H2) | node joint:joint_-2.7 | alone": {
+   "size": 2.5,
+   "p_nominal": 0.2563878539586118,
+   "p_cal": 0.3333333333333333,
+   "thr": 0.0440033925363838,
+   "rej_nominal": 0.15,
+   "nb": 20
+  },
+  "floor 1.5, a <= 1 | 2 min (H2) | node joint:joint_-2.7 | drift": {
+   "size": 2.5,
+   "p_nominal": 0.11097581681613378,
+   "p_cal": 0.1951219512195122,
+   "thr": 0.016391157954109406,
+   "rej_nominal": 0.15,
+   "nb": 40
+  },
+  "floor 1.5, a <= 1 | 2 min (H2) | thicker path (fraction) | alone": {
+   "size": 0.06,
+   "p_nominal": 0.052405609868963206,
+   "p_cal": 0.04950495049504951,
+   "thr": NaN,
+   "rej_nominal": 0.04,
+   "nb": 100
+  },
+  "floor 1.5, a <= 1 | 2 min (H2) | thicker path (fraction) | drift": {
+   "size": 0.16,
+   "p_nominal": 0.1529940222793746,
+   "p_cal": 0.18032786885245902,
+   "thr": 0.04127777627397094,
+   "rej_nominal": 0.08333333333333333,
+   "nb": 60
+  },
+  "floor 1.5, a <= 1 | 2 min (H2) | gas, slice swells, r 50 um | drift": {
+   "size": 0.12,
+   "p_nominal": 0.13116205575476217,
+   "p_cal": 0.2857142857142857,
+   "thr": 0.007911961986223372,
+   "rej_nominal": 0.1,
+   "nb": 20
+  },
+  "floor 1, a + b <= 1 | 5 min (H3) | heating, Liebe x2.31 (dT, K) | drift": {
+   "size": 0.0,
+   "p_nominal": 0.0016055952464269485,
+   "p_cal": 0.009900990099009901,
+   "thr": 0.09260295984979314,
+   "rej_nominal": 0.04,
+   "nb": 100
+  },
+  "floor 1.5, a <= 1 | 2 min (H2) | gas, slice swells, r 30 um | drift": {
+   "size": 0.2,
+   "p_nominal": 0.19150737633948273,
+   "p_cal": 0.13861386138613863,
+   "thr": 0.0957552183261689,
+   "rej_nominal": 0.04,
+   "nb": 100
+  },
+  "floor 1.5, a <= 1 | 2 min (H2) | heating, Liebe x2.31 (dT, K) | alone": {
+   "size": 4.0,
+   "p_nominal": 0.010104601771884318,
+   "p_cal": 0.0297029702970297,
+   "thr": 0.028827164328033037,
+   "rej_nominal": 0.06,
+   "nb": 100
+  },
+  "floor 1.5, a <= 1 | 2 min (H2) | ions: all tissue water (S/m) | alone": {
+   "size": 20.0,
+   "p_nominal": 0.010074067128989237,
+   "p_cal": 0.0297029702970297,
+   "thr": 0.036863000934362955,
+   "rej_nominal": 0.09,
+   "nb": 100
+  },
+  "floor 1.5, a <= 1 | 2 min (H2) | axoplasm conductivity (S/m) | alone": {
+   "size": 50.0,
+   "p_nominal": 0.010614841227845579,
+   "p_cal": 0.0297029702970297,
+   "thr": 0.036914986360421495,
+   "rej_nominal": 0.09,
+   "nb": 100
+  },
+  "floor 1.5, a <= 1 | 4 min (H1) | thicker path (fraction) | drift": {
+   "size": 0.22,
+   "p_nominal": 0.10512518659276206,
+   "p_cal": 0.2857142857142857,
+   "thr": 0.02310840829933402,
+   "rej_nominal": 0.15,
+   "nb": 20
+  },
+  "floor 1.5, a <= 1 | 4 min (H1) | thicker path (fraction) | alone": {
+   "size": 0.08,
+   "p_nominal": 0.017553946518182467,
+   "p_cal": 0.04950495049504951,
+   "thr": 0.021212970458419068,
+   "rej_nominal": 0.07,
+   "nb": 100
+  },
+  "floor 1.5, a <= 1 | 4 min (H1) | node joint:joint_-2.7 | alone": {
+   "size": 3.0,
+   "p_nominal": 0.058385276281864434,
+   "p_cal": 0.0891089108910891,
+   "thr": 0.009490631840048312,
+   "rej_nominal": 0.08,
+   "nb": 100
+  },
+  "floor 1.5, a <= 1 | 4 min (H1) | node joint:joint_-2.7 | drift": {
+   "size": 3.0,
+   "p_nominal": 0.019619044222581733,
+   "p_cal": 0.06930693069306931,
+   "thr": 0.015292367601174165,
+   "rej_nominal": 0.07,
+   "nb": 100
+  },
+  "floor 1.5, a <= 1 | 4 min (H1) | gas, slice swells, r 30 um | drift": {
+   "size": 0.28,
+   "p_nominal": 0.037452966990402,
+   "p_cal": 0.0891089108910891,
+   "thr": 0.014927946840852968,
+   "rej_nominal": 0.08,
+   "nb": 100
+  },
+  "floor 1.5, a <= 1 | 4 min (H1) | gas, slice swells, r 50 um | drift": {
+   "size": 0.16,
+   "p_nominal": 0.021322410671036005,
+   "p_cal": 0.06930693069306931,
+   "thr": 0.012072109139888538,
+   "rej_nominal": 0.08,
+   "nb": 100
+  },
+  "floor 1.5, a <= 1 | 4 min (H1) | heating, Liebe x2.31 (dT, K) | drift": {
+   "size": 0.0,
+   "p_nominal": 0.0024038464163359976,
+   "p_cal": 0.019801980198019802,
+   "thr": 0.07496273032261618,
+   "rej_nominal": 0.03,
+   "nb": 100
+  },
+  "floor 1.5, a <= 1 | 5 min (H3) | thicker path (fraction) | alone": {
+   "size": 0.1,
+   "p_nominal": 0.005997082643831734,
+   "p_cal": 0.019801980198019802,
+   "thr": 0.026211425379622694,
+   "rej_nominal": 0.08,
+   "nb": 100
+  },
+  "floor 1.5, a <= 1 | 5 min (H3) | node joint:joint_-2.7 | alone": {
+   "size": 4.5,
+   "p_nominal": 0.04037941341502866,
+   "p_cal": 0.0891089108910891,
+   "thr": 0.01929246165331394,
+   "rej_nominal": 0.09,
+   "nb": 100
+  },
+  "floor 1.5, a <= 1 | 5 min (H3) | thicker path (fraction) | drift": {
+   "size": 0.3,
+   "p_nominal": 0.04606721423338412,
+   "p_cal": 0.26229508196721313,
+   "thr": 0.00039892448304099196,
+   "rej_nominal": 0.2833333333333333,
+   "nb": 60
+  },
+  "floor 1.5, a <= 1 | 5 min (H3) | node joint:joint_-2.7 | drift": {
+   "size": 4.5,
+   "p_nominal": 0.013582892881006628,
+   "p_cal": 0.039603960396039604,
+   "thr": 0.05830269556416383,
+   "rej_nominal": 0.04,
+   "nb": 100
+  },
+  "floor 1.5, a <= 1 | 5 min (H3) | gas, slice swells, r 30 um | drift": {
+   "size": 0.4,
+   "p_nominal": 0.04328330311856981,
+   "p_cal": 0.07920792079207921,
+   "thr": 0.0333554829395601,
+   "rej_nominal": 0.08,
+   "nb": 100
+  },
+  "floor 1.5, a <= 1 | 5 min (H3) | gas, slice swells, r 50 um | drift": {
+   "size": 0.24,
+   "p_nominal": 0.020605479941964596,
+   "p_cal": 0.039603960396039604,
+   "thr": 0.03458997696248748,
+   "rej_nominal": 0.07,
+   "nb": 100
+  },
+  "floor 1.5, a <= 1 | 5 min (H3) | ions: all tissue water (S/m) | drift": {
+   "size": 30.0,
+   "p_nominal": 0.005413074783644156,
+   "p_cal": 0.0594059405940594,
+   "thr": 0.012542968691116764,
+   "rej_nominal": 0.16,
+   "nb": 100
+  },
+  "floor 1.5, a + b <= 1 | 2 min (H2) | node joint:joint_-3.0 | alone": {
+   "size": 2.0,
+   "p_nominal": 0.15803815500031287,
+   "p_cal": 0.2857142857142857,
+   "thr": 0.07767550394051581,
+   "rej_nominal": 0.05,
+   "nb": 20
+  },
+  "floor 1.5, a <= 1 | 5 min (H3) | axoplasm conductivity (S/m) | drift": {
+   "size": 75.0,
+   "p_nominal": 0.0049011667528163156,
+   "p_cal": 0.039603960396039604,
+   "thr": 0.012045089989061307,
+   "rej_nominal": 0.1,
+   "nb": 100
+  },
+  "floor 1.5, a <= 1 | 5 min (H3) | heating, Liebe x2.31 (dT, K) | drift": {
+   "size": 0.0,
+   "p_nominal": 0.0008094715138285714,
+   "p_cal": 0.019801980198019802,
+   "thr": 0.033001377816040595,
+   "rej_nominal": 0.07,
+   "nb": 100
+  },
+  "floor 1.5, a + b <= 1 | 2 min (H2) | thicker path (fraction) | alone": {
+   "size": 0.06,
+   "p_nominal": 0.1327481315410899,
+   "p_cal": 0.16049382716049382,
+   "thr": NaN,
+   "rej_nominal": 0.05,
+   "nb": 80
+  },
+  "floor 1.5, a + b <= 1 | 2 min (H2) | gas, slice swells, r 30 um | drift": {
+   "size": 0.2,
+   "p_nominal": 0.3510221386627112,
+   "p_cal": 0.19672131147540983,
+   "thr": 0.09246415065727558,
+   "rej_nominal": 0.0,
+   "nb": 60
+  },
+  "floor 1.5, a + b <= 1 | 2 min (H2) | thicker path (fraction) | drift": {
+   "size": 0.08,
+   "p_nominal": 0.07029357416745875,
+   "p_cal": 0.09900990099009901,
+   "thr": NaN,
+   "rej_nominal": 0.07,
+   "nb": 100
+  },
+  "floor 1.5, a + b <= 1 | 2 min (H2) | node joint:joint_-2.7 | drift": {
+   "size": 1.25,
+   "p_nominal": 0.09420516539990721,
+   "p_cal": 0.12871287128712872,
+   "thr": NaN,
+   "rej_nominal": 0.08,
+   "nb": 100
+  },
+  "floor 1.5, a + b <= 1 | 2 min (H2) | gas, slice swells, r 50 um | drift": {
+   "size": 0.12,
+   "p_nominal": 0.20192824444753726,
+   "p_cal": 0.14814814814814814,
+   "thr": NaN,
+   "rej_nominal": 0.0125,
+   "nb": 80
+  },
+  "floor 1.5, a + b <= 1 | 4 min (H1) | thicker path (fraction) | alone": {
+   "size": 0.08,
+   "p_nominal": 0.08381728528989528,
+   "p_cal": 0.2857142857142857,
+   "thr": 0.0008658449286758947,
+   "rej_nominal": 0.2,
+   "nb": 20
+  },
+  "floor 1.5, a + b <= 1 | 2 min (H2) | heating, Liebe x2.31 (dT, K) | alone": {
+   "size": 4.0,
+   "p_nominal": 0.0145952927548489,
+   "p_cal": 0.0297029702970297,
+   "thr": NaN,
+   "rej_nominal": 0.03,
+   "nb": 100
+  },
+  "floor 1.5, a + b <= 1 | 2 min (H2) | ions: all tissue water (S/m) | alone": {
+   "size": 10.0,
+   "p_nominal": 0.005009889493348304,
+   "p_cal": 0.0297029702970297,
+   "thr": NaN,
+   "rej_nominal": 0.06,
+   "nb": 100
+  },
+  "floor 1.5, a + b <= 1 | 2 min (H2) | axoplasm conductivity (S/m) | alone": {
+   "size": 25.0,
+   "p_nominal": 0.004958638473344126,
+   "p_cal": 0.0297029702970297,
+   "thr": NaN,
+   "rej_nominal": 0.06,
+   "nb": 100
+  },
+  "floor 1.5, a + b <= 1 | 4 min (H1) | thicker path (fraction) | drift": {
+   "size": 0.1,
+   "p_nominal": 0.044236647558577126,
+   "p_cal": 0.3333333333333333,
+   "thr": 0.00023582488462996302,
+   "rej_nominal": 0.3,
+   "nb": 20
+  },
+  "floor 1.5, a + b <= 1 | 4 min (H1) | node joint:joint_-3.0 | alone": {
+   "size": 2.5,
+   "p_nominal": 0.057603540790202856,
+   "p_cal": 0.16393442622950818,
+   "thr": 0.002152319591692046,
+   "rej_nominal": 0.15,
+   "nb": 60
+  },
+  "floor 1.5, a + b <= 1 | 4 min (H1) | gas, slice swells, r 30 um | drift": {
+   "size": 0.2,
+   "p_nominal": 0.11504813917367573,
+   "p_cal": 0.16393442622950818,
+   "thr": 0.06081333325930179,
+   "rej_nominal": 0.03333333333333333,
+   "nb": 60
+  },
+  "floor 1.5, a + b <= 1 | 4 min (H1) | heating, Liebe x2.31 (dT, K) | drift": {
+   "size": 0.0,
+   "p_nominal": 0.008548291860626858,
+   "p_cal": 0.0297029702970297,
+   "thr": 0.0330465263265716,
+   "rej_nominal": 0.07,
+   "nb": 100
+  },
+  "floor 1.5, a + b <= 1 | 4 min (H1) | node joint:joint_-2.7 | drift": {
+   "size": 1.5,
+   "p_nominal": 0.03477768314324333,
+   "p_cal": 0.10891089108910891,
+   "thr": 0.01986694026624115,
+   "rej_nominal": 0.12,
+   "nb": 100
+  },
+  "floor 1.5, a + b <= 1 | 4 min (H1) | gas, slice swells, r 50 um | drift": {
+   "size": 0.12,
+   "p_nominal": 0.06734754266734631,
+   "p_cal": 0.09900990099009901,
+   "thr": 0.04883916450986033,
+   "rej_nominal": 0.06,
+   "nb": 100
+  },
+  "floor 1.5, a + b <= 1 | 5 min (H3) | node joint:joint_-3.0 | alone": {
+   "size": 3.5,
+   "p_nominal": 0.04305031806205329,
+   "p_cal": 0.18032786885245902,
+   "thr": 0.007930411461551825,
+   "rej_nominal": 0.16666666666666666,
+   "nb": 60
+  },
+  "floor 1.5, a + b <= 1 | 5 min (H3) | thicker path (fraction) | alone": {
+   "size": 0.1,
+   "p_nominal": 0.028266337301820307,
+   "p_cal": 0.0594059405940594,
+   "thr": 0.02857063876214557,
+   "rej_nominal": 0.1,
+   "nb": 100
+  },
+  "floor 1.5, a + b <= 1 | 5 min (H3) | thicker path (fraction) | drift": {
+   "size": 0.18,
+   "p_nominal": 0.020263353702128704,
+   "p_cal": 0.0891089108910891,
+   "thr": 0.009847627710924994,
+   "rej_nominal": 0.16,
+   "nb": 100
+  },
+  "floor 1.5, a + b <= 1 | 5 min (H3) | gas, slice swells, r 30 um | drift": {
+   "size": 0.32,
+   "p_nominal": 0.10578730458996853,
+   "p_cal": 0.16393442622950818,
+   "thr": 0.02153320644562887,
+   "rej_nominal": 0.1,
+   "nb": 60
+  },
+  "floor 1.5, a + b <= 1 | 5 min (H3) | node joint:joint_-2.7 | drift": {
+   "size": 2.5,
+   "p_nominal": 0.018420616086016764,
+   "p_cal": 0.11475409836065574,
+   "thr": 0.006868892942784873,
+   "rej_nominal": 0.13333333333333333,
+   "nb": 60
+  },
+  "floor 1.5, a + b <= 1 | 5 min (H3) | ions: all tissue water (S/m) | drift": {
+   "size": 20.0,
+   "p_nominal": 0.005913278567326874,
+   "p_cal": 0.06557377049180328,
+   "thr": 0.00943139866329296,
+   "rej_nominal": 0.15,
+   "nb": 60
+  },
+  "floor 1.5, a + b <= 1 | 5 min (H3) | axoplasm conductivity (S/m) | drift": {
+   "size": 50.0,
+   "p_nominal": 0.006264935399634419,
+   "p_cal": 0.06557377049180328,
+   "thr": 0.009813116656458964,
+   "rej_nominal": 0.15,
+   "nb": 60
+  },
+  "floor 1.5, a + b <= 1 | 5 min (H3) | gas, slice swells, r 50 um | drift": {
+   "size": 0.2,
+   "p_nominal": 0.05564733841349052,
+   "p_cal": 0.11475409836065574,
+   "thr": 0.02083297937144084,
+   "rej_nominal": 0.1,
+   "nb": 60
+  },
+  "floor 2.07, a <= 1 | 2 min (H2) | node joint:joint_-2.7 | alone": {
+   "size": 2.0,
+   "p_nominal": 0.27323018207157107,
+   "p_cal": 0.3333333333333333,
+   "thr": 0.025428760135536865,
+   "rej_nominal": 0.1,
+   "nb": 20
+  },
+  "floor 2.07, a <= 1 | 2 min (H2) | thicker path (fraction) | drift": {
+   "size": 0.14,
+   "p_nominal": 0.2457497462881605,
+   "p_cal": 0.2857142857142857,
+   "thr": 0.039682990009055126,
+   "rej_nominal": 0.1,
+   "nb": 20
+  },
+  "floor 2.07, a <= 1 | 2 min (H2) | thicker path (fraction) | alone": {
+   "size": 0.06,
+   "p_nominal": 0.0999285830166876,
+   "p_cal": 0.09836065573770492,
+   "thr": NaN,
+   "rej_nominal": 0.03333333333333333,
+   "nb": 60
+  },
+  "floor 1.5, a + b <= 1 | 5 min (H3) | heating, Liebe x2.31 (dT, K) | drift": {
+   "size": 0.0,
+   "p_nominal": 0.0027204100109530166,
+   "p_cal": 0.01639344262295082,
+   "thr": 0.10810657920569525,
+   "rej_nominal": 0.03333333333333333,
+   "nb": 60
+  },
+  "floor 2.07, a <= 1 | 2 min (H2) | node joint:joint_-2.7 | drift": {
+   "size": 2.0,
+   "p_nominal": 0.14723719031813662,
+   "p_cal": 0.13114754098360656,
+   "thr": 0.052146336802617085,
+   "rej_nominal": 0.05,
+   "nb": 60
+  },
+  "floor 2.07, a <= 1 | 2 min (H2) | gas, slice swells, r 30 um | drift": {
+   "size": 0.2,
+   "p_nominal": 0.22522106140808593,
+   "p_cal": 0.16393442622950818,
+   "thr": 0.1282321708655526,
+   "rej_nominal": 0.03333333333333333,
+   "nb": 60
+  },
+  "floor 2.07, a <= 1 | 2 min (H2) | gas, slice swells, r 50 um | drift": {
+   "size": 0.12,
+   "p_nominal": 0.15616222070776445,
+   "p_cal": 0.08196721311475409,
+   "thr": 0.0702619071800458,
+   "rej_nominal": 0.03333333333333333,
+   "nb": 60
+  },
+  "floor 2.07, a <= 1 | 2 min (H2) | ions: all tissue water (S/m) | alone": {
+   "size": 20.0,
+   "p_nominal": 0.010172232060120882,
+   "p_cal": 0.08196721311475409,
+   "thr": 0.009821480735405886,
+   "rej_nominal": 0.15,
+   "nb": 60
+  },
+  "floor 2.07, a <= 1 | 2 min (H2) | axoplasm conductivity (S/m) | alone": {
+   "size": 50.0,
+   "p_nominal": 0.011435105811768471,
+   "p_cal": 0.08196721311475409,
+   "thr": 0.00944120757460114,
+   "rej_nominal": 0.15,
+   "nb": 60
+  },
+  "floor 2.07, a <= 1 | 2 min (H2) | heating, Liebe x2.31 (dT, K) | alone": {
+   "size": 4.0,
+   "p_nominal": 0.01783026482533365,
+   "p_cal": 0.01639344262295082,
+   "thr": 0.05168555098176243,
+   "rej_nominal": 0.05,
+   "nb": 60
+  },
+  "floor 2.07, a <= 1 | 4 min (H1) | thicker path (fraction) | drift": {
+   "size": 0.2,
+   "p_nominal": 0.16874408485772652,
+   "p_cal": 0.38095238095238093,
+   "thr": 0.006431970176966091,
+   "rej_nominal": 0.25,
+   "nb": 20
+  },
+  "floor 2.07, a <= 1 | 4 min (H1) | thicker path (fraction) | alone": {
+   "size": 0.08,
+   "p_nominal": 0.03726519726482194,
+   "p_cal": 0.06557377049180328,
+   "thr": 0.04354295892811247,
+   "rej_nominal": 0.06666666666666667,
+   "nb": 60
+  },
+  "floor 2.07, a <= 1 | 4 min (H1) | node joint:joint_-2.7 | alone": {
+   "size": 3.0,
+   "p_nominal": 0.07024390539854458,
+   "p_cal": 0.08196721311475409,
+   "thr": 0.013748357542878988,
+   "rej_nominal": 0.06666666666666667,
+   "nb": 60
+  },
+  "floor 2.07, a <= 1 | 4 min (H1) | node joint:joint_-3.5 | drift": {
+   "size": 6.0,
+   "p_nominal": 0.035165817086387864,
+   "p_cal": 0.09836065573770492,
+   "thr": 0.02564448164872504,
+   "rej_nominal": 0.11666666666666667,
+   "nb": 60
+  },
+  "floor 2.07, a <= 1 | 4 min (H1) | gas, slice swells, r 30 um | drift": {
+   "size": 0.24,
+   "p_nominal": 0.04844692303808116,
+   "p_cal": 0.11475409836065574,
+   "thr": 0.007482515135495435,
+   "rej_nominal": 0.1,
+   "nb": 60
+  },
+  "floor 2.07, a <= 1 | 4 min (H1) | gas, slice swells, r 50 um | drift": {
+   "size": 0.12,
+   "p_nominal": 0.027531636574754777,
+   "p_cal": 0.08196721311475409,
+   "thr": 0.007574805688642706,
+   "rej_nominal": 0.11666666666666667,
+   "nb": 60
+  },
+  "floor 2.07, a <= 1 | 4 min (H1) | heating, Liebe x2.31 (dT, K) | drift": {
+   "size": 0.0,
+   "p_nominal": 0.004805317965263814,
+   "p_cal": 0.03278688524590164,
+   "thr": 0.03374332175384853,
+   "rej_nominal": 0.06666666666666667,
+   "nb": 60
+  },
+  "floor 2.07, a <= 1 | 5 min (H3) | thicker path (fraction) | alone": {
+   "size": 0.1,
+   "p_nominal": 0.010313222301202999,
+   "p_cal": 0.04918032786885246,
+   "thr": 0.029544556689430356,
+   "rej_nominal": 0.06666666666666667,
+   "nb": 60
+  },
+  "floor 2.07, a <= 1 | 5 min (H3) | thicker path (fraction) | drift": {
+   "size": 0.3,
+   "p_nominal": 0.06554655689107346,
+   "p_cal": 0.2682926829268293,
+   "thr": 0.012066334439212336,
+   "rej_nominal": 0.2,
+   "nb": 40
+  },
+  "floor 2.07, a <= 1 | 5 min (H3) | node joint:joint_-2.7 | alone": {
+   "size": 4.5,
+   "p_nominal": 0.05154149859196998,
+   "p_cal": 0.13114754098360656,
+   "thr": 0.014571282445133686,
+   "rej_nominal": 0.11666666666666667,
+   "nb": 60
+  },
+  "floor 2.07, a <= 1 | 5 min (H3) | gas, slice swells, r 30 um | drift": {
+   "size": 0.4,
+   "p_nominal": 0.049876015343823465,
+   "p_cal": 0.2857142857142857,
+   "thr": 0.023781513715157566,
+   "rej_nominal": 0.25,
+   "nb": 20
+  },
+  "floor 2.07, a <= 1 | 5 min (H3) | node joint:joint_-2.7 | drift": {
+   "size": 4.5,
+   "p_nominal": 0.017648253740726653,
+   "p_cal": 0.06557377049180328,
+   "thr": 0.017743935185970786,
+   "rej_nominal": 0.1,
+   "nb": 60
+  },
+  "floor 2.07, a <= 1 | 5 min (H3) | gas, slice swells, r 50 um | drift": {
+   "size": 0.24,
+   "p_nominal": 0.02529076996410729,
+   "p_cal": 0.04918032786885246,
+   "thr": 0.02895507515856469,
+   "rej_nominal": 0.08333333333333333,
+   "nb": 60
+  },
+  "floor 2.07, a <= 1 | 5 min (H3) | ions: all tissue water (S/m) | drift": {
+   "size": 30.0,
+   "p_nominal": 0.009508337944410077,
+   "p_cal": 0.09836065573770492,
+   "thr": 0.0005845086710690763,
+   "rej_nominal": 0.25,
+   "nb": 60
+  },
+  "floor 2.07, a <= 1 | 5 min (H3) | axoplasm conductivity (S/m) | drift": {
+   "size": 75.0,
+   "p_nominal": 0.008831568723843887,
+   "p_cal": 0.09836065573770492,
+   "thr": 0.0006845993533387355,
+   "rej_nominal": 0.25,
+   "nb": 60
+  },
+  "floor 2.07, a <= 1 | 5 min (H3) | heating, Liebe x2.31 (dT, K) | drift": {
+   "size": 0.0,
+   "p_nominal": 0.0014439315517278384,
+   "p_cal": 0.03278688524590164,
+   "thr": 0.02776152210045186,
+   "rej_nominal": 0.1,
+   "nb": 60
+  },
+  "floor 2.07, a + b <= 1 | 2 min (H2) | thicker path (fraction) | alone": {
+   "size": 0.06,
+   "p_nominal": 0.2465983925709255,
+   "p_cal": 0.42857142857142855,
+   "thr": 0.08805755900631197,
+   "rej_nominal": 0.05,
+   "nb": 20
+  },
+  "floor 2.07, a + b <= 1 | 2 min (H2) | node joint:joint_-3.5 | alone": {
+   "size": 2.5,
+   "p_nominal": 0.25061140355535544,
+   "p_cal": 0.42857142857142855,
+   "thr": NaN,
+   "rej_nominal": 0.1,
+   "nb": 20
+  },
+  "floor 2.07, a + b <= 1 | 2 min (H2) | gas, slice swells, r 30 um | drift": {
+   "size": 0.16,
+   "p_nominal": 0.4484349955452431,
+   "p_cal": 0.2857142857142857,
+   "thr": 0.2745122804646997,
+   "rej_nominal": 0.0,
+   "nb": 20
+  },
+  "floor 2.07, a + b <= 1 | 2 min (H2) | thicker path (fraction) | drift": {
+   "size": 0.06,
+   "p_nominal": 0.11179384670949008,
+   "p_cal": 0.13114754098360656,
+   "thr": NaN,
+   "rej_nominal": 0.05,
+   "nb": 60
+  },
+  "floor 2.07, a + b <= 1 | 2 min (H2) | node joint:joint_-2.7 | drift": {
+   "size": 1.0,
+   "p_nominal": 0.13518544882798234,
+   "p_cal": 0.14754098360655737,
+   "thr": NaN,
+   "rej_nominal": 0.06666666666666667,
+   "nb": 60
+  },
+  "floor 2.07, a + b <= 1 | 2 min (H2) | gas, slice swells, r 50 um | drift": {
+   "size": 0.08,
+   "p_nominal": 0.26588117802466205,
+   "p_cal": 0.18032786885245902,
+   "thr": NaN,
+   "rej_nominal": 0.03333333333333333,
+   "nb": 60
+  },
+  "floor 2.07, a + b <= 1 | 2 min (H2) | ions: all tissue water (S/m) | alone": {
+   "size": 10.0,
+   "p_nominal": 0.006209943915910276,
+   "p_cal": 0.03278688524590164,
+   "thr": NaN,
+   "rej_nominal": 0.08333333333333333,
+   "nb": 60
+  },
+  "floor 2.07, a + b <= 1 | 4 min (H1) | thicker path (fraction) | alone": {
+   "size": 0.08,
+   "p_nominal": 0.15237457252181352,
+   "p_cal": 0.38095238095238093,
+   "thr": 0.0007757174121157335,
+   "rej_nominal": 0.2,
+   "nb": 20
+  },
+  "floor 2.07, a + b <= 1 | 4 min (H1) | node joint:joint_-3.5 | alone": {
+   "size": 3.0,
+   "p_nominal": 0.12405568512719961,
+   "p_cal": 0.38095238095238093,
+   "thr": 0.0013731520503775481,
+   "rej_nominal": 0.25,
+   "nb": 20
+  },
+  "floor 2.07, a + b <= 1 | 2 min (H2) | heating, Liebe x2.31 (dT, K) | alone": {
+   "size": 4.0,
+   "p_nominal": 0.02733617352987044,
+   "p_cal": 0.03278688524590164,
+   "thr": NaN,
+   "rej_nominal": 0.05,
+   "nb": 60
+  },
+  "floor 2.07, a + b <= 1 | 2 min (H2) | axoplasm conductivity (S/m) | alone": {
+   "size": 25.0,
+   "p_nominal": 0.006303202970707023,
+   "p_cal": 0.03278688524590164,
+   "thr": NaN,
+   "rej_nominal": 0.08333333333333333,
+   "nb": 60
+  },
+  "floor 2.07, a + b <= 1 | 4 min (H1) | thicker path (fraction) | drift": {
+   "size": 0.08,
+   "p_nominal": 0.06939946154116307,
+   "p_cal": 0.3333333333333333,
+   "thr": 0.0003634982451234902,
+   "rej_nominal": 0.25,
+   "nb": 20
+  },
+  "floor 2.07, a + b <= 1 | 4 min (H1) | node joint:joint_-3.5 | drift": {
+   "size": 2.5,
+   "p_nominal": 0.055891413750025036,
+   "p_cal": 0.1951219512195122,
+   "thr": 0.009210318990746395,
+   "rej_nominal": 0.175,
+   "nb": 40
+  },
+  "floor 2.07, a + b <= 1 | 4 min (H1) | heating, Liebe x2.31 (dT, K) | drift": {
+   "size": 0.0,
+   "p_nominal": 0.0189364146876966,
+   "p_cal": 0.08196721311475409,
+   "thr": 0.01640469460536123,
+   "rej_nominal": 0.1,
+   "nb": 60
+  },
+  "floor 2.07, a + b <= 1 | 4 min (H1) | gas, slice swells, r 50 um | drift": {
+   "size": 0.12,
+   "p_nominal": 0.08982242509931884,
+   "p_cal": 0.14754098360655737,
+   "thr": 0.04352126558481499,
+   "rej_nominal": 0.06666666666666667,
+   "nb": 60
+  },
+  "floor 2.07, a + b <= 1 | 4 min (H1) | gas, slice swells, r 30 um | drift": {
+   "size": 0.2,
+   "p_nominal": 0.1566147582048687,
+   "p_cal": 0.18032786885245902,
+   "thr": 0.06158528043469298,
+   "rej_nominal": 0.03333333333333333,
+   "nb": 60
+  },
+  "floor 2.07, a + b <= 1 | 5 min (H3) | node joint:joint_-3.0 | alone": {
+   "size": 3.5,
+   "p_nominal": 0.055017729478165175,
+   "p_cal": 0.1951219512195122,
+   "thr": 0.010373296494352395,
+   "rej_nominal": 0.175,
+   "nb": 40
+  },
+  "floor 2.07, a + b <= 1 | 5 min (H3) | thicker path (fraction) | alone": {
+   "size": 0.1,
+   "p_nominal": 0.04836289128954595,
+   "p_cal": 0.13114754098360656,
+   "thr": 0.02561846871909376,
+   "rej_nominal": 0.11666666666666667,
+   "nb": 60
+  },
+  "floor 2.07, a + b <= 1 | 5 min (H3) | thicker path (fraction) | drift": {
+   "size": 0.16,
+   "p_nominal": 0.029194572798725744,
+   "p_cal": 0.16393442622950818,
+   "thr": 0.002045075096195531,
+   "rej_nominal": 0.21666666666666667,
+   "nb": 60
+  },
+  "floor 2.07, a + b <= 1 | 5 min (H3) | node joint:joint_-2.7 | drift": {
+   "size": 2.5,
+   "p_nominal": 0.02467211873145117,
+   "p_cal": 0.09836065573770492,
+   "thr": 0.009788125510012203,
+   "rej_nominal": 0.18333333333333332,
+   "nb": 60
+  },
+  "floor 2.07, a + b <= 1 | 5 min (H3) | gas, slice swells, r 30 um | drift": {
+   "size": 0.32,
+   "p_nominal": 0.12906441175531835,
+   "p_cal": 0.19672131147540983,
+   "thr": 0.014262381198501305,
+   "rej_nominal": 0.1,
+   "nb": 60
+  },
+  "floor 2.07, a + b <= 1 | 5 min (H3) | gas, slice swells, r 50 um | drift": {
+   "size": 0.2,
+   "p_nominal": 0.06751377626047833,
+   "p_cal": 0.09836065573770492,
+   "thr": 0.013679639894167386,
+   "rej_nominal": 0.08333333333333333,
+   "nb": 60
+  },
+  "floor 2.07, a + b <= 1 | 5 min (H3) | ions: all tissue water (S/m) | drift": {
+   "size": 10.0,
+   "p_nominal": 0.008845247924258627,
+   "p_cal": 0.04918032786885246,
+   "thr": 0.021843494912072395,
+   "rej_nominal": 0.13333333333333333,
+   "nb": 60
+  },
+  "floor 2.07, a + b <= 1 | 5 min (H3) | heating, Liebe x2.31 (dT, K) | drift": {
+   "size": 0.0,
+   "p_nominal": 0.004942288764340005,
+   "p_cal": 0.01639344262295082,
+   "thr": 0.06353648210389828,
+   "rej_nominal": 0.05,
+   "nb": 60
+  },
+  "floor 2.5, a <= 1 | 2 min (H2) | thicker path (fraction) | alone": {
+   "size": 0.06,
+   "p_nominal": 0.15611020404153456,
+   "p_cal": 0.14754098360655737,
+   "thr": NaN,
+   "rej_nominal": 0.08333333333333333,
+   "nb": 60
+  },
+  "floor 2.5, a <= 1 | 2 min (H2) | node joint:joint_-2.7 | alone": {
+   "size": 2.0,
+   "p_nominal": 0.29546215729989844,
+   "p_cal": 0.38095238095238093,
+   "thr": 0.03456349442833159,
+   "rej_nominal": 0.1,
+   "nb": 20
+  },
+  "floor 2.5, a <= 1 | 2 min (H2) | thicker path (fraction) | drift": {
+   "size": 0.12,
+   "p_nominal": 0.3276439406297144,
+   "p_cal": 0.42857142857142855,
+   "thr": 0.028834751152571957,
+   "rej_nominal": 0.1,
+   "nb": 20
+  },
+  "floor 2.07, a + b <= 1 | 5 min (H3) | axoplasm conductivity (S/m) | drift": {
+   "size": 50.0,
+   "p_nominal": 0.00876172233033757,
+   "p_cal": 0.09836065573770492,
+   "thr": 0.004318326138289414,
+   "rej_nominal": 0.2,
+   "nb": 60
+  },
+  "floor 2.5, a <= 1 | 2 min (H2) | gas, slice swells, r 30 um | drift": {
+   "size": 0.16,
+   "p_nominal": 0.2512803382493721,
+   "p_cal": 0.2857142857142857,
+   "thr": 0.04326078093138752,
+   "rej_nominal": 0.1,
+   "nb": 20
+  },
+  "floor 2.5, a <= 1 | 2 min (H2) | node joint:joint_-2.7 | drift": {
+   "size": 1.75,
+   "p_nominal": 0.16967207214379984,
+   "p_cal": 0.21951219512195122,
+   "thr": 0.023327529785250274,
+   "rej_nominal": 0.075,
+   "nb": 40
+  },
+  "floor 2.5, a <= 1 | 2 min (H2) | gas, slice swells, r 50 um | drift": {
+   "size": 0.08,
+   "p_nominal": 0.1706223170510283,
+   "p_cal": 0.21951219512195122,
+   "thr": 0.07208429702045178,
+   "rej_nominal": 0.025,
+   "nb": 40
+  },
+  "floor 2.5, a <= 1 | 2 min (H2) | ions: all tissue water (S/m) | alone": {
+   "size": 20.0,
+   "p_nominal": 0.009233719624920993,
+   "p_cal": 0.04918032786885246,
+   "thr": 0.01301683088579508,
+   "rej_nominal": 0.08333333333333333,
+   "nb": 60
+  },
+  "floor 2.5, a <= 1 | 2 min (H2) | axoplasm conductivity (S/m) | alone": {
+   "size": 50.0,
+   "p_nominal": 0.010815772280147335,
+   "p_cal": 0.04918032786885246,
+   "thr": 0.012087545075572885,
+   "rej_nominal": 0.08333333333333333,
+   "nb": 60
+  },
+  "floor 2.5, a <= 1 | 2 min (H2) | heating, Liebe x2.31 (dT, K) | alone": {
+   "size": 4.0,
+   "p_nominal": 0.02716943641562686,
+   "p_cal": 0.03278688524590164,
+   "thr": 0.13496466002906937,
+   "rej_nominal": 0.016666666666666666,
+   "nb": 60
+  },
+  "floor 2.5, a <= 1 | 4 min (H1) | node joint:joint_-3.5 | alone": {
+   "size": 3.5,
+   "p_nominal": 0.11201538862837963,
+   "p_cal": 0.3333333333333333,
+   "thr": 0.02497746824031219,
+   "rej_nominal": 0.15,
+   "nb": 20
+  },
+  "floor 2.5, a <= 1 | 4 min (H1) | thicker path (fraction) | alone": {
+   "size": 0.08,
+   "p_nominal": 0.06178160647341965,
+   "p_cal": 0.09836065573770492,
+   "thr": 0.040212201066962557,
+   "rej_nominal": 0.06666666666666667,
+   "nb": 60
+  },
+  "floor 2.5, a <= 1 | 4 min (H1) | thicker path (fraction) | drift": {
+   "size": 0.18,
+   "p_nominal": 0.2562408736537942,
+   "p_cal": 0.6190476190476191,
+   "thr": 2.4800296086750154e-07,
+   "rej_nominal": 0.35,
+   "nb": 20
+  },
+  "floor 2.5, a <= 1 | 4 min (H1) | node joint:joint_-3.5 | drift": {
+   "size": 5.5,
+   "p_nominal": 0.05236865429638032,
+   "p_cal": 0.1951219512195122,
+   "thr": 0.0034233929047587223,
+   "rej_nominal": 0.15,
+   "nb": 40
+  },
+  "floor 2.5, a <= 1 | 4 min (H1) | gas, slice swells, r 30 um | drift": {
+   "size": 0.24,
+   "p_nominal": 0.06696188369303883,
+   "p_cal": 0.1951219512195122,
+   "thr": 0.027660599746591973,
+   "rej_nominal": 0.125,
+   "nb": 40
+  },
+  "floor 2.5, a <= 1 | 4 min (H1) | gas, slice swells, r 50 um | drift": {
+   "size": 0.12,
+   "p_nominal": 0.04296951431647295,
+   "p_cal": 0.09836065573770492,
+   "thr": 0.032562700203756345,
+   "rej_nominal": 0.08333333333333333,
+   "nb": 60
+  },
+  "floor 2.5, a <= 1 | 4 min (H1) | heating, Liebe x2.31 (dT, K) | drift": {
+   "size": 0.0,
+   "p_nominal": 0.010653472591795658,
+   "p_cal": 0.04918032786885246,
+   "thr": 0.04135382619842146,
+   "rej_nominal": 0.06666666666666667,
+   "nb": 60
+  },
+  "floor 2.5, a <= 1 | 5 min (H3) | thicker path (fraction) | drift": {
+   "size": 0.28,
+   "p_nominal": 0.08557576357727971,
+   "p_cal": 0.3333333333333333,
+   "thr": 0.0022330946573214166,
+   "rej_nominal": 0.25,
+   "nb": 20
+  },
+  "floor 2.5, a <= 1 | 5 min (H3) | thicker path (fraction) | alone": {
+   "size": 0.1,
+   "p_nominal": 0.015506060245669726,
+   "p_cal": 0.06557377049180328,
+   "thr": 0.024643498235376024,
+   "rej_nominal": 0.06666666666666667,
+   "nb": 60
+  },
+  "floor 2.5, a <= 1 | 5 min (H3) | node joint:joint_-2.7 | alone": {
+   "size": 4.0,
+   "p_nominal": 0.06065441761488831,
+   "p_cal": 0.09836065573770492,
+   "thr": 0.03254903344321601,
+   "rej_nominal": 0.06666666666666667,
+   "nb": 60
+  },
+  "floor 2.5, a <= 1 | 5 min (H3) | node joint:joint_-2.7 | drift": {
+   "size": 4.5,
+   "p_nominal": 0.02012267013567262,
+   "p_cal": 0.04918032786885246,
+   "thr": 0.030039764375659053,
+   "rej_nominal": 0.1,
+   "nb": 60
+  },
+  "floor 2.5, a <= 1 | 5 min (H3) | gas, slice swells, r 30 um | drift": {
+   "size": 0.36,
+   "p_nominal": 0.05577303141337727,
+   "p_cal": 0.14754098360655737,
+   "thr": 0.010419741720010768,
+   "rej_nominal": 0.13333333333333333,
+   "nb": 60
+  },
+  "floor 2.5, a <= 1 | 5 min (H3) | gas, slice swells, r 50 um | drift": {
+   "size": 0.24,
+   "p_nominal": 0.028701405739287134,
+   "p_cal": 0.11475409836065574,
+   "thr": 0.010561461104858201,
+   "rej_nominal": 0.11666666666666667,
+   "nb": 60
+  },
+  "floor 2.5, a <= 1 | 5 min (H3) | ions: all tissue water (S/m) | drift": {
+   "size": 30.0,
+   "p_nominal": 0.01326265431240027,
+   "p_cal": 0.14754098360655737,
+   "thr": 0.0016727977827717328,
+   "rej_nominal": 0.2,
+   "nb": 60
+  },
+  "floor 2.5, a <= 1 | 5 min (H3) | axoplasm conductivity (S/m) | drift": {
+   "size": 75.0,
+   "p_nominal": 0.013126284395707392,
+   "p_cal": 0.14754098360655737,
+   "thr": 0.0017820775251251963,
+   "rej_nominal": 0.2,
+   "nb": 60
+  },
+  "floor 2.5, a + b <= 1 | 2 min (H2) | thicker path (fraction) | alone": {
+   "size": 0.06,
+   "p_nominal": 0.3256207303700138,
+   "p_cal": 0.47619047619047616,
+   "thr": NaN,
+   "rej_nominal": 0.05,
+   "nb": 20
+  },
+  "floor 2.5, a + b <= 1 | 2 min (H2) | node joint:joint_-3.5 | alone": {
+   "size": 2.5,
+   "p_nominal": 0.24597182594221925,
+   "p_cal": 0.38095238095238093,
+   "thr": NaN,
+   "rej_nominal": 0.1,
+   "nb": 20
+  },
+  "floor 2.5, a <= 1 | 5 min (H3) | heating, Liebe x2.31 (dT, K) | drift": {
+   "size": 0.0,
+   "p_nominal": 0.0021625798046055068,
+   "p_cal": 0.01639344262295082,
+   "thr": 0.009191227789721104,
+   "rej_nominal": 0.08333333333333333,
+   "nb": 60
+  },
+  "floor 2.5, a + b <= 1 | 2 min (H2) | thicker path (fraction) | drift": {
+   "size": 0.06,
+   "p_nominal": 0.1584201290641804,
+   "p_cal": 0.13114754098360656,
+   "thr": NaN,
+   "rej_nominal": 0.03333333333333333,
+   "nb": 60
+  },
+  "floor 2.5, a + b <= 1 | 2 min (H2) | node joint:joint_-2.7 | drift": {
+   "size": 0.75,
+   "p_nominal": 0.17598217965597218,
+   "p_cal": 0.16393442622950818,
+   "thr": NaN,
+   "rej_nominal": 0.05,
+   "nb": 60
+  },
+  "floor 2.5, a + b <= 1 | 2 min (H2) | gas, slice swells, r 30 um | drift": {
+   "size": 0.12,
+   "p_nominal": 0.4636520488468634,
+   "p_cal": 0.16393442622950818,
+   "thr": NaN,
+   "rej_nominal": 0.03333333333333333,
+   "nb": 60
+  },
+  "floor 2.5, a + b <= 1 | 2 min (H2) | gas, slice swells, r 50 um | drift": {
+   "size": 0.08,
+   "p_nominal": 0.31546580544417063,
+   "p_cal": 0.13114754098360656,
+   "thr": NaN,
+   "rej_nominal": 0.03333333333333333,
+   "nb": 60
+  },
+  "floor 2.5, a + b <= 1 | 4 min (H1) | thicker path (fraction) | alone": {
+   "size": 0.06,
+   "p_nominal": 0.20269963344338027,
+   "p_cal": 0.38095238095238093,
+   "thr": 0.001548376274985213,
+   "rej_nominal": 0.2,
+   "nb": 20
+  },
+  "floor 2.5, a + b <= 1 | 2 min (H2) | ions: all tissue water (S/m) | alone": {
+   "size": 10.0,
+   "p_nominal": 0.007023026119761173,
+   "p_cal": 0.03278688524590164,
+   "thr": NaN,
+   "rej_nominal": 0.08333333333333333,
+   "nb": 60
+  },
+  "floor 2.5, a + b <= 1 | 2 min (H2) | axoplasm conductivity (S/m) | alone": {
+   "size": 25.0,
+   "p_nominal": 0.007255037728431606,
+   "p_cal": 0.03278688524590164,
+   "thr": NaN,
+   "rej_nominal": 0.08333333333333333,
+   "nb": 60
+  },
+  "floor 2.5, a + b <= 1 | 4 min (H1) | node joint:joint_-3.5 | alone": {
+   "size": 3.0,
+   "p_nominal": 0.13425581501100822,
+   "p_cal": 0.38095238095238093,
+   "thr": 0.0011663918291875137,
+   "rej_nominal": 0.25,
+   "nb": 20
+  },
+  "floor 2.5, a + b <= 1 | 2 min (H2) | heating, Liebe x2.31 (dT, K) | alone": {
+   "size": 4.0,
+   "p_nominal": 0.044503973910657954,
+   "p_cal": 0.08196721311475409,
+   "thr": NaN,
+   "rej_nominal": 0.06666666666666667,
+   "nb": 60
+  },
+  "floor 2.5, a + b <= 1 | 4 min (H1) | thicker path (fraction) | drift": {
+   "size": 0.08,
+   "p_nominal": 0.09659449826522147,
+   "p_cal": 0.3333333333333333,
+   "thr": 0.0003012651804180751,
+   "rej_nominal": 0.25,
+   "nb": 20
+  },
+  "floor 2.5, a + b <= 1 | 4 min (H1) | node joint:joint_-3.5 | drift": {
+   "size": 2.0,
+   "p_nominal": 0.07710337494133747,
+   "p_cal": 0.1951219512195122,
+   "thr": 0.01788333152063383,
+   "rej_nominal": 0.125,
+   "nb": 40
+  },
+  "floor 2.5, a + b <= 1 | 4 min (H1) | heating, Liebe x2.31 (dT, K) | drift": {
+   "size": 0.0,
+   "p_nominal": 0.03233535465112332,
+   "p_cal": 0.08196721311475409,
+   "thr": 0.015526702512854953,
+   "rej_nominal": 0.08333333333333333,
+   "nb": 60
+  },
+  "floor 2.5, a + b <= 1 | 4 min (H1) | gas, slice swells, r 30 um | drift": {
+   "size": 0.16,
+   "p_nominal": 0.19169956972000046,
+   "p_cal": 0.18032786885245902,
+   "thr": 0.06516464535203126,
+   "rej_nominal": 0.05,
+   "nb": 60
+  },
+  "floor 2.5, a + b <= 1 | 4 min (H1) | gas, slice swells, r 50 um | drift": {
+   "size": 0.08,
+   "p_nominal": 0.11670006036184588,
+   "p_cal": 0.14754098360655737,
+   "thr": 0.05857863584391652,
+   "rej_nominal": 0.05,
+   "nb": 60
+  },
+  "floor 2.5, a + b <= 1 | 5 min (H3) | node joint:joint_-3.0 | alone": {
+   "size": 3.5,
+   "p_nominal": 0.06274859462714401,
+   "p_cal": 0.1951219512195122,
+   "thr": 0.010612621965683609,
+   "rej_nominal": 0.175,
+   "nb": 40
+  },
+  "floor 2.5, a + b <= 1 | 5 min (H3) | thicker path (fraction) | alone": {
+   "size": 0.1,
+   "p_nominal": 0.07190079508018604,
+   "p_cal": 0.16393442622950818,
+   "thr": 0.009097370433585968,
+   "rej_nominal": 0.13333333333333333,
+   "nb": 60
+  },
+  "floor 2.5, a + b <= 1 | 5 min (H3) | thicker path (fraction) | drift": {
+   "size": 0.14,
+   "p_nominal": 0.038702925582258824,
+   "p_cal": 0.1951219512195122,
+   "thr": 0.0167171552398402,
+   "rej_nominal": 0.175,
+   "nb": 40
+  },
+  "floor 2.5, a + b <= 1 | 5 min (H3) | gas, slice swells, r 30 um | drift": {
+   "size": 0.32,
+   "p_nominal": 0.14138616849798577,
+   "p_cal": 0.1951219512195122,
+   "thr": 0.05368560632989171,
+   "rej_nominal": 0.05,
+   "nb": 40
+  },
+  "floor 2.5, a + b <= 1 | 5 min (H3) | node joint:joint_-2.7 | drift": {
+   "size": 2.0,
+   "p_nominal": 0.031978592083145435,
+   "p_cal": 0.14754098360655737,
+   "thr": 0.007943466739802578,
+   "rej_nominal": 0.15,
+   "nb": 60
+  },
+  "floor 2.5, a + b <= 1 | 5 min (H3) | ions: all tissue water (S/m) | drift": {
+   "size": 10.0,
+   "p_nominal": 0.013774850570859738,
+   "p_cal": 0.09836065573770492,
+   "thr": 0.006710962487043626,
+   "rej_nominal": 0.2,
+   "nb": 60
+  },
+  "floor 2.5, a + b <= 1 | 5 min (H3) | gas, slice swells, r 50 um | drift": {
+   "size": 0.16,
+   "p_nominal": 0.07517862636959623,
+   "p_cal": 0.16393442622950818,
+   "thr": 0.011744561051461015,
+   "rej_nominal": 0.13333333333333333,
+   "nb": 60
+  },
+  "floor 2.5, a + b <= 1 | 5 min (H3) | heating, Liebe x2.31 (dT, K) | drift": {
+   "size": 0.0,
+   "p_nominal": 0.007658475811013187,
+   "p_cal": 0.01639344262295082,
+   "thr": 0.05911516212566056,
+   "rej_nominal": 0.05,
+   "nb": 60
+  },
+  "floor 2.5, a + b <= 1 | 5 min (H3) | axoplasm conductivity (S/m) | drift": {
+   "size": 25.0,
+   "p_nominal": 0.013395568918041762,
+   "p_cal": 0.08196721311475409,
+   "thr": 0.01103703288942614,
+   "rej_nominal": 0.16666666666666666,
+   "nb": 60
+  }
+ },
+ "summary": {
+  "thicker path (fraction) | alone": {
+   "2 min (H2)": [
+    6,
+    8,
+    0.039603960396039604,
+    0.47619047619047616
+   ],
+   "4 min (H1)": [
+    6,
+    8,
+    0.039603960396039604,
+    0.38095238095238093
+   ],
+   "5 min (H3)": [
+    4,
+    8,
+    0.009900990099009901,
+    0.16393442622950818
+   ]
+  },
+  "node states (best screened) | drift": {
+   "2 min (H2)": [
+    8,
+    8,
+    0.09900990099009901,
+    0.21951219512195122
+   ],
+   "4 min (H1)": [
+    7,
+    8,
+    0.0297029702970297,
+    0.1951219512195122
+   ],
+   "5 min (H3)": [
+    5,
+    8,
+    0.039603960396039604,
+    0.14754098360655737
+   ]
+  },
+  "thicker path (fraction) | drift": {
+   "2 min (H2)": [
+    8,
+    8,
+    0.0891089108910891,
+    0.42857142857142855
+   ],
+   "4 min (H1)": [
+    8,
+    8,
+    0.15841584158415842,
+    0.6190476190476191
+   ],
+   "5 min (H3)": [
+    8,
+    8,
+    0.07920792079207921,
+    0.3333333333333333
+   ]
+  },
+  "node states (best screened) | alone": {
+   "2 min (H2)": [
+    8,
+    8,
+    0.1485148514851485,
+    0.42857142857142855
+   ],
+   "4 min (H1)": [
+    7,
+    8,
+    0.039603960396039604,
+    0.38095238095238093
+   ],
+   "5 min (H3)": [
+    8,
+    8,
+    0.06930693069306931,
+    0.1951219512195122
+   ]
+  },
+  "gas, slice swells, r 30 um | drift": {
+   "2 min (H2)": [
+    8,
+    8,
+    0.1188118811881188,
+    0.2857142857142857
+   ],
+   "4 min (H1)": [
+    6,
+    8,
+    0.039603960396039604,
+    0.1951219512195122
+   ],
+   "5 min (H3)": [
+    8,
+    8,
+    0.07920792079207921,
+    0.2857142857142857
+   ]
+  },
+  "gas, slice swells, r 50 um | drift": {
+   "2 min (H2)": [
+    8,
+    8,
+    0.06930693069306931,
+    0.2857142857142857
+   ],
+   "4 min (H1)": [
+    6,
+    8,
+    0.0297029702970297,
+    0.14754098360655737
+   ],
+   "5 min (H3)": [
+    6,
+    8,
+    0.039603960396039604,
+    0.16393442622950818
+   ]
+  },
+  "ions: all tissue water (S/m) | alone": {
+   "2 min (H2)": [
+    1,
+    8,
+    0.019801980198019802,
+    0.08196721311475409
+   ],
+   "4 min (H1)": [
+    0,
+    0,
+    1.0,
+    0.0
+   ],
+   "5 min (H3)": [
+    0,
+    0,
+    1.0,
+    0.0
+   ]
+  },
+  "axoplasm conductivity (S/m) | alone": {
+   "2 min (H2)": [
+    1,
+    8,
+    0.019801980198019802,
+    0.08196721311475409
+   ],
+   "4 min (H1)": [
+    0,
+    0,
+    1.0,
+    0.0
+   ],
+   "5 min (H3)": [
+    0,
+    0,
+    1.0,
+    0.0
+   ]
+  },
+  "heating, Liebe x2.31 (dT, K) | alone": {
+   "2 min (H2)": [
+    1,
+    8,
+    0.01639344262295082,
+    0.08196721311475409
+   ],
+   "4 min (H1)": [
+    0,
+    0,
+    1.0,
+    0.0
+   ],
+   "5 min (H3)": [
+    0,
+    0,
+    1.0,
+    0.0
+   ]
+  },
+  "heating, Liebe x2.31 (dT, K) | drift": {
+   "2 min (H2)": [
+    0,
+    0,
+    1.0,
+    0.0
+   ],
+   "4 min (H1)": [
+    2,
+    8,
+    0.009900990099009901,
+    0.08196721311475409
+   ],
+   "5 min (H3)": [
+    0,
+    8,
+    0.009900990099009901,
+    0.03278688524590164
+   ]
+  },
+  "ions: all tissue water (S/m) | drift": {
+   "2 min (H2)": [
+    0,
+    0,
+    1.0,
+    0.0
+   ],
+   "4 min (H1)": [
+    0,
+    0,
+    1.0,
+    0.0
+   ],
+   "5 min (H3)": [
+    6,
+    8,
+    0.04918032786885246,
+    0.14754098360655737
+   ]
+  },
+  "axoplasm conductivity (S/m) | drift": {
+   "2 min (H2)": [
+    0,
+    0,
+    1.0,
+    0.0
+   ],
+   "4 min (H1)": [
+    0,
+    0,
+    1.0,
+    0.0
+   ],
+   "5 min (H3)": [
+    6,
+    8,
+    0.039603960396039604,
+    0.14754098360655737
+   ]
+  }
+ }
+}
