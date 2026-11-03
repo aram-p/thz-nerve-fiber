@@ -55,11 +55,19 @@ class TwoPulse:
             return np.exp(lnmag)
         if kind == "mixed":
             return np.exp(-self.kappa0 * ramp) * self.loss_transfer(kappa, "minphase")
-        full = np.r_[lnmag, lnmag[-2:0:-1]]
-        c = np.fft.ifft(full).real
-        m = len(full) // 2
-        fold = np.r_[c[0], 2 * c[1:m], c[m], np.zeros(len(full) - m - 1)]
-        return np.exp(np.fft.fft(fold))[: len(self.fr)]
+        return np.exp(kappa * self._minphase_log())
+
+    def _minphase_log(self):
+        """Complex log of the causal transfer for kappa = 1 (the folded cepstrum is linear in ln|T|, so the
+        transfer for any kappa is exp(kappa * this)); computed once."""
+        if getattr(self, "_mp_log", None) is None:
+            lnmag = -(np.clip(self.fr, self.F_LO, self.F_LOSS) - self.F_LO) * np.log(10) / 20
+            full = np.r_[lnmag, lnmag[-2:0:-1]]
+            c = np.fft.ifft(full).real
+            m = len(full) // 2
+            fold = np.r_[c[0], 2 * c[1:m], c[m], np.zeros(len(full) - m - 1)]
+            self._mp_log = np.fft.fft(fold)[: len(self.fr)]
+        return self._mp_log
 
     def model(self, p, x0, s=None, loss=None):
         """p = (a, b, [s], tau, [kappa]): s omitted when fixed, kappa present when loss is 'zero' or 'minphase'."""
@@ -98,8 +106,12 @@ class TwoPulse:
         return best.x, float(np.sum(res ** 2)), res
 
     def apply_transfer(self, x0, ratio):
-        """x0 with every frequency multiplied by ratio (array on self.fr, numpy sign: a delay makes arg negative)."""
-        return np.fft.irfft(np.fft.rfft(x0, self.np_) * ratio, self.np_)[: self.n]
+        """x0 with every frequency multiplied by ratio (array on self.fr, numpy sign: a delay makes arg negative).
+        The spectrum of the last x0 is kept (fits apply many transfers to one x0)."""
+        c = getattr(self, "_spec_cache", None)
+        if c is None or c[0] is not x0:
+            c = self._spec_cache = (x0, np.fft.rfft(x0, self.np_))
+        return np.fft.irfft(c[1] * ratio, self.np_)[: self.n]
 
 
 def n_eff(res):
@@ -240,3 +252,73 @@ def multistart(one):
             tries.append(one(y, x, s=s, p0=list(q[:4]) if s is None else [q[0], q[1], q[2] + q[3]]))
         return min(tries, key=lambda t: t[1])
     return fit
+
+
+def phase_surrogate(rng, res):
+    """A surrogate of res with the same amplitude spectrum (so the same circular autocorrelation and N_eff)
+    and random Fourier phases (DC and Nyquist kept)."""
+    R = np.fft.rfft(res)
+    S = np.abs(R) * np.exp(1j * rng.uniform(0, 2 * np.pi, len(R)))
+    S[0] = R[0]
+    if len(res) % 2 == 0:
+        S[-1] = R[-1]
+    return np.fft.irfft(S, len(res))
+
+
+def clopper_pearson(k, n, conf=0.95):
+    from scipy.stats import beta
+    a = (1 - conf) / 2
+    lo = beta.ppf(a, k, n - k + 1) if k > 0 else 0.0
+    hi = beta.ppf(1 - a, k + 1, n - k) if k < n else 1.0
+    return float(lo), float(hi)
+
+
+def size_fitted_test(fit_multi, fit_one, y, xs, s_null, n_fixed, model, n_par=6, rng=None, nb_max=400, batch=50,
+                     level=0.05, conf=0.95):
+    """Nested F test of 'a candidate of some size, no loss term' against 'the candidate of some size with the
+    causal loss increment', the size fitted over the grid xs (xs[0] = no candidate) inside the statistic,
+    calibrated on its own null by phase-randomised surrogates of the alternative's residual.
+
+    Statistic Q(y, W): null misfit = min over g of fit_one(y, xs[g], s=s_null, p0=W0[g]); alternative misfit =
+    min over g of the better of fit_one(y, xs[g], loss='minphase') from W1[g] and from the null solution at g
+    plus kappa = 1; p = f_test(null, alternative, N_eff of the best alternative's residual on the data); the
+    synthetic scans use the data's N_eff too, so p is a fixed monotone function of the misfit ratio and the
+    surrogates alone supply its null distribution (their own N_eff is returned as a diagnostic). W0, W1 come from
+    multi-start fits (fit_multi) on the data; Q is computed the same way on the data and on every synthetic
+    scan (the null model at its best size plus a surrogate). Draws come in batches until the conf interval of
+    the fraction of p_b <= p excludes level (verdict 'pass' if above, 'fail' if below) or nb_max is reached
+    ('undecided'). Returns dict(p_nominal, p_cal, ci, nb, verdict, size_index_null, size_index_alt, ne_obs,
+    ne_draws_median)."""
+    rng = rng if rng is not None else np.random.default_rng(0)
+    W0 = [fit_multi(y, x, s=s_null)[0] for x in xs]
+    W1 = [fit_multi(y, x, loss="minphase")[0] for x in xs]
+
+    def nested(q0):
+        q = list(q0) if s_null is None else [q0[0], q0[1], s_null, q0[2]]
+        return q + [1.0]
+
+    def Q(yy, ne_use=None):
+        nul = [fit_one(yy, x, s=s_null, p0=W0[g]) for g, x in enumerate(xs)]
+        alt = [min((fit_one(yy, x, loss="minphase", p0=W1[g]), fit_one(yy, x, loss="minphase", p0=nested(nul[g][0]))),
+                   key=lambda t: t[1]) for g, x in enumerate(xs)]
+        g0 = int(np.argmin([t[1] for t in nul])); g1 = int(np.argmin([t[1] for t in alt]))
+        ne, _ = n_eff(alt[g1][2])
+        return f_test(nul[g0][1], alt[g1][1], ne_use or ne, n_par, n_fixed)[1], g0, g1, nul[g0][0], alt[g1][2], ne
+
+    p_obs, g0, g1, q0, ra, ne_obs = Q(y)
+    base = model(q0, xs[g0], s_null)
+    pb, neb = [], []
+    verdict = "undecided"
+    while len(pb) < nb_max:
+        for _ in range(min(batch, nb_max - len(pb))):
+            r = Q(base + phase_surrogate(rng, ra), ne_obs)
+            pb.append(r[0]); neb.append(r[5])
+        k, n = int(np.sum(np.array(pb) <= p_obs)), len(pb)
+        lo, hi = clopper_pearson(k, n, conf)
+        if lo > level:
+            verdict = "pass"; break
+        if hi < level:
+            verdict = "fail"; break
+    k, n = int(np.sum(np.array(pb) <= p_obs)), len(pb)
+    return dict(p_nominal=float(p_obs), p_cal=k / n, ci=clopper_pearson(k, n, conf), nb=n, verdict=verdict,
+                size_index_null=g0, size_index_alt=g1, ne_obs=float(ne_obs), ne_draws_median=float(np.median(neb)))

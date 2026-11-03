@@ -18,12 +18,12 @@ in every published scan, no node state (ε″ ≥ 0.1) changes a 100 µm slice b
 internodes ≥ 200 µm and packing ≤ 0.6, and open channels add 10⁻⁶ of membrane admittance. Third,
 each published biased waveform fits as the unbiased pulse whose tissue part lags by 0.16–0.28 rad at
 0.6 THz and loses more at high frequency, the two trading off between fits, plus a second pulse near
-the empty-cuvette delay growing to 22 % of the field. This holds over 36 fitting assumptions, under
-bootstrap-calibrated tests, and is many times the difference between tracings of the unbiased pulse.
-It fits the 0.6 THz dip, not a single-scan 2.0 THz dip. Warming fails at 5 min; a 6–10 % thicker
-tissue path fits, as do gas with a drift, conduction at 10–100 S/m and node states near or beyond
-every geometric extreme, sizes the bounds exclude. The reported polarisation selectivity, described
-without data, stays unexplained.
+the empty-cuvette delay growing to 22 % of the field. This holds over 36 fitting assumptions;
+without the change the fits miss by 11–14 times the difference between tracings of the unbiased
+pulse. It fits the 0.6 THz dip, not a single-scan 2.0 THz dip. No tested cause reproduces the
+change: warming, extra conduction, node states up to six times every geometric extreme, gas bubbles
+and a thicker tissue path each leave at least 2.4 times the tracing difference. The reported
+polarisation selectivity, described without data, stays unexplained.
 
 ## Section outline
 

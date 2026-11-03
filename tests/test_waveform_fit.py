@@ -158,3 +158,31 @@ def test_null_calibrated_test_stops_early_when_clear():
 def test_f_test_without_dof_has_no_power():
     from thznerve.waveform_fit import f_test
     assert f_test(2.0, 1.0, 5.0, 6, 1)[1] == 1.0 and f_test(2.0, 1.0, 50.0, 6, 1)[1] < 0.01
+
+
+def test_phase_surrogate_keeps_spectrum():
+    from thznerve.waveform_fit import phase_surrogate
+    rng = np.random.default_rng(3)
+    r = np.convolve(rng.normal(size=600), np.ones(9) / 9, "same")
+    s = phase_surrogate(rng, r)
+    assert np.allclose(np.abs(np.fft.rfft(s)), np.abs(np.fft.rfft(r)), rtol=1e-9, atol=1e-12)
+    assert not np.allclose(s, r) and abs(n_eff(s)[0] / n_eff(r)[0] - 1) < 0.35
+
+
+def test_size_fitted_test_passes_true_cause_and_fails_wrong_one():
+    from thznerve.waveform_fit import multistart, size_fitted_test
+    tt = np.arange(0, 6, 0.01)
+    B, K = _pulse(tt, 3.0), _pulse(tt, 2.5)
+    tp = TwoPulse(tt, K, f_loss=2.0)
+    one = lambda y, x, **kw: tp.fit(y, x, a_max=1.0, **kw)
+    model = lambda q, x, s: tp.model(q, x, s=s)
+    rng = np.random.default_rng(4)
+    noise = np.convolve(rng.normal(size=len(tt)), np.ones(5) / 5, "same") * 0.01
+    lossy = tp.apply_transfer(B, tp.loss_transfer(8.0, "minphase"))
+    y = 0.8 * lossy + 0.1 * tp.shift(K, -0.02) + noise
+    true = [tp.apply_transfer(B, tp.loss_transfer(k, "minphase")) for k in (0.0, 4.0, 8.0, 12.0)]
+    flat = [B * np.exp(-v) for v in (0.0, 0.2, 0.4)]                 # a frequency-flat loss cannot give the change
+    d1 = size_fitted_test(multistart(one), one, y, true, 0.0, 2, model, rng=rng, nb_max=100, batch=25)
+    d2 = size_fitted_test(multistart(one), one, y, flat, 0.0, 2, model, rng=rng, nb_max=100, batch=25)
+    assert d1["verdict"] != "fail" and d1["size_index_null"] == 2
+    assert d2["verdict"] == "fail"

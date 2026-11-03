@@ -1,0 +1,128 @@
+Yardstick, traced unbiased pulses (D in % of trace rms, no change / shift alone):
+  H1 from H2, a <= 1      0.23 /  0.25
+  H1 from H2, a <= inf    0.49 /  0.40
+  H1 from H3, a <= 1      1.52 /  0.00
+  H1 from H3, a <= inf    0.00 /  0.00
+  H2 from H1, a <= 1      0.12 /  0.00
+  H2 from H1, a <= inf    0.24 /  0.00
+  H2 from H3, a <= 1      1.21 /  0.60
+  H2 from H3, a <= inf    1.63 /  1.18
+  H3 from H1, a <= 1      0.71 /  0.00
+  H3 from H1, a <= inf    0.76 /  0.31
+  H3 from H2, a <= 1      1.15 /  0.11
+  H3 from H2, a <= inf    1.49 /  0.00
+  largest: 1.63 (no change, s = 0) and 1.18 (s free)
+
+floor 1, a + b <= 1 | 2 min (H2): no change 20.58, shift alone 11.89; thicker path ( 9.76@0.06 / 8.51@0.09; ions: all tiss 18.94@5 / 11.08@5; ions: all tiss 17.40@10 / 10.42@10; axoplasm condu 19.96@5 / 11.59@5; axoplasm condu 17.23@30 / 10.64@20; heating, Liebe 15.20@4 / 11.89@0; gas, slice swe 12.93@0.2 / 3.95@0.2; gas, slice swe 12.21@0.24 / 3.95@0.2; gas, slice swe 13.22@0.16 / 5.21@0.12; gas, slice swe 13.22@0.16 / 5.21@0.12; node | plausib 12.88@1 / 8.33@1; node | wide 8.29@2 / 7.50@1.5
+floor 1, a + b <= 1 | 30 s (H1): no change 4.02, shift alone 3.77
+floor 1, a + b <= 1 | 4 min (H1): no change 21.86, shift alone 13.15; thicker path ( 11.23@0.06 / 9.32@0.12; ions: all tiss 20.47@5 / 12.39@5; ions: all tiss 18.39@15 / 11.60@10; axoplasm condu 21.32@5 / 12.86@5; axoplasm condu 18.68@30 / 11.51@30; heating, Liebe 17.03@4 / 13.15@0; gas, slice swe 15.96@0.2 / 7.37@0.2; gas, slice swe 14.59@0.28 / 6.82@0.24; gas, slice swe 15.70@0.16 / 8.37@0.12; gas, slice swe 15.70@0.16 / 8.37@0.12; node | plausib 15.89@1 / 10.70@1; node | wide 10.61@2.5 / 9.85@1.5
+floor 1, a + b <= 1 | 5 min (H3): no change 22.26, shift alone 15.77; thicker path ( 13.32@0.09 / 11.20@0.18; ions: all tiss 21.23@5 / 15.19@5; ions: all tiss 18.23@20 / 13.77@20; axoplasm condu 21.87@5 / 15.56@5; axoplasm condu 18.31@50 / 13.72@50; heating, Liebe 19.28@4 / 15.77@0; gas, slice swe 17.40@0.2 / 10.61@0.2; gas, slice swe 13.67@0.4 / 7.23@0.36; gas, slice swe 15.57@0.2 / 8.93@0.2; gas, slice swe 15.02@0.24 / 8.93@0.2; node | plausib 18.04@1 / 13.69@1; node | wide 12.04@4 / 11.37@3
+floor 1, a <= 1 | 2 min (H2): no change 20.93, shift alone 12.48; thicker path ( 10.47@0.06 / 6.48@0.18; ions: all tiss 19.32@5 / 11.71@5; ions: all tiss 14.74@20 / 10.09@15; axoplasm condu 20.32@5 / 12.19@5; axoplasm condu 14.76@50 / 9.84@50; heating, Liebe 15.67@4 / 12.48@0; gas, slice swe 13.47@0.2 / 5.47@0.2; gas, slice swe 11.74@0.32 / 5.14@0.24; gas, slice swe 12.69@0.2 / 6.36@0.16; gas, slice swe 12.69@0.2 / 6.36@0.16; node | plausib 13.42@1 / 9.15@1; node | wide 6.43@2.5 / 6.38@2.5
+floor 1, a <= 1 | 30 s (H1): no change 4.02, shift alone 3.77
+floor 1, a <= 1 | 4 min (H1): no change 22.49, shift alone 14.17; thicker path ( 12.42@0.06 / 6.92@0.24; ions: all tiss 21.14@5 / 13.48@5; ions: all tiss 15.81@30 / 11.18@20; axoplasm condu 21.97@5 / 13.91@5; axoplasm condu 15.49@75 / 11.33@50; heating, Liebe 17.84@4 / 14.17@0; gas, slice swe 16.82@0.2 / 9.08@0.2; gas, slice swe 14.51@0.36 / 8.31@0.28; gas, slice swe 15.77@0.2 / 9.46@0.16; gas, slice swe 15.77@0.2 / 9.46@0.16; node | plausib 16.76@1 / 11.95@1; node | wide 9.72@3 / 9.70@3
+floor 1, a <= 1 | 5 min (H3): no change 22.99, shift alone 16.79; thicker path ( 14.51@0.09 / 8.96@0.3; ions: all tiss 22.00@5 / 16.25@5; ions: all tiss 15.44@40 / 13.18@30; axoplasm condu 22.62@5 / 16.59@5; axoplasm condu 15.31@100 / 13.05@100; heating, Liebe 20.12@4 / 16.79@0; gas, slice swe 18.33@0.2 / 12.08@0.2; gas, slice swe 14.22@0.4 / 8.53@0.4; gas, slice swe 16.60@0.2 / 10.59@0.2; gas, slice swe 15.39@0.28 / 10.01@0.28; node | plausib 18.93@1 / 14.85@1; node | wide 11.22@4 / 10.79@5
+floor 1.5, a + b <= 1 | 2 min (H2): no change 19.64, shift alone 10.52; thicker path ( 8.34@0.06 / 7.65@0.09; ions: all tiss 17.97@5 / 9.68@5; ions: all tiss 16.77@10 / 9.59@10; axoplasm condu 19.01@5 / 10.21@5; axoplasm condu 16.80@30 / 9.26@20; heating, Liebe 13.92@4 / 10.52@0; gas, slice swe 12.66@0.2 / 3.62@0.2; gas, slice swe 12.42@0.24 / 3.62@0.2; gas, slice swe 13.41@0.12 / 5.07@0.12; gas, slice swe 13.41@0.12 / 5.07@0.12; node | plausib 11.96@1 / 7.29@1; node | wide 7.88@2 / 7.18@1.5
+floor 1.5, a + b <= 1 | 30 s (H1): no change 3.00, shift alone 2.56
+floor 1.5, a + b <= 1 | 4 min (H1): no change 21.08, shift alone 11.96; thicker path ( 9.98@0.06 / 8.68@0.09; ions: all tiss 19.65@5 / 11.17@5; ions: all tiss 18.11@15 / 10.53@10; axoplasm condu 20.54@5 / 11.67@5; axoplasm condu 18.09@30 / 10.68@30; heating, Liebe 16.00@4 / 11.96@0; gas, slice swe 15.51@0.2 / 6.49@0.2; gas, slice swe 14.66@0.28 / 6.49@0.2; gas, slice swe 15.66@0.16 / 7.68@0.12; gas, slice swe 15.66@0.16 / 7.68@0.12; node | plausib 15.12@1 / 9.65@1; node | wide 10.32@2.5 / 9.08@1.5
+floor 1.5, a + b <= 1 | 5 min (H3): no change 21.62, shift alone 14.89; thicker path ( 12.43@0.09 / 10.70@0.18; ions: all tiss 20.58@5 / 14.31@5; ions: all tiss 17.82@20 / 13.07@15; axoplasm condu 21.23@5 / 14.67@5; axoplasm condu 17.86@50 / 13.15@50; heating, Liebe 18.51@4 / 14.89@0; gas, slice swe 16.94@0.2 / 9.83@0.2; gas, slice swe 13.71@0.36 / 7.05@0.32; gas, slice swe 15.31@0.2 / 8.52@0.2; gas, slice swe 14.97@0.24 / 8.52@0.2; node | plausib 17.40@1 / 12.86@1; node | wide 11.76@4 / 10.90@2.5
+floor 1.5, a <= 1 | 2 min (H2): no change 20.03, shift alone 11.23; thicker path ( 9.22@0.06 / 5.57@0.15; ions: all tiss 18.40@5 / 10.45@5; ions: all tiss 14.48@20 / 8.78@15; axoplasm condu 19.42@5 / 10.94@5; axoplasm condu 14.34@50 / 9.38@30; heating, Liebe 14.47@4 / 11.23@0; gas, slice swe 13.11@0.2 / 5.00@0.2; gas, slice swe 11.87@0.28 / 5.00@0.2; gas, slice swe 12.80@0.16 / 5.89@0.12; gas, slice swe 12.80@0.16 / 5.89@0.12; node | plausib 12.57@1 / 8.10@1; node | wide 6.31@2.5 / 6.27@2.5
+floor 1.5, a <= 1 | 30 s (H1): no change 3.00, shift alone 2.56
+floor 1.5, a <= 1 | 4 min (H1): no change 21.76, shift alone 13.13; thicker path ( 11.35@0.06 / 5.97@0.21; ions: all tiss 20.39@5 / 12.42@5; ions: all tiss 15.84@20 / 10.07@20; axoplasm condu 21.24@5 / 12.86@5; axoplasm condu 15.53@75 / 10.22@50; heating, Liebe 16.89@4 / 13.13@0; gas, slice swe 16.42@0.2 / 8.44@0.2; gas, slice swe 14.56@0.36 / 8.07@0.28; gas, slice swe 15.70@0.2 / 9.12@0.16; gas, slice swe 15.70@0.2 / 9.12@0.16; node | plausib 16.06@1 / 11.06@1; node | wide 9.30@3 / 9.27@3
+floor 1.5, a <= 1 | 5 min (H3): no change 22.39, shift alone 15.98; thicker path ( 13.72@0.09 / 8.19@0.3; ions: all tiss 21.39@5 / 15.44@5; ions: all tiss 15.33@40 / 12.33@30; axoplasm condu 22.01@5 / 15.78@5; axoplasm condu 15.08@100 / 12.52@75; heating, Liebe 19.40@4 / 15.98@0; gas, slice swe 17.90@0.2 / 11.41@0.2; gas, slice swe 14.06@0.4 / 8.32@0.4; gas, slice swe 16.34@0.2 / 10.15@0.2; gas, slice swe 15.30@0.28 / 9.77@0.24; node | plausib 18.35@1 / 14.11@1; node | wide 10.77@4 / 10.62@5
+floor 2.07, a + b <= 1 | 2 min (H2): no change 18.63, shift alone 8.92; thicker path ( 6.76@0.06 / 6.58@0.06; ions: all tiss 16.93@5 / 8.04@5; ions: all tiss 16.37@10 / 8.04@5; axoplasm condu 17.99@5 / 8.61@5; axoplasm condu 16.35@20 / 8.14@20; heating, Liebe 12.46@4 / 8.92@0; gas, slice swe 12.68@0.2 / 2.95@0.16; gas, slice swe 12.68@0.2 / 2.95@0.16; gas, slice swe 13.48@0.12 / 4.42@0.08; gas, slice swe 13.48@0.12 / 4.42@0.08; node | plausib 11.19@1 / 6.12@1; node | wide 6.71@2.5 / 6.12@1
+floor 2.07, a + b <= 1 | 30 s (H1): no change 2.10, shift alone 1.20
+floor 2.07, a + b <= 1 | 4 min (H1): no change 20.22, shift alone 10.59; thicker path ( 8.55@0.06 / 7.77@0.09; ions: all tiss 18.77@5 / 9.76@5; ions: all tiss 17.68@10 / 9.70@10; axoplasm condu 19.67@5 / 10.28@5; axoplasm condu 17.62@30 / 9.42@20; heating, Liebe 14.84@4 / 10.59@0; gas, slice swe 15.11@0.2 / 5.91@0.2; gas, slice swe 14.73@0.24 / 5.91@0.2; gas, slice swe 15.76@0.16 / 7.22@0.12; gas, slice swe 15.76@0.16 / 7.22@0.12; node | plausib 14.29@1 / 8.50@1; node | wide 8.74@3 / 8.27@2.5
+floor 2.07, a + b <= 1 | 5 min (H3): no change 20.91, shift alone 13.87; thicker path ( 11.35@0.09 / 10.07@0.15; ions: all tiss 19.85@5 / 13.28@5; ions: all tiss 17.47@20 / 12.20@15; axoplasm condu 20.51@5 / 13.65@5; axoplasm condu 17.45@50 / 12.45@30; heating, Liebe 17.64@4 / 13.87@0; gas, slice swe 16.39@0.2 / 8.92@0.2; gas, slice swe 13.64@0.36 / 6.68@0.32; gas, slice swe 15.05@0.2 / 8.21@0.2; gas, slice swe 14.98@0.24 / 8.21@0.2; node | plausib 16.69@1 / 11.91@1; node | wide 11.30@3 / 10.45@2.5
+floor 2.07, a <= 1 | 2 min (H2): no change 19.07, shift alone 9.81; thicker path ( 7.78@0.06 / 4.68@0.15; ions: all tiss 17.42@5 / 9.02@5; ions: all tiss 13.99@15 / 7.50@15; axoplasm condu 18.45@5 / 9.53@5; axoplasm condu 14.27@50 / 7.91@30; heating, Liebe 13.12@4 / 9.81@0; gas, slice swe 12.81@0.2 / 4.64@0.2; gas, slice swe 12.03@0.28 / 4.64@0.2; gas, slice swe 12.83@0.16 / 5.53@0.12; gas, slice swe 12.83@0.16 / 5.53@0.12; node | plausib 11.68@1 / 6.97@1; node | wide 6.19@2 / 5.67@2
+floor 2.07, a <= 1 | 30 s (H1): no change 2.10, shift alone 1.20
+floor 2.07, a <= 1 | 4 min (H1): no change 20.95, shift alone 11.93; thicker path ( 10.16@0.06 / 5.38@0.21; ions: all tiss 19.56@5 / 11.20@5; ions: all tiss 15.00@20 / 8.88@20; axoplasm condu 20.43@5 / 11.66@5; axoplasm condu 15.27@50 / 8.94@50; heating, Liebe 15.83@4 / 11.93@0; gas, slice swe 15.99@0.2 / 7.83@0.2; gas, slice swe 14.54@0.32 / 7.64@0.24; gas, slice swe 15.68@0.2 / 8.71@0.12; gas, slice swe 15.68@0.2 / 8.71@0.12; node | plausib 15.30@1 / 10.11@1; node | wide 8.99@3 / 8.25@6
+floor 2.07, a <= 1 | 5 min (H3): no change 21.72, shift alone 15.07; thicker path ( 12.79@0.09 / 7.57@0.3; ions: all tiss 20.71@5 / 14.52@5; ions: all tiss 14.98@30 / 11.41@30; axoplasm condu 21.34@5 / 14.86@5; axoplasm condu 14.97@100 / 11.55@75; heating, Liebe 18.60@4 / 15.07@0; gas, slice swe 17.41@0.2 / 10.68@0.2; gas, slice swe 13.91@0.4 / 8.14@0.4; gas, slice swe 16.05@0.2 / 9.70@0.2; gas, slice swe 15.22@0.28 / 9.50@0.24; node | plausib 17.70@1 / 13.28@1; node | wide 10.36@4 / 10.35@4
+floor 2.5, a + b <= 1 | 2 min (H2): no change 17.91, shift alone 7.73; thicker path ( 6.03@0.06 / 5.81@0.06; ions: all tiss 16.28@5 / 6.90@5; ions: all tiss 16.28@5 / 6.90@5; axoplasm condu 17.27@5 / 7.38@5; axoplasm condu 16.00@20 / 7.00@10; heating, Liebe 11.39@4 / 7.73@0; gas, slice swe 12.91@0.2 / 2.89@0.12; gas, slice swe 12.91@0.2 / 2.89@0.12; gas, slice swe 13.77@0.12 / 4.01@0.08; gas, slice swe 13.77@0.12 / 4.01@0.08; node | plausib 10.61@1 / 5.55@0.75; node | wide 6.86@2.5 / 5.67@1.5
+floor 2.5, a + b <= 1 | 30 s (H1): no change 1.84, shift alone 0.09
+floor 2.5, a + b <= 1 | 4 min (H1): no change 19.59, shift alone 9.59; thicker path ( 7.58@0.06 / 7.25@0.06; ions: all tiss 18.13@5 / 8.70@5; ions: all tiss 17.36@10 / 8.70@5; axoplasm condu 19.04@5 / 9.25@5; axoplasm condu 17.41@30 / 8.66@20; heating, Liebe 13.97@4 / 9.59@0; gas, slice swe 14.93@0.2 / 5.49@0.16; gas, slice swe 14.78@0.24 / 5.49@0.16; gas, slice swe 15.69@0.12 / 6.70@0.08; gas, slice swe 15.69@0.12 / 6.70@0.08; node | plausib 13.80@1 / 7.72@1; node | wide 8.66@3 / 7.67@2
+floor 2.5, a + b <= 1 | 5 min (H3): no change 20.41, shift alone 13.10; thicker path ( 10.52@0.09 / 9.62@0.15; ions: all tiss 19.34@5 / 12.49@5; ions: all tiss 17.30@15 / 11.65@15; axoplasm condu 20.01@5 / 12.87@5; axoplasm condu 17.25@50 / 11.65@30; heating, Liebe 16.97@6 / 13.10@0; gas, slice swe 15.99@0.2 / 8.21@0.2; gas, slice swe 13.64@0.36 / 6.52@0.32; gas, slice swe 14.92@0.2 / 8.05@0.16; gas, slice swe 14.92@0.2 / 8.05@0.16; node | plausib 16.21@1 / 11.19@1; node | wide 10.94@3 / 9.99@2
+floor 2.5, a <= 1 | 2 min (H2): no change 18.37, shift alone 8.76; thicker path ( 6.73@0.06 / 3.70@0.12; ions: all tiss 16.71@5 / 7.92@5; ions: all tiss 13.59@15 / 7.01@15; axoplasm condu 17.75@5 / 8.45@5; axoplasm condu 14.44@30 / 6.76@30; heating, Liebe 12.09@4 / 8.76@0; gas, slice swe 12.64@0.2 / 4.39@0.16; gas, slice swe 12.20@0.24 / 4.39@0.16; gas, slice swe 12.93@0.16 / 5.34@0.08; gas, slice swe 12.93@0.16 / 5.34@0.08; node | plausib 11.06@1 / 6.17@1; node | wide 6.00@2 / 5.44@2
+floor 2.5, a <= 1 | 30 s (H1): no change 1.85, shift alone 0.16
+floor 2.5, a <= 1 | 4 min (H1): no change 20.36, shift alone 11.08; thicker path ( 9.26@0.06 / 4.37@0.18; ions: all tiss 18.96@5 / 10.32@5; ions: all tiss 14.50@20 / 8.20@20; axoplasm condu 19.83@5 / 10.78@5; axoplasm condu 14.67@50 / 8.12@50; heating, Liebe 15.03@4 / 11.08@0; gas, slice swe 15.69@0.2 / 7.39@0.2; gas, slice swe 14.53@0.32 / 7.39@0.24; gas, slice swe 15.69@0.2 / 8.30@0.12; gas, slice swe 15.69@0.2 / 8.30@0.12; node | plausib 14.76@1 / 9.36@1; node | wide 8.79@4 / 7.93@5
+floor 2.5, a <= 1 | 5 min (H3): no change 21.26, shift alone 14.38; thicker path ( 12.08@0.09 / 7.13@0.27; ions: all tiss 20.20@5 / 13.82@5; ions: all tiss 14.51@30 / 10.84@30; axoplasm condu 20.87@5 / 14.17@5; axoplasm condu 14.74@75 / 10.86@75; heating, Liebe 17.98@6 / 14.38@0; gas, slice swe 17.05@0.2 / 10.13@0.2; gas, slice swe 13.80@0.4 / 7.96@0.36; gas, slice swe 15.84@0.2 / 9.37@0.2; gas, slice swe 15.18@0.28 / 9.32@0.24; node | plausib 17.26@1 / 12.67@1; node | wide 10.03@4 / 10.02@4
+
+30 s (H1)   none                                       alone: reproduces in 0/8 (D 1.84-4.02 %; yardstick 1.63 %)
+30 s (H1)   none                                       drift: reproduces in 2/8 (D 0.09-3.77 %; yardstick 1.18 %)
+2 min (H2)  none                                       alone: reproduces in 0/8 (D 17.91-20.93 %; yardstick 1.63 %)
+2 min (H2)  none                                       drift: reproduces in 0/8 (D 7.73-12.48 %; yardstick 1.18 %)
+2 min (H2)  thicker path (fraction) | plausible        alone: reproduces in 0/8 (D 6.03-10.47 %; yardstick 1.63 %)
+2 min (H2)  thicker path (fraction) | plausible        drift: reproduces in 0/8 (D 3.70-8.51 %; yardstick 1.18 %)
+2 min (H2)  ions: all tissue water (S/m) | plausible   alone: reproduces in 0/8 (D 16.28-19.32 %; yardstick 1.63 %)
+2 min (H2)  ions: all tissue water (S/m) | plausible   drift: reproduces in 0/8 (D 6.90-11.71 %; yardstick 1.18 %)
+2 min (H2)  ions: all tissue water (S/m) | wide        alone: reproduces in 0/8 (D 13.59-17.40 %; yardstick 1.63 %)
+2 min (H2)  ions: all tissue water (S/m) | wide        drift: reproduces in 0/8 (D 6.90-10.42 %; yardstick 1.18 %)
+2 min (H2)  axoplasm conductivity (S/m) | plausible    alone: reproduces in 0/8 (D 17.27-20.32 %; yardstick 1.63 %)
+2 min (H2)  axoplasm conductivity (S/m) | plausible    drift: reproduces in 0/8 (D 7.38-12.19 %; yardstick 1.18 %)
+2 min (H2)  axoplasm conductivity (S/m) | wide         alone: reproduces in 0/8 (D 14.27-17.23 %; yardstick 1.63 %)
+2 min (H2)  axoplasm conductivity (S/m) | wide         drift: reproduces in 0/8 (D 6.76-10.64 %; yardstick 1.18 %)
+2 min (H2)  heating, Liebe x2.31 (dT, K) | plausible   alone: reproduces in 0/8 (D 11.39-15.67 %; yardstick 1.63 %)
+2 min (H2)  heating, Liebe x2.31 (dT, K) | plausible   drift: reproduces in 0/8 (D 7.73-12.48 %; yardstick 1.18 %)
+2 min (H2)  gas, slice swells, r 30 um | plausible     alone: reproduces in 0/8 (D 12.64-13.47 %; yardstick 1.63 %)
+2 min (H2)  gas, slice swells, r 30 um | plausible     drift: reproduces in 0/8 (D 2.89-5.47 %; yardstick 1.18 %)
+2 min (H2)  gas, slice swells, r 30 um | wide          alone: reproduces in 0/8 (D 11.74-12.91 %; yardstick 1.63 %)
+2 min (H2)  gas, slice swells, r 30 um | wide          drift: reproduces in 0/8 (D 2.89-5.14 %; yardstick 1.18 %)
+2 min (H2)  gas, slice swells, r 50 um | plausible     alone: reproduces in 0/8 (D 12.69-13.77 %; yardstick 1.63 %)
+2 min (H2)  gas, slice swells, r 50 um | plausible     drift: reproduces in 0/8 (D 4.01-6.36 %; yardstick 1.18 %)
+2 min (H2)  gas, slice swells, r 50 um | wide          alone: reproduces in 0/8 (D 12.69-13.77 %; yardstick 1.63 %)
+2 min (H2)  gas, slice swells, r 50 um | wide          drift: reproduces in 0/8 (D 4.01-6.36 %; yardstick 1.18 %)
+2 min (H2)  node | plausible                           alone: reproduces in 0/8 (D 10.61-13.42 %; yardstick 1.63 %)
+2 min (H2)  node | plausible                           drift: reproduces in 0/8 (D 5.55-9.15 %; yardstick 1.18 %)
+2 min (H2)  node | wide                                alone: reproduces in 0/8 (D 6.00-8.29 %; yardstick 1.63 %)
+2 min (H2)  node | wide                                drift: reproduces in 0/8 (D 5.44-7.50 %; yardstick 1.18 %)
+4 min (H1)  none                                       alone: reproduces in 0/8 (D 19.59-22.49 %; yardstick 1.63 %)
+4 min (H1)  none                                       drift: reproduces in 0/8 (D 9.59-14.17 %; yardstick 1.18 %)
+4 min (H1)  thicker path (fraction) | plausible        alone: reproduces in 0/8 (D 7.58-12.42 %; yardstick 1.63 %)
+4 min (H1)  thicker path (fraction) | plausible        drift: reproduces in 0/8 (D 4.37-9.32 %; yardstick 1.18 %)
+4 min (H1)  ions: all tissue water (S/m) | plausible   alone: reproduces in 0/8 (D 18.13-21.14 %; yardstick 1.63 %)
+4 min (H1)  ions: all tissue water (S/m) | plausible   drift: reproduces in 0/8 (D 8.70-13.48 %; yardstick 1.18 %)
+4 min (H1)  ions: all tissue water (S/m) | wide        alone: reproduces in 0/8 (D 14.50-18.39 %; yardstick 1.63 %)
+4 min (H1)  ions: all tissue water (S/m) | wide        drift: reproduces in 0/8 (D 8.20-11.60 %; yardstick 1.18 %)
+4 min (H1)  axoplasm conductivity (S/m) | plausible    alone: reproduces in 0/8 (D 19.04-21.97 %; yardstick 1.63 %)
+4 min (H1)  axoplasm conductivity (S/m) | plausible    drift: reproduces in 0/8 (D 9.25-13.91 %; yardstick 1.18 %)
+4 min (H1)  axoplasm conductivity (S/m) | wide         alone: reproduces in 0/8 (D 14.67-18.68 %; yardstick 1.63 %)
+4 min (H1)  axoplasm conductivity (S/m) | wide         drift: reproduces in 0/8 (D 8.12-11.51 %; yardstick 1.18 %)
+4 min (H1)  heating, Liebe x2.31 (dT, K) | plausible   alone: reproduces in 0/8 (D 13.97-17.84 %; yardstick 1.63 %)
+4 min (H1)  heating, Liebe x2.31 (dT, K) | plausible   drift: reproduces in 0/8 (D 9.59-14.17 %; yardstick 1.18 %)
+4 min (H1)  gas, slice swells, r 30 um | plausible     alone: reproduces in 0/8 (D 14.93-16.82 %; yardstick 1.63 %)
+4 min (H1)  gas, slice swells, r 30 um | plausible     drift: reproduces in 0/8 (D 5.49-9.08 %; yardstick 1.18 %)
+4 min (H1)  gas, slice swells, r 30 um | wide          alone: reproduces in 0/8 (D 14.51-14.78 %; yardstick 1.63 %)
+4 min (H1)  gas, slice swells, r 30 um | wide          drift: reproduces in 0/8 (D 5.49-8.31 %; yardstick 1.18 %)
+4 min (H1)  gas, slice swells, r 50 um | plausible     alone: reproduces in 0/8 (D 15.66-15.77 %; yardstick 1.63 %)
+4 min (H1)  gas, slice swells, r 50 um | plausible     drift: reproduces in 0/8 (D 6.70-9.46 %; yardstick 1.18 %)
+4 min (H1)  gas, slice swells, r 50 um | wide          alone: reproduces in 0/8 (D 15.66-15.77 %; yardstick 1.63 %)
+4 min (H1)  gas, slice swells, r 50 um | wide          drift: reproduces in 0/8 (D 6.70-9.46 %; yardstick 1.18 %)
+4 min (H1)  node | plausible                           alone: reproduces in 0/8 (D 13.80-16.76 %; yardstick 1.63 %)
+4 min (H1)  node | plausible                           drift: reproduces in 0/8 (D 7.72-11.95 %; yardstick 1.18 %)
+4 min (H1)  node | wide                                alone: reproduces in 0/8 (D 8.66-10.61 %; yardstick 1.63 %)
+4 min (H1)  node | wide                                drift: reproduces in 0/8 (D 7.67-9.85 %; yardstick 1.18 %)
+5 min (H3)  none                                       alone: reproduces in 0/8 (D 20.41-22.99 %; yardstick 1.63 %)
+5 min (H3)  none                                       drift: reproduces in 0/8 (D 13.10-16.79 %; yardstick 1.18 %)
+5 min (H3)  thicker path (fraction) | plausible        alone: reproduces in 0/8 (D 10.52-14.51 %; yardstick 1.63 %)
+5 min (H3)  thicker path (fraction) | plausible        drift: reproduces in 0/8 (D 7.13-11.20 %; yardstick 1.18 %)
+5 min (H3)  ions: all tissue water (S/m) | plausible   alone: reproduces in 0/8 (D 19.34-22.00 %; yardstick 1.63 %)
+5 min (H3)  ions: all tissue water (S/m) | plausible   drift: reproduces in 0/8 (D 12.49-16.25 %; yardstick 1.18 %)
+5 min (H3)  ions: all tissue water (S/m) | wide        alone: reproduces in 0/8 (D 14.51-18.23 %; yardstick 1.63 %)
+5 min (H3)  ions: all tissue water (S/m) | wide        drift: reproduces in 0/8 (D 10.84-13.77 %; yardstick 1.18 %)
+5 min (H3)  axoplasm conductivity (S/m) | plausible    alone: reproduces in 0/8 (D 20.01-22.62 %; yardstick 1.63 %)
+5 min (H3)  axoplasm conductivity (S/m) | plausible    drift: reproduces in 0/8 (D 12.87-16.59 %; yardstick 1.18 %)
+5 min (H3)  axoplasm conductivity (S/m) | wide         alone: reproduces in 0/8 (D 14.74-18.31 %; yardstick 1.63 %)
+5 min (H3)  axoplasm conductivity (S/m) | wide         drift: reproduces in 0/8 (D 10.86-13.72 %; yardstick 1.18 %)
+5 min (H3)  heating, Liebe x2.31 (dT, K) | plausible   alone: reproduces in 0/8 (D 16.97-20.12 %; yardstick 1.63 %)
+5 min (H3)  heating, Liebe x2.31 (dT, K) | plausible   drift: reproduces in 0/8 (D 13.10-16.79 %; yardstick 1.18 %)
+5 min (H3)  gas, slice swells, r 30 um | plausible     alone: reproduces in 0/8 (D 15.99-18.33 %; yardstick 1.63 %)
+5 min (H3)  gas, slice swells, r 30 um | plausible     drift: reproduces in 0/8 (D 8.21-12.08 %; yardstick 1.18 %)
+5 min (H3)  gas, slice swells, r 30 um | wide          alone: reproduces in 0/8 (D 13.64-14.22 %; yardstick 1.63 %)
+5 min (H3)  gas, slice swells, r 30 um | wide          drift: reproduces in 0/8 (D 6.52-8.53 %; yardstick 1.18 %)
+5 min (H3)  gas, slice swells, r 50 um | plausible     alone: reproduces in 0/8 (D 14.92-16.60 %; yardstick 1.63 %)
+5 min (H3)  gas, slice swells, r 50 um | plausible     drift: reproduces in 0/8 (D 8.05-10.59 %; yardstick 1.18 %)
+5 min (H3)  gas, slice swells, r 50 um | wide          alone: reproduces in 0/8 (D 14.92-15.39 %; yardstick 1.63 %)
+5 min (H3)  gas, slice swells, r 50 um | wide          drift: reproduces in 0/8 (D 8.05-10.01 %; yardstick 1.18 %)
+5 min (H3)  node | plausible                           alone: reproduces in 0/8 (D 16.21-18.93 %; yardstick 1.63 %)
+5 min (H3)  node | plausible                           drift: reproduces in 0/8 (D 11.19-14.85 %; yardstick 1.18 %)
+5 min (H3)  node | wide                                alone: reproduces in 0/8 (D 10.03-12.04 %; yardstick 1.63 %)
+5 min (H3)  node | wide                                drift: reproduces in 0/8 (D 9.99-11.37 %; yardstick 1.18 %)

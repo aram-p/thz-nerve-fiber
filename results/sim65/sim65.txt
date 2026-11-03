@@ -1,0 +1,26 @@
+H1 from H2 | a <= 1 | no change         : fail      p_cal 0.000 (95 % 0.000-0.036, 100 draws); nominal p 0.0003; N_eff data 176.9, draws 187.3
+H1 from H2 | a <= 1 | shift alone       : undecided p_cal 0.058 (95 % 0.037-0.085, 400 draws); nominal p 0.0719; N_eff data 169.1, draws 174.3
+H1 from H2 | a <= inf | no change       : fail      p_cal 0.000 (95 % 0.000-0.036, 100 draws); nominal p 0.0011; N_eff data 176.9, draws 188.8
+H1 from H2 | a <= inf | shift alone     : fail      p_cal 0.000 (95 % 0.000-0.036, 100 draws); nominal p 0.0025; N_eff data 176.9, draws 184.7
+H1 from H3 | a <= 1 | no change         : fail      p_cal 0.000 (95 % 0.000-0.036, 100 draws); nominal p 0.0000; N_eff data 187.3, draws 201.3
+H1 from H3 | a <= 1 | shift alone       : pass      p_cal 1.000 (95 % 0.929-1.000, 50 draws); nominal p 1.0000; N_eff data 187.3, draws 201.1
+H1 from H3 | a <= inf | no change       : fail      p_cal 0.000 (95 % 0.000-0.036, 100 draws); nominal p 0.0005; N_eff data 181.9, draws 191.8
+H1 from H3 | a <= inf | shift alone     : pass      p_cal 1.000 (95 % 0.929-1.000, 50 draws); nominal p 1.0000; N_eff data 99.7, draws 185.2
+H2 from H1 | a <= 1 | no change         : pass      p_cal 0.540 (95 % 0.393-0.682, 50 draws); nominal p 0.6684; N_eff data 169.5, draws 172.8
+H2 from H1 | a <= 1 | shift alone       : pass      p_cal 1.000 (95 % 0.929-1.000, 50 draws); nominal p 1.0000; N_eff data 169.5, draws 173.5
+H2 from H1 | a <= inf | no change       : fail      p_cal 0.013 (95 % 0.002-0.047, 150 draws); nominal p 0.1961; N_eff data 179.3, draws 184.2
+H2 from H1 | a <= inf | shift alone     : pass      p_cal 1.000 (95 % 0.929-1.000, 50 draws); nominal p 1.0000; N_eff data 179.3, draws 181.8
+H2 from H3 | a <= 1 | no change         : fail      p_cal 0.000 (95 % 0.000-0.036, 100 draws); nominal p 0.0000; N_eff data 186.5, draws 192.9
+H2 from H3 | a <= 1 | shift alone       : fail      p_cal 0.015 (95 % 0.003-0.043, 200 draws); nominal p 0.0121; N_eff data 183.1, draws 191.9
+H2 from H3 | a <= inf | no change       : fail      p_cal 0.000 (95 % 0.000-0.036, 100 draws); nominal p 0.0000; N_eff data 171.7, draws 178.0
+H2 from H3 | a <= inf | shift alone     : fail      p_cal 0.000 (95 % 0.000-0.036, 100 draws); nominal p 0.0000; N_eff data 171.7, draws 179.3
+H3 from H1 | a <= 1 | no change         : undecided p_cal 0.037 (95 % 0.021-0.061, 400 draws); nominal p 0.0106; N_eff data 213.8, draws 224.4
+H3 from H1 | a <= 1 | shift alone       : pass      p_cal 0.360 (95 % 0.229-0.508, 50 draws); nominal p 0.9972; N_eff data 213.8, draws 229.9
+H3 from H1 | a <= inf | no change       : fail      p_cal 0.000 (95 % 0.000-0.036, 100 draws); nominal p 0.0028; N_eff data 231.1, draws 243.9
+H3 from H1 | a <= inf | shift alone     : undecided p_cal 0.070 (95 % 0.047-0.100, 400 draws); nominal p 0.1611; N_eff data 231.1, draws 242.5
+H3 from H2 | a <= 1 | no change         : fail      p_cal 0.000 (95 % 0.000-0.036, 100 draws); nominal p 0.0000; N_eff data 217.8, draws 225.1
+H3 from H2 | a <= 1 | shift alone       : pass      p_cal 0.160 (95 % 0.072-0.291, 50 draws); nominal p 0.6271; N_eff data 217.8, draws 224.0
+H3 from H2 | a <= inf | no change       : fail      p_cal 0.000 (95 % 0.000-0.036, 100 draws); nominal p 0.0000; N_eff data 219.7, draws 228.9
+H3 from H2 | a <= inf | shift alone     : pass      p_cal 1.000 (95 % 0.929-1.000, 50 draws); nominal p 1.0000; N_eff data 219.7, draws 227.3
+
+rejected (no change or shift alone) in 13 of 24 no-change comparisons
