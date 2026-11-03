@@ -1,0 +1,202 @@
+{
+ "floor 1, a <= 1 | 5 min (H3)": {
+  "thicker path + gas, slice s | alone": {
+   "D": 7.624639391121423,
+   "sizes": [
+    0.06,
+    0.4
+   ],
+   "node": "node joint:joint_-2.7"
+  },
+  "thicker path + node | alone": {
+   "D": 11.222785514646374,
+   "sizes": [
+    0.0,
+    4.0
+   ],
+   "node": "node joint:joint_-2.7"
+  },
+  "gas, slice s + node | alone": {
+   "D": 9.550131151115972,
+   "sizes": [
+    0.28,
+    3.0
+   ],
+   "node": "node joint:joint_-2.7"
+  },
+  "thicker path + gas, slice s | drift": {
+   "D": 5.932961911849254,
+   "sizes": [
+    0.21,
+    0.28
+   ],
+   "node": "node joint:joint_-2.7"
+  },
+  "thicker path + node | drift": {
+   "D": 8.684917712842598,
+   "sizes": [
+    0.3,
+    0.5
+   ],
+   "node": "node joint:joint_-2.7"
+  },
+  "gas, slice s + node | drift": {
+   "D": 8.525994132919987,
+   "sizes": [
+    0.4,
+    0.0
+   ],
+   "node": "node joint:joint_-2.7"
+  }
+ },
+ "floor 1, a <= 1 | 4 min (H1)": {
+  "thicker path + gas, slice s | alone": {
+   "D": 7.028021832651815,
+   "sizes": [
+    0.06,
+    0.24
+   ],
+   "node": "node joint:joint_-2.7"
+  },
+  "thicker path + node | alone": {
+   "D": 9.690919326710818,
+   "sizes": [
+    0.03,
+    2.0
+   ],
+   "node": "node joint:joint_-2.7"
+  },
+  "gas, slice s + node | alone": {
+   "D": 9.298892645249737,
+   "sizes": [
+    0.16,
+    2.5
+   ],
+   "node": "node joint:joint_-2.7"
+  },
+  "thicker path + gas, slice s | drift": {
+   "D": 5.1079912022758975,
+   "sizes": [
+    0.18,
+    0.12
+   ],
+   "node": "node joint:joint_-2.7"
+  },
+  "thicker path + node | drift": {
+   "D": 6.9208466072996995,
+   "sizes": [
+    0.24,
+    0.0
+   ],
+   "node": "node joint:joint_-2.7"
+  },
+  "gas, slice s + node | drift": {
+   "D": 8.312132788094315,
+   "sizes": [
+    0.28,
+    0.0
+   ],
+   "node": "node joint:joint_-2.7"
+  }
+ },
+ "floor 1, a <= 1 | 2 min (H2)": {
+  "thicker path + gas, slice s | alone": {
+   "D": 5.120122825183534,
+   "sizes": [
+    0.03,
+    0.24
+   ],
+   "node": "node joint:joint_-2.7"
+  },
+  "thicker path + node | alone": {
+   "D": 6.425529413948131,
+   "sizes": [
+    0.0,
+    2.5
+   ],
+   "node": "node joint:joint_-2.7"
+  },
+  "gas, slice s + node | alone": {
+   "D": 5.8622602945943605,
+   "sizes": [
+    0.12,
+    2.0
+   ],
+   "node": "node joint:joint_-2.7"
+  },
+  "thicker path + gas, slice s | drift": {
+   "D": 2.4781794358582547,
+   "sizes": [
+    0.09,
+    0.2
+   ],
+   "node": "node joint:joint_-2.7"
+  },
+  "thicker path + node | drift": {
+   "D": 5.82588822605511,
+   "sizes": [
+    0.06,
+    1.5
+   ],
+   "node": "node joint:joint_-2.7"
+  },
+  "gas, slice s + node | drift": {
+   "D": 5.1423403742742115,
+   "sizes": [
+    0.24,
+    0.0
+   ],
+   "node": "node joint:joint_-2.7"
+  }
+ },
+ "floor 1.5, a <= 1 | 2 min (H2)": {
+  "thicker path + gas, slice s | alone": {
+   "D": 5.205765058000565,
+   "sizes": [
+    0.03,
+    0.24
+   ],
+   "node": "node joint:joint_-2.7"
+  },
+  "thicker path + node | alone": {
+   "D": 6.307939206242294,
+   "sizes": [
+    0.0,
+    2.5
+   ],
+   "node": "node joint:joint_-2.7"
+  },
+  "gas, slice s + node | alone": {
+   "D": 5.811011792809295,
+   "sizes": [
+    0.08,
+    2.0
+   ],
+   "node": "node joint:joint_-2.7"
+  },
+  "thicker path + gas, slice s | drift": {
+   "D": 1.9347405643083802,
+   "sizes": [
+    0.09,
+    0.16
+   ],
+   "node": "node joint:joint_-2.7"
+  },
+  "thicker path + node | drift": {
+   "D": 4.972736241925017,
+   "sizes": [
+    0.09,
+    1.0
+   ],
+   "node": "node joint:joint_-2.7"
+  },
+  "gas, slice s + node | drift": {
+   "D": 4.997522939243694,
+   "sizes": [
+    0.2,
+    0.0
+   ],
+   "node": "node joint:joint_-2.7"
+  }
+ }
+}

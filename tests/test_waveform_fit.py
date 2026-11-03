@@ -186,3 +186,18 @@ def test_size_fitted_test_passes_true_cause_and_fails_wrong_one():
     d2 = size_fitted_test(multistart(one), one, y, flat, 0.0, 2, model, rng=rng, nb_max=100, batch=25)
     assert d1["verdict"] != "fail" and d1["size_index_null"] == 2
     assert d2["verdict"] == "fail"
+
+
+def test_effect_noise_small_when_restricted_model_true():
+    from thznerve.waveform_fit import effect_noise, effect_size
+    rng = np.random.default_rng(1)
+    t = np.linspace(0, 10, 400)
+    x1, x2 = np.sin(t), np.exp(-(t - 5) ** 2)
+    lsq = lambda X: (lambda y: (None, float(np.sum((y - X @ np.linalg.lstsq(X, y, rcond=None)[0]) ** 2))))
+    fit_r, fit_f = lsq(x1[:, None]), lsq(np.c_[x1, x2])
+    res = 0.05 * rng.standard_normal(len(t))
+    d0 = effect_noise(fit_r, fit_f, 2 * x1, res, 40, rng)
+    y = 2 * x1 + 0.5 * x2 + res
+    d1 = effect_size(fit_r(y)[1], fit_f(y)[1], y)
+    assert np.quantile(d0, 0.95) < 0.3 * d1
+    assert effect_size(1.0, 2.0, y) == 0.0

@@ -16,13 +16,13 @@ the node does not resonate: its absorbed power follows a three-constant quasi-st
 limits, within 2.3 % of full wave for fibres up to 10 µm. Second, for the field along the fibres, as
 in every published scan, no node state (ε″ ≥ 0.1) changes a 100 µm slice by more than 1.1 dB at
 internodes ≥ 200 µm and packing ≤ 0.6, and open channels add 10⁻⁶ of membrane admittance. Third,
-each published biased waveform fits as the unbiased pulse whose tissue part lags by 0.16–0.28 rad at
-0.6 THz and loses more at high frequency, the two trading off between fits, plus a second pulse near
-the empty-cuvette delay growing to 22 % of the field. This holds over 36 fitting assumptions;
-without the change the fits miss by 11–14 times the difference between tracings of the unbiased
-pulse. It fits the 0.6 THz dip, not a single-scan 2.0 THz dip. No tested cause reproduces the
-change: warming, extra conduction, node states up to six times every geometric extreme, gas bubbles
-and a thicker tissue path each leave at least 2.4 times the tracing difference. The reported
+each published biased waveform fits approximately as the unbiased pulse whose tissue part lags by
+0.16–0.28 rad at 0.6 THz and loses more at high frequency, plus a second pulse near the
+empty-cuvette delay growing to 22 % of the field. This holds over 36 fitting assumptions, and
+without the change the fits miss by 2.5–3.6 times what fitting noise and tracing allow. It fits the
+0.6 THz dip, not a single-scan 2.0 THz dip. Warming and extra conduction cannot produce the change;
+a slightly thicker tissue path or gas bubbles with a timing drift are not excluded, and the traces
+cannot decide between them; node states fit only at or beyond every geometric extreme. The reported
 polarisation selectivity, described without data, stays unexplained.
 
 ## Section outline

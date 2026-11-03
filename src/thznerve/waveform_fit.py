@@ -322,3 +322,20 @@ def size_fitted_test(fit_multi, fit_one, y, xs, s_null, n_fixed, model, n_par=6,
     k, n = int(np.sum(np.array(pb) <= p_obs)), len(pb)
     return dict(p_nominal=float(p_obs), p_cal=k / n, ci=clopper_pearson(k, n, conf), nb=n, verdict=verdict,
                 size_index_null=g0, size_index_alt=g1, ne_obs=float(ne_obs), ne_draws_median=float(np.median(neb)))
+
+
+def effect_size(S_r, S_f, y):
+    """What a restricted fit leaves unexplained against a fuller fit, in % of the trace rms:
+    sqrt(max(S_r - S_f, 0) / N) / rms(y). For linear models it is the rms difference of the two fitted curves."""
+    return 100 * np.sqrt(max(S_r - S_f, 0.0) / len(y)) / np.sqrt(np.mean(y ** 2))
+
+
+def effect_noise(fit_r, fit_f, y_model, res, nb, rng):
+    """Effect sizes that fitting noise alone gives when the restricted model is true: y_model (the restricted
+    model's best fit) plus a phase-randomised copy of res (same autocorrelation), refitted by both fits.
+    fit_r and fit_f take a trace and return (params, misfit, ...). Returns an array of nb effect sizes."""
+    out = []
+    for _ in range(nb):
+        yy = y_model + phase_surrogate(rng, res)
+        out.append(effect_size(fit_r(yy)[1], fit_f(yy)[1], yy))
+    return np.array(out)
