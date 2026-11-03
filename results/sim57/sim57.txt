@@ -1,0 +1,37 @@
+30 s (H1): corr 97 samples; nominal 5 % rejects shift 0.03/0.04, no change 0.03/0.01 (blocks x1/x2); thresholds shift p < 0.071, 2-dof p < 0.099; observed p shift 0.42 (calibrated 0.290), no change 0.71 (calibrated 0.447, floor 0.0017)  [389 s]
+2 min (H2): corr 100 samples; nominal 5 % rejects shift 0.04/0.05, no change 0.04/0.05 (blocks x1/x2); thresholds shift p < 0.055, 2-dof p < 0.066; observed p shift 0.26 (calibrated 0.193), no change 0.00096 (calibrated 0.013, floor 0.0017)  [662 s]
+4 min (H1): corr 60 samples; nominal 5 % rejects shift 0.05/0.06, no change 0.05/0.06 (blocks x1/x2); thresholds shift p < 0.039, 2-dof p < 0.030; observed p shift 0.13 (calibrated 0.130), no change 0.0001 (calibrated 0.005, floor 0.0017)  [925 s]
+5 min (H3): corr 57 samples; nominal 5 % rejects shift 0.07/0.05, no change 0.04/0.08 (blocks x1/x2); thresholds shift p < 0.023, 2-dof p < 0.025; observed p shift 0.036 (calibrated 0.048), no change 0.00013 (calibrated 0.002, floor 0.0017)  [1180 s]
+
+  Sim 53 axoplasm conductivity (S/m)                references passing at 2/4/5 min (of 6): calibrated [0, 0, 0], nominal 0.05 [0, 0, 0]
+  Sim 53 heating, Liebe (dT, K)                     references passing at 2/4/5 min (of 6): calibrated [0, 0, 0], nominal 0.05 [0, 0, 0]
+  Sim 53 heating, Liebe x2.31 (dT, K)               references passing at 2/4/5 min (of 6): calibrated [0, 0, 0], nominal 0.05 [0, 0, 0]
+  Sim 53 ions: all tissue water (S/m)               references passing at 2/4/5 min (of 6): calibrated [0, 0, 0], nominal 0.05 [0, 0, 0]
+  Sim 53 thicker path (fraction)                    references passing at 2/4/5 min (of 6): calibrated [6, 6, 3], nominal 0.05 [6, 3, 1]
+  Sim 53 node states (best of the three screened)   references passing at 2/4/5 min (of 6): calibrated [0, 0, 0], nominal 0.05 [0, 0, 0]
+  Sim 54 gas, displacing tissue, r 120 um           references passing at 2/4/5 min (of 6): calibrated [0, 0, 0], nominal 0.05 [0, 0, 0]
+  Sim 54 gas, displacing tissue, r 15 um            references passing at 2/4/5 min (of 6): calibrated [0, 0, 0], nominal 0.05 [0, 0, 0]
+  Sim 54 gas, displacing tissue, r 30 um            references passing at 2/4/5 min (of 6): calibrated [0, 0, 0], nominal 0.05 [0, 0, 0]
+  Sim 54 gas, displacing tissue, r 50 um            references passing at 2/4/5 min (of 6): calibrated [0, 0, 0], nominal 0.05 [0, 0, 0]
+  Sim 54 gas, displacing tissue, r 80 um            references passing at 2/4/5 min (of 6): calibrated [0, 0, 0], nominal 0.05 [0, 0, 0]
+  Sim 54 gas, slice swells, r 120 um                references passing at 2/4/5 min (of 6): calibrated [6, 0, 0], nominal 0.05 [6, 0, 0]
+  Sim 54 gas, slice swells, r 15 um                 references passing at 2/4/5 min (of 6): calibrated [0, 0, 0], nominal 0.05 [0, 0, 0]
+  Sim 54 gas, slice swells, r 30 um                 references passing at 2/4/5 min (of 6): calibrated [0, 0, 0], nominal 0.05 [0, 0, 0]
+  Sim 54 gas, slice swells, r 50 um                 references passing at 2/4/5 min (of 6): calibrated [0, 0, 0], nominal 0.05 [0, 0, 0]
+  Sim 54 gas, slice swells, r 80 um                 references passing at 2/4/5 min (of 6): calibrated [0, 0, 0], nominal 0.05 [0, 0, 0]
+  Sim 54 lipid-like fragments, r 120 um             references passing at 2/4/5 min (of 6): calibrated [0, 0, 0], nominal 0.05 [0, 0, 0]
+  Sim 54 lipid-like fragments, r 15 um              references passing at 2/4/5 min (of 6): calibrated [0, 0, 0], nominal 0.05 [0, 0, 0]
+  Sim 54 lipid-like fragments, r 30 um              references passing at 2/4/5 min (of 6): calibrated [0, 0, 0], nominal 0.05 [0, 0, 0]
+  Sim 54 lipid-like fragments, r 50 um              references passing at 2/4/5 min (of 6): calibrated [0, 0, 0], nominal 0.05 [0, 0, 0]
+  Sim 54 lipid-like fragments, r 80 um              references passing at 2/4/5 min (of 6): calibrated [0, 0, 0], nominal 0.05 [0, 0, 0]
+
+H1 from H2             kappa  0.04 dB/THz, lag -0.002 rad, change term   0.5 %, residual  1.8 % of the trace rms
+H1 from H3             kappa  0.12 dB/THz, lag -0.016 rad, change term   2.8 %, residual  3.3 % of the trace rms
+H2 from H1             kappa  0.01 dB/THz, lag +0.007 rad, change term   0.2 %, residual  1.8 % of the trace rms
+H2 from H3             kappa  0.11 dB/THz, lag -0.018 rad, change term   2.8 %, residual  3.1 % of the trace rms
+H3 from H1             kappa  0.00 dB/THz, lag +0.011 rad, change term   0.8 %, residual  3.4 % of the trace rms
+H3 from H2             kappa  0.00 dB/THz, lag +0.027 rad, change term   1.2 %, residual  3.3 % of the trace rms
+30 s (H1)              kappa  0.38 dB/THz, lag -0.014 rad, change term   2.2 %, residual  6.9 % of the trace rms
+2 min (H2)             kappa  3.12 dB/THz, lag +0.166 rad, change term  19.1 %, residual 10.1 % of the trace rms
+4 min (H1)             kappa  4.44 dB/THz, lag +0.217 rad, change term  21.4 %, residual 12.5 % of the trace rms
+5 min (H3)             kappa  7.35 dB/THz, lag +0.263 rad, change term  22.1 %, residual 13.9 % of the trace rms

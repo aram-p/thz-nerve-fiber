@@ -19,11 +19,11 @@ internodes ≥ 200 µm and packing ≤ 0.6, and open channels add 10⁻⁶ of me
 each published biased waveform fits as the unbiased pulse with an extra loss rising with frequency
 and bias time (1.7–7.1 dB per THz above its 30 s value after 2–5 min), lagging by 0.16–0.28 rad at
 0.6 THz, plus a second pulse near the empty-cuvette delay growing to 22 % of the field. This holds
-over 36 fitting assumptions and is significant in each scan after bootstrap calibration of the
-tests. It fits the 0.6 THz dip, not a single-scan 2.0 THz dip. The traced waveforms cannot identify
-the cause: a thicker tissue path, conduction, warming and node states all pass the calibrated tests,
-so node states and conduction are excluded only by the forward bounds. The reported polarisation
-selectivity, described without data, stays unexplained.
+over 36 fitting assumptions, is significant in each scan, and is many times the difference between
+tracings of the unbiased pulse. It fits the 0.6 THz dip, not a single-scan 2.0 THz dip. Tested
+alone, node states, conduction, ions, warming and gas bubbles are rejected; only a 6–10 % thicker
+tissue path fits. That cause acts for both polarisations, against the reported selectivity, which is
+described without data.
 
 ## Section outline
 
