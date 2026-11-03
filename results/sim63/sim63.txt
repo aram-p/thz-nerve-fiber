@@ -1,0 +1,73 @@
+floor 1, a + b <= 1 | 2 min (H2) | no change: nominal p 0.0013, calibrated p 0.016 (60 scans), null rejects 0.05 at nominal 0.05
+floor 1, a + b <= 1 | 2 min (H2) | shift alone: nominal p 0.0103, calibrated p 0.016 (60 scans), null rejects 0.00 at nominal 0.05
+floor 1, a + b <= 1 | 30 s (H1) | no change: nominal p 0.2738, calibrated p 0.148 (60 scans), null rejects 0.03 at nominal 0.05
+floor 1, a + b <= 1 | 30 s (H1) | shift alone: nominal p 0.1395, calibrated p 0.082 (60 scans), null rejects 0.03 at nominal 0.05
+floor 1, a + b <= 1 | 4 min (H1) | no change: nominal p 0.0003, calibrated p 0.016 (60 scans), null rejects 0.13 at nominal 0.05
+floor 1, a + b <= 1 | 4 min (H1) | shift alone: nominal p 0.0041, calibrated p 0.049 (60 scans), null rejects 0.05 at nominal 0.05
+floor 1, a + b <= 1 | 5 min (H3) | no change: nominal p 0.0003, calibrated p 0.033 (60 scans), null rejects 0.03 at nominal 0.05
+floor 1, a + b <= 1 | 5 min (H3) | shift alone: nominal p 0.0016, calibrated p 0.016 (60 scans), null rejects 0.03 at nominal 0.05
+floor 1, a <= 1 | 2 min (H2) | no change: nominal p 0.0009, calibrated p 0.016 (60 scans), null rejects 0.05 at nominal 0.05
+floor 1, a <= 1 | 2 min (H2) | shift alone: nominal p 0.0066, calibrated p 0.016 (60 scans), null rejects 0.02 at nominal 0.05
+floor 1, a <= 1 | 30 s (H1) | no change: nominal p 0.2738, calibrated p 0.148 (60 scans), null rejects 0.03 at nominal 0.05
+floor 1, a <= 1 | 30 s (H1) | shift alone: nominal p 0.1395, calibrated p 0.082 (60 scans), null rejects 0.03 at nominal 0.05
+floor 1, a <= 1 | 4 min (H1) | no change: nominal p 0.0001, calibrated p 0.016 (60 scans), null rejects 0.10 at nominal 0.05
+floor 1, a <= 1 | 4 min (H1) | shift alone: nominal p 0.0013, calibrated p 0.016 (60 scans), null rejects 0.07 at nominal 0.05
+floor 1, a <= 1 | 5 min (H3) | no change: nominal p 0.0001, calibrated p 0.033 (60 scans), null rejects 0.02 at nominal 0.05
+floor 1, a <= 1 | 5 min (H3) | shift alone: nominal p 0.0005, calibrated p 0.016 (60 scans), null rejects 0.02 at nominal 0.05
+floor 1.5, a + b <= 1 | 2 min (H2) | no change: nominal p 0.0018, calibrated p 0.016 (60 scans), null rejects 0.00 at nominal 0.05
+floor 1.5, a + b <= 1 | 2 min (H2) | shift alone: nominal p 0.0195, calibrated p 0.016 (60 scans), null rejects 0.02 at nominal 0.05
+floor 1.5, a + b <= 1 | 30 s (H1) | no change: nominal p 0.5069, calibrated p 0.333 (20 scans), null rejects 0.00 at nominal 0.05
+floor 1.5, a + b <= 1 | 30 s (H1) | shift alone: nominal p 0.3302, calibrated p 0.195 (40 scans), null rejects 0.05 at nominal 0.05
+floor 1.5, a + b <= 1 | 4 min (H1) | no change: nominal p 0.0005, calibrated p 0.049 (60 scans), null rejects 0.12 at nominal 0.05
+floor 1.5, a + b <= 1 | 4 min (H1) | shift alone: nominal p 0.0085, calibrated p 0.049 (60 scans), null rejects 0.10 at nominal 0.05
+floor 1.5, a + b <= 1 | 5 min (H3) | no change: nominal p 0.0005, calibrated p 0.033 (60 scans), null rejects 0.03 at nominal 0.05
+floor 1.5, a + b <= 1 | 5 min (H3) | shift alone: nominal p 0.0027, calibrated p 0.016 (60 scans), null rejects 0.03 at nominal 0.05
+floor 1.5, a <= 1 | 2 min (H2) | no change: nominal p 0.0014, calibrated p 0.016 (60 scans), null rejects 0.03 at nominal 0.05
+floor 1.5, a <= 1 | 2 min (H2) | shift alone: nominal p 0.0123, calibrated p 0.033 (60 scans), null rejects 0.02 at nominal 0.05
+floor 1.5, a <= 1 | 30 s (H1) | no change: nominal p 0.5069, calibrated p 0.333 (20 scans), null rejects 0.00 at nominal 0.05
+floor 1.5, a <= 1 | 30 s (H1) | shift alone: nominal p 0.3302, calibrated p 0.195 (40 scans), null rejects 0.05 at nominal 0.05
+floor 1.5, a <= 1 | 4 min (H1) | no change: nominal p 0.0001, calibrated p 0.016 (60 scans), null rejects 0.07 at nominal 0.05
+floor 1.5, a <= 1 | 4 min (H1) | shift alone: nominal p 0.0024, calibrated p 0.033 (60 scans), null rejects 0.08 at nominal 0.05
+floor 1.5, a <= 1 | 5 min (H3) | no change: nominal p 0.0002, calibrated p 0.016 (60 scans), null rejects 0.07 at nominal 0.05
+floor 1.5, a <= 1 | 5 min (H3) | shift alone: nominal p 0.0008, calibrated p 0.049 (60 scans), null rejects 0.07 at nominal 0.05
+floor 2.07, a + b <= 1 | 2 min (H2) | no change: nominal p 0.0028, calibrated p 0.033 (60 scans), null rejects 0.05 at nominal 0.05
+floor 2.07, a + b <= 1 | 2 min (H2) | shift alone: nominal p 0.0411, calibrated p 0.033 (60 scans), null rejects 0.02 at nominal 0.05
+floor 2.07, a + b <= 1 | 30 s (H1) | no change: nominal p 0.7379, calibrated p 0.571 (20 scans), null rejects 0.00 at nominal 0.05
+floor 2.07, a + b <= 1 | 30 s (H1) | shift alone: nominal p 0.6627, calibrated p 0.429 (20 scans), null rejects 0.00 at nominal 0.05
+floor 2.07, a + b <= 1 | 4 min (H1) | no change: nominal p 0.0009, calibrated p 0.049 (60 scans), null rejects 0.12 at nominal 0.05
+floor 2.07, a + b <= 1 | 4 min (H1) | shift alone: nominal p 0.0189, calibrated p 0.049 (60 scans), null rejects 0.10 at nominal 0.05
+floor 2.07, a + b <= 1 | 5 min (H3) | no change: nominal p 0.0008, calibrated p 0.033 (60 scans), null rejects 0.03 at nominal 0.05
+floor 2.07, a + b <= 1 | 5 min (H3) | shift alone: nominal p 0.0049, calibrated p 0.016 (60 scans), null rejects 0.05 at nominal 0.05
+floor 2.07, a <= 1 | 2 min (H2) | no change: nominal p 0.0021, calibrated p 0.016 (60 scans), null rejects 0.03 at nominal 0.05
+floor 2.07, a <= 1 | 2 min (H2) | shift alone: nominal p 0.0238, calibrated p 0.016 (60 scans), null rejects 0.00 at nominal 0.05
+floor 2.07, a <= 1 | 30 s (H1) | no change: nominal p 0.7370, calibrated p 0.619 (20 scans), null rejects 0.00 at nominal 0.05
+floor 2.07, a <= 1 | 30 s (H1) | shift alone: nominal p 0.6612, calibrated p 0.476 (20 scans), null rejects 0.05 at nominal 0.05
+floor 2.07, a <= 1 | 4 min (H1) | no change: nominal p 0.0002, calibrated p 0.016 (60 scans), null rejects 0.08 at nominal 0.05
+floor 2.07, a <= 1 | 4 min (H1) | shift alone: nominal p 0.0048, calibrated p 0.033 (60 scans), null rejects 0.08 at nominal 0.05
+floor 2.07, a <= 1 | 5 min (H3) | no change: nominal p 0.0002, calibrated p 0.016 (60 scans), null rejects 0.10 at nominal 0.05
+floor 2.07, a <= 1 | 5 min (H3) | shift alone: nominal p 0.0014, calibrated p 0.049 (60 scans), null rejects 0.07 at nominal 0.05
+floor 2.5, a + b <= 1 | 2 min (H2) | no change: nominal p 0.0040, calibrated p 0.033 (60 scans), null rejects 0.05 at nominal 0.05
+floor 2.5, a + b <= 1 | 2 min (H2) | shift alone: nominal p 0.0717, calibrated p 0.033 (60 scans), null rejects 0.00 at nominal 0.05
+floor 2.5, a + b <= 1 | 30 s (H1) | no change: nominal p 0.8062, calibrated p 0.476 (20 scans), null rejects 0.00 at nominal 0.05
+floor 2.5, a + b <= 1 | 30 s (H1) | shift alone: nominal p 0.9752, calibrated p 0.429 (20 scans), null rejects 0.00 at nominal 0.05
+floor 2.5, a + b <= 1 | 4 min (H1) | no change: nominal p 0.0013, calibrated p 0.049 (60 scans), null rejects 0.12 at nominal 0.05
+floor 2.5, a + b <= 1 | 4 min (H1) | shift alone: nominal p 0.0323, calibrated p 0.066 (60 scans), null rejects 0.07 at nominal 0.05
+floor 2.5, a + b <= 1 | 5 min (H3) | no change: nominal p 0.0011, calibrated p 0.033 (60 scans), null rejects 0.03 at nominal 0.05
+floor 2.5, a + b <= 1 | 5 min (H3) | shift alone: nominal p 0.0077, calibrated p 0.016 (60 scans), null rejects 0.05 at nominal 0.05
+floor 2.5, a <= 1 | 2 min (H2) | no change: nominal p 0.0026, calibrated p 0.016 (60 scans), null rejects 0.00 at nominal 0.05
+floor 2.5, a <= 1 | 2 min (H2) | shift alone: nominal p 0.0385, calibrated p 0.016 (60 scans), null rejects 0.00 at nominal 0.05
+floor 2.5, a <= 1 | 30 s (H1) | no change: nominal p 0.8042, calibrated p 0.619 (20 scans), null rejects 0.00 at nominal 0.05
+floor 2.5, a <= 1 | 30 s (H1) | shift alone: nominal p 0.9566, calibrated p 0.619 (20 scans), null rejects 0.05 at nominal 0.05
+floor 2.5, a <= 1 | 4 min (H1) | no change: nominal p 0.0005, calibrated p 0.016 (60 scans), null rejects 0.10 at nominal 0.05
+floor 2.5, a <= 1 | 4 min (H1) | shift alone: nominal p 0.0107, calibrated p 0.066 (60 scans), null rejects 0.07 at nominal 0.05
+floor 2.5, a <= 1 | 5 min (H3) | no change: nominal p 0.0003, calibrated p 0.033 (60 scans), null rejects 0.03 at nominal 0.05
+floor 2.5, a <= 1 | 5 min (H3) | shift alone: nominal p 0.0022, calibrated p 0.016 (60 scans), null rejects 0.02 at nominal 0.05
+
+no change   30 s (H1)  : rejected in 0/8 references, calibrated p 0.148-0.619; null rejects 0.00-0.03 at nominal 0.05
+no change   2 min (H2) : rejected in 8/8 references, calibrated p 0.016-0.033; null rejects 0.00-0.05 at nominal 0.05
+no change   4 min (H1) : rejected in 8/8 references, calibrated p 0.016-0.049; null rejects 0.07-0.13 at nominal 0.05
+no change   5 min (H3) : rejected in 8/8 references, calibrated p 0.016-0.033; null rejects 0.02-0.10 at nominal 0.05
+shift alone 30 s (H1)  : rejected in 0/8 references, calibrated p 0.082-0.619; null rejects 0.00-0.05 at nominal 0.05
+shift alone 2 min (H2) : rejected in 8/8 references, calibrated p 0.016-0.033; null rejects 0.00-0.02 at nominal 0.05
+shift alone 4 min (H1) : rejected in 6/8 references, calibrated p 0.016-0.066; null rejects 0.05-0.10 at nominal 0.05
+shift alone 5 min (H3) : rejected in 8/8 references, calibrated p 0.016-0.049; null rejects 0.02-0.07 at nominal 0.05
