@@ -1068,18 +1068,68 @@ move to the supplement at submission. **Fixed in part.**
 **Response.** Agreed and stated in the introduction since round 17; the in-fit test of every
 candidate cause is added to the list of what is new. **Stated.**
 
+## Twentieth round (independent reviewer, whole paper, 2026-11-04; verdict: major revision, no fatal flaw; recommended change: one rule for every candidate, passing ranges instead of best fits, and a reference that does not understate the noise)
+
+### 168. MAJOR: the s-free reference leaves a structured misfit; a smooth extra loss of the tissue pulse halves it, so the F tests of Sims 48–49 used an understated noise level and were lenient.
+**Response.** Agreed. New Sim 50 adds a smooth loss L_κ (κ dB/THz above 0.2 THz, 1 at 0.2 THz) to the
+reference, zero-phase, with a causal (minimum-phase) version as a check. κ grows with bias time
+(2.1/5.5/6.4/9.8 dB/THz) and the misfit falls from 4.3/6.5/10.7 to 1.6/3.4/5.5 at 2/4/5 min. Every
+candidate is now fitted with s = 0 and κ free. With this reference, conduction and node states at every
+extreme, which passed in Sims 48–49, fail (items 170, 171). The causal reference finds a shift at 30 s
+(p = 0.004, against 0.53 zero-phase) and depends on how the loss is continued above the band, so it is
+a check only; both are reported (Sec. 5.7, Sec. 6). **Fixed.**
+
+### 169. MAJOR: two methods give one lower bound (bootstrap for bounds, profile for significance); best-fit sizes are quoted where the claim needs the range that passes.
+**Response.** One rule throughout: a candidate, or a fixed shift, passes if its fit is not
+significantly worse than the reference (F test, N_eff − 5 dof, p ≥ 0.05). The 95 % intervals of s
+(0.020–0.060, 0.024–0.080, 0.028–0.112 ps) and the smallest lags (0.08/0.09/0.11 rad) come from the
+same rule. Sec. 5.7 quotes the passing ranges (thicker path 3–8/3–11/3–15 %, warming 6–24 K or 3–10 K
+scaled) and the split of each candidate's recovery into its loss and its delay. **Fixed.**
+
+### 170. MAJOR: the node-state claim "only with every extreme" is false: in Sim 48 the best state passes from 0.6–0.75 of every extreme.
+**Response.** Against the Sim 50 reference no node state passes at every extreme (best ε = −3.0 −
+0.1j, p = 0.050/0.024/0.026; aqueous states p ≤ 0.014), so no scaled-down state passes either. Against
+the causal reference, ε′ ≈ −1.45 passes at 2 min from 0.45 of every extreme and at 4 min from 0.85, and
+fails at 5 min; the text says so and names the ring resonance, which an aqueous gap cannot hold.
+**Fixed.**
+
+### 171. MAJOR: the node delay was scaled by the loss-based factor 3.1 at 2–3 THz; the delay-based path factor is 2.2.
+**Response.** `node_transfer` now scales the delay by 2.2 at every frequency by default
+(`delay_factor="path"`, tested); Sims 48–49 keep the old factor and say so. In Sim 50 the best state
+gives the same p with either factor (0.050 vs 0.051). **Fixed.**
+
+### 172. MAJOR: Sim 49 passes tissue-water ions at 23–41 S/m with a ≤ 1; the text excludes conduction on conductivity alone.
+**Response.** Against the Sim 50 reference no conductivity passes (best 12–24 S/m tissue water,
+30–65 S/m axoplasm, p = 0.008–0.030); the added loss works against the fit (its loss alone recovers
+−19 to −24 % of what the shift buys). It fails against the causal reference too (p ≤ 0.010). Sec. 5.7
+states that Sim 49 passed it only without the loss term. **Fixed.**
+
+### 173. MINOR: Fig. 9 and Sim 46 label single-frequency candidates "NOT allowed", contradicting the in-fit test.
+**Response.** The grey band of Fig. 9 is now the lag from Sim 50; Sim 46 says "within/above the 0.6 THz
+allowance" and that the binding test is the in-fit one; the caption points to Sec. 5.7 (Sims 48–50).
+**Fixed.**
+
+### 174. MINOR: the mass estimate (6–10 mg) uses the old 15–24 µm.
+**Response.** Now 3–15 % of the ~220 µm optical path, 7–33 µm, ~1–13 mg over 20 × 20 mm depending on
+a 100 or 220 µm slice. **Fixed.**
+
+### 175. MINOR: a duplicated sentence in Sec. 5.6; "Sims 27–47"; stale rows in the match table; the abstract lag reads as a floor.
+**Response.** Sentence removed; "Sims 27–50"; the 0.6 THz, ~9 dB and E∥ rows rewritten from Sim 50;
+the abstract gives the best-fit lag (0.15–0.26 rad) and the smallest the traces allow (0.08 rad).
+**Fixed.**
+
 ---
 
 ## What matches and what does not (experiment)
 
 | Reported (Hovhannisyan, Makaryan, Martirosyan 2024) | This work |
 |---|---|
-| Dip near 0.6 THz (9–20 dB) | No node or fibre resonance anywhere in 0.1–3 THz. The shared session's biased waveforms contain a second pulse near the empty-cuvette delay (4, 12, 17, 22 % at 0.5, 2, 4, 5 min) and a tissue pulse lagging by 0.16–0.56 rad at 0.6 THz (Sim 48); the dip then falls at 0.57 THz (5 min, reported 0.56) and 0.63–0.65 THz (4 min, published 0.65): consistent, q fitted. Inside the fits the lag is reproduced by a 6–9 % thicker path or a stage drift, by conduction only at saturated-brine conductivity, partly by warming, and by node states only with every extreme and a permittivity an aqueous gap cannot hold (Sims 48, 49) |
+| Dip near 0.6 THz (9–20 dB) | No node or fibre resonance anywhere in 0.1–3 THz. The shared session's biased waveforms contain a second pulse near the empty-cuvette delay (4, 12, 17, 22 % at 0.5, 2, 4, 5 min) and a tissue pulse lagging by 0.15–0.26 rad at 0.6 THz (at least 0.08–0.11 rad, 95 %; Sim 50); the dip then falls at 0.57 THz (5 min, reported 0.56) and 0.63–0.65 THz (4 min, published 0.65): consistent, q fitted. Inside the fits the lag is reproduced by a 3–15 % thicker path, warming by a few kelvin or a stage drift; not by conduction; by node states only at the ring resonance with nearly every extreme against the less reliable causal reference (Sim 50) |
 | 2 THz dip (30 s, paper 1) | Not reproduced, not excluded. A real feature of one scan: 15 dB at 1.99 THz, twice any other single-curve dip, its bottom (−71 dB) 2–5 dB above the noise, so the depth is a lower bound; origin unknown. With the traced phase extrapolated the two pulses put their antiphase at 2.10–2.32 THz, and the data are only 3.2 dB above the two-pulse floor (Sims 43, 44). No node state (65, every extreme, six phase bands, b = 0.034–0.044) makes the model's minimum within 0.03 THz of 1.99 THz deeper than −37.5 dB (published ≤ −43.5 dB; Sim 43 (e)) |
 | Dip drifts 0.7 → 0.5 THz in minutes | Water-vapour lines cannot drift. At 30 s the traced ratio is a broad −3 to −4 dB trough over 0.56–0.78 THz; by 4 min the dip is at 0.62–0.65 THz as b reaches 0.17 and q 1.09 (Sims 42, 43). Matches the direction; fitted, not predicted |
 | High frequencies rise by 17–18 dB (2–2.5 THz, traced) | The bypass skips tissue loss: the waveform fit follows the rise to 1.7 THz within 1.5 dB rms (not testable above with the traced window); drying alone ≤ 3 dB (Sim 34) |
-| ~9 dB change under 100 V DC | Node (E∥, internode ≥ 200 µm, packing ≤ 0.6): ≤ 0.05 dB for any conductivity, ≤ 0.1/0.6/1.1 dB at 0.6/2/3 THz for any passive ε (ε″ ≥ 0.1, combined ±20 % materials); with internode 50 µm, packing 0.8 and the measured slice's optical thickness (×2.2–3.1) 1.5/10/17 dB. At 0.6 THz the tissue must change by 1.1–2.2 dB and ≥ 0.15 rad of delay (traces, ±1 pixel; extra loss ≤ 3.3 dB); no node state gives more than 0.06 rad of delay with every extreme, and none gives loss and delay together. At 2 THz the extreme bound (10 dB) approaches the ≥ 14 dB change (nominal margin 7×). Near 3 THz the reported change is a rise (node states ≤ 0.4 dB); channels 10⁻⁹ dB. Fibre conduction: 130–1300 S/m axoplasm for 9 dB; to give the delay the fits need, ≥ 111 S/m and ≥ 5.2 dB of extra loss, more than they allow (Sim 46). Heating/drying: smooth, ≤ 3 dB |
-| Effect only with E ∥ fibres | Described without data (H1 p. 18, H3), so not testable on the published material. Contradicted by every plausible remaining cause of the later tissue pulse (more tissue, stage drift, warming and conduction act for both polarisations); model dichroism −0.35 dB; a conducting axon is itself E∥-selective (6.6 vs 2.7 dB at 0.6 THz) but needs ≥ 60 S/m |
+| ~9 dB change under 100 V DC | Node (E∥, internode ≥ 200 µm, packing ≤ 0.6): ≤ 0.05 dB for any conductivity, ≤ 0.1/0.6/1.1 dB at 0.6/2/3 THz for any passive ε (ε″ ≥ 0.1, combined ±20 % materials); with internode 50 µm, packing 0.8 and the measured slice's optical thickness (×2.2–3.1) 1.5/10/17 dB. At 0.6 THz the tissue must change by 1.1–2.2 dB and ≥ 0.15 rad of delay (traces, ±1 pixel; extra loss ≤ 3.3 dB); inside the waveform fits no node state reproduces the lag at every extreme against the zero-phase reference (Sim 50). At 2 THz the extreme bound (10 dB) approaches the ≥ 14 dB change (nominal margin 7×). Near 3 THz the reported change is a rise (node states ≤ 0.4 dB); channels 10⁻⁹ dB. Fibre conduction: 130–1300 S/m axoplasm for 9 dB; inside the waveform fits no conductivity reproduces the lag (best 30–65 S/m, p ≤ 0.03; Sim 50). Heating/drying: smooth, ≤ 3 dB |
+| Effect only with E ∥ fibres | Described without data (H1 p. 18, H3), so not testable on the published material. Contradicted by every plausible remaining cause of the later tissue pulse (more tissue, warming and a stage drift act for both polarisations); model dichroism −0.35 dB; a conducting axon is itself E∥-selective (6.6 vs 2.7 dB at 0.6 THz) but does not reproduce the lag at any conductivity (Sim 50) |
 | Effect only with DC across the fibres | Described without data. Not explained; heating predicts the opposite (σ∥ ≈ 7σ⊥) |
 | Generated high frequencies (nonlinearity) | No ps nonlinearity at TDS fields (10⁻³ of onset); drying raises high-frequency transmission linearly |
 | Sample acts as a grating of wires | No diffraction orders below 6 THz; fibres are not periodic |

@@ -89,7 +89,7 @@ for scan in ("2 min (H2)", "4 min (H1)", "5 min (H3)"):
             say(f"    {name:36s} best {v:8.3g}{edge}: recovers {rec:4.0%}, F = {F:5.1f}, p = {pv:.3f}; a = {q[0]:.3f}; "
                 f"at 0.6 THz {-20 * np.log10(abs(r06)):+.2f} dB, {-np.angle(r06):+.3f} rad")
         for st in NODE_PICK:
-            r = node_transfer(NODES[st], fr)
+            r = node_transfer(NODES[st], fr, delay_factor="loss")
             q, sn, _ = tp.fit(y, tp.apply_transfer(x0, r), s=0.0, a_max=amax)
             F, pv = f_test(sn, s_free, ne)
             rec = (s_zero - sn) / gain

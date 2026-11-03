@@ -138,7 +138,7 @@ for name, (mk, (lo, hi)) in DM.items():
     if not roots:
         say(f"  {name:36s}: never gives the 0.6 THz delay over {lo}..{hi} (max {max(vals) + req[0, 1]:+.3f} rad)"); continue
     v = roots[0]; c = change(mk(v))
-    ok = "allowed" if c[0, 0] <= L_A1 else "NOT allowed (a > 1)"
+    ok = "within the 0.6 THz allowance" if c[0, 0] <= L_A1 else "above the 0.6 THz allowance"
     say(f"  {name:36s} = {v:+.3g}: loss at 0.6 THz {c[0, 0]:+.2f} dB ({ok}); delay at 1.0/1.4 THz "
         f"{c[1, 1] / req[1, 1]:.2f}x/{c[2, 1] / req[2, 1]:.2f}x; loss rise {c[1, 0] - c[0, 0]:+.2f}/{c[2, 0] - c[0, 0]:+.2f} dB")
 s_ps = req[0, 1] / (2 * np.pi * F[0]) * 1e12
@@ -157,7 +157,7 @@ for name, (mk, (lo, hi)) in MECH.items():
     if roots:
         c = change(mk(roots[0]))
         say(f"  {name:36s} = {roots[0]:+.3g} gives that delay at 0.6 THz with {c[0, 0]:+.2f} dB "
-            f"({'allowed' if c[0, 0] <= L_A1 else 'NOT allowed'}, <= {L_A1:.2f})")
+            f"({'within' if c[0, 0] <= L_A1 else 'above'} the 0.6 THz allowance {L_A1:.2f} dB)")
 # per scan: each scan's own 95 % lower bound on the delay (Sim 47) against its own loss allowance
 # (H1 4 min: A = 0.778, q = 1.091; H3 5 min: A = 0.689, q = 1.109 from Sim 39 over 0.15-1.70 THz; H2 has no spectral fit)
 A_H3, Q_H3 = 0.689, 1.109
@@ -174,16 +174,20 @@ for scan, allow in (("2 min", None), ("4 min", L_A1), ("5 min", L_A3)):
         roots = [brentq(g, grid[i], grid[i + 1]) for i in range(200) if vals[i] * vals[i + 1] < 0]
         if roots:
             c = change(mk(roots[0]))
-            verdict = "" if allow is None else (" allowed" if c[0, 0] <= allow else " NOT allowed")
+            verdict = "" if allow is None else (" (within the 0.6 THz allowance)" if c[0, 0] <= allow else " (above the 0.6 THz allowance)")
             say(f"  {name:36s} = {roots[0]:+.3g} with {c[0, 0]:+.2f} dB{verdict}")
+say("Single-frequency map only: the binding test applies each change over the whole band inside the waveform fits (Sim 50).")
 (OUT / "sim46.txt").write_text("\n".join(lines) + "\n", encoding="utf-8")
 fig, ax = plt.subplots(1, 2, figsize=(11, 5.2))
 node = json.loads((ROOT / "results" / "sim30" / "sim36_signed06.json").read_text())["states"]
 hk = [n for n in MECH if n.startswith("heating, Liebe x")][0]
 for k, axi in enumerate(ax):
-    ceil = req[k, 0] + 20 * np.log10(1 / A_H1)
-    axi.fill_between([0, ceil], D_MIN[k], REQ[1.18][k, 1], color="0.85", lw=0,
-                     label="what the fits allow: extra delay (95 % lower bound to q = 1.18), extra loss up to a = 1 (H1)")
+    lag = json.loads((ROOT / "results" / "sim50" / "sim50.json").read_text())["zero"]
+    lo = min(lag[sc]["lag_lo"] for sc in ("2 min (H2)", "4 min (H1)", "5 min (H3)"))
+    hi = max(lag[sc]["lag_best"] for sc in ("2 min (H2)", "4 min (H1)", "5 min (H3)"))
+    axi.axhspan(lo * F[k] / 0.6e12, hi * F[k] / 0.6e12, color="0.85", lw=0,
+                label="lag of the tissue pulse: smallest the traces allow (95 %) to largest best fit, 2-5 min (Sim 50), "
+                      "scaled with f")
     axi.plot([0], [2 * np.pi * F[k] * s_ps * 1e-12], "kx", ms=7, mew=1.5, label=f"time shift of the tissue term ({s_ps:.3f} ps)")
     for name, col, key, vals in (("heating, Liebe (0-80 K)", "C3", "heating, Liebe (dT, K)", np.linspace(0, 80, 21)),
                                  (f"heating, Liebe x{K_MILLON:.1f} (0-20 K)", "C4", hk, np.linspace(0, 20, 17)),

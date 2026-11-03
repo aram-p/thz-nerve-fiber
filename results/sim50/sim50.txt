@@ -1,0 +1,66 @@
+=== reference with a zero-phase smooth loss of the tissue pulse ===
+30 s (H1): reference misfit 0.857 (without the loss term 1.37), kappa 2.1 dB/THz, s -0.0043 ps, a 0.945, N_eff 12.1; s = 0: p = 0.5348; 95 % interval of s -0.016 to +0.008 ps; lag at 0.6 THz -0.016 rad, smallest passing -0.061 rad
+2 min (H2): reference misfit 1.64 (without the loss term 4.32), kappa 5.5 dB/THz, s +0.0402 ps, a 0.941, N_eff 14.0; s = 0: p = 0.0032; 95 % interval of s +0.020 to +0.060 ps; lag at 0.6 THz 0.151 rad, smallest passing 0.076 rad
+  thicker path (fraction)              best    0.05 (p = 1.000, a = 0.994); passes 0.03 to 0.08; recovers 105% (its loss alone -2%, its delay alone 105%)
+  water content (fractional change)    best    0.06 (p = 1.000, a = 1.000); passes 0.03 to 0.09; recovers 106% (its loss alone -3%, its delay alone 106%)
+  ions: all tissue water (S/m)         best      12 (p = 0.008, a = 1.000); passes nowhere; recovers 27% (its loss alone -21%, its delay alone 47%)
+  axoplasm conductivity (S/m)          best      30 (p = 0.008, a = 1.000); passes nowhere; recovers 27% (its loss alone -19%, its delay alone 45%)
+  heating, Liebe (dT, K)               best      10 (p = 0.141, a = 1.000); passes 6 to 14; recovers 83% (its loss alone -13%, its delay alone 94%)
+  heating, Liebe x2.31 (dT, K)         best       4 (p = 0.191, a = 1.000); passes 3 to 6; recovers 87% (its loss alone -8%, its delay alone 94%)
+  node states, every extreme (delay with the path factor 2.2): best joint:joint_-3.0 p = 0.050, recovers 67%; 0 of 80 pass; best aqueous epsnode:-10_30.0 p = 0.014
+  node states: smallest fraction of every extreme at which one passes: none up to 1
+  same state with the delay scaled like the loss (3.1 at 2-3 THz): p = 0.051
+4 min (H1): reference misfit 3.43 (without the loss term 6.48), kappa 6.4 dB/THz, s +0.0525 ps, a 0.901, N_eff 17.1; s = 0: p = 0.0026; 95 % interval of s +0.024 to +0.080 ps; lag at 0.6 THz 0.198 rad, smallest passing 0.092 rad
+  thicker path (fraction)              best    0.07 (p = 1.000, a = 0.968); passes 0.03 to 0.11; recovers 108% (its loss alone 0%, its delay alone 108%)
+  water content (fractional change)    best    0.08 (p = 1.000, a = 0.980); passes 0.04 to 0.12; recovers 109% (its loss alone 0%, its delay alone 108%)
+  ions: all tissue water (S/m)         best      20 (p = 0.013, a = 1.000); passes nowhere; recovers 41% (its loss alone -24%, its delay alone 64%)
+  axoplasm conductivity (S/m)          best      50 (p = 0.013, a = 1.000); passes nowhere; recovers 41% (its loss alone -21%, its delay alone 61%)
+  heating, Liebe (dT, K)               best      12 (p = 0.095, a = 1.000); passes 8 to 18; recovers 77% (its loss alone -6%, its delay alone 83%)
+  heating, Liebe x2.31 (dT, K)         best       5 (p = 0.132, a = 1.000); passes 3 to 7; recovers 82% (its loss alone -2%, its delay alone 85%)
+  node states, every extreme (delay with the path factor 2.2): best joint:joint_-3.0 p = 0.024, recovers 53%; 0 of 80 pass; best aqueous epsnode:-10_30.0 p = 0.009
+  node states: smallest fraction of every extreme at which one passes: none up to 1
+  same state with the delay scaled like the loss (3.1 at 2-3 THz): p = 0.024
+5 min (H3): reference misfit 5.48 (without the loss term 10.7), kappa 9.8 dB/THz, s +0.0681 ps, a 0.882, N_eff 18.4; s = 0: p = 0.0057; 95 % interval of s +0.028 to +0.112 ps; lag at 0.6 THz 0.257 rad, smallest passing 0.106 rad
+  thicker path (fraction)              best    0.09 (p = 1.000, a = 0.967); passes 0.03 to 0.15; recovers 110% (its loss alone 0%, its delay alone 110%)
+  water content (fractional change)    best     0.1 (p = 1.000, a = 0.979); passes 0.04 to 0.17; recovers 111% (its loss alone 0%, its delay alone 110%)
+  ions: all tissue water (S/m)         best      24 (p = 0.030, a = 1.000); passes nowhere; recovers 45% (its loss alone -21%, its delay alone 67%)
+  axoplasm conductivity (S/m)          best      65 (p = 0.030, a = 1.000); passes nowhere; recovers 45% (its loss alone -23%, its delay alone 69%)
+  heating, Liebe (dT, K)               best      16 (p = 0.101, a = 1.000); passes 10 to 24; recovers 71% (its loss alone -10%, its delay alone 81%)
+  heating, Liebe x2.31 (dT, K)         best       7 (p = 0.152, a = 1.000); passes 4 to 10; recovers 79% (its loss alone -5%, its delay alone 84%)
+  node states, every extreme (delay with the path factor 2.2): best joint:joint_-3.0 p = 0.026, recovers 42%; 0 of 80 pass; best aqueous epsnode:-10_30.0 p = 0.013
+  node states: smallest fraction of every extreme at which one passes: none up to 1
+  same state with the delay scaled like the loss (3.1 at 2-3 THz): p = 0.026
+
+=== reference with a causal (minimum-phase) smooth loss of the tissue pulse ===
+30 s (H1): reference misfit 0.639 (without the loss term 1.37), kappa 2.0 dB/THz, s -0.0663 ps, a 0.955, N_eff 16.2; s = 0: p = 0.0040; 95 % interval of s -0.106 to -0.026 ps; lag at 0.6 THz -0.004 rad, smallest passing -0.013 rad
+2 min (H2): reference misfit 1.25 (without the loss term 4.32), kappa 4.6 dB/THz, s -0.1063 ps, a 0.937, N_eff 15.7; s = 0: p = 0.0054; 95 % interval of s -0.178 to -0.038 ps; lag at 0.6 THz 0.167 rad, smallest passing 0.142 rad
+  thicker path (fraction)              best       0 (p = 0.005, a = 0.810); passes nowhere; recovers 0% (its loss alone 0%, its delay alone 0%)
+  water content (fractional change)    best       0 (p = 0.005, a = 0.810); passes nowhere; recovers 0% (its loss alone 0%, its delay alone 0%)
+  ions: all tissue water (S/m)         best      16 (p = 0.010, a = 1.000); passes nowhere; recovers 20% (its loss alone 23%, its delay alone -6%)
+  axoplasm conductivity (S/m)          best      45 (p = 0.010, a = 1.000); passes nowhere; recovers 20% (its loss alone 20%, its delay alone -6%)
+  heating, Liebe (dT, K)               best       0 (p = 0.005, a = 0.810); passes nowhere; recovers 0% (its loss alone 0%, its delay alone 0%)
+  heating, Liebe x2.31 (dT, K)         best       0 (p = 0.005, a = 0.810); passes nowhere; recovers 0% (its loss alone 0%, its delay alone 0%)
+  node states, every extreme (delay with the path factor 2.2): best joint:joint_-1.45 p = 0.406, recovers 94%; 24 of 80 pass; best aqueous epsnode:-1_3.0 p = 0.012
+  node states: smallest fraction of every extreme at which one passes: 0.45 (joint:joint_-1.45)
+  same state with the delay scaled like the loss (3.1 at 2-3 THz): p = 0.468
+4 min (H1): reference misfit 2.13 (without the loss term 6.48), kappa 5.9 dB/THz, s -0.1399 ps, a 0.922, N_eff 19.3; s = 0: p = 0.0022; 95 % interval of s -0.224 to -0.060 ps; lag at 0.6 THz 0.208 rad, smallest passing 0.181 rad
+  thicker path (fraction)              best       0 (p = 0.002, a = 0.764); passes nowhere; recovers -0% (its loss alone -0%, its delay alone -0%)
+  water content (fractional change)    best       0 (p = 0.002, a = 0.764); passes nowhere; recovers -0% (its loss alone -0%, its delay alone -0%)
+  ions: all tissue water (S/m)         best      22 (p = 0.006, a = 0.999); passes nowhere; recovers 25% (its loss alone 17%, its delay alone 3%)
+  axoplasm conductivity (S/m)          best      55 (p = 0.006, a = 1.000); passes nowhere; recovers 25% (its loss alone 19%, its delay alone 3%)
+  heating, Liebe (dT, K)               best       0 (p = 0.002, a = 0.764); passes nowhere; recovers -0% (its loss alone -0%, its delay alone -0%)
+  heating, Liebe x2.31 (dT, K)         best       0 (p = 0.002, a = 0.764); passes nowhere; recovers -0% (its loss alone -0%, its delay alone -0%)
+  node states, every extreme (delay with the path factor 2.2): best joint:joint_-1.45 p = 0.076, recovers 74%; 4 of 80 pass; best aqueous epsnode:-1_3.0 p = 0.004
+  node states: smallest fraction of every extreme at which one passes: 0.85 (joint:joint_-1.45)
+  same state with the delay scaled like the loss (3.1 at 2-3 THz): p = 0.089
+5 min (H3): reference misfit 3.52 (without the loss term 10.7), kappa 8.7 dB/THz, s -0.2237 ps, a 0.906, N_eff 20.2; s = 0: p = 0.0011; 95 % interval of s -0.344 to -0.104 ps; lag at 0.6 THz 0.244 rad, smallest passing 0.195 rad
+  thicker path (fraction)              best       0 (p = 0.001, a = 0.683); passes nowhere; recovers -0% (its loss alone -0%, its delay alone -0%)
+  water content (fractional change)    best       0 (p = 0.001, a = 0.683); passes nowhere; recovers -0% (its loss alone -0%, its delay alone -0%)
+  ions: all tissue water (S/m)         best      30 (p = 0.003, a = 1.000); passes nowhere; recovers 23% (its loss alone 19%, its delay alone 0%)
+  axoplasm conductivity (S/m)          best      80 (p = 0.003, a = 1.000); passes nowhere; recovers 24% (its loss alone 18%, its delay alone 0%)
+  heating, Liebe (dT, K)               best       0 (p = 0.001, a = 0.683); passes nowhere; recovers -0% (its loss alone -0%, its delay alone -0%)
+  heating, Liebe x2.31 (dT, K)         best       0 (p = 0.001, a = 0.683); passes nowhere; recovers -0% (its loss alone -0%, its delay alone -0%)
+  node states, every extreme (delay with the path factor 2.2): best joint:joint_-1.45 p = 0.023, recovers 60%; 0 of 80 pass; best aqueous epsnode:-1_3.0 p = 0.002
+  node states: smallest fraction of every extreme at which one passes: none up to 1
+  same state with the delay scaled like the loss (3.1 at 2-3 THz): p = 0.026
+

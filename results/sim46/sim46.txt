@@ -34,21 +34,21 @@ q = 1.18: required extra loss / delay at 0.6, 1.0, 1.4 THz: 2.18 dB, +0.454 rad;
   pair water content (fractional change) = +0.179 with ions: all tissue water (S/m) = +2.74e-19: rms relative misfit 7% over loss and delay at 3 frequencies
 
 (b) Delay-matched, H1 4 min (q = 1.091, A = 0.778, b = 0.164): required delay 0.230, 0.369, 0.509 rad at 0.6/1.0/1.4 THz; extra loss at 0.6 THz allowed <= 3.28 dB (a <= 1) or <= 1.73 dB (a <= 1 - b); loss rise 0.6->1.0/1.4 THz needed +0.25/+0.67 dB
-  heating, Liebe (dT, K)               = +75.8: loss at 0.6 THz +7.02 dB (NOT allowed (a > 1)); delay at 1.0/1.4 THz 0.85x/1.29x; loss rise -3.26/-6.64 dB
-  heating, Liebe x2.31 (dT, K)         = +9: loss at 0.6 THz +1.12 dB (allowed); delay at 1.0/1.4 THz 1.43x/1.54x; loss rise -0.37/-0.05 dB
-  water content (fractional change)    = +0.0868: loss at 0.6 THz +1.13 dB (allowed); delay at 1.0/1.4 THz 0.91x/0.86x; loss rise +0.27/+0.45 dB
-  ions: all tissue water (S/m)         = +62.9: loss at 0.6 THz +7.53 dB (NOT allowed (a > 1)); delay at 1.0/1.4 THz 0.57x/0.37x; loss rise +0.72/+1.16 dB
-  axoplasm conductivity (S/m)          = +165: loss at 0.6 THz +7.53 dB (NOT allowed (a > 1)); delay at 1.0/1.4 THz 0.57x/0.37x; loss rise +0.72/+1.16 dB
-  thicker path (fraction)              = +0.0758: loss at 0.6 THz +0.99 dB (allowed); delay at 1.0/1.4 THz 0.92x/0.87x; loss rise +0.25/+0.41 dB
+  heating, Liebe (dT, K)               = +75.8: loss at 0.6 THz +7.02 dB (above the 0.6 THz allowance); delay at 1.0/1.4 THz 0.85x/1.29x; loss rise -3.26/-6.64 dB
+  heating, Liebe x2.31 (dT, K)         = +9: loss at 0.6 THz +1.12 dB (within the 0.6 THz allowance); delay at 1.0/1.4 THz 1.43x/1.54x; loss rise -0.37/-0.05 dB
+  water content (fractional change)    = +0.0868: loss at 0.6 THz +1.13 dB (within the 0.6 THz allowance); delay at 1.0/1.4 THz 0.91x/0.86x; loss rise +0.27/+0.45 dB
+  ions: all tissue water (S/m)         = +62.9: loss at 0.6 THz +7.53 dB (above the 0.6 THz allowance); delay at 1.0/1.4 THz 0.57x/0.37x; loss rise +0.72/+1.16 dB
+  axoplasm conductivity (S/m)          = +165: loss at 0.6 THz +7.53 dB (above the 0.6 THz allowance); delay at 1.0/1.4 THz 0.57x/0.37x; loss rise +0.72/+1.16 dB
+  thicker path (fraction)              = +0.0758: loss at 0.6 THz +0.99 dB (within the 0.6 THz allowance); delay at 1.0/1.4 THz 0.92x/0.87x; loss rise +0.25/+0.41 dB
   time shift of the tissue term (drift) = +0.061 ps: loss 0 dB (allowed); delay at 1.0/1.4 THz 1.04x/1.05x; loss rise 0 dB
 
 Lowest extra delay the traces allow (Sim 47, one-sided 95 %, 2-5 min): 0.074, 0.123, 0.172 rad at 0.6/1.0/1.4 THz
-  heating, Liebe (dT, K)               = +5.98 gives that delay at 0.6 THz with +0.31 dB (allowed, <= 3.28)
-  heating, Liebe x2.31 (dT, K)         = +2.32 gives that delay at 0.6 THz with +0.26 dB (allowed, <= 3.28)
-  water content (fractional change)    = +0.0277 gives that delay at 0.6 THz with +0.36 dB (allowed, <= 3.28)
-  ions: all tissue water (S/m)         = +22.5 gives that delay at 0.6 THz with +2.80 dB (allowed, <= 3.28)
-  axoplasm conductivity (S/m)          = +59 gives that delay at 0.6 THz with +2.80 dB (allowed, <= 3.28)
-  thicker path (fraction)              = +0.0242 gives that delay at 0.6 THz with +0.31 dB (allowed, <= 3.28)
+  heating, Liebe (dT, K)               = +5.98 gives that delay at 0.6 THz with +0.31 dB (within the 0.6 THz allowance 3.28 dB)
+  heating, Liebe x2.31 (dT, K)         = +2.32 gives that delay at 0.6 THz with +0.26 dB (within the 0.6 THz allowance 3.28 dB)
+  water content (fractional change)    = +0.0277 gives that delay at 0.6 THz with +0.36 dB (within the 0.6 THz allowance 3.28 dB)
+  ions: all tissue water (S/m)         = +22.5 gives that delay at 0.6 THz with +2.80 dB (within the 0.6 THz allowance 3.28 dB)
+  axoplasm conductivity (S/m)          = +59 gives that delay at 0.6 THz with +2.80 dB (within the 0.6 THz allowance 3.28 dB)
+  thicker path (fraction)              = +0.0242 gives that delay at 0.6 THz with +0.31 dB (within the 0.6 THz allowance 3.28 dB)
 Per scan, 2 min: 95 % lower bound 0.078 rad at 0.6 THz; allowed extra loss not fitted
   ions: all tissue water (S/m)         = +23.9 with +2.96 dB
   axoplasm conductivity (S/m)          = +62.6 with +2.96 dB
@@ -56,14 +56,15 @@ Per scan, 2 min: 95 % lower bound 0.078 rad at 0.6 THz; allowed extra loss not f
   heating, Liebe x2.31 (dT, K)         = +2.49 with +0.28 dB
   thicker path (fraction)              = +0.0258 with +0.33 dB
 Per scan, 4 min: 95 % lower bound 0.093 rad at 0.6 THz; allowed extra loss 3.28 dB
-  ions: all tissue water (S/m)         = +27.9 with +3.45 dB NOT allowed
-  axoplasm conductivity (S/m)          = +73.1 with +3.45 dB NOT allowed
-  heating, Liebe (dT, K)               = +8.04 with +0.43 dB allowed
-  heating, Liebe x2.31 (dT, K)         = +2.99 with +0.34 dB allowed
-  thicker path (fraction)              = +0.0305 with +0.39 dB allowed
+  ions: all tissue water (S/m)         = +27.9 with +3.45 dB (above the 0.6 THz allowance)
+  axoplasm conductivity (S/m)          = +73.1 with +3.45 dB (above the 0.6 THz allowance)
+  heating, Liebe (dT, K)               = +8.04 with +0.43 dB (within the 0.6 THz allowance)
+  heating, Liebe x2.31 (dT, K)         = +2.99 with +0.34 dB (within the 0.6 THz allowance)
+  thicker path (fraction)              = +0.0305 with +0.39 dB (within the 0.6 THz allowance)
 Per scan, 5 min: 95 % lower bound 0.074 rad at 0.6 THz; allowed extra loss 4.55 dB
-  ions: all tissue water (S/m)         = +22.5 with +2.80 dB allowed
-  axoplasm conductivity (S/m)          = +59 with +2.80 dB allowed
-  heating, Liebe (dT, K)               = +5.98 with +0.31 dB allowed
-  heating, Liebe x2.31 (dT, K)         = +2.32 with +0.26 dB allowed
-  thicker path (fraction)              = +0.0242 with +0.31 dB allowed
+  ions: all tissue water (S/m)         = +22.5 with +2.80 dB (within the 0.6 THz allowance)
+  axoplasm conductivity (S/m)          = +59 with +2.80 dB (within the 0.6 THz allowance)
+  heating, Liebe (dT, K)               = +5.98 with +0.31 dB (within the 0.6 THz allowance)
+  heating, Liebe x2.31 (dT, K)         = +2.32 with +0.26 dB (within the 0.6 THz allowance)
+  thicker path (fraction)              = +0.0242 with +0.31 dB (within the 0.6 THz allowance)
+Single-frequency map only: the binding test applies each change over the whole band inside the waveform fits (Sim 50).

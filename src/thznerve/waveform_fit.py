@@ -38,24 +38,51 @@ class TwoPulse:
     def shift(self, y, tau):
         return np.interp(self.tt - tau, self.tt, y, left=0.0, right=0.0)
 
-    def model(self, p, x0, s=None):
-        a, b, s_, tau = p if s is None else (p[0], p[1], s, p[2])
-        return a * self.shift(x0, s_) + b * self.shift(self.K, s_ + tau)
+    F_LOSS = 4.0                                              # THz: the loss term is held constant above
+    F_LO = 0.2                                                # THz: the loss term is 1 here (band edge), so a <= 1 keeps the
+                                                              # tissue pulse at or below the unbiased one over the band
 
-    def fit(self, y, x0, s=None, p0=None, a_max=np.inf):
-        """Least squares over (a, b, s, tau), or (a, b, tau) with s fixed; a <= a_max (a passive slice cannot
-        raise the tissue pulse above what its own transfer gives: a_max = 1). Returns (params, misfit, residual)."""
+    def loss_transfer(self, kappa, kind="zero"):
+        """Smooth extra loss of the tissue pulse, kappa dB per THz of field amplitude above F_LO (held above F_LOSS).
+        kind 'zero': zero phase (a smoothing, e.g. of the traced curve); 'minphase': the causal (minimum-phase)
+        transfer with the same magnitude, from the folded cepstrum, which adds its own delay."""
+        lnmag = -kappa * (np.minimum(self.fr, self.F_LOSS) - self.F_LO) * np.log(10) / 20
+        if kind == "zero":
+            return np.exp(lnmag)
+        full = np.r_[lnmag, lnmag[-2:0:-1]]
+        c = np.fft.ifft(full).real
+        m = len(full) // 2
+        fold = np.r_[c[0], 2 * c[1:m], c[m], np.zeros(len(full) - m - 1)]
+        return np.exp(np.fft.fft(fold))[: len(self.fr)]
+
+    def model(self, p, x0, s=None, loss=None):
+        """p = (a, b, [s], tau, [kappa]): s omitted when fixed, kappa present when loss is 'zero' or 'minphase'."""
+        p = list(p)
+        kap = p.pop() if loss else 0.0
+        a, b, s_, tau = p if s is None else (p[0], p[1], s, p[2])
+        xt = self.apply_transfer(x0, self.loss_transfer(kap, loss)) if loss else x0
+        return a * self.shift(xt, s_) + b * self.shift(self.K, s_ + tau)
+
+    def fit(self, y, x0, s=None, p0=None, a_max=np.inf, loss=None):
+        """Least squares over (a, b, s, tau), or (a, b, tau) with s fixed, plus kappa >= 0 when loss is given;
+        a <= a_max (a passive slice cannot raise the tissue pulse above what its own transfer gives: a_max = 1).
+        Returns (params, misfit, residual)."""
         if p0 is not None:
-            starts = [p0]
+            starts = [list(p0)]
         elif s is None:
             starts = [[0.6, b0, s0, 0.0] for b0 in (0.05, 0.2) for s0 in (-0.1, 0.0, 0.1)]
         else:
             starts = [[0.6, b0, t0] for b0 in (0.05, 0.2) for t0 in (-0.1, 0.0, 0.1)]
-        r = lambda p: self.model(p, x0, s) - y
+        if loss and p0 is None:
+            starts = [st + [k0] for st in starts for k0 in (1.0, 6.0)]
+        r = lambda p: self.model(p, x0, s, loss) - y
         n = len(starts[0])
         ub = np.full(n, np.inf); ub[0] = a_max
-        starts = [np.minimum(st, np.r_[a_max * 0.999, np.full(n - 1, np.inf)]) for st in starts]
-        best = min((least_squares(r, st, bounds=(-np.inf, ub)) for st in starts), key=lambda q: q.cost)
+        lb = np.full(n, -np.inf)
+        if loss:
+            lb[-1], ub[-1] = 0.0, 60.0
+        starts = [np.clip(st, lb + 1e-9, np.minimum(ub, np.r_[a_max * 0.999, np.full(n - 1, np.inf)])) for st in starts]
+        best = min((least_squares(r, st, bounds=(lb, ub)) for st in starts), key=lambda q: q.cost)
         return best.x, float(np.sum(best.fun ** 2)), best.fun
 
     def apply_transfer(self, x0, ratio):
@@ -85,13 +112,18 @@ def slice_factor(f_thz):
     return 6 * 4 * 4 / 3 * np.interp(f_thz, [1.0, 2.0], [2.2, 3.1])
 
 
-def node_transfer(state, fr_thz, lam=1.0, use="loss_db_dipole"):
+def node_transfer(state, fr_thz, lam=1.0, use="loss_db_dipole", delay_factor="path"):
     """exp(change of ln T) of the slice for a node state from results/sim30/sim36_signedband.json (values with
     every extreme at the solved frequencies): the factor is taken off at each solved frequency, the raw values
     interpolated linearly in f with 0 at f = 0 and held above the last, then multiplied by the factor at f and
-    by lam (1/70.4: internode 1000 um, packing 0.5, 100 um slice)."""
+    by lam (1/70.4: internode 1000 um, packing 0.5, 100 um slice). The loss keeps the larger slice factor
+    (2.2 to 1 THz, 3.1 from 2 THz; loss-based, Sec. 4.6). The delay is scaled with the delay-based path factor
+    2.2 at every frequency (delay_factor 'path', the 220 um optical thickness of Sec. 5.5) or, with 'loss',
+    with the same factor as the loss."""
     f = np.array(state["f_thz"]); fac = slice_factor(f)
-    raw = (-np.array(state[use]) * np.log(10) / 20 - 1j * np.array(state["delay_rad"])) / fac
-    f = np.r_[0.0, f]; raw = np.r_[0.0, raw]
-    d = lam * slice_factor(fr_thz) * (np.interp(fr_thz, f, raw.real) + 1j * np.interp(fr_thz, f, raw.imag))
+    raw_l = -np.array(state[use]) * np.log(10) / 20 / fac
+    raw_d = np.array(state["delay_rad"]) / fac
+    f = np.r_[0.0, f]; raw_l = np.r_[0.0, raw_l]; raw_d = np.r_[0.0, raw_d]
+    fd = slice_factor(np.minimum(fr_thz, 1.0)) if delay_factor == "path" else slice_factor(fr_thz)
+    d = lam * (slice_factor(fr_thz) * np.interp(fr_thz, f, raw_l) - 1j * fd * np.interp(fr_thz, f, raw_d))
     return np.exp(d)

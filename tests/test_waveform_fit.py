@@ -47,7 +47,22 @@ def test_a_max_bound_holds():
 def test_node_transfer_reproduces_solved_points():
     from thznerve.waveform_fit import node_transfer
     st = {"f_thz": [0.6, 2.0], "loss_db_dipole": [0.5, 2.0], "delay_rad": [0.05, 0.3]}
-    r = node_transfer(st, np.array([0.0, 0.6, 2.0]))
+    r = node_transfer(st, np.array([0.0, 0.6, 2.0]), delay_factor="loss")
     assert abs(r[0] - 1) < 1e-12
     assert abs(-20 * np.log10(abs(r[1])) - 0.5) < 1e-9 and abs(-np.angle(r[1]) - 0.05) < 1e-9
     assert abs(-20 * np.log10(abs(r[2])) - 2.0) < 1e-9 and abs(-np.angle(r[2]) - 0.3) < 1e-9
+    r = node_transfer(st, np.array([0.6, 2.0]))                     # delay with the 2.2 path factor at 2 THz
+    assert abs(-np.angle(r[0]) - 0.05) < 1e-9 and abs(-np.angle(r[1]) - 0.3 * 2.2 / 3.1) < 1e-9
+
+
+def test_loss_term_recovered_and_minphase_is_causal():
+    tt = np.arange(0, 8, 0.005)
+    B, K = _pulse(tt, 4.0), _pulse(tt, 3.4)
+    tp = TwoPulse(tt, K)
+    y = 0.7 * tp.shift(tp.apply_transfer(B, tp.loss_transfer(6.0)), 0.04) + 0.15 * tp.shift(K, 0.0)
+    p, misfit, _ = tp.fit(y, B, loss="zero")
+    assert abs(p[2] - 0.04) < 2e-3 and abs(p[4] - 6.0) < 0.3
+    h = tp.loss_transfer(6.0, "minphase")
+    assert np.allclose(np.abs(h), tp.loss_transfer(6.0), rtol=1e-6)
+    imp = np.fft.irfft(h, tp.np_)
+    assert np.sum(imp[tp.np_ // 2:] ** 2) < 1e-6 * np.sum(imp ** 2)      # no response before t = 0

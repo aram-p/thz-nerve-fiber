@@ -97,7 +97,7 @@ fr = np.fft.rfftfreq(NP, dt)                              # THz (dt in ps)
 
 
 def apply_node(x0, st, use="loss_db_dipole", lam=1.0):
-    return np.fft.irfft(np.fft.rfft(x0, NP) * node_transfer(st, fr, lam, use), NP)[:N]
+    return np.fft.irfft(np.fft.rfft(x0, NP) * node_transfer(st, fr, lam, use, delay_factor="loss"), NP)[:N]
 
 
 out = {}
