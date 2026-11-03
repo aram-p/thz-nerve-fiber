@@ -80,3 +80,11 @@ def test_loss_cutoff_no_gain_and_ab_bound():
     assert p[0] + p[1] <= 1.0 + 1e-4
     F, pv = f_test(2.0, 1.0, 22.0, n_par=6, n_fixed=2)
     assert abs(F - 0.5 * 16) < 1e-12 and 0 < pv < 0.01
+
+
+def test_mixed_loss_is_floor_times_causal_increment():
+    tt = np.arange(0, 8, 0.005)
+    tp = TwoPulse(tt, _pulse(tt, 3.4), kappa0=2.0)
+    m = tp.loss_transfer(3.0, "mixed")
+    assert np.allclose(np.abs(m), tp.loss_transfer(5.0), rtol=1e-6)
+    assert np.allclose(np.angle(m), np.angle(tp.loss_transfer(3.0, "minphase")), atol=1e-9)

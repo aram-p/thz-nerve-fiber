@@ -178,16 +178,25 @@ for scan, allow in (("2 min", None), ("4 min", L_A1), ("5 min", L_A3)):
             say(f"  {name:36s} = {roots[0]:+.3g} with {c[0, 0]:+.2f} dB{verdict}")
 say("Single-frequency map only: the binding test applies each change over the whole band inside the waveform fits (Sim 51).")
 (OUT / "sim46.txt").write_text("\n".join(lines) + "\n", encoding="utf-8")
-fig, ax = plt.subplots(1, 2, figsize=(11, 5.2))
+fig, ax = plt.subplots(1, 2, figsize=(11, 6.0))
 node = json.loads((ROOT / "results" / "sim30" / "sim36_signed06.json").read_text())["states"]
 hk = [n for n in MECH if n.startswith("heating, Liebe x")][0]
 for k, axi in enumerate(ax):
-    lag = json.loads((ROOT / "results" / "sim50" / "sim50.json").read_text())["zero"]
-    lo = min(lag[sc]["lag_lo"] for sc in ("2 min (H2)", "4 min (H1)", "5 min (H3)"))
-    hi = max(lag[sc]["lag_best"] for sc in ("2 min (H2)", "4 min (H1)", "5 min (H3)"))
-    axi.axhspan(lo * F[k] / 0.6e12, hi * F[k] / 0.6e12, color="0.85", lw=0,
-                label="lag of the tissue pulse: smallest the traces allow (95 %) to largest best fit, 2-5 min (Sim 50), "
-                      "scaled with f")
+    s52 = json.loads((ROOT / "results" / "sim52" / "sim52.json").read_text())
+    s53 = json.loads((ROOT / "results" / "sim53" / "sim53.json").read_text())
+    LATE = ("2 min (H2)", "4 min (H1)", "5 min (H3)")
+    refs = [v for v in s52 if v != "summary"]
+    lo = min(s52[v][sc]["lag_range"][0] for v in refs for sc in LATE if s52[v][sc]["lag_range"])
+    hi = max(s52[v][sc]["lag"] for v in refs for sc in LATE)
+    blo = min(s52[v][sc]["lag"] for v in refs for sc in LATE)
+    axi.axhspan(lo * F[k] / 0.6e12, hi * F[k] / 0.6e12, color="0.92", lw=0,
+                label="lag of the tissue pulse, 2-5 min, 10 fits (Sim 52): 95 % lower edge to largest")
+    axi.axhspan(blo * F[k] / 0.6e12, hi * F[k] / 0.6e12, color="0.8", lw=0, label="lag, best fits only")
+    inc = [(d[sc]["kappa"], float(v.split("above ")[1].split(" THz")[0])) for v, d in s53.items()
+           if v.startswith("increment") for sc in LATE]
+    loss = [kap * (min(F[k] / 1e12, fl) - 0.2) for kap, fl in inc]
+    axi.axvspan(min(loss), max(loss), color="C7", alpha=0.25, lw=0,
+                label="extra loss of the tissue pulse, 2-5 min (Sim 53)")
     axi.plot([0], [2 * np.pi * F[k] * s_ps * 1e-12], "kx", ms=7, mew=1.5, label=f"time shift of the tissue term ({s_ps:.3f} ps)")
     for name, col, key, vals in (("heating, Liebe (0-80 K)", "C3", "heating, Liebe (dT, K)", np.linspace(0, 80, 21)),
                                  (f"heating, Liebe x{K_MILLON:.1f} (0-20 K)", "C4", hk, np.linspace(0, 20, 17)),
@@ -204,7 +213,7 @@ for k, axi in enumerate(ax):
     axi.set_xlabel("extra loss of the slice (dB)"); axi.set_title(f"{F[k] / 1e12:.1f} THz", fontsize=10)
 ax[0].set_ylabel("extra delay of the slice (rad)")
 h, l = ax[0].get_legend_handles_labels()
-fig.legend(h, l, fontsize=7.5, loc="lower center", ncol=3, frameon=False)
-fig.tight_layout(rect=(0, 0.17, 1, 1))
+fig.legend(h, l, fontsize=7.5, loc="lower center", ncol=2, frameon=False)
+fig.tight_layout(rect=(0, 0.22, 1, 1))
 for ext in ("png", "pdf"):
     fig.savefig(FIG / f"fig_tissue_change.{ext}", dpi=200)

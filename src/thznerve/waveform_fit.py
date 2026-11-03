@@ -28,8 +28,9 @@ def load_scans(root):
 
 
 class TwoPulse:
-    def __init__(self, tt, K, pad=4, f_loss=4.0):
+    def __init__(self, tt, K, pad=4, f_loss=4.0, kappa0=0.0):
         self.tt, self.K = tt, K
+        self.kappa0 = kappa0                                  # dB/THz: zero-phase floor of the 'mixed' loss
         self.F_LOSS = f_loss                                  # THz: the loss term is held constant above
         self.dt = tt[1] - tt[0]
         self.n = len(tt)
@@ -46,10 +47,14 @@ class TwoPulse:
         """Smooth extra loss of the tissue pulse, kappa dB per THz of field amplitude above F_LO (1 below
         F_LO, held above F_LOSS).
         kind 'zero': zero phase (a smoothing, e.g. of the traced curve); 'minphase': the causal (minimum-phase)
-        transfer with the same magnitude, from the folded cepstrum, which adds its own delay."""
-        lnmag = -kappa * (np.clip(self.fr, self.F_LO, self.F_LOSS) - self.F_LO) * np.log(10) / 20
+        transfer with the same magnitude, from the folded cepstrum, which adds its own delay; 'mixed': a zero-phase
+        floor of kappa0 times a causal increment of kappa."""
+        ramp = (np.clip(self.fr, self.F_LO, self.F_LOSS) - self.F_LO) * np.log(10) / 20
+        lnmag = -kappa * ramp
         if kind == "zero":
             return np.exp(lnmag)
+        if kind == "mixed":
+            return np.exp(-self.kappa0 * ramp) * self.loss_transfer(kappa, "minphase")
         full = np.r_[lnmag, lnmag[-2:0:-1]]
         c = np.fft.ifft(full).real
         m = len(full) // 2
