@@ -1,0 +1,337 @@
+=== no loss term, a <= 1 ===
+30 s (H1): misfit 1.37, N_eff 12.8, kappa 0.0 dB/THz (its minimum-phase delay at 0.6 THz 0.00 rad), s -0.0025 ps, a 0.864, b 0.040; s = 0: p = 0.7353; lag at 0.6 THz -0.009 rad, 95 % -0.070 to 0.051
+2 min (H2): misfit 4.32, N_eff 15.8, kappa 0.0 dB/THz (its minimum-phase delay at 0.6 THz 0.00 rad), s +0.0428 ps, a 0.746, b 0.113; s = 0: p = 0.0067; lag at 0.6 THz 0.161 rad, 95 % 0.056 to 0.267
+  thicker path (fraction)              fail p = 0.025 (0.017 with its own N_eff); best 0.06; sizes passing 0.06 to 0.06
+  ions: all tissue water (S/m)         edge p = 0.046 (0.132 with its own N_eff); best 25; sizes passing 20 to 25
+  axoplasm conductivity (S/m)          pass p = 0.055 (0.119 with its own N_eff); best 60; sizes passing 45 to 75
+  heating, Liebe (dT, K)               pass p = 0.064 (0.114 with its own N_eff); best 9; sizes passing 3 to 15
+  heating, Liebe x2.31 (dT, K)         pass p = 0.092 (0.143 with its own N_eff); best 4; sizes passing 1 to 7
+  node joint:joint_-2.7                pass p = 0.057 (0.132 with its own N_eff); best 1; sizes passing 0.7 to 1
+  node joint:joint_-3.0                pass p = 0.079 (0.155 with its own N_eff); best 1; sizes passing 0.6 to 1
+  node epsnode:-10_30.0                edge p = 0.032 (0.085 with its own N_eff); best 1; sizes passing 0.6 to 1
+  node epsnode:-5_30.0                 edge p = 0.031 (0.082 with its own N_eff); best 1; sizes passing 0.6 to 1
+4 min (H1): misfit 6.48, N_eff 16.6, kappa 0.0 dB/THz (its minimum-phase delay at 0.6 THz 0.00 rad), s +0.0526 ps, a 0.688, b 0.166; s = 0: p = 0.0084; lag at 0.6 THz 0.198 rad, 95 % 0.063 to 0.334
+  thicker path (fraction)              fail p = 0.044 (0.028 with its own N_eff); best 0.08; sizes passing 0.06 to 0.1
+  ions: all tissue water (S/m)         pass p = 0.072 (0.169 with its own N_eff); best 30; sizes passing 20 to 35
+  axoplasm conductivity (S/m)          pass p = 0.067 (0.153 with its own N_eff); best 75; sizes passing 60 to 90
+  heating, Liebe (dT, K)               pass p = 0.057 (0.125 with its own N_eff); best 9; sizes passing 3 to 18
+  heating, Liebe x2.31 (dT, K)         pass p = 0.082 (0.151 with its own N_eff); best 4; sizes passing 1 to 8
+  node joint:joint_-2.7                edge p = 0.049 (0.141 with its own N_eff); best 1; sizes passing 0.6 to 1
+  node joint:joint_-3.0                pass p = 0.063 (0.158 with its own N_eff); best 1; sizes passing 0.5 to 1
+  node epsnode:-10_30.0                edge p = 0.031 (0.110 with its own N_eff); best 1; sizes passing 0.5 to 1
+  node epsnode:-5_30.0                 edge p = 0.029 (0.108 with its own N_eff); best 1; sizes passing 0.5 to 1
+5 min (H3): misfit 10.7, N_eff 17.0, kappa 0.0 dB/THz (its minimum-phase delay at 0.6 THz 0.00 rad), s +0.0655 ps, a 0.594, b 0.209; s = 0: p = 0.0273; lag at 0.6 THz 0.247 rad, 95 % 0.036 to 0.443
+  thicker path (fraction)              pass p = 0.114 (0.090 with its own N_eff); best 0.1; sizes passing 0.04 to 0.14
+  ions: all tissue water (S/m)         pass p = 0.200 (0.289 with its own N_eff); best 40; sizes passing 20 to 55
+  axoplasm conductivity (S/m)          pass p = 0.201 (0.291 with its own N_eff); best 105; sizes passing 45 to 150
+  heating, Liebe (dT, K)               pass p = 0.087 (0.172 with its own N_eff); best 9; sizes passing 0 to 30
+  heating, Liebe x2.31 (dT, K)         pass p = 0.114 (0.181 with its own N_eff); best 5; sizes passing 0 to 12
+  node joint:joint_-2.7                pass p = 0.084 (0.188 with its own N_eff); best 1; sizes passing 0.2 to 1
+  node joint:joint_-3.0                pass p = 0.100 (0.207 with its own N_eff); best 1; sizes passing 0 to 1
+  node epsnode:-10_30.0                pass p = 0.064 (0.170 with its own N_eff); best 1; sizes passing 0 to 1
+  node epsnode:-5_30.0                 pass p = 0.062 (0.168 with its own N_eff); best 1; sizes passing 0 to 1
+
+=== no loss term, a + b <= 1 ===
+30 s (H1): misfit 1.37, N_eff 12.8, kappa 0.0 dB/THz (its minimum-phase delay at 0.6 THz 0.00 rad), s -0.0025 ps, a 0.864, b 0.040; s = 0: p = 0.7353; lag at 0.6 THz -0.009 rad, 95 % -0.070 to 0.051
+2 min (H2): misfit 4.32, N_eff 15.8, kappa 0.0 dB/THz (its minimum-phase delay at 0.6 THz 0.00 rad), s +0.0428 ps, a 0.746, b 0.113; s = 0: p = 0.0067; lag at 0.6 THz 0.161 rad, 95 % 0.056 to 0.267
+  thicker path (fraction)              pass p = 0.142 (0.119 with its own N_eff); best 0.06; sizes passing 0.04 to 0.08
+  ions: all tissue water (S/m)         edge p = 0.028 (0.086 with its own N_eff); best 15; sizes passing 15 to 20
+  axoplasm conductivity (S/m)          edge p = 0.025 (0.095 with its own N_eff); best 45; sizes passing 30 to 45
+  heating, Liebe (dT, K)               pass p = 0.064 (0.114 with its own N_eff); best 9; sizes passing 3 to 15
+  heating, Liebe x2.31 (dT, K)         pass p = 0.092 (0.143 with its own N_eff); best 4; sizes passing 1 to 7
+  node joint:joint_-2.7                pass p = 0.057 (0.132 with its own N_eff); best 1; sizes passing 0.7 to 1
+  node joint:joint_-3.0                pass p = 0.079 (0.155 with its own N_eff); best 1; sizes passing 0.6 to 1
+  node epsnode:-10_30.0                edge p = 0.032 (0.085 with its own N_eff); best 1; sizes passing 0.6 to 1
+  node epsnode:-5_30.0                 edge p = 0.031 (0.082 with its own N_eff); best 1; sizes passing 0.6 to 1
+4 min (H1): misfit 6.48, N_eff 16.6, kappa 0.0 dB/THz (its minimum-phase delay at 0.6 THz 0.00 rad), s +0.0526 ps, a 0.688, b 0.166; s = 0: p = 0.0084; lag at 0.6 THz 0.198 rad, 95 % 0.063 to 0.334
+  thicker path (fraction)              pass p = 0.166 (0.131 with its own N_eff); best 0.08; sizes passing 0.04 to 0.12
+  ions: all tissue water (S/m)         edge p = 0.027 (0.113 with its own N_eff); best 20; sizes passing 15 to 25
+  axoplasm conductivity (S/m)          edge p = 0.031 (0.115 with its own N_eff); best 45; sizes passing 30 to 60
+  heating, Liebe (dT, K)               pass p = 0.057 (0.125 with its own N_eff); best 9; sizes passing 3 to 18
+  heating, Liebe x2.31 (dT, K)         pass p = 0.082 (0.151 with its own N_eff); best 4; sizes passing 1 to 8
+  node joint:joint_-2.7                edge p = 0.049 (0.141 with its own N_eff); best 1; sizes passing 0.6 to 1
+  node joint:joint_-3.0                pass p = 0.063 (0.158 with its own N_eff); best 1; sizes passing 0.5 to 1
+  node epsnode:-10_30.0                edge p = 0.031 (0.110 with its own N_eff); best 1; sizes passing 0.5 to 1
+  node epsnode:-5_30.0                 edge p = 0.029 (0.108 with its own N_eff); best 1; sizes passing 0.5 to 1
+5 min (H3): misfit 10.7, N_eff 17.0, kappa 0.0 dB/THz (its minimum-phase delay at 0.6 THz 0.00 rad), s +0.0655 ps, a 0.594, b 0.209; s = 0: p = 0.0273; lag at 0.6 THz 0.247 rad, 95 % 0.036 to 0.443
+  thicker path (fraction)              pass p = 0.131 (0.105 with its own N_eff); best 0.1; sizes passing 0.04 to 0.16
+  ions: all tissue water (S/m)         pass p = 0.091 (0.206 with its own N_eff); best 25; sizes passing 5 to 40
+  axoplasm conductivity (S/m)          pass p = 0.082 (0.188 with its own N_eff); best 60; sizes passing 15 to 105
+  heating, Liebe (dT, K)               pass p = 0.087 (0.172 with its own N_eff); best 9; sizes passing 0 to 30
+  heating, Liebe x2.31 (dT, K)         pass p = 0.114 (0.181 with its own N_eff); best 5; sizes passing 0 to 12
+  node joint:joint_-2.7                pass p = 0.084 (0.188 with its own N_eff); best 1; sizes passing 0.2 to 1
+  node joint:joint_-3.0                pass p = 0.100 (0.207 with its own N_eff); best 1; sizes passing 0 to 1
+  node epsnode:-10_30.0                pass p = 0.064 (0.170 with its own N_eff); best 1; sizes passing 0 to 1
+  node epsnode:-5_30.0                 pass p = 0.062 (0.168 with its own N_eff); best 1; sizes passing 0 to 1
+
+=== zero-phase loss, a <= 1 ===
+30 s (H1): misfit 0.86, N_eff 12.1, kappa 2.1 dB/THz (its minimum-phase delay at 0.6 THz 0.25 rad), s -0.0043 ps, a 0.945, b 0.039; s = 0: p = 0.5358; lag at 0.6 THz -0.016 rad, 95 % -0.062 to 0.029
+2 min (H2): misfit 1.62, N_eff 14.3, kappa 5.6 dB/THz (its minimum-phase delay at 0.6 THz 0.68 rad), s +0.0401 ps, a 0.945, b 0.113; s = 0: p = 0.0028; lag at 0.6 THz 0.151 rad, 95 % 0.076 to 0.227
+  thicker path (fraction)              pass p = 0.481 (0.431 with its own N_eff); best 0.06; sizes passing 0.02 to 0.08
+  ions: all tissue water (S/m)         fail p = 0.009 (0.026 with its own N_eff); best 10; sizes passing none
+  axoplasm conductivity (S/m)          fail p = 0.009 (0.027 with its own N_eff); best 30; sizes passing none
+  heating, Liebe (dT, K)               pass p = 0.152 (0.218 with its own N_eff); best 9; sizes passing 3 to 18
+  heating, Liebe x2.31 (dT, K)         pass p = 0.202 (0.241 with its own N_eff); best 4; sizes passing 1 to 7
+  node joint:joint_-3.0                pass p = 0.061 (0.131 with its own N_eff); best 1; sizes passing 0.6 to 1
+  node joint:joint_-2.7                edge p = 0.050 (0.114 with its own N_eff); best 1; sizes passing 0.6 to 1
+  node epsnode:-10_30.0                edge p = 0.019 (0.054 with its own N_eff); best 1; sizes passing 1 to 1
+  node epsnode:-5_30.0                 edge p = 0.018 (0.052 with its own N_eff); best 1; sizes passing 1 to 1
+4 min (H1): misfit 3.4, N_eff 17.2, kappa 6.5 dB/THz (its minimum-phase delay at 0.6 THz 0.80 rad), s +0.0524 ps, a 0.905, b 0.165; s = 0: p = 0.0024; lag at 0.6 THz 0.198 rad, 95 % 0.092 to 0.303
+  thicker path (fraction)              pass p = 0.272 (0.294 with its own N_eff); best 0.06; sizes passing 0.04 to 0.1
+  ions: all tissue water (S/m)         edge p = 0.011 (0.071 with its own N_eff); best 20; sizes passing none
+  axoplasm conductivity (S/m)          edge p = 0.011 (0.071 with its own N_eff); best 45; sizes passing none
+  heating, Liebe (dT, K)               pass p = 0.106 (0.174 with its own N_eff); best 12; sizes passing 6 to 21
+  heating, Liebe x2.31 (dT, K)         pass p = 0.144 (0.193 with its own N_eff); best 5; sizes passing 2 to 9
+  node joint:joint_-3.0                edge p = 0.030 (0.136 with its own N_eff); best 1; sizes passing 0.8 to 1
+  node joint:joint_-2.7                edge p = 0.025 (0.127 with its own N_eff); best 1; sizes passing 0.8 to 1
+  node epsnode:-10_30.0                edge p = 0.012 (0.089 with its own N_eff); best 1; sizes passing none
+  node epsnode:-5_30.0                 edge p = 0.011 (0.086 with its own N_eff); best 1; sizes passing none
+5 min (H3): misfit 5.42, N_eff 18.5, kappa 10.0 dB/THz (its minimum-phase delay at 0.6 THz 1.22 rad), s +0.0681 ps, a 0.890, b 0.208; s = 0: p = 0.0053; lag at 0.6 THz 0.257 rad, 95 % 0.106 to 0.422
+  thicker path (fraction)              pass p = 0.353 (0.358 with its own N_eff); best 0.08; sizes passing 0.04 to 0.14
+  ions: all tissue water (S/m)         edge p = 0.024 (0.103 with its own N_eff); best 25; sizes passing 15 to 35
+  axoplasm conductivity (S/m)          edge p = 0.024 (0.102 with its own N_eff); best 60; sizes passing 45 to 90
+  heating, Liebe (dT, K)               pass p = 0.106 (0.167 with its own N_eff); best 15; sizes passing 3 to 30
+  heating, Liebe x2.31 (dT, K)         pass p = 0.158 (0.194 with its own N_eff); best 7; sizes passing 2 to 12
+  node joint:joint_-3.0                edge p = 0.031 (0.129 with its own N_eff); best 1; sizes passing 0.6 to 1
+  node joint:joint_-2.7                edge p = 0.028 (0.123 with its own N_eff); best 1; sizes passing 0.7 to 1
+  node epsnode:-10_30.0                edge p = 0.016 (0.099 with its own N_eff); best 1; sizes passing 1 to 1
+  node epsnode:-5_30.0                 edge p = 0.016 (0.097 with its own N_eff); best 1; sizes passing none
+
+=== zero-phase loss, a + b <= 1 ===
+30 s (H1): misfit 0.86, N_eff 12.1, kappa 2.1 dB/THz (its minimum-phase delay at 0.6 THz 0.25 rad), s -0.0043 ps, a 0.945, b 0.039; s = 0: p = 0.5358; lag at 0.6 THz -0.016 rad, 95 % -0.062 to 0.029
+2 min (H2): misfit 1.77, N_eff 14.4, kappa 4.4 dB/THz (its minimum-phase delay at 0.6 THz 0.53 rad), s +0.0411 ps, a 0.888, b 0.112; s = 0: p = 0.0026; lag at 0.6 THz 0.155 rad, 95 % 0.080 to 0.215
+  thicker path (fraction)              pass p = 0.271 (0.273 with its own N_eff); best 0.06; sizes passing 0.02 to 0.08
+  ions: all tissue water (S/m)         fail p = 0.005 (0.017 with its own N_eff); best 0; sizes passing none
+  axoplasm conductivity (S/m)          fail p = 0.005 (0.017 with its own N_eff); best 0; sizes passing none
+  heating, Liebe (dT, K)               edge p = 0.033 (0.123 with its own N_eff); best 9; sizes passing 6 to 12
+  heating, Liebe x2.31 (dT, K)         edge p = 0.046 (0.145 with its own N_eff); best 3; sizes passing 2 to 5
+  node joint:joint_-3.0                edge p = 0.039 (0.101 with its own N_eff); best 1; sizes passing 0.7 to 1
+  node epsnode:-30_0.3                 edge p = 0.034 (0.086 with its own N_eff); best 1; sizes passing 0.7 to 1
+  node epsnode:-10_30.0                edge p = 0.017 (0.052 with its own N_eff); best 1; sizes passing none
+  node epsnode:-5_30.0                 fail p = 0.016 (0.050 with its own N_eff); best 1; sizes passing none
+4 min (H1): misfit 3.61, N_eff 17.4, kappa 5.1 dB/THz (its minimum-phase delay at 0.6 THz 0.62 rad), s +0.0532 ps, a 0.837, b 0.163; s = 0: p = 0.0023; lag at 0.6 THz 0.201 rad, 95 % 0.095 to 0.306
+  thicker path (fraction)              pass p = 0.412 (0.453 with its own N_eff); best 0.06; sizes passing 0.02 to 0.1
+  ions: all tissue water (S/m)         fail p = 0.004 (0.047 with its own N_eff); best 5; sizes passing none
+  axoplasm conductivity (S/m)          fail p = 0.004 (0.047 with its own N_eff); best 15; sizes passing none
+  heating, Liebe (dT, K)               edge p = 0.024 (0.107 with its own N_eff); best 9; sizes passing 6 to 12
+  heating, Liebe x2.31 (dT, K)         edge p = 0.034 (0.119 with its own N_eff); best 4; sizes passing 2 to 6
+  node joint:joint_-3.0                edge p = 0.023 (0.108 with its own N_eff); best 1; sizes passing 0.9 to 1
+  node epsnode:-30_0.3                 edge p = 0.020 (0.105 with its own N_eff); best 1; sizes passing 0.9 to 1
+  node epsnode:-10_30.0                edge p = 0.011 (0.080 with its own N_eff); best 1; sizes passing none
+  node epsnode:-5_30.0                 edge p = 0.011 (0.078 with its own N_eff); best 1; sizes passing none
+5 min (H3): misfit 5.78, N_eff 18.5, kappa 7.5 dB/THz (its minimum-phase delay at 0.6 THz 0.91 rad), s +0.0678 ps, a 0.793, b 0.207; s = 0: p = 0.0061; lag at 0.6 THz 0.256 rad, 95 % 0.090 to 0.422
+  thicker path (fraction)              pass p = 0.445 (0.469 with its own N_eff); best 0.08; sizes passing 0.02 to 0.14
+  ions: all tissue water (S/m)         edge p = 0.009 (0.072 with its own N_eff); best 5; sizes passing none
+  axoplasm conductivity (S/m)          edge p = 0.009 (0.072 with its own N_eff); best 15; sizes passing none
+  heating, Liebe (dT, K)               edge p = 0.028 (0.106 with its own N_eff); best 9; sizes passing 6 to 15
+  heating, Liebe x2.31 (dT, K)         edge p = 0.038 (0.105 with its own N_eff); best 5; sizes passing 2 to 8
+  node joint:joint_-3.0                edge p = 0.028 (0.113 with its own N_eff); best 1; sizes passing 0.6 to 1
+  node epsnode:-30_0.3                 edge p = 0.027 (0.115 with its own N_eff); best 1; sizes passing 0.6 to 1
+  node epsnode:-10_30.0                edge p = 0.018 (0.097 with its own N_eff); best 1; sizes passing 0.9 to 1
+  node epsnode:-5_30.0                 edge p = 0.017 (0.096 with its own N_eff); best 1; sizes passing 1 to 1
+
+=== causal loss held above 1.5 THz, a <= 1 ===
+30 s (H1): misfit 0.691, N_eff 16.1, kappa 1.9 dB/THz (its minimum-phase delay at 0.6 THz 0.15 rad), s -0.0384 ps, a 0.949, b 0.044; s = 0: p = 0.0078; lag at 0.6 THz 0.002 rad, 95 % -0.009 to 0.010
+2 min (H2): misfit 1.33, N_eff 14.7, kappa 4.5 dB/THz (its minimum-phase delay at 0.6 THz 0.36 rad), s -0.0471 ps, a 0.936, b 0.123; s = 0: p = 0.0551; lag at 0.6 THz 0.181 rad, 95 % 0.153 to 0.202
+  thicker path (fraction)              edge p = 0.060 (0.023 with its own N_eff); best 0; sizes passing 0 to 0.02
+  ions: all tissue water (S/m)         edge p = 0.078 (0.029 with its own N_eff); best 10; sizes passing 0 to 20
+  axoplasm conductivity (S/m)          edge p = 0.078 (0.029 with its own N_eff); best 30; sizes passing 0 to 45
+  heating, Liebe (dT, K)               edge p = 0.057 (0.021 with its own N_eff); best 0; sizes passing 0 to 0
+  heating, Liebe x2.31 (dT, K)         edge p = 0.059 (0.022 with its own N_eff); best 0; sizes passing 0 to 1
+  node joint:joint_-1.2                pass p = 0.761 (0.765 with its own N_eff); best 1; sizes passing 0 to 1
+  node epsdense:-1.0_0.1               pass p = 0.751 (0.751 with its own N_eff); best 0.9; sizes passing 0 to 1
+  node epsnode:1_0.3                   pass p = 0.126 (0.060 with its own N_eff); best 1; sizes passing 0 to 1
+  node epsnode:-1_3.0                  pass p = 0.124 (0.072 with its own N_eff); best 1; sizes passing 0 to 1
+4 min (H1): misfit 2.25, N_eff 19.3, kappa 5.8 dB/THz (its minimum-phase delay at 0.6 THz 0.46 rad), s -0.0612 ps, a 0.916, b 0.177; s = 0: p = 0.0272; lag at 0.6 THz 0.228 rad, 95 % 0.196 to 0.251
+  thicker path (fraction)              fail p = 0.022 (0.016 with its own N_eff); best 0; sizes passing 0 to 0
+  ions: all tissue water (S/m)         fail p = 0.043 (0.030 with its own N_eff); best 15; sizes passing 0 to 20
+  axoplasm conductivity (S/m)          fail p = 0.044 (0.032 with its own N_eff); best 45; sizes passing 0 to 60
+  heating, Liebe (dT, K)               fail p = 0.033 (0.025 with its own N_eff); best 0; sizes passing 0 to 0
+  heating, Liebe x2.31 (dT, K)         fail p = 0.033 (0.025 with its own N_eff); best 0; sizes passing 0 to 0
+  node joint:joint_-1.2                pass p = 0.352 (0.349 with its own N_eff); best 1; sizes passing 0 to 1
+  node joint:joint_-1.3                pass p = 0.344 (0.351 with its own N_eff); best 1; sizes passing 0 to 1
+  node epsnode:1_0.3                   edge p = 0.063 (0.049 with its own N_eff); best 1; sizes passing 0 to 1
+  node epsnode:-1_3.0                  edge p = 0.050 (0.041 with its own N_eff); best 1; sizes passing 0 to 1
+5 min (H3): misfit 3.72, N_eff 20.3, kappa 8.5 dB/THz (its minimum-phase delay at 0.6 THz 0.67 rad), s -0.1044 ps, a 0.896, b 0.223; s = 0: p = 0.0117; lag at 0.6 THz 0.277 rad, 95 % 0.214 to 0.318
+  thicker path (fraction)              fail p = 0.011 (0.009 with its own N_eff); best 0; sizes passing none
+  ions: all tissue water (S/m)         fail p = 0.019 (0.015 with its own N_eff); best 25; sizes passing 15 to 25
+  axoplasm conductivity (S/m)          fail p = 0.020 (0.015 with its own N_eff); best 60; sizes passing 30 to 60
+  heating, Liebe (dT, K)               fail p = 0.014 (0.012 with its own N_eff); best 0; sizes passing none
+  heating, Liebe x2.31 (dT, K)         fail p = 0.014 (0.012 with its own N_eff); best 0; sizes passing none
+  node joint:joint_-1.45               pass p = 0.184 (0.178 with its own N_eff); best 1; sizes passing 0.1 to 1
+  node joint:joint_-1.3                pass p = 0.171 (0.161 with its own N_eff); best 1; sizes passing 0.1 to 1
+  node epsnode:1_0.3                   fail p = 0.024 (0.018 with its own N_eff); best 1; sizes passing 0.3 to 1
+  node epsnode:-1_3.0                  fail p = 0.021 (0.016 with its own N_eff); best 1; sizes passing 0.3 to 1
+
+=== causal loss held above 1.5 THz, a + b <= 1 ===
+30 s (H1): misfit 0.691, N_eff 16.1, kappa 1.9 dB/THz (its minimum-phase delay at 0.6 THz 0.15 rad), s -0.0384 ps, a 0.949, b 0.044; s = 0: p = 0.0078; lag at 0.6 THz 0.002 rad, 95 % -0.014 to 0.010
+2 min (H2): misfit 1.5, N_eff 14.9, kappa 3.7 dB/THz (its minimum-phase delay at 0.6 THz 0.29 rad), s -0.0300 ps, a 0.881, b 0.119; s = 0: p = 0.1037; lag at 0.6 THz 0.181 rad, 95 % 0.148 to 0.204
+  thicker path (fraction)              pass p = 0.124 (0.066 with its own N_eff); best 0; sizes passing 0 to 0.04
+  ions: all tissue water (S/m)         pass p = 0.124 (0.066 with its own N_eff); best 0; sizes passing 0 to 10
+  axoplasm conductivity (S/m)          pass p = 0.124 (0.066 with its own N_eff); best 0; sizes passing 0 to 30
+  heating, Liebe (dT, K)               pass p = 0.124 (0.066 with its own N_eff); best 0; sizes passing 0 to 3
+  heating, Liebe x2.31 (dT, K)         pass p = 0.124 (0.066 with its own N_eff); best 0; sizes passing 0 to 1
+  node joint:joint_-1.0                pass p = 0.567 (0.570 with its own N_eff); best 0.7; sizes passing 0 to 1
+  node epsnode:1_0.3                   pass p = 0.229 (0.144 with its own N_eff); best 1; sizes passing 0 to 1
+  node epsnode:-1_3.0                  pass p = 0.235 (0.169 with its own N_eff); best 1; sizes passing 0 to 1
+4 min (H1): misfit 2.65, N_eff 19.2, kappa 4.4 dB/THz (its minimum-phase delay at 0.6 THz 0.35 rad), s -0.0308 ps, a 0.829, b 0.171; s = 0: p = 0.1095; lag at 0.6 THz 0.229 rad, 95 % 0.190 to 0.257
+  thicker path (fraction)              pass p = 0.123 (0.102 with its own N_eff); best 0; sizes passing 0 to 0.04
+  ions: all tissue water (S/m)         pass p = 0.123 (0.102 with its own N_eff); best 0; sizes passing 0 to 10
+  axoplasm conductivity (S/m)          pass p = 0.123 (0.102 with its own N_eff); best 0; sizes passing 0 to 15
+  heating, Liebe (dT, K)               pass p = 0.123 (0.102 with its own N_eff); best 0; sizes passing 0 to 3
+  heating, Liebe x2.31 (dT, K)         pass p = 0.123 (0.102 with its own N_eff); best 0; sizes passing 0 to 1
+  node joint:joint_-1.0                pass p = 0.452 (0.447 with its own N_eff); best 0.7; sizes passing 0 to 1
+  node epsnode:1_0.3                   pass p = 0.242 (0.213 with its own N_eff); best 1; sizes passing 0 to 1
+  node epsnode:-1_3.0                  pass p = 0.182 (0.168 with its own N_eff); best 1; sizes passing 0 to 1
+5 min (H3): misfit 4.32, N_eff 20.0, kappa 6.3 dB/THz (its minimum-phase delay at 0.6 THz 0.50 rad), s -0.0567 ps, a 0.783, b 0.217; s = 0: p = 0.0451; lag at 0.6 THz 0.283 rad, 95 % 0.219 to 0.330
+  thicker path (fraction)              edge p = 0.053 (0.044 with its own N_eff); best 0; sizes passing 0 to 0.02
+  ions: all tissue water (S/m)         edge p = 0.055 (0.047 with its own N_eff); best 5; sizes passing 0 to 15
+  axoplasm conductivity (S/m)          edge p = 0.054 (0.048 with its own N_eff); best 15; sizes passing 0 to 30
+  heating, Liebe (dT, K)               edge p = 0.053 (0.044 with its own N_eff); best 0; sizes passing 0 to 3
+  heating, Liebe x2.31 (dT, K)         edge p = 0.053 (0.044 with its own N_eff); best 0; sizes passing 0 to 1
+  node joint:joint_-1.2                pass p = 0.366 (0.368 with its own N_eff); best 1; sizes passing 0 to 1
+  node joint:joint_-1.3                pass p = 0.352 (0.356 with its own N_eff); best 0.9; sizes passing 0 to 1
+  node epsnode:1_0.3                   pass p = 0.085 (0.069 with its own N_eff); best 1; sizes passing 0 to 1
+  node epsnode:-1_3.0                  pass p = 0.075 (0.060 with its own N_eff); best 1; sizes passing 0 to 1
+
+=== causal loss held above 2 THz, a <= 1 ===
+30 s (H1): misfit 0.687, N_eff 15.9, kappa 1.9 dB/THz (its minimum-phase delay at 0.6 THz 0.18 rad), s -0.0473 ps, a 0.952, b 0.044; s = 0: p = 0.0076; lag at 0.6 THz -0.001 rad, 95 % -0.011 to 0.007
+2 min (H2): misfit 1.32, N_eff 14.4, kappa 4.6 dB/THz (its minimum-phase delay at 0.6 THz 0.43 rad), s -0.0664 ps, a 0.938, b 0.123; s = 0: p = 0.0277; lag at 0.6 THz 0.175 rad, 95 % 0.145 to 0.195
+  thicker path (fraction)              fail p = 0.033 (0.010 with its own N_eff); best 0; sizes passing 0 to 0.02
+  ions: all tissue water (S/m)         fail p = 0.049 (0.017 with its own N_eff); best 15; sizes passing 0 to 20
+  axoplasm conductivity (S/m)          fail p = 0.047 (0.013 with its own N_eff); best 30; sizes passing 0 to 45
+  heating, Liebe (dT, K)               fail p = 0.032 (0.009 with its own N_eff); best 0; sizes passing 0 to 0
+  heating, Liebe x2.31 (dT, K)         fail p = 0.033 (0.010 with its own N_eff); best 0; sizes passing 0 to 0
+  node joint:joint_-1.3                pass p = 0.651 (0.650 with its own N_eff); best 1; sizes passing 0 to 1
+  node joint:joint_-1.2                pass p = 0.584 (0.566 with its own N_eff); best 1; sizes passing 0 to 1
+  node epsnode:-1_3.0                  edge p = 0.069 (0.031 with its own N_eff); best 1; sizes passing 0 to 1
+  node epsnode:1_0.3                   edge p = 0.062 (0.023 with its own N_eff); best 1; sizes passing 0 to 1
+4 min (H1): misfit 2.26, N_eff 18.9, kappa 6.0 dB/THz (its minimum-phase delay at 0.6 THz 0.55 rad), s -0.0867 ps, a 0.920, b 0.176; s = 0: p = 0.0121; lag at 0.6 THz 0.220 rad, 95 % 0.191 to 0.242
+  thicker path (fraction)              fail p = 0.011 (0.007 with its own N_eff); best 0; sizes passing none
+  ions: all tissue water (S/m)         fail p = 0.025 (0.019 with its own N_eff); best 20; sizes passing 5 to 20
+  axoplasm conductivity (S/m)          fail p = 0.025 (0.016 with its own N_eff); best 45; sizes passing 15 to 60
+  heating, Liebe (dT, K)               fail p = 0.016 (0.011 with its own N_eff); best 0; sizes passing none
+  heating, Liebe x2.31 (dT, K)         fail p = 0.016 (0.011 with its own N_eff); best 0; sizes passing none
+  node joint:joint_-1.3                pass p = 0.240 (0.231 with its own N_eff); best 1; sizes passing 0.1 to 1
+  node joint:joint_-1.2                pass p = 0.210 (0.195 with its own N_eff); best 1; sizes passing 0.1 to 1
+  node epsnode:1_0.3                   fail p = 0.027 (0.019 with its own N_eff); best 1; sizes passing 0.1 to 1
+  node epsnode:-1_3.0                  fail p = 0.025 (0.019 with its own N_eff); best 1; sizes passing 0.1 to 1
+5 min (H3): misfit 3.73, N_eff 19.8, kappa 8.9 dB/THz (its minimum-phase delay at 0.6 THz 0.82 rad), s -0.1471 ps, a 0.907, b 0.222; s = 0: p = 0.0056; lag at 0.6 THz 0.264 rad, 95 % 0.202 to 0.306
+  thicker path (fraction)              fail p = 0.006 (0.005 with its own N_eff); best 0; sizes passing none
+  ions: all tissue water (S/m)         fail p = 0.012 (0.009 with its own N_eff); best 25; sizes passing none
+  axoplasm conductivity (S/m)          fail p = 0.013 (0.011 with its own N_eff); best 75; sizes passing none
+  heating, Liebe (dT, K)               fail p = 0.007 (0.006 with its own N_eff); best 0; sizes passing none
+  heating, Liebe x2.31 (dT, K)         fail p = 0.007 (0.006 with its own N_eff); best 0; sizes passing none
+  node joint:joint_-1.45               pass p = 0.102 (0.092 with its own N_eff); best 1; sizes passing 0.3 to 1
+  node epsfine:-1.3_0.1                pass p = 0.094 (0.085 with its own N_eff); best 1; sizes passing 0.3 to 1
+  node epsnode:1_0.3                   fail p = 0.011 (0.009 with its own N_eff); best 1; sizes passing none
+  node epsnode:-1_3.0                  fail p = 0.011 (0.008 with its own N_eff); best 1; sizes passing none
+
+=== causal loss held above 2 THz, a + b <= 1 ===
+30 s (H1): misfit 0.687, N_eff 15.9, kappa 1.9 dB/THz (its minimum-phase delay at 0.6 THz 0.18 rad), s -0.0473 ps, a 0.952, b 0.044; s = 0: p = 0.0076; lag at 0.6 THz -0.001 rad, 95 % -0.013 to 0.007
+2 min (H2): misfit 1.49, N_eff 14.8, kappa 3.7 dB/THz (its minimum-phase delay at 0.6 THz 0.34 rad), s -0.0438 ps, a 0.881, b 0.119; s = 0: p = 0.0485; lag at 0.6 THz 0.177 rad, 95 % 0.149 to 0.197
+  thicker path (fraction)              edge p = 0.062 (0.027 with its own N_eff); best 0; sizes passing 0 to 0.02
+  ions: all tissue water (S/m)         edge p = 0.069 (0.034 with its own N_eff); best 5; sizes passing 0 to 10
+  axoplasm conductivity (S/m)          edge p = 0.066 (0.038 with its own N_eff); best 15; sizes passing 0 to 30
+  heating, Liebe (dT, K)               edge p = 0.062 (0.027 with its own N_eff); best 0; sizes passing 0 to 3
+  heating, Liebe x2.31 (dT, K)         edge p = 0.062 (0.027 with its own N_eff); best 0; sizes passing 0 to 1
+  node joint:joint_-1.0                pass p = 0.491 (0.485 with its own N_eff); best 0.9; sizes passing 0 to 1
+  node epsnode:-1_0.3                  pass p = 0.454 (0.464 with its own N_eff); best 0.8; sizes passing 0 to 1
+  node epsnode:-1_3.0                  pass p = 0.118 (0.071 with its own N_eff); best 1; sizes passing 0 to 1
+  node epsnode:1_0.3                   pass p = 0.102 (0.051 with its own N_eff); best 1; sizes passing 0 to 1
+4 min (H1): misfit 2.68, N_eff 18.9, kappa 4.4 dB/THz (its minimum-phase delay at 0.6 THz 0.41 rad), s -0.0486 ps, a 0.829, b 0.171; s = 0: p = 0.0450; lag at 0.6 THz 0.223 rad, 95 % 0.188 to 0.248
+  thicker path (fraction)              edge p = 0.054 (0.043 with its own N_eff); best 0; sizes passing 0 to 0.02
+  ions: all tissue water (S/m)         pass p = 0.059 (0.052 with its own N_eff); best 5; sizes passing 0 to 10
+  axoplasm conductivity (S/m)          pass p = 0.057 (0.053 with its own N_eff); best 15; sizes passing 0 to 30
+  heating, Liebe (dT, K)               edge p = 0.054 (0.043 with its own N_eff); best 0; sizes passing 0 to 0
+  heating, Liebe x2.31 (dT, K)         edge p = 0.054 (0.043 with its own N_eff); best 0; sizes passing 0 to 1
+  node joint:joint_-1.0                pass p = 0.373 (0.362 with its own N_eff); best 0.9; sizes passing 0 to 1
+  node joint:joint_-1.2                pass p = 0.354 (0.342 with its own N_eff); best 0.7; sizes passing 0 to 1
+  node epsnode:1_0.3                   pass p = 0.090 (0.074 with its own N_eff); best 1; sizes passing 0 to 1
+  node epsnode:-1_3.0                  pass p = 0.087 (0.074 with its own N_eff); best 1; sizes passing 0 to 1
+5 min (H3): misfit 4.39, N_eff 19.8, kappa 6.6 dB/THz (its minimum-phase delay at 0.6 THz 0.61 rad), s -0.0888 ps, a 0.784, b 0.216; s = 0: p = 0.0208; lag at 0.6 THz 0.274 rad, 95 % 0.214 to 0.316
+  thicker path (fraction)              fail p = 0.026 (0.022 with its own N_eff); best 0; sizes passing 0 to 0
+  ions: all tissue water (S/m)         fail p = 0.029 (0.024 with its own N_eff); best 5; sizes passing 0 to 15
+  axoplasm conductivity (S/m)          fail p = 0.029 (0.025 with its own N_eff); best 15; sizes passing 0 to 30
+  heating, Liebe (dT, K)               fail p = 0.026 (0.022 with its own N_eff); best 0; sizes passing 0 to 0
+  heating, Liebe x2.31 (dT, K)         fail p = 0.026 (0.022 with its own N_eff); best 0; sizes passing 0 to 0
+  node joint:joint_-1.3                pass p = 0.288 (0.286 with its own N_eff); best 1; sizes passing 0 to 1
+  node joint:joint_-1.45               pass p = 0.267 (0.273 with its own N_eff); best 1; sizes passing 0 to 1
+  node epsnode:1_0.3                   fail p = 0.037 (0.031 with its own N_eff); best 1; sizes passing 0 to 1
+  node epsnode:-1_3.0                  fail p = 0.038 (0.030 with its own N_eff); best 1; sizes passing 0 to 1
+
+=== causal loss held above 4 THz, a <= 1 ===
+30 s (H1): misfit 0.675, N_eff 15.5, kappa 2.0 dB/THz (its minimum-phase delay at 0.6 THz 0.24 rad), s -0.0654 ps, a 0.954, b 0.044; s = 0: p = 0.0075; lag at 0.6 THz -0.004 rad, 95 % -0.013 to 0.002
+2 min (H2): misfit 1.31, N_eff 14.4, kappa 4.7 dB/THz (its minimum-phase delay at 0.6 THz 0.57 rad), s -0.1065 ps, a 0.939, b 0.122; s = 0: p = 0.0112; lag at 0.6 THz 0.168 rad, 95 % 0.141 to 0.185
+  thicker path (fraction)              fail p = 0.015 (0.004 with its own N_eff); best 0; sizes passing none
+  ions: all tissue water (S/m)         fail p = 0.027 (0.006 with its own N_eff); best 15; sizes passing 5 to 20
+  axoplasm conductivity (S/m)          fail p = 0.028 (0.009 with its own N_eff); best 45; sizes passing 15 to 45
+  heating, Liebe (dT, K)               fail p = 0.015 (0.004 with its own N_eff); best 0; sizes passing none
+  heating, Liebe x2.31 (dT, K)         fail p = 0.015 (0.004 with its own N_eff); best 0; sizes passing none
+  node joint:joint_-1.45               pass p = 0.455 (0.452 with its own N_eff); best 1; sizes passing 0.1 to 1
+  node epsfine:-1.3_0.1                pass p = 0.380 (0.375 with its own N_eff); best 1; sizes passing 0.1 to 1
+  node epsnode:-1_3.0                  fail p = 0.031 (0.012 with its own N_eff); best 1; sizes passing 0.1 to 1
+  node epsnode:1_0.3                   fail p = 0.024 (0.007 with its own N_eff); best 1; sizes passing 0.2 to 1
+4 min (H1): misfit 2.27, N_eff 18.7, kappa 6.0 dB/THz (its minimum-phase delay at 0.6 THz 0.74 rad), s -0.1391 ps, a 0.922, b 0.176; s = 0: p = 0.0039; lag at 0.6 THz 0.211 rad, 95 % 0.183 to 0.230
+  thicker path (fraction)              fail p = 0.004 (0.003 with its own N_eff); best 0; sizes passing none
+  ions: all tissue water (S/m)         fail p = 0.012 (0.008 with its own N_eff); best 20; sizes passing none
+  axoplasm conductivity (S/m)          fail p = 0.012 (0.011 with its own N_eff); best 60; sizes passing none
+  heating, Liebe (dT, K)               fail p = 0.005 (0.004 with its own N_eff); best 0; sizes passing none
+  heating, Liebe x2.31 (dT, K)         fail p = 0.005 (0.004 with its own N_eff); best 0; sizes passing none
+  node joint:joint_-1.45               pass p = 0.115 (0.112 with its own N_eff); best 1; sizes passing 0.3 to 1
+  node joint:joint_-1.3                pass p = 0.098 (0.088 with its own N_eff); best 1; sizes passing 0.4 to 1
+  node epsnode:-1_3.0                  fail p = 0.009 (0.008 with its own N_eff); best 1; sizes passing none
+  node epsnode:1_0.3                   fail p = 0.008 (0.006 with its own N_eff); best 1; sizes passing none
+5 min (H3): misfit 3.75, N_eff 19.7, kappa 9.0 dB/THz (its minimum-phase delay at 0.6 THz 1.10 rad), s -0.2241 ps, a 0.908, b 0.222; s = 0: p = 0.0019; lag at 0.6 THz 0.251 rad, 95 % 0.197 to 0.288
+  thicker path (fraction)              fail p = 0.002 (0.002 with its own N_eff); best 0; sizes passing none
+  ions: all tissue water (S/m)         fail p = 0.007 (0.006 with its own N_eff); best 30; sizes passing none
+  axoplasm conductivity (S/m)          fail p = 0.007 (0.005 with its own N_eff); best 75; sizes passing none
+  heating, Liebe (dT, K)               fail p = 0.003 (0.003 with its own N_eff); best 0; sizes passing none
+  heating, Liebe x2.31 (dT, K)         fail p = 0.003 (0.003 with its own N_eff); best 0; sizes passing none
+  node joint:joint_-1.45               fail p = 0.040 (0.037 with its own N_eff); best 1; sizes passing 0.7 to 1
+  node epsfine:-1.3_0.1                fail p = 0.036 (0.033 with its own N_eff); best 1; sizes passing 0.7 to 1
+  node epsnode:-1_3.0                  fail p = 0.004 (0.004 with its own N_eff); best 1; sizes passing none
+  node epsnode:1_0.3                   fail p = 0.004 (0.004 with its own N_eff); best 1; sizes passing none
+
+=== causal loss held above 4 THz, a + b <= 1 ===
+30 s (H1): misfit 0.675, N_eff 15.5, kappa 2.0 dB/THz (its minimum-phase delay at 0.6 THz 0.24 rad), s -0.0654 ps, a 0.954, b 0.044; s = 0: p = 0.0075; lag at 0.6 THz -0.004 rad, 95 % -0.015 to 0.002
+2 min (H2): misfit 1.49, N_eff 14.7, kappa 3.8 dB/THz (its minimum-phase delay at 0.6 THz 0.46 rad), s -0.0763 ps, a 0.882, b 0.118; s = 0: p = 0.0187; lag at 0.6 THz 0.171 rad, 95 % 0.147 to 0.189
+  thicker path (fraction)              fail p = 0.026 (0.010 with its own N_eff); best 0; sizes passing 0 to 0.02
+  ions: all tissue water (S/m)         fail p = 0.032 (0.011 with its own N_eff); best 5; sizes passing 0 to 10
+  axoplasm conductivity (S/m)          fail p = 0.032 (0.011 with its own N_eff); best 15; sizes passing 0 to 30
+  heating, Liebe (dT, K)               fail p = 0.026 (0.010 with its own N_eff); best 0; sizes passing 0 to 0
+  heating, Liebe x2.31 (dT, K)         fail p = 0.026 (0.010 with its own N_eff); best 0; sizes passing 0 to 0
+  node joint:joint_-1.2                pass p = 0.424 (0.424 with its own N_eff); best 1; sizes passing 0 to 1
+  node epsdense:-1.0_0.1               pass p = 0.405 (0.403 with its own N_eff); best 1; sizes passing 0 to 1
+  node epsnode:-1_3.0                  edge p = 0.050 (0.025 with its own N_eff); best 1; sizes passing 0 to 1
+  node epsnode:1_0.3                   fail p = 0.037 (0.015 with its own N_eff); best 1; sizes passing 0 to 1
+4 min (H1): misfit 2.7, N_eff 18.8, kappa 4.5 dB/THz (its minimum-phase delay at 0.6 THz 0.54 rad), s -0.0872 ps, a 0.830, b 0.170; s = 0: p = 0.0136; lag at 0.6 THz 0.216 rad, 95 % 0.188 to 0.235
+  thicker path (fraction)              fail p = 0.018 (0.015 with its own N_eff); best 0; sizes passing 0 to 0
+  ions: all tissue water (S/m)         fail p = 0.022 (0.018 with its own N_eff); best 5; sizes passing 0 to 10
+  axoplasm conductivity (S/m)          fail p = 0.023 (0.019 with its own N_eff); best 15; sizes passing 0 to 15
+  heating, Liebe (dT, K)               fail p = 0.018 (0.015 with its own N_eff); best 0; sizes passing 0 to 0
+  heating, Liebe x2.31 (dT, K)         fail p = 0.018 (0.015 with its own N_eff); best 0; sizes passing 0 to 0
+  node joint:joint_-1.3                pass p = 0.246 (0.256 with its own N_eff); best 1; sizes passing 0 to 1
+  node joint:joint_-1.2                pass p = 0.248 (0.239 with its own N_eff); best 1; sizes passing 0 to 1
+  node epsnode:-1_3.0                  fail p = 0.030 (0.027 with its own N_eff); best 1; sizes passing 0 to 1
+  node epsnode:1_0.3                   fail p = 0.025 (0.021 with its own N_eff); best 1; sizes passing 0 to 1
+5 min (H3): misfit 4.41, N_eff 19.7, kappa 6.7 dB/THz (its minimum-phase delay at 0.6 THz 0.81 rad), s -0.1462 ps, a 0.785, b 0.215; s = 0: p = 0.0069; lag at 0.6 THz 0.264 rad, 95 % 0.214 to 0.296
+  thicker path (fraction)              fail p = 0.009 (0.009 with its own N_eff); best 0; sizes passing none
+  ions: all tissue water (S/m)         fail p = 0.013 (0.012 with its own N_eff); best 10; sizes passing none
+  axoplasm conductivity (S/m)          fail p = 0.013 (0.013 with its own N_eff); best 30; sizes passing none
+  heating, Liebe (dT, K)               fail p = 0.009 (0.009 with its own N_eff); best 0; sizes passing none
+  heating, Liebe x2.31 (dT, K)         fail p = 0.009 (0.009 with its own N_eff); best 0; sizes passing none
+  node joint:joint_-1.45               pass p = 0.146 (0.145 with its own N_eff); best 1; sizes passing 0.2 to 1
+  node epsfine:-1.3_0.1                pass p = 0.127 (0.126 with its own N_eff); best 1; sizes passing 0.2 to 1
+  node epsnode:-1_3.0                  fail p = 0.014 (0.013 with its own N_eff); best 1; sizes passing none
+  node epsnode:1_0.3                   fail p = 0.012 (0.012 with its own N_eff); best 1; sizes passing none
+
+=== Over all variants (2, 4, 5 min) ===
+  axoplasm conductivity (S/m)          pass  7, edge  8, fail 15 of 30
+  heating, Liebe (dT, K)               pass 11, edge  7, fail 12 of 30
+  heating, Liebe x2.31 (dT, K)         pass 11, edge  7, fail 12 of 30
+  ions: all tissue water (S/m)         pass  6, edge  9, fail 15 of 30
+  thicker path (fraction)              pass 12, edge  4, fail 14 of 30
+  node states, every extreme (best two) pass 24, edge  5, fail  1 of 30
+  node states an aqueous gap can hold (best two) pass  8, edge 13, fail  9 of 30
+  lag at 0.6 THz, 2-5 min: best 0.151 to 0.283 rad; smallest 95 % 0.036 rad; at 30 s best -0.016 to +0.002 rad

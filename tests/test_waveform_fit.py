@@ -66,3 +66,17 @@ def test_loss_term_recovered_and_minphase_is_causal():
     assert np.allclose(np.abs(h), tp.loss_transfer(6.0), rtol=1e-6)
     imp = np.fft.irfft(h, tp.np_)
     assert np.sum(imp[tp.np_ // 2:] ** 2) < 1e-6 * np.sum(imp ** 2)      # no response before t = 0
+
+
+def test_loss_cutoff_no_gain_and_ab_bound():
+    tt = np.arange(0, 8, 0.005)
+    B, K = _pulse(tt, 4.0), _pulse(tt, 3.4)
+    tp = TwoPulse(tt, K, f_loss=1.5)
+    g = tp.loss_transfer(6.0)
+    assert np.all(g <= 1 + 1e-12) and np.allclose(g[tp.fr <= 0.2], 1.0)
+    assert np.allclose(g[tp.fr >= 1.5], 10 ** (-6.0 * 1.3 / 20))
+    y = 0.9 * B + 0.3 * K
+    p, _, _ = tp.fit(y, B, s=0.0, a_max=1.0, ab_max=1.0)
+    assert p[0] + p[1] <= 1.0 + 1e-4
+    F, pv = f_test(2.0, 1.0, 22.0, n_par=6, n_fixed=2)
+    assert abs(F - 0.5 * 16) < 1e-12 and 0 < pv < 0.01

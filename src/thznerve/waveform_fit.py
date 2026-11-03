@@ -1,4 +1,4 @@
-"""Two-pulse fits of the traced published waveforms (Sims 47-49, Sec. 5.6).
+"""Two-pulse fits of the traced published waveforms (Sims 47-51, Sec. 5.6).
 
     biased(t) = a B(t - s) + b K(t - s - tau)
 
@@ -28,8 +28,9 @@ def load_scans(root):
 
 
 class TwoPulse:
-    def __init__(self, tt, K, pad=4):
+    def __init__(self, tt, K, pad=4, f_loss=4.0):
         self.tt, self.K = tt, K
+        self.F_LOSS = f_loss                                  # THz: the loss term is held constant above
         self.dt = tt[1] - tt[0]
         self.n = len(tt)
         self.np_ = pad * self.n
@@ -38,15 +39,15 @@ class TwoPulse:
     def shift(self, y, tau):
         return np.interp(self.tt - tau, self.tt, y, left=0.0, right=0.0)
 
-    F_LOSS = 4.0                                              # THz: the loss term is held constant above
     F_LO = 0.2                                                # THz: the loss term is 1 here (band edge), so a <= 1 keeps the
                                                               # tissue pulse at or below the unbiased one over the band
 
     def loss_transfer(self, kappa, kind="zero"):
-        """Smooth extra loss of the tissue pulse, kappa dB per THz of field amplitude above F_LO (held above F_LOSS).
+        """Smooth extra loss of the tissue pulse, kappa dB per THz of field amplitude above F_LO (1 below
+        F_LO, held above F_LOSS).
         kind 'zero': zero phase (a smoothing, e.g. of the traced curve); 'minphase': the causal (minimum-phase)
         transfer with the same magnitude, from the folded cepstrum, which adds its own delay."""
-        lnmag = -kappa * (np.minimum(self.fr, self.F_LOSS) - self.F_LO) * np.log(10) / 20
+        lnmag = -kappa * (np.clip(self.fr, self.F_LO, self.F_LOSS) - self.F_LO) * np.log(10) / 20
         if kind == "zero":
             return np.exp(lnmag)
         full = np.r_[lnmag, lnmag[-2:0:-1]]
@@ -63,9 +64,10 @@ class TwoPulse:
         xt = self.apply_transfer(x0, self.loss_transfer(kap, loss)) if loss else x0
         return a * self.shift(xt, s_) + b * self.shift(self.K, s_ + tau)
 
-    def fit(self, y, x0, s=None, p0=None, a_max=np.inf, loss=None):
+    def fit(self, y, x0, s=None, p0=None, a_max=np.inf, loss=None, ab_max=None):
         """Least squares over (a, b, s, tau), or (a, b, tau) with s fixed, plus kappa >= 0 when loss is given;
-        a <= a_max (a passive slice cannot raise the tissue pulse above what its own transfer gives: a_max = 1).
+        a <= a_max (a passive slice cannot raise the tissue pulse above what its own transfer gives: a_max = 1);
+        a + b <= ab_max if given (the second pulse takes its area from the tissue path), as a stiff penalty.
         Returns (params, misfit, residual)."""
         if p0 is not None:
             starts = [list(p0)]
@@ -75,7 +77,11 @@ class TwoPulse:
             starts = [[0.6, b0, t0] for b0 in (0.05, 0.2) for t0 in (-0.1, 0.0, 0.1)]
         if loss and p0 is None:
             starts = [st + [k0] for st in starts for k0 in (1.0, 6.0)]
-        r = lambda p: self.model(p, x0, s, loss) - y
+        w = 1e3 * np.sqrt(len(y))
+        if ab_max is None:
+            r = lambda p: self.model(p, x0, s, loss) - y
+        else:
+            r = lambda p: np.r_[self.model(p, x0, s, loss) - y, w * max(p[0] + p[1] - ab_max, 0.0)]
         n = len(starts[0])
         ub = np.full(n, np.inf); ub[0] = a_max
         lb = np.full(n, -np.inf)
@@ -83,7 +89,8 @@ class TwoPulse:
             lb[-1], ub[-1] = 0.0, 60.0
         starts = [np.clip(st, lb + 1e-9, np.minimum(ub, np.r_[a_max * 0.999, np.full(n - 1, np.inf)])) for st in starts]
         best = min((least_squares(r, st, bounds=(lb, ub)) for st in starts), key=lambda q: q.cost)
-        return best.x, float(np.sum(best.fun ** 2)), best.fun
+        res = best.fun[: len(y)]
+        return best.x, float(np.sum(res ** 2)), res
 
     def apply_transfer(self, x0, ratio):
         """x0 with every frequency multiplied by ratio (array on self.fr, numpy sign: a delay makes arg negative)."""
@@ -99,11 +106,12 @@ def n_eff(res):
     return len(r) / (1 + 2 * ac[1:k0].sum()), k0
 
 
-def f_test(misfit, misfit_free, ne, n_par=4):
-    """F statistic and p of a fit with one parameter fewer against the free fit (F(1, N_eff - n_par))."""
+def f_test(misfit, misfit_free, ne, n_par=4, n_fixed=1):
+    """F statistic and p of a nested fit with n_fixed parameters fewer against the free fit with n_par
+    parameters (F(n_fixed, N_eff - n_par))."""
     dof = ne - n_par
-    F = (misfit - misfit_free) / (misfit_free / dof)
-    return F, float(fdist.sf(max(F, 0.0), 1, dof))
+    F = (misfit - misfit_free) / n_fixed / (misfit_free / dof)
+    return F, float(fdist.sf(max(F, 0.0), n_fixed, dof))
 
 
 def slice_factor(f_thz):

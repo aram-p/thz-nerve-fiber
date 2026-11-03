@@ -67,4 +67,4 @@ Per scan, 5 min: 95 % lower bound 0.074 rad at 0.6 THz; allowed extra loss 4.55 
   heating, Liebe (dT, K)               = +5.98 with +0.31 dB (within the 0.6 THz allowance)
   heating, Liebe x2.31 (dT, K)         = +2.32 with +0.26 dB (within the 0.6 THz allowance)
   thicker path (fraction)              = +0.0242 with +0.31 dB (within the 0.6 THz allowance)
-Single-frequency map only: the binding test applies each change over the whole band inside the waveform fits (Sim 50).
+Single-frequency map only: the binding test applies each change over the whole band inside the waveform fits (Sim 51).

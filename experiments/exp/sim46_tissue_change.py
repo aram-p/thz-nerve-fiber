@@ -176,7 +176,7 @@ for scan, allow in (("2 min", None), ("4 min", L_A1), ("5 min", L_A3)):
             c = change(mk(roots[0]))
             verdict = "" if allow is None else (" (within the 0.6 THz allowance)" if c[0, 0] <= allow else " (above the 0.6 THz allowance)")
             say(f"  {name:36s} = {roots[0]:+.3g} with {c[0, 0]:+.2f} dB{verdict}")
-say("Single-frequency map only: the binding test applies each change over the whole band inside the waveform fits (Sim 50).")
+say("Single-frequency map only: the binding test applies each change over the whole band inside the waveform fits (Sim 51).")
 (OUT / "sim46.txt").write_text("\n".join(lines) + "\n", encoding="utf-8")
 fig, ax = plt.subplots(1, 2, figsize=(11, 5.2))
 node = json.loads((ROOT / "results" / "sim30" / "sim36_signed06.json").read_text())["states"]
