@@ -4,7 +4,7 @@ Aram Poghossian
 
 Target journal: *Journal of Infrared, Millimeter, and Terahertz Waves* (Springer).
 Figures are in `paper/figures/`; every number below traces to a script and a result file listed in
-`REPORT.md` (Sims 27–59) and to `results/run_log.csv`.
+`REPORT.md` (Sims 27–60) and to `results/run_log.csv`.
 
 ## Abstract
 
@@ -467,7 +467,9 @@ band used.
 
 The second pulse leads the empty-cuvette pulse in every fit: by 0.019–0.044 ps with a shift
 and no loss term (±0.013), by 0.023–0.044 ps at 2–5 min and 0.074–0.081 ps at 30 s with the loss
-term, 1.5–5× the 0.015 ps to which the no-voltage minima of the three reports agree. A shift of the
+term, 1.5–5× the 0.015 ps to which the no-voltage minima of the three reports agree. It leads in
+every candidate's best fit as well (Sim 60): by 0.02–0.04 ps with a thicker path, 0.03–0.07 ps with
+gas, 0.03–0.05 ps with node states, so the lead does not single out a cause. A shift of the
 tissue pulse also reads as a drift of the delay stage by s between the shared reference scans and each biased
 scan (one common shift of the whole biased scan with τ = 0 raises the residuals to 10/29/34/31 %, but
 with both shifts free it is the same fit, the second pulse then leading by 0.07–0.10 ps); a drift
@@ -574,9 +576,10 @@ over 0.3–1.5 THz at the best size alone.
 
 **What the table shows.** Ions, axoplasm conduction and warming fail alone at any size tested, at
 every scan (p ≤ 0.015 at 2 min, ≤ 0.014 at 4–5 min). With a timing drift they pass in one or two of
-eight references at 2 and 4 min and fail at 5 min (p ≤ 0.014 against 0.023), a margin within the
-uncertainty of the threshold, which was calibrated for the shift test, not for this one (Sec. 6). At
-2 min a drift with no candidate passes in one of eight. Their change of loss and delay with frequency
+eight references at 2 and 4 min and fail at 5 min in all eight. Calibrated on its own null (the
+candidate at its best size with a drift, Sim 60), the drift test there rejects ions and conduction at
+p ≤ 0.005 and warming at p ≤ 0.02 (≤ 0.03 at 4 min); the nominal test was conservative. At 2 min a
+drift with no candidate passes in one of eight. Their change of loss and delay with frequency
 does not match the change of the tissue pulse. Gas that displaces tissue and lipid-like fragments remove absorbing
 water and advance the pulse. Three changes fit. A tissue path 6–10 % thicker fits alone (at 5 min only
 with a + b ≤ 1 and a floor of at least 1.5 dB/THz, so there it is marginal); it fits through its delay
@@ -585,7 +588,7 @@ delays both pulses by 0.03–0.06 ps, growing with bias time (9–18 µm of dela
 beyond the dilute medium the Foldy model is valid for above ~0.2. Node states fit at 2, 2.5–3.5 and
 3.5–4.5 times their every-extreme change at 2, 4 and 5 min: the shape of their change fits, its size
 does not; with a drift they fit at 0.75–5.5 times it. The waveforms therefore weigh against the
-water's chemistry and temperature (firmly alone, marginally with a drift) and need a lag of the tissue
+water's chemistry and temperature (alone at every scan, with a drift at 5 min) and need a lag of the tissue
 pulse; they do not decide between a thicker path, gas with a drift, and node states. What decides is
 the size each needs: node states near or beyond every geometric extreme at once (2–4.5 times alone), i.e. 22–72
 times the change at internode 200 µm and packing 0.6; gas, bubbles of 30–50 µm radius filling 10–40 %
@@ -621,7 +624,7 @@ without them, this does not exclude them.
 
 **Ions and conduction.** Extra conductivity in the tissue water or the axoplasm gives a loss nearly
 flat in frequency and is rejected alone in all 24 references, also at twice the conductivities, and
-with a timing drift at 5 min (Sim 59; marginal, Table 2). The forward bound agrees: 9 dB needs 130–450 S/m of axoplasm at 0.6–2 THz on the slice's optical thickness (Sec. 5.2), against
+with a timing drift at 5 min (Sims 59–60; calibrated p ≤ 0.005). The forward bound agrees: 9 dB needs 130–450 S/m of axoplasm at 0.6–2 THz on the slice's optical thickness (Sec. 5.2), against
 1.4 S/m physiological and ~25 S/m for saturated NaCl.
 
 **Warming.** Liebe's temperature dependence of water is fitted below 1 THz and 30 °C, so two versions
@@ -682,10 +685,10 @@ release of the raw data.
   with only ~6–12 blocks per trace, so the thresholds are approximate. Fits with a at its bound
   (a = 1) are outside the F distribution's assumptions, and many candidates, sizes and references
   were tested. The candidate tests reuse the no-change thresholds although they fit a size (and node
-  states are screened on the same data); the drift tests reuse the shift-test thresholds, though their
-  null (candidate and drift, no loss increment) differs; and a 5 % threshold from 600 draws is
-  uncertain by about ±0.015. Verdicts near a threshold (the thicker path at 5 min; ions, conduction
-  and warming with a drift) are marginal.
+  states are screened on the same data); the drift test is calibrated on its own null only for ions,
+  conduction and warming, with the candidate's size held at its best value (Sim 60); and a 5 %
+  threshold from 600 draws is uncertain by about ±0.015. Verdicts near a threshold (the thicker path
+  at 5 min) are marginal.
 - **Loss term.** Whether the loss is causal and how it continues above the traced band (~1.7 THz)
   changes how the change splits into a loss and a shift, not the loss slope or the lag (Sim 55).
   Scattering is modelled as a dilute coherent medium (Foldy) of spheres in an absorbing host.
@@ -718,7 +721,7 @@ and bias time (1.7–7.1 dB per THz above its 30 s value in the reference fits, 
 holds over 36 fitting assumptions, is significant in each scan under bootstrap-checked tests, and is
 many times what separates tracings of the unbiased pulse. It is consistent with the 0.6 THz dip but
 not with the 2 THz dip. Ions, conduction and warming fail to produce it alone at every scan, and
-with a timing drift at 5 min (marginally). A tissue path 6–10 % thicker fits alone (marginally at 5
+with a timing drift at 5 min. A tissue path 6–10 % thicker fits alone (marginally at 5
 min); gas bubbles in a swelling slice fit with a drift of 0.03–0.06 ps; node states fit only near or
 beyond every geometric extreme (2–4.5 times it alone, 0.75–5.5 with a drift), and the forward bounds
 exclude them (as they exclude conduction: 130–450 S/m). The waveforms need a lag of the
