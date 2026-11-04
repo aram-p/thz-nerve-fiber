@@ -1,0 +1,24 @@
+H4 sample 1, 6 min at 100 V (residual = rms misfit / rms trace; D = effect size against the full fit, %)
+  full             residual  14.9 % (14.9-15.1 over tracing shifts)  a +0.935, b +0.242, s -0.140, tau +0.151, kappa +9.816
+  uniform | alone  residual  21.4 % (20.7-22.2 over tracing shifts)  D  15.4 % (14.4-16.3)  size [0.12, 0.0]  a +0.717, b +0.231, tau +0.021
+  uniform | drift  residual  17.6 % (17.6-17.7 over tracing shifts)  D   9.4 % (9.3-9.4)  size [0.36, 0.0]  a +1.000, b +0.235, s -0.189, tau +0.207
+  uneven | alone   residual  16.7 % (16.7-17.1 over tracing shifts)  D   7.4 % (7.4-8.0)  size [0.21, 0.25]  a +1.000, b +0.236, tau +0.011
+  uneven | drift   residual  16.6 % (16.5-16.8 over tracing shifts)  D   7.2 % (7.2-7.3)  size [-0.0, 0.4]  a +0.946, b +0.238, s +0.281, tau -0.274
+  none | alone     residual  30.6 % (26.7-35.2 over tracing shifts)  D  26.7 % (22.1-31.9)  size [0.0, 0.0]  a +0.564, b +0.236, tau +0.009
+  none | drift     residual  23.5 % (23.5-23.6 over tracing shifts)  D  18.1 % (18.1-18.2)  size [0.0, 0.0]  a +0.588, b +0.228, s +0.087, tau -0.067
+
+H4 sample 2, 6 min at 100 V (residual = rms misfit / rms trace; D = effect size against the full fit, %)
+  full             residual  15.8 % (4.2-15.9 over tracing shifts)  a +1.000, b -0.032, s -0.069, tau +0.196, kappa +0.000
+  uniform | alone  residual   6.4 % (4.3-9.4 over tracing shifts)  D   0.0 % (0.0-8.4)  size [-0.1, 0.0]  a +1.000, b -0.023, tau +0.222
+  uniform | drift  residual   3.7 % (3.6-3.8 over tracing shifts)  D   0.0 % (0.0-0.0)  size [-0.14, 0.0]  a +0.996, b -0.013, s +0.042, tau +0.177
+  uneven | alone   residual   6.5 % (4.5-9.4 over tracing shifts)  D   0.0 % (0.0-5.8)  size [-0.12, 0.0]  a +1.000, b -0.033, tau +0.283
+  uneven | drift   residual   3.7 % (3.6-3.8 over tracing shifts)  D   0.0 % (0.0-0.0)  size [-0.15, 0.0]  a +0.981, b -0.012, s +0.051, tau +0.159
+  none | alone     residual  24.9 % (4.2-33.0 over tracing shifts)  D  19.2 % (0.0-28.9)  size [0.0, 0.0]  a +1.000, b -0.033, tau -0.043
+  none | drift     residual  15.8 % (4.2-15.9 over tracing shifts)  D   0.0 % (0.0-0.0)  size [0.0, 0.0]  a +1.000, b -0.032, s -0.069, tau +0.196
+
+  s1: tissue pulse minimum at -360.133 ps, second pulse minimum at -360.830 ps (no change, drift fit); first zero expected near 0.72 THz; deepest notch of the 6 min spectrum (0.2-1.5 THz) at 0.56 THz
+      deepest notch of the fitted model (none | drift): 0.59 THz
+      deepest notch of the fitted model (full): 0.56 THz
+  s2: tissue pulse minimum at -360.249 ps, second pulse minimum at -360.723 ps (no change, drift fit); first zero expected near 1.06 THz; deepest notch of the 6 min spectrum (0.2-1.5 THz) at 1.49 THz
+      deepest notch of the fitted model (none | drift): 1.49 THz
+      deepest notch of the fitted model (full): 1.49 THz

@@ -26,3 +26,13 @@ def test_min_required_delay_matches_sim47():
     for scan, key in (("2 min", "2 min (H2)"), ("4 min", "4 min (H1)"), ("5 min", "5 min (H3)")):
         assert abs(SHIFT_PS[scan][0] - res[key]["s"]) < 1e-3
         assert abs(SHIFT_PS[scan][1] - res[key]["prof_lo95"]) < 1e-3
+
+
+def test_uneven_thickness_matches_gaussian_phase_average():
+    from thznerve.physics.slice_change import uneven
+    vg = np.arange(-0.95, 2.0, 0.002); a = np.array([1.0, 4.0, 8.0])
+    T = np.exp(1j * np.outer(vg, a))  # a pure phase per unit thickness change
+    for m, s in ((0.1, 0.1), (0.0, 0.2)):
+        got = uneven(T, vg, m, s)
+        assert np.allclose(got, np.exp(1j * a * m - (a * s) ** 2 / 2), atol=1e-6)
+    assert np.allclose(uneven(T, vg, 0.3, 0), np.exp(1j * a * vg[np.argmin(abs(vg - 0.3))]))

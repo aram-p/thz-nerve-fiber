@@ -83,3 +83,15 @@ def k_millon():
     from thznerve.physics.materials import alpha_per_cm
     d = alpha_per_cm(water_liebe(21.0)(1e12), 1e12) - alpha_per_cm(water_liebe(4.0)(1e12), 1e12)
     return 46.0 / d
+
+
+def uneven(T, vg, m, s, vmin=-0.95):
+    """Beam-averaged transfer of a slice whose relative thickness change v varies across the beam as a Gaussian
+    of mean m and rms s, cut at v > vmin (thickness >= 5 % of D_UM). T: transfers per v (len(vg) x n), each
+    taken at thickness D_UM (1 + v). The detector sees the coherent mean, so a spread of thickness loses
+    amplitude as exp(-(phase spread)^2 / 2), a loss that rises with frequency. s = 0 gives the nearest v."""
+    vg = np.asarray(vg, float); T = np.asarray(T)
+    if s == 0:
+        return T[int(np.argmin(abs(vg - m)))]
+    w = np.exp(-0.5 * ((vg - m) / s) ** 2) * (vg > vmin)
+    return (w / w.sum()) @ T
