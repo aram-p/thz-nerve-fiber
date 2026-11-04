@@ -15,15 +15,15 @@ full-wave model of a myelinated fibre in water, benchmarked to 2 × 10⁻⁴. Fi
 node does not resonate: its absorbed power follows a three-constant quasi-static law with exact
 limits, within 2.3 % of full wave for fibres up to 10 µm. Second, for the field along the fibres, as
 in every published scan, no node state (ε″ ≥ 0.1) changes a 100 µm slice by more than 1.1 dB at
-internodes ≥ 200 µm and packing ≤ 0.6,. Third, each biased waveform fits approximately as the
+internodes ≥ 200 µm and packing ≤ 0.6. Third, each biased waveform fits approximately as the
 unbiased pulse whose tissue part lags by 0.16–0.28 rad at 0.6 THz and loses more at high frequency,
-plus a second pulse near the empty-cuvette delay growing to 22 %. Without that change, fits miss by
-2.2–4.0 times what fitting noise and tracing allow. It fits the 0.6 THz dip, not a 2.0 THz dip.
-Extra conduction alone cannot produce it; a slice of uneven thickness across the beam can, in every
-reference. In a fourth report, one sample after 6 min passes 24 % of the empty-cuvette field at its
-delay, and its reported resonance is where the two pulses cancel. Node states fit only beyond every
-geometric extreme. The data point to a slice changing shape in the beam; the reported polarisation
-selectivity stays unexplained.
+plus a second pulse near the empty-cuvette delay growing to 21 %. Without that change, fits miss by
+2.2–4.0 times what fitting noise and tracing allow. It fits the 0.6 THz dip, not a 2.0 THz dip; a
+fourth report's resonance is likewise where the two pulses cancel. Extra conduction alone cannot
+produce the change. The waveforms do not identify its cause: uneven or thicker tissue, gas, warming
+and node states each fit under some reading, the node states only as nearly lossless negative
+permittivities that an aqueous gap cannot hold. The reported polarisation selectivity stays
+unexplained.
 
 ## Section outline
 

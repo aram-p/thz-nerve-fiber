@@ -1504,6 +1504,27 @@ states the bootstrap's few blocks, the bounds and the number of tests. **Fixed.*
 ### 271. MINOR: a repeated phrase in the E∥ row; Sec. 6 residuals from two sources; "36 fitting assumptions" joined to the twelve-reference ratio; a second DataPort entry; H4.
 **Response.** Row rewritten; Sec. 6 now quotes the full fit (10–15 % at 2–5 min, Sec. 5.6); the abstract sentence no longer mentions the 36 assumptions; both DataPort pages are the same dataset (doi:10.21227/h17h-tp94) and require a subscription; H4 is traced (Sim 73) and cited with its DOI. **Fixed.**
 
+
+## Thirty-fourth round (independent reviewer, whole paper, 2026-11-04; verdict: fatal flaw, the conclusion overstates what the uneven-thickness fit and H4 show; major revision)
+
+### 272. FATAL: the uneven-thickness model is the mean over infinitely many patches; one slice under a 5 mm beam does not realise it, so "a slice of uneven thickness can, in every reference" and "the data point to a slice changing shape" rest on a reparameterised loss plus delay.
+**Response.** Agreed. Sim 74 lays random thickness fields (the fitted sizes, correlation length 0.25–2 mm) under a mode-matched beam 5 mm across, fixed or scaling with wavelength, 200 slices each. One slice departs from the mean by an rms of 0.7–4.6 dB at 0.6 THz and 2.0–13.8 dB at 1.5 THz for patches of 0.5–2 mm, as large as the mean change itself (−1.6 to −4.0 and −8 to −13 dB); only patches of ≲ 0.25 mm average out, and there a patch is no wider than a wavelength, where the local-slab transfer fails. Sec. 5.7 states this after the method; Sec. 6 adds it as a limitation. The abstract, Sec. 1, 5.7, 5.8 and 7 now say that the waveforms exclude extra conduction alone but do not identify the cause, list uneven thickness with the other causes not firmly excluded, and drop "the data point to a slice changing shape" and "the simplest reading". **Fixed.**
+
+### 273. FATAL: H4's "6 min" scan of sample 1 is the H3 5 min scan or a near copy; it is not independent evidence, and "continuing the sequence" and "shows directly" count it twice.
+**Response.** Confirmed by Sim 75: after the best shift and scale it matches H3's 5 min scan within 10.1 %, against 27–47 % between any other two biased scans, and its unbiased pulse matches those of H1–H3 within 3.9–5.0 % (they match each other within 1.8–3.3 %). Sec. 5.6 now says sample 1 is the sample of H1–H3 and its biased scan H3's or one taken soon after, not independent evidence; the H4 sentence is removed from the abstract; "continuing the sequence" and "shows directly" are deleted; the onset row of Sec. 5.8 says it adds no time point. Sample 2 is described as the one new sample. **Fixed.**
+
+### 274. MAJOR: the lead of the second pulse (0.02–0.08 ps), called unexplained, is within how well the empty-cuvette pulse is reproduced between reports.
+**Response.** Confirmed by Sim 75: H1's and H4's empty-cuvette pulses differ by 9 % rms and 0.025 ps; with H4's as K the fits without a loss term put the second pulse 0.000–0.015 ps early alone (one pixel 0.015 ps) and from 0.015 ps early to 0.011 ps late with a drift, at 30 s as at 2–5 min, b changing by ≤ 0.004. Sec. 5.6 says so; "which we cannot explain" is removed from Sec. 5.6 and Sec. 7. **Fixed.**
+
+### 275. MINOR: Sec. 5.6 l. 493 "At 2–5 min it leaves 21.6–24.2 %" now reads as the uneven fit.
+**Response.** Rewritten: "With these floors no change leaves 21.6–24.2 % at 2–5 min". **Fixed.**
+
+### 276. MINOR: node λ given as 2–6 and as 1–6; uneven thickness called "every reference" though excluded (borderline) in one with floors 0–0.5 and at the grid edges; one wording rule for all rows.
+**Response.** Sec. 5.7 gives 2–6 for the better fit of each reference (Table 2) and 1–6 over all fits; uneven thickness is "not firmly excluded in any reference", with the fourth floor-0–0.5 reference "excluded but borderline" and the drift fits at the grid edges (mean −30 %, rms 40 %) named. Every surviving candidate is now described as "not firmly excluded". **Fixed.**
+
+### 277. MINOR: b at 5 min given as 0.21 and as 22 %; a stray "0.6,."; H4 sample 2's full fit cannot add gain, so its D = 0 means nothing.
+**Response.** 21 % throughout (fits give 0.209–0.219); typo fixed; Sec. 5.6 says the full fit does no better than no change for sample 2, so no effect size is formed. **Fixed.**
+
 ---
 
 ## What matches and what does not (experiment)
@@ -1519,14 +1540,14 @@ states the bootstrap's few blocks, the bounds and the number of tests. **Fixed.*
 | Effect only with DC across the fibres | Described without data. Not explained; heating predicts the opposite (σ∥ ≈ 7σ⊥) |
 | Generated high frequencies (nonlinearity) | No ps nonlinearity at TDS fields (10⁻³ of onset); drying raises high-frequency transmission linearly |
 | Sample acts as a grating of wires | No diffraction orders below 6 THz; fibres are not periodic |
-| Onset ~5 min, recovery ~1 h; no further change after ~6 min (paper 1) | The second pulse grows 4 → 12 → 17 → 22 % (0.5, 2, 4, 5 min) and is 24 % at 6 min in H4's sample 1, probably the same sample (Sim 73); saturation not testable. Conduction alone is excluded by the waveforms; uneven thickness is not (Table 2, Sim 72) |
+| Onset ~5 min, recovery ~1 h; no further change after ~6 min (paper 1) | The second pulse grows 4 → 12 → 17 → 21 % (0.5, 2, 4, 5 min); H4's sample 1 at "6 min" matches H3's 5 min scan within 10 % (Sim 75), so it adds no time point; saturation not testable. Conduction alone is excluded by the waveforms; no other tested cause is firmly excluded (Table 2) |
 | No significant change of average power (paper 3) | Traced pulse energy 1.03 (biased) vs 1.36 (no voltage): −1.2 dB, consistent with a small change of a heavily attenuated signal |
 | Tissue n = 3.6–3.9 | Inconsistent with water-based tissue (model and Berry 2003: 1.95–2.2) |
 
 ## Remaining (non-fatal) limitations stated in the paper
 - Single fibre plus effective medium; dense-packing corrections are O(1) (item 4).
 - No raw experimental data; the analysis rests on traced published waveforms (H1–H3 one session, H4
-  one figure per sample; the full fit leaves 10–15 %, several times tracing noise; q depends on the band). Uneven thickness and openings fit, and H4 shows an opening directly, but neither is shown to be the cause in H1–H3. Tests: image the cuvette during bias; record DC current and slice
+  one figure per sample; the full fit leaves 10–15 %, several times tracing noise; q depends on the band). The waveforms do not identify the cause; uneven thickness fits only as a mean over many patches that one slice under the beam need not realise (Sim 74), and H4 adds one independent sample. Tests: image the cuvette during bias; record DC current and slice
   mass; measure slice thickness; repeat the E⊥ and DC-direction controls on the same slice.
 - Linear passive EM response only; DC-driven structural changes enter only through bulk effects.
 - Passive linear model only; band limited to 0.1–3 THz.
