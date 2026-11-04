@@ -9,21 +9,21 @@ the tissue-level and experimental-design sections up front.
 
 ## Abstract (draft, 250 words max)
 
-Biased (100 V DC) spinal-cord slices reportedly show a 9–20 dB terahertz transmission dip drifting
-from 0.7 to 0.5 THz, attributed to resonant nodes of Ranvier or DC-opened channels. We test this
-with a full-wave model of a myelinated fibre in water, benchmarked to 2 × 10⁻⁴. First, in 0.1–3 THz
-the node does not resonate: its absorbed power follows a three-constant quasi-static law with exact
+DC-biased spinal-cord slices reportedly show a 9–20 dB terahertz transmission dip drifting from 0.7
+to 0.5 THz, attributed to resonant nodes of Ranvier or DC-opened channels. We test this with a
+full-wave model of a myelinated fibre in water, benchmarked to 2 × 10⁻⁴. First, in 0.1–3 THz the
+node does not resonate: its absorbed power follows a three-constant quasi-static law with exact
 limits, within 2.3 % of full wave for fibres up to 10 µm. Second, for the field along the fibres, as
 in every published scan, no node state (ε″ ≥ 0.1) changes a 100 µm slice by more than 1.1 dB at
-internodes ≥ 200 µm and packing ≤ 0.6, and open channels add 10⁻⁶ of membrane admittance. Third,
-each biased waveform fits approximately as the unbiased pulse whose tissue part lags by 0.16–0.28
-rad at 0.6 THz and loses more at high frequency, plus a second pulse near the empty-cuvette delay
-growing to 22 %. Over 36 fitting assumptions and twelve references, fits without the change miss by
+internodes ≥ 200 µm and packing ≤ 0.6,. Third, each biased waveform fits approximately as the
+unbiased pulse whose tissue part lags by 0.16–0.28 rad at 0.6 THz and loses more at high frequency,
+plus a second pulse near the empty-cuvette delay growing to 22 %. Without that change, fits miss by
 2.2–4.0 times what fitting noise and tracing allow. It fits the 0.6 THz dip, not a 2.0 THz dip.
-Extra conduction cannot produce it. If a 30 s loss belongs to the slice, as tracings suggest, no
-tested bulk cause can, and the change precedes the reported onset; otherwise warming, a thicker path
-or gas with a drift remain. Node states fit only beyond every geometric extreme. The reported
-polarisation selectivity stays unexplained.
+Extra conduction alone cannot produce it; a slice of uneven thickness across the beam can, in every
+reference. In a fourth report, one sample after 6 min passes 24 % of the empty-cuvette field at its
+delay, and its reported resonance is where the two pulses cancel. Node states fit only beyond every
+geometric extreme. The data point to a slice changing shape in the beam; the reported polarisation
+selectivity stays unexplained.
 
 ## Section outline
 

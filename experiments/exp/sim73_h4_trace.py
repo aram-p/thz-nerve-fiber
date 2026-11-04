@@ -106,6 +106,13 @@ if __name__ == "__main__":
     f, E = spectrum_db(W["empty"], VALID); _, S = spectrum_db(W["sample3a"], VALID)
     say(f"  Fig. 3a sample / empty at 0.25 / 0.5 / 1.0 / 2.0 THz: " + " / ".join(f"{np.interp(x, f, S - E):+.1f}" for x in (0.25, 0.5, 1.0, 2.0)) +
         " dB (H4 text: about -5 dB at 0.25 THz, below -25 dB at 2 THz)")
+    say("")
+    h1 = np.load(ROOT / "results" / "sim42" / "digitised.npz")
+    say("against H1 (Sim 42 traces, same time grid): rms difference / rms of H1, best scale, minima")
+    for x, k in (("empty", "empty"), ("none", "sample3a"), ("none", "s1_none"), ("none", "s2_none")):
+        u, v = h1[x][VALID], W[k][VALID]
+        say(f"  H1 {x:6s} vs H4 {k:9s}: {100 * np.sqrt(np.mean((u - v) ** 2) / np.mean(u ** 2)):.1f} %, scale {np.dot(u, v) / np.dot(u, u):.3f}, "
+            f"minima {TT[VALID][np.argmin(u)]:.3f} / {TT[VALID][np.argmin(v)]:.3f} ps")
     np.savez(OUT / "digitised.npz", t_ps=TT, valid=VALID, **W)
     fig, ax = plt.subplots(1, 3, figsize=(15, 5))
     for i, (name, (d, _, _, rgb)) in enumerate(TR.items()):

@@ -1,0 +1,37 @@
+floors 0-0.5   uneven | alone  excluded 2/4 (firm 1, borderline 1); largest D/thr 0.76-1.17
+      floor 0, a <= 1        0.56 / 0.77 / 0.72  D 3.9 / 6.3 / 5.9  flip 0.00  sizes (m, s) [[0.12, 0.2], [0.12, 0.2], [0.18, 0.25]]
+      floor 0, a + b <= 1    1.17 / 1.01 / 0.93  D 7.6 / 9.4 / 9.6  flip 0.00  sizes (m, s) [[0.09, 0.16], [0.09, 0.12], [0.15, 0.2]]
+      floor 0.5, a <= 1      0.66 / 0.76 / 0.52  D 4.5 / 5.6 / 5.3  flip 0.00  sizes (m, s) [[0.09, 0.16], [0.12, 0.2], [0.18, 0.25]]
+      floor 0.5, a + b <= 1  1.14 / 0.91 / 0.91  D 8.1 / 8.6 / 9.6  flip 0.00  BL  sizes (m, s) [[0.09, 0.12], [0.09, 0.12], [0.12, 0.16]]
+floors 0-0.5   uneven | drift  excluded 1/4 (firm 0, borderline 1); largest D/thr 0.67-1.11
+      floor 0, a <= 1        0.52 / 0.72 / 0.66  D 2.7 / 4.8 / 4.8  flip 0.00  sizes (m, s) [[0.09, 0.2], [0.15, 0.2], [-0.06, 0.4]]  GRID EDGE
+      floor 0, a + b <= 1    1.11 / 0.71 / 0.00  D 4.1 / 3.4 / 0.0  flip 0.00  BL  sizes (m, s) [[-0.03, 0.25], [-0.21, 0.4], [-0.12, 0.4]]  GRID EDGE
+      floor 0.5, a <= 1      0.42 / 0.64 / 0.67  D 2.4 / 4.6 / 4.7  flip 0.00  sizes (m, s) [[0.09, 0.2], [0.15, 0.2], [-0.09, 0.4]]  GRID EDGE
+      floor 0.5, a + b <= 1  0.83 / 0.49 / 0.00  D 4.3 / 3.3 / 0.0  flip 0.06  sizes (m, s) [[-0.0, 0.2], [-0.24, 0.4], [-0.15, 0.4]]  GRID EDGE
+floors 1.0-2.5 uneven | alone  excluded 1/8 (firm 1, borderline 1); largest D/thr 0.51-1.16
+      floor 1, a <= 1        0.50 / 0.59 / 0.54  D 3.3 / 5.0 / 5.0  flip 0.00  sizes (m, s) [[0.09, 0.16], [0.12, 0.2], [0.18, 0.25]]
+      floor 1, a + b <= 1    1.16 / 0.76 / 0.83  D 8.0 / 8.0 / 9.1  flip 0.00  sizes (m, s) [[0.06, 0.08], [0.09, 0.12], [0.12, 0.16]]
+      floor 1.5, a <= 1      0.28 / 0.50 / 0.51  D 2.2 / 4.7 / 4.9  flip 0.00  sizes (m, s) [[0.09, 0.16], [0.12, 0.2], [0.18, 0.25]]
+      floor 1.5, a + b <= 1  0.91 / 0.73 / 0.75  D 6.7 / 7.7 / 8.8  flip 0.02  BL  sizes (m, s) [[0.06, 0.08], [0.09, 0.12], [0.12, 0.16]]
+      floor 2.07, a <= 1     0.33 / 0.56 / 0.52  D 2.5 / 5.0 / 5.0  flip 0.00  sizes (m, s) [[0.09, 0.16], [0.12, 0.2], [0.18, 0.25]]
+      floor 2.07, a + b <= 1 0.73 / 0.72 / 0.77  D 5.9 / 7.9 / 8.6  flip 0.00  sizes (m, s) [[0.06, 0.08], [0.09, 0.08], [0.12, 0.16]]
+      floor 2.5, a <= 1      0.44 / 0.46 / 0.51  D 3.7 / 4.7 / 5.3  flip 0.00  sizes (m, s) [[0.09, 0.16], [0.12, 0.16], [0.18, 0.25]]
+      floor 2.5, a + b <= 1  0.65 / 0.74 / 0.80  D 5.7 / 7.6 / 8.5  flip 0.00  sizes (m, s) [[0.06, 0.04], [0.06, 0.04], [0.12, 0.16]]
+floors 1.0-2.5 uneven | drift  excluded 0/8 (firm 0, borderline 0); largest D/thr 0.57-0.83
+      floor 1, a <= 1        0.54 / 0.63 / 0.66  D 2.8 / 4.5 / 4.7  flip 0.00  sizes (m, s) [[0.06, 0.2], [0.12, 0.2], [-0.09, 0.4]]  GRID EDGE
+      floor 1, a + b <= 1    0.73 / 0.42 / 0.00  D 3.8 / 3.3 / 0.0  flip 0.00  sizes (m, s) [[-0.0, 0.2], [-0.27, 0.4], [-0.15, 0.4]]  GRID EDGE
+      floor 1.5, a <= 1      0.38 / 0.54 / 0.60  D 2.1 / 4.2 / 4.7  flip 0.00  sizes (m, s) [[0.09, 0.16], [0.15, 0.16], [-0.12, 0.4]]  GRID EDGE
+      floor 1.5, a + b <= 1  0.83 / 0.42 / 0.00  D 3.8 / 3.2 / 0.0  flip 0.06  sizes (m, s) [[-0.03, 0.2], [-0.27, 0.4], [-0.15, 0.4]]  GRID EDGE
+      floor 2.07, a <= 1     0.42 / 0.53 / 0.60  D 2.5 / 4.1 / 4.6  flip 0.00  sizes (m, s) [[0.09, 0.16], [0.12, 0.16], [0.15, 0.25]]
+      floor 2.07, a + b <= 1 0.57 / 0.46 / 0.00  D 3.2 / 3.2 / 0.0  flip 0.00  sizes (m, s) [[-0.0, 0.16], [-0.3, 0.4], [-0.15, 0.4]]  GRID EDGE
+      floor 2.5, a <= 1      0.24 / 0.46 / 0.59  D 1.5 / 3.4 / 4.4  flip 0.00  sizes (m, s) [[0.09, 0.12], [0.12, 0.16], [0.15, 0.25]]
+      floor 2.5, a + b <= 1  0.59 / 0.58 / 0.00  D 3.2 / 3.1 / 0.0  flip 0.00  sizes (m, s) [[-0.0, 0.16], [-0.3, 0.4], [-0.18, 0.4]]  GRID EDGE
+
+30 s floor 0, a <= 1        uneven alone: D 3.34 % (no change 6.32 %), D/threshold 0.73, flip 0.00, size (m, s) [0.03, 0.16]
+30 s floor 0, a <= 1        uneven drift: D 1.24 % (no change 6.23 %), D/threshold 0.34, flip 0.00, size (m, s) [0.06, 0.12]
+30 s floor 0, a + b <= 1    uneven alone: D 4.53 % (no change 6.32 %), D/threshold 1.12, flip 0.09, size (m, s) [0.03, 0.12]
+30 s floor 0, a + b <= 1    uneven drift: D 2.44 % (no change 6.23 %), D/threshold 0.71, flip 0.00, size (m, s) [0.03, 0.12]
+30 s floor 0.5, a <= 1      uneven alone: D 4.09 % (no change 5.14 %), D/threshold 0.90, flip 0.00, size (m, s) [-0.0, 0.08]
+30 s floor 0.5, a <= 1      uneven drift: D 0.91 % (no change 4.99 %), D/threshold 0.24, flip 0.00, size (m, s) [0.06, 0.08]
+30 s floor 0.5, a + b <= 1  uneven alone: D 4.09 % (no change 5.14 %), D/threshold 0.95, flip 0.01, size (m, s) [-0.0, 0.08]
+30 s floor 0.5, a + b <= 1  uneven drift: D 2.48 % (no change 4.99 %), D/threshold 0.63, flip 0.00, size (m, s) [0.03, 0.08]
