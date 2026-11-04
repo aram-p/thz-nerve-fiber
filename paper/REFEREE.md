@@ -1549,13 +1549,39 @@ states the bootstrap's few blocks, the bounds and the number of tests. **Fixed.*
 ### 284. MINOR: inconsistent numbers (30 s rms 8–16 vs drift 8–12; patches ≲ 0.25 mm at 1.5 THz; 1.3–2.5 vs 1.33–2.38; 1.21–2.33 vs 1.76; 12–99 with λ 2–6; "as they match each other").
 **Response.** 8–12 % with a drift; patches ≲ 0.25 mm average out at 0.6 THz but still depart by 1.2–6.9 dB at 1.5 THz; 1.3–2.4; 1.21–1.76; 12–99 tied to λ 1–6 over all fits; "close to how well they match each other". **Fixed.**
 
+
+## Thirty-sixth round (independent reviewer, whole paper, 2026-11-04; verdict: no fatal flaw; minor revision)
+
+The reviewer checked the `multistart` fix and the t2_max bound and found both correct, with no earlier result depending on the old behaviour.
+
+### 285. MINOR: the data prefer H1's empty pulse, the one that gives the lead, so "within how well that pulse is reproduced" is too strong.
+**Response.** Confirmed by Sim 77: H1's pulse fits all four H1–H3 scans better (full fit 6.3/9.9/11.9/13.5 % against 6.7/10.2/13.1/14.7 %; no change with s = 0 likewise). Sec. 5.6 and 7 now say the lead is comparable to the difference between two reports' empty-cuvette pulses and that whether it is real is not decided. **Fixed.**
+
+### 286. MINOR: sample 2's fits use a small negative second pulse at the 0.2 ps bound.
+**Response.** Sim 77 refits sample 2 with no second pulse: thinner path (8–16 %) 5.4 % with a drift and 11.9 % without, a pulse 1.25 times stronger and 0.05 ps earlier 8.0 %, no change 21.2 %. Sec. 5.6 quotes these and the negative b of the bounded fits. **Fixed.**
+
+### 287. MINOR: H4's own statements on sample 2 (rise from 0.4 THz, 5 dB near 2 THz, index falling over the band, resonance supposed below the band, "all samples show similar regularities") and its "up to 20 dB" for sample 1 against the traced +15 dB are not reported.
+**Response.** Sec. 5.6 quotes them and says sample 2, the one independent test, shows neither the dip nor a second pulse; Sec. 5.8 has a sample-2 row. **Fixed.**
+
+### 288. MINOR: one slice's departure "as large as the mean change itself" holds only for large patches.
+**Response.** "a quarter to all of the mean change, depending on patch size" in Sec. 5.7 and 6. **Fixed.**
+
+### 289. MINOR: the lead paragraph mixes Sim 55's floored references with Sim 76's unfloored one; 0.009 vs 0.008.
+**Response.** The comparison now names its reference (no floor, a ≤ 1), gives H1's pulse in the same reference (0.020–0.039 ps at 2–5 min, 0.039–0.064 at 30 s), and reads 0.008 ps early to 0.009 ps late (s free and s = 0). **Fixed.**
+
+### 290. MINOR: node states "accept them with a drift in every reference" though they were refitted only at floors 1.0–2.5.
+**Response.** "in all eight references with floors of 1.0–2.5 dB/THz (node states were not refitted at floors 0–0.5)". The 2–6 in Table 2 is the best size of the better fit in each reference and the 1–6 in the text the range over all fits, as the text says. **Fixed.**
+
+### 291. MINOR: REPORT row 76 and the closing table here still carry withdrawn claims.
+**Response.** Both rewritten (row 76 verdict; the dip row: 21 %, H4 without a frequency, bulk conduction, the surviving causes, λ 1–6). **Fixed.**
+
 ---
 
 ## What matches and what does not (experiment)
 
 | Reported (Hovhannisyan, Makaryan, Martirosyan 2024) | This work |
 |---|---|
-| Dip near 0.6 THz (9–20 dB) | No node or fibre resonance anywhere in 0.1–3 THz. The shared session's biased waveforms contain a second pulse near the empty-cuvette delay (4, 12, 17, 22 % at 0.5, 2, 4, 5 min) and a tissue pulse with an extra loss rising with frequency and a lag of 0.16–0.28 rad at 0.6 THz, over 36 reference fits (Sim 55); without the change the fits miss at 2–5 min by 17.9–23.0 % of the trace rms, 2.2–3.3 times what fitting noise and tracing allow (Sim 69). The dip then falls at 0.57 THz (5 min, reported 0.56) and 0.63–0.65 THz (4 min, published 0.65): consistent, q fitted. In H4 the same cancellation places the resonance reported for sample 1 (0.56 THz, model 0.56–0.59; Sim 73). Against fitting noise and tracing (Sims 69–72), extra conduction alone up to 60/150 S/m is firmly excluded in all twelve references (1.3–2.4× the threshold); a slice whose thickness varies across the beam fits in every reference (Sim 72); node states fit only at 2–6× every extreme and as states an aqueous gap cannot hold (Table 2) |
+| Dip near 0.6 THz (9–20 dB) | No node or fibre resonance anywhere in 0.1–3 THz. The shared session's biased waveforms contain a second pulse near the empty-cuvette delay (4, 12, 17, 21 % at 0.5, 2, 4, 5 min) and a tissue pulse with an extra loss rising with frequency and a lag of 0.16–0.28 rad at 0.6 THz, over 36 reference fits (Sim 55); without the change the fits miss at 2–5 min by 17.9–23.0 % of the trace rms, 2.2–3.3 times what fitting noise and tracing allow (Sim 69). The dip then falls at 0.57 THz (5 min, reported 0.56) and 0.63–0.65 THz (4 min, published 0.65): consistent, q fitted. H4's "deep resonance" of sample 1, given without a frequency (spectrum minimum near 0.55 THz, index jump at 0.60 THz), is consistent with the same cancellation (model 0.56–0.59; Sim 73) on a scan that matches H3's 5 min scan (Sim 75); sample 2 shows no dip and no second pulse. Against fitting noise and tracing (Sims 69–72), extra bulk conduction alone up to 60/150 S/m is firmly excluded in all twelve references (1.3–2.4× the threshold); uneven or thicker tissue, gas, warming and node states each pass under some reading, uneven thickness only as a mean over many patches (Sims 72, 74); node states pass only at 1–6× every extreme and as states an aqueous gap cannot hold (Table 2) |
 | 2 THz dip (30 s, paper 1) | Not reproduced, not excluded. A real feature of one scan: 15 dB at 1.99 THz, twice any other single-curve dip, its bottom (−71 dB) 2–5 dB above the noise, so the depth is a lower bound; origin unknown. With the traced phase extrapolated the two pulses put their antiphase at 2.10–2.32 THz, and the data are only 3.2 dB above the two-pulse floor (Sims 43, 44). No node state (65, every extreme, six phase bands, b = 0.034–0.044) makes the model's minimum within 0.03 THz of 1.99 THz deeper than −37.5 dB (published ≤ −43.5 dB; Sim 43 (e)) |
 | Dip drifts 0.7 → 0.5 THz in minutes | Water-vapour lines cannot drift. At 30 s the traced ratio is a broad −3 to −4 dB trough over 0.56–0.78 THz; by 4 min the dip is at 0.62–0.65 THz as b reaches 0.17 and q 1.09 (Sims 42, 43). Matches the direction; fitted, not predicted |
 | High frequencies rise by 17–18 dB (2–2.5 THz, traced) | In the two-pulse fit the second pulse skips the tissue loss; the fit follows the rise to 1.7 THz within 1.5 dB rms (not testable above with the traced window); drying alone ≤ 3 dB (Sim 34) |

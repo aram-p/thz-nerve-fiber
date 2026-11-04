@@ -1,0 +1,19 @@
+(1) H1-H3 with each empty-cuvette pulse as K (no floor, a <= 1): residual % of the full fit / of no change with s = 0; second pulse in the full fit (ps)
+  K = H1 empty pulse, 30 s (H1) : full   6.3 %, no change   8.9 %, second pulse at -0.064
+  K = H1 empty pulse, 2 min (H2): full   9.9 %, no change  24.9 %, second pulse at -0.039
+  K = H1 empty pulse, 4 min (H1): full  11.9 %, no change  26.8 %, second pulse at -0.039
+  K = H1 empty pulse, 5 min (H3): full  13.5 %, no change  27.7 %, second pulse at -0.029
+  K = H4 empty pulse, 30 s (H1) : full   6.7 %, no change   8.9 %, second pulse at -0.033
+  K = H4 empty pulse, 2 min (H2): full  10.2 %, no change  25.9 %, second pulse at -0.008
+  K = H4 empty pulse, 4 min (H1): full  13.1 %, no change  28.6 %, second pulse at -0.008
+  K = H4 empty pulse, 5 min (H3): full  14.7 %, no change  29.6 %, second pulse at +0.001
+
+(2) H4 sample 2 with no second pulse (K = 0): residual % (range over the 8 tracing shifts); best size; parameters
+  uniform | alone  residual  11.9 % (7.6-16.4)  size [-0.08, 0.0]  a +1.000
+  uniform | drift  residual   5.4 % (5.4-5.5)  size [-0.16, 0.0]  a +0.986, s +0.067
+  uneven | alone   residual  11.8 % (7.6-16.4)  size [-0.09, 0.0]  a +1.000
+  uneven | drift   residual   5.4 % (5.4-5.5)  size [-0.15, 0.0]  a +1.000, s +0.059
+  none | alone     residual  29.2 % (22.9-37.8)  size [0.0, 0.0]  a +1.000
+  none | drift     residual  21.2 % (21.2-21.2)  size [0.0, 0.0]  a +1.000, s -0.055
+  no change, a free, alone: residual  23.6 % (12.5-35.3)  a +1.214
+  no change, a free, drift: residual   8.0 % (7.9-8.1)  a +1.245, s -0.054

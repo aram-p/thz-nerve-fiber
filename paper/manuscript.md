@@ -4,7 +4,7 @@ Aram Poghossian
 
 Target journal: *Journal of Infrared, Millimeter, and Terahertz Waves* (Springer).
 Figures are in `paper/figures/`; every number below traces to a script and a result file listed in
-`REPORT.md` (Sims 27–76) and to `results/run_log.csv`.
+`REPORT.md` (Sims 27–77) and to `results/run_log.csv`.
 
 ## Abstract
 
@@ -512,14 +512,16 @@ cause. A shift of the
 tissue pulse also reads as a drift of the delay stage by s between the shared reference scans and each biased
 scan (one common shift of the whole biased scan with τ = 0 raises the residuals to 10/29/34/31 %, but
 with both shifts free it is the same fit, the second pulse then leading by 0.07–0.10 ps); a drift
-alone cannot make the tissue pulse weaker at high frequency. A real lead would need a path faster than the empty air gap, but at 2–5 min the lead is within how
-well the empty-cuvette pulse is reproduced: H1's
-and H4's empty-cuvette pulses differ by 9 % rms and 0.025 ps, and with H4's as K the same fits without
-a loss term put the second pulse 0.000–0.015 ps early alone (one pixel is 0.015 ps) and 0.015 ps early
-to 0.011 ps late with a drift, b changing by ≤ 0.004 (Sim 75). With the causal loss term it is 0.009
-ps early to 0.009 ps late at 2–5 min, against 0.020–0.039 ps early with H1's pulse; at 30 s, where b
-is 0.04, it stays 0.011–0.033 ps early (up to two pixels; Sim 76). The candidate fits of Sec. 5.7, whose
-lead reaches 0.069 ps with H1's pulse, were not refitted with H4's. Sec. 5.7 tests what could cause the
+alone cannot make the tissue pulse weaker at high frequency. A real lead would need a path faster than the empty air gap. It is comparable to the difference
+between the empty-cuvette pulses of two reports: H1's and H4's differ by 9 % rms and 0.025 ps, and
+with H4's as K the fits without a loss term put the second pulse 0.000–0.015 ps early alone (one pixel
+is 0.015 ps) and 0.015 ps early to 0.011 ps late with a drift, b changing by ≤ 0.004 (Sim 75). In the
+fits with the causal loss term (no floor, a ≤ 1) it is 0.008 ps early to 0.009 ps late at 2–5 min with
+H4's pulse, against 0.020–0.039 ps early with H1's; at 30 s, where b is 0.04, 0.011–0.033 ps early
+against 0.039–0.064 ps (Sim 76). But H1's pulse fits the H1–H3 scans better in all four (full-fit
+residual 6.3/9.9/11.9/13.5 % against 6.7/10.2/13.1/14.7 %; Sim 77), and H1's and H3's empty-cuvette
+minima agree to 0.005 ps. Whether the lead is real is therefore not decided by the traced figures. The
+candidate fits of Sec. 5.7, whose lead reaches 0.069 ps with H1's pulse, were not refitted with H4's. Sec. 5.7 tests what could cause the
 change.
 
 **The 0.6 THz dip.** This is a consistency check, not a prediction: q and b are fitted to the same
@@ -570,8 +572,8 @@ be tested without later traces. A gas column inside the tissue was fitted and wi
 traced points it fitted poorly (χ² = 32–52 on 8 points).
 
 **What the second pulse could be.** Its delay suggests beam that reaches the detector without
-crossing the tissue; at 2–5 min its lead over H1's empty-cuvette pulse is within how well that pulse is reproduced
-(above). The reading below is a hypothesis. A gap between slice and window is in series with the tissue and cannot do this, and a slice
+crossing the tissue; its lead over the empty-cuvette pulse is comparable to the difference between two reports'
+empty-cuvette pulses and is not decided (above). The reading below is a hypothesis. A gap between slice and window is in series with the tissue and cannot do this, and a slice
 shrinking at its edges cannot clear the beam (H1: beam ~5 mm across; H3: 20 × 20 mm samples;
 electrodes 15–18 mm apart). With mode-matched detection the second pulse's field fraction equals the
 fraction of beam power through the opening (Sim 45). For a Gaussian beam 5 mm across (1/e² or
@@ -598,13 +600,17 @@ thickness, 15 % with the causal loss term). H4 reports a "deep resonance in the 
 frequency; its spectrum (Fig. 4b) has a broad minimum near 0.55 THz and its refractive index (Fig. 5a)
 jumps at 0.60 THz. The spectrum of the traced waveform has its deepest notch at 0.56 THz, and the
 fitted two-pulse models put the cancellation at 0.56–0.59 THz. As for H3, this is a consistency check,
-not a prediction, made on what is H3's scan or one close to it, and 0.557 THz is a water-vapour line. Sample 2 is new: its unbiased pulse differs from sample 1's by 35–38 %. After bias it has no second pulse (b ≈ 0) and transmits more and earlier. With the second pulse held
-within 0.2 ps of the empty-cuvette delay (without that bound some no-change fits put it at the tissue
-delay), a tissue path 10–16 % thinner fits with a 3.7 % residual, no change leaves 15.8 %, and a tissue
-pulse 1.2 times stronger and 0.06 ps earlier with no change of shape leaves 6.4 % (Sim 76); the thinner
-path is the best of these readings, not the only one. The full fit, whose loss term cannot add gain,
-does no better than no change here, so no effect size is formed. Both transmit more after bias (traced: +15 and +6 dB at 2 THz),
-which beam crossing less tissue gives. H4 has one figure per sample and no second tracing of an
+not a prediction, made on what is H3's scan or one close to it, and 0.557 THz is a water-vapour line. Sample 2 is new: its unbiased pulse differs from sample 1's by 35–38 %. After bias it has no second pulse and transmits more and earlier: fits that allow a second pulse
+give it a small negative amplitude (b = −0.01 to −0.03, at the 0.2 ps bound on its arrival; Sim 76).
+Without one, a tissue path 8–16 % thinner fits with a 5.4 % residual with a drift (11.9 % without), a
+tissue pulse 1.25 times stronger and 0.05 ps earlier with no change of shape leaves 8.0 %, and no
+change 21.2 % (Sim 77); the thinner path is the best of these readings, not the only one. The full fit,
+whose loss term cannot add gain, does no better than no change here, so no effect size is formed.
+Both samples transmit more after bias (traced: +15 and +6 dB at 2 THz; H4 gives "up to 20 dB" at 2 THz
+for sample 1 and, for sample 2, a rise starting at 0.4 THz and 5 dB near 2 THz), which beam crossing
+less tissue gives. For sample 2 H4 reports no dip: its refractive index falls over the whole band, and
+the authors suppose its resonance lies below the band, while stating that all samples show similar
+regularities. Sample 2, the one independent test, thus shows neither the dip nor a second pulse. H4 has one figure per sample and no second tracing of an
 unbiased pair, so no noise threshold is built for it.
 
 ### 5.7 What could cause the change
@@ -627,8 +633,8 @@ uniform slab over a Gaussian spread of thickness across the beam (mean change m 
 a pure phase φ the mean is e^{iφm − φ²σ²/2}, a loss rising with frequency (tested). This is the mean
 over many independent patches, and under a beam ~5 mm across one slice holds few. For random
 thickness fields with the fitted sizes and correlation lengths of 0.5–2 mm, one slice departs from the
-mean by an rms of 0.7–4.6 dB at 0.6 THz and 2.0–13.8 dB at 1.5 THz, as large as the mean change itself
-(−1.6 to −4.0 and −8 to −13 dB; Sim 74). Only patches of ≲ 0.25 mm average out at 0.6 THz (0.4–1.0 dB; at 1.5 THz still 1.2–6.9 dB),
+mean by an rms of 0.7–4.6 dB at 0.6 THz and 2.0–13.8 dB at 1.5 THz, a quarter to all of the mean change (−1.6 to −4.0 and −8 to −13 dB)
+depending on patch size (Sim 74). Only patches of ≲ 0.25 mm average out at 0.6 THz (0.4–1.0 dB; at 1.5 THz still 1.2–6.9 dB),
 and there a patch is no wider than a wavelength, where the local-slab transfer used here fails. The
 uneven model therefore shows what a spread of thickness gives on average, not what a given slice
 does; in the fits it is a loss rising with frequency plus a lag, with two free sizes. Scattering is modelled as spheres of radius r at volume fraction v ≤ 0.2 in the tissue, a coherent
@@ -705,7 +711,8 @@ nearly lossless negative permittivity (ε″ = 0.1) or a conductivity 500 times 
 aqueous gap cannot hold: ions large enough to make ε′ negative bring ε″ ≳ 80 (Sec. 4.6). A frequency-independent ε is not
 causal (Kramers–Kronig), so these states are bounds on what a gap can do, not models of one. Node
 states are thus excluded by what a gap can hold and by the forward bounds, not by the waveforms,
-which accept them with a drift in every reference at 1–6 times every extreme. The sign of the first-order change behaves as it should: a metallic node, more polarisable
+which accept them with a drift in all eight references with floors of 1.0–2.5 dB/THz (node states
+were not refitted at floors 0–0.5) at 1–6 times every extreme. The sign of the first-order change behaves as it should: a metallic node, more polarisable
 than the water it replaces, delays (+0.042 rad at 0.6 THz), and a node with ε′ = 1 advances
 (−0.039 rad).
 
@@ -755,7 +762,7 @@ Fig. 1b shows the slice on one 1.2 mm plate, so whether the gap is fixed is not 
 thickness varies across the beam is not firmly excluded in ten references and unresolved in two (Table 2), as a mean over many
 patches (Sim 74). A slice that dries, swells or tears unevenly under the bias could do this, and
 the openings that pass the second pulse would be its zero-thickness extreme. H4's sample 2, the one new sample, transmits more and earlier after bias, best fitted by a uniformly
-thinner path (10–16 %; Sim 76).
+thinner path (8–16 %; Sims 76–77).
 
 **The reported selectivity.** More or uneven tissue in the beam, warming, a stage drift, scattering by gas or
 disrupted tissue and conduction in the tissue water would each act for both THz polarisations, and DC along the fibres (σ∥ ≈ 7σ⊥) heats more than DC
@@ -775,6 +782,7 @@ therefore a decomposition of the published waveforms, not an explanation of the 
 | Drift 0.7 → 0.5 THz | The dip deepens and moves from ~0.7 to 0.62–0.65 THz as b and q grow; water-vapour lines cannot drift. No traced spectrum has a dip below 0.56 THz, so the 0.5 THz endpoint is not in the published figures |
 | 2 THz dip (30 s) | Not reproduced, with or without node states. A real feature of one scan (15 dB, twice any other single-curve dip), its depth limited by dynamic range; the two pulses reach that depth but, with the traced phase extrapolated, at 2.10–2.32 THz rather than 1.99 THz. With node states (65, every extreme, six phase bands, b = 0.034–0.044) the model's minimum within 0.03 THz of 1.99 THz is at most −37.5 dB (measured ≤ −43.5 dB) |
 | Only E∥ fibres, only DC across fibres | Not explained. The causes the waveforms leave (uneven or thicker tissue, gas with a stage drift, warming) act for both polarisations, and DC along the fibres would heat more. Described without data |
+| H4 sample 2 (the one independent sample): rise from 0.4 THz, 5 dB near 2 THz; index falling over the band; resonance supposed below the band | No dip and no second pulse; transmits more and earlier after bias, best fitted by a path 8–16 % thinner (5.4 %; a stronger, earlier pulse 8.0 %, no change 21.2 %; Sim 77) |
 | Onset ~5 min, recovery ~1 h | Second pulse grows 4 → 12 → 17 → 21 % (0.5, 2, 4, 5 min); H4's sample 1 at "6 min" (24 %) matches H3's 5 min scan within 10 %, so it adds no time point; recovery not traced |
 | No significant change of average power | Traced energy −1.2 dB (H3), consistent |
 
@@ -801,7 +809,8 @@ release of the raw data.
   tissue-path factor q depends on the fitted band. H4's sample 1 is the sample of H1–H3 and its
   biased scan matches H3's 5 min scan, so H4 adds one independent sample.
 - **Uneven thickness** is modelled as the mean over many independent patches. One slice under a 5 mm
-  beam departs from that mean by as much as the change itself unless its patches are ≲ 0.25 mm, where
+  beam departs from that mean by a quarter to all of the change, depending on patch size, and only
+patches of ≲ 0.25 mm average out at 0.6 THz, where
   the local-slab transfer fails (Sim 74), so its fit shows what a spread of thickness gives on
   average, not what a given slice does.
 - **Statistics of the waveform fits.** The misfit is systematic, and no significance test we built
@@ -858,8 +867,8 @@ fits and unresolved in two, and only as a mean over many patches that one slice 
 not realise; a uniformly thicker path, gas and warming pass only under one reading of the 30 s scan.
 Node states pass only at 1–6 times every geometric extreme and as nearly lossless negative
 permittivities or conductors at 1000 S/m, which an aqueous gap cannot hold, so they are excluded by physics rather than by the
-waveforms. A fourth report shows the sample of H1–H3 in a scan that matches an earlier one, with its reported resonance consistent with the cancellation between the two pulses, and one new sample that transmits more and earlier under bias, as a thinner path would. At 2–5 min the second pulse's lead over the empty-cuvette pulse is within how well that pulse is
-reproduced between reports. Every remaining cause would act for both THz polarisations, against the
+waveforms. A fourth report shows the sample of H1–H3 in a scan that matches an earlier one, with its reported resonance consistent with the cancellation between the two pulses, and one new sample that transmits more and earlier under bias, as a thinner path would. The second pulse's lead over the empty-cuvette pulse is comparable to the difference between two
+reports' empty-cuvette pulses, so whether it is real is not decided. Every remaining cause would act for both THz polarisations, against the
 reported selectivity, which is described without data. Settling the cause needs the raw data or the
 control measurements listed in Sec. 5.8.
 
