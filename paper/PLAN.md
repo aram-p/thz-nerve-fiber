@@ -16,14 +16,14 @@ the node does not resonate: its absorbed power follows a three-constant quasi-st
 limits, within 2.3 % of full wave for fibres up to 10 µm. Second, for the field along the fibres, as
 in every published scan, no node state (ε″ ≥ 0.1) changes a 100 µm slice by more than 1.1 dB at
 internodes ≥ 200 µm and packing ≤ 0.6, and open channels add 10⁻⁶ of membrane admittance. Third,
-each published biased waveform fits approximately as the unbiased pulse whose tissue part lags by
-0.16–0.28 rad at 0.6 THz and loses more at high frequency, plus a second pulse near the
-empty-cuvette delay growing to 22 % of the field. This holds over 36 fitting assumptions; without
-the change, twelve references miss by 2.2–4.0 times what fitting noise and tracing allow. It fits
-the 0.6 THz dip, not a single-scan 2.0 THz dip. Warming (three water models), extra conduction and
-dilute gas cannot alone produce it. A slightly thicker path remains only if the 30 s loss is a
-reference artefact; node states fit only beyond every geometric extreme, in states no aqueous gap
-holds. The reported polarisation selectivity, described without data, stays unexplained.
+each biased waveform fits approximately as the unbiased pulse whose tissue part lags by 0.16–0.28
+rad at 0.6 THz and loses more at high frequency, plus a second pulse near the empty-cuvette delay
+growing to 22 %. Over 36 fitting assumptions and twelve references, fits without the change miss by
+2.2–4.0 times what fitting noise and tracing allow. It fits the 0.6 THz dip, not a 2.0 THz dip.
+Extra conduction cannot produce it. If a 30 s loss belongs to the slice, as tracings suggest, no
+tested bulk cause can, and the change precedes the reported onset; otherwise warming, a thicker path
+or gas with a drift remain. Node states fit only beyond every geometric extreme. The reported
+polarisation selectivity stays unexplained.
 
 ## Section outline
 
