@@ -1,0 +1,149 @@
+Warming models scaled to Millon at 1 THz: k A 2.310, B 1.036, C 3.263
+Tracing D (alone / drift): floor 0, a <= 1 1.52 / 0.60; floor 0, a + b <= 1 1.52 / 0.60; floor 0.5, a <= 1 2.07 / 0.00; floor 0.5, a + b <= 1 2.07 / 0.00
+
+floors 0-0.5   none | alone                         excluded 4/4 (0 bl); largest D/thr 3.41-4.02
+      floor 0, a <= 1        4.02 / 3.25 / 3.19  D 22.8 / 24.0 / 24.2  flip 0.00  sizes [0.0, 0.0, 0.0]
+      floor 0, a + b <= 1    3.49 / 2.64 / 2.56  D 22.6 / 23.5 / 23.6  flip 0.00  sizes [0.0, 0.0, 0.0]
+      floor 0.5, a <= 1      3.70 / 2.97 / 3.21  D 21.9 / 23.2 / 23.6  flip 0.00  sizes [0.0, 0.0, 0.0]
+      floor 0.5, a + b <= 1  3.41 / 2.67 / 2.17  D 21.6 / 22.6 / 22.9  flip 0.00  sizes [0.0, 0.0, 0.0]
+floors 0-0.5   none | drift                         excluded 4/4 (0 bl); largest D/thr 2.58-3.22
+      floor 0, a <= 1        2.92 / 2.69 / 3.22  D 15.0 / 16.3 / 18.4  flip 0.00  sizes [0.0, 0.0, 0.0]
+      floor 0, a + b <= 1    2.77 / 2.55 / 2.54  D 14.6 / 15.4 / 17.5  flip 0.00  sizes [0.0, 0.0, 0.0]
+      floor 0.5, a <= 1      2.93 / 2.31 / 3.08  D 13.7 / 15.2 / 17.6  flip 0.00  sizes [0.0, 0.0, 0.0]
+      floor 0.5, a + b <= 1  2.46 / 2.01 / 2.58  D 13.2 / 14.3 / 16.6  flip 0.00  sizes [0.0, 0.0, 0.0]
+floors 0-0.5   thicker path (fraction) | alone      excluded 4/4 (0 bl); largest D/thr 1.63-2.33
+      floor 0, a <= 1        2.33 / 1.84 / 1.87  D 13.0 / 14.5 / 16.2  flip 0.00  sizes [0.06, 0.09, 0.09]
+      floor 0, a + b <= 1    2.07 / 1.50 / 1.68  D 12.5 / 13.6 / 15.2  flip 0.00  sizes [0.06, 0.09, 0.09]
+      floor 0.5, a <= 1      1.87 / 1.74 / 1.63  D 11.7 / 13.5 / 15.4  flip 0.00  sizes [0.06, 0.09, 0.09]
+      floor 0.5, a + b <= 1  1.56 / 1.46 / 1.63  D 11.1 / 12.4 / 14.2  flip 0.00  sizes [0.06, 0.09, 0.09]
+floors 0-0.5   thicker path (fraction) | drift      excluded 4/4 (0 bl); largest D/thr 1.21-1.86
+      floor 0, a <= 1        1.37 / 1.06 / 1.25  D 8.2 / 8.3 / 9.7  flip 0.00  sizes [0.21, 0.27, 0.36]
+      floor 0, a + b <= 1    1.76 / 1.34 / 1.40  D 10.3 / 10.8 / 12.3  flip 0.00  sizes [0.12, 0.15, 0.21]
+      floor 0.5, a <= 1      1.14 / 0.97 / 1.21  D 7.3 / 7.4 / 9.2  flip 0.00  sizes [0.18, 0.24, 0.32999999999999996]
+      floor 0.5, a + b <= 1  1.86 / 1.35 / 1.46  D 9.4 / 10.2 / 11.8  flip 0.00  sizes [0.12, 0.12, 0.21]
+floors 0-0.5   gas, slice swells, r 30 um | alone   excluded 4/4 (0 bl); largest D/thr 2.19-2.58
+      floor 0, a <= 1        2.58 / 2.40 / 2.41  D 14.4 / 17.8 / 19.3  flip 0.00  sizes [0.2, 0.2, 0.2]
+      floor 0, a + b <= 1    2.57 / 1.82 / 1.96  D 14.0 / 17.0 / 18.5  flip 0.00  sizes [0.2, 0.2, 0.2]
+      floor 0.5, a <= 1      2.35 / 2.04 / 2.24  D 13.9 / 17.3 / 18.8  flip 0.00  sizes [0.2, 0.2, 0.2]
+      floor 0.5, a + b <= 1  2.19 / 1.66 / 1.81  D 13.4 / 16.5 / 17.9  flip 0.00  sizes [0.2, 0.2, 0.2]
+floors 0-0.5   gas, slice swells, r 30 um | drift   excluded 4/4 (0 bl); largest D/thr 1.56-2.09
+      floor 0, a <= 1        1.63 / 1.45 / 1.75  D 7.0 / 10.5 / 13.4  flip 0.00  sizes [0.2, 0.2, 0.2]
+      floor 0, a + b <= 1    1.17 / 1.43 / 1.65  D 6.0 / 9.2 / 12.2  flip 0.00  sizes [0.2, 0.2, 0.2]
+      floor 0.5, a <= 1      1.45 / 1.25 / 2.09  D 6.2 / 9.8 / 12.8  flip 0.00  sizes [0.2, 0.2, 0.2]
+      floor 0.5, a + b <= 1  1.21 / 1.07 / 1.56  D 5.0 / 8.3 / 11.4  flip 0.00  sizes [0.2, 0.2, 0.2]
+floors 0-0.5   ions: all tissue water (S/m) | alone excluded 4/4 (0 bl); largest D/thr 2.05-2.67
+      floor 0, a <= 1        2.32 / 1.77 / 1.77  D 16.3 / 16.1 / 16.0  flip 0.00  sizes [20.0, 30.0, 40.0]
+      floor 0, a + b <= 1    2.67 / 2.17 / 1.90  D 18.2 / 19.3 / 19.1  flip 0.00  sizes [15.0, 20.0, 30.0]
+      floor 0.5, a <= 1      2.05 / 1.85 / 1.92  D 15.3 / 15.8 / 15.6  flip 0.00  sizes [20.0, 30.0, 40.0]
+      floor 0.5, a + b <= 1  2.31 / 1.67 / 1.87  D 17.8 / 18.8 / 18.7  flip 0.00  sizes [15.0, 15.0, 20.0]
+floors 0-0.5   ions: all tissue water (S/m) | drift excluded 4/4 (0 bl); largest D/thr 2.08-2.21
+      floor 0, a <= 1        2.19 / 1.92 / 2.08  D 11.9 / 12.8 / 14.1  flip 0.00  sizes [20.0, 30.0, 40.0]
+      floor 0, a + b <= 1    2.21 / 1.77 / 1.86  D 12.9 / 13.4 / 15.2  flip 0.00  sizes [15.0, 15.0, 20.0]
+      floor 0.5, a <= 1      2.02 / 2.15 / 1.86  D 10.8 / 12.3 / 13.7  flip 0.00  sizes [20.0, 20.0, 40.0]
+      floor 0.5, a + b <= 1  2.08 / 1.47 / 1.75  D 11.6 / 12.6 / 14.4  flip 0.00  sizes [10.0, 15.0, 20.0]
+floors 0-0.5   axoplasm conductivity (S/m) | alone  excluded 4/4 (0 bl); largest D/thr 2.24-2.78
+      floor 0, a <= 1        2.78 / 1.93 / 1.96  D 16.6 / 16.1 / 16.1  flip 0.00  sizes [50.0, 75.0, 100.0]
+      floor 0, a + b <= 1    2.61 / 1.91 / 1.91  D 18.8 / 19.2 / 19.0  flip 0.00  sizes [50.0, 50.0, 75.0]
+      floor 0.5, a <= 1      2.24 / 1.71 / 1.75  D 15.5 / 15.7 / 15.6  flip 0.00  sizes [50.0, 75.0, 100.0]
+      floor 0.5, a + b <= 1  2.58 / 1.81 / 1.92  D 17.9 / 19.0 / 18.8  flip 0.00  sizes [30.0, 50.0, 75.0]
+floors 0-0.5   axoplasm conductivity (S/m) | drift  excluded 4/4 (0 bl); largest D/thr 1.88-2.38
+      floor 0, a <= 1        2.28 / 1.74 / 1.92  D 12.0 / 12.5 / 14.0  flip 0.00  sizes [50.0, 75.0, 100.0]
+      floor 0, a + b <= 1    2.38 / 1.93 / 1.60  D 12.8 / 13.7 / 15.2  flip 0.00  sizes [30.0, 30.0, 50.0]
+      floor 0.5, a <= 1      1.88 / 1.71 / 1.84  D 10.8 / 12.0 / 13.4  flip 0.00  sizes [50.0, 75.0, 100.0]
+      floor 0.5, a + b <= 1  2.20 / 1.62 / 1.67  D 11.5 / 12.6 / 14.4  flip 0.00  sizes [30.0, 30.0, 50.0]
+floors 0-0.5   warming A | alone                    excluded 4/4 (0 bl); largest D/thr 2.42-3.29
+      floor 0, a <= 1        3.29 / 2.55 / 2.83  D 18.1 / 19.8 / 21.6  flip 0.00  sizes [4.0, 4.0, 4.0]
+      floor 0, a + b <= 1    2.95 / 2.48 / 2.13  D 17.8 / 19.1 / 20.8  flip 0.00  sizes [4.0, 4.0, 4.0]
+      floor 0.5, a <= 1      2.35 / 2.42 / 2.71  D 16.9 / 18.8 / 20.8  flip 0.00  sizes [4.0, 4.0, 4.0]
+      floor 0.5, a + b <= 1  2.42 / 2.21 / 2.18  D 16.5 / 18.1 / 20.0  flip 0.00  sizes [4.0, 4.0, 4.0]
+floors 0-0.5   warming A | drift                    excluded 4/4 (0 bl); largest D/thr 2.74-3.76
+      floor 0, a <= 1        3.72 / 3.09 / 2.92  D 15.0 / 16.3 / 18.4  flip 0.00  sizes [0.0, 0.0, 0.0]
+      floor 0, a + b <= 1    2.74 / 2.31 / 2.29  D 14.6 / 15.4 / 17.5  flip 0.00  sizes [0.0, 0.0, 0.0]
+      floor 0.5, a <= 1      3.76 / 2.64 / 2.61  D 13.7 / 15.2 / 17.6  flip 0.00  sizes [0.0, 0.0, 0.0]
+      floor 0.5, a + b <= 1  3.14 / 1.96 / 2.15  D 13.2 / 14.3 / 16.6  flip 0.00  sizes [0.0, 0.0, 0.0]
+floors 0-0.5   warming B | alone                    excluded 4/4 (0 bl); largest D/thr 1.60-2.24
+      floor 0, a <= 1        1.60 / 1.40 / 1.43  D 12.2 / 13.2 / 12.7  flip 0.00  sizes [16.0, 24.0, 32.0]
+      floor 0, a + b <= 1    2.24 / 1.83 / 1.51  D 15.9 / 16.6 / 16.2  flip 0.00  sizes [12.0, 12.0, 16.0]
+      floor 0.5, a <= 1      1.60 / 1.33 / 1.36  D 12.1 / 12.6 / 11.8  flip 0.00  sizes [16.0, 16.0, 24.0]
+      floor 0.5, a + b <= 1  2.23 / 1.54 / 1.67  D 15.8 / 16.3 / 15.8  flip 0.00  sizes [8.0, 12.0, 16.0]
+floors 0-0.5   warming B | drift                    excluded 4/4 (0 bl); largest D/thr 1.74-2.10
+      floor 0, a <= 1        1.84 / 1.71 / 1.59  D 10.7 / 10.9 / 11.8  flip 0.00  sizes [16.0, 16.0, 24.0]
+      floor 0, a + b <= 1    2.10 / 1.51 / 1.29  D 11.8 / 12.4 / 13.6  flip 0.00  sizes [8.0, 12.0, 16.0]
+      floor 0.5, a <= 1      1.75 / 1.39 / 1.45  D 9.6 / 9.7 / 10.9  flip 0.00  sizes [12.0, 16.0, 24.0]
+      floor 0.5, a + b <= 1  1.74 / 1.27 / 1.61  D 10.6 / 11.5 / 13.2  flip 0.00  sizes [8.0, 8.0, 16.0]
+floors 0-0.5   warming C | alone                    excluded 4/4 (0 bl); largest D/thr 2.05-2.53
+      floor 0, a <= 1        2.31 / 2.05 / 2.27  D 14.2 / 16.4 / 18.3  flip 0.00  sizes [4.0, 6.0, 6.0]
+      floor 0, a + b <= 1    2.18 / 1.68 / 1.75  D 13.7 / 15.5 / 17.4  flip 0.00  sizes [4.0, 6.0, 6.0]
+      floor 0.5, a <= 1      1.97 / 1.77 / 2.53  D 13.2 / 15.6 / 17.7  flip 0.00  sizes [4.0, 6.0, 6.0]
+      floor 0.5, a + b <= 1  2.05 / 1.54 / 1.80  D 12.7 / 14.7 / 16.7  flip 0.00  sizes [4.0, 6.0, 6.0]
+floors 0-0.5   warming C | drift                    excluded 4/4 (0 bl); largest D/thr 2.26-2.77
+      floor 0, a <= 1        2.56 / 2.77 / 2.75  D 14.0 / 15.8 / 17.8  flip 0.00  sizes [3.0, 3.0, 3.0]
+      floor 0, a + b <= 1    2.07 / 2.22 / 2.32  D 13.5 / 14.9 / 16.9  flip 0.00  sizes [3.0, 3.0, 3.0]
+      floor 0.5, a <= 1      2.37 / 2.28 / 2.64  D 12.9 / 14.8 / 17.1  flip 0.00  sizes [3.0, 2.0, 3.0]
+      floor 0.5, a + b <= 1  2.01 / 1.93 / 2.26  D 12.4 / 13.9 / 16.1  flip 0.00  sizes [3.0, 2.0, 3.0]
+floors 1.0-2.5 gas, slice swells, r 30 um | alone   excluded 8/8 (0 bl); largest D/thr 1.74-2.48
+      floor 1, a <= 1        2.23 / 2.03 / 2.07  D 13.5 / 16.8 / 18.3  flip 0.00  sizes [0.2, 0.2, 0.2]
+      floor 1, a + b <= 1    2.48 / 1.53 / 1.54  D 12.9 / 16.0 / 17.4  flip 0.00  sizes [0.2, 0.2, 0.2]
+      floor 1.5, a <= 1      2.08 / 2.06 / 1.99  D 13.1 / 16.4 / 17.9  flip 0.00  sizes [0.2, 0.2, 0.2]
+      floor 1.5, a + b <= 1  1.85 / 1.57 / 1.87  D 12.7 / 15.5 / 16.9  flip 0.00  sizes [0.2, 0.2, 0.2]
+      floor 2.07, a <= 1     1.67 / 1.75 / 1.89  D 12.8 / 16.0 / 17.4  flip 0.00  sizes [0.2, 0.2, 0.2]
+      floor 2.07, a + b <= 1 1.81 / 1.39 / 1.46  D 12.7 / 15.1 / 16.4  flip 0.00  sizes [0.2, 0.2, 0.2]
+      floor 2.5, a <= 1      1.64 / 1.66 / 1.82  D 12.6 / 15.7 / 17.1  flip 0.00  sizes [0.2, 0.2, 0.2]
+      floor 2.5, a + b <= 1  1.74 / 1.41 / 1.43  D 12.9 / 14.9 / 16.0  flip 0.00  sizes [0.2, 0.2, 0.2]
+floors 1.0-2.5 gas, slice swells, r 30 um | drift   excluded 8/8 (0 bl); largest D/thr 1.08-2.00
+      floor 1, a <= 1        1.02 / 1.23 / 2.00  D 5.5 / 9.1 / 12.1  flip 0.00  sizes [0.2, 0.2, 0.2]
+      floor 1, a + b <= 1    0.69 / 1.01 / 1.23  D 4.0 / 7.4 / 10.6  flip 0.00  sizes [0.2, 0.2, 0.2]
+      floor 1.5, a <= 1      1.04 / 1.13 / 1.68  D 5.0 / 8.4 / 11.4  flip 0.00  sizes [0.2, 0.2, 0.2]
+      floor 1.5, a + b <= 1  0.85 / 0.83 / 1.38  D 3.5 / 6.5 / 9.8  flip 0.00  sizes [0.18, 0.2, 0.2]
+      floor 2.07, a <= 1     0.78 / 1.18 / 1.62  D 4.6 / 7.8 / 10.7  flip 0.00  sizes [0.2, 0.2, 0.2]
+      floor 2.07, a + b <= 1 0.62 / 0.76 / 1.12  D 3.0 / 5.9 / 8.9  flip 0.00  sizes [0.16, 0.18, 0.2]
+      floor 2.5, a <= 1      0.79 / 1.04 / 1.43  D 4.4 / 7.4 / 10.1  flip 0.00  sizes [0.18, 0.2, 0.2]
+      floor 2.5, a + b <= 1  0.53 / 0.74 / 1.08  D 2.6 / 5.5 / 8.2  flip 0.09  sizes [0.14, 0.16, 0.2]
+floors 1.0-2.5 warming B | alone                    excluded 8/8 (0 bl); largest D/thr 1.31-2.09
+      floor 1, a <= 1        1.55 / 1.21 / 1.22  D 11.8 / 11.7 / 11.2  flip 0.00  sizes [12.0, 16.0, 24.0]
+      floor 1, a + b <= 1    2.09 / 1.46 / 1.41  D 15.2 / 16.1 / 15.5  flip 0.00  sizes [8.0, 12.0, 16.0]
+      floor 1.5, a <= 1      1.37 / 1.23 / 1.21  D 11.1 / 11.0 / 10.7  flip 0.00  sizes [12.0, 16.0, 24.0]
+      floor 1.5, a + b <= 1  1.85 / 1.43 / 1.31  D 14.9 / 16.2 / 15.4  flip 0.00  sizes [8.0, 12.0, 16.0]
+      floor 2.07, a <= 1     1.31 / 1.12 / 1.00  D 10.9 / 10.7 / 10.4  flip 0.00  sizes [12.0, 16.0, 24.0]
+      floor 2.07, a + b <= 1 1.84 / 1.45 / 1.18  D 14.7 / 15.8 / 15.3  flip 0.00  sizes [6.0, 8.0, 16.0]
+      floor 2.5, a <= 1      1.42 / 1.07 / 1.08  D 11.0 / 10.7 / 10.3  flip 0.00  sizes [12.0, 16.0, 24.0]
+      floor 2.5, a + b <= 1  1.78 / 1.42 / 1.33  D 14.6 / 15.6 / 15.0  flip 0.00  sizes [6.0, 8.0, 12.0]
+floors 1.0-2.5 warming B | drift                    excluded 8/8 (0 bl); largest D/thr 1.20-1.59
+      floor 1, a <= 1        1.31 / 1.17 / 1.31  D 8.3 / 8.6 / 10.2  flip 0.00  sizes [12.0, 16.0, 24.0]
+      floor 1, a + b <= 1    1.59 / 1.20 / 1.41  D 9.7 / 10.5 / 12.5  flip 0.00  sizes [6.0, 8.0, 12.0]
+      floor 1.5, a <= 1      1.26 / 1.07 / 1.31  D 7.5 / 7.8 / 9.7  flip 0.00  sizes [12.0, 16.0, 24.0]
+      floor 1.5, a + b <= 1  1.40 / 1.13 / 1.37  D 8.6 / 9.7 / 11.8  flip 0.00  sizes [6.0, 6.0, 12.0]
+      floor 2.07, a <= 1     1.27 / 1.07 / 1.14  D 6.7 / 7.4 / 9.3  flip 0.00  sizes [8.0, 12.0, 24.0]
+      floor 2.07, a + b <= 1 1.27 / 0.98 / 1.20  D 7.3 / 8.6 / 11.2  flip 0.00  sizes [4.0, 6.0, 12.0]
+      floor 2.5, a <= 1      0.92 / 0.85 / 1.23  D 5.4 / 6.3 / 9.2  flip 0.00  sizes [8.0, 12.0, 24.0]
+      floor 2.5, a + b <= 1  1.20 / 0.99 / 1.20  D 6.4 / 7.9 / 10.7  flip 0.00  sizes [3.0, 4.0, 8.0]
+floors 1.0-2.5 warming C | alone                    excluded 8/8 (0 bl); largest D/thr 1.22-2.20
+      floor 1, a <= 1        1.98 / 1.70 / 2.20  D 12.2 / 14.8 / 17.0  flip 0.00  sizes [4.0, 6.0, 6.0]
+      floor 1, a + b <= 1    1.63 / 1.39 / 1.54  D 11.6 / 13.8 / 16.0  flip 0.00  sizes [4.0, 6.0, 6.0]
+      floor 1.5, a <= 1      1.57 / 1.61 / 2.10  D 11.3 / 14.1 / 16.4  flip 0.00  sizes [4.0, 6.0, 6.0]
+      floor 1.5, a + b <= 1  1.59 / 1.51 / 1.53  D 10.6 / 13.0 / 15.3  flip 0.00  sizes [4.0, 6.0, 6.0]
+      floor 2.07, a <= 1     1.44 / 1.51 / 1.80  D 10.3 / 13.3 / 15.7  flip 0.00  sizes [4.0, 6.0, 6.0]
+      floor 2.07, a + b <= 1 1.20 / 1.21 / 1.24  D 9.4 / 12.1 / 14.6  flip 0.00  sizes [4.0, 6.0, 6.0]
+      floor 2.5, a <= 1      1.38 / 1.29 / 1.54  D 9.6 / 12.7 / 15.2  flip 0.00  sizes [4.0, 6.0, 6.0]
+      floor 2.5, a + b <= 1  1.03 / 1.16 / 1.22  D 8.7 / 11.5 / 14.0  flip 0.00  sizes [4.0, 6.0, 6.0]
+floors 1.0-2.5 warming C | drift                    excluded 8/8 (0 bl); largest D/thr 1.66-2.55
+      floor 1, a <= 1        2.14 / 2.32 / 2.55  D 11.8 / 13.9 / 16.4  flip 0.00  sizes [2.0, 2.0, 3.0]
+      floor 1, a + b <= 1    2.05 / 1.89 / 1.81  D 11.2 / 12.8 / 15.3  flip 0.00  sizes [2.0, 2.0, 3.0]
+      floor 1.5, a <= 1      1.84 / 2.08 / 2.29  D 10.8 / 12.9 / 15.6  flip 0.00  sizes [2.0, 2.0, 3.0]
+      floor 1.5, a + b <= 1  1.96 / 2.00 / 2.06  D 10.0 / 11.7 / 14.5  flip 0.00  sizes [2.0, 2.0, 3.0]
+      floor 2.07, a <= 1     1.69 / 1.66 / 2.44  D 9.5 / 11.8 / 14.8  flip 0.00  sizes [2.0, 1.0, 2.0]
+      floor 2.07, a + b <= 1 1.60 / 1.66 / 1.38  D 8.6 / 10.5 / 13.6  flip 0.00  sizes [2.0, 1.0, 2.0]
+      floor 2.5, a <= 1      1.54 / 1.99 / 1.77  D 8.6 / 11.0 / 14.2  flip 0.00  sizes [1.0, 1.0, 2.0]
+      floor 2.5, a + b <= 1  1.45 / 1.49 / 1.84  D 7.5 / 9.5 / 12.9  flip 0.00  sizes [1.0, 1.0, 2.0]
+
+30 s floor 0, a <= 1        none alone: D 6.32 %, D/threshold (single scan, 0.95) 1.57, flip 0.00
+30 s floor 0, a <= 1        none drift: D 6.23 %, D/threshold (single scan, 0.95) 2.02, flip 0.00
+30 s floor 0, a + b <= 1    none alone: D 6.32 %, D/threshold (single scan, 0.95) 1.73, flip 0.00
+30 s floor 0, a + b <= 1    none drift: D 6.23 %, D/threshold (single scan, 0.95) 2.15, flip 0.00
+30 s floor 0.5, a <= 1      none alone: D 5.14 %, D/threshold (single scan, 0.95) 1.19, flip 0.00
+30 s floor 0.5, a <= 1      none drift: D 4.99 %, D/threshold (single scan, 0.95) 1.74, flip 0.00
+30 s floor 0.5, a + b <= 1  none alone: D 5.14 %, D/threshold (single scan, 0.95) 1.22, flip 0.00
+30 s floor 0.5, a + b <= 1  none drift: D 4.99 %, D/threshold (single scan, 0.95) 1.96, flip 0.00
+
+Node states at every extreme (80): largest delay at 0.6 THz 0.0640 rad (joint:joint_-3.0, slope 1.10 dB/THz); steepest slope 5.24 dB/THz (joint:joint_-1.7, delay -0.084 rad)
+  slope >= 4 dB/THz: epsfine:-1.6_0.1 4.57 (-0.081 rad), epsfine:-1.3_0.1 4.18 (-0.118 rad), epsdense:-1.5_0.1 4.80 (-0.099 rad), epsdense:-1.45_0.1 4.77 (-0.106 rad), epsdense:-1.4_0.1 4.61 (-0.111 rad), epsdense:-1.35_0.1 4.34 (-0.115 rad), epsdense:-1.45_0.1_h 4.45 (-0.101 rad), epsdense:-1.5_0.1_h 4.39 (-0.094 rad), epsdense:-1.45_0.1_q 4.19 (-0.099 rad), epsdense:-1.35_0.1_h 4.25 (-0.111 rad), epsdense:-1.4_0.1_h 4.40 (-0.107 rad), epsdense:-1.6_0.1_h 4.07 (-0.077 rad), joint:joint_-1.7 5.24 (-0.084 rad)
