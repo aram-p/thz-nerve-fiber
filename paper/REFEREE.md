@@ -1525,6 +1525,30 @@ states the bootstrap's few blocks, the bounds and the number of tests. **Fixed.*
 ### 277. MINOR: b at 5 min given as 0.21 and as 22 %; a stray "0.6,."; H4 sample 2's full fit cannot add gain, so its D = 0 means nothing.
 **Response.** 21 % throughout (fits give 0.209–0.219); typo fixed; Sec. 5.6 says the full fit does no better than no change for sample 2, so no effect size is formed. **Fixed.**
 
+
+## Thirty-fifth round (independent reviewer, whole paper, 2026-11-04; verdict: no fatal flaw; major revision, six claims go further than the result files)
+
+### 278. MAJOR: "the fits without a drift already pass" is false for uneven thickness: firmly excluded alone in two references (floors 0 and 1.0, a + b ≤ 1; 1.16–1.17), borderline in a third (1.14); there only grid-edge drift fits (rms 40 %) pass.
+**Response.** Agreed. Sec. 5.7 now says that without a drift it passes in nine of twelve references, gives the two exclusions and the borderline, says that in those two only the grid-edge drift fit (a mean 12–27 % thinner, rms 40 %) passes, the slice Sim 74 shows a single slice realises least, and counts those two verdicts as unresolved; Sec. 5.7's thicker-path paragraph, Sec. 6 and Sec. 7 follow. REPORT row 76 ("not needed") is corrected. **Fixed.**
+
+### 279. MAJOR: the abstract's "each biased waveform fits …" does not hold for H4's sample 2, the only independent sample.
+**Response.** The abstract now says "the biased waveforms of one sample (three reports)" and adds that a second sample transmits more and earlier, with no second pulse. **Fixed.**
+
+### 280. MAJOR: sample 2's "16 % without a change" is a local minimum; unbounded τ lets the empty pulse sit at the tissue delay; "earlier and stronger" is another reading than a thinner path.
+**Response.** `TwoPulse.fit` takes a bound on the second pulse's arrival (t2_max, tested). Sim 76 refits H4 with |s + τ| ≤ 0.2 ps over the base tracing and the eight tracing shifts: no change now leaves 15.8 % (15.8–15.9), a path 10–16 % thinner 3.7 %, and a tissue pulse 1.2 times stronger and 0.06 ps earlier with no change of shape 6.4 % (6.1–6.6). Sample 1 is unchanged. Sec. 5.6 gives all three and calls the thinner path the best of these readings, not the only one; Sec. 5.7 and 7 say the sample "transmits more and earlier, as a thinner path would". **Fixed.**
+
+### 281. MAJOR: "excludes extra conduction" contradicts the 1000 S/m node, which passes within the threshold; the abstract lists node states only as negative permittivities.
+**Response.** Abstract, Sec. 1, 5.7 and 5.8 now say bulk conduction (tissue water, axoplasm); the abstract and Sec. 7 name node states "as nearly lossless negative permittivities or 1000 S/m conductors". **Fixed.**
+
+### 282. MAJOR: the H4 resonance check is circular (the traced spectrum against a model fitted to the same waveform), counts H3's scan twice, and never quotes H4's frequency.
+**Response.** H4 gives no frequency ("deep resonance in the low-frequency region", p. 20); its spectrum (Fig. 4b) has a broad minimum near 0.55 THz and its index (Fig. 5a) jumps at 0.60 THz. Sec. 5.6 now quotes these, calls the match a consistency check on what is H3's scan or one close to it, and notes the 0.557 THz water line; the abstract sentence is removed; Sec. 1, 5.8 and 7 say "consistent with the cancellation". **Fixed.**
+
+### 283. MINOR: Sim 75 tested the lead only without a loss term.
+**Response.** Sim 76 repeats it with the causal loss term: with H4's empty pulse the second pulse is within 0.009 ps of the empty-cuvette delay at 2–5 min (H1's: 0.020–0.039 ps early) and 0.011–0.033 ps early at 30 s (b = 0.04). Sec. 5.6 and 7 now limit the claim to 2–5 min and say the candidate fits were not refitted. While doing this a bug was found in `multistart`: with s fixed and a loss term its nested start ignored the fixed s and could return the drift fit; no earlier sim used that path (they call `fit` directly). Fixed and tested. **Fixed.**
+
+### 284. MINOR: inconsistent numbers (30 s rms 8–16 vs drift 8–12; patches ≲ 0.25 mm at 1.5 THz; 1.3–2.5 vs 1.33–2.38; 1.21–2.33 vs 1.76; 12–99 with λ 2–6; "as they match each other").
+**Response.** 8–12 % with a drift; patches ≲ 0.25 mm average out at 0.6 THz but still depart by 1.2–6.9 dB at 1.5 THz; 1.3–2.4; 1.21–1.76; 12–99 tied to λ 1–6 over all fits; "close to how well they match each other". **Fixed.**
+
 ---
 
 ## What matches and what does not (experiment)

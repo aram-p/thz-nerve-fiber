@@ -39,13 +39,13 @@ VG = np.round(np.arange(-0.95, 1.801, 0.01), 3)
 UNI = np.round(np.arange(-0.5, 0.51, 0.02), 3)
 
 
-def run(W, valid):
+def run(W, valid, t2_max=None):
     tp = TwoPulse(TT, W["empty"], f_loss=2.0)
     # the thickness transfers live on Sim 64's frequency grid; interpolate onto this one
     fr64 = S64.fr
     T = np.array([np.interp(tp.fr, fr64, S64.transfer("thicker path (fraction)", float(v)).real) +
                   1j * np.interp(tp.fr, fr64, S64.transfer("thicker path (fraction)", float(v)).imag) for v in VG])
-    one = lambda y, x, **kw: tp.fit(y, x, a_max=1.0, **kw)
+    one = lambda y, x, **kw: tp.fit(y, x, a_max=1.0, t2_max=t2_max, **kw)
     fit = multistart(one)
     out = {}
     for s in ("s1", "s2"):

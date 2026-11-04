@@ -44,6 +44,32 @@ def test_a_max_bound_holds():
     assert p[0] <= 1.0 + 1e-9
 
 
+def test_second_pulse_arrival_bound_holds():
+    # the second pulse placed at the tissue delay (0.6 ps late) fits best unbounded; with t2_max it must stay near 0
+    tt = np.arange(0, 8, 0.005)
+    B, K = _pulse(tt, 4.0), _pulse(tt, 3.4)
+    tp = TwoPulse(tt, K)
+    y = 0.8 * B + 0.1 * tp.shift(K, 0.6) + 0.05 * K
+    for s in (None, 0.0):
+        p, _, _ = tp.fit(y, B, s=s, p0=[0.8, 0.1, 0.6] if s == 0.0 else [0.8, 0.1, 0.0, 0.6], t2_max=0.2)
+        assert abs((p[2] + p[3]) if s is None else p[2]) <= 0.2 + 1e-3
+    p, _, _ = tp.fit(y, B, s=0.0, p0=[0.8, 0.1, 0.6])
+    assert abs(p[2] - 0.6) < 0.05
+
+
+def test_multistart_keeps_fixed_s_with_loss():
+    from thznerve.waveform_fit import multistart
+    tt = np.arange(0, 8, 0.005)
+    B, K = _pulse(tt, 4.0), _pulse(tt, 3.4)
+    tp = TwoPulse(tt, K)
+    y = 0.7 * tp.shift(tp.apply_transfer(B, tp.loss_transfer(4.0, "minphase")), 0.05) + 0.15 * tp.shift(K, 0.05)
+    fit = multistart(lambda y_, x_, **kw: tp.fit(y_, x_, a_max=1.0, **kw))
+    q, _, _ = fit(y, B, s=0.0, loss="minphase")
+    assert len(q) == 4                                   # (a, b, tau, kappa): s stays fixed
+    q, m, _ = fit(y, B, loss="minphase")
+    assert len(q) == 5 and m < 1e-6
+
+
 def test_node_transfer_reproduces_solved_points():
     from thznerve.waveform_fit import node_transfer
     st = {"f_thz": [0.6, 2.0], "loss_db_dipole": [0.5, 2.0], "delay_rad": [0.05, 0.3]}

@@ -77,10 +77,11 @@ class TwoPulse:
         xt = self.apply_transfer(x0, self.loss_transfer(kap, loss)) if loss else x0
         return a * self.shift(xt, s_) + b * self.shift(self.K, s_ + tau)
 
-    def fit(self, y, x0, s=None, p0=None, a_max=np.inf, loss=None, ab_max=None):
+    def fit(self, y, x0, s=None, p0=None, a_max=np.inf, loss=None, ab_max=None, t2_max=None):
         """Least squares over (a, b, s, tau), or (a, b, tau) with s fixed, plus kappa >= 0 when loss is given;
         a <= a_max (a passive slice cannot raise the tissue pulse above what its own transfer gives: a_max = 1);
-        a + b <= ab_max if given (the second pulse takes its area from the tissue path), as a stiff penalty.
+        a + b <= ab_max if given (the second pulse takes its area from the tissue path), as a stiff penalty;
+        |s + tau| <= t2_max if given (the second pulse within t2_max ps of the empty-cuvette delay), likewise.
         Returns (params, misfit, residual)."""
         if p0 is not None:
             starts = [list(p0)]
@@ -91,10 +92,13 @@ class TwoPulse:
         if loss and p0 is None:
             starts = [st + [k0] for st in starts for k0 in (1.0, 6.0)]
         w = 1e3 * np.sqrt(len(y))
-        if ab_max is None:
-            r = lambda p: self.model(p, x0, s, loss) - y
-        else:
-            r = lambda p: np.r_[self.model(p, x0, s, loss) - y, w * max(p[0] + p[1] - ab_max, 0.0)]
+        t2 = (lambda p: p[2] + p[3]) if s is None else (lambda p: s + p[2])
+        pen = []
+        if ab_max is not None:
+            pen.append(lambda p: max(p[0] + p[1] - ab_max, 0.0))
+        if t2_max is not None:
+            pen.append(lambda p: max(abs(t2(p)) - t2_max, 0.0))
+        r = lambda p: np.r_[self.model(p, x0, s, loss) - y, [w * g(p) for g in pen]]
         n = len(starts[0])
         ub = np.full(n, np.inf); ub[0] = a_max
         lb = np.full(n, -np.inf)
@@ -245,8 +249,8 @@ def multistart(one):
         if p0 is not None:
             tries.append(one(y, x, s=s, loss=loss, p0=p0))
         if loss:
-            q, _, _ = one(y, x)
-            tries.append(one(y, x, loss=loss, p0=list(q) + [1.0]))
+            q, _, _ = one(y, x, s=s)
+            tries.append(one(y, x, s=s, loss=loss, p0=list(q) + [1.0]))
         else:
             q, _, _ = one(y, x, loss="minphase")
             tries.append(one(y, x, s=s, p0=list(q[:4]) if s is None else [q[0], q[1], q[2] + q[3]]))
