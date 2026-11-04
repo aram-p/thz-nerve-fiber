@@ -1575,6 +1575,30 @@ The reviewer checked the `multistart` fix and the t2_max bound and found both co
 ### 291. MINOR: REPORT row 76 and the closing table here still carry withdrawn claims.
 **Response.** Both rewritten (row 76 verdict; the dip row: 21 %, H4 without a frequency, bulk conduction, the surviving causes, λ 1–6). **Fixed.**
 
+
+## Thirty-seventh round (independent reviewer, whole paper, 2026-11-04; verdict: no fatal flaw; minor revision, one major wording item)
+
+### 292. MAJOR: Sec. 7 says "the published waveforms … decompose into" a lagging, lossier tissue pulse plus a second pulse, but H4's sample 2, the one independent sample, has no second pulse and a stronger, earlier tissue pulse.
+**Response.** Agreed. Sec. 7 now says "the H1–H3 waveforms, all from one session and one sample"; Sec. 1, 5.6, 5.8 and 7 say that the independent sample's tissue pulse changes in the opposite direction, with no second pulse. The abstract already reports it ("transmits more and earlier, with no second pulse"). **Fixed.**
+
+### 293. MINOR: "a quarter to all of the mean change" understates the most uneven case (1.1–2.9 times at rms 0.40).
+**Response.** "a quarter to three times the mean change, depending on patch size and spread" (Sec. 5.7, 6). **Fixed.**
+
+### 294. MINOR: edge fits are not confined to two references; floor 0.5 (a + b ≤ 1) is the same case; a second borderline without a drift (0.91) is missed; Table 2's best sizes are grid limits.
+**Response.** Sec. 5.7 now gives nine passing without a drift (one borderline, 0.91) and three excluded (two firmly, one borderline), counts three verdicts as unresolved, and says the drift fits reach the grid edge in ten of twelve references; Sec. 5.7's thicker-path paragraph, Sec. 6 and 7 follow; Table 2's caption marks mean −30 % and rms 40 % as grid limits. A wider grid can only lower D, so "not firmly excluded" stands. **Fixed.**
+
+### 295. MINOR: the H4 "6 min" scan differs from H3's 5 min scan by 2–3 times the tracing noise, so "adds no time point" is too strong.
+**Response.** Sec. 5.8 now says it is a later scan of the same sample or H3's, near saturation (b = 0.24 with H4's empty pulse), consistent with H1's "nothing changes after ~6 min", and not an independent sample. **Fixed.**
+
+### 296. MINOR: sample 2's thinner-path fit needs a drift opposite to thinning, is unstable without it (7.6–16.4 %), and with no H4 threshold 5.4 % against 8.0 % does not rank the readings.
+**Response.** Sec. 5.6, 5.7 and 5.8 quote the drift (+0.067 ps) and the spread and say the thinner path and a stronger, earlier pulse fit about equally and are not ranked. **Fixed.**
+
+### 297. MINOR: H4 sample 1's second pulse "within 0.07 ps" uses τ without s.
+**Response.** "within 0.02 ps of the empty-cuvette delay (s + τ)": 0.007–0.021 ps over the six fits without a loss term (Sim 73). **Fixed.**
+
+### 298. MINOR: Table 0 omits H4.
+**Response.** The row reads "H1–H4 (2024)". **Fixed.**
+
 ---
 
 ## What matches and what does not (experiment)
